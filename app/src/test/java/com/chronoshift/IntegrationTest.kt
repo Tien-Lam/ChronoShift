@@ -1326,4 +1326,143 @@ class IntegrationTest {
             converted[0].localTimezone.contains("+"),
         )
     }
+
+    // ==================== Real-world adversarial: Chrono misparses ====================
+    // These document cases where Chrono.js produces WRONG results that our pipeline
+    // should either correct or at least not make worse.
+
+    @Test
+    fun `chrono misparses 1500 hours Zulu as duration not military time`() {
+        // BUG: Chrono interprets "1500 hours" as "1500 hours from now" (a duration)
+        // not as 15:00 military time. It returns isCertain=true for everything.
+        // Our pipeline should ideally reject this or at least not display garbage.
+        val json = """[{"text":"1500 hours","index":8,"start":{"year":2026,"month":6,"day":8,"hour":11,"minute":35,"second":33,"timezone":600,"isCertain":{"year":true,"month":true,"day":true,"hour":true,"minute":true,"timezone":true}},"end":null}]"""
+        val results = ChronoResultParser.parse(json, "Call at 1500 hours Zulu", cityResolver)
+        // Currently this passes through as a valid result — documenting the bug
+        // The result will have June 8 2026 as the date, which is WRONG
+        // TODO: Add post-processing to detect unreasonable date jumps
+        if (results.isNotEmpty()) {
+            // At minimum verify it doesn't crash
+            val converted = converter.toLocal(results, TimeZone.UTC)
+            assertTrue("Should not crash converting misparse", converted.isNotEmpty())
+        }
+    }
+
+    @Test
+    fun `chrono drops pacific time timezone label`() {
+        // BUG: "3pm-4pm pacific time" → Chrono returns tz:null
+        // "pacific time" is not in Chrono's abbreviation list
+        val json = """[{"text":"3pm-4pm","index":15,"start":{"year":2026,"month":4,"day":7,"hour":15,"minute":0,"second":0,"timezone":null,"isCertain":{"year":false,"month":false,"day":false,"hour":true,"minute":true,"timezone":false}},"end":{"year":2026,"month":4,"day":7,"hour":16,"minute":0,"second":0,"timezone":null}}]"""
+        val results = ChronoResultParser.parse(json, "The meeting is 3pm-4pm pacific time", cityResolver)
+        assertEquals(2, results.size)
+        // Both should have null timezone — "pacific time" not recognized
+        assertNull("Start should lack timezone (Chrono limitation)", results[0].sourceTimezone)
+        assertNull("End should lack timezone", results[1].sourceTimezone)
+    }
+
+    @Test
+    fun `chrono drops Eastern timezone without abbreviation`() {
+        // "Noon Eastern" → Chrono only parses "Noon", ignores "Eastern"
+        val json = """[{"text":"Noon","index":0,"start":{"year":2026,"month":4,"day":7,"hour":12,"minute":0,"second":0,"timezone":null,"isCertain":{"year":false,"month":false,"day":false,"hour":true,"minute":false,"timezone":false}},"end":null}]"""
+        val results = ChronoResultParser.parse(json, "Noon Eastern", cityResolver)
+        assertEquals(1, results.size)
+        assertNull("Chrono doesn't recognize 'Eastern' as a timezone", results[0].sourceTimezone)
+    }
+
+    @Test
+    fun `chrono drops London time timezone label`() {
+        // "2026-04-09 at 3pm London time" → gets date+time but not timezone
+        val json = """[{"text":"2026-04-09 at 3pm","index":0,"start":{"year":2026,"month":4,"day":9,"hour":15,"minute":0,"second":0,"timezone":null,"isCertain":{"year":true,"month":true,"day":true,"hour":true,"minute":true,"timezone":false}},"end":null}]"""
+        val results = ChronoResultParser.parse(json, "2026-04-09 at 3pm London time", cityResolver)
+        assertEquals(1, results.size)
+        // City resolver should NOT pick up "London" because the pattern requires "in" or "at" + city
+        // and "London time" doesn't match "at London" or "in London" — it's "at 3pm London time"
+        // The "at" binds to "3pm", not "London"
+    }
+
+    @Test
+    fun `chrono misses abbreviated am 4 30a PT`() {
+        // "April 9th, 4:30a PT" → Chrono only parses "April 9th", misses "4:30a"
+        // because "4:30a" is not standard — should be "4:30 a.m." or "4:30am"
+        val json = """[{"text":"April 9th","index":0,"start":{"year":2026,"month":4,"day":9,"hour":12,"minute":0,"second":0,"timezone":null,"isCertain":{"year":false,"month":true,"day":true,"hour":false,"minute":false,"timezone":false}},"end":null}]"""
+        val results = ChronoResultParser.parse(json, "April 9th, 4:30a PT", cityResolver)
+        assertEquals(1, results.size)
+        // Only the date was parsed, time defaults to noon
+        assertEquals("Chrono defaults to hour 12 when time not parsed", 12, results[0].localDateTime!!.hour)
+    }
+
+    @Test
+    fun `chrono drops US Eastern timezone label`() {
+        // "3:00 PM US Eastern" → Chrono only parses "3:00 PM"
+        val json = """[{"text":"3:00 PM","index":0,"start":{"year":2026,"month":4,"day":7,"hour":15,"minute":0,"second":0,"timezone":null,"isCertain":{"year":false,"month":false,"day":false,"hour":true,"minute":true,"timezone":false}},"end":null}]"""
+        val results = ChronoResultParser.parse(json, "3:00 PM US Eastern", cityResolver)
+        assertEquals(1, results.size)
+        assertNull("Chrono doesn't recognize 'US Eastern'", results[0].sourceTimezone)
+    }
+
+    // ==================== Cross-parser consistency ====================
+
+    @Test
+    fun `gemini and chrono produce compatible results for same input`() {
+        // Both parse "April 9 at 3:00 PM EST" — verify they produce results
+        // that can be merged without explosion
+        val chronoJson = """[{"text":"April 9 at 3:00 PM EST","index":0,"start":{"year":2026,"month":4,"day":9,"hour":15,"minute":0,"second":0,"timezone":-300,"isCertain":{"year":false,"month":true,"day":true,"hour":true,"minute":true,"timezone":true}},"end":null}]"""
+        val geminiJson = """[{"time":"15:00","date":"2026-04-09","timezone":"America/New_York","original":"April 9 at 3:00 PM EST"}]"""
+
+        val chrono = ChronoResultParser.parse(chronoJson, "", cityResolver)
+        val gemini = GeminiResultParser.parseResponse(geminiJson)
+
+        // Both should have: localDateTime, instant, sourceTimezone
+        assertEquals(1, chrono.size)
+        assertEquals(1, gemini.size)
+        assertNotNull(chrono[0].localDateTime)
+        assertNotNull(chrono[0].instant)
+        assertNotNull(gemini[0].localDateTime)
+        assertNotNull(gemini[0].instant)
+
+        // Hours should match
+        assertEquals(chrono[0].localDateTime!!.hour, gemini[0].localDateTime!!.hour)
+
+        // Merge should produce 1 (fuzzy dedup) or 2 (different tz IDs) — not explode
+        val merged = ResultMerger.mergeResults(chrono, gemini, "Gemini Nano")
+        assertTrue("Merged should have 1-2 results, got ${merged.size}", merged.size in 1..2)
+    }
+
+    @Test
+    fun `pipeline handles completely empty Chrono output gracefully`() {
+        val chrono = ChronoResultParser.parse("[]", "", cityResolver)
+        val geminiJson = """[{"time":"15:00","date":"2026-04-09","timezone":"America/New_York","original":"3pm EST"}]"""
+        val gemini = GeminiResultParser.parseResponse(geminiJson)
+
+        val merged = ResultMerger.mergeResults(chrono, gemini, "Gemini Nano")
+        assertEquals("Gemini results should survive when Chrono is empty", 1, merged.size)
+        assertNotNull(merged[0].localDateTime)
+        assertNotNull(merged[0].instant)
+    }
+
+    @Test
+    fun `pipeline handles Gemini returning garbage timezone gracefully`() {
+        val geminiJson = """[{"time":"15:00","date":"2026-04-09","timezone":"NotATimezone/Fake","original":"3pm"}]"""
+        val gemini = GeminiResultParser.parseResponse(geminiJson)
+
+        // Should produce a result with null timezone but valid localDateTime
+        assertEquals(1, gemini.size)
+        assertNotNull("Should have localDateTime despite bad tz", gemini[0].localDateTime)
+        assertNull("Bad timezone should be null", gemini[0].sourceTimezone)
+        assertEquals(0.7f, gemini[0].confidence)
+    }
+
+    @Test
+    fun `pipeline end-to-end with timezone-less results still converts using UTC`() {
+        // When no timezone is detected, TimeConverter defaults to UTC
+        val chronoJson = """[{"text":"3:00 PM","index":0,"start":{"year":2026,"month":4,"day":9,"hour":15,"minute":0,"second":0,"timezone":null,"isCertain":{"day":false}},"end":null}]"""
+        val results = ChronoResultParser.parse(chronoJson, "", cityResolver)
+        assertEquals(1, results.size)
+        assertNull(results[0].sourceTimezone)
+
+        val converted = converter.toLocal(results, TimeZone.of("America/New_York"))
+        assertEquals(1, converted.size)
+        // Source timezone should show UTC (the default)
+        assertEquals("UTC", converted[0].sourceTimezone)
+    }
 }
