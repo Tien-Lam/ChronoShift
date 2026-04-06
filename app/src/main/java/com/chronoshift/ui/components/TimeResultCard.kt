@@ -82,7 +82,7 @@ fun TimeResultCard(
     ) {
         // 1. Input: date · time (timezone)
         Text(
-            text = "${result.sourceDate}  ·  ${result.sourceDateTime} (${result.sourceTimezone})",
+            text = "${result.sourceDate}  ·  ${result.sourceDateTime}  ·  ${result.sourceTimezone}",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
