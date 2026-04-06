@@ -2,7 +2,7 @@ package com.chronoshift.nlp
 
 import android.content.Context
 import android.util.Log
-import app.cash.quickjs.QuickJs
+import app.cash.zipline.QuickJs
 import com.chronoshift.conversion.ExtractedTime
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.datetime.LocalDateTime
@@ -97,7 +97,6 @@ class ChronoExtractor @Inject constructor(
                     dateCertain = dateCertain,
                 ))
 
-                // Handle end time (ranges like "12:00 pm - 12:50 pm EDT")
                 if (!obj.isNull("end")) {
                     val end = obj.getJSONObject("end")
                     val endDt = LocalDateTime(
@@ -122,7 +121,6 @@ class ChronoExtractor @Inject constructor(
             }
         }
 
-        // Propagate: find a result with a certain date, apply to uncertain ones
         val refDate = parsed.firstOrNull { it.dateCertain }?.extracted?.localDateTime?.date
         val results = if (refDate != null) {
             parsed.map { p ->
@@ -141,7 +139,6 @@ class ChronoExtractor @Inject constructor(
             parsed.map { it.extracted }
         }
 
-        // Resolve city names for results without timezone
         return results.map { ext ->
             if (ext.sourceTimezone == null) {
                 val cityTz = tryCityFromContext(originalText)

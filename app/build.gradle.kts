@@ -68,7 +68,7 @@ dependencies {
     // ML Kit
     implementation(libs.mlkit.entity.extraction)
     implementation(libs.mlkit.genai.prompt)
-    implementation(libs.quickjs)
+    implementation(libs.zipline)
 
     // Test
     testImplementation(libs.junit)
