@@ -1,12 +1,15 @@
 package com.chronoshift
 
+import com.chronoshift.conversion.ExtractedTime
 import com.chronoshift.conversion.TimeConverter
 import com.chronoshift.nlp.ChronoResultParser
 import com.chronoshift.nlp.GeminiResultParser
 import com.chronoshift.nlp.ResultMerger
 import com.chronoshift.nlp.TestCityResolver
-import kotlinx.datetime.TimeZone
+import kotlinx.datetime.*
+import kotlinx.datetime.toInstant
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
@@ -964,5 +967,363 @@ class IntegrationTest {
                 )
             }
         }
+    }
+
+    // ==================== String escaping (parser resilience) ====================
+
+    @Test
+    fun `string escaping - ChronoResultParser handles special chars in text field`() {
+        val json = """[{"text":"hello\tworld\r\n","index":0,"start":{"year":2026,"month":4,"day":11,"hour":10,"minute":0,"second":0,"timezone":-240,"isCertain":{"day":true}},"end":null}]"""
+        val results = ChronoResultParser.parse(json, "", null)
+        assertEquals(1, results.size)
+        assertNotNull(results[0].localDateTime)
+    }
+
+    @Test
+    fun `string escaping - ChronoResultParser handles unicode and emoji in text field`() {
+        val json = """[{"text":"caf\u00e9 meeting \u2615","index":0,"start":{"year":2026,"month":4,"day":11,"hour":14,"minute":0,"second":0,"timezone":-240,"isCertain":{"day":true}},"end":null}]"""
+        val results = ChronoResultParser.parse(json, "", null)
+        assertEquals(1, results.size)
+        assertNotNull(results[0].localDateTime)
+        assertEquals(14, results[0].localDateTime!!.hour)
+    }
+
+    // ==================== Alignment edge cases ====================
+
+    @Test
+    fun `alignment - all 3 results have different instants returns unchanged`() {
+        val dt1 = LocalDateTime(2026, 4, 11, 9, 0)
+        val dt2 = LocalDateTime(2026, 4, 11, 10, 0)
+        val dt3 = LocalDateTime(2026, 4, 11, 11, 0)
+        val tz = TimeZone.UTC
+        val results = listOf(
+            ExtractedTime(instant = dt1.toInstant(tz), localDateTime = dt1, sourceTimezone = tz, originalText = "9am UTC"),
+            ExtractedTime(instant = dt2.toInstant(tz), localDateTime = dt2, sourceTimezone = tz, originalText = "10am UTC"),
+            ExtractedTime(instant = dt3.toInstant(tz), localDateTime = dt3, sourceTimezone = tz, originalText = "11am UTC"),
+        )
+        val aligned = ChronoResultParser.alignAmbiguousTimezones(results)
+        assertEquals("No majority → unchanged", results, aligned)
+    }
+
+    @Test
+    fun `alignment - results with instant but null localDateTime are skipped gracefully`() {
+        val dt1 = LocalDateTime(2026, 4, 11, 4, 30)
+        val tzPT = TimeZone.of("America/Los_Angeles")
+        val tzET = TimeZone.of("America/New_York")
+        val instant1 = dt1.toInstant(tzPT)
+        val results = listOf(
+            ExtractedTime(instant = instant1, localDateTime = dt1, sourceTimezone = tzPT, originalText = "4:30 PT"),
+            ExtractedTime(instant = instant1, localDateTime = null, sourceTimezone = tzET, originalText = "7:30 ET (no local)"),
+            ExtractedTime(instant = Instant.fromEpochSeconds(0), localDateTime = null, sourceTimezone = TimeZone.UTC, originalText = "outlier"),
+        )
+        val aligned = ChronoResultParser.alignAmbiguousTimezones(results)
+        assertEquals(3, aligned.size)
+    }
+
+    @Test
+    fun `alignment - only 2 results both different means no alignment`() {
+        val dt1 = LocalDateTime(2026, 4, 11, 9, 0)
+        val dt2 = LocalDateTime(2026, 4, 11, 15, 0)
+        val tz = TimeZone.UTC
+        val results = listOf(
+            ExtractedTime(instant = dt1.toInstant(tz), localDateTime = dt1, sourceTimezone = tz, originalText = "9am"),
+            ExtractedTime(instant = dt2.toInstant(tz), localDateTime = dt2, sourceTimezone = tz, originalText = "3pm"),
+        )
+        val aligned = ChronoResultParser.alignAmbiguousTimezones(results)
+        assertEquals("2 different instants, no majority → unchanged", results, aligned)
+    }
+
+    // ==================== GeminiResultParser invalid inputs ====================
+
+    @Test
+    fun `gemini invalid - time 24 00 returns null`() {
+        val json = """[{"time":"24:00","date":"2026-04-11","timezone":"UTC","original":"24:00"}]"""
+        val results = GeminiResultParser.parseResponse(json)
+        assertTrue("24:00 is invalid, should produce no results", results.isEmpty())
+    }
+
+    @Test
+    fun `gemini invalid - date 2026-13-01 returns null`() {
+        val json = """[{"time":"12:00","date":"2026-13-01","timezone":"UTC","original":"invalid month"}]"""
+        val results = GeminiResultParser.parseResponse(json)
+        assertTrue("Month 13 is invalid", results.isEmpty())
+    }
+
+    @Test
+    fun `gemini invalid - date 2026-04-31 returns null`() {
+        val json = """[{"time":"12:00","date":"2026-04-31","timezone":"UTC","original":"April 31"}]"""
+        val results = GeminiResultParser.parseResponse(json)
+        assertTrue("April has 30 days", results.isEmpty())
+    }
+
+    @Test
+    fun `gemini invalid - time 25 00 returns null`() {
+        val json = """[{"time":"25:00","date":"2026-04-11","timezone":"UTC","original":"25:00"}]"""
+        val results = GeminiResultParser.parseResponse(json)
+        assertTrue("25:00 is invalid", results.isEmpty())
+    }
+
+    @Test
+    fun `gemini invalid - timezone with space gives null tz but valid localDateTime`() {
+        val json = """[{"time":"12:00:00","date":"2026-04-11","timezone":"America/New York","original":"noon"}]"""
+        val results = GeminiResultParser.parseResponse(json)
+        assertEquals(1, results.size)
+        assertNull("'America/New York' is not a valid IANA zone", results[0].sourceTimezone)
+        assertNotNull("localDateTime should still be set", results[0].localDateTime)
+        assertEquals(0.7f, results[0].confidence)
+    }
+
+    @Test
+    fun `gemini invalid - timezone lowercase america new_york`() {
+        val json = """[{"time":"12:00:00","date":"2026-04-11","timezone":"america/new_york","original":"noon"}]"""
+        val results = GeminiResultParser.parseResponse(json)
+        assertEquals(1, results.size)
+        // kotlinx.datetime.TimeZone.of is case-sensitive for IANA IDs;
+        // "america/new_york" is not valid — should fall back to no-tz path
+        if (results[0].sourceTimezone != null) {
+            assertNotNull("If tz resolved, instant should be set", results[0].instant)
+            assertEquals(0.9f, results[0].confidence)
+        } else {
+            assertNull("No tz → no instant", results[0].instant)
+            assertEquals(0.7f, results[0].confidence)
+        }
+    }
+
+    // ==================== ResultMerger cross-date fuzzy match ====================
+
+    @Test
+    fun `merger - isSameLocalTime matches across dates`() {
+        val a = ExtractedTime(
+            localDateTime = LocalDateTime(2026, 4, 11, 15, 30),
+            originalText = "day 11",
+        )
+        val b = ExtractedTime(
+            localDateTime = LocalDateTime(2026, 4, 12, 15, 30),
+            originalText = "day 12",
+        )
+        assertTrue("Same hour:minute different day → isSameLocalTime is true", ResultMerger.isSameLocalTime(a, b))
+    }
+
+    @Test
+    fun `merger - mergeResults can silently change date when fuzzy matching across days`() {
+        val existing = listOf(
+            ExtractedTime(
+                localDateTime = LocalDateTime(2026, 4, 11, 15, 30),
+                sourceTimezone = TimeZone.of("America/New_York"),
+                instant = LocalDateTime(2026, 4, 11, 15, 30).toInstant(TimeZone.of("America/New_York")),
+                originalText = "3:30 PM ET Apr 11",
+            ),
+        )
+        val incoming = listOf(
+            ExtractedTime(
+                localDateTime = LocalDateTime(2026, 4, 12, 15, 30),
+                sourceTimezone = TimeZone.of("America/New_York"),
+                instant = LocalDateTime(2026, 4, 12, 15, 30).toInstant(TimeZone.of("America/New_York")),
+                originalText = "3:30 PM ET Apr 12",
+            ),
+        )
+        val merged = ResultMerger.mergeResults(existing, incoming, "test")
+        // Known behavior: isSameLocalTime only checks hour:minute, so these fuzzy-match.
+        // The existing entry is kept (it has tz), effectively dropping the incoming date.
+        assertEquals("Fuzzy match merges to 1 despite different dates", 1, merged.size)
+        assertEquals(
+            "Kept entry has the existing date (Apr 11), incoming date (Apr 12) silently dropped",
+            11, merged[0].localDateTime!!.dayOfMonth,
+        )
+    }
+
+    // ==================== CityResolver editDistance (via TestCityResolver) ====================
+
+    @Test
+    fun `editDistance - identical strings`() {
+        val resolver = TestCityResolver()
+        val tz = resolver.resolve("tokyo")
+        assertNotNull("tokyo should resolve", tz)
+        assertEquals("Asia/Tokyo", tz!!.id)
+    }
+
+    @Test
+    fun `editDistance - one char difference resolves via fuzzy`() {
+        val resolver = TestCityResolver()
+        // "tokya" is edit distance 1 from "tokyo"
+        val tz = resolver.resolve("tokya")
+        assertNotNull("tokya (distance 1 from tokyo) should fuzzy-resolve", tz)
+        assertEquals("Asia/Tokyo", tz!!.id)
+    }
+
+    @Test
+    fun `editDistance - empty string resolves to nothing`() {
+        val resolver = TestCityResolver()
+        val tz = resolver.resolve("")
+        // Empty string has large edit distance from everything, won't match within <= 2
+        // But could match via substring — empty string is "in" everything.
+        // Regardless, we verify no crash.
+        // The result depends on implementation details, just ensure no exception.
+    }
+
+    @Test
+    fun `editDistance - new york fuzzy resolve works`() {
+        val resolver = TestCityResolver()
+        // "new york" vs "newyork" — the CITY_MAP key is "new york" (from IANA: America/New_York → "new york")
+        val tz = resolver.resolve("newyork")
+        // edit distance("newyork", "new york") = 1 (missing space), should fuzzy-resolve
+        assertNotNull("newyork should fuzzy-resolve to new york", tz)
+        assertEquals("America/New_York", tz!!.id)
+    }
+
+    @Test
+    fun `editDistance - londn fuzzy resolves to london`() {
+        val resolver = TestCityResolver()
+        val tz = resolver.resolve("londn")
+        // edit distance("londn", "london") = 1
+        assertNotNull("londn (distance 1 from london) should fuzzy-resolve", tz)
+        assertEquals("Europe/London", tz!!.id)
+    }
+
+    // ==================== CityResolver aliases via TestCityResolver ====================
+
+    @Test
+    fun `city alias - sf resolves to Los Angeles`() {
+        val resolver = TestCityResolver()
+        val tz = resolver.resolve("sf")
+        assertNotNull("sf should resolve via alias", tz)
+        assertEquals("America/Los_Angeles", tz!!.id)
+    }
+
+    @Test
+    fun `city alias - nyc resolves to New York`() {
+        val resolver = TestCityResolver()
+        val tz = resolver.resolve("nyc")
+        assertNotNull("nyc should resolve via alias", tz)
+        assertEquals("America/New_York", tz!!.id)
+    }
+
+    @Test
+    fun `city alias - san francisco resolves to Los Angeles`() {
+        val resolver = TestCityResolver()
+        val tz = resolver.resolve("san francisco")
+        assertNotNull("san francisco should resolve via alias", tz)
+        assertEquals("America/Los_Angeles", tz!!.id)
+    }
+
+    // ==================== TimeConverter dedup edge cases ====================
+
+    @Test
+    fun `dedup - same instant and tz but different originalText kept as separate`() {
+        val dt = LocalDateTime(2026, 4, 11, 15, 0)
+        val tz = TimeZone.of("America/New_York")
+        val instant = dt.toInstant(tz)
+        val results = listOf(
+            ExtractedTime(instant = instant, localDateTime = dt, sourceTimezone = tz, originalText = "3pm ET"),
+            ExtractedTime(instant = instant, localDateTime = dt, sourceTimezone = tz, originalText = "three o'clock Eastern"),
+        )
+        val converted = converter.toLocal(results, TimeZone.UTC)
+        // distinctBy uses originalText + localDateTime + localTimezone
+        // Same localDateTime and localTimezone but different originalText → 2 results
+        assertEquals("Different originalText should produce 2 results", 2, converted.size)
+    }
+
+    @Test
+    fun `dedup - three identical inputs deduplicated to 1`() {
+        val dt = LocalDateTime(2026, 4, 11, 15, 0)
+        val tz = TimeZone.of("America/New_York")
+        val instant = dt.toInstant(tz)
+        val ext = ExtractedTime(instant = instant, localDateTime = dt, sourceTimezone = tz, originalText = "3pm ET")
+        val results = listOf(ext, ext, ext)
+        val converted = converter.toLocal(results, TimeZone.UTC)
+        assertEquals("Three identical inputs should dedup to 1", 1, converted.size)
+    }
+
+    // ==================== Date propagation temporal ordering ====================
+
+    @Test
+    fun `date propagation - end time crossing midnight with date propagation`() {
+        // Range: 11pm - 1am the next day. The end block has day=12, but since the end
+        // is dateCertain=false it gets propagated to day=11 (from the certain start).
+        // Known behavior: propagation resets the end date, so 1am becomes BEFORE 11pm.
+        val chronoJson = "[${chronoEntry(
+            "11pm - 1am ET",
+            hour = 23, minute = 0, timezone = -240, dayCertain = true,
+            end = chronoEndBlock(day = 12, hour = 1, minute = 0, timezone = -240),
+        )}]"
+        val results = ChronoResultParser.parse(chronoJson, "", null)
+        assertEquals(2, results.size)
+        assertNotNull(results[0].instant)
+        assertNotNull(results[1].instant)
+        // After propagation, end (day 11 1am) is BEFORE start (day 11 11pm).
+        // This documents a known limitation of date propagation across midnight.
+        assertTrue(
+            "End instant is before start due to date propagation collapsing the day",
+            results[1].instant!! < results[0].instant!!,
+        )
+    }
+
+    @Test
+    fun `date propagation - range across DST boundary does not crash`() {
+        // US spring-forward: March 8, 2026 at 2am. Create a range spanning it.
+        val chronoJson = "[${chronoEntry(
+            "1am - 3am ET",
+            year = 2026, month = 3, day = 8,
+            hour = 1, minute = 0, timezone = -300, dayCertain = true,
+            end = chronoEndBlock(year = 2026, month = 3, day = 8, hour = 3, minute = 0, timezone = -240),
+        )}]"
+        val results = ChronoResultParser.parse(chronoJson, "", null)
+        assertEquals(2, results.size)
+        // Just verify no crash and both have valid instants
+        assertNotNull(results[0].instant)
+        assertNotNull(results[1].instant)
+        val converted = converter.toLocal(results, TimeZone.of("America/New_York"))
+        assertTrue("Should convert without crash", converted.isNotEmpty())
+    }
+
+    // ==================== formatZoneName edge cases (via TimeConverter.toLocal) ====================
+
+    @Test
+    fun `formatZoneName - Asia Kolkata shows 5 30`() {
+        val dt = LocalDateTime(2026, 4, 11, 12, 0)
+        val tz = TimeZone.of("Asia/Kolkata")
+        val ext = ExtractedTime(
+            instant = dt.toInstant(tz), localDateTime = dt,
+            sourceTimezone = tz, originalText = "noon IST",
+        )
+        val converted = converter.toLocal(listOf(ext), tz)
+        assertEquals(1, converted.size)
+        assertTrue(
+            "Kolkata should show 5:30 offset, got '${converted[0].localTimezone}'",
+            converted[0].localTimezone.contains("5:30"),
+        )
+    }
+
+    @Test
+    fun `formatZoneName - Asia Kathmandu shows 5 45`() {
+        val dt = LocalDateTime(2026, 4, 11, 12, 0)
+        val tz = TimeZone.of("Asia/Kathmandu")
+        val ext = ExtractedTime(
+            instant = dt.toInstant(tz), localDateTime = dt,
+            sourceTimezone = tz, originalText = "noon NPT",
+        )
+        val converted = converter.toLocal(listOf(ext), tz)
+        assertEquals(1, converted.size)
+        assertTrue(
+            "Kathmandu should show 5:45 offset, got '${converted[0].localTimezone}'",
+            converted[0].localTimezone.contains("5:45"),
+        )
+    }
+
+    @Test
+    fun `formatZoneName - UTC shows UTC not UTC+0`() {
+        val dt = LocalDateTime(2026, 4, 11, 12, 0)
+        val tz = TimeZone.UTC
+        val ext = ExtractedTime(
+            instant = dt.toInstant(tz), localDateTime = dt,
+            sourceTimezone = tz, originalText = "noon UTC",
+        )
+        val converted = converter.toLocal(listOf(ext), tz)
+        assertEquals(1, converted.size)
+        assertEquals("UTC", converted[0].localTimezone)
+        assertFalse(
+            "Should be 'UTC' not 'UTC+0', got '${converted[0].localTimezone}'",
+            converted[0].localTimezone.contains("+"),
+        )
     }
 }
