@@ -37,7 +37,7 @@ class TieredTimeExtractor @Inject constructor(
             Log.w(TAG, "ML Kit span detection failed", e)
             emptyList()
         }
-        if (spans.isNotEmpty()) Log.d(TAG, "ML Kit: ${spans.size} span(s) detected")
+        if (spans.isNotEmpty()) Log.d(TAG, "ML Kit: ${spans.size} span(s): ${spans.map { "'${it.text}'" }}")
 
         // Chrono: parse with ML Kit span hints (or full text if no spans)
         val chronoResult = try {
@@ -80,7 +80,10 @@ class TieredTimeExtractor @Inject constructor(
         }
 
         // Align ambiguous timezones across all results (e.g. CST could be US Central or China Standard)
+        val preAlign = merged.map { "${it.originalText} tz=${it.sourceTimezone?.id} instant=${it.instant}" }
         merged = ChronoResultParser.alignAmbiguousTimezones(merged)
+        val postAlign = merged.map { "${it.originalText} tz=${it.sourceTimezone?.id} instant=${it.instant}" }
+        if (preAlign != postAlign) Log.d(TAG, "Alignment changed: $preAlign → $postAlign")
 
         Log.d(TAG, "Final: ${merged.size} result(s) via ${buildLabel(ran, unavailable)}")
         emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
