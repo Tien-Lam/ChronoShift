@@ -57,15 +57,21 @@ class ChronoExtractor @Inject constructor(
         }
     }
 
+    private data class ParsedChronoResult(
+        val extracted: ExtractedTime,
+        val dateCertain: Boolean,
+    )
+
     private fun parseResults(json: String, originalText: String): List<ExtractedTime> {
         val array = JSONArray(json)
-        val results = mutableListOf<ExtractedTime>()
+        val parsed = mutableListOf<ParsedChronoResult>()
 
         for (i in 0 until array.length()) {
             try {
                 val obj = array.getJSONObject(i)
                 val text = obj.getString("text")
                 val start = obj.getJSONObject("start")
+                val isCertain = start.optJSONObject("isCertain")
 
                 val year = start.getInt("year")
                 val month = start.getInt("month")
@@ -73,21 +79,23 @@ class ChronoExtractor @Inject constructor(
                 val hour = start.optInt("hour", 12)
                 val minute = start.optInt("minute", 0)
                 val second = start.optInt("second", 0)
+                val dateCertain = isCertain?.optBoolean("day", false) ?: false
 
                 val tzOffsetMinutes = if (start.isNull("timezone")) null else start.getInt("timezone")
                 val tz = tzOffsetMinutes?.let { offsetToTimezone(it) }
 
                 val dt = LocalDateTime(year, month, day, hour, minute, second)
 
-                results.add(
-                    ExtractedTime(
+                parsed.add(ParsedChronoResult(
+                    extracted = ExtractedTime(
                         instant = if (tz != null) dt.toInstant(tz) else null,
                         localDateTime = dt,
                         sourceTimezone = tz,
                         originalText = text,
-                        confidence = 0.9f,
-                    )
-                )
+                        confidence = if (dateCertain) 0.95f else 0.85f,
+                    ),
+                    dateCertain = dateCertain,
+                ))
 
                 // Handle end time (ranges like "12:00 pm - 12:50 pm EDT")
                 if (!obj.isNull("end")) {
@@ -98,22 +106,42 @@ class ChronoExtractor @Inject constructor(
                     )
                     val endTz = if (end.isNull("timezone")) tz else offsetToTimezone(end.getInt("timezone"))
 
-                    results.add(
-                        ExtractedTime(
+                    parsed.add(ParsedChronoResult(
+                        extracted = ExtractedTime(
                             instant = if (endTz != null) endDt.toInstant(endTz) else null,
                             localDateTime = endDt,
                             sourceTimezone = endTz,
                             originalText = "$text (end)",
-                            confidence = 0.9f,
-                        )
-                    )
+                            confidence = 0.85f,
+                        ),
+                        dateCertain = false,
+                    ))
                 }
             } catch (e: Exception) {
                 Log.w(TAG, "Failed to parse chrono result at index $i", e)
             }
         }
 
-        // Post-process: try to resolve city names for results without timezone
+        // Propagate: find a result with a certain date, apply to uncertain ones
+        val refDate = parsed.firstOrNull { it.dateCertain }?.extracted?.localDateTime?.date
+        val results = if (refDate != null) {
+            parsed.map { p ->
+                if (!p.dateCertain && p.extracted.localDateTime != null) {
+                    val fixed = LocalDateTime(refDate, p.extracted.localDateTime.time)
+                    val tz = p.extracted.sourceTimezone
+                    p.extracted.copy(
+                        localDateTime = fixed,
+                        instant = if (tz != null) fixed.toInstant(tz) else null,
+                    )
+                } else {
+                    p.extracted
+                }
+            }
+        } else {
+            parsed.map { it.extracted }
+        }
+
+        // Resolve city names for results without timezone
         return results.map { ext ->
             if (ext.sourceTimezone == null) {
                 val cityTz = tryCityFromContext(originalText)
