@@ -1,23 +1,27 @@
 package com.chronoshift.nlp
 
 import android.content.Context
-import com.chronoshift.conversion.ExtractedTime
 import com.google.mlkit.nl.entityextraction.DateTimeEntity
 import com.google.mlkit.nl.entityextraction.Entity
 import com.google.mlkit.nl.entityextraction.EntityExtraction
 import com.google.mlkit.nl.entityextraction.EntityExtractorOptions
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlinx.datetime.Instant
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.coroutines.resume
 
+data class DateTimeSpan(
+    val text: String,
+    val startIndex: Int,
+    val endIndex: Int,
+    val timestampMillis: Long,
+)
+
 @Singleton
 class MlKitEntityExtractor @Inject constructor(
     @param:ApplicationContext private val context: Context,
-) : TimeExtractor {
-
+) {
     private val extractor by lazy {
         EntityExtraction.getClient(
             EntityExtractorOptions.Builder(EntityExtractorOptions.ENGLISH).build()
@@ -26,7 +30,7 @@ class MlKitEntityExtractor @Inject constructor(
 
     private var modelReady = false
 
-    override suspend fun isAvailable(): Boolean {
+    suspend fun isAvailable(): Boolean {
         if (modelReady) return true
         return suspendCancellableCoroutine { cont ->
             extractor.downloadModelIfNeeded()
@@ -38,8 +42,8 @@ class MlKitEntityExtractor @Inject constructor(
         }
     }
 
-    override suspend fun extract(text: String): ExtractionResult {
-        if (!isAvailable()) return ExtractionResult(emptyList(), "ML Kit")
+    suspend fun detectSpans(text: String): List<DateTimeSpan> {
+        if (!isAvailable()) return emptyList()
 
         val annotations = suspendCancellableCoroutine { cont ->
             extractor.annotate(text)
@@ -47,19 +51,18 @@ class MlKitEntityExtractor @Inject constructor(
                 .addOnFailureListener { cont.resume(emptyList()) }
         }
 
-        val times = annotations.flatMap { annotation ->
+        return annotations.flatMap { annotation ->
             annotation.entities
                 .filter { it.type == Entity.TYPE_DATE_TIME }
                 .mapNotNull { entity ->
                     val dateTime = entity as? DateTimeEntity ?: return@mapNotNull null
-                    val millis = dateTime.timestampMillis
-                    ExtractedTime(
-                        instant = Instant.fromEpochMilliseconds(millis),
-                        originalText = annotation.annotatedText,
-                        confidence = 0.75f,
+                    DateTimeSpan(
+                        text = annotation.annotatedText,
+                        startIndex = annotation.start,
+                        endIndex = annotation.end,
+                        timestampMillis = dateTime.timestampMillis,
                     )
                 }
         }
-        return ExtractionResult(times, "ML Kit")
     }
 }

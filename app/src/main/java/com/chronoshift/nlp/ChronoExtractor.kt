@@ -27,17 +27,53 @@ class ChronoExtractor @Inject constructor(
     }
 
     override suspend fun extract(text: String): ExtractionResult {
-        val qjs = engine ?: initEngine() ?: return ExtractionResult(emptyList(), "Chrono")
+        return chronoParse(text, "Chrono")
+    }
+
+    suspend fun extractWithSpans(text: String, spans: List<DateTimeSpan>): ExtractionResult {
+        if (spans.isEmpty()) return extract(text)
+
+        val qjs = engine ?: initEngine() ?: return ExtractionResult(emptyList(), "ML Kit + Chrono")
+
+        val allResults = mutableListOf<ExtractedTime>()
+
+        // Parse each ML Kit span individually for focused accuracy
+        for (span in spans) {
+            try {
+                val escaped = span.text.replace("\\", "\\\\").replace("'", "\\'").replace("\n", "\\n")
+                val json = qjs.evaluate("chronoParse('$escaped')") as? String ?: continue
+                allResults.addAll(parseResults(json, span.text))
+            } catch (e: Exception) {
+                Log.w(TAG, "Chrono span parse failed for '${span.text}'", e)
+            }
+        }
+
+        // Also parse full text to catch anything between spans
+        val fullResult = chronoParse(text, "Chrono")
+        for (r in fullResult.times) {
+            val isDuplicate = allResults.any {
+                it.localDateTime?.hour == r.localDateTime?.hour &&
+                    it.localDateTime?.minute == r.localDateTime?.minute &&
+                    it.localDateTime?.date == r.localDateTime?.date
+            }
+            if (!isDuplicate) allResults.add(r)
+        }
+
+        return ExtractionResult(allResults, "ML Kit + Chrono")
+    }
+
+    private suspend fun chronoParse(text: String, method: String): ExtractionResult {
+        val qjs = engine ?: initEngine() ?: return ExtractionResult(emptyList(), method)
 
         return try {
             val escaped = text.replace("\\", "\\\\").replace("'", "\\'").replace("\n", "\\n")
             val json = qjs.evaluate("chronoParse('$escaped')") as? String
-                ?: return ExtractionResult(emptyList(), "Chrono")
+                ?: return ExtractionResult(emptyList(), method)
 
-            ExtractionResult(parseResults(json, text), "Chrono")
+            ExtractionResult(parseResults(json, text), method)
         } catch (e: Exception) {
             Log.w(TAG, "Chrono extraction failed", e)
-            ExtractionResult(emptyList(), "Chrono")
+            ExtractionResult(emptyList(), method)
         }
     }
 
