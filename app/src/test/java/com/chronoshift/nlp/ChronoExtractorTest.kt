@@ -409,4 +409,122 @@ class ChronoExtractorTest {
         assertTrue(!raw[0].dateCertain)
     }
 
+    // ========== Adversarial / real-world Chrono outputs ==========
+
+    @Test
+    fun `duplicate times from same input are both returned`() {
+        // "12:00 noon PST" → Chrono returns "12:00" (no tz) and "noon PST" (tz -480) — same time twice
+        val json = """[
+            ${chronoResult("12:00", hour = 12)},
+            ${chronoResult("noon PST", hour = 12, timezone = -480)}
+        ]"""
+        val results = parse(json)
+        // Both should parse — dedup is TieredTimeExtractor's job, not parser's
+        assertEquals(2, results.size)
+    }
+
+    @Test
+    fun `relative duration produces valid result`() {
+        // "in 2 hours" → Chrono returns current time + 2h with local timezone offset
+        val json = "[${chronoResult("in 2 hours", hour = 17, minute = 30, timezone = 600)}]"
+        val results = parse(json)
+        assertEquals(1, results.size)
+        assertEquals(17, results[0].localDateTime!!.hour)
+        assertNotNull(results[0].sourceTimezone)
+    }
+
+    @Test
+    fun `range with no spaces parses both times`() {
+        // "9am-5pm PST" → start 9:00, end 17:00
+        val json = "[${chronoResult("9am-5pm PST", hour = 9, timezone = -480, end = endBlock(hour = 17, timezone = -480))}]"
+        val results = parse(json)
+        assertEquals(2, results.size)
+        assertEquals(9, results[0].localDateTime!!.hour)
+        assertEquals(17, results[1].localDateTime!!.hour)
+    }
+
+    @Test
+    fun `dual ranges produce four results`() {
+        val json = """[
+            ${chronoResult("3:00 PM - 4:00 PM EST", hour = 15, timezone = -300, end = endBlock(hour = 16, timezone = -300))},
+            ${chronoResult("12:00 PM - 1:00 PM PST", hour = 12, timezone = -480, end = endBlock(hour = 13, timezone = -480))}
+        ]"""
+        val results = parse(json)
+        assertEquals(4, results.size)
+    }
+
+    @Test
+    fun `midnight with timezone`() {
+        val json = "[${chronoResult("midnight EST", hour = 0, minute = 0, timezone = -300)}]"
+        val results = parse(json)
+        assertEquals(0, results[0].localDateTime!!.hour)
+        assertNotNull(results[0].sourceTimezone)
+    }
+
+    @Test
+    fun `negative offset produces valid timezone`() {
+        // IST +05:30 = 330 minutes
+        val json = "[${chronoResult("test IST", hour = 15, timezone = 330)}]"
+        val results = parse(json)
+        assertNotNull(results[0].sourceTimezone)
+        assertNotNull(results[0].instant)
+    }
+
+    @Test
+    fun `large positive offset NZST +12`() {
+        val json = "[${chronoResult("test NZST", hour = 9, timezone = 720)}]"
+        val results = parse(json)
+        assertNotNull(results[0].sourceTimezone)
+    }
+
+    @Test
+    fun `date propagation with range - all three get correct date`() {
+        // "April 9 at 12pm - 1pm EDT / 3pm PST"
+        val json = """[
+            ${chronoResult("April 9", day = 9, hour = 12, dayCertain = true)},
+            ${chronoResult("12pm - 1pm EDT", day = 6, hour = 12, timezone = -240, end = endBlock(day = 6, hour = 13, timezone = -240))},
+            ${chronoResult("3pm PST", day = 6, hour = 15, timezone = -480)}
+        ]"""
+        val results = parse(json)
+        // All uncertain dates should become April 9
+        results.forEach { result ->
+            assertEquals("${result.originalText} should have day 9", 9, result.localDateTime!!.dayOfMonth)
+        }
+    }
+
+    @Test
+    fun `propagation with mixed certain and uncertain in range`() {
+        val json = """[
+            ${chronoResult("March 20 9am", month = 3, day = 20, hour = 9, dayCertain = true)},
+            ${chronoResult("5pm", month = 4, day = 6, hour = 17)}
+        ]"""
+        val results = parse(json)
+        assertEquals(3, results[0].localDateTime!!.monthNumber)
+        assertEquals(20, results[0].localDateTime!!.dayOfMonth)
+        assertEquals(3, results[1].localDateTime!!.monthNumber)
+        assertEquals(20, results[1].localDateTime!!.dayOfMonth)
+    }
+
+    @Test
+    fun `second with non-zero value preserved`() {
+        val json = """[{"text":"test","index":0,"start":{"year":2026,"month":4,"day":9,"hour":15,"minute":30,"second":45,"timezone":null,"isCertain":{"day":false}},"end":null}]"""
+        val results = parse(json)
+        assertEquals(45, results[0].localDateTime!!.second)
+    }
+
+    @Test
+    fun `isCertain missing entirely defaults to uncertain`() {
+        val json = """[{"text":"test","index":0,"start":{"year":2026,"month":4,"day":9,"hour":15,"minute":0,"second":0,"timezone":null},"end":null}]"""
+        val results = parse(json)
+        assertEquals(0.85f, results[0].confidence)
+    }
+
+    @Test
+    fun `very large JSON array parses all entries`() {
+        val entries = (1..20).joinToString(",") { i ->
+            chronoResult("item$i", hour = i % 24)
+        }
+        val results = parse("[$entries]")
+        assertEquals(20, results.size)
+    }
 }
