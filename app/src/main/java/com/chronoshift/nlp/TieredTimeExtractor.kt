@@ -33,43 +33,64 @@ class TieredTimeExtractor @Inject constructor(
             val result = tryExtract(extractor, text)
             if (result == null) {
                 unavailable.add(name)
-                Log.d(TAG, "$name: unavailable or no results")
                 continue
             }
             ran.add(name)
-            for (time in result.times) {
-                if (!isCovered(time, merged)) merged.add(time.copy(method = name))
-            }
+            addNewResults(merged, result.times, name)
         }
 
         if (merged.isNotEmpty()) {
-            Log.d(TAG, "Emitting fast results: ${merged.size} via ${ran.joinToString(" + ")}")
+            Log.d(TAG, "Fast results: ${merged.size} via ${ran.joinToString(" + ")}")
             emit(ExtractionResult(merged.toList(), buildMethodLabel(ran, unavailable)))
         }
 
-        // Slow extractor — Gemini Nano replaces overlapping lower-quality results
+        // Slow extractor — Gemini Nano adds new results, upgrades method on same times
         val geminiResult = tryExtract(geminiExtractor, text)
         if (geminiResult == null) {
             unavailable.add("Gemini Nano")
-            Log.d(TAG, "Gemini Nano: unavailable or no results")
         } else {
             ran.add(0, "Gemini Nano")
-            for (geminiTime in geminiResult.times) {
-                // Replace any existing result that covers the same span
-                val overlapping = merged.filter { ex ->
-                    ex.originalText in geminiTime.originalText || geminiTime.originalText in ex.originalText
-                }
-                if (overlapping.isNotEmpty()) {
-                    Log.d(TAG, "Gemini replacing ${overlapping.size} overlapping result(s): ${overlapping.map { it.method }}")
-                    merged.removeAll(overlapping.toSet())
-                }
-                merged.add(geminiTime.copy(method = "Gemini Nano"))
-            }
-            Log.d(TAG, "After Gemini merge: ${merged.size} results, methods: ${merged.map { it.method }}")
+            addNewResults(merged, geminiResult.times, "Gemini Nano")
         }
 
-        Log.d(TAG, "Final emit: ${merged.size} via ${buildMethodLabel(ran, unavailable)}")
+        Log.d(TAG, "Final: ${merged.size} via ${buildMethodLabel(ran, unavailable)}")
         emit(ExtractionResult(merged.toList(), buildMethodLabel(ran, unavailable)))
+    }
+
+    private fun addNewResults(
+        merged: MutableList<ExtractedTime>,
+        incoming: List<ExtractedTime>,
+        method: String,
+    ) {
+        for (time in incoming) {
+            val duplicate = merged.indexOfFirst { isSameTime(it, time) }
+            if (duplicate >= 0) {
+                // Same time already exists — upgrade method if from a better source
+                val existing = merged[duplicate]
+                val combinedMethod = if (method in existing.method) existing.method
+                    else "${existing.method} + $method"
+                merged[duplicate] = existing.copy(method = combinedMethod)
+            } else {
+                // New time — add it
+                merged.add(time.copy(method = method))
+            }
+        }
+    }
+
+    private fun isSameTime(a: ExtractedTime, b: ExtractedTime): Boolean {
+        // Compare by resolved instant if both have one
+        if (a.instant != null && b.instant != null) {
+            return a.instant == b.instant
+        }
+        // Compare by localDateTime + timezone
+        if (a.localDateTime != null && b.localDateTime != null) {
+            val sameTime = a.localDateTime.hour == b.localDateTime.hour &&
+                a.localDateTime.minute == b.localDateTime.minute
+            val sameDate = a.localDateTime.date == b.localDateTime.date
+            val sameTz = a.sourceTimezone == b.sourceTimezone
+            return sameTime && sameDate && sameTz
+        }
+        return false
     }
 
     private fun buildMethodLabel(ran: List<String>, unavailable: List<String>): String {
@@ -81,12 +102,6 @@ class TieredTimeExtractor @Inject constructor(
         }
     }
 
-    private fun isCovered(candidate: ExtractedTime, existing: List<ExtractedTime>): Boolean {
-        return existing.any { ex ->
-            candidate.originalText in ex.originalText || ex.originalText in candidate.originalText
-        }
-    }
-
     private suspend fun tryExtract(extractor: TimeExtractor, text: String): ExtractionResult? {
         if (!extractor.isAvailable()) return null
         return try {
@@ -94,10 +109,7 @@ class TieredTimeExtractor @Inject constructor(
             if (result.times.isNotEmpty()) {
                 Log.d(TAG, "${result.method}: ${result.times.size} result(s)")
                 result
-            } else {
-                Log.d(TAG, "${result.method}: 0 results")
-                null
-            }
+            } else null
         } catch (e: Exception) {
             Log.w(TAG, "${extractor::class.simpleName} failed", e)
             null
