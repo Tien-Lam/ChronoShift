@@ -1386,8 +1386,9 @@ class IntegrationTest {
         // because "4:30a" is not standard — should be "4:30 a.m." or "4:30am"
         val json = """[{"text":"April 9th","index":0,"start":{"year":2026,"month":4,"day":9,"hour":12,"minute":0,"second":0,"timezone":null,"isCertain":{"year":false,"month":true,"day":true,"hour":false,"minute":false,"timezone":false}},"end":null}]"""
         val results = ChronoResultParser.parse(json, "April 9th, 4:30a PT", cityResolver)
-        // Bare date (hour uncertain, no tz) is now filtered out
-        assertTrue("Bare date with no time should be filtered", results.isEmpty())
+        // Bare date is the only result (Chrono missed "4:30a"), so it's kept
+        assertEquals(1, results.size)
+        assertEquals(12, results[0].localDateTime!!.hour)
     }
 
     @Test

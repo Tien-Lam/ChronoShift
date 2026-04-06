@@ -338,10 +338,28 @@ class ChronoExtractorTest {
     }
 
     @Test
-    fun `bare date with no time is filtered out`() {
+    fun `bare date alone is kept as only result`() {
         val json = """[{"text":"April 9","index":0,"start":{"year":2026,"month":4,"day":9},"end":null}]"""
         val results = parse(json)
-        assertTrue("Bare date with default noon should be filtered", results.isEmpty())
+        assertEquals("Bare date as only result should be kept", 1, results.size)
+        assertEquals(12, results[0].localDateTime!!.hour)
+    }
+
+    @Test
+    fun `bare date filtered when real times exist alongside`() {
+        // "April 7 @ 7:00 pm - 8:00 pm EDT" → Chrono produces bare "April 7" + time range
+        val json = """[
+            {"text":"April 7","index":0,"start":{"year":2026,"month":4,"day":7,"hour":12,"minute":0,"second":0,"timezone":null,"isCertain":{"year":false,"month":true,"day":true,"hour":false,"minute":false,"timezone":false}},"end":null},
+            {"text":"7:00 pm - 8:00 pm EDT","index":10,"start":{"year":2026,"month":4,"day":6,"hour":19,"minute":0,"second":0,"timezone":-240,"isCertain":{"year":false,"month":false,"day":false,"hour":true,"minute":true,"timezone":true}},"end":{"year":2026,"month":4,"day":6,"hour":20,"minute":0,"second":0,"timezone":-240}}
+        ]"""
+        val results = parse(json)
+        // Bare "April 7" should be filtered, time range (2 results) should remain with propagated date
+        assertEquals("Should have 2 results (start + end), not 3", 2, results.size)
+        assertEquals(19, results[0].localDateTime!!.hour)
+        assertEquals(20, results[1].localDateTime!!.hour)
+        // Date should be propagated from April 7
+        assertEquals(7, results[0].localDateTime!!.dayOfMonth)
+        assertEquals(7, results[1].localDateTime!!.dayOfMonth)
     }
 
     @Test
