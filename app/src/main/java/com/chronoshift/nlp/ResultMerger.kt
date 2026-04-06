@@ -35,7 +35,11 @@ object ResultMerger {
     }
 
     fun isSameTime(a: ExtractedTime, b: ExtractedTime): Boolean {
-        if (a.instant != null && b.instant != null) return a.instant == b.instant
+        if (a.instant != null && b.instant != null) {
+            // Same instant + same local display = true duplicate
+            // Same instant + different timezone = same moment shown differently, keep both
+            return a.instant == b.instant && a.sourceTimezone == b.sourceTimezone
+        }
         if (a.localDateTime != null && b.localDateTime != null) {
             return a.localDateTime.hour == b.localDateTime.hour &&
                 a.localDateTime.minute == b.localDateTime.minute &&
