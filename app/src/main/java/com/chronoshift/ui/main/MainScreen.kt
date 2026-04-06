@@ -307,8 +307,8 @@ private fun PreviewResults() {
             ResultsLayout(
                 inputText = "April 9 at 9:00 a.m. PT / 12:00 p.m. ET",
                 results = listOf(
-                    ConvertedTime("9:00 a.m. PT", "PT (America/Los_Angeles)", "9:00 AM", "6:00 PM", "CET (Europe/Paris)", "Apr 9, 2026"),
-                    ConvertedTime("12:00 p.m. ET", "ET (America/New_York)", "12:00 PM", "6:00 PM", "CET (Europe/Paris)", "Apr 9, 2026"),
+                    ConvertedTime("9:00 a.m. PT", "UTC-7", "9:00 AM", "Apr 9, 2026", "6:00 PM", "UTC+2", "Apr 9, 2026"),
+                    ConvertedTime("12:00 p.m. ET", "UTC-4", "12:00 PM", "Apr 9, 2026", "6:00 PM", "UTC+2", "Apr 9, 2026"),
                 ),
                 isProcessing = false, error = null, onInputChanged = {}, onConvert = {},
             )
@@ -334,7 +334,7 @@ private fun PreviewResultsDark() {
             ResultsLayout(
                 inputText = "3:00 PM EST",
                 results = listOf(
-                    ConvertedTime("3:00 PM EST", "EST (America/New_York)", "3:00 PM", "9:00 PM", "CET (Europe/Paris)", "Apr 6, 2026"),
+                    ConvertedTime("3:00 PM EST", "UTC-4", "3:00 PM", "Apr 6, 2026", "9:00 PM", "UTC+2", "Apr 6, 2026"),
                 ),
                 isProcessing = false, error = null, onInputChanged = {}, onConvert = {},
             )

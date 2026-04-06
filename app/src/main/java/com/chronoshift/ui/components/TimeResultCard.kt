@@ -80,9 +80,9 @@ fun TimeResultCard(
             }
             .padding(vertical = 16.dp),
     ) {
-        // 1. Input: what the user pasted — source time + timezone
+        // 1. Input: formatted source time + date + timezone
         Text(
-            text = "${result.sourceDateTime} ${result.sourceTimezone}",
+            text = "${result.sourceDateTime} ${result.sourceTimezone}  ·  ${result.sourceDate}",
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
@@ -170,6 +170,7 @@ private fun PreviewTimeResultCard() {
                     originalText = "9:00 a.m. PT",
                     sourceTimezone = "UTC-7",
                     sourceDateTime = "9:00 AM",
+                    sourceDate = "Apr 9, 2026",
                     localDateTime = "6:00 PM",
                     localTimezone = "UTC+2",
                     localDate = "Apr 9, 2026",
@@ -192,6 +193,7 @@ private fun PreviewTwoCards() {
                         originalText = "9:00 a.m. PT",
                         sourceTimezone = "UTC-7",
                         sourceDateTime = "9:00 AM",
+                        sourceDate = "Apr 9, 2026",
                         localDateTime = "6:00 PM",
                         localTimezone = "UTC+2",
                         localDate = "Apr 9, 2026",
@@ -204,6 +206,7 @@ private fun PreviewTwoCards() {
                         originalText = "12:00 p.m. ET",
                         sourceTimezone = "UTC-4",
                         sourceDateTime = "12:00 PM",
+                        sourceDate = "Apr 9, 2026",
                         localDateTime = "6:00 PM",
                         localTimezone = "UTC+2",
                         localDate = "Apr 9, 2026",

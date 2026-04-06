@@ -50,6 +50,7 @@ class TimeConverter @Inject constructor() {
             originalText = ext.originalText,
             sourceTimezone = formatZoneName(javaSourceZone, javaInstant),
             sourceDateTime = sourceJavaTime.format(timeFormatter),
+            sourceDate = sourceJavaTime.format(dateFormatter),
             localDateTime = localJavaTime.format(timeFormatter),
             localTimezone = formatZoneName(javaLocalZone, javaInstant),
             localDate = localJavaTime.format(dateFormatter),
