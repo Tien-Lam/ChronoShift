@@ -19,7 +19,9 @@ class TimeConverter @Inject constructor() {
 
     fun toLocal(extracted: List<ExtractedTime>): List<ConvertedTime> {
         val localZone = TimeZone.currentSystemDefault()
-        return extracted.mapNotNull { ext -> convert(ext, localZone) }
+        return extracted
+            .mapNotNull { ext -> convert(ext, localZone) }
+            .distinctBy { it.originalText + it.localDateTime + it.localTimezone }
     }
 
     private fun convert(ext: ExtractedTime, localZone: TimeZone): ConvertedTime? {

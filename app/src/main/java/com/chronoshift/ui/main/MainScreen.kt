@@ -252,7 +252,7 @@ private fun ResultsLayout(
         LazyColumn(
             contentPadding = PaddingValues(start = 20.dp, end = 20.dp, bottom = 16.dp),
         ) {
-            itemsIndexed(results, key = { _, it -> it.originalText + it.sourceTimezone }) { index, result ->
+            itemsIndexed(results, key = { index, it -> "$index-${it.originalText}" }) { index, result ->
                 TimeResultCard(
                     result = result,
                     animationIndex = index,
