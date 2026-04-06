@@ -79,6 +79,9 @@ class TieredTimeExtractor @Inject constructor(
             unavailable.add("Gemini Nano")
         }
 
+        // Align ambiguous timezones across all results (e.g. CST could be US Central or China Standard)
+        merged = ChronoResultParser.alignAmbiguousTimezones(merged)
+
         Log.d(TAG, "Final: ${merged.size} result(s) via ${buildLabel(ran, unavailable)}")
         emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
     }
