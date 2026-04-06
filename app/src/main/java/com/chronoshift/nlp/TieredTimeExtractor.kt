@@ -24,7 +24,7 @@ class TieredTimeExtractor @Inject constructor(
     }
 
     override fun extractStream(text: String): Flow<ExtractionResult> = flow {
-        val merged = mutableListOf<ExtractedTime>()
+        var merged = listOf<ExtractedTime>()
         val ran = mutableListOf<String>()
         val unavailable = mutableListOf<String>()
 
@@ -55,81 +55,32 @@ class TieredTimeExtractor @Inject constructor(
 
         if (chronoResult != null && chronoResult.times.isNotEmpty()) {
             ran.add(chronoResult.method)
-            addNewResults(merged, chronoResult.times, chronoResult.method)
+            merged = ResultMerger.mergeResults(merged, chronoResult.times, chronoResult.method)
         }
 
         // Regex: structured formats (ISO 8601, unix, tz abbreviations)
         val regexResult = tryExtract(regexExtractor, text)
         if (regexResult != null) {
             ran.add("Regex")
-            addNewResults(merged, regexResult.times, "Regex")
+            merged = ResultMerger.mergeResults(merged, regexResult.times, "Regex")
         }
 
         if (merged.isNotEmpty()) {
             Log.d(TAG, "Fast: ${merged.size} result(s) via ${ran.joinToString(" + ")}")
-            emit(ExtractionResult(merged.toList(), buildLabel(ran, unavailable)))
+            emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
         }
 
         // Stage 2: Gemini Nano (background, highest quality)
         val geminiResult = tryExtract(geminiExtractor, text)
         if (geminiResult != null) {
             ran.add("Gemini Nano")
-            addNewResults(merged, geminiResult.times, "Gemini Nano")
+            merged = ResultMerger.mergeResults(merged, geminiResult.times, "Gemini Nano")
         } else {
             unavailable.add("Gemini Nano")
         }
 
         Log.d(TAG, "Final: ${merged.size} result(s) via ${buildLabel(ran, unavailable)}")
-        emit(ExtractionResult(merged.toList(), buildLabel(ran, unavailable)))
-    }
-
-    private fun addNewResults(
-        merged: MutableList<ExtractedTime>,
-        incoming: List<ExtractedTime>,
-        method: String,
-    ) {
-        for (time in incoming) {
-            val exact = merged.indexOfFirst { isSameTime(it, time) }
-            if (exact >= 0) {
-                val existing = merged[exact]
-                merged[exact] = existing.copy(method = combineMethod(existing.method, method))
-                continue
-            }
-            val fuzzy = merged.indexOfFirst { isSameLocalTime(it, time) }
-            if (fuzzy >= 0) {
-                val existing = merged[fuzzy]
-                if (existing.sourceTimezone != null) {
-                    merged[fuzzy] = existing.copy(method = combineMethod(existing.method, method))
-                } else if (time.sourceTimezone != null) {
-                    merged[fuzzy] = time.copy(method = combineMethod(existing.method, method))
-                } else {
-                    merged[fuzzy] = existing.copy(method = combineMethod(existing.method, method))
-                }
-                continue
-            }
-            merged.add(time.copy(method = method))
-        }
-    }
-
-    private fun combineMethod(existing: String, new: String): String {
-        return if (new in existing) existing else "$existing + $new"
-    }
-
-    private fun isSameTime(a: ExtractedTime, b: ExtractedTime): Boolean {
-        if (a.instant != null && b.instant != null) return a.instant == b.instant
-        if (a.localDateTime != null && b.localDateTime != null) {
-            return a.localDateTime.hour == b.localDateTime.hour &&
-                a.localDateTime.minute == b.localDateTime.minute &&
-                a.localDateTime.date == b.localDateTime.date &&
-                a.sourceTimezone == b.sourceTimezone
-        }
-        return false
-    }
-
-    private fun isSameLocalTime(a: ExtractedTime, b: ExtractedTime): Boolean {
-        val aHour = a.localDateTime?.hour ?: return false
-        val bHour = b.localDateTime?.hour ?: return false
-        return aHour == bHour && a.localDateTime.minute == b.localDateTime.minute
+        emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
     }
 
     private fun buildLabel(ran: List<String>, unavailable: List<String>): String {

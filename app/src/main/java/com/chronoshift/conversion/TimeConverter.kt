@@ -17,8 +17,7 @@ class TimeConverter @Inject constructor() {
     private val timeFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
     private val dateFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
 
-    fun toLocal(extracted: List<ExtractedTime>): List<ConvertedTime> {
-        val localZone = TimeZone.currentSystemDefault()
+    fun toLocal(extracted: List<ExtractedTime>, localZone: TimeZone = TimeZone.currentSystemDefault()): List<ConvertedTime> {
         return extracted
             .mapNotNull { ext -> convert(ext, localZone) }
             .distinctBy { it.originalText + it.localDateTime + it.localTimezone }
