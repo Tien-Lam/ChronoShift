@@ -17,18 +17,36 @@ Single-module Android app. MVVM. Jetpack Compose. Hilt DI. Dark-mode only.
 
 ### NLP Pipeline (streaming)
 
-`TieredTimeExtractor` runs all extractors and merges results. Fast ones emit immediately, Gemini Nano updates in background.
+```
+Input text
+  ├─ Stage 1 (~50ms, instant) ─────────────────
+  │   ML Kit → detects datetime spans in text
+  │   Chrono.js (QuickJS) → parses spans + full text
+  │   Regex → unix timestamps, "time in city"
+  │   → emit results immediately
+  │
+  ├─ Stage 2 (~7s, background) ────────────────
+  │   Gemini Nano → full NLP, highest quality
+  │   → merge/upgrade existing results
+  │
+  └─ emit final results
+```
 
-| Extractor | Speed | What it does |
+Orchestrated by `TieredTimeExtractor` which implements `StreamingTimeExtractor`. ViewModel collects the `Flow<ExtractionResult>`.
+
+### Testable Pure Logic (extracted objects)
+
+All complex logic is in pure objects with no Android dependencies:
+
+| Object | Tests | What it does |
 |---|---|---|
-| **ChronoExtractor** | ~10-50ms | chrono-node v2.9.0 via QuickJS. Handles all NLP: natural language dates, ranges, relative dates, timezones |
-| **RegexExtractor** | ~1ms | ISO 8601, unix timestamps, timezone abbreviations, city names |
-| **MlKitEntityExtractor** | ~200ms | ML Kit Entity Extraction for broad datetime detection |
-| **GeminiNanoExtractor** | ~7s | Gemini Nano on-device LLM via ML Kit GenAI Prompt API. Best quality but slow. Status codes: 0=UNAVAILABLE, 1=DOWNLOADABLE, 2=DOWNLOADING, 3=AVAILABLE |
+| `ChronoResultParser` | 69 | Chrono JSON parsing, offset→IANA zone, date propagation, city resolution, span+full merge |
+| `ResultMerger` | 27 | Exact/fuzzy time matching, timezone upgrade, method label combining |
+| `GeminiResultParser` | 21 | Gemini Nano JSON parsing, fence stripping, IANA timezone resolution |
+| `TimeConverter` | 41 | Timezone conversion (injectable localZone for deterministic tests) |
+| `RegexExtractor` | 29 | Unix timestamps, city-to-timezone with CityResolver |
 
-Results are merged with dedup: earlier extractors take priority for overlapping text spans. Gemini Nano **replaces** existing results when it arrives (higher quality).
-
-Each `ExtractedTime` carries a `method` field that flows through to `ConvertedTime` and is shown per-result in the UI.
+Android-dependent classes (`ChronoExtractor`, `GeminiNanoExtractor`, `MlKitEntityExtractor`, `CityResolver`) are thin wrappers that delegate to these testable objects.
 
 ### City Resolution
 
@@ -40,28 +58,34 @@ Each `ExtractedTime` carries a `method` field that flows through to `ConvertedTi
 
 ### Key Files
 
-- `nlp/TieredTimeExtractor.kt` — orchestrator, implements `StreamingTimeExtractor` with `Flow`
-- `nlp/ChronoExtractor.kt` — QuickJS engine, loads `assets/chrono.js` once
-- `nlp/RegexExtractor.kt` — fallback patterns, timezone abbreviation map, date propagation
+- `nlp/TieredTimeExtractor.kt` — orchestrator, streaming Flow
+- `nlp/ChronoExtractor.kt` — QuickJS engine, loads `assets/chrono.js`
+- `nlp/ChronoResultParser.kt` — all Chrono parsing logic (testable)
+- `nlp/ResultMerger.kt` — merge/dedup logic (testable)
+- `nlp/GeminiResultParser.kt` — Gemini JSON parsing (testable)
+- `nlp/RegexExtractor.kt` — unix timestamps + city resolution only (Chrono handles NLP)
 - `nlp/CityResolver.kt` — city-to-timezone via Geocoder + IANA
-- `ui/main/MainScreen.kt` — two-state layout: InputLayout (minimalist) ↔ ResultsLayout (flat list)
-- `ui/components/TimeResultCard.kt` — per-character animated time text, tap-to-copy
+- `conversion/TimeConverter.kt` — timezone conversion (injectable localZone)
+- `ui/main/MainScreen.kt` — two-state layout: InputLayout ↔ ResultsLayout
 
 ### Theme
 
 `MaterialExpressiveTheme` (M3 Expressive). Dark-mode only — forced at Compose level, XML level (`android:Theme.Material.NoActionBar`), and `forceDarkAllowed=false`. No custom color palette — uses M3 defaults + dynamic color on Android 12+.
 
-## Conventions
+## Testing
 
-- Confidence scores drive date propagation: ≥0.9 = has explicit date, <0.9 = time-only (inherits date from nearby results)
-- `ExtractionResult` wraps `List<ExtractedTime>` + method name string
-- `StreamingTimeExtractor.extractStream()` returns `Flow<ExtractionResult>` — ViewModel collects it
-- Tests for `ChronoExtractor`/`GeminiNanoExtractor`/`MlKitEntityExtractor` require device (Android instrumented tests) — unit tests cover `RegexExtractor` and `TimeConverter`
+190 unit tests. Run with `./gradlew testDebugUnitTest`.
+
+Tests use `TestCityResolver` (IANA-only, no Geocoder) and injectable `localZone` parameter on `TimeConverter` for deterministic output regardless of test machine timezone/locale.
+
+Android-dependent classes (QuickJS, ML Kit, Geocoder) need instrumented tests on device — not yet written.
 
 ## Gotchas
 
-- QuickJS (`app.cash.quickjs`) is native — adds ~1MB per ABI. `jniLibs.useLegacyPackaging = false` for 16KB alignment
+- Zipline (`app.cash.zipline`) provides QuickJS with 16KB-aligned native libs for Play Store compatibility
 - `chrono.js` in `assets/` is a bundled build (esbuild, 251KB). To update: `npm install chrono-node && npx esbuild entry.js --bundle --format=iife --minify --outfile=chrono_bundle.js`
-- Gemini Nano `checkStatus()` returns ints, NOT the enum names: 0=UNAVAILABLE, 1=DOWNLOADABLE, 2=DOWNLOADING, 3=AVAILABLE
-- ML Kit Entity Extraction returns timestamps without timezone info — that's why Regex/Chrono run first
-- `RegexExtractor.TIMEZONE_ABBREVS` keys must be sorted longest-first in `TZ_PATTERN` so "EST" matches before "ET"
+- Gemini Nano `checkStatus()` returns ints: 0=UNAVAILABLE, 1=DOWNLOADABLE, 2=DOWNLOADING, 3=AVAILABLE
+- ML Kit Entity Extraction detects datetime spans but has NO timezone awareness — it's a spotter, not a parser
+- Chrono returns timezone as minute offsets (e.g. -420 for PT). `ChronoResultParser.offsetToTimezone()` maps these to named IANA zones via cached lookup
+- When Chrono parses ML Kit spans individually, the span may lack timezone context that the full text has. `mergeSpanAndFullResults()` upgrades span results with timezone from full-text results
+- `ResultMerger.isSameLocalTime()` matches by hour:minute only — used to merge ML Kit results (no tz) with Chrono results (has tz)
