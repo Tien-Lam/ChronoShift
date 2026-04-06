@@ -63,34 +63,54 @@ class TieredTimeExtractor @Inject constructor(
         method: String,
     ) {
         for (time in incoming) {
-            val duplicate = merged.indexOfFirst { isSameTime(it, time) }
-            if (duplicate >= 0) {
-                // Same time already exists — upgrade method if from a better source
-                val existing = merged[duplicate]
+            val match = merged.indexOfFirst { isSameTime(it, time) }
+            if (match >= 0) {
+                val existing = merged[match]
                 val combinedMethod = if (method in existing.method) existing.method
                     else "${existing.method} + $method"
-                merged[duplicate] = existing.copy(method = combinedMethod)
+                merged[match] = existing.copy(method = combinedMethod)
             } else {
-                // New time — add it
-                merged.add(time.copy(method = method))
+                // Check if this is the same hour:minute but with missing/different timezone
+                // (e.g. ML Kit returns UTC-resolved instant, Chrono has the real timezone)
+                val fuzzyMatch = merged.indexOfFirst { isSameLocalTime(it, time) }
+                if (fuzzyMatch >= 0) {
+                    val existing = merged[fuzzyMatch]
+                    val combinedMethod = if (method in existing.method) existing.method
+                        else "${existing.method} + $method"
+                    // Keep the one with timezone info
+                    if (existing.sourceTimezone != null) {
+                        merged[fuzzyMatch] = existing.copy(method = combinedMethod)
+                    } else if (time.sourceTimezone != null) {
+                        merged[fuzzyMatch] = time.copy(method = combinedMethod)
+                    } else {
+                        merged[fuzzyMatch] = existing.copy(method = combinedMethod)
+                    }
+                } else {
+                    merged.add(time.copy(method = method))
+                }
             }
         }
     }
 
     private fun isSameTime(a: ExtractedTime, b: ExtractedTime): Boolean {
-        // Compare by resolved instant if both have one
         if (a.instant != null && b.instant != null) {
             return a.instant == b.instant
         }
-        // Compare by localDateTime + timezone
         if (a.localDateTime != null && b.localDateTime != null) {
-            val sameTime = a.localDateTime.hour == b.localDateTime.hour &&
-                a.localDateTime.minute == b.localDateTime.minute
-            val sameDate = a.localDateTime.date == b.localDateTime.date
-            val sameTz = a.sourceTimezone == b.sourceTimezone
-            return sameTime && sameDate && sameTz
+            return a.localDateTime.hour == b.localDateTime.hour &&
+                a.localDateTime.minute == b.localDateTime.minute &&
+                a.localDateTime.date == b.localDateTime.date &&
+                a.sourceTimezone == b.sourceTimezone
         }
         return false
+    }
+
+    private fun isSameLocalTime(a: ExtractedTime, b: ExtractedTime): Boolean {
+        val aHour = a.localDateTime?.hour ?: return false
+        val aMin = a.localDateTime.minute
+        val bHour = b.localDateTime?.hour ?: return false
+        val bMin = b.localDateTime.minute
+        return aHour == bHour && aMin == bMin
     }
 
     private fun buildMethodLabel(ran: List<String>, unavailable: List<String>): String {
