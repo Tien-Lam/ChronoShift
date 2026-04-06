@@ -40,9 +40,14 @@ class ChronoExtractor @Inject constructor(
             }
         }
 
+        Log.d(TAG, "Span results: ${allResults.size} — ${allResults.map { "${it.originalText} tz=${it.sourceTimezone?.id}" }}")
+
         // Full-text parse catches context (like timezone) that isolated spans miss
         val fullResult = chronoParse(text, "Chrono")
+        Log.d(TAG, "Full-text results: ${fullResult.times.size} — ${fullResult.times.map { "${it.originalText} tz=${it.sourceTimezone?.id}" }}")
+
         val merged = ChronoResultParser.mergeSpanAndFullResults(allResults, fullResult.times)
+        Log.d(TAG, "After merge: ${merged.size} — ${merged.map { "${it.originalText} tz=${it.sourceTimezone?.id}" }}")
 
         return ExtractionResult(merged, "ML Kit + Chrono")
     }

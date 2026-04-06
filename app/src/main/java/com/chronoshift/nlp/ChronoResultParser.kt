@@ -176,6 +176,19 @@ object ChronoResultParser {
         return merged
     }
 
+    private val PREFERRED_ZONES = setOf(
+        "America/New_York", "America/Chicago", "America/Denver", "America/Los_Angeles",
+        "America/Anchorage", "America/Phoenix", "America/Toronto", "America/Vancouver",
+        "America/Sao_Paulo", "America/Argentina/Buenos_Aires", "America/Mexico_City",
+        "Europe/London", "Europe/Paris", "Europe/Berlin", "Europe/Moscow",
+        "Asia/Tokyo", "Asia/Shanghai", "Asia/Kolkata", "Asia/Dubai", "Asia/Singapore",
+        "Asia/Hong_Kong", "Asia/Seoul", "Asia/Bangkok",
+        "Australia/Sydney", "Australia/Melbourne", "Australia/Perth",
+        "Pacific/Auckland", "Pacific/Honolulu",
+        "Africa/Cairo", "Africa/Lagos", "Africa/Johannesburg",
+        "UTC",
+    )
+
     private val offsetCache = mutableMapOf<Int, TimeZone>()
 
     fun clearOffsetCache() { offsetCache.clear() }
@@ -189,8 +202,10 @@ object ChronoResultParser {
             .filter { '/' in it && !it.startsWith("Etc/") && !it.startsWith("SystemV/") }
             .filter { java.time.ZoneId.of(it).rules.getOffset(now) == targetOffset }
 
-        // Prefer well-known regions over obscure ones
-        val named = matches.sortedWith(compareBy { id ->
+        // Prefer well-known zones: canonical cities first, then by region
+        val named = matches.sortedWith(compareBy<String> { id ->
+            if (id in PREFERRED_ZONES) 0 else 1
+        }.thenBy { id ->
             when {
                 id.startsWith("America/") -> 0
                 id.startsWith("Europe/") -> 1
