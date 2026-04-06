@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Surface
+import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.chronoshift.ui.main.MainScreen
 import com.chronoshift.ui.theme.ChronoShiftTheme
@@ -17,7 +20,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ChronoShiftTheme {
-                MainScreen(viewModel = hiltViewModel())
+                Surface(modifier = Modifier.fillMaxSize()) {
+                    MainScreen(viewModel = hiltViewModel())
+                }
             }
         }
     }

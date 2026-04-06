@@ -1,5 +1,6 @@
 package com.chronoshift.ui.components
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -16,15 +17,16 @@ fun TimezoneChip(
 ) {
     val colors = LocalChronoColors.current
     Surface(
-        modifier = modifier,
+        modifier = modifier.animateContentSize(),
         shape = MaterialTheme.shapes.small,
         color = colors.timezoneChipBackground,
         contentColor = colors.timezoneChipContent,
+        tonalElevation = 1.dp,
     ) {
         Text(
             text = timezone,
             style = MaterialTheme.typography.labelMedium,
-            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+            modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
         )
     }
 }
