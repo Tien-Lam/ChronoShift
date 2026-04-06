@@ -89,10 +89,20 @@ class ResultMergerTest {
     }
 
     @Test
-    fun `mergeResults - fuzzy match both have tz keeps existing`() {
+    fun `mergeResults - fuzzy match both have different tz prefers incoming`() {
         val existing = listOf(time(localDateTime = baseDt, tz = tokyo, method = "Chrono"))
         val incoming = listOf(time(localDateTime = baseDt, tz = newYork))
-        val result = ResultMerger.mergeResults(existing, incoming, "Regex")
+        val result = ResultMerger.mergeResults(existing, incoming, "Gemini Nano")
+        assertEquals(1, result.size)
+        // Incoming wins when both have tz but they differ (later extractor = higher quality)
+        assertEquals(newYork, result[0].sourceTimezone)
+    }
+
+    @Test
+    fun `mergeResults - fuzzy match same tz keeps existing`() {
+        val existing = listOf(time(localDateTime = baseDt, tz = tokyo, method = "Chrono"))
+        val incoming = listOf(time(localDateTime = baseDt, tz = tokyo))
+        val result = ResultMerger.mergeResults(existing, incoming, "Gemini Nano")
         assertEquals(1, result.size)
         assertEquals(tokyo, result[0].sourceTimezone)
     }

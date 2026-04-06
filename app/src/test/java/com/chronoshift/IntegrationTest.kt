@@ -328,15 +328,12 @@ class IntegrationTest {
 
         val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
 
-        // Different years = different instants AND different local dates, so no isSameTime match
-        // isSameLocalTime checks hour:minute only, so it WILL fuzzy match (both 4:30)
-        // The fuzzy match keeps existing (Chrono with tz) since both have timezone
+        // Different years = different dates, so isSameLocalTime (which now checks date) won't match
+        // Both results kept as separate entries
         assertEquals(
-            "Fuzzy match on hour:minute means 1 result (Chrono kept), got ${merged.size}",
-            1, merged.size,
+            "Different years should produce 2 separate results, got ${merged.size}",
+            2, merged.size,
         )
-        // Chrono's result is kept (it has sourceTimezone)
-        assertEquals(2026, merged[0].localDateTime!!.year)
     }
 
     @Test
@@ -1092,7 +1089,7 @@ class IntegrationTest {
     // ==================== ResultMerger cross-date fuzzy match ====================
 
     @Test
-    fun `merger - isSameLocalTime matches across dates`() {
+    fun `merger - isSameLocalTime requires same date`() {
         val a = ExtractedTime(
             localDateTime = LocalDateTime(2026, 4, 11, 15, 30),
             originalText = "day 11",
@@ -1101,11 +1098,11 @@ class IntegrationTest {
             localDateTime = LocalDateTime(2026, 4, 12, 15, 30),
             originalText = "day 12",
         )
-        assertTrue("Same hour:minute different day → isSameLocalTime is true", ResultMerger.isSameLocalTime(a, b))
+        assertFalse("Same hour:minute different day → isSameLocalTime is false", ResultMerger.isSameLocalTime(a, b))
     }
 
     @Test
-    fun `merger - mergeResults can silently change date when fuzzy matching across days`() {
+    fun `merger - different dates are kept as separate results`() {
         val existing = listOf(
             ExtractedTime(
                 localDateTime = LocalDateTime(2026, 4, 11, 15, 30),
@@ -1123,13 +1120,8 @@ class IntegrationTest {
             ),
         )
         val merged = ResultMerger.mergeResults(existing, incoming, "test")
-        // Known behavior: isSameLocalTime only checks hour:minute, so these fuzzy-match.
-        // The existing entry is kept (it has tz), effectively dropping the incoming date.
-        assertEquals("Fuzzy match merges to 1 despite different dates", 1, merged.size)
-        assertEquals(
-            "Kept entry has the existing date (Apr 11), incoming date (Apr 12) silently dropped",
-            11, merged[0].localDateTime!!.dayOfMonth,
-        )
+        // isSameLocalTime now checks date too — different dates don't merge
+        assertEquals("Different dates should produce 2 separate results", 2, merged.size)
     }
 
     // ==================== CityResolver editDistance (via TestCityResolver) ====================

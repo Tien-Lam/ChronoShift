@@ -20,12 +20,17 @@ object ResultMerger {
             val fuzzy = merged.indexOfFirst { isSameLocalTime(it, time) }
             if (fuzzy >= 0) {
                 val entry = merged[fuzzy]
-                if (entry.sourceTimezone != null) {
-                    merged[fuzzy] = entry.copy(method = combineMethod(entry.method, method))
-                } else if (time.sourceTimezone != null) {
-                    merged[fuzzy] = time.copy(method = combineMethod(entry.method, method))
+                val combined = combineMethod(entry.method, method)
+                if (entry.sourceTimezone == null && time.sourceTimezone != null) {
+                    // Incoming has tz, existing doesn't → upgrade
+                    merged[fuzzy] = time.copy(method = combined)
+                } else if (entry.sourceTimezone != null && time.sourceTimezone != null
+                    && entry.sourceTimezone != time.sourceTimezone) {
+                    // Both have tz but they differ → prefer incoming (later = higher quality)
+                    merged[fuzzy] = time.copy(method = combined)
                 } else {
-                    merged[fuzzy] = entry.copy(method = combineMethod(entry.method, method))
+                    // Same tz or incoming lacks tz → keep existing
+                    merged[fuzzy] = entry.copy(method = combined)
                 }
                 continue
             }
@@ -50,9 +55,9 @@ object ResultMerger {
     }
 
     fun isSameLocalTime(a: ExtractedTime, b: ExtractedTime): Boolean {
-        val aHour = a.localDateTime?.hour ?: return false
-        val bHour = b.localDateTime?.hour ?: return false
-        return aHour == bHour && a.localDateTime.minute == b.localDateTime.minute
+        val aDt = a.localDateTime ?: return false
+        val bDt = b.localDateTime ?: return false
+        return aDt.hour == bDt.hour && aDt.minute == bDt.minute && aDt.date == bDt.date
     }
 
     fun combineMethod(existing: String, new: String): String {
