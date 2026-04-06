@@ -15,14 +15,12 @@ import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -82,65 +80,54 @@ fun TimeResultCard(
             }
             .padding(vertical = 16.dp),
     ) {
-        // Original text — quiet
+        // 1. Input: what the user pasted — source time + timezone
         Text(
-            text = result.originalText,
-            style = MaterialTheme.typography.bodySmall,
+            text = "${result.sourceDateTime} ${result.sourceTimezone}",
+            style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
 
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(4.dp))
 
-        // The converted time — hero
+        // 2. Output: the converted local time — hero element
         AnimatedTimeText(
             text = result.localDateTime,
-            style = MaterialTheme.typography.displayMedium.copy(
-                fontWeight = FontWeight.Bold,
-            ),
+            style = MaterialTheme.typography.displayMedium.copy(fontWeight = FontWeight.Bold),
             color = MaterialTheme.colorScheme.onSurface,
         )
 
-        Spacer(Modifier.height(4.dp))
+        // 3. Output timezone
+        Text(
+            text = result.localTimezone,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.primary,
+        )
 
-        // Timezone + date — secondary info
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Text(
-                text = result.localTimezone,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.primary,
-            )
-
-            if (result.localDate.isNotEmpty()) {
-                Text(
-                    text = "  ·  ",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.outlineVariant,
-                )
-                Text(
-                    text = result.localDate,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
-        }
-
-        Spacer(Modifier.height(4.dp))
-
-        // Source + method — tertiary
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(
-                text = "${result.sourceDateTime} ${result.sourceTimezone}",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.outline,
-            )
-            if (result.method.isNotEmpty()) {
-                Text(
-                    text = "  ·  ${result.method}",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
-                )
+        // 4. Date + method — de-emphasized
+        if (result.localDate.isNotEmpty() || result.method.isNotEmpty()) {
+            Spacer(Modifier.height(4.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                if (result.localDate.isNotEmpty()) {
+                    Text(
+                        text = result.localDate,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.outline,
+                    )
+                }
+                if (result.localDate.isNotEmpty() && result.method.isNotEmpty()) {
+                    Text(
+                        text = "  ·  ",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.outlineVariant,
+                    )
+                }
+                if (result.method.isNotEmpty()) {
+                    Text(
+                        text = result.method,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
+                    )
+                }
             }
         }
     }
@@ -179,7 +166,15 @@ private fun PreviewTimeResultCard() {
     ChronoShiftTheme(dynamicColor = false) {
         Surface {
             TimeResultCard(
-                result = ConvertedTime("9:00 a.m. PT", "PT (America/Los_Angeles)", "9:00 AM", "6:00 PM", "CET (Europe/Paris)", "Apr 9, 2026"),
+                result = ConvertedTime(
+                    originalText = "9:00 a.m. PT",
+                    sourceTimezone = "UTC-7",
+                    sourceDateTime = "9:00 AM",
+                    localDateTime = "6:00 PM",
+                    localTimezone = "UTC+2",
+                    localDate = "Apr 9, 2026",
+                    method = "Chrono",
+                ),
                 modifier = Modifier.padding(horizontal = 16.dp),
             )
         }
@@ -193,11 +188,27 @@ private fun PreviewTwoCards() {
         Surface {
             Column(Modifier.padding(horizontal = 16.dp)) {
                 TimeResultCard(
-                    result = ConvertedTime("9:00 a.m. PT", "PT (America/Los_Angeles)", "9:00 AM", "6:00 PM", "CET (Europe/Paris)", "Apr 9, 2026"),
+                    result = ConvertedTime(
+                        originalText = "9:00 a.m. PT",
+                        sourceTimezone = "UTC-7",
+                        sourceDateTime = "9:00 AM",
+                        localDateTime = "6:00 PM",
+                        localTimezone = "UTC+2",
+                        localDate = "Apr 9, 2026",
+                        method = "ML Kit + Chrono",
+                    ),
                 )
                 HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.3f))
                 TimeResultCard(
-                    result = ConvertedTime("12:00 p.m. ET", "ET (America/New_York)", "12:00 PM", "6:00 PM", "CET (Europe/Paris)", "Apr 9, 2026"),
+                    result = ConvertedTime(
+                        originalText = "12:00 p.m. ET",
+                        sourceTimezone = "UTC-4",
+                        sourceDateTime = "12:00 PM",
+                        localDateTime = "6:00 PM",
+                        localTimezone = "UTC+2",
+                        localDate = "Apr 9, 2026",
+                        method = "ML Kit + Chrono + Gemini Nano",
+                    ),
                     animationIndex = 1,
                 )
             }
