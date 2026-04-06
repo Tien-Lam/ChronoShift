@@ -793,4 +793,176 @@ class IntegrationTest {
             converted[0].sourceTimezone.contains("5:30") || converted[0].sourceTimezone.contains("5"),
         )
     }
+
+    // ========== Field invariant tests ==========
+    // These assert structural rules that must ALWAYS hold for parser output.
+    // They probe for the exact class of bug (missing fields) that device testing caught.
+
+    private val chronoInputs = listOf(
+        """[{"text":"3pm EST","index":0,"start":{"year":2026,"month":4,"day":9,"hour":15,"minute":0,"second":0,"timezone":-300,"isCertain":{"day":false}},"end":null}]""",
+        """[{"text":"April 9 at 9am","index":0,"start":{"year":2026,"month":4,"day":9,"hour":9,"minute":0,"second":0,"timezone":null,"isCertain":{"day":true}},"end":null}]""",
+        """[{"text":"12pm - 1pm EDT","index":0,"start":{"year":2026,"month":4,"day":9,"hour":12,"minute":0,"second":0,"timezone":-240,"isCertain":{"day":false}},"end":{"year":2026,"month":4,"day":9,"hour":13,"minute":0,"second":0,"timezone":-240}}]""",
+        """[{"text":"midnight","index":0,"start":{"year":2026,"month":4,"day":9,"hour":0,"minute":0,"second":0,"timezone":null,"isCertain":{"day":false}},"end":null}]""",
+        """[{"text":"11:59 PM JST","index":0,"start":{"year":2026,"month":12,"day":31,"hour":23,"minute":59,"second":0,"timezone":540,"isCertain":{"day":true}},"end":null}]""",
+    )
+
+    private val geminiInputs = listOf(
+        """[{"time":"15:00","date":"2026-04-09","timezone":"America/New_York","original":"3pm EST"}]""",
+        """[{"time":"09:00","date":"2026-04-09","timezone":"","original":"9am"}]""",
+        """[{"time":"12:00","date":"2026-04-09","timezone":"Asia/Tokyo","original":"noon JST"}]""",
+        """[{"time":"00:00","date":"2026-01-01","timezone":"UTC","original":"midnight UTC"}]""",
+        """[{"time":"04:30","date":"2026-04-11","timezone":"America/Los_Angeles","original":"4:30 AM PT"},{"time":"07:30","date":"2026-04-11","timezone":"America/New_York","original":"7:30 AM ET"}]""",
+    )
+
+    @Test
+    fun `invariant - chrono results always have localDateTime`() {
+        for (json in chronoInputs) {
+            val results = ChronoResultParser.parse(json, "", cityResolver)
+            results.forEach { r ->
+                assertNotNull(
+                    "Chrono result '${r.originalText}' must have localDateTime (json=$json)",
+                    r.localDateTime,
+                )
+            }
+        }
+    }
+
+    @Test
+    fun `invariant - chrono results with timezone always have instant`() {
+        for (json in chronoInputs) {
+            val results = ChronoResultParser.parse(json, "", cityResolver)
+            results.forEach { r ->
+                if (r.sourceTimezone != null) {
+                    assertNotNull(
+                        "Chrono result '${r.originalText}' with tz=${r.sourceTimezone?.id} must have instant",
+                        r.instant,
+                    )
+                }
+            }
+        }
+    }
+
+    @Test
+    fun `invariant - chrono results without timezone have null instant`() {
+        for (json in chronoInputs) {
+            val results = ChronoResultParser.parse(json, "", cityResolver)
+            results.forEach { r ->
+                if (r.sourceTimezone == null) {
+                    assertNull(
+                        "Chrono result '${r.originalText}' without tz should have null instant",
+                        r.instant,
+                    )
+                }
+            }
+        }
+    }
+
+    @Test
+    fun `invariant - gemini results always have localDateTime`() {
+        for (json in geminiInputs) {
+            val results = GeminiResultParser.parseResponse(json)
+            results.forEach { r ->
+                assertNotNull(
+                    "Gemini result '${r.originalText}' must have localDateTime (json=$json)",
+                    r.localDateTime,
+                )
+            }
+        }
+    }
+
+    @Test
+    fun `invariant - gemini results with timezone always have instant AND localDateTime`() {
+        for (json in geminiInputs) {
+            val results = GeminiResultParser.parseResponse(json)
+            results.forEach { r ->
+                if (r.sourceTimezone != null) {
+                    assertNotNull(
+                        "Gemini result '${r.originalText}' with tz must have instant",
+                        r.instant,
+                    )
+                    assertNotNull(
+                        "Gemini result '${r.originalText}' with tz must have localDateTime",
+                        r.localDateTime,
+                    )
+                }
+            }
+        }
+    }
+
+    @Test
+    fun `invariant - merged results preserve localDateTime for fuzzy matching`() {
+        // The localDateTime bug: if any parser produces results without localDateTime,
+        // ResultMerger.isSameLocalTime() fails and dedup breaks.
+        for (chronoJson in chronoInputs) {
+            for (geminiJson in geminiInputs) {
+                val chrono = ChronoResultParser.parse(chronoJson, "", cityResolver)
+                val gemini = GeminiResultParser.parseResponse(geminiJson)
+                val merged = ResultMerger.mergeResults(chrono, gemini, "Gemini Nano")
+                merged.forEach { r ->
+                    assertNotNull(
+                        "Merged result '${r.originalText}' must have localDateTime for fuzzy matching",
+                        r.localDateTime,
+                    )
+                }
+            }
+        }
+    }
+
+    @Test
+    fun `invariant - converted results always have non-empty fields`() {
+        for (json in chronoInputs) {
+            val results = ChronoResultParser.parse(json, "", cityResolver)
+            val converted = converter.toLocal(results, TimeZone.of("UTC"))
+            converted.forEach { c ->
+                assertTrue("localDateTime must not be empty", c.localDateTime.isNotEmpty())
+                assertTrue("localDate must not be empty", c.localDate.isNotEmpty())
+                assertTrue("sourceDateTime must not be empty", c.sourceDateTime.isNotEmpty())
+                assertTrue("sourceTimezone must not be empty", c.sourceTimezone.isNotEmpty())
+                assertTrue("localTimezone must not be empty", c.localTimezone.isNotEmpty())
+            }
+        }
+    }
+
+    @Test
+    fun `invariant - alignment never produces null instant`() {
+        for (json in chronoInputs) {
+            val results = ChronoResultParser.parse(json, "", cityResolver)
+            val aligned = ChronoResultParser.alignAmbiguousTimezones(results)
+            aligned.forEach { r ->
+                if (r.sourceTimezone != null) {
+                    assertNotNull(
+                        "Aligned result '${r.originalText}' with tz must keep instant",
+                        r.instant,
+                    )
+                }
+            }
+        }
+    }
+
+    @Test
+    fun `invariant - alignment never changes result count`() {
+        for (json in chronoInputs) {
+            val results = ChronoResultParser.parse(json, "", cityResolver)
+            val aligned = ChronoResultParser.alignAmbiguousTimezones(results)
+            assertEquals(
+                "Alignment must not add or remove results",
+                results.size, aligned.size,
+            )
+        }
+    }
+
+    @Test
+    fun `invariant - merge result count never exceeds sum of inputs`() {
+        for (chronoJson in chronoInputs) {
+            for (geminiJson in geminiInputs) {
+                val chrono = ChronoResultParser.parse(chronoJson, "", cityResolver)
+                val gemini = GeminiResultParser.parseResponse(geminiJson)
+                val merged = ResultMerger.mergeResults(chrono, gemini, "Gemini Nano")
+                assertTrue(
+                    "Merged count ${merged.size} must not exceed chrono(${chrono.size}) + gemini(${gemini.size})",
+                    merged.size <= chrono.size + gemini.size,
+                )
+            }
+        }
+    }
 }
