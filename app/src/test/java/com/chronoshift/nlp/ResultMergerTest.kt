@@ -259,4 +259,53 @@ class ResultMergerTest {
     fun `combineMethod - empty new returns existing`() {
         assertEquals("Chrono", ResultMerger.combineMethod("Chrono", ""))
     }
+
+    // ========== Device scenario reproduction ==========
+
+    @Test
+    fun `merge Chrono 3 results plus Gemini 3 results device scenario`() {
+        // Exact device scenario:
+        // Chrono already has 3 aligned results, Gemini adds 3 with different tz IDs
+        val vancouver = TimeZone.of("America/Vancouver")
+        val la = TimeZone.of("America/Los_Angeles")
+        val ny = TimeZone.of("America/New_York")
+        val shanghai = TimeZone.of("Asia/Shanghai")
+        val chicago = TimeZone.of("America/Chicago")
+
+        val dt430 = LocalDateTime(2026, 4, 11, 4, 30)
+        val dt730 = LocalDateTime(2026, 4, 11, 7, 30)
+        val dt1930 = LocalDateTime(2026, 4, 11, 19, 30)
+
+        val correctInstant = dt430.toInstant(vancouver) // 11:30 UTC
+        val wrongInstant = dt1930.toInstant(chicago)     // 00:30 UTC Apr 12
+
+        val chronoResults = listOf(
+            ExtractedTime(instant = correctInstant, localDateTime = dt430, sourceTimezone = vancouver, originalText = "4:30 a.m. PT", method = "ML Kit + Chrono"),
+            ExtractedTime(instant = correctInstant, localDateTime = dt730, sourceTimezone = ny, originalText = "7:30 a.m. ET", method = "ML Kit + Chrono"),
+            ExtractedTime(instant = correctInstant, localDateTime = dt1930, sourceTimezone = shanghai, originalText = "19:30 CST", method = "ML Kit + Chrono"),
+        )
+
+        val geminiResults = listOf(
+            ExtractedTime(instant = correctInstant, localDateTime = dt430, sourceTimezone = la, originalText = "April 11 at 4:30 a.m. PT", method = "Gemini Nano"),
+            ExtractedTime(instant = correctInstant, localDateTime = dt730, sourceTimezone = ny, originalText = "7:30 a.m. ET", method = "Gemini Nano"),
+            ExtractedTime(instant = wrongInstant, localDateTime = dt1930, sourceTimezone = chicago, originalText = "19:30 CST", method = "Gemini Nano"),
+        )
+
+        val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
+
+        // Log what we got for debugging
+        merged.forEachIndexed { i, r ->
+            println("  merged[$i]: ${r.originalText} tz=${r.sourceTimezone?.id} instant=${r.instant} method=${r.method}")
+        }
+
+        // Gemini ET (same tz as Chrono ET) should be deduplicated
+        // Gemini PT (LA vs Vancouver, same hour:min) should fuzzy-match → keeps Chrono's Vancouver
+        // Gemini CST (Chicago vs Shanghai, same hour:min) should fuzzy-match → keeps Chrono's Shanghai
+
+        // So we should get 3, not 5
+        assertEquals(
+            "Should merge to 3 results, got ${merged.size}: ${merged.map { "${it.originalText} tz=${it.sourceTimezone?.id}" }}",
+            3, merged.size
+        )
+    }
 }

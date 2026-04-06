@@ -658,6 +658,65 @@ class ChronoExtractorTest {
     }
 
     @Test
+    fun `alignment with Vancouver vs LA timezone IDs for same offset`() {
+        // Exact device scenario: Chrono uses America/Vancouver, Gemini uses America/Los_Angeles
+        // Both are UTC-7 in April but different zone IDs
+        val vancouver = kotlinx.datetime.TimeZone.of("America/Vancouver")
+        val la = kotlinx.datetime.TimeZone.of("America/Los_Angeles")
+        val ny = kotlinx.datetime.TimeZone.of("America/New_York")
+        val shanghai = kotlinx.datetime.TimeZone.of("Asia/Shanghai")
+        val chicago = kotlinx.datetime.TimeZone.of("America/Chicago")
+
+        val dt430 = kotlinx.datetime.LocalDateTime(2026, 4, 11, 4, 30)
+        val dt730 = kotlinx.datetime.LocalDateTime(2026, 4, 11, 7, 30)
+        val dt1930 = kotlinx.datetime.LocalDateTime(2026, 4, 11, 19, 30)
+
+        // Compute instants exactly as device would
+        val vanInstant = dt430.toInstant(vancouver)
+        val laInstant = dt430.toInstant(la)
+        val nyInstant = dt730.toInstant(ny)
+        val shanghaiInstant = dt1930.toInstant(shanghai)
+        val chicagoInstant = dt1930.toInstant(chicago)
+
+        // Verify: Vancouver and LA produce same instant
+        assertEquals("Vancouver and LA same instant", vanInstant, laInstant)
+        // Verify: NY matches
+        assertEquals("NY matches", vanInstant, nyInstant)
+        // Verify: Shanghai matches
+        assertEquals("Shanghai matches", vanInstant, shanghaiInstant)
+        // Verify: Chicago does NOT match
+        assertTrue("Chicago is outlier", vanInstant != chicagoInstant)
+
+        ChronoResultParser.clearOffsetCache()
+
+        // Build the exact 5-result list from device logs
+        val merged = listOf(
+            // Chrono results (Vancouver for PT due to offset cache)
+            ExtractedTime(instant = vanInstant, localDateTime = dt430, sourceTimezone = vancouver, originalText = "4:30 a.m. PT", method = "ML Kit + Chrono"),
+            ExtractedTime(instant = nyInstant, localDateTime = dt730, sourceTimezone = ny, originalText = "7:30 a.m. ET", method = "ML Kit + Chrono"),
+            ExtractedTime(instant = shanghaiInstant, localDateTime = dt1930, sourceTimezone = shanghai, originalText = "19:30 CST", method = "ML Kit + Chrono"),
+            // Gemini results (LA for PT, Chicago for CST)
+            ExtractedTime(instant = laInstant, localDateTime = dt430, sourceTimezone = la, originalText = "April 11 at 4:30 a.m. PT", method = "Gemini Nano"),
+            ExtractedTime(instant = chicagoInstant, localDateTime = dt1930, sourceTimezone = chicago, originalText = "19:30 CST", method = "Gemini Nano"),
+        )
+
+        val aligned = ChronoResultParser.alignAmbiguousTimezones(merged)
+
+        // The Chicago outlier (index 4) should be fixed
+        assertEquals(5, aligned.size)
+        assertEquals(
+            "Gemini CST should be aligned to match majority instant",
+            vanInstant,
+            aligned[4].instant,
+        )
+        // Its timezone should no longer be America/Chicago
+        assertTrue(
+            "Gemini CST tz should be Asia/*, got ${aligned[4].sourceTimezone?.id}",
+            aligned[4].sourceTimezone?.id != "America/Chicago",
+        )
+    }
+
+    @Test
     fun `no alignment when less than 2 results share an instant`() {
         // All different instants — no majority to align to
         val json = """[
