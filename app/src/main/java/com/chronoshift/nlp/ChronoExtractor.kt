@@ -184,10 +184,26 @@ class ChronoExtractor @Inject constructor(
     }
 
     private fun offsetToTimezone(offsetMinutes: Int): TimeZone {
-        val hours = offsetMinutes / 60
-        val mins = offsetMinutes % 60
-        return TimeZone.of(UtcOffset(hours, mins).toString())
+        offsetCache[offsetMinutes]?.let { return it }
+
+        val now = java.time.Instant.now()
+        val targetOffset = java.time.ZoneOffset.ofTotalSeconds(offsetMinutes * 60)
+        val named = java.time.ZoneId.getAvailableZoneIds()
+            .filter { '/' in it && !it.startsWith("Etc/") }
+            .firstOrNull { java.time.ZoneId.of(it).rules.getOffset(now) == targetOffset }
+
+        val tz = if (named != null) {
+            TimeZone.of(named)
+        } else {
+            val hours = offsetMinutes / 60
+            val mins = offsetMinutes % 60
+            TimeZone.of(UtcOffset(hours, mins).toString())
+        }
+        offsetCache[offsetMinutes] = tz
+        return tz
     }
+
+    private val offsetCache = mutableMapOf<Int, TimeZone>()
 
     private fun tryCityFromContext(text: String): TimeZone? {
         val cityPattern = Regex("""(?:in|at)\s+([A-Za-z][A-Za-z .'-]{1,30})""", RegexOption.IGNORE_CASE)
