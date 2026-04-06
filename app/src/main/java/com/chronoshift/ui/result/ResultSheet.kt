@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
@@ -59,24 +60,6 @@ fun ResultSheet(
                 .padding(bottom = 32.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Text(
-                text = stringResource(R.string.app_name),
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.primary,
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            if (state.inputText.isNotEmpty() && contentState == SheetContent.Results) {
-                Text(
-                    text = state.inputText,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-                Spacer(modifier = Modifier.height(12.dp))
-            }
-
             AnimatedContent(
                 targetState = contentState,
                 transitionSpec = { fadeIn() togetherWith fadeOut() },
@@ -101,9 +84,14 @@ fun ResultSheet(
                     }
 
                     SheetContent.Results -> {
-                        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Column {
                             state.results.forEachIndexed { index, result ->
                                 TimeResultCard(result = result, animationIndex = index)
+                                if (index < state.results.lastIndex) {
+                                    HorizontalDivider(
+                                        color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.3f),
+                                    )
+                                }
                             }
                         }
                     }

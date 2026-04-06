@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -35,11 +36,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FilledIconButton
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -196,38 +197,38 @@ private fun ResultsLayout(
     onConvert: () -> Unit,
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
-        Text(
-            text = stringResource(R.string.app_name),
-            style = MaterialTheme.typography.titleLarge,
-            color = MaterialTheme.colorScheme.primary,
-            modifier = Modifier.padding(start = 16.dp, top = 12.dp, bottom = 4.dp),
-        )
-
-        OutlinedTextField(
-            value = inputText,
-            onValueChange = onInputChanged,
+        // Compact top bar: input text + action
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-                .animateContentSize(spring(dampingRatio = Spring.DampingRatioMediumBouncy)),
-            placeholder = { Text(stringResource(R.string.input_hint)) },
-            trailingIcon = {
-                if (isProcessing) {
-                    LoadingIndicator(
-                        modifier = Modifier.size(24.dp),
-                        color = MaterialTheme.colorScheme.primary,
-                    )
-                } else {
-                    IconButton(onClick = onConvert) {
-                        Icon(Icons.AutoMirrored.Filled.Send, contentDescription = stringResource(R.string.convert))
-                    }
+                .padding(start = 20.dp, end = 8.dp, top = 8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            TextField(
+                value = inputText,
+                onValueChange = onInputChanged,
+                modifier = Modifier.weight(1f),
+                placeholder = { Text(stringResource(R.string.input_hint), maxLines = 1) },
+                textStyle = MaterialTheme.typography.bodyLarge,
+                singleLine = true,
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                    focusedIndicatorColor = MaterialTheme.colorScheme.surface,
+                    unfocusedIndicatorColor = MaterialTheme.colorScheme.surface,
+                ),
+            )
+            if (isProcessing) {
+                LoadingIndicator(
+                    modifier = Modifier.size(24.dp),
+                    color = MaterialTheme.colorScheme.primary,
+                )
+            } else {
+                IconButton(onClick = onConvert) {
+                    Icon(Icons.AutoMirrored.Filled.Send, contentDescription = stringResource(R.string.convert))
                 }
-            },
-            maxLines = 2,
-            shape = MaterialTheme.shapes.extraLarge,
-        )
-
-        Spacer(Modifier.height(12.dp))
+            }
+        }
 
         AnimatedVisibility(
             visible = error != null,
@@ -236,15 +237,20 @@ private fun ResultsLayout(
         ) {
             Text(
                 text = if (error == "no_timestamp") stringResource(R.string.no_timestamp_found) else error ?: "",
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.error,
-                modifier = Modifier.padding(horizontal = 16.dp),
+                modifier = Modifier.padding(start = 20.dp, top = 4.dp),
             )
         }
 
+        HorizontalDivider(
+            modifier = Modifier.padding(top = 4.dp),
+            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.3f),
+        )
+
+        // Results — flat list separated by thin dividers
         LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-            contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 16.dp, top = 4.dp),
+            contentPadding = PaddingValues(start = 20.dp, end = 20.dp, bottom = 16.dp),
         ) {
             itemsIndexed(results, key = { _, it -> it.originalText + it.sourceTimezone }) { index, result ->
                 TimeResultCard(
@@ -252,6 +258,9 @@ private fun ResultsLayout(
                     animationIndex = index,
                     modifier = Modifier.animateItem(),
                 )
+                if (index < results.lastIndex) {
+                    HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.3f))
+                }
             }
         }
     }
