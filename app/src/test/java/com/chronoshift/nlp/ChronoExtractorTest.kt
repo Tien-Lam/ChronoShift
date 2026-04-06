@@ -2,6 +2,7 @@ package com.chronoshift.nlp
 
 import kotlinx.datetime.TimeZone
 import com.chronoshift.conversion.ExtractedTime
+import kotlinx.datetime.toInstant
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
@@ -667,6 +668,81 @@ class ChronoExtractorTest {
         assertEquals(2, results.size)
         // Both should keep their original instants (no alignment)
         assertTrue(results[0].instant != results[1].instant)
+    }
+
+    @Test
+    fun `alignment fixes Gemini CST outlier in mixed Chrono plus Gemini results`() {
+        // Reproduces exact device scenario — compute instants through timezone conversion
+        // like the real code does, not via Instant.parse
+        val laPt = kotlinx.datetime.TimeZone.of("America/Los_Angeles")
+        val nyEt = kotlinx.datetime.TimeZone.of("America/New_York")
+        val shanghai = kotlinx.datetime.TimeZone.of("Asia/Shanghai")
+        val chicago = kotlinx.datetime.TimeZone.of("America/Chicago")
+
+        val dt430 = kotlinx.datetime.LocalDateTime(2026, 4, 11, 4, 30)
+        val dt730 = kotlinx.datetime.LocalDateTime(2026, 4, 11, 7, 30)
+        val dt1930 = kotlinx.datetime.LocalDateTime(2026, 4, 11, 19, 30)
+
+        val ptInstant = dt430.toInstant(laPt)
+        val etInstant = dt730.toInstant(nyEt)
+        val shanghaiInstant = dt1930.toInstant(shanghai)
+        val chicagoInstant = dt1930.toInstant(chicago)
+
+        // Verify PT and ET are the same moment
+        assertEquals("PT and ET should be same instant", ptInstant, etInstant)
+        // Verify Shanghai matches but Chicago doesn't
+        assertEquals("Shanghai should match PT", ptInstant, shanghaiInstant)
+        assertTrue("Chicago should NOT match PT", ptInstant != chicagoInstant)
+
+        ChronoResultParser.clearOffsetCache()
+
+        val merged = listOf(
+            ExtractedTime(instant = ptInstant, localDateTime = dt430, sourceTimezone = laPt, originalText = "4:30 a.m. PT"),
+            ExtractedTime(instant = etInstant, localDateTime = dt730, sourceTimezone = nyEt, originalText = "7:30 a.m. ET"),
+            ExtractedTime(instant = shanghaiInstant, localDateTime = dt1930, sourceTimezone = shanghai, originalText = "19:30 CST"),
+            ExtractedTime(instant = ptInstant, localDateTime = dt430, sourceTimezone = laPt, originalText = "4:30 a.m. PT"),
+            // This is the outlier — Gemini's wrong CST interpretation
+            ExtractedTime(instant = chicagoInstant, localDateTime = dt1930, sourceTimezone = chicago, originalText = "19:30 CST"),
+        )
+
+        val aligned = ChronoResultParser.alignAmbiguousTimezones(merged)
+
+        assertEquals(5, aligned.size)
+        // All 5 should now share the same instant
+        val target = ptInstant
+        aligned.forEachIndexed { i, result ->
+            assertEquals(
+                "Result $i '${result.originalText}' tz=${result.sourceTimezone?.id} should align to target",
+                target, result.instant
+            )
+        }
+    }
+
+    @Test
+    fun `alignment fixes outlier even with only 2 matching instants`() {
+        // Minimum case: 2 match, 1 outlier
+        val ny = kotlinx.datetime.TimeZone.of("America/New_York")
+        val la = kotlinx.datetime.TimeZone.of("America/Los_Angeles")
+        val chicago = kotlinx.datetime.TimeZone.of("America/Chicago")
+
+        val dt = kotlinx.datetime.LocalDateTime(2026, 4, 11, 12, 0)
+        val nyInstant = dt.toInstant(ny)
+        val laInstant = kotlinx.datetime.LocalDateTime(2026, 4, 11, 9, 0).toInstant(la)
+        val wrongInstant = dt.toInstant(chicago)
+
+        assertEquals("NY and LA should be same instant", nyInstant, laInstant)
+        assertTrue("Chicago should differ", nyInstant != wrongInstant)
+
+        ChronoResultParser.clearOffsetCache()
+
+        val results = listOf(
+            ExtractedTime(instant = nyInstant, localDateTime = dt, sourceTimezone = ny, originalText = "12pm ET"),
+            ExtractedTime(instant = laInstant, localDateTime = kotlinx.datetime.LocalDateTime(2026, 4, 11, 9, 0), sourceTimezone = la, originalText = "9am PT"),
+            ExtractedTime(instant = wrongInstant, localDateTime = dt, sourceTimezone = chicago, originalText = "12pm CST"),
+        )
+
+        val aligned = ChronoResultParser.alignAmbiguousTimezones(results)
+        assertEquals(nyInstant, aligned[2].instant)
     }
 
     @Test

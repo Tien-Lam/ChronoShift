@@ -108,24 +108,18 @@ object ChronoResultParser {
         val withInstant = results.filter { it.instant != null }
         if (withInstant.size < 2) return results
 
-        // Find the most common instant (the "majority")
         val instantGroups = withInstant.groupBy { it.instant }
         val majorityInstant = instantGroups.maxByOrNull { it.value.size }
         if (majorityInstant == null || majorityInstant.value.size < 2) return results
         val targetInstant = majorityInstant.key!!
 
-        // For each outlier, try flipping its offset to see if it aligns
         return results.map { ext ->
             if (ext.instant != null && ext.instant != targetInstant && ext.localDateTime != null) {
-                val localHour = ext.localDateTime.hour
-                val localMinute = ext.localDateTime.minute
-                // What offset would make this local time equal the target instant?
                 val targetEpoch = targetInstant.epochSeconds
                 val localEpoch = ext.localDateTime.toInstant(TimeZone.UTC).epochSeconds
                 val neededOffsetSeconds = localEpoch - targetEpoch
                 val neededOffsetMinutes = (neededOffsetSeconds / 60).toInt()
 
-                // Try to resolve this offset to a named timezone
                 val fixedTz = try { offsetToTimezone(neededOffsetMinutes) } catch (_: Exception) { null }
                 if (fixedTz != null) {
                     ext.copy(instant = targetInstant, sourceTimezone = fixedTz)

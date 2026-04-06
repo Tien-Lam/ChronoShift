@@ -79,11 +79,9 @@ class TieredTimeExtractor @Inject constructor(
             unavailable.add("Gemini Nano")
         }
 
-        // Align ambiguous timezones across all results (e.g. CST could be US Central or China Standard)
-        val preAlign = merged.map { "${it.originalText} tz=${it.sourceTimezone?.id} instant=${it.instant}" }
+        // Align ambiguous timezones across all results
+        ChronoResultParser.clearOffsetCache()
         merged = ChronoResultParser.alignAmbiguousTimezones(merged)
-        val postAlign = merged.map { "${it.originalText} tz=${it.sourceTimezone?.id} instant=${it.instant}" }
-        if (preAlign != postAlign) Log.d(TAG, "Alignment changed: $preAlign → $postAlign")
 
         Log.d(TAG, "Final: ${merged.size} result(s) via ${buildLabel(ran, unavailable)}")
         emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
