@@ -128,12 +128,21 @@ fun TimeResultCard(
 
         Spacer(Modifier.height(4.dp))
 
-        // Source — tertiary
-        Text(
-            text = "${result.sourceDateTime} ${result.sourceTimezone}",
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.outline,
-        )
+        // Source + method — tertiary
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text = "${result.sourceDateTime} ${result.sourceTimezone}",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.outline,
+            )
+            if (result.method.isNotEmpty()) {
+                Text(
+                    text = "  ·  ${result.method}",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
+                )
+            }
+        }
     }
 }
 

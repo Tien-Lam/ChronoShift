@@ -10,4 +10,5 @@ data class ExtractedTime(
     val sourceTimezone: TimeZone? = null,
     val originalText: String,
     val confidence: Float = 1.0f,
+    val method: String = "",
 )

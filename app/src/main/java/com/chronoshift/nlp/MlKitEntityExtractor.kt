@@ -38,8 +38,8 @@ class MlKitEntityExtractor @Inject constructor(
         }
     }
 
-    override suspend fun extract(text: String): List<ExtractedTime> {
-        if (!isAvailable()) return emptyList()
+    override suspend fun extract(text: String): ExtractionResult {
+        if (!isAvailable()) return ExtractionResult(emptyList(), "ML Kit")
 
         val annotations = suspendCancellableCoroutine { cont ->
             extractor.annotate(text)
@@ -47,7 +47,7 @@ class MlKitEntityExtractor @Inject constructor(
                 .addOnFailureListener { cont.resume(emptyList()) }
         }
 
-        return annotations.flatMap { annotation ->
+        val times = annotations.flatMap { annotation ->
             annotation.entities
                 .filter { it.type == Entity.TYPE_DATE_TIME }
                 .mapNotNull { entity ->
@@ -60,5 +60,6 @@ class MlKitEntityExtractor @Inject constructor(
                     )
                 }
         }
+        return ExtractionResult(times, "ML Kit")
     }
 }

@@ -14,17 +14,38 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class RegexExtractor @Inject constructor() : TimeExtractor {
+class RegexExtractor @Inject constructor(
+    private val cityResolver: CityResolverInterface,
+) : TimeExtractor {
 
     override suspend fun isAvailable(): Boolean = true
 
-    override suspend fun extract(text: String): List<ExtractedTime> {
+    override suspend fun extract(text: String): ExtractionResult {
         val results = mutableListOf<ExtractedTime>()
         results.addAll(extractIso8601(text))
         results.addAll(extractDateTimeWithZone(text))
+        results.addAll(extractTimeRangeWithZone(text))
         results.addAll(extractTimeWithZone(text))
+        results.addAll(extractTimeInCity(text))
         results.addAll(extractUnixTimestamp(text))
-        return deduplicate(results)
+        return ExtractionResult(deduplicate(propagateDates(results)), "Regex")
+    }
+
+    private fun propagateDates(results: List<ExtractedTime>): List<ExtractedTime> {
+        // Find a result with an explicit date (high confidence = came from a date+time pattern)
+        val withDate = results.firstOrNull { it.confidence >= 0.9f && it.localDateTime != null }
+            ?: return results
+
+        val referenceDate = withDate.localDateTime!!.date
+
+        // Apply that date to lower-confidence results (time-only patterns that defaulted to today)
+        return results.map { ext ->
+            if (ext.confidence < 0.9f && ext.localDateTime != null) {
+                ext.copy(localDateTime = LocalDateTime(referenceDate, ext.localDateTime.time))
+            } else {
+                ext
+            }
+        }
     }
 
     private fun deduplicate(results: List<ExtractedTime>): List<ExtractedTime> {
@@ -35,7 +56,7 @@ class RegexExtractor @Inject constructor() : TimeExtractor {
                     candidate.originalText.length < other.originalText.length &&
                     candidate.originalText in other.originalText
             }
-        }.distinctBy { it.originalText }
+        }.distinctBy { "${it.originalText}|${it.localDateTime}|${it.instant}" }
     }
 
     // --- ISO 8601: "2026-04-09T15:00:00Z", "2026-04-09 15:00+02:00" ---
@@ -82,10 +103,10 @@ class RegexExtractor @Inject constructor() : TimeExtractor {
         return results
     }
 
-    // "April 9 at 9:00 a.m. PT", "Apr 9, 2026, 3:00 PM EST", "March 15 at 3pm CST"
+    // "April 9 at 9:00 a.m. PT", "Apr 9 @ 3:00 PM EST", "March 15 at 3pm CST"
     private fun extractMonthNameDateTimeZone(text: String): List<ExtractedTime> {
         val pattern = Regex(
-            """($MONTH_PATTERN)\s+(\d{1,2})(?:,?\s+(\d{4}))?\s*(?:,\s*|\s+at\s+|\s+)""" +
+            """($MONTH_PATTERN)\s+(\d{1,2})(?:,?\s+(\d{4}))?\s*(?:,\s*|\s+at\s+|\s*@\s*|\s+)""" +
                 """(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)?\s*""" +
                 """($TZ_PATTERN)""",
             RegexOption.IGNORE_CASE
@@ -205,6 +226,54 @@ class RegexExtractor @Inject constructor() : TimeExtractor {
         }.toList()
     }
 
+    // --- Time ranges: "12:00 pm - 12:50 pm EDT", "9am - 5pm PST" ---
+    // Timezone after the second time applies to both.
+
+    private fun extractTimeRangeWithZone(text: String): List<ExtractedTime> {
+        val pattern = Regex(
+            """(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)?\s*[-–—to]+\s*""" +
+                """(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)?\s*""" +
+                """($TZ_PATTERN)""",
+            RegexOption.IGNORE_CASE
+        )
+        return pattern.findAll(text).flatMap { match ->
+            try {
+                var hour1 = match.groupValues[1].toInt()
+                val min1 = match.groupValues[2].ifEmpty { "0" }.toInt()
+                val ampm1 = match.groupValues[3].replace(".", "").lowercase()
+                var hour2 = match.groupValues[4].toInt()
+                val min2 = match.groupValues[5].ifEmpty { "0" }.toInt()
+                val ampm2 = match.groupValues[6].replace(".", "").lowercase()
+                val tzAbbrev = match.groupValues[7]
+
+                hour1 = adjustAmPm(hour1, ampm1.ifEmpty { ampm2 }) ?: return@flatMap emptyList()
+                hour2 = adjustAmPm(hour2, ampm2.ifEmpty { ampm1 }) ?: return@flatMap emptyList()
+                if (hour1 !in 0..23 || hour2 !in 0..23) return@flatMap emptyList()
+                if (min1 !in 0..59 || min2 !in 0..59) return@flatMap emptyList()
+
+                val tz = resolveTimezone(tzAbbrev) ?: return@flatMap emptyList()
+                val today = Clock.System.now().toLocalDateTime(tz).date
+
+                listOf(
+                    ExtractedTime(
+                        localDateTime = LocalDateTime(today, LocalTime(hour1, min1)),
+                        sourceTimezone = tz,
+                        originalText = match.value.trim(),
+                        confidence = 0.85f,
+                    ),
+                    ExtractedTime(
+                        localDateTime = LocalDateTime(today, LocalTime(hour2, min2)),
+                        sourceTimezone = tz,
+                        originalText = match.value.trim(),
+                        confidence = 0.85f,
+                    ),
+                )
+            } catch (_: Exception) {
+                emptyList()
+            }
+        }.toList()
+    }
+
     // --- Time + timezone (no date): "9:00 a.m. EST", "3pm PT", "15:00 UTC+2" ---
 
     private fun extractTimeWithZone(text: String): List<ExtractedTime> {
@@ -231,6 +300,41 @@ class RegexExtractor @Inject constructor() : TimeExtractor {
                     sourceTimezone = tz,
                     originalText = match.value.trim(),
                     confidence = 0.85f,
+                )
+            } catch (_: Exception) {
+                null
+            }
+        }.toList()
+    }
+
+    // --- Time + city name: "5:00 in New York", "3pm in Tokyo", "10:00 AM in London" ---
+    // Uses fuzzy matching so "new yrok", "tokio", "sydeny" still resolve.
+
+    private fun extractTimeInCity(text: String): List<ExtractedTime> {
+        // Capture: time + "in"/"at" + remaining words (greedy, up to end or punctuation)
+        val pattern = Regex(
+            """(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)?\s+(?:in|at)\s+([A-Za-z][A-Za-z .'-]{1,30})""",
+            RegexOption.IGNORE_CASE
+        )
+        return pattern.findAll(text).mapNotNull { match ->
+            try {
+                var hour = match.groupValues[1].toInt()
+                val minute = match.groupValues[2].ifEmpty { "0" }.toInt()
+                val ampm = match.groupValues[3].replace(".", "").lowercase()
+                val cityQuery = match.groupValues[4].trim()
+
+                hour = adjustAmPm(hour, ampm) ?: return@mapNotNull null
+                if (hour !in 0..23 || minute !in 0..59) return@mapNotNull null
+
+                val tz = cityResolver.resolve(cityQuery) ?: return@mapNotNull null
+                val today = Clock.System.now().toLocalDateTime(tz).date
+                val dt = LocalDateTime(today, LocalTime(hour, minute))
+
+                ExtractedTime(
+                    localDateTime = dt,
+                    sourceTimezone = tz,
+                    originalText = match.value.trim(),
+                    confidence = 0.8f,
                 )
             } catch (_: Exception) {
                 null

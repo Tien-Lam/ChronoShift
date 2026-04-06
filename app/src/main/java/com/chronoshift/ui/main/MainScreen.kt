@@ -262,6 +262,7 @@ private fun ResultsLayout(
                     HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.3f))
                 }
             }
+
         }
     }
 }

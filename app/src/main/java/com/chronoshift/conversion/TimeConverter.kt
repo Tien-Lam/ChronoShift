@@ -52,6 +52,7 @@ class TimeConverter @Inject constructor() {
             localDateTime = localJavaTime.format(timeFormatter),
             localTimezone = formatZoneName(javaLocalZone),
             localDate = localJavaTime.format(dateFormatter),
+            method = ext.method,
         )
     }
 

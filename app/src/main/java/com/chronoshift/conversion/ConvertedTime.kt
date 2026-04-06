@@ -7,4 +7,5 @@ data class ConvertedTime(
     val localDateTime: String,
     val localTimezone: String,
     val localDate: String,
+    val method: String = "",
 )

@@ -1,10 +1,12 @@
 package com.chronoshift.nlp
 
-import android.content.Context
 import android.util.Log
 import com.chronoshift.conversion.ExtractedTime
-import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.datetime.Instant
+import com.google.mlkit.genai.common.DownloadStatus
+import com.google.mlkit.genai.prompt.Generation
+import com.google.mlkit.genai.prompt.GenerativeModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.last
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
@@ -14,48 +16,73 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class GeminiNanoExtractor @Inject constructor(
-    @param:ApplicationContext private val context: Context,
-) : TimeExtractor {
+class GeminiNanoExtractor @Inject constructor() : TimeExtractor {
+
+    private var model: GenerativeModel? = null
+    private var permanentlyUnavailable = false
 
     override suspend fun isAvailable(): Boolean {
+        if (model != null) return true
+        if (permanentlyUnavailable) return false
+
+        // FeatureStatus: 0=UNAVAILABLE, 1=DOWNLOADABLE, 2=DOWNLOADING, 3=AVAILABLE
         return try {
-            val clazz = Class.forName("com.google.ai.edge.aicore.GenerativeModel")
-            true
-        } catch (_: ClassNotFoundException) {
+            val client = Generation.getClient()
+            val status = client.checkStatus()
+            Log.d(TAG, "checkStatus=$status")
+            when (status) {
+                3 -> { // AVAILABLE
+                    model = client
+                    Log.d(TAG, "Gemini Nano ready")
+                    true
+                }
+                1 -> { // DOWNLOADABLE
+                    Log.d(TAG, "Triggering model download")
+                    val result = client.download().last()
+                    when (result) {
+                        is DownloadStatus.DownloadCompleted -> {
+                            model = client
+                            Log.d(TAG, "Download completed")
+                            true
+                        }
+                        else -> {
+                            Log.w(TAG, "Download did not complete: $result")
+                            false
+                        }
+                    }
+                }
+                2 -> { // DOWNLOADING
+                    Log.d(TAG, "Model currently downloading, waiting...")
+                    val result = client.download().last()
+                    if (result is DownloadStatus.DownloadCompleted) {
+                        model = client
+                        true
+                    } else false
+                }
+                else -> { // 0 = UNAVAILABLE
+                    Log.d(TAG, "Gemini Nano not available on this device")
+                    permanentlyUnavailable = true
+                    false
+                }
+            }
+        } catch (e: Exception) {
+            Log.w(TAG, "Gemini Nano check failed", e)
             false
         }
     }
 
-    override suspend fun extract(text: String): List<ExtractedTime> {
-        if (!isAvailable()) return emptyList()
+    override suspend fun extract(text: String): ExtractionResult {
+        val client = model ?: return ExtractionResult(emptyList(), "Gemini Nano")
 
         return try {
-            val response = runGeminiNano(text)
-            parseResponse(response)
+            val response = client.generateContent(buildPrompt(text))
+            val responseText = response.candidates.firstOrNull()?.text ?: ""
+            Log.d(TAG, "Response: $responseText")
+            ExtractionResult(parseResponse(responseText), "Gemini Nano")
         } catch (e: Exception) {
-            Log.w(TAG, "Gemini Nano extraction failed", e)
-            emptyList()
+            Log.w(TAG, "Gemini Nano generation failed", e)
+            ExtractionResult(emptyList(), "Gemini Nano")
         }
-    }
-
-    private suspend fun runGeminiNano(text: String): String {
-        // ML Kit GenAI prompt API - calls Gemini Nano on-device
-        // This uses reflection to avoid hard compile-time dependency on AICore
-        // which is only available on supported devices
-        val modelClass = Class.forName("com.google.ai.edge.aicore.GenerativeModel")
-        val configClass = Class.forName("com.google.ai.edge.aicore.GenerationConfig")
-
-        val configBuilder = configClass.getDeclaredMethod("builder").invoke(null)
-        val config = configBuilder.javaClass.getDeclaredMethod("build").invoke(configBuilder)
-
-        val model = modelClass.getConstructor(configClass).newInstance(config)
-        val generateMethod = modelClass.getDeclaredMethod("generateContent", String::class.java)
-
-        val prompt = buildPrompt(text)
-        val result = generateMethod.invoke(model, prompt)
-        val getText = result.javaClass.getDeclaredMethod("getText")
-        return getText.invoke(result) as? String ?: ""
     }
 
     private fun buildPrompt(text: String): String = """
@@ -99,7 +126,7 @@ Text: $text
 
             val tz = try { TimeZone.of(tzStr) } catch (_: Exception) { null }
 
-            if (date.isNotEmpty() && time.isNotEmpty()) {
+            if (date.isNotEmpty()) {
                 val dt = LocalDateTime.parse("${date}T${time}")
                 if (tz != null) {
                     ExtractedTime(
