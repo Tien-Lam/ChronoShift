@@ -1453,16 +1453,22 @@ class IntegrationTest {
     }
 
     @Test
-    fun `pipeline end-to-end with timezone-less results still converts using UTC`() {
-        // When no timezone is detected, TimeConverter defaults to UTC
-        val chronoJson = """[{"text":"3:00 PM","index":0,"start":{"year":2026,"month":4,"day":9,"hour":15,"minute":0,"second":0,"timezone":null,"isCertain":{"day":false}},"end":null}]"""
+    fun `pipeline end-to-end with timezone-less results assumes device timezone`() {
+        // When no timezone is detected, TimeConverter assumes the device's local timezone
+        val chronoJson = """[{"text":"3:00 PM","index":0,"start":{"year":2026,"month":4,"day":9,"hour":15,"minute":0,"second":0,"timezone":null,"isCertain":{"day":false,"hour":true}},"end":null}]"""
         val results = ChronoResultParser.parse(chronoJson, "", cityResolver)
         assertEquals(1, results.size)
         assertNull(results[0].sourceTimezone)
 
-        val converted = converter.toLocal(results, TimeZone.of("America/New_York"))
+        val localZone = TimeZone.of("America/New_York")
+        val converted = converter.toLocal(results, localZone)
         assertEquals(1, converted.size)
-        // Source timezone should show UTC (the default)
-        assertEquals("UTC", converted[0].sourceTimezone)
+        // Source timezone should match local (assumed device tz), not UTC
+        assertTrue(
+            "Source tz should reflect local zone, got '${converted[0].sourceTimezone}'",
+            converted[0].sourceTimezone.contains("UTC-") || converted[0].sourceTimezone.contains("New_York"),
+        )
+        // Source and local time should be the same (no conversion happened)
+        assertEquals("Source and local time should match", converted[0].sourceDateTime, converted[0].localDateTime)
     }
 }

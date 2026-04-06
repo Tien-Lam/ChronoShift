@@ -49,15 +49,20 @@ class TimeConverterTest {
     }
 
     @Test
-    fun `null timezone defaults to UTC`() {
-        val results = converter.toLocal(listOf(
-            ExtractedTime(
-                localDateTime = LocalDateTime(2026, 4, 9, 15, 0),
-                sourceTimezone = null,
-                originalText = "15:00",
-            )
-        ))
-        assertTrue(results[0].sourceTimezone.contains("UTC") || results[0].sourceTimezone == "Z")
+    fun `null timezone assumes device local timezone`() {
+        val localZone = TimeZone.of("America/New_York")
+        val results = converter.toLocal(
+            listOf(
+                ExtractedTime(
+                    localDateTime = LocalDateTime(2026, 4, 9, 15, 0),
+                    sourceTimezone = null,
+                    originalText = "15:00",
+                )
+            ),
+            localZone = localZone,
+        )
+        assertEquals("Source and local tz should match", results[0].sourceTimezone, results[0].localTimezone)
+        assertEquals("Source and local time should match", results[0].sourceDateTime, results[0].localDateTime)
     }
 
     @Test

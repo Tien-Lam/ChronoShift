@@ -24,7 +24,7 @@ class TimeConverter @Inject constructor() {
     }
 
     private fun convert(ext: ExtractedTime, localZone: TimeZone): ConvertedTime? {
-        val sourceZone = ext.sourceTimezone ?: TimeZone.UTC
+        val sourceZone = ext.sourceTimezone ?: localZone
         val instant: Instant = ext.instant
             ?: ext.localDateTime?.toInstant(sourceZone)
             ?: return null
