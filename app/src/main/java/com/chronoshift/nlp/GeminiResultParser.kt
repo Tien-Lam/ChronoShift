@@ -42,6 +42,7 @@ object GeminiResultParser {
                 if (tz != null) {
                     ExtractedTime(
                         instant = dt.toInstant(tz),
+                        localDateTime = dt,
                         sourceTimezone = tz,
                         originalText = original,
                         confidence = 0.9f,
