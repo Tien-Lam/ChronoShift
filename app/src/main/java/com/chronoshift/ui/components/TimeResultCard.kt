@@ -80,28 +80,37 @@ fun TimeResultCard(
             }
             .padding(vertical = 16.dp),
     ) {
-        // 1. Input: formatted source time + date + timezone
+        // 1. Input: date · time (timezone)
         Text(
-            text = "${result.sourceDateTime} ${result.sourceTimezone}  ·  ${result.sourceDate}",
-            style = MaterialTheme.typography.titleMedium,
+            text = "${result.sourceDate}  ·  ${result.sourceDateTime} (${result.sourceTimezone})",
+            style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
 
-        Spacer(Modifier.height(4.dp))
+        Spacer(Modifier.height(6.dp))
 
-        // 2. Output: the converted local time + date — hero element
+        // 2. Output time — hero
         AnimatedTimeText(
-            text = "${result.localDateTime}  ${result.localDate}",
+            text = result.localDateTime,
             style = MaterialTheme.typography.displayMedium.copy(fontWeight = FontWeight.Bold),
             color = MaterialTheme.colorScheme.onSurface,
         )
 
-        // 3. Output timezone + method — secondary
+        // 3. Output date — subtitle
+        Text(
+            text = result.localDate,
+            style = MaterialTheme.typography.titleLarge,
+            color = MaterialTheme.colorScheme.onSurface,
+        )
+
+        Spacer(Modifier.height(2.dp))
+
+        // 4. Output timezone + method — whisper
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(
                 text = result.localTimezone,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.primary,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.outline,
             )
             if (result.method.isNotEmpty()) {
                 Text(
