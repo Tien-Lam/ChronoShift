@@ -44,19 +44,30 @@ class TimeConverter @Inject constructor() {
             sourceDt.hour, sourceDt.minute, sourceDt.second
         )
 
+        val javaInstant = java.time.Instant.ofEpochSecond(instant.epochSeconds)
+
         return ConvertedTime(
             originalText = ext.originalText,
-            sourceTimezone = formatZoneName(javaSourceZone),
+            sourceTimezone = formatZoneName(javaSourceZone, javaInstant),
             sourceDateTime = sourceJavaTime.format(timeFormatter),
             localDateTime = localJavaTime.format(timeFormatter),
-            localTimezone = formatZoneName(javaLocalZone),
+            localTimezone = formatZoneName(javaLocalZone, javaInstant),
             localDate = localJavaTime.format(dateFormatter),
             method = ext.method,
         )
     }
 
-    private fun formatZoneName(zone: JavaZoneId): String {
-        val display = zone.getDisplayName(java.time.format.TextStyle.SHORT, java.util.Locale.getDefault())
-        return if (display != zone.id) "$display (${zone.id})" else zone.id
+    private fun formatZoneName(zone: JavaZoneId, instant: java.time.Instant): String {
+        val offset = zone.rules.getOffset(instant)
+        val totalMinutes = offset.totalSeconds / 60
+        val hours = totalMinutes / 60
+        val mins = Math.abs(totalMinutes % 60)
+        return if (mins != 0) {
+            "UTC%+d:%02d".format(hours, mins)
+        } else if (hours == 0) {
+            "UTC"
+        } else {
+            "UTC%+d".format(hours)
+        }
     }
 }

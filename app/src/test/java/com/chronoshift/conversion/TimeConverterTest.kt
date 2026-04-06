@@ -45,7 +45,7 @@ class TimeConverterTest {
             )
         ))
         assertEquals(1, results.size)
-        assertTrue(results[0].sourceTimezone.contains("New_York"))
+        assertTrue(results[0].sourceTimezone.contains("UTC"))
     }
 
     @Test
@@ -301,8 +301,8 @@ class TimeConverterTest {
         assertEquals(1, results.size)
         // EST 09:00 → UTC 13:00 (EDT in April) → JST 22:00
         assertTrue(results[0].localDateTime.contains("10:00") || results[0].localDateTime.contains("22"))
-        assertTrue(results[0].localTimezone.contains("Tokyo") || results[0].localTimezone.contains("JST"))
-        assertTrue(results[0].sourceTimezone.contains("New_York") || results[0].sourceTimezone.contains("EDT") || results[0].sourceTimezone.contains("EST"))
+        assertTrue(results[0].localTimezone.contains("UTC+9"))
+        assertTrue(results[0].sourceTimezone.contains("UTC") || results[0].sourceTimezone.contains("EDT") || results[0].sourceTimezone.contains("EST"))
     }
 
     @Test
@@ -320,7 +320,7 @@ class TimeConverterTest {
         assertEquals(1, results.size)
         // UTC 12:00 → BST 13:00 (London is UTC+1 in April)
         assertTrue(results[0].sourceTimezone.contains("UTC") || results[0].sourceTimezone == "Z")
-        assertTrue(results[0].localTimezone.contains("London") || results[0].localTimezone.contains("BST"))
+        assertTrue(results[0].localTimezone.contains("UTC+1"))
     }
 
     @Test
@@ -358,7 +358,7 @@ class TimeConverterTest {
         )
         assertEquals(1, results.size)
         // UTC 23:59 Apr 10 → HST (UTC-10) → 13:59 Apr 10 (same day, still earlier)
-        assertTrue(results[0].localTimezone.contains("Honolulu") || results[0].localTimezone.contains("HST"))
+        assertTrue(results[0].localTimezone.contains("UTC-10"))
     }
 
     @Test
@@ -394,7 +394,7 @@ class TimeConverterTest {
         )
         assertEquals(1, results.size)
         // UTC 12:00 → IST (+05:30) → 17:30
-        assertTrue(results[0].localTimezone.contains("Kolkata") || results[0].localTimezone.contains("IST"))
+        assertTrue(results[0].localTimezone.contains("UTC+5:30"))
         assertTrue(results[0].localDateTime.contains("5:30") || results[0].localDateTime.contains("17:30"))
     }
 
@@ -412,7 +412,7 @@ class TimeConverterTest {
         )
         assertEquals(1, results.size)
         // UTC 12:00 → NPT (+05:45) → 17:45
-        assertTrue(results[0].localTimezone.contains("Kathmandu") || results[0].localTimezone.contains("Nepal"))
+        assertTrue(results[0].localTimezone.contains("UTC+5:45"))
         assertTrue(results[0].localDateTime.contains("5:45") || results[0].localDateTime.contains("17:45"))
     }
 
@@ -431,7 +431,7 @@ class TimeConverterTest {
         assertEquals(1, results.size)
         // Adelaide is ACST (+09:30) or ACDT (+10:30); April is autumn so ACST
         // UTC 12:00 → ACST → 21:30
-        assertTrue(results[0].localTimezone.contains("Adelaide") || results[0].localTimezone.contains("AC"))
+        assertTrue(results[0].localTimezone.contains("UTC+"))
         assertTrue(results[0].localDateTime.contains("9:30") || results[0].localDateTime.contains("21:30"))
     }
 
@@ -626,7 +626,7 @@ class TimeConverterTest {
             localZone = TimeZone.of("Asia/Tokyo"),
         )
         assertEquals(1, results.size)
-        assertTrue(results[0].localTimezone.contains("Tokyo") || results[0].localTimezone.contains("JST"))
+        assertTrue(results[0].localTimezone.contains("UTC+9"))
     }
 
     @Test
