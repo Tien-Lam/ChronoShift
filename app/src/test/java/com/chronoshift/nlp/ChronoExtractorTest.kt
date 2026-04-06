@@ -1,6 +1,7 @@
 package com.chronoshift.nlp
 
 import kotlinx.datetime.TimeZone
+import com.chronoshift.conversion.ExtractedTime
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
@@ -517,6 +518,107 @@ class ChronoExtractorTest {
         val json = """[{"text":"test","index":0,"start":{"year":2026,"month":4,"day":9,"hour":15,"minute":0,"second":0,"timezone":null},"end":null}]"""
         val results = parse(json)
         assertEquals(0.85f, results[0].confidence)
+    }
+
+    // ========== mergeSpanAndFullResults ==========
+
+    @Test
+    fun `merge upgrades span result without tz from full result with tz`() {
+        val spanResults = listOf(
+            ExtractedTime(localDateTime = kotlinx.datetime.LocalDateTime(2026, 4, 9, 9, 0), originalText = "9am"),
+        )
+        val fullResults = listOf(
+            ExtractedTime(
+                localDateTime = kotlinx.datetime.LocalDateTime(2026, 4, 9, 9, 0),
+                sourceTimezone = ChronoResultParser.offsetToTimezone(-420),
+                originalText = "9am PT",
+            ),
+        )
+        val merged = ChronoResultParser.mergeSpanAndFullResults(spanResults, fullResults)
+        assertEquals(1, merged.size)
+        assertNotNull("Should have timezone after merge", merged[0].sourceTimezone)
+    }
+
+    @Test
+    fun `merge keeps span tz when full also has tz`() {
+        val tz = ChronoResultParser.offsetToTimezone(-300)
+        val spanResults = listOf(
+            ExtractedTime(localDateTime = kotlinx.datetime.LocalDateTime(2026, 4, 9, 15, 0), sourceTimezone = tz, originalText = "3pm EST"),
+        )
+        val fullResults = listOf(
+            ExtractedTime(localDateTime = kotlinx.datetime.LocalDateTime(2026, 4, 9, 15, 0), sourceTimezone = tz, originalText = "3pm EST"),
+        )
+        val merged = ChronoResultParser.mergeSpanAndFullResults(spanResults, fullResults)
+        assertEquals(1, merged.size)
+        assertEquals(tz, merged[0].sourceTimezone)
+    }
+
+    @Test
+    fun `merge adds unique full results not in spans`() {
+        val spanResults = listOf(
+            ExtractedTime(localDateTime = kotlinx.datetime.LocalDateTime(2026, 4, 9, 9, 0), originalText = "9am"),
+        )
+        val fullResults = listOf(
+            ExtractedTime(localDateTime = kotlinx.datetime.LocalDateTime(2026, 4, 9, 15, 0), originalText = "3pm"),
+        )
+        val merged = ChronoResultParser.mergeSpanAndFullResults(spanResults, fullResults)
+        assertEquals(2, merged.size)
+    }
+
+    @Test
+    fun `merge handles empty spans`() {
+        val fullResults = listOf(
+            ExtractedTime(localDateTime = kotlinx.datetime.LocalDateTime(2026, 4, 9, 15, 0), originalText = "3pm"),
+        )
+        val merged = ChronoResultParser.mergeSpanAndFullResults(emptyList(), fullResults)
+        assertEquals(1, merged.size)
+    }
+
+    @Test
+    fun `merge handles empty full results`() {
+        val spanResults = listOf(
+            ExtractedTime(localDateTime = kotlinx.datetime.LocalDateTime(2026, 4, 9, 9, 0), originalText = "9am"),
+        )
+        val merged = ChronoResultParser.mergeSpanAndFullResults(spanResults, emptyList())
+        assertEquals(1, merged.size)
+    }
+
+    @Test
+    fun `merge handles both empty`() {
+        val merged = ChronoResultParser.mergeSpanAndFullResults(emptyList(), emptyList())
+        assertTrue(merged.isEmpty())
+    }
+
+    @Test
+    fun `merge with multiple spans and overlapping full results`() {
+        val spanResults = listOf(
+            ExtractedTime(localDateTime = kotlinx.datetime.LocalDateTime(2026, 4, 9, 9, 0), originalText = "9am"),
+            ExtractedTime(localDateTime = kotlinx.datetime.LocalDateTime(2026, 4, 9, 12, 0), originalText = "12pm"),
+        )
+        val tz1 = ChronoResultParser.offsetToTimezone(-420)
+        val tz2 = ChronoResultParser.offsetToTimezone(-240)
+        val fullResults = listOf(
+            ExtractedTime(localDateTime = kotlinx.datetime.LocalDateTime(2026, 4, 9, 9, 0), sourceTimezone = tz1, originalText = "9am PT"),
+            ExtractedTime(localDateTime = kotlinx.datetime.LocalDateTime(2026, 4, 9, 12, 0), sourceTimezone = tz2, originalText = "12pm ET"),
+        )
+        val merged = ChronoResultParser.mergeSpanAndFullResults(spanResults, fullResults)
+        assertEquals(2, merged.size)
+        assertNotNull("First should have tz", merged[0].sourceTimezone)
+        assertNotNull("Second should have tz", merged[1].sourceTimezone)
+    }
+
+    @Test
+    fun `merge does not downgrade span with tz to full without tz`() {
+        val tz = ChronoResultParser.offsetToTimezone(-300)
+        val spanResults = listOf(
+            ExtractedTime(localDateTime = kotlinx.datetime.LocalDateTime(2026, 4, 9, 15, 0), sourceTimezone = tz, originalText = "3pm EST"),
+        )
+        val fullResults = listOf(
+            ExtractedTime(localDateTime = kotlinx.datetime.LocalDateTime(2026, 4, 9, 15, 0), originalText = "3pm"),
+        )
+        val merged = ChronoResultParser.mergeSpanAndFullResults(spanResults, fullResults)
+        assertEquals(1, merged.size)
+        assertNotNull("Should keep span's timezone", merged[0].sourceTimezone)
     }
 
     @Test

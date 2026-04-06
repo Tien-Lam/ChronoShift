@@ -40,17 +40,11 @@ class ChronoExtractor @Inject constructor(
             }
         }
 
+        // Full-text parse catches context (like timezone) that isolated spans miss
         val fullResult = chronoParse(text, "Chrono")
-        for (r in fullResult.times) {
-            val isDuplicate = allResults.any {
-                it.localDateTime?.hour == r.localDateTime?.hour &&
-                    it.localDateTime?.minute == r.localDateTime?.minute &&
-                    it.localDateTime?.date == r.localDateTime?.date
-            }
-            if (!isDuplicate) allResults.add(r)
-        }
+        val merged = ChronoResultParser.mergeSpanAndFullResults(allResults, fullResult.times)
 
-        return ExtractionResult(allResults, "ML Kit + Chrono")
+        return ExtractionResult(merged, "ML Kit + Chrono")
     }
 
     private fun chronoParse(text: String, method: String): ExtractionResult {

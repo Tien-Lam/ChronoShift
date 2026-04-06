@@ -114,6 +114,28 @@ object ChronoResultParser {
         }
     }
 
+    fun mergeSpanAndFullResults(
+        spanResults: List<ExtractedTime>,
+        fullResults: List<ExtractedTime>,
+    ): List<ExtractedTime> {
+        val merged = spanResults.toMutableList()
+        for (r in fullResults) {
+            val matchIdx = merged.indexOfFirst {
+                it.localDateTime?.hour == r.localDateTime?.hour &&
+                    it.localDateTime?.minute == r.localDateTime?.minute
+            }
+            if (matchIdx >= 0) {
+                val existing = merged[matchIdx]
+                if (existing.sourceTimezone == null && r.sourceTimezone != null) {
+                    merged[matchIdx] = r
+                }
+            } else {
+                merged.add(r)
+            }
+        }
+        return merged
+    }
+
     private val offsetCache = mutableMapOf<Int, TimeZone>()
 
     fun offsetToTimezone(offsetMinutes: Int): TimeZone {
