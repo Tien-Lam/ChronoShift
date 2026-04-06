@@ -178,14 +178,29 @@ object ChronoResultParser {
 
     private val offsetCache = mutableMapOf<Int, TimeZone>()
 
+    fun clearOffsetCache() { offsetCache.clear() }
+
     fun offsetToTimezone(offsetMinutes: Int): TimeZone {
         offsetCache[offsetMinutes]?.let { return it }
 
         val now = java.time.Instant.now()
         val targetOffset = java.time.ZoneOffset.ofTotalSeconds(offsetMinutes * 60)
-        val named = java.time.ZoneId.getAvailableZoneIds()
-            .filter { '/' in it && !it.startsWith("Etc/") }
-            .firstOrNull { java.time.ZoneId.of(it).rules.getOffset(now) == targetOffset }
+        val matches = java.time.ZoneId.getAvailableZoneIds()
+            .filter { '/' in it && !it.startsWith("Etc/") && !it.startsWith("SystemV/") }
+            .filter { java.time.ZoneId.of(it).rules.getOffset(now) == targetOffset }
+
+        // Prefer well-known regions over obscure ones
+        val named = matches.sortedWith(compareBy { id ->
+            when {
+                id.startsWith("America/") -> 0
+                id.startsWith("Europe/") -> 1
+                id.startsWith("Asia/") -> 2
+                id.startsWith("Australia/") -> 3
+                id.startsWith("Pacific/") -> 4
+                id.startsWith("Africa/") -> 5
+                else -> 9
+            }
+        }).firstOrNull()
 
         val tz = if (named != null) {
             TimeZone.of(named)
