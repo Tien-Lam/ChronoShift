@@ -9,6 +9,7 @@ import javax.inject.Singleton
 
 @Singleton
 class TieredTimeExtractor @Inject constructor(
+    private val chronoExtractor: ChronoExtractor,
     private val geminiExtractor: GeminiNanoExtractor,
     private val mlKitExtractor: MlKitEntityExtractor,
     private val regexExtractor: RegexExtractor,
@@ -28,7 +29,7 @@ class TieredTimeExtractor @Inject constructor(
         val unavailable = mutableListOf<String>()
 
         // Fast extractors first — emit immediately
-        for ((extractor, name) in listOf(regexExtractor to "Regex", mlKitExtractor to "ML Kit")) {
+        for ((extractor, name) in listOf(chronoExtractor to "Chrono", regexExtractor to "Regex", mlKitExtractor to "ML Kit")) {
             val result = tryExtract(extractor, text)
             if (result == null) {
                 unavailable.add(name)
