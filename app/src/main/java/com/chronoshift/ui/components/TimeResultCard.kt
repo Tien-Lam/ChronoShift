@@ -89,45 +89,26 @@ fun TimeResultCard(
 
         Spacer(Modifier.height(4.dp))
 
-        // 2. Output: the converted local time — hero element
+        // 2. Output: the converted local time + date — hero element
         AnimatedTimeText(
-            text = result.localDateTime,
+            text = "${result.localDateTime}  ${result.localDate}",
             style = MaterialTheme.typography.displayMedium.copy(fontWeight = FontWeight.Bold),
             color = MaterialTheme.colorScheme.onSurface,
         )
 
-        // 3. Output timezone
-        Text(
-            text = result.localTimezone,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.primary,
-        )
-
-        // 4. Date + method — de-emphasized
-        if (result.localDate.isNotEmpty() || result.method.isNotEmpty()) {
-            Spacer(Modifier.height(4.dp))
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                if (result.localDate.isNotEmpty()) {
-                    Text(
-                        text = result.localDate,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.outline,
-                    )
-                }
-                if (result.localDate.isNotEmpty() && result.method.isNotEmpty()) {
-                    Text(
-                        text = "  ·  ",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.outlineVariant,
-                    )
-                }
-                if (result.method.isNotEmpty()) {
-                    Text(
-                        text = result.method,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
-                    )
-                }
+        // 3. Output timezone + method — secondary
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text = result.localTimezone,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.primary,
+            )
+            if (result.method.isNotEmpty()) {
+                Text(
+                    text = "  ·  ${result.method}",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
+                )
             }
         }
     }
