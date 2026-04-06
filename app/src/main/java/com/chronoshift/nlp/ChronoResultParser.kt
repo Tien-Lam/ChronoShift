@@ -17,7 +17,8 @@ object ChronoResultParser {
     fun parse(json: String, originalText: String, cityResolver: CityResolverInterface?): List<ExtractedTime> {
         val parsed = parseRaw(json)
         val propagated = propagateDates(parsed)
-        val aligned = alignAmbiguousTimezones(propagated)
+        val filtered = propagated.filter { it.confidence > 0.0f } // remove date-only results
+        val aligned = alignAmbiguousTimezones(filtered)
         return resolveCities(aligned, originalText, cityResolver)
     }
 
@@ -39,10 +40,16 @@ object ChronoResultParser {
                 val minute = start.optInt("minute", 0)
                 val second = start.optInt("second", 0)
                 val dateCertain = isCertain?.optBoolean("day", false) ?: false
+                val hourCertain = isCertain?.optBoolean("hour", false) ?: false
 
                 val tzOffsetMinutes = if (start.isNull("timezone")) null else start.getInt("timezone")
                 val tz = tzOffsetMinutes?.let { offsetToTimezone(it) }
                 val dt = LocalDateTime(year, month, day, hour, minute, second)
+
+                // Bare date with no time or timezone (e.g. "April 7" defaulting to noon):
+                // keep for date propagation but mark as date-only.
+                // Detect by: hour is uncertain, uses default value (12), and no timezone.
+                val isDateOnly = !hourCertain && hour == 12 && minute == 0 && tz == null
 
                 parsed.add(ParsedResult(
                     extracted = ExtractedTime(
@@ -50,7 +57,7 @@ object ChronoResultParser {
                         localDateTime = dt,
                         sourceTimezone = tz,
                         originalText = text,
-                        confidence = if (dateCertain) 0.95f else 0.85f,
+                        confidence = if (isDateOnly) 0.0f else if (dateCertain) 0.95f else 0.85f,
                     ),
                     dateCertain = dateCertain,
                 ))

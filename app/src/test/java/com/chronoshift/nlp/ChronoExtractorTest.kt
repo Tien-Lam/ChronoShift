@@ -338,10 +338,10 @@ class ChronoExtractorTest {
     }
 
     @Test
-    fun `missing hour defaults to 12`() {
+    fun `bare date with no time is filtered out`() {
         val json = """[{"text":"April 9","index":0,"start":{"year":2026,"month":4,"day":9},"end":null}]"""
         val results = parse(json)
-        assertEquals(12, results[0].localDateTime!!.hour)
+        assertTrue("Bare date with default noon should be filtered", results.isEmpty())
     }
 
     @Test
