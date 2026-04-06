@@ -36,6 +36,7 @@ android {
         compose = true
     }
 
+
     packaging {
         jniLibs {
             useLegacyPackaging = false
@@ -75,4 +76,5 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.kotlinx.datetime)
     testImplementation(libs.turbine)
+    testImplementation("org.json:json:20240303")
 }
