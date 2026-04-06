@@ -6,7 +6,6 @@ import androidx.compose.material3.MaterialExpressiveTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalContext
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -21,12 +20,8 @@ fun ChronoShiftTheme(
         else -> darkColorScheme()
     }
 
-    CompositionLocalProvider(
-        LocalChronoColors provides ChronoColors.from(colorScheme),
-    ) {
-        MaterialExpressiveTheme(
-            colorScheme = colorScheme,
-            content = content,
-        )
-    }
+    MaterialExpressiveTheme(
+        colorScheme = colorScheme,
+        content = content,
+    )
 }
