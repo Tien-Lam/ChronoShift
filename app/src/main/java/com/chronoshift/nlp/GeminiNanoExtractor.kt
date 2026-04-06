@@ -85,6 +85,8 @@ Extract all timestamps, times, and dates from this text. For each one found, ret
 - "timezone": IANA timezone ID or UTC offset (e.g. "America/New_York" or "+05:30")
 - "original": the exact text that was matched
 
+Important: If multiple times are listed together (e.g. separated by "/" or ","), they likely represent the SAME moment in different timezones. Use this to resolve ambiguous abbreviations like "CST" (could be US Central or China Standard Time). Pick the interpretation that makes all times align to the same instant.
+
 Return ONLY the JSON array, no other text. If no timestamps found, return [].
 
 Text: $text

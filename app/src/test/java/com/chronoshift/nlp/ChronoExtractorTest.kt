@@ -629,4 +629,56 @@ class ChronoExtractorTest {
         val results = parse("[$entries]")
         assertEquals(20, results.size)
     }
+
+    // ========== Ambiguous timezone alignment ==========
+
+    @Test
+    fun `aligns CST to China Standard when majority instant matches`() {
+        // "4:30 AM PT / 7:30 AM ET / 19:30 CST"
+        // PT (-420) and ET (-240) for April 11 both resolve to same UTC instant (11:30 UTC)
+        // CST (-360 US Central) would be 01:30 UTC April 12 — WRONG
+        // CST (+480 China) would be 11:30 UTC — matches the majority
+        val json = """[
+            ${chronoResult("4:30 a.m. PT", day = 11, hour = 4, minute = 30, timezone = -420, dayCertain = true)},
+            ${chronoResult("7:30 a.m. ET", day = 11, hour = 7, minute = 30, timezone = -240)},
+            ${chronoResult("19:30 CST", day = 11, hour = 19, minute = 30, timezone = -360)}
+        ]"""
+        val results = parse(json)
+        assertEquals(3, results.size)
+
+        // First two should have the same instant (11:30 UTC)
+        assertNotNull(results[0].instant)
+        assertNotNull(results[1].instant)
+        assertEquals("PT and ET should be same instant", results[0].instant, results[1].instant)
+
+        // Third should be realigned to match
+        assertNotNull("CST should have instant after alignment", results[2].instant)
+        assertEquals("CST should align to same instant", results[0].instant, results[2].instant)
+    }
+
+    @Test
+    fun `no alignment when less than 2 results share an instant`() {
+        // All different instants — no majority to align to
+        val json = """[
+            ${chronoResult("3pm EST", hour = 15, timezone = -300)},
+            ${chronoResult("5pm PST", hour = 17, timezone = -480)}
+        ]"""
+        val results = parse(json)
+        assertEquals(2, results.size)
+        // Both should keep their original instants (no alignment)
+        assertTrue(results[0].instant != results[1].instant)
+    }
+
+    @Test
+    fun `alignment only affects outliers not majority`() {
+        val json = """[
+            ${chronoResult("9am PT", day = 11, hour = 9, minute = 0, timezone = -420, dayCertain = true)},
+            ${chronoResult("12pm ET", day = 11, hour = 12, minute = 0, timezone = -240)},
+            ${chronoResult("17:00 GMT", day = 11, hour = 17, minute = 0, timezone = 0)}
+        ]"""
+        val results = parse(json)
+        // All three are 16:00 UTC — they should all already align
+        assertEquals(results[0].instant, results[1].instant)
+        assertEquals(results[0].instant, results[2].instant)
+    }
 }

@@ -17,7 +17,8 @@ object ChronoResultParser {
     fun parse(json: String, originalText: String, cityResolver: CityResolverInterface?): List<ExtractedTime> {
         val parsed = parseRaw(json)
         val propagated = propagateDates(parsed)
-        return resolveCities(propagated, originalText, cityResolver)
+        val aligned = alignAmbiguousTimezones(propagated)
+        return resolveCities(aligned, originalText, cityResolver)
     }
 
     fun parseRaw(json: String): List<ParsedResult> {
@@ -94,6 +95,45 @@ object ChronoResultParser {
                 )
             } else {
                 p.extracted
+            }
+        }
+    }
+
+    /**
+     * If multiple results likely represent the same moment (e.g. "4:30 AM PT / 7:30 AM ET / 19:30 CST"),
+     * check if any outlier's timezone offset can be flipped to an alternative interpretation that
+     * aligns it with the majority. Handles ambiguous abbreviations like CST (US Central vs China Standard).
+     */
+    fun alignAmbiguousTimezones(results: List<ExtractedTime>): List<ExtractedTime> {
+        val withInstant = results.filter { it.instant != null }
+        if (withInstant.size < 2) return results
+
+        // Find the most common instant (the "majority")
+        val instantGroups = withInstant.groupBy { it.instant }
+        val majorityInstant = instantGroups.maxByOrNull { it.value.size }
+        if (majorityInstant == null || majorityInstant.value.size < 2) return results
+        val targetInstant = majorityInstant.key!!
+
+        // For each outlier, try flipping its offset to see if it aligns
+        return results.map { ext ->
+            if (ext.instant != null && ext.instant != targetInstant && ext.localDateTime != null) {
+                val localHour = ext.localDateTime.hour
+                val localMinute = ext.localDateTime.minute
+                // What offset would make this local time equal the target instant?
+                val targetEpoch = targetInstant.epochSeconds
+                val localEpoch = ext.localDateTime.toInstant(TimeZone.UTC).epochSeconds
+                val neededOffsetSeconds = localEpoch - targetEpoch
+                val neededOffsetMinutes = (neededOffsetSeconds / 60).toInt()
+
+                // Try to resolve this offset to a named timezone
+                val fixedTz = try { offsetToTimezone(neededOffsetMinutes) } catch (_: Exception) { null }
+                if (fixedTz != null) {
+                    ext.copy(instant = targetInstant, sourceTimezone = fixedTz)
+                } else {
+                    ext
+                }
+            } else {
+                ext
             }
         }
     }
