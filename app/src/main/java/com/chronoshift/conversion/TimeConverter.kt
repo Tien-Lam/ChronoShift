@@ -138,7 +138,7 @@ class TimeConverter @Inject constructor() {
             "Africa/Lagos" to "Lagos",
             "Africa/Nairobi" to "Nairobi",
             "Africa/Johannesburg" to "Johannesburg",
-            "UTC" to null, // Just show "UTC"
+            "UTC" to "GMT",
         )
     }
 }
