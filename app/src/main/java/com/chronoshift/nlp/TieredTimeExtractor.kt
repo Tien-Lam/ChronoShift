@@ -10,6 +10,7 @@ import javax.inject.Singleton
 @Singleton
 class TieredTimeExtractor @Inject constructor(
     private val chronoExtractor: ChronoExtractor,
+    private val liteRtExtractor: LiteRtExtractor,
     private val geminiExtractor: GeminiNanoExtractor,
     private val mlKitExtractor: MlKitEntityExtractor,
     private val regexExtractor: RegexExtractor,
@@ -70,7 +71,17 @@ class TieredTimeExtractor @Inject constructor(
             emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
         }
 
-        // Stage 2: Gemini Nano (background, highest quality)
+        // Stage 2: LiteRT-LM (fast on-device LLM, ~1-2s)
+        val liteRtResult = tryExtract(liteRtExtractor, text)
+        if (liteRtResult != null) {
+            ran.add("LiteRT")
+            merged = ResultMerger.mergeResults(merged, liteRtResult.times, "LiteRT")
+            emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
+        } else {
+            unavailable.add("LiteRT")
+        }
+
+        // Stage 3: Gemini Nano (slowest but highest quality, ~7s)
         val geminiResult = tryExtract(geminiExtractor, text)
         if (geminiResult != null) {
             ran.add("Gemini Nano")

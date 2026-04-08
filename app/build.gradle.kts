@@ -69,6 +69,7 @@ dependencies {
     // ML Kit
     implementation(libs.mlkit.entity.extraction)
     implementation(libs.mlkit.genai.prompt)
+    implementation(libs.litertlm)
     implementation(libs.zipline)
 
     // Test
