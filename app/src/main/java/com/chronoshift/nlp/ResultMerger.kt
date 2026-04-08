@@ -13,6 +13,7 @@ object ResultMerger {
         for (time in incoming) {
             val exact = merged.indexOfFirst { isSameTime(it, time) }
             if (exact >= 0) {
+                // True duplicate — combine method labels
                 val entry = merged[exact]
                 merged[exact] = entry.copy(method = combineMethod(entry.method, method))
                 continue
@@ -20,17 +21,16 @@ object ResultMerger {
             val fuzzy = merged.indexOfFirst { isSameLocalTime(it, time) }
             if (fuzzy >= 0) {
                 val entry = merged[fuzzy]
-                val combined = combineMethod(entry.method, method)
                 if (entry.sourceTimezone == null && time.sourceTimezone != null) {
-                    // Incoming has tz, existing doesn't → upgrade
-                    merged[fuzzy] = time.copy(method = combined)
-                } else if (entry.sourceTimezone != null && time.sourceTimezone != null
-                    && entry.sourceTimezone != time.sourceTimezone) {
-                    // Both have tz but they differ → prefer incoming (later = higher quality)
-                    merged[fuzzy] = time.copy(method = combined)
+                    // Incoming adds timezone that existing lacks — upgrade
+                    merged[fuzzy] = time.copy(method = combineMethod(entry.method, method))
+                } else if (entry.sourceTimezone != null && time.sourceTimezone == null) {
+                    // Existing already has tz, incoming doesn't — keep existing
+                    merged[fuzzy] = entry.copy(method = combineMethod(entry.method, method))
                 } else {
-                    // Same tz or incoming lacks tz → keep existing
-                    merged[fuzzy] = entry.copy(method = combined)
+                    // Both have tz (possibly different) or both lack tz — add as separate
+                    // Let the user see all interpretations
+                    merged.add(time.copy(method = method))
                 }
                 continue
             }
@@ -41,8 +41,6 @@ object ResultMerger {
 
     fun isSameTime(a: ExtractedTime, b: ExtractedTime): Boolean {
         if (a.instant != null && b.instant != null) {
-            // Same instant + same local display = true duplicate
-            // Same instant + different timezone = same moment shown differently, keep both
             return a.instant == b.instant && a.sourceTimezone == b.sourceTimezone
         }
         if (a.localDateTime != null && b.localDateTime != null) {

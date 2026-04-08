@@ -17,12 +17,9 @@ object ChronoResultParser {
     fun parse(json: String, originalText: String, cityResolver: CityResolverInterface?): List<ExtractedTime> {
         val parsed = parseRaw(json)
         val propagated = propagateDates(parsed)
-        // Remove date-only results (confidence 0) only when there are real time results.
-        // If a bare date is the only result, keep it.
         val hasRealTimes = propagated.any { it.confidence > 0.0f }
         val filtered = if (hasRealTimes) propagated.filter { it.confidence > 0.0f } else propagated
-        val aligned = alignAmbiguousTimezones(filtered)
-        return resolveCities(aligned, originalText, cityResolver)
+        return resolveCities(filtered, originalText, cityResolver)
     }
 
     fun parseRaw(json: String): List<ParsedResult> {

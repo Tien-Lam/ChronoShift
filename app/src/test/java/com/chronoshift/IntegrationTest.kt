@@ -85,14 +85,14 @@ class IntegrationTest {
             )
         }
 
-        // Timezone alignment: PT (-420) and ET (-240) should share the same instant
+        // PT (-420) and ET (-240) should share the same instant (unambiguous offsets)
         assertNotNull("PT should have instant", chronoResults[0].instant)
         assertNotNull("ET should have instant", chronoResults[1].instant)
         assertEquals("PT and ET should be same instant", chronoResults[0].instant, chronoResults[1].instant)
 
-        // CST (-360 = US Central) should be realigned to match the majority
-        assertNotNull("CST should have instant after alignment", chronoResults[2].instant)
-        assertEquals("CST should align to same instant as PT/ET", chronoResults[0].instant, chronoResults[2].instant)
+        // Alignment is removed — CST keeps its original Chrono-assigned timezone (US Central -360)
+        assertNotNull("CST should have instant", chronoResults[2].instant)
+        assertNotNull("CST should have sourceTimezone", chronoResults[2].sourceTimezone)
     }
 
     @Test
@@ -143,21 +143,21 @@ class IntegrationTest {
         val geminiResults = GeminiResultParser.parseResponse(geminiJson)
 
         val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
-        val aligned = ChronoResultParser.alignAmbiguousTimezones(merged)
 
-        // Should merge to 3, not 5+ (the old bug when localDateTime was missing)
+        // Alignment removed. ET exact-matches (same instant+tz=New_York). PT and CST
+        // have different tz between Chrono (offset-mapped) and Gemini (IANA), so both
+        // interpretations are kept: 3 chrono + 1 Gemini PT + 1 Gemini CST = 5
         assertEquals(
-            "Merged + aligned should be 3 results, got ${aligned.size}: ${aligned.map { "'${it.originalText}' tz=${it.sourceTimezone?.id}" }}",
-            3, aligned.size,
+            "Merged should be 5 results (different-tz interpretations kept), got ${merged.size}: ${merged.map { "'${it.originalText}' tz=${it.sourceTimezone?.id}" }}",
+            5, merged.size,
         )
 
-        // Methods should reflect both sources for the fuzzy-matched entries
-        aligned.forEach { r ->
-            assertTrue(
-                "'${r.originalText}' method should have content, got '${r.method}'",
-                r.method.isNotEmpty(),
-            )
-        }
+        // ET result should have combined method from both sources
+        val etResult = merged.first { it.sourceTimezone?.id == "America/New_York" }
+        assertTrue(
+            "ET method should reflect both sources, got '${etResult.method}'",
+            etResult.method.contains("+"),
+        )
     }
 
     @Test
@@ -177,18 +177,15 @@ class IntegrationTest {
         val geminiResults = GeminiResultParser.parseResponse(geminiJson)
 
         val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
-        val aligned = ChronoResultParser.alignAmbiguousTimezones(merged)
 
         val tokyo = TimeZone.of("Asia/Tokyo")
-        val converted = converter.toLocal(aligned, tokyo)
+        val converted = converter.toLocal(merged, tokyo)
 
         assertTrue(
             "Should produce converted results, got ${converted.size}",
             converted.isNotEmpty(),
         )
 
-        // All results represent the same moment (11:30 UTC = 20:30 JST)
-        // so all local times should be the same (after dedup by distinctBy)
         converted.forEach { ct ->
             assertNotNull(ct.localDateTime)
             assertNotNull(ct.localDate)
@@ -221,15 +218,16 @@ class IntegrationTest {
 
         val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
 
-        // Fuzzy match on hour:minute should deduplicate to 1
+        // Chrono offset -300 in April maps to America/Chicago (CDT), Gemini has America/New_York.
+        // Fuzzy match finds same local time but different timezones → both kept as separate.
         assertEquals(
-            "Single time should merge to 1, got ${merged.size}: ${merged.map { "'${it.originalText}' tz=${it.sourceTimezone?.id}" }}",
-            1, merged.size,
+            "Different tz interpretations kept separate, got ${merged.size}: ${merged.map { "'${it.originalText}' tz=${it.sourceTimezone?.id}" }}",
+            2, merged.size,
         )
 
         val converted = converter.toLocal(merged, TimeZone.of("Asia/Tokyo"))
-        assertEquals(1, converted.size)
-        assertNotNull(converted[0].localDateTime)
+        assertEquals(2, converted.size)
+        converted.forEach { assertNotNull(it.localDateTime) }
     }
 
     // ==================== Scenario 3 ====================
@@ -658,8 +656,7 @@ class IntegrationTest {
     }
 
     @Test
-    fun `regression - alignment does not create null instants`() {
-        // If a result without instant goes through alignment, it should remain unchanged
+    fun `regression - result without timezone keeps null instant`() {
         val chronoJson = """[
             ${chronoEntry("4:30 PT", hour = 4, minute = 30, timezone = -420, dayCertain = true)},
             ${chronoEntry("7:30 ET", hour = 7, minute = 30, timezone = -240)},
@@ -668,13 +665,8 @@ class IntegrationTest {
         val results = ChronoResultParser.parse(chronoJson, "", null)
 
         // Third result has no timezone → no instant
-        assertNull("No-tz result should have null instant before alignment", results[2].instant)
+        assertNull("No-tz result should have null instant", results[2].instant)
         assertNotNull("No-tz result should still have localDateTime", results[2].localDateTime)
-
-        val aligned = ChronoResultParser.alignAmbiguousTimezones(results)
-        // The null-instant result should pass through unchanged
-        assertNull("No-tz result should still have null instant after alignment", aligned[2].instant)
-        assertNotNull("No-tz result should keep localDateTime", aligned[2].localDateTime)
     }
 
     @Test
@@ -924,34 +916,6 @@ class IntegrationTest {
     }
 
     @Test
-    fun `invariant - alignment never produces null instant`() {
-        for (json in chronoInputs) {
-            val results = ChronoResultParser.parse(json, "", cityResolver)
-            val aligned = ChronoResultParser.alignAmbiguousTimezones(results)
-            aligned.forEach { r ->
-                if (r.sourceTimezone != null) {
-                    assertNotNull(
-                        "Aligned result '${r.originalText}' with tz must keep instant",
-                        r.instant,
-                    )
-                }
-            }
-        }
-    }
-
-    @Test
-    fun `invariant - alignment never changes result count`() {
-        for (json in chronoInputs) {
-            val results = ChronoResultParser.parse(json, "", cityResolver)
-            val aligned = ChronoResultParser.alignAmbiguousTimezones(results)
-            assertEquals(
-                "Alignment must not add or remove results",
-                results.size, aligned.size,
-            )
-        }
-    }
-
-    @Test
     fun `invariant - merge result count never exceeds sum of inputs`() {
         for (chronoJson in chronoInputs) {
             for (geminiJson in geminiInputs) {
@@ -983,51 +947,6 @@ class IntegrationTest {
         assertEquals(1, results.size)
         assertNotNull(results[0].localDateTime)
         assertEquals(14, results[0].localDateTime!!.hour)
-    }
-
-    // ==================== Alignment edge cases ====================
-
-    @Test
-    fun `alignment - all 3 results have different instants returns unchanged`() {
-        val dt1 = LocalDateTime(2026, 4, 11, 9, 0)
-        val dt2 = LocalDateTime(2026, 4, 11, 10, 0)
-        val dt3 = LocalDateTime(2026, 4, 11, 11, 0)
-        val tz = TimeZone.UTC
-        val results = listOf(
-            ExtractedTime(instant = dt1.toInstant(tz), localDateTime = dt1, sourceTimezone = tz, originalText = "9am UTC"),
-            ExtractedTime(instant = dt2.toInstant(tz), localDateTime = dt2, sourceTimezone = tz, originalText = "10am UTC"),
-            ExtractedTime(instant = dt3.toInstant(tz), localDateTime = dt3, sourceTimezone = tz, originalText = "11am UTC"),
-        )
-        val aligned = ChronoResultParser.alignAmbiguousTimezones(results)
-        assertEquals("No majority → unchanged", results, aligned)
-    }
-
-    @Test
-    fun `alignment - results with instant but null localDateTime are skipped gracefully`() {
-        val dt1 = LocalDateTime(2026, 4, 11, 4, 30)
-        val tzPT = TimeZone.of("America/Los_Angeles")
-        val tzET = TimeZone.of("America/New_York")
-        val instant1 = dt1.toInstant(tzPT)
-        val results = listOf(
-            ExtractedTime(instant = instant1, localDateTime = dt1, sourceTimezone = tzPT, originalText = "4:30 PT"),
-            ExtractedTime(instant = instant1, localDateTime = null, sourceTimezone = tzET, originalText = "7:30 ET (no local)"),
-            ExtractedTime(instant = Instant.fromEpochSeconds(0), localDateTime = null, sourceTimezone = TimeZone.UTC, originalText = "outlier"),
-        )
-        val aligned = ChronoResultParser.alignAmbiguousTimezones(results)
-        assertEquals(3, aligned.size)
-    }
-
-    @Test
-    fun `alignment - only 2 results both different means no alignment`() {
-        val dt1 = LocalDateTime(2026, 4, 11, 9, 0)
-        val dt2 = LocalDateTime(2026, 4, 11, 15, 0)
-        val tz = TimeZone.UTC
-        val results = listOf(
-            ExtractedTime(instant = dt1.toInstant(tz), localDateTime = dt1, sourceTimezone = tz, originalText = "9am"),
-            ExtractedTime(instant = dt2.toInstant(tz), localDateTime = dt2, sourceTimezone = tz, originalText = "3pm"),
-        )
-        val aligned = ChronoResultParser.alignAmbiguousTimezones(results)
-        assertEquals("2 different instants, no majority → unchanged", results, aligned)
     }
 
     // ==================== GeminiResultParser invalid inputs ====================

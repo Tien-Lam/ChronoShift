@@ -89,13 +89,14 @@ class ResultMergerTest {
     }
 
     @Test
-    fun `mergeResults - fuzzy match both have different tz prefers incoming`() {
+    fun `mergeResults - fuzzy match both have different tz keeps both`() {
         val existing = listOf(time(localDateTime = baseDt, tz = tokyo, method = "Chrono"))
         val incoming = listOf(time(localDateTime = baseDt, tz = newYork))
         val result = ResultMerger.mergeResults(existing, incoming, "Gemini Nano")
-        assertEquals(1, result.size)
-        // Incoming wins when both have tz but they differ (later extractor = higher quality)
-        assertEquals(newYork, result[0].sourceTimezone)
+        // Both timezones differ — both kept as separate interpretations
+        assertEquals(2, result.size)
+        assertEquals(tokyo, result[0].sourceTimezone)
+        assertEquals(newYork, result[1].sourceTimezone)
     }
 
     @Test
@@ -306,9 +307,12 @@ class ResultMergerTest {
 
         val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
 
+        // ET exact-matches (same instant + same tz New_York). PT has different tz
+        // (Vancouver vs LA) and CST has different tz (Shanghai vs Chicago), so
+        // those are kept as separate interpretations: 3 chrono + 1 Gemini PT + 1 Gemini CST = 5
         assertEquals(
-            "Should merge to 3 results, got ${merged.size}: ${merged.map { "${it.originalText} tz=${it.sourceTimezone?.id}" }}",
-            3, merged.size
+            "Should merge to 5 results (different-tz interpretations kept), got ${merged.size}: ${merged.map { "${it.originalText} tz=${it.sourceTimezone?.id}" }}",
+            5, merged.size
         )
     }
 
