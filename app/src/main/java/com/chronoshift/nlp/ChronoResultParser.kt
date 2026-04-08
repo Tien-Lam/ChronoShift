@@ -106,39 +106,6 @@ object ChronoResultParser {
         }
     }
 
-    /**
-     * If multiple results likely represent the same moment (e.g. "4:30 AM PT / 7:30 AM ET / 19:30 CST"),
-     * check if any outlier's timezone offset can be flipped to an alternative interpretation that
-     * aligns it with the majority. Handles ambiguous abbreviations like CST (US Central vs China Standard).
-     */
-    fun alignAmbiguousTimezones(results: List<ExtractedTime>): List<ExtractedTime> {
-        val withInstant = results.filter { it.instant != null }
-        if (withInstant.size < 2) return results
-
-        val instantGroups = withInstant.groupBy { it.instant }
-        val majorityInstant = instantGroups.maxByOrNull { it.value.size }
-        if (majorityInstant == null || majorityInstant.value.size < 2) return results
-        val targetInstant = majorityInstant.key!!
-
-        return results.map { ext ->
-            if (ext.instant != null && ext.instant != targetInstant && ext.localDateTime != null) {
-                val targetEpoch = targetInstant.epochSeconds
-                val localEpoch = ext.localDateTime.toInstant(TimeZone.UTC).epochSeconds
-                val neededOffsetSeconds = localEpoch - targetEpoch
-                val neededOffsetMinutes = (neededOffsetSeconds / 60).toInt()
-
-                val fixedTz = try { offsetToTimezone(neededOffsetMinutes) } catch (_: Exception) { null }
-                if (fixedTz != null) {
-                    ext.copy(instant = targetInstant, sourceTimezone = fixedTz)
-                } else {
-                    ext
-                }
-            } else {
-                ext
-            }
-        }
-    }
-
     private fun resolveCities(
         results: List<ExtractedTime>,
         originalText: String,
