@@ -34,6 +34,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Send
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.HorizontalDivider
@@ -60,6 +61,7 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun MainScreen(
     viewModel: MainViewModel,
+    onNavigateToSettings: () -> Unit = {},
     modifier: Modifier = Modifier,
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
@@ -90,6 +92,7 @@ fun MainScreen(
                     error = state.error,
                     onInputChanged = viewModel::onInputChanged,
                     onConvert = viewModel::convert,
+                    onNavigateToSettings = onNavigateToSettings,
                 )
             } else {
                 InputLayout(
@@ -98,6 +101,7 @@ fun MainScreen(
                     error = state.error,
                     onInputChanged = viewModel::onInputChanged,
                     onConvert = viewModel::convert,
+                    onNavigateToSettings = onNavigateToSettings,
                 )
             }
         }
@@ -112,15 +116,25 @@ private fun InputLayout(
     error: String?,
     onInputChanged: (String) -> Unit,
     onConvert: () -> Unit,
+    onNavigateToSettings: () -> Unit = {},
 ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 32.dp),
-        contentAlignment = Alignment.Center,
     ) {
+        IconButton(
+            onClick = onNavigateToSettings,
+            modifier = Modifier.align(Alignment.TopEnd),
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.Settings,
+                contentDescription = stringResource(R.string.settings),
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
         Column(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.align(Alignment.Center).fillMaxWidth(),
             horizontalAlignment = Alignment.Start,
         ) {
             TextField(
@@ -195,6 +209,7 @@ private fun ResultsLayout(
     error: String?,
     onInputChanged: (String) -> Unit,
     onConvert: () -> Unit,
+    onNavigateToSettings: () -> Unit = {},
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
         // Compact top bar: input text + action
@@ -227,6 +242,13 @@ private fun ResultsLayout(
                 IconButton(onClick = onConvert) {
                     Icon(Icons.AutoMirrored.Filled.Send, contentDescription = stringResource(R.string.convert))
                 }
+            }
+            IconButton(onClick = onNavigateToSettings) {
+                Icon(
+                    imageVector = Icons.Outlined.Settings,
+                    contentDescription = stringResource(R.string.settings),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
             }
         }
 

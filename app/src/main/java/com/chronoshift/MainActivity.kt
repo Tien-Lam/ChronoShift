@@ -8,7 +8,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.chronoshift.ui.main.MainScreen
+import com.chronoshift.ui.settings.SettingsScreen
 import com.chronoshift.ui.theme.ChronoShiftTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,7 +25,21 @@ class MainActivity : ComponentActivity() {
         setContent {
             ChronoShiftTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    MainScreen(viewModel = hiltViewModel())
+                    val navController = rememberNavController()
+                    NavHost(navController, startDestination = "main") {
+                        composable("main") {
+                            MainScreen(
+                                viewModel = hiltViewModel(),
+                                onNavigateToSettings = { navController.navigate("settings") },
+                            )
+                        }
+                        composable("settings") {
+                            SettingsScreen(
+                                viewModel = hiltViewModel(),
+                                onBack = { navController.popBackStack() },
+                            )
+                        }
+                    }
                 }
             }
         }
