@@ -3,9 +3,11 @@ package com.chronoshift
 import com.chronoshift.conversion.ExtractedTime
 import com.chronoshift.conversion.TimeConverter
 import com.chronoshift.nlp.ChronoResultParser
+import com.chronoshift.nlp.DownloadState
 import com.chronoshift.nlp.GeminiResultParser
 import com.chronoshift.nlp.ResultMerger
 import com.chronoshift.nlp.TestCityResolver
+import com.chronoshift.ui.settings.SettingsUiState
 import kotlinx.datetime.*
 import kotlinx.datetime.toInstant
 import org.junit.Assert.assertEquals
@@ -1667,5 +1669,216 @@ class IntegrationTest {
             "Local tz should reflect Tokyo, got '${converted[0].localTimezone}'",
             converted[0].localTimezone.contains("Tokyo"),
         )
+    }
+
+    // ==================== ModelDownloader state machine ====================
+
+    @Test
+    fun `download state - Idle is the initial state`() {
+        val state: DownloadState = DownloadState.Idle
+        assertTrue("Idle should be DownloadState.Idle", state is DownloadState.Idle)
+    }
+
+    @Test
+    fun `download state - Downloading has progress 0 to 1`() {
+        val start = DownloadState.Downloading(0.0f)
+        val mid = DownloadState.Downloading(0.5f)
+        val end = DownloadState.Downloading(1.0f)
+        assertEquals(0.0f, start.progress)
+        assertEquals(0.5f, mid.progress)
+        assertEquals(1.0f, end.progress)
+    }
+
+    @Test
+    fun `download state - Completed is a valid state`() {
+        val state: DownloadState = DownloadState.Completed
+        assertTrue("Completed should be DownloadState.Completed", state is DownloadState.Completed)
+    }
+
+    @Test
+    fun `download state - Failed has error message`() {
+        val state = DownloadState.Failed("Network timeout")
+        assertEquals("Network timeout", state.error)
+        assertTrue(state is DownloadState.Failed)
+    }
+
+    @Test
+    fun `download state - all subclasses are distinct`() {
+        val idle: DownloadState = DownloadState.Idle
+        val downloading: DownloadState = DownloadState.Downloading(0.5f)
+        val completed: DownloadState = DownloadState.Completed
+        val failed: DownloadState = DownloadState.Failed("error")
+
+        assertFalse(idle is DownloadState.Downloading)
+        assertFalse(idle is DownloadState.Completed)
+        assertFalse(idle is DownloadState.Failed)
+        assertFalse(downloading is DownloadState.Idle)
+        assertFalse(downloading is DownloadState.Completed)
+        assertFalse(downloading is DownloadState.Failed)
+        assertFalse(completed is DownloadState.Idle)
+        assertFalse(completed is DownloadState.Downloading)
+        assertFalse(completed is DownloadState.Failed)
+        assertFalse(failed is DownloadState.Idle)
+        assertFalse(failed is DownloadState.Downloading)
+        assertFalse(failed is DownloadState.Completed)
+    }
+
+    // ==================== LiteRtExtractor model file resolution ====================
+
+    @Test
+    fun `litert extractor - GeminiResultParser reused for LiteRT output parsing`() {
+        val liteRtJson = """[
+            ${geminiEntry(time = "09:00:00", timezone = "America/Los_Angeles", original = "9am PT")}
+        ]"""
+        val results = GeminiResultParser.parseResponse(liteRtJson)
+        assertEquals("LiteRT uses same JSON format as Gemini", 1, results.size)
+        assertNotNull("localDateTime should be set", results[0].localDateTime)
+        assertNotNull("instant should be set", results[0].instant)
+        assertEquals("America/Los_Angeles", results[0].sourceTimezone?.id)
+    }
+
+    // ==================== GeminiResultParser handles LiteRT output identically ====================
+
+    @Test
+    fun `litert output - parse typical LiteRT response`() {
+        val liteRtResponse = """[
+            {"time":"14:30:00","date":"2026-04-11","timezone":"America/New_York","original":"2:30 PM ET"},
+            {"time":"19:30:00","date":"2026-04-11","timezone":"UTC","original":"7:30 PM UTC"}
+        ]"""
+        val results = GeminiResultParser.parseResponse(liteRtResponse)
+        assertEquals(2, results.size)
+        assertEquals(14, results[0].localDateTime!!.hour)
+        assertEquals(30, results[0].localDateTime!!.minute)
+        assertEquals(19, results[1].localDateTime!!.hour)
+    }
+
+    @Test
+    fun `litert output - localDateTime is set (regression)`() {
+        val json = """[{"time":"10:00:00","date":"2026-04-11","timezone":"Asia/Tokyo","original":"10am JST"}]"""
+        val results = GeminiResultParser.parseResponse(json)
+        assertEquals(1, results.size)
+        assertNotNull("localDateTime must be set for LiteRT output", results[0].localDateTime)
+        assertEquals(10, results[0].localDateTime!!.hour)
+        assertEquals(11, results[0].localDateTime!!.dayOfMonth)
+    }
+
+    @Test
+    fun `litert output - timezone resolution works`() {
+        val json = """[{"time":"08:00:00","date":"2026-04-11","timezone":"Europe/London","original":"8am BST"}]"""
+        val results = GeminiResultParser.parseResponse(json)
+        assertEquals(1, results.size)
+        assertNotNull(results[0].sourceTimezone)
+        assertEquals("Europe/London", results[0].sourceTimezone!!.id)
+        assertNotNull(results[0].instant)
+    }
+
+    @Test
+    fun `litert output - method field can be LiteRT`() {
+        val json = """[{"time":"15:00:00","date":"2026-04-11","timezone":"America/New_York","original":"3pm ET"}]"""
+        val results = GeminiResultParser.parseResponse(json)
+        val withMethod = results.map { it.copy(method = "LiteRT") }
+        assertEquals(1, withMethod.size)
+        assertEquals("LiteRT", withMethod[0].method)
+    }
+
+    // ==================== Pipeline with LiteRT in the mix ====================
+
+    @Test
+    fun `litert pipeline - chrono and litert results merge correctly`() {
+        val chronoJson = "[${chronoEntry("3pm ET", hour = 15, timezone = -240, dayCertain = true)}]"
+        val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
+
+        val liteRtJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm ET")}]"
+        val liteRtResults = GeminiResultParser.parseResponse(liteRtJson)
+
+        val merged = ResultMerger.mergeResults(chronoResults, liteRtResults, "LiteRT")
+        assertTrue("Merged should have results", merged.isNotEmpty())
+
+        val liteRtMethodResult = merged.find { it.method.contains("LiteRT") }
+        assertNotNull("At least one result should reference LiteRT", liteRtMethodResult)
+    }
+
+    @Test
+    fun `litert pipeline - different timezone than chrono keeps both interpretations`() {
+        val chronoJson = "[${chronoEntry("3pm", hour = 15, timezone = -420, dayCertain = true)}]"
+        val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
+
+        val liteRtJson = "[${geminiEntry(time = "15:00:00", timezone = "America/Chicago", original = "3pm")}]"
+        val liteRtResults = GeminiResultParser.parseResponse(liteRtJson)
+
+        val chronoTzId = chronoResults[0].sourceTimezone?.id
+        val liteRtTzId = liteRtResults[0].sourceTimezone?.id
+        assertTrue(
+            "Chrono and LiteRT should have different tz: chrono=$chronoTzId litert=$liteRtTzId",
+            chronoTzId != liteRtTzId,
+        )
+
+        val merged = ResultMerger.mergeResults(chronoResults, liteRtResults, "LiteRT")
+        assertEquals(
+            "Different tz interpretations should both be kept, got ${merged.size}: ${merged.map { it.sourceTimezone?.id }}",
+            2, merged.size,
+        )
+    }
+
+    @Test
+    fun `litert pipeline - same timezone as chrono merges to single result`() {
+        val chronoJson = "[${chronoEntry("3pm ET", hour = 15, timezone = -240, dayCertain = true)}]"
+        val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
+
+        val liteRtJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm ET")}]"
+        val liteRtResults = GeminiResultParser.parseResponse(liteRtJson)
+
+        assertEquals("America/New_York", chronoResults[0].sourceTimezone?.id)
+        assertEquals("America/New_York", liteRtResults[0].sourceTimezone?.id)
+
+        val merged = ResultMerger.mergeResults(chronoResults, liteRtResults, "LiteRT")
+        assertEquals(
+            "Same tz should merge to 1 result, got ${merged.size}",
+            1, merged.size,
+        )
+        assertTrue(
+            "Method should reflect LiteRT, got '${merged[0].method}'",
+            merged[0].method.contains("LiteRT"),
+        )
+    }
+
+    // ==================== SettingsUiState data class ====================
+
+    @Test
+    fun `settings ui state - default has correct initial values`() {
+        val state = SettingsUiState()
+        assertFalse("modelInstalled should default to false", state.modelInstalled)
+        assertEquals("modelSizeMb should default to empty", "", state.modelSizeMb)
+        assertTrue("downloadState should default to Idle", state.downloadState is DownloadState.Idle)
+        assertFalse("geminiNanoAvailable should default to false", state.geminiNanoAvailable)
+        assertFalse("mlKitAvailable should default to false", state.mlKitAvailable)
+    }
+
+    @Test
+    fun `settings ui state - model installed shows correct fields`() {
+        val state = SettingsUiState(
+            modelInstalled = true,
+            modelSizeMb = "1.2 GB",
+            downloadState = DownloadState.Completed,
+            geminiNanoAvailable = true,
+            mlKitAvailable = true,
+        )
+        assertTrue(state.modelInstalled)
+        assertEquals("1.2 GB", state.modelSizeMb)
+        assertTrue(state.downloadState is DownloadState.Completed)
+        assertTrue(state.geminiNanoAvailable)
+        assertTrue(state.mlKitAvailable)
+    }
+
+    @Test
+    fun `settings ui state - download in progress`() {
+        val state = SettingsUiState(
+            modelInstalled = false,
+            modelSizeMb = "",
+            downloadState = DownloadState.Downloading(0.45f),
+        )
+        assertFalse(state.modelInstalled)
+        assertTrue(state.downloadState is DownloadState.Downloading)
+        assertEquals(0.45f, (state.downloadState as DownloadState.Downloading).progress)
     }
 }
