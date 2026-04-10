@@ -42,16 +42,6 @@ ANDROID_HOME="$LOCALAPPDATA/Android/Sdk" \
 - Google LiteRT-LM for on-device Gemma inference
 - Kotlinx Datetime, Coroutines, Flow
 
-## Testing
-
-381 unit tests across 11 suites with a 354-pattern timestamp corpus. Tests use real parsers to catch field-population bugs.
-
-```bash
-JAVA_HOME="C:/Program Files/Android/Android Studio/jbr" \
-ANDROID_HOME="$LOCALAPPDATA/Android/Sdk" \
-./gradlew testDebugUnitTest
-```
-
 ## License
 
 [MIT](LICENSE)
