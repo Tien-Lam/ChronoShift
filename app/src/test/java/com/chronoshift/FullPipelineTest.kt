@@ -26,6 +26,7 @@ import java.io.File
 class FullPipelineTest {
 
     private var qjs: QuickJs? = null
+    private var skipReason: String? = null
     private val converter = TimeConverter()
     private val cityResolver = TestCityResolver()
     private val sydney = TimeZone.of("Australia/Sydney")
@@ -38,11 +39,11 @@ class FullPipelineTest {
             val script = File("src/main/assets/chrono.js").readText()
             qjs!!.evaluate(script)
         } catch (e: Throwable) {
-            System.err.println("QuickJS setup failed: ${e::class.simpleName}: ${e.message}")
-            e.cause?.let { System.err.println("  Caused by: ${it::class.simpleName}: ${it.message}") }
+            val chain = generateSequence(e) { it.cause }.joinToString(" → ") { "${it::class.simpleName}: ${it.message}" }
+            skipReason = chain
             qjs = null
         }
-        assumeTrue("QuickJS native library not available — skipping", qjs != null)
+        assumeTrue("QuickJS not available: $skipReason", qjs != null)
     }
 
     @After
