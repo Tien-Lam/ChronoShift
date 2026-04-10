@@ -13,7 +13,6 @@ object ResultMerger {
         for (time in incoming) {
             val exact = merged.indexOfFirst { isSameTime(it, time) }
             if (exact >= 0) {
-                // True duplicate — combine method labels
                 val entry = merged[exact]
                 merged[exact] = entry.copy(method = combineMethod(entry.method, method))
                 continue
@@ -22,14 +21,11 @@ object ResultMerger {
             if (fuzzy >= 0) {
                 val entry = merged[fuzzy]
                 if (entry.sourceTimezone == null && time.sourceTimezone != null) {
-                    // Incoming adds timezone that existing lacks — upgrade
                     merged[fuzzy] = time.copy(method = combineMethod(entry.method, method))
                 } else if (entry.sourceTimezone != null && time.sourceTimezone == null) {
-                    // Existing already has tz, incoming doesn't — keep existing
                     merged[fuzzy] = entry.copy(method = combineMethod(entry.method, method))
                 } else {
                     // Both have tz (possibly different) or both lack tz — add as separate
-                    // Let the user see all interpretations
                     merged.add(time.copy(method = method))
                 }
                 continue
