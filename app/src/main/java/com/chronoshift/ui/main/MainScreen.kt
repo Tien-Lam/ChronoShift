@@ -181,45 +181,50 @@ private fun InputLayout(
                 )
             }
 
-            Row(
-                modifier = Modifier.padding(top = 24.dp),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                AnimatedVisibility(
-                    visible = inputText.isBlank(),
-                    enter = fadeIn() + scaleIn(spring(dampingRatio = Spring.DampingRatioMediumBouncy)),
-                    exit = fadeOut() + scaleOut(),
-                ) {
-                    IconButton(
-                        onClick = {
-                            val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                            val clip = clipboard.primaryClip
-                            if (clip != null && clip.itemCount > 0) {
-                                val pasted = clip.getItemAt(0).coerceToText(context).toString()
-                                if (pasted.isNotBlank()) onInputChanged(pasted)
-                            }
-                        },
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.ContentPaste,
-                            contentDescription = stringResource(R.string.paste),
-                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                    }
-                }
+            val actionState = when {
+                inputText.isBlank() -> ActionState.Paste
+                isProcessing -> ActionState.Loading
+                else -> ActionState.Send
+            }
 
-                AnimatedVisibility(
-                    visible = inputText.isNotBlank(),
-                    enter = fadeIn() + scaleIn(spring(dampingRatio = Spring.DampingRatioMediumBouncy)),
-                    exit = fadeOut() + scaleOut(),
-                ) {
-                    if (isProcessing) {
+            AnimatedContent(
+                targetState = actionState,
+                modifier = Modifier.padding(top = 24.dp),
+                transitionSpec = {
+                    (fadeIn(spring(stiffness = Spring.StiffnessMediumLow)) +
+                        scaleIn(spring(dampingRatio = Spring.DampingRatioMediumBouncy), initialScale = 0.8f))
+                        .togetherWith(fadeOut(spring(stiffness = Spring.StiffnessMedium)) +
+                            scaleOut(targetScale = 0.8f))
+                        .using(SizeTransform(clip = false))
+                },
+                label = "actionButton",
+            ) { state ->
+                when (state) {
+                    ActionState.Paste -> {
+                        IconButton(
+                            onClick = {
+                                val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                                val clip = clipboard.primaryClip
+                                if (clip != null && clip.itemCount > 0) {
+                                    val pasted = clip.getItemAt(0).coerceToText(context).toString()
+                                    if (pasted.isNotBlank()) onInputChanged(pasted)
+                                }
+                            },
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.ContentPaste,
+                                contentDescription = stringResource(R.string.paste),
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                    }
+                    ActionState.Loading -> {
                         LoadingIndicator(
                             modifier = Modifier.size(48.dp),
                             color = MaterialTheme.colorScheme.primary,
                         )
-                    } else {
+                    }
+                    ActionState.Send -> {
                         FilledIconButton(
                             onClick = onConvert,
                             modifier = Modifier.size(56.dp),
@@ -335,6 +340,8 @@ private fun ResultsLayout(
         }
     }
 }
+
+private enum class ActionState { Paste, Send, Loading }
 
 // --- Previews ---
 

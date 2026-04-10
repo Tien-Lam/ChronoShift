@@ -315,6 +315,18 @@ class ChronoExtractorTest {
         assertNull(results[0].sourceTimezone)
     }
 
+    @Test
+    fun `city resolution - in New York resolves to America_New_York`() {
+        // Reproduces production bug: Geocoder resolves "New York" coords then
+        // timezoneFromCoordinates uses lng/15 heuristic giving UTC-5, which during
+        // DST maps to America/Panama instead of America/New_York (UTC-4).
+        // With IanaCityLookup tried first, "new york" maps directly to America/New_York.
+        val json = "[${chronoResult("5 to 6pm 22 August", year = 2026, month = 8, day = 22, hour = 17, dayCertain = true)}]"
+        val results = parse(json, "5 to 6pm 22 August in New York")
+        val tz = results.first { it.originalText == "5 to 6pm 22 August" }.sourceTimezone
+        assertEquals("America/New_York", tz?.id)
+    }
+
     // ========== Edge cases ==========
 
     @Test

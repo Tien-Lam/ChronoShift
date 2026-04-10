@@ -104,8 +104,8 @@ class CityResolver @Inject constructor(
     private val geocoder by lazy { Geocoder(context, Locale.getDefault()) }
 
     override fun resolve(cityQuery: String): TimeZone? {
-        resolveViaGeocoder(cityQuery)?.let { return it }
-        return IanaCityLookup.resolve(cityQuery)
+        IanaCityLookup.resolve(cityQuery)?.let { return it }
+        return resolveViaGeocoder(cityQuery)
     }
 
     private fun resolveViaGeocoder(query: String): TimeZone? {

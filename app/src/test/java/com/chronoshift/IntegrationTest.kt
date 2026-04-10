@@ -2400,4 +2400,59 @@ class IntegrationTest {
         val testResolver = TestCityResolver().resolve("tokyo")
         assertEquals("Both should resolve to same timezone", lookup, testResolver)
     }
+
+    // ==================== Scenario: "5 to 6pm 22 August in New York" ====================
+    // Reproduces two bugs:
+    //   1. Date-only "22 August" span survives merge even when real time results exist
+    //   2. City resolution returns wrong tz (Panama) preventing merge with Gemini result
+
+    @Test
+    fun `scenario - time range with city produces exactly 2 results after merge`() {
+        // ML Kit detects spans: ['6pm', '22 August']
+        // Chrono span parse for '6pm': time-only, no date context
+        val span6pm = chronoEntry("6pm", month = 4, day = 11, hour = 18)
+        val spanResults6pm = ChronoResultParser.parse("[$span6pm]", "6pm", cityResolver)
+
+        // Chrono span parse for '22 August': date-only (confidence 0.0)
+        val span22Aug = chronoEntry("22 August", month = 8, day = 22, hour = 12,
+            dayCertain = true).replace("\"hour\":true", "\"hour\":false")
+        val spanResults22Aug = ChronoResultParser.parse("[$span22Aug]", "22 August", cityResolver)
+        assertEquals("'22 August' should be date-only (confidence 0)", 0.0f, spanResults22Aug[0].confidence)
+
+        val allSpans = spanResults6pm + spanResults22Aug
+
+        // Chrono full-text parse: "5 to 6pm 22 August" (range, no tz from chrono)
+        val fullEntry = chronoEntry("5 to 6pm 22 August", month = 8, day = 22, hour = 17,
+            dayCertain = true,
+            end = chronoEndBlock(month = 8, day = 22, hour = 18))
+        val fullResults = ChronoResultParser.parse("[$fullEntry]", "5 to 6pm 22 August in New York", cityResolver)
+
+        // City resolution should give America/New_York
+        assertTrue(
+            "Full-text results should have timezone from city resolution",
+            fullResults.any { it.sourceTimezone?.id == "America/New_York" },
+        )
+
+        // Merge span + full results
+        val merged = ChronoResultParser.mergeSpanAndFullResults(allSpans, fullResults)
+
+        // Now simulate Gemini Nano producing the correct result
+        val geminiJson = geminiEntry(
+            time = "17:00", date = "2026-08-22",
+            timezone = "America/New_York", original = "5 to 6pm 22 August in New York",
+        )
+        val geminiResults = LlmResultParser.parseResponse("[$geminiJson]")
+        assertEquals(1, geminiResults.size)
+
+        // Final merge via ResultMerger
+        val finalResults = ResultMerger.mergeResults(merged, geminiResults, "Gemini Nano")
+
+        // Should only have 2 results: the range start (5pm) and end (6pm)
+        // NOT a date-only "22 August", NOT a duplicate with wrong timezone
+        assertEquals(
+            "Expected 2 results (range start + end), got ${finalResults.size}: " +
+                finalResults.map { "${it.originalText} tz=${it.sourceTimezone?.id}" },
+            2, finalResults.size,
+        )
+    }
 }

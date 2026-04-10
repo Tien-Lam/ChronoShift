@@ -180,7 +180,8 @@ object ChronoResultParser {
                 merged.add(r)
             }
         }
-        return merged
+        val hasRealTimes = merged.any { it.confidence > 0.0f }
+        return if (hasRealTimes) merged.filter { it.confidence > 0.0f } else merged
     }
 
     private val PREFERRED_ZONE_LIST = listOf(

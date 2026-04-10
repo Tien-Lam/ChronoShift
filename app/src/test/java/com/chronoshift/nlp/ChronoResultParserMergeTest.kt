@@ -141,6 +141,49 @@ class ChronoResultParserMergeTest {
         assertEquals(newYork, result[0].sourceTimezone)
     }
 
+    // ========== date-only filtering after merge ==========
+
+    @Test
+    fun `date-only span result filtered when real time results exist after merge`() {
+        // Reproduces: "5 to 6pm 22 August in New York"
+        // ML Kit detects spans ['6pm', '22 August']. Chrono parses '22 August' as date-only
+        // (confidence=0.0). Full-text parse returns real time results. After merge, the
+        // date-only result should be filtered out since better results exist.
+        val dateOnly = ExtractedTime(
+            localDateTime = LocalDateTime(2026, 8, 22, 12, 0),
+            originalText = "22 August",
+            confidence = 0.0f,
+        )
+        val spanTime = ExtractedTime(
+            localDateTime = LocalDateTime(2026, 4, 11, 18, 0),
+            originalText = "6pm",
+            confidence = 0.85f,
+        )
+        val fullStart = ExtractedTime(
+            localDateTime = LocalDateTime(2026, 8, 22, 17, 0),
+            sourceTimezone = newYork,
+            originalText = "5 to 6pm 22 August",
+            confidence = 0.85f,
+        )
+        val fullEnd = ExtractedTime(
+            localDateTime = LocalDateTime(2026, 8, 22, 18, 0),
+            sourceTimezone = newYork,
+            originalText = "5 to 6pm 22 August (end)",
+            confidence = 0.85f,
+        )
+
+        val result = ChronoResultParser.mergeSpanAndFullResults(
+            listOf(dateOnly, spanTime),
+            listOf(fullStart, fullEnd),
+        )
+
+        val dateOnlyResults = result.filter { it.confidence == 0.0f }
+        assertEquals(
+            "Date-only '22 August' should be filtered when real time results exist",
+            0, dateOnlyResults.size,
+        )
+    }
+
     // ========== offsetToTimezone with instant ==========
 
     @Test
