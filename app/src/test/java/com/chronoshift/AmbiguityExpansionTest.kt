@@ -651,4 +651,339 @@ class AmbiguityExpansionTest {
         val c = fullPipeline("[${chrono("2pm NZST", hour = 14, timezone = 720)}]")
         assertEquals(1, c.size)
     }
+
+    // =====================================================================
+    // 16. Real-world event timestamps (verbatim from websites)
+    // Source: Summer Game Fest, WWDC, World Cup, Eventbrite, Meetup, etc.
+    // =====================================================================
+
+    // --- Summer Game Fest: "2pm PT / 5pm ET / 9pm GMT" ---
+
+    @Test
+    fun `Summer Game Fest - 2pm PT 5pm ET 9pm GMT`() {
+        val json = """[
+            ${chrono("2pm PT", month = 6, day = 5, hour = 14, timezone = -420, dayCertain = true)},
+            ${chrono("5pm ET", month = 6, day = 5, hour = 17, timezone = -240, dayCertain = true)},
+            ${chrono("9pm GMT", month = 6, day = 5, hour = 21, timezone = 0, dayCertain = true)}
+        ]"""
+        val c = fullPipeline(json)
+        // PT, ET zone-based; GMT unambiguous → no expansion → 3
+        assertEquals(3, c.size)
+    }
+
+    // --- Summer Game Fest: "June 03 9:30 pm CST / 6:30 am PT" — CST is ambiguous! ---
+
+    @Test
+    fun `Summer Game Fest - 9 30pm CST 6 30am PT - CST expands`() {
+        val json = """[
+            ${chrono("9:30 pm CST", month = 6, day = 3, hour = 21, minute = 30, timezone = -360, dayCertain = true)},
+            ${chrono("6:30 am PT", month = 6, day = 3, hour = 6, minute = 30, timezone = -420, dayCertain = true)}
+        ]"""
+        val c = fullPipeline(json)
+        // PT: no expansion. CST: expands to US Central + China = 2.
+        // Total: 1 + 2 = 3
+        assertEquals(3, c.size)
+    }
+
+    // --- Summer Game Fest: "June 3 2:30 pm BST / 6:30 am PT" — BST is ambiguous ---
+
+    @Test
+    fun `Summer Game Fest - 2 30pm BST 6 30am PT - BST expands`() {
+        val json = """[
+            ${chrono("2:30 pm BST", month = 6, day = 3, hour = 14, minute = 30, timezone = 60, dayCertain = true)},
+            ${chrono("6:30 am PT", month = 6, day = 3, hour = 6, minute = 30, timezone = -420, dayCertain = true)}
+        ]"""
+        val c = fullPipeline(json)
+        // BST expands (British Summer + Bangladesh). PT doesn't.
+        assertEquals(3, c.size)
+    }
+
+    // --- Summer Game Fest cross-midnight: "June 7 12:00 am BST / 4:00 pm PT" ---
+
+    @Test
+    fun `Summer Game Fest - midnight BST vs 4pm PT previous day - BST expands`() {
+        val json = """[
+            ${chrono("12:00 am BST", month = 6, day = 7, hour = 0, timezone = 60, dayCertain = true)},
+            ${chrono("4:00 pm PT", month = 6, day = 6, hour = 16, timezone = -420, dayCertain = true)}
+        ]"""
+        val c = fullPipeline(json)
+        // BST midnight expands to British + Bangladesh midnight → 2
+        // PT: 1
+        // Total: 3
+        assertEquals(3, c.size)
+    }
+
+    // --- World Cup: "3:00 PM ET" with BST/IST alternatives across dates ---
+
+    @Test
+    fun `World Cup - 3pm ET 8pm BST - BST expands`() {
+        val json = """[
+            ${chrono("3:00 PM ET", month = 7, day = 19, hour = 15, timezone = -240, dayCertain = true)},
+            ${chrono("8:00 PM BST", month = 7, day = 19, hour = 20, timezone = 60, dayCertain = true)}
+        ]"""
+        val c = fullPipeline(json)
+        // ET: zone-based, no expansion. BST: ambiguous → expands.
+        assertEquals(3, c.size)
+    }
+
+    @Test
+    fun `World Cup - 12 30 AM IST next day - IST expands`() {
+        // "12:30 AM IST on July 20" — IST is ambiguous (India +5:30 vs Ireland +1)
+        val json = "[${chrono("12:30 AM IST", month = 7, day = 20, hour = 0, minute = 30, timezone = 330, dayCertain = true)}]"
+        val c = fullPipeline(json)
+        assertEquals("IST expands to India + Ireland", 2, c.size)
+        // India: 00:30 UTC+5:30 = 19:00 UTC Jul 19
+        // Ireland: 00:30 UTC+1 = 23:30 UTC Jul 19
+        // In Sydney these should be very different times
+        val times = c.map { it.localDateTime }.toSet()
+        assertEquals(2, times.size)
+    }
+
+    @Test
+    fun `World Cup - 5am AEST next day - unambiguous`() {
+        val json = "[${chrono("5:00 AM AEST", month = 7, day = 20, hour = 5, timezone = 600, dayCertain = true)}]"
+        val c = fullPipeline(json)
+        assertEquals("AEST unambiguous", 1, c.size)
+    }
+
+    // --- Apple WWDC: "10 a.m. PT" / "June 8 at 10:00 a.m. Pacific Time" ---
+
+    @Test
+    fun `Apple WWDC - 10am PT June 8`() {
+        val c = fullPipeline(
+            "[${chrono("10 a.m. PT", month = 6, day = 8, hour = 10, timezone = -420, dayCertain = true)}]",
+            "June 8 at 10:00 a.m. Pacific Time",
+        )
+        assertEquals(1, c.size)
+    }
+
+    @Test
+    fun `Apple deadline - 11 59pm PT March 30`() {
+        val c = fullPipeline(
+            "[${chrono("11:59 p.m. PT", month = 3, day = 30, hour = 23, minute = 59, timezone = -420, dayCertain = true)}]",
+        )
+        assertEquals(1, c.size)
+    }
+
+    // --- NVIDIA GTC: "Monday, March 16, 11:00 a.m. PT" ---
+
+    @Test
+    fun `NVIDIA GTC - 11am PT March 16`() {
+        val c = fullPipeline(
+            "[${chrono("11:00 a.m. PT", month = 3, day = 16, hour = 11, timezone = -420, dayCertain = true)}]",
+            "Monday, March 16, 11:00 a.m. PT",
+        )
+        assertEquals(1, c.size)
+    }
+
+    @Test
+    fun `NVIDIA GTC - 2 30pm PT`() {
+        val c = fullPipeline(
+            "[${chrono("2:30 p.m. PT", month = 3, day = 19, hour = 14, minute = 30, timezone = -420, dayCertain = true)}]",
+        )
+        assertEquals(1, c.size)
+    }
+
+    // --- Eventbrite: "Sat, Apr 25 • 12:00 AM CDT" ---
+
+    @Test
+    fun `Eventbrite - midnight CDT`() {
+        val c = fullPipeline(
+            "[${chrono("12:00 AM CDT", month = 4, day = 25, hour = 0, timezone = -300, dayCertain = true)}]",
+        )
+        assertEquals("CDT is unambiguous", 1, c.size)
+    }
+
+    @Test
+    fun `Eventbrite - 9am PDT`() {
+        val c = fullPipeline(
+            "[${chrono("9:00 AM PDT", month = 5, day = 14, hour = 9, timezone = -420, dayCertain = true)}]",
+        )
+        assertEquals(1, c.size)
+    }
+
+    // --- Meetup: "Sat, Apr 11 · 10:00 AM AEST" ---
+
+    @Test
+    fun `Meetup - 10am AEST`() {
+        val c = fullPipeline(
+            "[${chrono("10:00 AM AEST", month = 4, day = 11, hour = 10, timezone = 600, dayCertain = true)}]",
+        )
+        assertEquals(1, c.size)
+    }
+
+    @Test
+    fun `Meetup - 6 30pm AEST monthly`() {
+        val c = fullPipeline(
+            "[${chrono("6:30 PM AEST", month = 4, day = 24, hour = 18, minute = 30, timezone = 600, dayCertain = true)}]",
+        )
+        assertEquals(1, c.size)
+    }
+
+    // --- Festival of Rail: "18:00 UTC" (24h + UTC) ---
+
+    @Test
+    fun `Festival of Rail - 18 00 UTC`() {
+        val c = fullPipeline(
+            "[${chrono("18:00 UTC", month = 2, day = 5, hour = 18, timezone = 0, dayCertain = true)}]",
+        )
+        assertEquals(1, c.size)
+    }
+
+    @Test
+    fun `Festival of Rail - 19 00 UTC`() {
+        val c = fullPipeline(
+            "[${chrono("19:00 UTC", month = 2, day = 3, hour = 19, timezone = 0, dayCertain = true)}]",
+        )
+        assertEquals(1, c.size)
+    }
+
+    // --- Nintendo Direct: "6 a.m. PT/9 a.m. ET" (no space around slash) ---
+
+    @Test
+    fun `Nintendo Direct - 6am PT 9am ET`() {
+        val json = """[
+            ${chrono("6 a.m. PT", month = 2, day = 5, hour = 6, timezone = -420, dayCertain = true)},
+            ${chrono("9 a.m. ET", month = 2, day = 5, hour = 9, timezone = -300, dayCertain = true)}
+        ]"""
+        val c = fullPipeline(json)
+        assertEquals(2, c.size)
+    }
+
+    // --- Google I/O: "10 a.m. PT" ---
+
+    @Test
+    fun `Google IO - 10am PT May 19`() {
+        val c = fullPipeline(
+            "[${chrono("10 a.m. PT", month = 5, day = 19, hour = 10, timezone = -420, dayCertain = true)}]",
+            "May 19 at 10 a.m. PT",
+        )
+        assertEquals(1, c.size)
+    }
+
+    // --- Zoom invite: "02:00 PM Eastern Time (US and Canada)" ---
+
+    @Test
+    fun `Zoom invite - 2pm Eastern Time`() {
+        val c = fullPipeline(
+            "[${chrono("02:00 PM", month = 4, day = 10, hour = 14, timezone = -240, dayCertain = true)}]",
+            "Apr 10, 2026 02:00 PM Eastern Time (US and Canada)",
+        )
+        assertEquals(1, c.size)
+    }
+
+    // --- Google Calendar: "Wednesday, April 15, 2026 10:00am - 11:00am (Eastern Daylight Time)" ---
+
+    @Test
+    fun `Google Calendar - 10am to 11am EDT range`() {
+        val json = "[${chrono("10:00am - 11:00am", month = 4, day = 15, hour = 10, timezone = -240, dayCertain = true,
+            end = chronoEnd(month = 4, day = 15, hour = 11, timezone = -240))}]"
+        val c = fullPipeline(json)
+        assertEquals("Range: start + end", 2, c.size)
+    }
+
+    // =====================================================================
+    // 17. Gaming multi-timezone with ALL ambiguous TZs
+    // =====================================================================
+
+    @Test
+    fun `gaming showcase - PT ET BST CEST - BST expands`() {
+        // "10:00AM PT / 1:00PM ET / 6:00PM BST / 7:00PM CEST"
+        val json = """[
+            ${chrono("10:00AM PT", hour = 10, timezone = -420, dayCertain = true)},
+            ${chrono("1:00PM ET", hour = 13, timezone = -240, dayCertain = true)},
+            ${chrono("6:00PM BST", hour = 18, timezone = 60, dayCertain = true)},
+            ${chrono("7:00PM CEST", hour = 19, timezone = 120, dayCertain = true)}
+        ]"""
+        val c = fullPipeline(json)
+        // PT(1) + ET(1) + BST(2, ambiguous) + CEST(1) = 5
+        assertEquals(5, c.size)
+    }
+
+    @Test
+    fun `gaming showcase with CST and BST - both expand`() {
+        // "6:30 am PT / 9:30 pm CST / 2:30 pm BST"
+        val json = """[
+            ${chrono("6:30 am PT", hour = 6, minute = 30, timezone = -420, dayCertain = true)},
+            ${chrono("9:30 pm CST", hour = 21, minute = 30, timezone = -360, dayCertain = true)},
+            ${chrono("2:30 pm BST", hour = 14, minute = 30, timezone = 60, dayCertain = true)}
+        ]"""
+        val c = fullPipeline(json)
+        // PT(1) + CST(2) + BST(2) = 5
+        assertEquals(5, c.size)
+    }
+
+    @Test
+    fun `five timezone gaming announcement with JST`() {
+        // "10:30 pm JST / 6:30 am PT / 9:30 am ET / 2:30 pm BST / 3:30 pm CEST"
+        val json = """[
+            ${chrono("10:30 pm JST", hour = 22, minute = 30, timezone = 540, dayCertain = true)},
+            ${chrono("6:30 am PT", hour = 6, minute = 30, timezone = -420, dayCertain = true)},
+            ${chrono("9:30 am ET", hour = 9, minute = 30, timezone = -240, dayCertain = true)},
+            ${chrono("2:30 pm BST", hour = 14, minute = 30, timezone = 60, dayCertain = true)},
+            ${chrono("3:30 pm CEST", hour = 15, minute = 30, timezone = 120, dayCertain = true)}
+        ]"""
+        val c = fullPipeline(json)
+        // JST(1) + PT(1) + ET(1) + BST(2) + CEST(1) = 6
+        assertEquals(6, c.size)
+    }
+
+    // =====================================================================
+    // 18. Sports schedule cross-date with ambiguous TZs
+    // =====================================================================
+
+    @Test
+    fun `World Cup final - ET BST CET IST AEST JST spanning two dates`() {
+        val json = """[
+            ${chrono("3:00 PM ET", month = 7, day = 19, hour = 15, timezone = -240, dayCertain = true)},
+            ${chrono("8:00 PM BST", month = 7, day = 19, hour = 20, timezone = 60, dayCertain = true)},
+            ${chrono("9:00 PM CET", month = 7, day = 19, hour = 21, timezone = 60, dayCertain = true)},
+            ${chrono("12:30 AM IST", month = 7, day = 20, hour = 0, minute = 30, timezone = 330, dayCertain = true)},
+            ${chrono("5:00 AM AEST", month = 7, day = 20, hour = 5, timezone = 600, dayCertain = true)},
+            ${chrono("4:00 AM JST", month = 7, day = 20, hour = 4, timezone = 540, dayCertain = true)}
+        ]"""
+        val c = fullPipeline(json)
+        // ET(1) + BST(2) + CET(1) + IST(2) + AEST(1) + JST(1) = 8
+        assertEquals(8, c.size)
+    }
+
+    @Test
+    fun `match kickoff - 9pm ET with IST next day`() {
+        val json = """[
+            ${chrono("9:00 PM ET", month = 6, day = 20, hour = 21, timezone = -240, dayCertain = true)},
+            ${chrono("6:30 AM IST", month = 6, day = 21, hour = 6, minute = 30, timezone = 330, dayCertain = true)}
+        ]"""
+        val c = fullPipeline(json)
+        // ET(1) + IST(2) = 3
+        assertEquals(3, c.size)
+    }
+
+    // =====================================================================
+    // 19. Edge: ambiguous TZ at midnight / day boundary
+    // =====================================================================
+
+    @Test
+    fun `CST midnight - US vs China give different Sydney times`() {
+        val json = "[${chrono("12:00 AM CST", month = 4, day = 15, hour = 0, timezone = -360, dayCertain = true)}]"
+        val c = fullPipeline(json)
+        assertEquals(2, c.size)
+        // US: midnight UTC-6 = 06:00 UTC = 4pm AEST
+        // China: midnight UTC+8 = 16:00 UTC prev day = 2am AEST
+        val times = c.map { it.localDateTime }.toSet()
+        assertEquals("Midnight CST in US vs China should produce different Sydney times", 2, times.size)
+    }
+
+    @Test
+    fun `BST midnight - British vs Bangladesh`() {
+        val json = "[${chrono("12:00 AM BST", month = 6, day = 7, hour = 0, timezone = 60, dayCertain = true)}]"
+        val c = fullPipeline(json)
+        assertEquals(2, c.size)
+    }
+
+    @Test
+    fun `IST 11 59pm - near midnight India vs Ireland`() {
+        val json = "[${chrono("11:59 PM IST", hour = 23, minute = 59, timezone = 330)}]"
+        val c = fullPipeline(json)
+        assertEquals(2, c.size)
+    }
 }
