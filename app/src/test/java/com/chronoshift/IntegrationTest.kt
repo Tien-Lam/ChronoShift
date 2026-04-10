@@ -2149,6 +2149,53 @@ class IntegrationTest {
             converted[2].localDateTime.contains("11:30"))
     }
 
+    @Test
+    fun `device run - full pipeline with expansion produces 4 results (CST splits into US and China)`() {
+        // Same device JSON as the merge test above
+        val chronoJson = """[{"text":"April 11 at 4:30 a.m. PT","index":0,"start":{"year":2026,"month":4,"day":11,"hour":4,"minute":30,"second":0,"timezone":-420,"isCertain":{"year":false,"month":true,"day":true,"hour":true,"minute":true,"timezone":true}},"end":null},{"text":"7:30 a.m. ET","index":27,"start":{"year":2026,"month":4,"day":10,"hour":7,"minute":30,"second":0,"timezone":-240,"isCertain":{"year":false,"month":false,"day":false,"hour":true,"minute":true,"timezone":true}},"end":null},{"text":"19:30 CST","index":42,"start":{"year":2026,"month":4,"day":10,"hour":19,"minute":30,"second":0,"timezone":-360,"isCertain":{"year":false,"month":false,"day":false,"hour":true,"minute":true,"timezone":true}},"end":null}]"""
+        val chronoResults = ChronoResultParser.parse(chronoJson, "April 11 at 4:30 a.m. PT / 7:30 a.m. ET / 19:30 CST", null)
+
+        val geminiJson = """[{"time":"04:30","date":"2026-04-11","timezone":"America/Los_Angeles","original":"April 11 at 4:30 a.m. PT"},{"time":"07:30","date":"2026-04-11","timezone":"America/New_York","original":"April 11 at 7:30 a.m. ET"},{"time":"19:30","date":"2026-04-11","timezone":"America/Chicago","original":"19:30 CST"}]"""
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
+
+        var merged = ResultMerger.mergeResults(emptyList(), chronoResults, "ML Kit + Chrono")
+        merged = ResultMerger.mergeResults(merged, geminiResults, "Gemini Nano")
+        assertEquals("Merge should produce 3 before expansion", 3, merged.size)
+
+        // Expand ambiguous abbreviations (CST = US Central + China Standard)
+        val expanded = ChronoResultParser.expandAmbiguous(merged)
+        assertEquals(
+            "Should be 4 after expansion (PT + ET + CST US + CST China), got: " +
+                expanded.map { "${it.originalText} tz=${it.sourceTimezone?.id}" },
+            4, expanded.size,
+        )
+
+        // PT and ET unchanged
+        assertEquals("America/Los_Angeles", expanded[0].sourceTimezone!!.id)
+        assertEquals("America/New_York", expanded[1].sourceTimezone!!.id)
+
+        // CST: two interpretations with different instants
+        val cstResults = expanded.filter { it.originalText == "19:30 CST" }
+        assertEquals(2, cstResults.size)
+        val cstTzIds = cstResults.map { it.sourceTimezone!!.id }.toSet()
+        assertTrue("Should have US Central zone", cstTzIds.any { it.startsWith("America/") })
+        assertTrue("Should have China zone", cstTzIds.any { it.startsWith("Asia/") })
+
+        // Convert to Sydney — CST US and CST China should produce different local times
+        val sydney = TimeZone.of("Australia/Sydney")
+        val converted = converter.toLocal(expanded, sydney)
+        assertEquals(4, converted.size)
+
+        // PT and ET both convert to 9:30pm Sydney (same instant)
+        assertTrue(converted[0].localDateTime.contains("9:30"))
+        assertTrue(converted[1].localDateTime.contains("9:30"))
+
+        // CST US (UTC-6) → 11:30am Sydney, CST China (UTC+8) → 9:30pm Sydney
+        val cstCards = converted.filter { it.originalText == "19:30 CST" }
+        val cstLocalTimes = cstCards.map { it.localDateTime }.toSet()
+        assertEquals("Two CST cards should have different local times", 2, cstLocalTimes.size)
+    }
+
     // ==================== CST CDT regression (device run 2026-04-10) ====================
     // Bug: Gemini returns America/Chicago for "19:30 CST". In April, Chicago is CDT (UTC-5).
     // computeInstant used CDT offset → instant 00:30Z. Should use CST (UTC-6) → instant 01:30Z.
