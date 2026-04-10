@@ -176,8 +176,13 @@ object ChronoResultParser {
 
         for ((abbr, group) in groups) {
             val offsets = TimezoneAbbreviations.ambiguousOffsets(abbr) ?: continue
-            val coveredOffsets = group.mapNotNull {
-                TimezoneAbbreviations.standardOffsetMinutes(it.sourceTimezone!!)
+            val coveredOffsets = offsets.filter { offset ->
+                group.any { result ->
+                    val tz = result.sourceTimezone!!
+                    val inst = result.instant
+                    (inst != null && offsetToTimezone(offset, inst) == tz) ||
+                        TimezoneAbbreviations.standardOffsetMinutes(tz) == offset
+                }
             }.toSet()
 
             val template = group.first()

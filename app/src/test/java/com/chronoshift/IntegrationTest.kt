@@ -2455,4 +2455,50 @@ class IntegrationTest {
             2, finalResults.size,
         )
     }
+
+    // ==================== Scenario: "19:30 CST" ambiguous expansion ====================
+    // CST = US Central Standard (UTC-6) or China Standard (UTC+8).
+    // Both interpretations should be shown per merge philosophy.
+
+    @Test
+    fun `scenario - CST ambiguity expands to both US Central and China Standard`() {
+        // Chrono returns offset -360 for CST → US Central interpretation
+        val chronoJson = "[${chronoEntry("19:30 CST", hour = 19, minute = 30, timezone = -360)}]"
+        val chronoResults = ChronoResultParser.parse(chronoJson, "19:30 CST", null)
+        assertEquals(1, chronoResults.size)
+
+        // Gemini agrees: US Central
+        val geminiJson = geminiEntry(
+            time = "19:30", date = "2026-04-11",
+            timezone = "America/Chicago", original = "19:30 CST",
+        )
+        val geminiResults = LlmResultParser.parseResponse("[$geminiJson]")
+        assertEquals(1, geminiResults.size)
+
+        // Merge Chrono + Gemini
+        val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
+
+        // Expand ambiguous abbreviations
+        val expanded = ChronoResultParser.expandAmbiguous(merged)
+
+        // Should have 2 interpretations: US Central and China Standard
+        assertEquals(
+            "CST should expand to 2 interpretations, got: " +
+                expanded.map { "${it.originalText} tz=${it.sourceTimezone?.id}" },
+            2, expanded.size,
+        )
+
+        // Verify both timezone families are represented
+        val tzIds = expanded.map { it.sourceTimezone!!.id }.toSet()
+        assertTrue("Should have a US timezone", tzIds.any { it.startsWith("America/") })
+        assertTrue("Should have an Asian timezone", tzIds.any { it.startsWith("Asia/") })
+
+        // Verify they convert to different local times
+        val converted = converter.toLocal(expanded, TimeZone.of("Australia/Sydney"))
+        assertEquals(2, converted.size)
+        assertTrue(
+            "Different offsets should produce different local times in Sydney",
+            converted[0].localDateTime != converted[1].localDateTime,
+        )
+    }
 }
