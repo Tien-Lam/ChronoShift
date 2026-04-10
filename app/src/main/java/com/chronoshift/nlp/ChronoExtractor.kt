@@ -12,7 +12,7 @@ import javax.inject.Singleton
 class ChronoExtractor @Inject constructor(
     @param:ApplicationContext private val context: Context,
     private val cityResolver: CityResolverInterface,
-) : TimeExtractor {
+) : SpanAwareTimeExtractor {
 
     private var engine: QuickJs? = null
 
@@ -25,7 +25,7 @@ class ChronoExtractor @Inject constructor(
         return chronoParse(text, "Chrono")
     }
 
-    suspend fun extractWithSpans(text: String, spans: List<DateTimeSpan>): ExtractionResult {
+    override suspend fun extractWithSpans(text: String, spans: List<DateTimeSpan>): ExtractionResult {
         if (spans.isEmpty()) return extract(text)
 
         val qjs = engine ?: initEngine() ?: return ExtractionResult(emptyList(), "ML Kit + Chrono")

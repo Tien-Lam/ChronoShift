@@ -21,7 +21,7 @@ data class DateTimeSpan(
 @Singleton
 class MlKitEntityExtractor @Inject constructor(
     @param:ApplicationContext private val context: Context,
-) {
+) : SpanDetector {
     private val extractor by lazy {
         EntityExtraction.getClient(
             EntityExtractorOptions.Builder(EntityExtractorOptions.ENGLISH).build()
@@ -30,7 +30,7 @@ class MlKitEntityExtractor @Inject constructor(
 
     private var modelReady = false
 
-    suspend fun isAvailable(): Boolean {
+    override suspend fun isAvailable(): Boolean {
         if (modelReady) return true
         return suspendCancellableCoroutine { cont ->
             extractor.downloadModelIfNeeded()
@@ -42,7 +42,7 @@ class MlKitEntityExtractor @Inject constructor(
         }
     }
 
-    suspend fun detectSpans(text: String): List<DateTimeSpan> {
+    override suspend fun detectSpans(text: String): List<DateTimeSpan> {
         if (!isAvailable()) return emptyList()
 
         val annotations = suspendCancellableCoroutine { cont ->

@@ -262,13 +262,18 @@ class ResultMergerTest {
     }
 
     @Test
-    fun `combineMethod - empty existing returns combined with new`() {
-        assertEquals(" + Regex", ResultMerger.combineMethod("", "Regex"))
+    fun `combineMethod - empty existing returns new`() {
+        assertEquals("Regex", ResultMerger.combineMethod("", "Regex"))
     }
 
     @Test
     fun `combineMethod - empty new returns existing`() {
         assertEquals("Chrono", ResultMerger.combineMethod("Chrono", ""))
+    }
+
+    @Test
+    fun `combineMethod - both empty returns empty`() {
+        assertEquals("", ResultMerger.combineMethod("", ""))
     }
 
     // ========== Device scenario reproduction ==========

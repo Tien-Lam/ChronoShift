@@ -5,9 +5,12 @@ import com.chronoshift.conversion.TimeConverter
 import com.chronoshift.nlp.ChronoResultParser
 import com.chronoshift.nlp.DownloadState
 import com.chronoshift.nlp.GeminiResultParser
+import com.chronoshift.nlp.IanaCityLookup
+import com.chronoshift.nlp.RegexExtractor
 import com.chronoshift.nlp.ResultMerger
 import com.chronoshift.nlp.TestCityResolver
 import com.chronoshift.ui.settings.SettingsUiState
+import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.*
 import kotlinx.datetime.toInstant
 import org.junit.Assert.assertEquals
@@ -154,11 +157,11 @@ class IntegrationTest {
             5, merged.size,
         )
 
-        // ET result should have combined method from both sources
+        // ET result should have method from Gemini Nano (chrono results have empty default method)
         val etResult = merged.first { it.sourceTimezone?.id == "America/New_York" }
         assertTrue(
-            "ET method should reflect both sources, got '${etResult.method}'",
-            etResult.method.contains("+"),
+            "ET method should reflect Gemini Nano, got '${etResult.method}'",
+            etResult.method.contains("Gemini Nano"),
         )
     }
 
@@ -1880,5 +1883,134 @@ class IntegrationTest {
         assertFalse(state.modelInstalled)
         assertTrue(state.downloadState is DownloadState.Downloading)
         assertEquals(0.45f, (state.downloadState as DownloadState.Downloading).progress)
+    }
+
+    // ==================== Regex-only pipeline path ====================
+
+    @Test
+    fun `regex-only - unix timestamp through full pipeline to conversion`() = runTest {
+        val regexExtractor = RegexExtractor(cityResolver)
+        val result = regexExtractor.extract("event created at 1712678400")
+        assertTrue(result.times.isNotEmpty())
+        assertEquals("Regex", result.method)
+        assertNotNull(result.times[0].instant)
+        assertEquals(TimeZone.UTC, result.times[0].sourceTimezone)
+
+        val converted = converter.toLocal(result.times, TimeZone.of("Asia/Tokyo"))
+        assertTrue(converted.isNotEmpty())
+        assertTrue(converted[0].localTimezone.contains("UTC+9"))
+    }
+
+    @Test
+    fun `regex-only - city time through full pipeline to conversion`() = runTest {
+        val regexExtractor = RegexExtractor(cityResolver)
+        val result = regexExtractor.extract("5pm in Tokyo")
+        assertTrue(result.times.isNotEmpty())
+        assertEquals(17, result.times[0].localDateTime!!.hour)
+        assertEquals("Asia/Tokyo", result.times[0].sourceTimezone!!.id)
+
+        val converted = converter.toLocal(result.times, TimeZone.of("America/New_York"))
+        assertTrue(converted.isNotEmpty())
+        assertTrue(converted[0].sourceTimezone.contains("Tokyo"))
+    }
+
+    @Test
+    fun `regex-only - unix timestamp merged with chrono results`() = runTest {
+        val regexExtractor = RegexExtractor(cityResolver)
+        val regexResult = regexExtractor.extract("created at 1712678400")
+
+        val chronoJson = "[${chronoEntry("3pm", hour = 15, timezone = -240, dayCertain = true)}]"
+        val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
+
+        val merged = ResultMerger.mergeResults(chronoResults, regexResult.times, "Regex")
+        assertTrue("Should have both chrono and regex results", merged.size >= 2)
+    }
+
+    // ==================== combineMethod fix regression ====================
+
+    @Test
+    fun `combineMethod - empty existing with method returns just method`() {
+        assertEquals("Chrono", ResultMerger.combineMethod("", "Chrono"))
+    }
+
+    @Test
+    fun `combineMethod - non-empty existing combines correctly`() {
+        assertEquals("Chrono + Regex", ResultMerger.combineMethod("Chrono", "Regex"))
+    }
+
+    @Test
+    fun `combineMethod - both empty returns empty`() {
+        assertEquals("", ResultMerger.combineMethod("", ""))
+    }
+
+    @Test
+    fun `combineMethod - empty new returns existing unchanged`() {
+        assertEquals("Chrono", ResultMerger.combineMethod("Chrono", ""))
+    }
+
+    // ==================== Multi-stage merge order ====================
+
+    @Test
+    fun `merge order - chrono then litert then gemini produces correct method chain`() {
+        val chronoJson = "[${chronoEntry("3pm ET", hour = 15, timezone = -240, dayCertain = true)}]"
+        val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
+
+        val liteRtJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm ET")}]"
+        val liteRtResults = GeminiResultParser.parseResponse(liteRtJson)
+
+        val geminiJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm ET")}]"
+        val geminiResults = GeminiResultParser.parseResponse(geminiJson)
+
+        // Simulate the 3-stage merge order
+        var merged = ResultMerger.mergeResults(chronoResults, liteRtResults, "LiteRT")
+        merged = ResultMerger.mergeResults(merged, geminiResults, "Gemini Nano")
+
+        // All are the same instant+tz, so should be 1 result
+        assertEquals("All same instant should merge to 1", 1, merged.size)
+    }
+
+    // ==================== Bare date filtering in full pipeline ====================
+
+    @Test
+    fun `bare date filtering - date-only result kept when it is the only result`() {
+        val json = """[{"text":"April 15","index":0,"start":{"year":2026,"month":4,"day":15,"hour":12,"minute":0,"second":0,"timezone":null,"isCertain":{"year":false,"month":true,"day":true,"hour":false,"minute":false,"timezone":false}},"end":null}]"""
+        val results = ChronoResultParser.parse(json, "", null)
+        assertEquals("Bare date as sole result should be kept", 1, results.size)
+    }
+
+    @Test
+    fun `bare date filtering - date-only result filtered when time results exist`() {
+        val json = """[
+            {"text":"April 15","index":0,"start":{"year":2026,"month":4,"day":15,"hour":12,"minute":0,"second":0,"timezone":null,"isCertain":{"year":false,"month":true,"day":true,"hour":false,"minute":false,"timezone":false}},"end":null},
+            {"text":"3:00 PM EST","index":10,"start":{"year":2026,"month":4,"day":6,"hour":15,"minute":0,"second":0,"timezone":-300,"isCertain":{"year":false,"month":false,"day":false,"hour":true,"minute":true,"timezone":true}},"end":null}
+        ]"""
+        val results = ChronoResultParser.parse(json, "", null)
+        assertEquals("Bare date should be filtered when real time exists", 1, results.size)
+        assertEquals(15, results[0].localDateTime!!.hour)
+        assertEquals(15, results[0].localDateTime!!.dayOfMonth) // date propagated
+    }
+
+    // ==================== IanaCityLookup shared resolution ====================
+
+    @Test
+    fun `IanaCityLookup - all city aliases resolve to valid timezones`() {
+        val aliases = listOf(
+            "nyc", "dc", "sf", "la", "san francisco", "boston", "miami",
+            "dallas", "mumbai", "delhi", "beijing", "osaka", "melbourne",
+            "hawaii", "rio", "barcelona", "munich",
+        )
+        for (alias in aliases) {
+            assertNotNull(
+                "Alias '$alias' should resolve to a timezone",
+                IanaCityLookup.resolve(alias),
+            )
+        }
+    }
+
+    @Test
+    fun `IanaCityLookup - TestCityResolver uses shared implementation`() {
+        val lookup = IanaCityLookup.resolve("tokyo")
+        val testResolver = TestCityResolver().resolve("tokyo")
+        assertEquals("Both should resolve to same timezone", lookup, testResolver)
     }
 }

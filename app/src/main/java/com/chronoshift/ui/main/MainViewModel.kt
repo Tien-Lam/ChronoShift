@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.chronoshift.conversion.TimeConverter
 import com.chronoshift.nlp.StreamingTimeExtractor
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,6 +21,8 @@ class MainViewModel @Inject constructor(
 
     private val _uiState = MutableStateFlow(MainUiState())
     val uiState: StateFlow<MainUiState> = _uiState.asStateFlow()
+
+    private var extractionJob: Job? = null
 
     fun onInputChanged(text: String) {
         _uiState.update { it.copy(inputText = text) }
@@ -37,7 +40,8 @@ class MainViewModel @Inject constructor(
     }
 
     private fun processText(text: String) {
-        viewModelScope.launch {
+        extractionJob?.cancel()
+        extractionJob = viewModelScope.launch {
             _uiState.update { it.copy(isProcessing = true, error = null, results = emptyList()) }
             try {
                 var gotResults = false
@@ -45,12 +49,10 @@ class MainViewModel @Inject constructor(
                     if (result.times.isNotEmpty()) {
                         gotResults = true
                         val converted = timeConverter.toLocal(result.times)
-                        _uiState.update { it.copy(isProcessing = false, results = converted) }
+                        _uiState.update { it.copy(results = converted) }
                     }
                 }
-                if (!gotResults) {
-                    _uiState.update { it.copy(isProcessing = false, error = "no_timestamp") }
-                }
+                _uiState.update { it.copy(isProcessing = false, error = if (!gotResults) "no_timestamp" else null) }
             } catch (e: Exception) {
                 _uiState.update { it.copy(isProcessing = false, error = e.message) }
             }

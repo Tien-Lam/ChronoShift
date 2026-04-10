@@ -83,7 +83,7 @@ class GeminiNanoExtractor @Inject constructor() : TimeExtractor {
         return """
 Extract all timestamps, times, and dates from this text. For each one found, return a JSON array of objects with these fields:
 - "time": the time in 24-hour format "HH:mm"
-- "date": the date in "YYYY-MM-DD" format. Today is $today. Use the current year ($today.substring(0, 4)) if no year is specified.
+- "date": the date in "YYYY-MM-DD" format. Today is $today. Use the current year (${today.substring(0, 4)}) if no year is specified.
 - "timezone": IANA timezone ID or UTC offset (e.g. "America/New_York" or "+05:30")
 - "original": the exact text that was matched
 
