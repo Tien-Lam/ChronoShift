@@ -185,13 +185,14 @@ object ChronoResultParser {
                 }
             }.toSet()
 
-            val template = group.first()
-            val dt = template.localDateTime!!
             for (missingOffset in offsets) {
                 if (missingOffset in coveredOffsets) continue
-                val altInstant = dt.toInstant(TimezoneAbbreviations.fixedOffsetTimezone(missingOffset))
-                val altTz = offsetToTimezone(missingOffset, altInstant)
-                expanded.add(template.copy(instant = altInstant, sourceTimezone = altTz))
+                for (template in group) {
+                    val dt = template.localDateTime!!
+                    val altInstant = dt.toInstant(TimezoneAbbreviations.fixedOffsetTimezone(missingOffset))
+                    val altTz = offsetToTimezone(missingOffset, altInstant)
+                    expanded.add(template.copy(instant = altInstant, sourceTimezone = altTz))
+                }
             }
         }
 
