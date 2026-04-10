@@ -2,6 +2,9 @@ package com.chronoshift.nlp
 
 import android.util.Log
 import com.chronoshift.conversion.ExtractedTime
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.selects.select
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -29,29 +32,37 @@ class TieredTimeExtractor @Inject constructor(
         val ran = mutableListOf<String>()
         val unavailable = mutableListOf<String>()
 
-        // Stage 1: Fast extractors
-
-        // ML Kit detects spans (where datetimes are in the text)
-        val spans = try {
-            if (mlKitExtractor.isAvailable()) mlKitExtractor.detectSpans(text) else emptyList()
-        } catch (e: Exception) {
-            Log.w(TAG, "ML Kit span detection failed", e)
-            emptyList()
-        }
-        if (spans.isNotEmpty()) Log.d(TAG, "ML Kit: ${spans.size} span(s): ${spans.map { "'${it.text}'" }}")
-
-        // Chrono: parse with ML Kit span hints (or full text if no spans)
-        val chronoResult = try {
-            if (chronoExtractor.isAvailable()) {
-                if (spans.isNotEmpty()) {
-                    chronoExtractor.extractWithSpans(text, spans)
-                } else {
-                    chronoExtractor.extract(text)
+        // Stage 1: Fast extractors (ML Kit + Chrono + Regex)
+        // Run ML Kit span detection concurrently with Chrono init to cut cold-start latency
+        val (chronoResult, regexResult) = coroutineScope {
+            val spansDeferred = async {
+                try {
+                    if (mlKitExtractor.isAvailable()) mlKitExtractor.detectSpans(text) else emptyList()
+                } catch (e: Exception) {
+                    Log.w(TAG, "ML Kit span detection failed", e)
+                    emptyList()
                 }
-            } else null
-        } catch (e: Exception) {
-            Log.w(TAG, "Chrono failed", e)
-            null
+            }
+
+            val regexDeferred = async { tryExtract(regexExtractor, text) }
+
+            val chronoDeferred = async {
+                try {
+                    if (!chronoExtractor.isAvailable()) return@async null
+                    val spans = spansDeferred.await()
+                    if (spans.isNotEmpty()) {
+                        Log.d(TAG, "ML Kit: ${spans.size} span(s): ${spans.map { "'${it.text}'" }}")
+                        chronoExtractor.extractWithSpans(text, spans)
+                    } else {
+                        chronoExtractor.extract(text)
+                    }
+                } catch (e: Exception) {
+                    Log.w(TAG, "Chrono failed", e)
+                    null
+                }
+            }
+
+            Pair(chronoDeferred.await(), regexDeferred.await())
         }
 
         if (chronoResult != null && chronoResult.times.isNotEmpty()) {
@@ -59,8 +70,6 @@ class TieredTimeExtractor @Inject constructor(
             merged = ResultMerger.mergeResults(merged, chronoResult.times, chronoResult.method)
         }
 
-        // Regex: structured formats (ISO 8601, unix, tz abbreviations)
-        val regexResult = tryExtract(regexExtractor, text)
         if (regexResult != null) {
             ran.add("Regex")
             merged = ResultMerger.mergeResults(merged, regexResult.times, "Regex")
@@ -71,23 +80,53 @@ class TieredTimeExtractor @Inject constructor(
             emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
         }
 
-        // Stage 2: LiteRT-LM (fast on-device LLM, ~1-2s)
-        val liteRtResult = tryExtract(liteRtExtractor, text)
-        if (liteRtResult != null) {
-            ran.add("LiteRT")
-            merged = ResultMerger.mergeResults(merged, liteRtResult.times, "LiteRT")
-            emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
-        } else {
-            unavailable.add("LiteRT")
-        }
+        // Stage 2+3: LiteRT and Gemini Nano run concurrently.
+        // Emit as each completes so the faster one (LiteRT ~1-2s) shows before the slower one (Gemini ~7s).
+        coroutineScope {
+            val liteRtDeferred = async { tryExtract(liteRtExtractor, text) }
+            val geminiDeferred = async { tryExtract(geminiExtractor, text) }
 
-        // Stage 3: Gemini Nano (slowest but highest quality, ~7s)
-        val geminiResult = tryExtract(geminiExtractor, text)
-        if (geminiResult != null) {
-            ran.add("Gemini Nano")
-            merged = ResultMerger.mergeResults(merged, geminiResult.times, "Gemini Nano")
-        } else {
-            unavailable.add("Gemini Nano")
+            // Wait for whichever finishes first
+            val first = select {
+                liteRtDeferred.onAwait { "litert" to it }
+                geminiDeferred.onAwait { "gemini" to it }
+            }
+
+            if (first.first == "litert") {
+                val liteRtResult = first.second
+                if (liteRtResult != null) {
+                    ran.add("LiteRT")
+                    merged = ResultMerger.mergeResults(merged, liteRtResult.times, "LiteRT")
+                    emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
+                } else {
+                    unavailable.add("LiteRT")
+                }
+                // Now wait for Gemini
+                val geminiResult = geminiDeferred.await()
+                if (geminiResult != null) {
+                    ran.add("Gemini Nano")
+                    merged = ResultMerger.mergeResults(merged, geminiResult.times, "Gemini Nano")
+                } else {
+                    unavailable.add("Gemini Nano")
+                }
+            } else {
+                val geminiResult = first.second
+                if (geminiResult != null) {
+                    ran.add("Gemini Nano")
+                    merged = ResultMerger.mergeResults(merged, geminiResult.times, "Gemini Nano")
+                    emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
+                } else {
+                    unavailable.add("Gemini Nano")
+                }
+                // Now wait for LiteRT
+                val liteRtResult = liteRtDeferred.await()
+                if (liteRtResult != null) {
+                    ran.add("LiteRT")
+                    merged = ResultMerger.mergeResults(merged, liteRtResult.times, "LiteRT")
+                } else {
+                    unavailable.add("LiteRT")
+                }
+            }
         }
 
         Log.d(TAG, "Final: ${merged.size} result(s) via ${buildLabel(ran, unavailable)}")

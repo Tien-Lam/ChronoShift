@@ -49,12 +49,10 @@ class MainViewModel @Inject constructor(
                     if (result.times.isNotEmpty()) {
                         gotResults = true
                         val converted = timeConverter.toLocal(result.times)
-                        _uiState.update { it.copy(isProcessing = false, results = converted) }
+                        _uiState.update { it.copy(results = converted) }
                     }
                 }
-                if (!gotResults) {
-                    _uiState.update { it.copy(isProcessing = false, error = "no_timestamp") }
-                }
+                _uiState.update { it.copy(isProcessing = false, error = if (!gotResults) "no_timestamp" else null) }
             } catch (e: Exception) {
                 _uiState.update { it.copy(isProcessing = false, error = e.message) }
             }
