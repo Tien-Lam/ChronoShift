@@ -153,9 +153,18 @@ class TimezoneAbbreviationsTest {
     }
 
     @Test
-    fun `extractAbbreviation - matches zone-based PT and ET`() {
+    fun `extractAbbreviation - matches zone-based PT and ET when uppercase`() {
         assertEquals("PT", TimezoneAbbreviations.extractAbbreviation("4:30 a.m. PT"))
         assertEquals("ET", TimezoneAbbreviations.extractAbbreviation("7:30 a.m. ET"))
+        assertEquals("AT", TimezoneAbbreviations.extractAbbreviation("3pm AT"))
+    }
+
+    @Test
+    fun `extractAbbreviation - zone-based requires uppercase in source`() {
+        assertNull(TimezoneAbbreviations.extractAbbreviation("at 3pm"))
+        assertNull(TimezoneAbbreviations.extractAbbreviation("meet at noon"))
+        // fixed-offset abbreviations are still case-insensitive
+        assertEquals("EST", TimezoneAbbreviations.extractAbbreviation("3pm est"))
     }
 
     // ========== fixedOffsetTimezone ==========

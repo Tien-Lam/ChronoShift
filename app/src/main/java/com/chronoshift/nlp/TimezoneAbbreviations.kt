@@ -61,6 +61,7 @@ object TimezoneAbbreviations {
         "ET" to "America/New_York",
         "PT" to "America/Los_Angeles",
         "MT" to "America/Denver",
+        "AT" to "America/Halifax",
     )
 
     fun ambiguousOffsets(abbreviation: String): List<Int>? = AMBIGUOUS[abbreviation.uppercase()]
@@ -81,7 +82,11 @@ object TimezoneAbbreviations {
         val upper = text.uppercase()
         for (match in WORD_PATTERN.findAll(upper)) {
             val candidate = match.groupValues[1]
-            if (candidate in UNAMBIGUOUS || candidate in AMBIGUOUS || candidate in ZONE_BASED) return candidate
+            if (candidate in UNAMBIGUOUS || candidate in AMBIGUOUS) return candidate
+            if (candidate in ZONE_BASED) {
+                val original = text.substring(match.range)
+                if (original == candidate) return candidate // must be uppercase in source
+            }
         }
         return null
     }
