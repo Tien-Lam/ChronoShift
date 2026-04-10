@@ -37,7 +37,9 @@ class FullPipelineTest {
             qjs = QuickJs.create()
             val script = File("src/main/assets/chrono.js").readText()
             qjs!!.evaluate(script)
-        } catch (_: Throwable) {
+        } catch (e: Throwable) {
+            System.err.println("QuickJS setup failed: ${e::class.simpleName}: ${e.message}")
+            e.cause?.let { System.err.println("  Caused by: ${it::class.simpleName}: ${it.message}") }
             qjs = null
         }
         assumeTrue("QuickJS native library not available — skipping", qjs != null)
