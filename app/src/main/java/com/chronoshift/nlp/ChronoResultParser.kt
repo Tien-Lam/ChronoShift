@@ -161,6 +161,38 @@ object ChronoResultParser {
         }
     }
 
+    fun expandAmbiguous(results: List<ExtractedTime>): List<ExtractedTime> {
+        val expanded = results.toMutableList()
+
+        // Group by ambiguous abbreviation found in original text
+        val groups = mutableMapOf<String, MutableList<ExtractedTime>>()
+        for (result in results) {
+            if (result.sourceTimezone == null || result.localDateTime == null) continue
+            val abbr = TimezoneAbbreviations.extractAbbreviation(result.originalText) ?: continue
+            if (TimezoneAbbreviations.isAmbiguous(abbr)) {
+                groups.getOrPut(abbr) { mutableListOf() }.add(result)
+            }
+        }
+
+        for ((abbr, group) in groups) {
+            val offsets = TimezoneAbbreviations.ambiguousOffsets(abbr) ?: continue
+            val coveredOffsets = group.mapNotNull {
+                TimezoneAbbreviations.standardOffsetMinutes(it.sourceTimezone!!)
+            }.toSet()
+
+            val template = group.first()
+            val dt = template.localDateTime!!
+            for (missingOffset in offsets) {
+                if (missingOffset in coveredOffsets) continue
+                val altInstant = dt.toInstant(TimezoneAbbreviations.fixedOffsetTimezone(missingOffset))
+                val altTz = offsetToTimezone(missingOffset, altInstant)
+                expanded.add(template.copy(instant = altInstant, sourceTimezone = altTz))
+            }
+        }
+
+        return expanded
+    }
+
     fun mergeSpanAndFullResults(
         spanResults: List<ExtractedTime>,
         fullResults: List<ExtractedTime>,

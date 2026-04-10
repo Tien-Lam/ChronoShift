@@ -410,8 +410,8 @@ class PipelineConcurrencyTest {
         val emissions = ext.extractStream("test").toList()
         val last = emissions.last()
         assertEquals(
-            "All same tz → all merge → 3 results",
-            3, last.times.size,
+            "All same tz → merge to 3, CST expansion adds China Standard → 4 results",
+            4, last.times.size,
         )
     }
 

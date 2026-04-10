@@ -54,6 +54,8 @@ object TimezoneAbbreviations {
         "AST" to listOf(-240, 180),    // Atlantic Standard / Arabia Standard
     )
 
+    fun ambiguousOffsets(abbreviation: String): List<Int>? = AMBIGUOUS[abbreviation.uppercase()]
+
     fun resolveOffset(abbreviation: String): Int? {
         val upper = abbreviation.uppercase()
         if (upper in AMBIGUOUS) return null
@@ -94,7 +96,7 @@ object TimezoneAbbreviations {
         return dt.toInstant(tz)
     }
 
-    private fun standardOffsetMinutes(tz: TimeZone): Int? {
+    fun standardOffsetMinutes(tz: TimeZone): Int? {
         return try {
             val javaZone = java.time.ZoneId.of(tz.id)
             val reference = java.time.Instant.parse("2025-01-01T00:00:00Z")

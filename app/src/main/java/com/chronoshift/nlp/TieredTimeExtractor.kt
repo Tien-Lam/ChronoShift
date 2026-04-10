@@ -130,6 +130,7 @@ class TieredTimeExtractor @Inject constructor(
             }
         }
 
+        merged = ChronoResultParser.expandAmbiguous(merged)
         logMerged("Final", merged)
         emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
     }
