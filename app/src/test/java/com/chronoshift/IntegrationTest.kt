@@ -4,7 +4,7 @@ import com.chronoshift.conversion.ExtractedTime
 import com.chronoshift.conversion.TimeConverter
 import com.chronoshift.nlp.ChronoResultParser
 import com.chronoshift.nlp.DownloadState
-import com.chronoshift.nlp.GeminiResultParser
+import com.chronoshift.nlp.LlmResultParser
 import com.chronoshift.nlp.IanaCityLookup
 import com.chronoshift.nlp.RegexExtractor
 import com.chronoshift.nlp.ResultMerger
@@ -25,7 +25,7 @@ import org.junit.Test
  * Integration tests that trace REAL data flow through the NLP pipeline.
  *
  * Every test feeds realistic JSON through actual parsers — no manual ExtractedTime construction.
- * This catches field-population bugs (like the localDateTime fix in GeminiResultParser).
+ * This catches field-population bugs (like the localDateTime fix in LlmResultParser).
  */
 class IntegrationTest {
 
@@ -108,7 +108,7 @@ class IntegrationTest {
             ${geminiEntry(time = "19:30:00", timezone = "America/Chicago", original = "19:30 CST")}
         ]"""
 
-        val geminiResults = GeminiResultParser.parseResponse(geminiJson)
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
         assertEquals("Gemini should produce 3 results", 3, geminiResults.size)
 
         // Regression test: Gemini results must have localDateTime set (the bug we fixed)
@@ -145,16 +145,17 @@ class IntegrationTest {
             ${geminiEntry(time = "07:30:00", timezone = "America/New_York", original = "7:30 a.m. ET")},
             ${geminiEntry(time = "19:30:00", timezone = "America/Chicago", original = "19:30 CST")}
         ]"""
-        val geminiResults = GeminiResultParser.parseResponse(geminiJson)
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
 
         val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
 
-        // Alignment removed. ET exact-matches (same instant+tz=New_York). PT and CST
-        // have different tz between Chrono (offset-mapped) and Gemini (IANA), so both
-        // interpretations are kept: 3 chrono + 1 Gemini PT + 1 Gemini CST = 5
+        // PT: Chrono and Gemini produce same instant (both UTC-7 in April) → merged via isSameInstant.
+        // ET: exact match (same instant + same tz New_York) → merged.
+        // CST: Gemini corrected to standard offset -360 (matching Chrono) → merged.
+        // Total: 1 PT + 1 ET + 1 CST = 3
         assertEquals(
-            "Merged should be 5 results (different-tz interpretations kept), got ${merged.size}: ${merged.map { "'${it.originalText}' tz=${it.sourceTimezone?.id}" }}",
-            5, merged.size,
+            "Merged should be 3 results (all pairs merge), got ${merged.size}: ${merged.map { "'${it.originalText}' tz=${it.sourceTimezone?.id}" }}",
+            3, merged.size,
         )
 
         // ET result should have method from Gemini Nano (chrono results have empty default method)
@@ -179,7 +180,7 @@ class IntegrationTest {
             ${geminiEntry(time = "07:30:00", timezone = "America/New_York", original = "7:30 a.m. ET")},
             ${geminiEntry(time = "19:30:00", timezone = "America/Chicago", original = "19:30 CST")}
         ]"""
-        val geminiResults = GeminiResultParser.parseResponse(geminiJson)
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
 
         val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
 
@@ -212,7 +213,7 @@ class IntegrationTest {
         val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
 
         val geminiJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm EST")}]"
-        val geminiResults = GeminiResultParser.parseResponse(geminiJson)
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
 
         assertEquals(1, chronoResults.size)
         assertEquals(1, geminiResults.size)
@@ -223,15 +224,17 @@ class IntegrationTest {
 
         val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
 
-        // Chrono offset -300 in April maps to America/Chicago (CDT), Gemini has America/New_York.
-        // Fuzzy match finds same local time but different timezones → both kept as separate.
+        // Both extractors produce the same instant for "3pm EST" (UTC-5 = 8pm UTC):
+        // - Chrono: raw offset -300 → instant from fixed offset → zone matched at instant
+        // - Gemini: "EST" abbreviation corrected to fixed offset -300 → same instant + matching zone
+        // Merger sees same instant → merges to 1 result.
         assertEquals(
-            "Different tz interpretations kept separate, got ${merged.size}: ${merged.map { "'${it.originalText}' tz=${it.sourceTimezone?.id}" }}",
-            2, merged.size,
+            "3pm EST should produce 1 result, got ${merged.size}: ${merged.map { "'${it.originalText}' tz=${it.sourceTimezone?.id}" }}",
+            1, merged.size,
         )
 
         val converted = converter.toLocal(merged, TimeZone.of("Asia/Tokyo"))
-        assertEquals(2, converted.size)
+        assertEquals(1, converted.size)
         converted.forEach { assertNotNull(it.localDateTime) }
     }
 
@@ -258,7 +261,7 @@ class IntegrationTest {
             ${geminiEntry(time = "12:00:00", timezone = "America/New_York", original = "12:00 pm EDT")},
             ${geminiEntry(time = "12:50:00", timezone = "America/New_York", original = "12:50 pm EDT")}
         ]"""
-        val geminiResults = GeminiResultParser.parseResponse(geminiJson)
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
         assertEquals(2, geminiResults.size)
 
         val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
@@ -319,7 +322,7 @@ class IntegrationTest {
             time = "04:30:00", date = "2024-04-11",
             timezone = "America/Los_Angeles", original = "April 11 at 4:30 a.m. PT",
         )}]"
-        val geminiResults = GeminiResultParser.parseResponse(geminiJson)
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
         assertEquals(2024, geminiResults[0].localDateTime!!.year)
 
         // Chrono returns correct year 2026
@@ -346,7 +349,7 @@ class IntegrationTest {
             time = "10:00:00", date = "2024-04-11",
             timezone = "America/Los_Angeles", original = "10:00 a.m. PT (wrong year)",
         )}]"
-        val geminiResults = GeminiResultParser.parseResponse(geminiJson)
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
 
         val chronoJson = "[${chronoEntry(
             "4:30 a.m. PT", year = 2026, hour = 4, minute = 30, timezone = -420, dayCertain = true,
@@ -365,7 +368,7 @@ class IntegrationTest {
     @Test
     fun `scenario 6 - gemini with timezone has localDateTime and instant`() {
         val json = "[${geminiEntry(time = "14:30:00", timezone = "America/New_York", original = "2:30 PM ET")}]"
-        val results = GeminiResultParser.parseResponse(json)
+        val results = LlmResultParser.parseResponse(json)
         assertEquals(1, results.size)
         assertNotNull("Gemini with tz must have localDateTime", results[0].localDateTime)
         assertNotNull("Gemini with tz must have instant", results[0].instant)
@@ -376,7 +379,7 @@ class IntegrationTest {
     @Test
     fun `scenario 6 - gemini without timezone has localDateTime but no instant`() {
         val json = "[${geminiEntry(time = "14:30:00", timezone = "", original = "2:30 PM")}]"
-        val results = GeminiResultParser.parseResponse(json)
+        val results = LlmResultParser.parseResponse(json)
         assertEquals(1, results.size)
         assertNotNull("Gemini without tz must have localDateTime", results[0].localDateTime)
         assertNull("Gemini without tz must NOT have instant", results[0].instant)
@@ -421,12 +424,12 @@ class IntegrationTest {
         )
         assertEquals(0.95f, chronoCertain[0].confidence)
 
-        val geminiWithTz = GeminiResultParser.parseResponse(
+        val geminiWithTz = LlmResultParser.parseResponse(
             "[${geminiEntry(time = "12:00:00", timezone = "UTC", original = "test")}]",
         )
         assertEquals(0.9f, geminiWithTz[0].confidence)
 
-        val geminiNoTz = GeminiResultParser.parseResponse(
+        val geminiNoTz = LlmResultParser.parseResponse(
             "[${geminiEntry(time = "12:00:00", original = "test")}]",
         )
         assertEquals(0.7f, geminiNoTz[0].confidence)
@@ -509,7 +512,7 @@ class IntegrationTest {
     @Test
     fun `scenario 8 - empty string through both parsers`() {
         val chronoResults = ChronoResultParser.parse("", "", null)
-        val geminiResults = GeminiResultParser.parseResponse("")
+        val geminiResults = LlmResultParser.parseResponse("")
         assertTrue(chronoResults.isEmpty())
         assertTrue(geminiResults.isEmpty())
 
@@ -523,7 +526,7 @@ class IntegrationTest {
     @Test
     fun `scenario 8 - malformed JSON through both parsers`() {
         val chronoResults = ChronoResultParser.parse("{not valid]]]", "", null)
-        val geminiResults = GeminiResultParser.parseResponse("{not valid]]]")
+        val geminiResults = LlmResultParser.parseResponse("{not valid]]]")
         assertTrue(chronoResults.isEmpty())
         assertTrue(geminiResults.isEmpty())
 
@@ -535,7 +538,7 @@ class IntegrationTest {
     fun `scenario 8 - valid chrono plus empty gemini preserves chrono results`() {
         val chronoJson = "[${chronoEntry("3pm ET", hour = 15, timezone = -240)}]"
         val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
-        val geminiResults = GeminiResultParser.parseResponse("[]")
+        val geminiResults = LlmResultParser.parseResponse("[]")
 
         assertEquals(1, chronoResults.size)
         assertTrue(geminiResults.isEmpty())
@@ -552,7 +555,7 @@ class IntegrationTest {
     fun `scenario 8 - empty chrono plus valid gemini preserves gemini results`() {
         val chronoResults = ChronoResultParser.parse("[]", "", null)
         val geminiJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm ET")}]"
-        val geminiResults = GeminiResultParser.parseResponse(geminiJson)
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
 
         assertTrue(chronoResults.isEmpty())
         assertEquals(1, geminiResults.size)
@@ -572,10 +575,10 @@ class IntegrationTest {
         assertTrue(ChronoResultParser.parse("42", "", null).isEmpty())
         assertTrue(ChronoResultParser.parse("{}", "", null).isEmpty())
 
-        assertTrue(GeminiResultParser.parseResponse("null").isEmpty())
-        assertTrue(GeminiResultParser.parseResponse("undefined").isEmpty())
-        assertTrue(GeminiResultParser.parseResponse("42").isEmpty())
-        assertTrue(GeminiResultParser.parseResponse("{}").isEmpty())
+        assertTrue(LlmResultParser.parseResponse("null").isEmpty())
+        assertTrue(LlmResultParser.parseResponse("undefined").isEmpty())
+        assertTrue(LlmResultParser.parseResponse("42").isEmpty())
+        assertTrue(LlmResultParser.parseResponse("{}").isEmpty())
     }
 
     @Test
@@ -592,7 +595,7 @@ class IntegrationTest {
             ${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm ET")},
             {"time":"","date":"","timezone":"","original":""}
         ]"""
-        val results = GeminiResultParser.parseResponse(json)
+        val results = LlmResultParser.parseResponse(json)
         assertEquals("Should parse valid entry, skip empty one", 1, results.size)
     }
 
@@ -609,7 +612,7 @@ class IntegrationTest {
 
         // Gemini: same time with same IANA timezone
         val geminiJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm ET")}]"
-        val geminiResults = GeminiResultParser.parseResponse(geminiJson)
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
 
         // Both must have localDateTime for fuzzy match to work
         assertNotNull("Chrono must have localDateTime", chronoResults[0].localDateTime)
@@ -717,7 +720,7 @@ class IntegrationTest {
     fun `full pipeline - gemini fenced response through full pipeline`() {
         // Gemini sometimes wraps response in markdown code fences
         val geminiJson = "```json\n[${geminiEntry(time = "09:00:00", timezone = "America/Los_Angeles", original = "9am PT")}]\n```"
-        val geminiResults = GeminiResultParser.parseResponse(geminiJson)
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
         assertEquals("Fenced JSON should parse", 1, geminiResults.size)
         assertNotNull(geminiResults[0].localDateTime)
         assertNotNull(geminiResults[0].instant)
@@ -753,7 +756,7 @@ class IntegrationTest {
         val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
 
         val geminiJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm ET")}]"
-        val geminiResults = GeminiResultParser.parseResponse(geminiJson)
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
 
         // Chrono results don't have method set by the parser — it's set externally
         // Simulate the real pipeline: wrap chrono results with method
@@ -857,7 +860,7 @@ class IntegrationTest {
     @Test
     fun `invariant - gemini results always have localDateTime`() {
         for (json in geminiInputs) {
-            val results = GeminiResultParser.parseResponse(json)
+            val results = LlmResultParser.parseResponse(json)
             results.forEach { r ->
                 assertNotNull(
                     "Gemini result '${r.originalText}' must have localDateTime (json=$json)",
@@ -870,7 +873,7 @@ class IntegrationTest {
     @Test
     fun `invariant - gemini results with timezone always have instant AND localDateTime`() {
         for (json in geminiInputs) {
-            val results = GeminiResultParser.parseResponse(json)
+            val results = LlmResultParser.parseResponse(json)
             results.forEach { r ->
                 if (r.sourceTimezone != null) {
                     assertNotNull(
@@ -893,7 +896,7 @@ class IntegrationTest {
         for (chronoJson in chronoInputs) {
             for (geminiJson in geminiInputs) {
                 val chrono = ChronoResultParser.parse(chronoJson, "", cityResolver)
-                val gemini = GeminiResultParser.parseResponse(geminiJson)
+                val gemini = LlmResultParser.parseResponse(geminiJson)
                 val merged = ResultMerger.mergeResults(chrono, gemini, "Gemini Nano")
                 merged.forEach { r ->
                     assertNotNull(
@@ -925,7 +928,7 @@ class IntegrationTest {
         for (chronoJson in chronoInputs) {
             for (geminiJson in geminiInputs) {
                 val chrono = ChronoResultParser.parse(chronoJson, "", cityResolver)
-                val gemini = GeminiResultParser.parseResponse(geminiJson)
+                val gemini = LlmResultParser.parseResponse(geminiJson)
                 val merged = ResultMerger.mergeResults(chrono, gemini, "Gemini Nano")
                 assertTrue(
                     "Merged count ${merged.size} must not exceed chrono(${chrono.size}) + gemini(${gemini.size})",
@@ -954,40 +957,40 @@ class IntegrationTest {
         assertEquals(14, results[0].localDateTime!!.hour)
     }
 
-    // ==================== GeminiResultParser invalid inputs ====================
+    // ==================== LlmResultParser invalid inputs ====================
 
     @Test
     fun `gemini invalid - time 24 00 returns null`() {
         val json = """[{"time":"24:00","date":"2026-04-11","timezone":"UTC","original":"24:00"}]"""
-        val results = GeminiResultParser.parseResponse(json)
+        val results = LlmResultParser.parseResponse(json)
         assertTrue("24:00 is invalid, should produce no results", results.isEmpty())
     }
 
     @Test
     fun `gemini invalid - date 2026-13-01 returns null`() {
         val json = """[{"time":"12:00","date":"2026-13-01","timezone":"UTC","original":"invalid month"}]"""
-        val results = GeminiResultParser.parseResponse(json)
+        val results = LlmResultParser.parseResponse(json)
         assertTrue("Month 13 is invalid", results.isEmpty())
     }
 
     @Test
     fun `gemini invalid - date 2026-04-31 returns null`() {
         val json = """[{"time":"12:00","date":"2026-04-31","timezone":"UTC","original":"April 31"}]"""
-        val results = GeminiResultParser.parseResponse(json)
+        val results = LlmResultParser.parseResponse(json)
         assertTrue("April has 30 days", results.isEmpty())
     }
 
     @Test
     fun `gemini invalid - time 25 00 returns null`() {
         val json = """[{"time":"25:00","date":"2026-04-11","timezone":"UTC","original":"25:00"}]"""
-        val results = GeminiResultParser.parseResponse(json)
+        val results = LlmResultParser.parseResponse(json)
         assertTrue("25:00 is invalid", results.isEmpty())
     }
 
     @Test
     fun `gemini invalid - timezone with space gives null tz but valid localDateTime`() {
         val json = """[{"time":"12:00:00","date":"2026-04-11","timezone":"America/New York","original":"noon"}]"""
-        val results = GeminiResultParser.parseResponse(json)
+        val results = LlmResultParser.parseResponse(json)
         assertEquals(1, results.size)
         assertNull("'America/New York' is not a valid IANA zone", results[0].sourceTimezone)
         assertNotNull("localDateTime should still be set", results[0].localDateTime)
@@ -997,7 +1000,7 @@ class IntegrationTest {
     @Test
     fun `gemini invalid - timezone lowercase america new_york`() {
         val json = """[{"time":"12:00:00","date":"2026-04-11","timezone":"america/new_york","original":"noon"}]"""
-        val results = GeminiResultParser.parseResponse(json)
+        val results = LlmResultParser.parseResponse(json)
         assertEquals(1, results.size)
         // kotlinx.datetime.TimeZone.of is case-sensitive for IANA IDs;
         // "america/new_york" is not valid — should fall back to no-tz path
@@ -1326,7 +1329,7 @@ class IntegrationTest {
         val geminiJson = """[{"time":"15:00","date":"2026-04-09","timezone":"America/New_York","original":"April 9 at 3:00 PM EST"}]"""
 
         val chrono = ChronoResultParser.parse(chronoJson, "", cityResolver)
-        val gemini = GeminiResultParser.parseResponse(geminiJson)
+        val gemini = LlmResultParser.parseResponse(geminiJson)
 
         // Both should have: localDateTime, instant, sourceTimezone
         assertEquals(1, chrono.size)
@@ -1348,7 +1351,7 @@ class IntegrationTest {
     fun `pipeline handles completely empty Chrono output gracefully`() {
         val chrono = ChronoResultParser.parse("[]", "", cityResolver)
         val geminiJson = """[{"time":"15:00","date":"2026-04-09","timezone":"America/New_York","original":"3pm EST"}]"""
-        val gemini = GeminiResultParser.parseResponse(geminiJson)
+        val gemini = LlmResultParser.parseResponse(geminiJson)
 
         val merged = ResultMerger.mergeResults(chrono, gemini, "Gemini Nano")
         assertEquals("Gemini results should survive when Chrono is empty", 1, merged.size)
@@ -1359,7 +1362,7 @@ class IntegrationTest {
     @Test
     fun `pipeline handles Gemini returning garbage timezone gracefully`() {
         val geminiJson = """[{"time":"15:00","date":"2026-04-09","timezone":"NotATimezone/Fake","original":"3pm"}]"""
-        val gemini = GeminiResultParser.parseResponse(geminiJson)
+        val gemini = LlmResultParser.parseResponse(geminiJson)
 
         // Should produce a result with null timezone but valid localDateTime
         assertEquals(1, gemini.size)
@@ -1614,7 +1617,7 @@ class IntegrationTest {
         val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
 
         val geminiJson = "[${geminiEntry(time = "15:00:00", timezone = "America/Chicago", original = "3pm")}]"
-        val geminiResults = GeminiResultParser.parseResponse(geminiJson)
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
 
         assertEquals(1, chronoResults.size)
         assertEquals(1, geminiResults.size)
@@ -1639,7 +1642,7 @@ class IntegrationTest {
         val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
 
         val geminiJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm ET")}]"
-        val geminiResults = GeminiResultParser.parseResponse(geminiJson)
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
 
         // Chrono offset -240 in April = EDT = America/New_York
         assertEquals("America/New_York", chronoResults[0].sourceTimezone?.id)
@@ -1729,18 +1732,18 @@ class IntegrationTest {
     // ==================== LiteRtExtractor model file resolution ====================
 
     @Test
-    fun `litert extractor - GeminiResultParser reused for LiteRT output parsing`() {
+    fun `litert extractor - LlmResultParser reused for LiteRT output parsing`() {
         val liteRtJson = """[
             ${geminiEntry(time = "09:00:00", timezone = "America/Los_Angeles", original = "9am PT")}
         ]"""
-        val results = GeminiResultParser.parseResponse(liteRtJson)
+        val results = LlmResultParser.parseResponse(liteRtJson)
         assertEquals("LiteRT uses same JSON format as Gemini", 1, results.size)
         assertNotNull("localDateTime should be set", results[0].localDateTime)
         assertNotNull("instant should be set", results[0].instant)
         assertEquals("America/Los_Angeles", results[0].sourceTimezone?.id)
     }
 
-    // ==================== GeminiResultParser handles LiteRT output identically ====================
+    // ==================== LlmResultParser handles LiteRT output identically ====================
 
     @Test
     fun `litert output - parse typical LiteRT response`() {
@@ -1748,7 +1751,7 @@ class IntegrationTest {
             {"time":"14:30:00","date":"2026-04-11","timezone":"America/New_York","original":"2:30 PM ET"},
             {"time":"19:30:00","date":"2026-04-11","timezone":"UTC","original":"7:30 PM UTC"}
         ]"""
-        val results = GeminiResultParser.parseResponse(liteRtResponse)
+        val results = LlmResultParser.parseResponse(liteRtResponse)
         assertEquals(2, results.size)
         assertEquals(14, results[0].localDateTime!!.hour)
         assertEquals(30, results[0].localDateTime!!.minute)
@@ -1758,7 +1761,7 @@ class IntegrationTest {
     @Test
     fun `litert output - localDateTime is set (regression)`() {
         val json = """[{"time":"10:00:00","date":"2026-04-11","timezone":"Asia/Tokyo","original":"10am JST"}]"""
-        val results = GeminiResultParser.parseResponse(json)
+        val results = LlmResultParser.parseResponse(json)
         assertEquals(1, results.size)
         assertNotNull("localDateTime must be set for LiteRT output", results[0].localDateTime)
         assertEquals(10, results[0].localDateTime!!.hour)
@@ -1768,7 +1771,7 @@ class IntegrationTest {
     @Test
     fun `litert output - timezone resolution works`() {
         val json = """[{"time":"08:00:00","date":"2026-04-11","timezone":"Europe/London","original":"8am BST"}]"""
-        val results = GeminiResultParser.parseResponse(json)
+        val results = LlmResultParser.parseResponse(json)
         assertEquals(1, results.size)
         assertNotNull(results[0].sourceTimezone)
         assertEquals("Europe/London", results[0].sourceTimezone!!.id)
@@ -1778,7 +1781,7 @@ class IntegrationTest {
     @Test
     fun `litert output - method field can be LiteRT`() {
         val json = """[{"time":"15:00:00","date":"2026-04-11","timezone":"America/New_York","original":"3pm ET"}]"""
-        val results = GeminiResultParser.parseResponse(json)
+        val results = LlmResultParser.parseResponse(json)
         val withMethod = results.map { it.copy(method = "LiteRT") }
         assertEquals(1, withMethod.size)
         assertEquals("LiteRT", withMethod[0].method)
@@ -1792,7 +1795,7 @@ class IntegrationTest {
         val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
 
         val liteRtJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm ET")}]"
-        val liteRtResults = GeminiResultParser.parseResponse(liteRtJson)
+        val liteRtResults = LlmResultParser.parseResponse(liteRtJson)
 
         val merged = ResultMerger.mergeResults(chronoResults, liteRtResults, "LiteRT")
         assertTrue("Merged should have results", merged.isNotEmpty())
@@ -1807,7 +1810,7 @@ class IntegrationTest {
         val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
 
         val liteRtJson = "[${geminiEntry(time = "15:00:00", timezone = "America/Chicago", original = "3pm")}]"
-        val liteRtResults = GeminiResultParser.parseResponse(liteRtJson)
+        val liteRtResults = LlmResultParser.parseResponse(liteRtJson)
 
         val chronoTzId = chronoResults[0].sourceTimezone?.id
         val liteRtTzId = liteRtResults[0].sourceTimezone?.id
@@ -1829,7 +1832,7 @@ class IntegrationTest {
         val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
 
         val liteRtJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm ET")}]"
-        val liteRtResults = GeminiResultParser.parseResponse(liteRtJson)
+        val liteRtResults = LlmResultParser.parseResponse(liteRtJson)
 
         assertEquals("America/New_York", chronoResults[0].sourceTimezone?.id)
         assertEquals("America/New_York", liteRtResults[0].sourceTimezone?.id)
@@ -1956,10 +1959,10 @@ class IntegrationTest {
         val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
 
         val liteRtJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm ET")}]"
-        val liteRtResults = GeminiResultParser.parseResponse(liteRtJson)
+        val liteRtResults = LlmResultParser.parseResponse(liteRtJson)
 
         val geminiJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm ET")}]"
-        val geminiResults = GeminiResultParser.parseResponse(geminiJson)
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
 
         // Simulate the 3-stage merge order
         var merged = ResultMerger.mergeResults(chronoResults, liteRtResults, "LiteRT")
@@ -1988,6 +1991,390 @@ class IntegrationTest {
         assertEquals("Bare date should be filtered when real time exists", 1, results.size)
         assertEquals(15, results[0].localDateTime!!.hour)
         assertEquals(15, results[0].localDateTime!!.dayOfMonth) // date propagated
+    }
+
+    // ==================== Device run reproduction (2026-04-10 logcat) ====================
+    // Input: "April 11 at 4:30 a.m. PT / 7:30 a.m. ET / 19:30 CST"
+    // Device: Australia/Sydney. LiteRT unavailable. Gemini Nano available.
+
+    @Test
+    fun `device run - chrono full-text JSON reproduces exact parse results`() {
+        // Exact JSON from chrono.js on device (full-text parse)
+        val chronoJson = """[{"text":"April 11 at 4:30 a.m. PT","index":0,"start":{"year":2026,"month":4,"day":11,"hour":4,"minute":30,"second":0,"timezone":-420,"isCertain":{"year":false,"month":true,"day":true,"hour":true,"minute":true,"timezone":true}},"end":null},{"text":"7:30 a.m. ET","index":27,"start":{"year":2026,"month":4,"day":10,"hour":7,"minute":30,"second":0,"timezone":-240,"isCertain":{"year":false,"month":false,"day":false,"hour":true,"minute":true,"timezone":true}},"end":null},{"text":"19:30 CST","index":42,"start":{"year":2026,"month":4,"day":10,"hour":19,"minute":30,"second":0,"timezone":-360,"isCertain":{"year":false,"month":false,"day":false,"hour":true,"minute":true,"timezone":true}},"end":null}]"""
+        val results = ChronoResultParser.parse(chronoJson, "April 11 at 4:30 a.m. PT / 7:30 a.m. ET / 19:30 CST", null)
+
+        assertEquals(3, results.size)
+
+        // PT: offset -420, date-certain April 11
+        assertEquals("April 11 at 4:30 a.m. PT", results[0].originalText)
+        assertEquals(4, results[0].localDateTime!!.hour)
+        assertEquals(30, results[0].localDateTime!!.minute)
+        assertEquals(11, results[0].localDateTime!!.dayOfMonth)
+        assertEquals("America/Los_Angeles", results[0].sourceTimezone!!.id)
+        assertEquals(
+            Instant.parse("2026-04-11T11:30:00Z"),
+            results[0].instant,
+        )
+
+        // ET: offset -240, date propagated from April 11
+        assertEquals("7:30 a.m. ET", results[1].originalText)
+        assertEquals(7, results[1].localDateTime!!.hour)
+        assertEquals(11, results[1].localDateTime!!.dayOfMonth) // propagated from 10→11
+        assertEquals("America/New_York", results[1].sourceTimezone!!.id)
+        assertEquals(
+            Instant.parse("2026-04-11T11:30:00Z"),
+            results[1].instant,
+        )
+
+        // CST: offset -360, date propagated from April 11
+        assertEquals("19:30 CST", results[2].originalText)
+        assertEquals(19, results[2].localDateTime!!.hour)
+        assertEquals(11, results[2].localDateTime!!.dayOfMonth) // propagated from 10→11
+        // -360 in April = MDT (America/Denver), not CST (America/Chicago which is CDT/-300)
+        assertEquals("America/Denver", results[2].sourceTimezone!!.id)
+        assertEquals(
+            Instant.parse("2026-04-12T01:30:00Z"),
+            results[2].instant,
+        )
+    }
+
+    @Test
+    fun `device run - gemini nano response reproduces exact parse results`() {
+        // Exact Gemini Nano response from device (fence-stripped)
+        val geminiJson = """[{"time":"04:30","date":"2026-04-11","timezone":"America/Los_Angeles","original":"April 11 at 4:30 a.m. PT"},{"time":"07:30","date":"2026-04-11","timezone":"America/New_York","original":"April 11 at 7:30 a.m. ET"},{"time":"19:30","date":"2026-04-11","timezone":"America/Chicago","original":"19:30 CST"}]"""
+        val results = LlmResultParser.parseResponse(geminiJson)
+
+        assertEquals(3, results.size)
+
+        // PT: LA, same instant as Chrono
+        assertEquals("April 11 at 4:30 a.m. PT", results[0].originalText)
+        assertEquals("America/Los_Angeles", results[0].sourceTimezone!!.id)
+        assertEquals(
+            Instant.parse("2026-04-11T11:30:00Z"),
+            results[0].instant,
+        )
+
+        // ET: NY, same instant as Chrono
+        assertEquals("April 11 at 7:30 a.m. ET", results[1].originalText)
+        assertEquals("America/New_York", results[1].sourceTimezone!!.id)
+        assertEquals(
+            Instant.parse("2026-04-11T11:30:00Z"),
+            results[1].instant,
+        )
+
+        // CST: Gemini returned America/Chicago. CST is ambiguous but Chicago's standard offset
+        // (-360) matches CST US Central → corrected to UTC-6. 19:30 + 6h = 01:30 UTC.
+        assertEquals("19:30 CST", results[2].originalText)
+        assertEquals(
+            "CST should use standard offset UTC-6, not CDT",
+            Instant.parse("2026-04-12T01:30:00Z"),
+            results[2].instant,
+        )
+    }
+
+    @Test
+    fun `device run - merge produces 3 results (all pairs merge including CST)`() {
+        val chronoJson = """[{"text":"April 11 at 4:30 a.m. PT","index":0,"start":{"year":2026,"month":4,"day":11,"hour":4,"minute":30,"second":0,"timezone":-420,"isCertain":{"year":false,"month":true,"day":true,"hour":true,"minute":true,"timezone":true}},"end":null},{"text":"7:30 a.m. ET","index":27,"start":{"year":2026,"month":4,"day":10,"hour":7,"minute":30,"second":0,"timezone":-240,"isCertain":{"year":false,"month":false,"day":false,"hour":true,"minute":true,"timezone":true}},"end":null},{"text":"19:30 CST","index":42,"start":{"year":2026,"month":4,"day":10,"hour":19,"minute":30,"second":0,"timezone":-360,"isCertain":{"year":false,"month":false,"day":false,"hour":true,"minute":true,"timezone":true}},"end":null}]"""
+        val chronoResults = ChronoResultParser.parse(chronoJson, "April 11 at 4:30 a.m. PT / 7:30 a.m. ET / 19:30 CST", null)
+
+        val geminiJson = """[{"time":"04:30","date":"2026-04-11","timezone":"America/Los_Angeles","original":"April 11 at 4:30 a.m. PT"},{"time":"07:30","date":"2026-04-11","timezone":"America/New_York","original":"April 11 at 7:30 a.m. ET"},{"time":"19:30","date":"2026-04-11","timezone":"America/Chicago","original":"19:30 CST"}]"""
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
+
+        var merged = ResultMerger.mergeResults(emptyList(), chronoResults, "ML Kit + Chrono")
+        merged = ResultMerger.mergeResults(merged, geminiResults, "Gemini Nano")
+
+        // PT: EXACT match (same instant 11:30Z + same tz LA) → merged
+        // ET: EXACT match (same instant 11:30Z + same tz NY) → merged
+        // CST: Gemini corrected to standard offset -360 (matching Chrono) → merged
+        assertEquals(
+            "Device run should produce 3 results, got ${merged.size}: ${merged.map { "'${it.originalText}' tz=${it.sourceTimezone?.id} instant=${it.instant}" }}",
+            3, merged.size,
+        )
+
+        val pt = merged[0]
+        assertEquals("April 11 at 4:30 a.m. PT", pt.originalText)
+        assertEquals("America/Los_Angeles", pt.sourceTimezone!!.id)
+        assertTrue(pt.method.contains("Chrono") && pt.method.contains("Gemini Nano"))
+
+        val et = merged[1]
+        assertEquals("7:30 a.m. ET", et.originalText)
+        assertEquals("America/New_York", et.sourceTimezone!!.id)
+        assertTrue(et.method.contains("Chrono") && et.method.contains("Gemini Nano"))
+
+        val cst = merged[2]
+        assertEquals("19:30 CST", cst.originalText)
+        assertEquals(Instant.parse("2026-04-12T01:30:00Z"), cst.instant)
+        assertTrue(cst.method.contains("Chrono") && cst.method.contains("Gemini Nano"))
+    }
+
+    @Test
+    fun `device run - converted cards to Sydney match device output`() {
+        val chronoJson = """[{"text":"April 11 at 4:30 a.m. PT","index":0,"start":{"year":2026,"month":4,"day":11,"hour":4,"minute":30,"second":0,"timezone":-420,"isCertain":{"year":false,"month":true,"day":true,"hour":true,"minute":true,"timezone":true}},"end":null},{"text":"7:30 a.m. ET","index":27,"start":{"year":2026,"month":4,"day":10,"hour":7,"minute":30,"second":0,"timezone":-240,"isCertain":{"year":false,"month":false,"day":false,"hour":true,"minute":true,"timezone":true}},"end":null},{"text":"19:30 CST","index":42,"start":{"year":2026,"month":4,"day":10,"hour":19,"minute":30,"second":0,"timezone":-360,"isCertain":{"year":false,"month":false,"day":false,"hour":true,"minute":true,"timezone":true}},"end":null}]"""
+        val chronoResults = ChronoResultParser.parse(chronoJson, "April 11 at 4:30 a.m. PT / 7:30 a.m. ET / 19:30 CST", null)
+
+        val geminiJson = """[{"time":"04:30","date":"2026-04-11","timezone":"America/Los_Angeles","original":"April 11 at 4:30 a.m. PT"},{"time":"07:30","date":"2026-04-11","timezone":"America/New_York","original":"April 11 at 7:30 a.m. ET"},{"time":"19:30","date":"2026-04-11","timezone":"America/Chicago","original":"19:30 CST"}]"""
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
+
+        var merged = ResultMerger.mergeResults(emptyList(), chronoResults, "ML Kit + Chrono")
+        merged = ResultMerger.mergeResults(merged, geminiResults, "Gemini Nano")
+        val sydney = TimeZone.of("Australia/Sydney")
+        val converted = converter.toLocal(merged, sydney)
+
+        assertEquals(3, converted.size)
+
+        // Card 0: PT → 4:30am UTC-7 LA → 9:30pm UTC+10 Sydney
+        assertTrue("PT source should be 4:30, got '${converted[0].sourceDateTime}'",
+            converted[0].sourceDateTime.contains("4:30"))
+        assertTrue("PT source tz should be UTC-7 Los Angeles, got '${converted[0].sourceTimezone}'",
+            converted[0].sourceTimezone.contains("UTC-7") && converted[0].sourceTimezone.contains("Los Angeles"))
+        assertTrue("PT local should be 9:30, got '${converted[0].localDateTime}'",
+            converted[0].localDateTime.contains("9:30"))
+        assertTrue("PT local tz should be UTC+10 Sydney, got '${converted[0].localTimezone}'",
+            converted[0].localTimezone.contains("UTC+10") && converted[0].localTimezone.contains("Sydney"))
+
+        // Card 1: ET → 7:30am UTC-4 New York → 9:30pm UTC+10 Sydney
+        assertTrue("ET source should be 7:30, got '${converted[1].sourceDateTime}'",
+            converted[1].sourceDateTime.contains("7:30"))
+        assertTrue("ET source tz should be UTC-4 New York, got '${converted[1].sourceTimezone}'",
+            converted[1].sourceTimezone.contains("UTC-4") && converted[1].sourceTimezone.contains("New York"))
+        assertTrue("ET local should be 9:30, got '${converted[1].localDateTime}'",
+            converted[1].localDateTime.contains("9:30"))
+
+        // Card 2: CST → 7:30pm UTC-6 → 11:30am UTC+10 Sydney (single card, merged)
+        assertTrue("CST source should be 7:30, got '${converted[2].sourceDateTime}'",
+            converted[2].sourceDateTime.contains("7:30"))
+        assertTrue("CST source tz should be UTC-6, got '${converted[2].sourceTimezone}'",
+            converted[2].sourceTimezone.contains("UTC-6"))
+        assertTrue("CST local should be 11:30, got '${converted[2].localDateTime}'",
+            converted[2].localDateTime.contains("11:30"))
+    }
+
+    // ==================== CST CDT regression (device run 2026-04-10) ====================
+    // Bug: Gemini returns America/Chicago for "19:30 CST". In April, Chicago is CDT (UTC-5).
+    // computeInstant used CDT offset → instant 00:30Z. Should use CST (UTC-6) → instant 01:30Z.
+    // The LLM already disambiguated the region (US Central, not China). The "S" in CST means
+    // Standard, so the standard offset of Chicago (-360) should be used, not the DST offset.
+
+    @Test
+    fun `CST with America_Chicago should use standard offset not CDT`() {
+        val geminiJson = """[{"time":"19:30","date":"2026-04-11","timezone":"America/Chicago","original":"19:30 CST"}]"""
+        val results = LlmResultParser.parseResponse(geminiJson)
+        assertEquals(1, results.size)
+        // CST = Central Standard Time = UTC-6. 19:30 + 6h = 01:30 UTC (not 00:30 from CDT)
+        assertEquals(
+            "CST should use UTC-6 (standard), not UTC-5 (CDT)",
+            Instant.parse("2026-04-12T01:30:00Z"),
+            results[0].instant,
+        )
+    }
+
+    @Test
+    fun `CST Chrono and Gemini should merge to 1 when both mean US Central`() {
+        // Chrono: raw offset -360 (CST literal) → instant 01:30Z
+        // Gemini: America/Chicago + CST → should also be 01:30Z after correction
+        val chronoJson = """[{"text":"19:30 CST","index":0,"start":{"year":2026,"month":4,"day":11,"hour":19,"minute":30,"second":0,"timezone":-360,"isCertain":{"year":false,"month":true,"day":true,"hour":true,"minute":true,"timezone":true}},"end":null}]"""
+        val chronoResults = ChronoResultParser.parse(chronoJson, "19:30 CST", null)
+
+        val geminiJson = """[{"time":"19:30","date":"2026-04-11","timezone":"America/Chicago","original":"19:30 CST"}]"""
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
+
+        assertEquals(
+            "Both should produce same instant (UTC-6)",
+            chronoResults[0].instant, geminiResults[0].instant,
+        )
+
+        var merged = ResultMerger.mergeResults(emptyList(), chronoResults, "ML Kit + Chrono")
+        merged = ResultMerger.mergeResults(merged, geminiResults, "Gemini Nano")
+        assertEquals("Same CST interpretation should merge to 1", 1, merged.size)
+    }
+
+    @Test
+    fun `device run corrected - full pipeline produces 3 results not 4`() {
+        val chronoJson = """[{"text":"April 11 at 4:30 a.m. PT","index":0,"start":{"year":2026,"month":4,"day":11,"hour":4,"minute":30,"second":0,"timezone":-420,"isCertain":{"year":false,"month":true,"day":true,"hour":true,"minute":true,"timezone":true}},"end":null},{"text":"7:30 a.m. ET","index":27,"start":{"year":2026,"month":4,"day":10,"hour":7,"minute":30,"second":0,"timezone":-240,"isCertain":{"year":false,"month":false,"day":false,"hour":true,"minute":true,"timezone":true}},"end":null},{"text":"19:30 CST","index":42,"start":{"year":2026,"month":4,"day":10,"hour":19,"minute":30,"second":0,"timezone":-360,"isCertain":{"year":false,"month":false,"day":false,"hour":true,"minute":true,"timezone":true}},"end":null}]"""
+        val chronoResults = ChronoResultParser.parse(chronoJson, "April 11 at 4:30 a.m. PT / 7:30 a.m. ET / 19:30 CST", null)
+
+        val geminiJson = """[{"time":"04:30","date":"2026-04-11","timezone":"America/Los_Angeles","original":"April 11 at 4:30 a.m. PT"},{"time":"07:30","date":"2026-04-11","timezone":"America/New_York","original":"April 11 at 7:30 a.m. ET"},{"time":"19:30","date":"2026-04-11","timezone":"America/Chicago","original":"19:30 CST"}]"""
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
+
+        var merged = ResultMerger.mergeResults(emptyList(), chronoResults, "ML Kit + Chrono")
+        merged = ResultMerger.mergeResults(merged, geminiResults, "Gemini Nano")
+
+        // PT merges, ET merges, CST merges (Gemini corrected to UTC-6 = same as Chrono)
+        assertEquals(
+            "Should be 3 results (all pairs merge), got ${merged.size}: ${merged.map { "'${it.originalText}' tz=${it.sourceTimezone?.id} instant=${it.instant}" }}",
+            3, merged.size,
+        )
+    }
+
+    // ==================== Timezone resolution consistency ====================
+
+    @Test
+    fun `tz consistency - 3pm EST Chrono plus Gemini same instant`() {
+        // Core scenario: Chrono offset -300 and Gemini "America/New_York" with "EST" in original
+        // Both should produce the same instant after abbreviation correction
+        val chronoJson = "[${chronoEntry("3pm EST", hour = 15, timezone = -300, dayCertain = true)}]"
+        val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
+
+        val geminiJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm EST")}]"
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
+
+        // Both must have the same instant: 3pm at UTC-5 = 8pm UTC
+        assertNotNull("Chrono instant", chronoResults[0].instant)
+        assertNotNull("Gemini instant", geminiResults[0].instant)
+        assertEquals(
+            "Chrono and Gemini should produce same instant for '3pm EST'",
+            chronoResults[0].instant, geminiResults[0].instant,
+        )
+
+        val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
+        assertEquals("Same instant should merge to 1", 1, merged.size)
+    }
+
+    @Test
+    fun `tz consistency - 3pm PST summer Chrono plus Gemini same instant`() {
+        // Summer: LA is PDT (-7), but PST means -8
+        // Chrono: offset -480 → instant = 3pm + 8h = 11pm UTC
+        // Gemini: "PST" correction → same instant
+        val chronoJson = "[${chronoEntry("3pm PST", year = 2026, month = 7, day = 15, hour = 15, timezone = -480, dayCertain = true)}]"
+        val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
+
+        val geminiJson = "[${geminiEntry(time = "15:00:00", date = "2026-07-15", timezone = "America/Los_Angeles", original = "3pm PST")}]"
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
+
+        assertEquals(
+            "PST instants should match",
+            chronoResults[0].instant, geminiResults[0].instant,
+        )
+
+        val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
+        assertEquals(1, merged.size)
+    }
+
+    @Test
+    fun `tz consistency - CST ambiguous keeps both`() {
+        // Chrono offset -360 (US Central) vs Gemini Asia/Shanghai (+8) — genuinely different
+        val chronoJson = "[${chronoEntry("3pm CST", hour = 15, timezone = -360, dayCertain = true)}]"
+        val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
+
+        val geminiJson = "[${geminiEntry(time = "15:00:00", timezone = "Asia/Shanghai", original = "3pm CST")}]"
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
+
+        assertTrue(
+            "CST instants should differ (US Central vs China)",
+            chronoResults[0].instant != geminiResults[0].instant,
+        )
+
+        val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
+        assertEquals("Ambiguous CST should keep both", 2, merged.size)
+    }
+
+    @Test
+    fun `tz consistency - GMT summer correction`() {
+        // Summer: London is BST (+1), but "GMT" = UTC+0
+        val geminiJson = "[${geminiEntry(time = "09:00:00", date = "2026-07-15", timezone = "Europe/London", original = "9am GMT")}]"
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
+
+        val instant = geminiResults[0].instant!!
+        val utcHour = instant.toLocalDateTime(TimeZone.UTC).hour
+        assertEquals("9am GMT should be 09:00 UTC (not 08:00 from BST)", 9, utcHour)
+    }
+
+    @Test
+    fun `tz consistency - source display round-trips correctly after merge`() {
+        // After merging, the source timezone should display the original local time
+        val chronoJson = "[${chronoEntry("3pm EST", hour = 15, timezone = -300, dayCertain = true)}]"
+        val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
+
+        val geminiJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm EST")}]"
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
+
+        val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
+        assertEquals(1, merged.size)
+
+        val result = merged[0]
+        // The source time displayed should be 3pm (15:00), not shifted by DST mismatch
+        val sourceLocal = result.instant!!.toLocalDateTime(result.sourceTimezone!!)
+        assertEquals("Source display hour should be 15 (3pm)", 15, sourceLocal.hour)
+    }
+
+    @Test
+    fun `tz consistency - converted time correct after cross-extractor merge`() {
+        val chronoJson = "[${chronoEntry("3pm EST", hour = 15, timezone = -300, dayCertain = true)}]"
+        val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
+
+        val geminiJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm EST")}]"
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
+
+        val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
+        val converted = converter.toLocal(merged, TimeZone.of("Asia/Tokyo"))
+
+        assertEquals(1, converted.size)
+        // 3pm EST (UTC-5) = 20:00 UTC = 05:00+1 JST
+        assertTrue(
+            "Local time should contain 5:00, got '${converted[0].localDateTime}'",
+            converted[0].localDateTime.contains("5:00"),
+        )
+        assertTrue(converted[0].localTimezone.contains("UTC+9"))
+    }
+
+    @Test
+    fun `tz consistency - three extractors all merge to 1 with combined method`() {
+        val chronoJson = "[${chronoEntry("3pm EST", hour = 15, timezone = -300, dayCertain = true)}]"
+        val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
+
+        val liteRtJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm EST")}]"
+        val liteRtResults = LlmResultParser.parseResponse(liteRtJson)
+
+        val geminiJson = "[${geminiEntry(time = "15:00:00", timezone = "America/New_York", original = "3pm EST")}]"
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
+
+        var merged = ResultMerger.mergeResults(chronoResults, liteRtResults, "LiteRT")
+        merged = ResultMerger.mergeResults(merged, geminiResults, "Gemini Nano")
+
+        assertEquals("3 extractors should merge to 1", 1, merged.size)
+        assertTrue(merged[0].method.contains("LiteRT"))
+        assertTrue(merged[0].method.contains("Gemini Nano"))
+    }
+
+    @Test
+    fun `tz consistency - Vancouver and LA same-offset merge`() {
+        // Both are Pacific Time — different IANA IDs but same offset
+        val chronoJson = "[${chronoEntry("4:30 a.m. PT", hour = 4, minute = 30, timezone = -420, dayCertain = true)}]"
+        val chronoResults = ChronoResultParser.parse(chronoJson, "", null)
+
+        val geminiJson = "[${geminiEntry(time = "04:30:00", timezone = "America/Los_Angeles", original = "4:30 a.m. PT")}]"
+        val geminiResults = LlmResultParser.parseResponse(geminiJson)
+
+        // PT is not a recognized fixed-offset abbreviation → no correction
+        // But both should still produce the same instant (both UTC-7 in April)
+        assertEquals(
+            "PT results should have same instant",
+            chronoResults[0].instant, geminiResults[0].instant,
+        )
+
+        val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
+        assertEquals("Same instant should merge to 1", 1, merged.size)
+    }
+
+    @Test
+    fun `tz consistency - EST offset maps consistently across multiple parses`() {
+        // Parse the same input twice — should always produce the same zone
+        ChronoResultParser.clearOffsetCache()
+        val json1 = "[${chronoEntry("3pm EST", hour = 15, timezone = -300, dayCertain = true)}]"
+        val results1 = ChronoResultParser.parse(json1, "", null)
+
+        ChronoResultParser.clearOffsetCache()
+        val json2 = "[${chronoEntry("3pm EST", hour = 15, timezone = -300, dayCertain = true)}]"
+        val results2 = ChronoResultParser.parse(json2, "", null)
+
+        assertEquals(
+            "Same input should always map to same zone",
+            results1[0].sourceTimezone, results2[0].sourceTimezone,
+        )
+        assertEquals(
+            "Same input should always produce same instant",
+            results1[0].instant, results2[0].instant,
+        )
     }
 
     // ==================== IanaCityLookup shared resolution ====================

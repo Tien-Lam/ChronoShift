@@ -67,7 +67,9 @@ class ChronoExtractor @Inject constructor(
 
     private fun evaluateChrono(qjs: QuickJs, text: String): String? {
         val escaped = text.replace("\\", "\\\\").replace("'", "\\'").replace("\n", "\\n")
-        return qjs.evaluate("chronoParse('$escaped')") as? String
+        val json = qjs.evaluate("chronoParse('$escaped')") as? String
+        Log.d(TAG, "chrono.js raw: $json")
+        return json
     }
 
     @Synchronized

@@ -28,6 +28,7 @@ class TieredTimeExtractor @Inject constructor(
     }
 
     override fun extractStream(text: String): Flow<ExtractionResult> = flow {
+        Log.d(TAG, "═══ extractStream input: \"$text\" ═══")
         var merged = listOf<ExtractedTime>()
         val ran = mutableListOf<String>()
         val unavailable = mutableListOf<String>()
@@ -76,7 +77,7 @@ class TieredTimeExtractor @Inject constructor(
         }
 
         if (merged.isNotEmpty()) {
-            Log.d(TAG, "Fast: ${merged.size} result(s) via ${ran.joinToString(" + ")}")
+            logMerged("Stage 1 (fast)", merged)
             emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
         }
 
@@ -129,7 +130,7 @@ class TieredTimeExtractor @Inject constructor(
             }
         }
 
-        Log.d(TAG, "Final: ${merged.size} result(s) via ${buildLabel(ran, unavailable)}")
+        logMerged("Final", merged)
         emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
     }
 
@@ -148,6 +149,7 @@ class TieredTimeExtractor @Inject constructor(
             val result = extractor.extract(text)
             if (result.times.isNotEmpty()) {
                 Log.d(TAG, "${result.method}: ${result.times.size} result(s)")
+                result.times.forEachIndexed { i, t -> logExtractedTime(result.method, i, t) }
                 result
             } else null
         } catch (e: Exception) {
@@ -158,5 +160,20 @@ class TieredTimeExtractor @Inject constructor(
 
     companion object {
         private const val TAG = "TieredTimeExtractor"
+
+        fun logExtractedTime(method: String, index: Int, t: ExtractedTime) {
+            Log.d(TAG, "  [$method #$index] text=\"${t.originalText}\" " +
+                "localDt=${t.localDateTime} tz=${t.sourceTimezone?.id} " +
+                "instant=${t.instant} confidence=${t.confidence}")
+        }
+
+        fun logMerged(label: String, results: List<ExtractedTime>) {
+            Log.d(TAG, "$label: ${results.size} result(s)")
+            results.forEachIndexed { i, t ->
+                Log.d(TAG, "  [merged #$i] text=\"${t.originalText}\" " +
+                    "localDt=${t.localDateTime} tz=${t.sourceTimezone?.id} " +
+                    "instant=${t.instant} method=\"${t.method}\"")
+            }
+        }
     }
 }

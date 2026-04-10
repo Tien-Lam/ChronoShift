@@ -2,7 +2,7 @@ package com.chronoshift
 
 import com.chronoshift.conversion.TimeConverter
 import com.chronoshift.nlp.ChronoResultParser
-import com.chronoshift.nlp.GeminiResultParser
+import com.chronoshift.nlp.LlmResultParser
 import com.chronoshift.nlp.ResultMerger
 import com.chronoshift.nlp.TestCityResolver
 import kotlinx.datetime.TimeZone
@@ -18,7 +18,7 @@ import org.junit.Test
  * Since Chrono.js requires QuickJS (device-only), these tests validate:
  * 1. Test data integrity (all cases are well-formed)
  * 2. Pipeline resilience (no crash for any input pattern)
- * 3. GeminiResultParser handles all expected outputs
+ * 3. LlmResultParser handles all expected outputs
  * 4. TimeConverter handles all timezone patterns
  *
  * For full Chrono.js validation, run instrumented tests on device.
@@ -81,13 +81,13 @@ class TimestampCorpusTest {
     // ========== Pipeline resilience: simulate Gemini output for each case ==========
 
     @Test
-    fun `GeminiResultParser handles all single-timestamp cases without crash`() {
+    fun `LlmResultParser handles all single-timestamp cases without crash`() {
         testCases.filter { it.expectedCount == 1 && it.expected.isNotEmpty() }.forEach { tc ->
             val exp = tc.expected[0]
             val tz = exp.timezone ?: ""
             val json = """[{"time":"${"%02d".format(exp.hour)}:${"%02d".format(exp.minute)}","date":"2026-04-09","timezone":"$tz","original":"${tc.input.replace("\"", "\\\"")}"}]"""
             try {
-                val results = GeminiResultParser.parseResponse(json)
+                val results = LlmResultParser.parseResponse(json)
                 // Should not crash — may produce 0 or 1 results depending on timezone validity
                 assertTrue(
                     "Parsing '${tc.input}' should produce 0 or 1 results, got ${results.size}",
@@ -97,13 +97,13 @@ class TimestampCorpusTest {
                     assertNotNull("Result should have localDateTime", results[0].localDateTime)
                 }
             } catch (e: Exception) {
-                throw AssertionError("GeminiResultParser crashed on '${tc.input}': ${e.message}", e)
+                throw AssertionError("LlmResultParser crashed on '${tc.input}': ${e.message}", e)
             }
         }
     }
 
     @Test
-    fun `GeminiResultParser handles all multi-timestamp cases without crash`() {
+    fun `LlmResultParser handles all multi-timestamp cases without crash`() {
         testCases.filter { it.expectedCount > 1 && it.expected.isNotEmpty() }.forEach { tc ->
             val entries = tc.expected.mapIndexed { i, exp ->
                 val tz = exp.timezone ?: ""
@@ -111,12 +111,12 @@ class TimestampCorpusTest {
             }.joinToString(",")
             val json = "[$entries]"
             try {
-                val results = GeminiResultParser.parseResponse(json)
+                val results = LlmResultParser.parseResponse(json)
                 results.forEach { r ->
                     assertNotNull("Multi-timestamp result should have localDateTime", r.localDateTime)
                 }
             } catch (e: Exception) {
-                throw AssertionError("GeminiResultParser crashed on multi-timestamp '${tc.input}': ${e.message}", e)
+                throw AssertionError("LlmResultParser crashed on multi-timestamp '${tc.input}': ${e.message}", e)
             }
         }
     }
@@ -179,7 +179,7 @@ class TimestampCorpusTest {
 
             val tz = exp.timezone ?: ""
             val geminiJson = """[{"time":"${"%02d".format(exp.hour)}:${"%02d".format(exp.minute)}","date":"2026-04-09","timezone":"$tz","original":"${tc.input.take(30).replace("\"", "")}"}]"""
-            val gemini = GeminiResultParser.parseResponse(geminiJson)
+            val gemini = LlmResultParser.parseResponse(geminiJson)
 
             try {
                 val merged = ResultMerger.mergeResults(chrono, gemini, "Gemini Nano")

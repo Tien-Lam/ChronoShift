@@ -1,5 +1,6 @@
 package com.chronoshift.conversion
 
+import android.util.Log
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
@@ -18,9 +19,14 @@ class TimeConverter @Inject constructor() {
     private val dateFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
 
     fun toLocal(extracted: List<ExtractedTime>, localZone: TimeZone = TimeZone.currentSystemDefault()): List<ConvertedTime> {
-        return extracted
+        val results = extracted
             .mapNotNull { ext -> convert(ext, localZone) }
             .distinctBy { it.originalText + it.localDateTime + it.localTimezone }
+        Log.d(TAG, "toLocal: ${extracted.size} extracted → ${results.size} converted (localZone=${localZone.id})")
+        results.forEachIndexed { i, c ->
+            Log.d(TAG, "  [card #$i] \"${c.originalText}\" ${c.sourceDateTime} ${c.sourceTimezone} → ${c.localDateTime} ${c.localTimezone} (${c.method})")
+        }
+        return results
     }
 
     private fun convert(ext: ExtractedTime, localZone: TimeZone): ConvertedTime? {
@@ -79,6 +85,7 @@ class TimeConverter @Inject constructor() {
     }
 
     companion object {
+        private const val TAG = "TimeConverter"
         private val ZONE_LABELS = mapOf(
             "America/New_York" to "New York",
             "America/Chicago" to "Chicago",

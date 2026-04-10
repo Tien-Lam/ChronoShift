@@ -1,6 +1,8 @@
 package com.chronoshift.nlp
 
+import android.util.Log
 import com.chronoshift.conversion.ExtractedTime
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.UtcOffset
@@ -12,14 +14,25 @@ object ChronoResultParser {
     data class ParsedResult(
         val extracted: ExtractedTime,
         val dateCertain: Boolean,
+        val rawOffsetMinutes: Int? = null,
     )
 
+    private const val TAG = "ChronoResultParser"
+
     fun parse(json: String, originalText: String, cityResolver: CityResolverInterface?): List<ExtractedTime> {
+        Log.d(TAG, "parse: input=\"$originalText\" jsonLength=${json.length}")
         val parsed = parseRaw(json)
+        Log.d(TAG, "parseRaw: ${parsed.size} entry(ies)")
+        parsed.forEachIndexed { i, p ->
+            Log.d(TAG, "  [raw #$i] text=\"${p.extracted.originalText}\" localDt=${p.extracted.localDateTime} " +
+                "rawOffset=${p.rawOffsetMinutes} tz=${p.extracted.sourceTimezone?.id} instant=${p.extracted.instant}")
+        }
         val propagated = propagateDates(parsed)
         val hasRealTimes = propagated.any { it.confidence > 0.0f }
         val filtered = if (hasRealTimes) propagated.filter { it.confidence > 0.0f } else propagated
-        return resolveCities(filtered, originalText, cityResolver)
+        val results = resolveCities(filtered, originalText, cityResolver)
+        Log.d(TAG, "parse: ${results.size} final result(s)")
+        return results
     }
 
     fun parseRaw(json: String): List<ParsedResult> {
@@ -43,8 +56,16 @@ object ChronoResultParser {
                 val hourCertain = isCertain?.optBoolean("hour", false) ?: false
 
                 val tzOffsetMinutes = if (start.isNull("timezone")) null else start.getInt("timezone")
-                val tz = tzOffsetMinutes?.let { offsetToTimezone(it) }
                 val dt = LocalDateTime(year, month, day, hour, minute, second)
+
+                // Compute instant from the raw offset (always correct, no DST ambiguity)
+                val instant = tzOffsetMinutes?.let {
+                    dt.toInstant(TimezoneAbbreviations.fixedOffsetTimezone(it))
+                }
+                // Find IANA zone matching this offset at this instant (for display labels)
+                val tz = if (tzOffsetMinutes != null && instant != null) {
+                    offsetToTimezone(tzOffsetMinutes, instant)
+                } else null
 
                 // Bare date with no time or timezone (e.g. "April 7" defaulting to noon):
                 // keep for date propagation but mark as date-only.
@@ -53,13 +74,14 @@ object ChronoResultParser {
 
                 parsed.add(ParsedResult(
                     extracted = ExtractedTime(
-                        instant = if (tz != null) dt.toInstant(tz) else null,
+                        instant = instant,
                         localDateTime = dt,
                         sourceTimezone = tz,
                         originalText = text,
                         confidence = if (isDateOnly) 0.0f else if (dateCertain) 0.95f else 0.85f,
                     ),
                     dateCertain = dateCertain,
+                    rawOffsetMinutes = tzOffsetMinutes,
                 ))
 
                 if (!obj.isNull("end")) {
@@ -68,17 +90,24 @@ object ChronoResultParser {
                         end.getInt("year"), end.getInt("month"), end.getInt("day"),
                         end.optInt("hour", 12), end.optInt("minute", 0), end.optInt("second", 0),
                     )
-                    val endTz = if (end.isNull("timezone")) tz else offsetToTimezone(end.getInt("timezone"))
+                    val endRawOffset = if (end.isNull("timezone")) tzOffsetMinutes else end.getInt("timezone")
+                    val endInstant = endRawOffset?.let {
+                        endDt.toInstant(TimezoneAbbreviations.fixedOffsetTimezone(it))
+                    }
+                    val endTz = if (endRawOffset != null && endInstant != null) {
+                        offsetToTimezone(endRawOffset, endInstant)
+                    } else tz
 
                     parsed.add(ParsedResult(
                         extracted = ExtractedTime(
-                            instant = if (endTz != null) endDt.toInstant(endTz) else null,
+                            instant = endInstant,
                             localDateTime = endDt,
                             sourceTimezone = endTz,
                             originalText = "$text (end)",
                             confidence = 0.85f,
                         ),
                         dateCertain = false,
+                        rawOffsetMinutes = endRawOffset,
                     ))
                 }
             } catch (_: Exception) {
@@ -95,10 +124,20 @@ object ChronoResultParser {
         return parsed.map { p ->
             if (!p.dateCertain && p.extracted.localDateTime != null) {
                 val fixed = LocalDateTime(refDate, p.extracted.localDateTime.time)
+                val rawOffset = p.rawOffsetMinutes
                 val tz = p.extracted.sourceTimezone
+                val newInstant = if (rawOffset != null) {
+                    fixed.toInstant(TimezoneAbbreviations.fixedOffsetTimezone(rawOffset))
+                } else if (tz != null) {
+                    fixed.toInstant(tz)
+                } else null
+                val newTz = if (rawOffset != null && newInstant != null) {
+                    offsetToTimezone(rawOffset, newInstant)
+                } else tz
                 p.extracted.copy(
                     localDateTime = fixed,
-                    instant = if (tz != null) fixed.toInstant(tz) else null,
+                    instant = newInstant,
+                    sourceTimezone = newTz,
                 )
             } else {
                 p.extracted
@@ -144,7 +183,7 @@ object ChronoResultParser {
         return merged
     }
 
-    private val PREFERRED_ZONES = setOf(
+    private val PREFERRED_ZONE_LIST = listOf(
         "America/New_York", "America/Chicago", "America/Denver", "America/Los_Angeles",
         "America/Anchorage", "America/Phoenix", "America/Toronto", "America/Vancouver",
         "America/Sao_Paulo", "America/Argentina/Buenos_Aires", "America/Mexico_City",
@@ -156,23 +195,36 @@ object ChronoResultParser {
         "Africa/Cairo", "Africa/Lagos", "Africa/Johannesburg",
         "UTC",
     )
+    private val PREFERRED_ZONES = PREFERRED_ZONE_LIST.toSet()
 
     private val offsetCache = java.util.concurrent.ConcurrentHashMap<Int, TimeZone>()
 
     fun clearOffsetCache() { offsetCache.clear() }
 
-    fun offsetToTimezone(offsetMinutes: Int): TimeZone {
-        offsetCache[offsetMinutes]?.let { return it }
+    fun offsetToTimezone(offsetMinutes: Int, atInstant: Instant? = null): TimeZone {
+        if (atInstant == null) {
+            offsetCache[offsetMinutes]?.let { return it }
+        }
 
-        val now = java.time.Instant.now()
+        // Find IANA zones whose offset at the given instant matches.
+        // Using the actual parsed instant (not system time) makes this deterministic:
+        // same input always produces the same zone, and the zone's offset at the instant
+        // matches the raw offset (so instant.toLocalDateTime(zone) gives back the original time).
+        val reference = if (atInstant != null) {
+            java.time.Instant.ofEpochSecond(atInstant.epochSeconds)
+        } else {
+            java.time.Instant.now()
+        }
         val targetOffset = java.time.ZoneOffset.ofTotalSeconds(offsetMinutes * 60)
         val matches = java.time.ZoneId.getAvailableZoneIds()
             .filter { '/' in it && !it.startsWith("Etc/") && !it.startsWith("SystemV/") }
-            .filter { java.time.ZoneId.of(it).rules.getOffset(now) == targetOffset }
+            .filter { java.time.ZoneId.of(it).rules.getOffset(reference) == targetOffset }
 
-        // Prefer well-known zones: canonical cities first, then by region
+        // Prefer well-known zones: by position in PREFERRED list (earlier = higher priority),
+        // then by region, then alphabetical for full determinism
         val named = matches.sortedWith(compareBy<String> { id ->
-            if (id in PREFERRED_ZONES) 0 else 1
+            val idx = PREFERRED_ZONE_LIST.indexOf(id)
+            if (idx >= 0) idx else Int.MAX_VALUE
         }.thenBy { id ->
             when {
                 id.startsWith("America/") -> 0
@@ -183,7 +235,7 @@ object ChronoResultParser {
                 id.startsWith("Africa/") -> 5
                 else -> 9
             }
-        }).firstOrNull()
+        }.thenBy { it }).firstOrNull()
 
         val tz = if (named != null) {
             TimeZone.of(named)
@@ -192,7 +244,9 @@ object ChronoResultParser {
             val mins = offsetMinutes % 60
             TimeZone.of(UtcOffset(hours, mins).toString())
         }
-        offsetCache[offsetMinutes] = tz
+        if (atInstant == null) {
+            offsetCache[offsetMinutes] = tz
+        }
         return tz
     }
 }

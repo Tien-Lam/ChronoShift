@@ -46,7 +46,7 @@ All complex logic is in pure objects with no Android dependencies:
 |---|---|
 | `ChronoResultParser` | Chrono JSON parsing, offset→IANA zone, date propagation, city resolution, span+full merge |
 | `ResultMerger` | Exact/fuzzy time matching, tz dedup, method label combining |
-| `GeminiResultParser` | Gemini Nano JSON parsing, fence stripping, IANA timezone resolution |
+| `LlmResultParser` | LLM JSON parsing (shared by Gemini Nano + LiteRT), fence stripping, abbreviation-aware tz resolution |
 | `TimeConverter` | Timezone conversion (injectable localZone), UTC offset + city label display |
 | `RegexExtractor` | Unix timestamps, city-to-timezone with CityResolver |
 
@@ -57,8 +57,9 @@ Android-dependent classes (`ChronoExtractor`, `GeminiNanoExtractor`, `MlKitEntit
 - `nlp/TieredTimeExtractor.kt` — orchestrator, streaming Flow
 - `nlp/ChronoExtractor.kt` — Zipline/QuickJS engine, loads `assets/chrono.js`
 - `nlp/ChronoResultParser.kt` — Chrono parsing, date propagation, span merging
-- `nlp/ResultMerger.kt` — merge/dedup (exact match only, ambiguous kept separate)
-- `nlp/GeminiResultParser.kt` — Gemini JSON parsing
+- `nlp/ResultMerger.kt` — merge/dedup (instant-based: same instant merges, different instants kept separate)
+- `nlp/LlmResultParser.kt` — LLM JSON parsing (shared by Gemini Nano + LiteRT)
+- `nlp/TimezoneAbbreviations.kt` — abbreviation→offset resolution, ambiguity detection, instant correction
 - `nlp/RegexExtractor.kt` — unix timestamps + city resolution only
 - `nlp/CityResolver.kt` — `IanaCityLookup` (shared IANA + aliases + fuzzy edit distance), `CityResolver` (Geocoder wrapper)
 - `di/Qualifiers.kt` — `@LiteRt`, `@Gemini`, `@Regex` qualifier annotations for DI
@@ -86,7 +87,7 @@ Tests use real parsers (not manual ExtractedTime construction) to catch field-po
 - `chrono.js` in `assets/` is a bundled esbuild build (251KB). Update: `npm install chrono-node && npx esbuild entry.js --bundle --format=iife --minify --outfile=chrono_bundle.js`
 - Gemini Nano `checkStatus()`: 0=UNAVAILABLE, 1=DOWNLOADABLE, 2=DOWNLOADING, 3=AVAILABLE
 - ML Kit detects datetime spans but has NO timezone awareness — it's a spotter for Chrono
-- Chrono returns timezone as minute offsets. `ChronoResultParser.offsetToTimezone()` maps to named IANA zones via `PREFERRED_ZONES` set
+- Chrono returns timezone as minute offsets. Instant is computed from the raw offset (not IANA zone DST rules). `offsetToTimezone(offset, instant)` finds a matching IANA zone at the parsed instant for display
 - `mergeSpanAndFullResults()` upgrades span results with timezone from full-text results
 - Date-only results (uncertain hour, no tz) filtered when real time results exist, kept when alone
 - `isSameLocalTime` checks hour + minute + DATE (prevents cross-date silent merge)

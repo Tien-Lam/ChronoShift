@@ -4,6 +4,7 @@ import com.chronoshift.conversion.ExtractedTime
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
+import kotlinx.datetime.toLocalDateTime
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
@@ -138,6 +139,150 @@ class ChronoResultParserMergeTest {
         // mergeSpanAndFullResults is for tz upgrade only — ambiguity is handled by ResultMerger.
         assertEquals(1, result.size)
         assertEquals(newYork, result[0].sourceTimezone)
+    }
+
+    // ========== offsetToTimezone with instant ==========
+
+    @Test
+    fun `offsetToTimezone - EST offset in winter maps to New York`() {
+        ChronoResultParser.clearOffsetCache()
+        // January: EST zones are at -300
+        val winterInstant = LocalDateTime(2026, 1, 15, 20, 0).toInstant(TimeZone.UTC)
+        val tz = ChronoResultParser.offsetToTimezone(-300, winterInstant)
+        assertEquals("America/New_York", tz.id)
+    }
+
+    @Test
+    fun `offsetToTimezone - CDT offset in summer maps to Chicago`() {
+        ChronoResultParser.clearOffsetCache()
+        // July: CDT zones are at -300 (not EST zones, which are at -240/EDT in summer)
+        val summerInstant = LocalDateTime(2026, 7, 15, 20, 0).toInstant(TimeZone.UTC)
+        val tz = ChronoResultParser.offsetToTimezone(-300, summerInstant)
+        assertEquals("America/Chicago", tz.id)
+    }
+
+    @Test
+    fun `offsetToTimezone - CST offset in winter maps to Chicago`() {
+        ChronoResultParser.clearOffsetCache()
+        val winterInstant = LocalDateTime(2026, 1, 15, 21, 0).toInstant(TimeZone.UTC)
+        val tz = ChronoResultParser.offsetToTimezone(-360, winterInstant)
+        assertEquals("America/Chicago", tz.id)
+    }
+
+    @Test
+    fun `offsetToTimezone - JST offset maps to Tokyo`() {
+        ChronoResultParser.clearOffsetCache()
+        val instant = LocalDateTime(2026, 7, 15, 6, 0).toInstant(TimeZone.UTC)
+        val tz = ChronoResultParser.offsetToTimezone(540, instant)
+        assertEquals("Asia/Tokyo", tz.id)
+    }
+
+    @Test
+    fun `offsetToTimezone - GMT offset maps to London in winter`() {
+        ChronoResultParser.clearOffsetCache()
+        val winterInstant = LocalDateTime(2026, 1, 15, 12, 0).toInstant(TimeZone.UTC)
+        val tz = ChronoResultParser.offsetToTimezone(0, winterInstant)
+        assertEquals("Europe/London", tz.id)
+    }
+
+    @Test
+    fun `offsetToTimezone - deterministic for same instant`() {
+        ChronoResultParser.clearOffsetCache()
+        val instant = LocalDateTime(2026, 1, 15, 20, 0).toInstant(TimeZone.UTC)
+        val first = ChronoResultParser.offsetToTimezone(-300, instant)
+        ChronoResultParser.clearOffsetCache()
+        val second = ChronoResultParser.offsetToTimezone(-300, instant)
+        assertEquals(first, second)
+    }
+
+    @Test
+    fun `offsetToTimezone - zone offset at instant matches raw offset`() {
+        // Key invariant: the returned zone's offset at the given instant must match the raw offset
+        val dt = LocalDateTime(2026, 7, 15, 15, 0)
+        val rawOffset = -300
+        val instant = dt.toInstant(TimezoneAbbreviations.fixedOffsetTimezone(rawOffset))
+        val tz = ChronoResultParser.offsetToTimezone(rawOffset, instant)
+
+        // Converting instant back through the zone should give back the original local time
+        val roundTripped = instant.toLocalDateTime(tz)
+        assertEquals(dt.hour, roundTripped.hour)
+        assertEquals(dt.minute, roundTripped.minute)
+    }
+
+    // ========== parseRaw instant from raw offset ==========
+
+    @Test
+    fun `parseRaw - instant computed from raw offset not IANA zone DST`() {
+        // Chrono returns offset -300 (EST/UTC-5). parseRaw should compute instant from
+        // the raw offset, so it's correct regardless of what IANA zone offsetToTimezone picks.
+        val json = """[{
+            "text": "3pm EST",
+            "start": {
+                "year": 2026, "month": 7, "day": 15,
+                "hour": 15, "minute": 0, "second": 0,
+                "timezone": -300,
+                "isCertain": {"hour": true, "day": true}
+            }
+        }]"""
+        val results = ChronoResultParser.parseRaw(json)
+        assertEquals(1, results.size)
+        val instant = results[0].extracted.instant
+        assertNotNull(instant)
+        // 3pm at UTC-5 = 8pm UTC, regardless of IANA zone DST rules
+        assertEquals(20, instant!!.toLocalDateTime(TimeZone.UTC).hour)
+    }
+
+    @Test
+    fun `parseRaw - preserves raw offset for date propagation`() {
+        val json = """[{
+            "text": "3pm EST",
+            "start": {
+                "year": 2026, "month": 7, "day": 15,
+                "hour": 15, "minute": 0, "second": 0,
+                "timezone": -300,
+                "isCertain": {"hour": true, "day": false}
+            }
+        }]"""
+        val results = ChronoResultParser.parseRaw(json)
+        assertEquals(-300, results[0].rawOffsetMinutes)
+    }
+
+    @Test
+    fun `propagateDates - uses raw offset for instant recomputation`() {
+        // Date-certain entry + time-only entry with raw offset
+        val dateCertain = ChronoResultParser.ParsedResult(
+            extracted = ExtractedTime(
+                localDateTime = LocalDateTime(2026, 8, 20, 12, 0),
+                originalText = "August 20",
+                confidence = 0.0f,
+            ),
+            dateCertain = true,
+        )
+        val timeOnly = ChronoResultParser.ParsedResult(
+            extracted = ExtractedTime(
+                instant = LocalDateTime(2026, 4, 9, 15, 0)
+                    .toInstant(TimezoneAbbreviations.fixedOffsetTimezone(-300)),
+                localDateTime = LocalDateTime(2026, 4, 9, 15, 0),
+                sourceTimezone = TimeZone.of("America/New_York"),
+                originalText = "3pm EST",
+                confidence = 0.85f,
+            ),
+            dateCertain = false,
+            rawOffsetMinutes = -300,
+        )
+
+        val propagated = ChronoResultParser.propagateDates(listOf(dateCertain, timeOnly))
+
+        // The time-only entry should get Aug 20 date, and instant recomputed from raw offset
+        val result = propagated[1]
+        assertEquals(20, result.localDateTime!!.dayOfMonth)
+        assertEquals(8, result.localDateTime!!.monthNumber)
+        // Instant should use raw offset -300 (UTC-5): 3pm + 5h = 8pm UTC
+        assertEquals(20, result.instant!!.toLocalDateTime(TimeZone.UTC).hour)
+        // Zone should also be updated to match offset at the new instant
+        // In August at UTC-5, that's CDT (Chicago), not EST (New York)
+        val sourceHour = result.instant!!.toLocalDateTime(result.sourceTimezone!!).hour
+        assertEquals("Source display should round-trip to original hour", 15, sourceHour)
     }
 
     // ========== IanaCityLookup ==========

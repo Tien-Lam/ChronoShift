@@ -33,7 +33,7 @@ class LiteRtExtractor @Inject constructor(
                 val response = conversation.sendMessage(prompt)
                 val responseText = response.contents.toString()
                 Log.d(TAG, "Response: $responseText")
-                ExtractionResult(GeminiResultParser.parseResponse(responseText), "LiteRT")
+                ExtractionResult(LlmResultParser.parseResponse(responseText), "LiteRT")
             }
         } catch (e: Exception) {
             Log.w(TAG, "LiteRT inference failed", e)

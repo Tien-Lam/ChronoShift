@@ -71,7 +71,7 @@ class GeminiNanoExtractor @Inject constructor() : TimeExtractor {
             val response = client.generateContent(buildPrompt(text))
             val responseText = response.candidates.firstOrNull()?.text ?: ""
             Log.d(TAG, "Response: $responseText")
-            ExtractionResult(GeminiResultParser.parseResponse(responseText), "Gemini Nano")
+            ExtractionResult(LlmResultParser.parseResponse(responseText), "Gemini Nano")
         } catch (e: Exception) {
             Log.w(TAG, "Gemini Nano generation failed", e)
             ExtractionResult(emptyList(), "Gemini Nano")

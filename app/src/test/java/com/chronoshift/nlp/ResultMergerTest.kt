@@ -89,14 +89,30 @@ class ResultMergerTest {
     }
 
     @Test
-    fun `mergeResults - fuzzy match both have different tz keeps both`() {
+    fun `mergeResults - fuzzy match both have different tz and different offset keeps both`() {
         val existing = listOf(time(localDateTime = baseDt, tz = tokyo, method = "Chrono"))
         val incoming = listOf(time(localDateTime = baseDt, tz = newYork))
         val result = ResultMerger.mergeResults(existing, incoming, "Gemini Nano")
-        // Both timezones differ — both kept as separate interpretations
+        // Tokyo (+9) and New York (-5/-4) have different offsets → genuinely different
         assertEquals(2, result.size)
         assertEquals(tokyo, result[0].sourceTimezone)
         assertEquals(newYork, result[1].sourceTimezone)
+    }
+
+    @Test
+    fun `mergeResults - fuzzy match both have different tz but same instant merges`() {
+        // Vancouver and LA have different IANA IDs but the same offset at all times
+        val vancouver = TimeZone.of("America/Vancouver")
+        val la = TimeZone.of("America/Los_Angeles")
+        val dt = LocalDateTime.parse("2026-04-11T04:30:00")
+        val instant = dt.toInstant(vancouver)
+
+        val existing = listOf(time(instant = instant, localDateTime = dt, tz = vancouver, method = "Chrono"))
+        val incoming = listOf(time(instant = instant, localDateTime = dt, tz = la))
+        val result = ResultMerger.mergeResults(existing, incoming, "Gemini Nano")
+        // Same instant → same interpretation → merge
+        assertEquals(1, result.size)
+        assertEquals("Chrono + Gemini Nano", result[0].method)
     }
 
     @Test
@@ -312,13 +328,67 @@ class ResultMergerTest {
 
         val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
 
-        // ET exact-matches (same instant + same tz New_York). PT has different tz
-        // (Vancouver vs LA) and CST has different tz (Shanghai vs Chicago), so
-        // those are kept as separate interpretations: 3 chrono + 1 Gemini PT + 1 Gemini CST = 5
+        // ET exact-matches (same instant + same tz New_York).
+        // PT: Vancouver vs LA have different IANA IDs but same instant → merged via isSameInstant.
+        // CST: Shanghai vs Chicago have different instants → kept as separate interpretations.
+        // Total: 1 PT + 1 ET + 2 CST = 4
         assertEquals(
-            "Should merge to 5 results (different-tz interpretations kept), got ${merged.size}: ${merged.map { "${it.originalText} tz=${it.sourceTimezone?.id}" }}",
-            5, merged.size
+            "Should merge to 4 results (same-offset merged, different-offset kept), got ${merged.size}: ${merged.map { "${it.originalText} tz=${it.sourceTimezone?.id}" }}",
+            4, merged.size
         )
+    }
+
+    @Test
+    fun `mergeResults - 3pm EST from Chrono and Gemini produces one result`() {
+        // Core bug scenario: "3pm EST" → Chrono uses raw offset -300, Gemini uses America/New_York
+        // Both should produce the same instant (3pm at UTC-5 = 8pm UTC) and merge
+        val dt = LocalDateTime(2026, 7, 15, 15, 0)
+        val estOffset = TimezoneAbbreviations.fixedOffsetTimezone(-300)
+        val correctInstant = dt.toInstant(estOffset) // 8pm UTC
+
+        val chronoResult = time(
+            instant = correctInstant,
+            localDateTime = dt,
+            tz = TimeZone.of("America/New_York"),
+            original = "3pm EST",
+            method = "Chrono",
+        )
+        val geminiResult = time(
+            instant = correctInstant, // After abbreviation correction
+            localDateTime = dt,
+            tz = TimeZone.of("America/New_York"),
+            original = "3pm EST",
+        )
+
+        val merged = ResultMerger.mergeResults(listOf(chronoResult), listOf(geminiResult), "Gemini Nano")
+        assertEquals(1, merged.size)
+        assertEquals("Chrono + Gemini Nano", merged[0].method)
+    }
+
+    @Test
+    fun `mergeResults - 3pm CST keeps both interpretations`() {
+        // CST is ambiguous: US Central (-6) or China Standard (+8)
+        val dt = LocalDateTime(2026, 1, 15, 15, 0)
+        val chicagoInstant = dt.toInstant(TimeZone.of("America/Chicago"))  // 9pm UTC
+        val shanghaiInstant = dt.toInstant(TimeZone.of("Asia/Shanghai"))   // 7am UTC
+
+        val chronoResult = time(
+            instant = chicagoInstant,
+            localDateTime = dt,
+            tz = TimeZone.of("America/Chicago"),
+            original = "3pm CST",
+            method = "Chrono",
+        )
+        val geminiResult = time(
+            instant = shanghaiInstant,
+            localDateTime = dt,
+            tz = TimeZone.of("Asia/Shanghai"),
+            original = "3pm CST",
+        )
+
+        val merged = ResultMerger.mergeResults(listOf(chronoResult), listOf(geminiResult), "Gemini Nano")
+        // Different instants → genuinely different interpretations → keep both
+        assertEquals(2, merged.size)
     }
 
     @Test
@@ -362,5 +432,54 @@ class ResultMergerTest {
             "Without localDateTime, merge produces 5 (the bug): ${merged.map { "${it.originalText} tz=${it.sourceTimezone?.id}" }}",
             5, merged.size
         )
+    }
+
+    // ========== isSameInstant ==========
+
+    @Test
+    fun `isSameInstant - both have same instant returns true`() {
+        val a = time(instant = baseInstant, tz = utc)
+        val b = time(instant = baseInstant, tz = tokyo)
+        assertTrue(ResultMerger.isSameInstant(a, b))
+    }
+
+    @Test
+    fun `isSameInstant - both have different instants returns false`() {
+        val other = LocalDateTime.parse("2026-04-06T15:00:00").toInstant(utc)
+        val a = time(instant = baseInstant, tz = utc)
+        val b = time(instant = other, tz = utc)
+        assertFalse(ResultMerger.isSameInstant(a, b))
+    }
+
+    @Test
+    fun `isSameInstant - no instants but same tz same local time returns true`() {
+        val a = time(localDateTime = baseDt, tz = utc)
+        val b = time(localDateTime = baseDt, tz = utc)
+        assertTrue(ResultMerger.isSameInstant(a, b))
+    }
+
+    @Test
+    fun `isSameInstant - no instants different tz returns false`() {
+        val a = time(localDateTime = baseDt, tz = utc)
+        val b = time(localDateTime = baseDt, tz = tokyo)
+        assertFalse(ResultMerger.isSameInstant(a, b))
+    }
+
+    @Test
+    fun `isSameInstant - one missing tz returns false`() {
+        val a = time(localDateTime = baseDt, tz = utc)
+        val b = time(localDateTime = baseDt, tz = null)
+        assertFalse(ResultMerger.isSameInstant(a, b))
+    }
+
+    @Test
+    fun `isSameInstant - Vancouver and LA same local time returns true`() {
+        val vancouver = TimeZone.of("America/Vancouver")
+        val la = TimeZone.of("America/Los_Angeles")
+        val dt = LocalDateTime(2026, 4, 11, 4, 30)
+        val a = time(localDateTime = dt, tz = vancouver)
+        val b = time(localDateTime = dt, tz = la)
+        // Vancouver and LA always have the same offset
+        assertTrue(ResultMerger.isSameInstant(a, b))
     }
 }
