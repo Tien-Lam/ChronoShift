@@ -54,12 +54,25 @@ object TimezoneAbbreviations {
         "AST" to listOf(-240, 180),    // Atlantic Standard / Arabia Standard
     )
 
+    // Colloquial abbreviations that don't specify Standard/Daylight.
+    // Mapped to IANA zones so DST rules pick the correct offset for the date.
+    private val ZONE_BASED = mapOf(
+        "CT" to "America/Chicago",
+        "ET" to "America/New_York",
+        "PT" to "America/Los_Angeles",
+        "MT" to "America/Denver",
+    )
+
     fun ambiguousOffsets(abbreviation: String): List<Int>? = AMBIGUOUS[abbreviation.uppercase()]
 
     fun resolveOffset(abbreviation: String): Int? {
         val upper = abbreviation.uppercase()
-        if (upper in AMBIGUOUS) return null
+        if (upper in AMBIGUOUS || upper in ZONE_BASED) return null
         return UNAMBIGUOUS[upper]
+    }
+
+    fun resolveZone(abbreviation: String): TimeZone? {
+        return ZONE_BASED[abbreviation.uppercase()]?.let { TimeZone.of(it) }
     }
 
     fun isAmbiguous(abbreviation: String): Boolean = abbreviation.uppercase() in AMBIGUOUS
@@ -68,7 +81,7 @@ object TimezoneAbbreviations {
         val upper = text.uppercase()
         for (match in WORD_PATTERN.findAll(upper)) {
             val candidate = match.groupValues[1]
-            if (candidate in UNAMBIGUOUS || candidate in AMBIGUOUS) return candidate
+            if (candidate in UNAMBIGUOUS || candidate in AMBIGUOUS || candidate in ZONE_BASED) return candidate
         }
         return null
     }
@@ -83,6 +96,11 @@ object TimezoneAbbreviations {
         val abbr = extractAbbreviation(originalText) ?: return dt.toInstant(tz)
         val fixedOffset = resolveOffset(abbr)
         if (fixedOffset != null) return dt.toInstant(fixedOffsetTimezone(fixedOffset))
+
+        // Zone-based abbreviation (e.g. CT = America/Chicago).
+        // Use the IANA zone's DST rules to pick the correct offset for the date.
+        val zone = resolveZone(abbr)
+        if (zone != null) return dt.toInstant(zone)
 
         // Ambiguous abbreviation (e.g. CST = US Central or China Standard).
         // The LLM already picked a region via the IANA zone. Use that zone's standard offset

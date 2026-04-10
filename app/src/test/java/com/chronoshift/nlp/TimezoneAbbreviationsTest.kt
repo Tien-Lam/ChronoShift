@@ -153,9 +153,9 @@ class TimezoneAbbreviationsTest {
     }
 
     @Test
-    fun `extractAbbreviation - does not match PT or ET (not fixed-offset abbreviations)`() {
-        assertNull(TimezoneAbbreviations.extractAbbreviation("4:30 a.m. PT"))
-        assertNull(TimezoneAbbreviations.extractAbbreviation("7:30 a.m. ET"))
+    fun `extractAbbreviation - matches zone-based PT and ET`() {
+        assertEquals("PT", TimezoneAbbreviations.extractAbbreviation("4:30 a.m. PT"))
+        assertEquals("ET", TimezoneAbbreviations.extractAbbreviation("7:30 a.m. ET"))
     }
 
     // ========== fixedOffsetTimezone ==========
