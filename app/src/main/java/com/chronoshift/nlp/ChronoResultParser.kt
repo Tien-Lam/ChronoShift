@@ -157,7 +157,7 @@ object ChronoResultParser {
         "UTC",
     )
 
-    private val offsetCache = mutableMapOf<Int, TimeZone>()
+    private val offsetCache = java.util.concurrent.ConcurrentHashMap<Int, TimeZone>()
 
     fun clearOffsetCache() { offsetCache.clear() }
 

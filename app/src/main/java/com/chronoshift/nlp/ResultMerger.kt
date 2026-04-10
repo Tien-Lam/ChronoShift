@@ -59,6 +59,8 @@ object ResultMerger {
     }
 
     fun combineMethod(existing: String, new: String): String {
-        return if (new in existing) existing else "$existing + $new"
+        if (new.isEmpty() || new in existing) return existing
+        if (existing.isEmpty()) return new
+        return "$existing + $new"
     }
 }

@@ -32,7 +32,7 @@ Input text
   └─ emit final results
 ```
 
-Orchestrated by `TieredTimeExtractor` (implements `StreamingTimeExtractor`). ViewModel collects `Flow<ExtractionResult>`.
+Orchestrated by `TieredTimeExtractor` (uses `SpanAwareTimeExtractor`, `SpanDetector`, `TimeExtractor` interfaces). ViewModel collects `Flow<ExtractionResult>`.
 
 ### Merge Philosophy
 
@@ -60,7 +60,8 @@ Android-dependent classes (`ChronoExtractor`, `GeminiNanoExtractor`, `MlKitEntit
 - `nlp/ResultMerger.kt` — merge/dedup (exact match only, ambiguous kept separate)
 - `nlp/GeminiResultParser.kt` — Gemini JSON parsing
 - `nlp/RegexExtractor.kt` — unix timestamps + city resolution only
-- `nlp/CityResolver.kt` — Android Geocoder + IANA fallback + fuzzy edit distance
+- `nlp/CityResolver.kt` — `IanaCityLookup` (shared IANA + aliases + fuzzy edit distance), `CityResolver` (Geocoder wrapper)
+- `di/Qualifiers.kt` — `@LiteRt`, `@Gemini`, `@Regex` qualifier annotations for DI
 - `conversion/TimeConverter.kt` — conversion + `formatZoneName` with city labels
 - `ui/main/MainScreen.kt` — two-state layout: InputLayout ↔ ResultsLayout
 - `ui/components/TimeResultCard.kt` — input line → hero time → date → tz+method
@@ -75,9 +76,9 @@ Timezone displayed as `UTC+N CityName` (e.g. "UTC-7 Los Angeles"). 55+ curated c
 
 ## Testing
 
-288 tests across 7 suites. 354-pattern corpus.
+381 tests across 11 suites. 354-pattern corpus.
 
-Tests use real parsers (not manual ExtractedTime construction) to catch field-population bugs. `TestCityResolver` (IANA-only) for unit tests. Injectable `localZone` on `TimeConverter` for deterministic output.
+Tests use real parsers (not manual ExtractedTime construction) to catch field-population bugs. `TestCityResolver` (delegates to `IanaCityLookup`) for unit tests. Injectable `localZone` on `TimeConverter` for deterministic output. `unitTests.isReturnDefaultValues = true` for `android.util.Log` in TieredTimeExtractor tests.
 
 ## Gotchas
 
@@ -92,5 +93,4 @@ Tests use real parsers (not manual ExtractedTime construction) to catch field-po
 
 ## Next Steps
 
-- Integrate Google LiteRT-LM (`com.google.ai.edge.litertlm:litertlm-android`) as fast (~1-2s) on-device LLM between Chrono and Gemini Nano
-- Model: Gemma 3n E2B (~1.5GB, runtime download)
+- LiteRT-LM integration is done (Stage 2). Model: Gemma 4 E2B (~1.5GB, runtime download via `ModelDownloader`)

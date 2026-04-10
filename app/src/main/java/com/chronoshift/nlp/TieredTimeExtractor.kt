@@ -9,11 +9,11 @@ import javax.inject.Singleton
 
 @Singleton
 class TieredTimeExtractor @Inject constructor(
-    private val chronoExtractor: ChronoExtractor,
-    private val liteRtExtractor: LiteRtExtractor,
-    private val geminiExtractor: GeminiNanoExtractor,
-    private val mlKitExtractor: MlKitEntityExtractor,
-    private val regexExtractor: RegexExtractor,
+    private val chronoExtractor: SpanAwareTimeExtractor,
+    @com.chronoshift.di.LiteRt private val liteRtExtractor: TimeExtractor,
+    @com.chronoshift.di.Gemini private val geminiExtractor: TimeExtractor,
+    private val mlKitExtractor: SpanDetector,
+    @com.chronoshift.di.Regex private val regexExtractor: TimeExtractor,
 ) : TimeExtractor, StreamingTimeExtractor {
 
     override suspend fun isAvailable(): Boolean = true
