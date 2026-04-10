@@ -653,288 +653,303 @@ class AmbiguityExpansionTest {
     }
 
     // =====================================================================
-    // 16. Real-world event timestamps (verbatim from websites)
-    // Source: Summer Game Fest, WWDC, World Cup, Eventbrite, Meetup, etc.
+    // 16. Real-world full-string tests (verbatim from websites)
+    // Each test passes the FULL input string and simulates both Chrono + Gemini.
     // =====================================================================
 
-    // --- Summer Game Fest: "2pm PT / 5pm ET / 9pm GMT" ---
+    // --- Summer Game Fest: "Friday, June 5 2026 2pm PT / 5pm ET / 9pm GMT" ---
 
     @Test
-    fun `Summer Game Fest - 2pm PT 5pm ET 9pm GMT`() {
-        val json = """[
+    fun `Summer Game Fest - 2pm PT 5pm ET 9pm GMT full string`() {
+        val input = "Friday, June 5 2026 2pm PT / 5pm ET / 9pm GMT"
+        val chronoJson = """[
             ${chrono("2pm PT", month = 6, day = 5, hour = 14, timezone = -420, dayCertain = true)},
             ${chrono("5pm ET", month = 6, day = 5, hour = 17, timezone = -240, dayCertain = true)},
             ${chrono("9pm GMT", month = 6, day = 5, hour = 21, timezone = 0, dayCertain = true)}
         ]"""
-        val c = fullPipeline(json)
-        // PT, ET zone-based; GMT unambiguous → no expansion → 3
-        assertEquals(3, c.size)
+        val geminiJson = """[
+            ${gemini(time = "14:00", date = "2026-06-05", timezone = "America/Los_Angeles", original = "2pm PT")},
+            ${gemini(time = "17:00", date = "2026-06-05", timezone = "America/New_York", original = "5pm ET")},
+            ${gemini(time = "21:00", date = "2026-06-05", timezone = "Europe/London", original = "9pm GMT")}
+        ]"""
+        val c = fullPipeline(chronoJson, input, geminiJson)
+        assertEquals("PT + ET + GMT, no ambiguous → 3", 3, c.size)
+        // All same instant → same Sydney time
+        val sydneyTimes = c.map { it.localDateTime }.toSet()
+        assertEquals("All 3 should convert to same Sydney time", 1, sydneyTimes.size)
     }
 
-    // --- Summer Game Fest: "June 03 9:30 pm CST / 6:30 am PT" — CST is ambiguous! ---
+    // --- Summer Game Fest: "June 03 9:30 pm CST / 6:30 am PT" — CST is ambiguous ---
 
     @Test
-    fun `Summer Game Fest - 9 30pm CST 6 30am PT - CST expands`() {
-        val json = """[
+    fun `Summer Game Fest - June 03 9 30 pm CST 6 30 am PT full string`() {
+        val input = "June 03 9:30 pm CST / 6:30 am PT"
+        val chronoJson = """[
             ${chrono("9:30 pm CST", month = 6, day = 3, hour = 21, minute = 30, timezone = -360, dayCertain = true)},
             ${chrono("6:30 am PT", month = 6, day = 3, hour = 6, minute = 30, timezone = -420, dayCertain = true)}
         ]"""
-        val c = fullPipeline(json)
-        // PT: no expansion. CST: expands to US Central + China = 2.
-        // Total: 1 + 2 = 3
+        val geminiJson = """[
+            ${gemini(time = "21:30", date = "2026-06-03", timezone = "America/Chicago", original = "9:30 pm CST")},
+            ${gemini(time = "06:30", date = "2026-06-03", timezone = "America/Los_Angeles", original = "6:30 am PT")}
+        ]"""
+        val c = fullPipeline(chronoJson, input, geminiJson)
+        // PT(1) + CST(2, US Central + China) = 3
         assertEquals(3, c.size)
+        val cstCards = c.filter { it.originalText.contains("CST") }
+        assertEquals("CST should have 2 cards (US + China)", 2, cstCards.size)
+        assertTrue("CST cards should have different times",
+            cstCards[0].localDateTime != cstCards[1].localDateTime)
     }
 
     // --- Summer Game Fest: "June 3 2:30 pm BST / 6:30 am PT" — BST is ambiguous ---
 
     @Test
-    fun `Summer Game Fest - 2 30pm BST 6 30am PT - BST expands`() {
-        val json = """[
+    fun `Summer Game Fest - June 3 2 30 pm BST 6 30 am PT full string`() {
+        val input = "June 3 2:30 pm BST / 6:30 am PT"
+        val chronoJson = """[
             ${chrono("2:30 pm BST", month = 6, day = 3, hour = 14, minute = 30, timezone = 60, dayCertain = true)},
             ${chrono("6:30 am PT", month = 6, day = 3, hour = 6, minute = 30, timezone = -420, dayCertain = true)}
         ]"""
-        val c = fullPipeline(json)
-        // BST expands (British Summer + Bangladesh). PT doesn't.
-        assertEquals(3, c.size)
+        val geminiJson = """[
+            ${gemini(time = "14:30", date = "2026-06-03", timezone = "Europe/London", original = "2:30 pm BST")},
+            ${gemini(time = "06:30", date = "2026-06-03", timezone = "America/Los_Angeles", original = "6:30 am PT")}
+        ]"""
+        val c = fullPipeline(chronoJson, input, geminiJson)
+        assertEquals("PT(1) + BST(2, British + Bangladesh) = 3", 3, c.size)
     }
 
-    // --- Summer Game Fest cross-midnight: "June 7 12:00 am BST / 4:00 pm PT" ---
+    // --- Summer Game Fest cross-midnight: "June 7 12:00 am BST / June 6 4:00 pm PT" ---
 
     @Test
-    fun `Summer Game Fest - midnight BST vs 4pm PT previous day - BST expands`() {
-        val json = """[
+    fun `Summer Game Fest - midnight BST vs 4pm PT cross-day full string`() {
+        val input = "June 7 12:00 am BST / June 6 4:00 pm PT"
+        val chronoJson = """[
             ${chrono("12:00 am BST", month = 6, day = 7, hour = 0, timezone = 60, dayCertain = true)},
             ${chrono("4:00 pm PT", month = 6, day = 6, hour = 16, timezone = -420, dayCertain = true)}
         ]"""
-        val c = fullPipeline(json)
-        // BST midnight expands to British + Bangladesh midnight → 2
-        // PT: 1
-        // Total: 3
-        assertEquals(3, c.size)
-    }
-
-    // --- World Cup: "3:00 PM ET" with BST/IST alternatives across dates ---
-
-    @Test
-    fun `World Cup - 3pm ET 8pm BST - BST expands`() {
-        val json = """[
-            ${chrono("3:00 PM ET", month = 7, day = 19, hour = 15, timezone = -240, dayCertain = true)},
-            ${chrono("8:00 PM BST", month = 7, day = 19, hour = 20, timezone = 60, dayCertain = true)}
+        val geminiJson = """[
+            ${gemini(time = "00:00", date = "2026-06-07", timezone = "Europe/London", original = "12:00 am BST")},
+            ${gemini(time = "16:00", date = "2026-06-06", timezone = "America/Los_Angeles", original = "4:00 pm PT")}
         ]"""
-        val c = fullPipeline(json)
-        // ET: zone-based, no expansion. BST: ambiguous → expands.
+        val c = fullPipeline(chronoJson, input, geminiJson)
+        // PT(1) + BST midnight(2) = 3
         assertEquals(3, c.size)
     }
 
+    // --- World Cup: "3:00 PM ET on Sunday July 19, 2026 / 8:00 PM BST / 12:30 AM IST on July 20" ---
+
     @Test
-    fun `World Cup - 12 30 AM IST next day - IST expands`() {
-        // "12:30 AM IST on July 20" — IST is ambiguous (India +5:30 vs Ireland +1)
-        val json = "[${chrono("12:30 AM IST", month = 7, day = 20, hour = 0, minute = 30, timezone = 330, dayCertain = true)}]"
-        val c = fullPipeline(json)
-        assertEquals("IST expands to India + Ireland", 2, c.size)
-        // India: 00:30 UTC+5:30 = 19:00 UTC Jul 19
-        // Ireland: 00:30 UTC+1 = 23:30 UTC Jul 19
-        // In Sydney these should be very different times
-        val times = c.map { it.localDateTime }.toSet()
-        assertEquals(2, times.size)
+    fun `World Cup - 3pm ET 8pm BST 12 30am IST full string`() {
+        val input = "3:00 PM ET on Sunday July 19, 2026 / 8:00 PM BST in the UK / 12:30 AM IST on July 20 in India"
+        val chronoJson = """[
+            ${chrono("3:00 PM ET", month = 7, day = 19, hour = 15, timezone = -240, dayCertain = true)},
+            ${chrono("8:00 PM BST", month = 7, day = 19, hour = 20, timezone = 60, dayCertain = true)},
+            ${chrono("12:30 AM IST", month = 7, day = 20, hour = 0, minute = 30, timezone = 330, dayCertain = true)}
+        ]"""
+        val geminiJson = """[
+            ${gemini(time = "15:00", date = "2026-07-19", timezone = "America/New_York", original = "3:00 PM ET")},
+            ${gemini(time = "20:00", date = "2026-07-19", timezone = "Europe/London", original = "8:00 PM BST")},
+            ${gemini(time = "00:30", date = "2026-07-20", timezone = "Asia/Kolkata", original = "12:30 AM IST")}
+        ]"""
+        val c = fullPipeline(chronoJson, input, geminiJson)
+        // ET(1) + BST(2) + IST(2) = 5
+        assertEquals(5, c.size)
+        val bstCards = c.filter { it.originalText.contains("BST") }
+        val istCards = c.filter { it.originalText.contains("IST") }
+        assertEquals("BST: British + Bangladesh", 2, bstCards.size)
+        assertEquals("IST: India + Ireland", 2, istCards.size)
     }
 
     @Test
-    fun `World Cup - 5am AEST next day - unambiguous`() {
-        val json = "[${chrono("5:00 AM AEST", month = 7, day = 20, hour = 5, timezone = 600, dayCertain = true)}]"
-        val c = fullPipeline(json)
-        assertEquals("AEST unambiguous", 1, c.size)
+    fun `World Cup - 5am AEST 4am JST next day unambiguous full string`() {
+        val input = "5:00 AM AEST on July 20 in Australia / 4:00 AM JST on July 20 in Japan"
+        val chronoJson = """[
+            ${chrono("5:00 AM AEST", month = 7, day = 20, hour = 5, timezone = 600, dayCertain = true)},
+            ${chrono("4:00 AM JST", month = 7, day = 20, hour = 4, timezone = 540, dayCertain = true)}
+        ]"""
+        val geminiJson = """[
+            ${gemini(time = "05:00", date = "2026-07-20", timezone = "Australia/Sydney", original = "5:00 AM AEST")},
+            ${gemini(time = "04:00", date = "2026-07-20", timezone = "Asia/Tokyo", original = "4:00 AM JST")}
+        ]"""
+        val c = fullPipeline(chronoJson, input, geminiJson)
+        assertEquals("AEST + JST both unambiguous", 2, c.size)
     }
 
-    // --- Apple WWDC: "10 a.m. PT" / "June 8 at 10:00 a.m. Pacific Time" ---
+    // --- Apple WWDC: "June 8 at 10:00 a.m. Pacific Time" ---
 
     @Test
-    fun `Apple WWDC - 10am PT June 8`() {
-        val c = fullPipeline(
-            "[${chrono("10 a.m. PT", month = 6, day = 8, hour = 10, timezone = -420, dayCertain = true)}]",
-            "June 8 at 10:00 a.m. Pacific Time",
-        )
+    fun `Apple WWDC - June 8 at 10 am Pacific Time full string`() {
+        val input = "June 8 at 10:00 a.m. Pacific Time"
+        val chronoJson = "[${chrono("10:00 a.m.", month = 6, day = 8, hour = 10, timezone = -420, dayCertain = true)}]"
+        val geminiJson = "[${gemini(time = "10:00", date = "2026-06-08", timezone = "America/Los_Angeles", original = "10:00 a.m. Pacific Time")}]"
+        val c = fullPipeline(chronoJson, input, geminiJson)
         assertEquals(1, c.size)
-    }
-
-    @Test
-    fun `Apple deadline - 11 59pm PT March 30`() {
-        val c = fullPipeline(
-            "[${chrono("11:59 p.m. PT", month = 3, day = 30, hour = 23, minute = 59, timezone = -420, dayCertain = true)}]",
-        )
-        assertEquals(1, c.size)
+        assertTrue("Source should show Los Angeles", c[0].sourceTimezone.contains("Los Angeles"))
     }
 
     // --- NVIDIA GTC: "Monday, March 16, 11:00 a.m. PT" ---
 
     @Test
-    fun `NVIDIA GTC - 11am PT March 16`() {
-        val c = fullPipeline(
-            "[${chrono("11:00 a.m. PT", month = 3, day = 16, hour = 11, timezone = -420, dayCertain = true)}]",
-            "Monday, March 16, 11:00 a.m. PT",
-        )
-        assertEquals(1, c.size)
-    }
-
-    @Test
-    fun `NVIDIA GTC - 2 30pm PT`() {
-        val c = fullPipeline(
-            "[${chrono("2:30 p.m. PT", month = 3, day = 19, hour = 14, minute = 30, timezone = -420, dayCertain = true)}]",
-        )
+    fun `NVIDIA GTC - Monday March 16 11 am PT full string`() {
+        val input = "Monday, March 16, 11:00 a.m. PT"
+        val chronoJson = "[${chrono("11:00 a.m. PT", month = 3, day = 16, hour = 11, timezone = -420, dayCertain = true)}]"
+        val geminiJson = "[${gemini(time = "11:00", date = "2026-03-16", timezone = "America/Los_Angeles", original = "11:00 a.m. PT")}]"
+        val c = fullPipeline(chronoJson, input, geminiJson)
         assertEquals(1, c.size)
     }
 
     // --- Eventbrite: "Sat, Apr 25 • 12:00 AM CDT" ---
 
     @Test
-    fun `Eventbrite - midnight CDT`() {
-        val c = fullPipeline(
-            "[${chrono("12:00 AM CDT", month = 4, day = 25, hour = 0, timezone = -300, dayCertain = true)}]",
-        )
+    fun `Eventbrite - Sat Apr 25 12 00 AM CDT full string`() {
+        val input = "Sat, Apr 25 • 12:00 AM CDT"
+        val chronoJson = "[${chrono("12:00 AM CDT", month = 4, day = 25, hour = 0, timezone = -300, dayCertain = true)}]"
+        val geminiJson = "[${gemini(time = "00:00", date = "2026-04-25", timezone = "America/Chicago", original = "12:00 AM CDT")}]"
+        val c = fullPipeline(chronoJson, input, geminiJson)
         assertEquals("CDT is unambiguous", 1, c.size)
-    }
-
-    @Test
-    fun `Eventbrite - 9am PDT`() {
-        val c = fullPipeline(
-            "[${chrono("9:00 AM PDT", month = 5, day = 14, hour = 9, timezone = -420, dayCertain = true)}]",
-        )
-        assertEquals(1, c.size)
     }
 
     // --- Meetup: "Sat, Apr 11 · 10:00 AM AEST" ---
 
     @Test
-    fun `Meetup - 10am AEST`() {
-        val c = fullPipeline(
-            "[${chrono("10:00 AM AEST", month = 4, day = 11, hour = 10, timezone = 600, dayCertain = true)}]",
-        )
+    fun `Meetup - Sat Apr 11 10 00 AM AEST full string`() {
+        val input = "Sat, Apr 11 · 10:00 AM AEST"
+        val chronoJson = "[${chrono("10:00 AM AEST", month = 4, day = 11, hour = 10, timezone = 600, dayCertain = true)}]"
+        val geminiJson = "[${gemini(time = "10:00", date = "2026-04-11", timezone = "Australia/Sydney", original = "10:00 AM AEST")}]"
+        val c = fullPipeline(chronoJson, input, geminiJson)
         assertEquals(1, c.size)
     }
 
-    @Test
-    fun `Meetup - 6 30pm AEST monthly`() {
-        val c = fullPipeline(
-            "[${chrono("6:30 PM AEST", month = 4, day = 24, hour = 18, minute = 30, timezone = 600, dayCertain = true)}]",
-        )
-        assertEquals(1, c.size)
-    }
-
-    // --- Festival of Rail: "18:00 UTC" (24h + UTC) ---
+    // --- Nintendo Direct: "Feb 5 at 6am PT/9am ET" ---
 
     @Test
-    fun `Festival of Rail - 18 00 UTC`() {
-        val c = fullPipeline(
-            "[${chrono("18:00 UTC", month = 2, day = 5, hour = 18, timezone = 0, dayCertain = true)}]",
-        )
-        assertEquals(1, c.size)
-    }
-
-    @Test
-    fun `Festival of Rail - 19 00 UTC`() {
-        val c = fullPipeline(
-            "[${chrono("19:00 UTC", month = 2, day = 3, hour = 19, timezone = 0, dayCertain = true)}]",
-        )
-        assertEquals(1, c.size)
-    }
-
-    // --- Nintendo Direct: "6 a.m. PT/9 a.m. ET" (no space around slash) ---
-
-    @Test
-    fun `Nintendo Direct - 6am PT 9am ET`() {
-        val json = """[
-            ${chrono("6 a.m. PT", month = 2, day = 5, hour = 6, timezone = -420, dayCertain = true)},
-            ${chrono("9 a.m. ET", month = 2, day = 5, hour = 9, timezone = -300, dayCertain = true)}
+    fun `Nintendo Direct - Feb 5 at 6am PT 9am ET full string`() {
+        // February → PST (-480) and EST (-300), not PDT/EDT
+        val input = "Feb 5 at 6am PT/9am ET"
+        val chronoJson = """[
+            ${chrono("6am PT", month = 2, day = 5, hour = 6, timezone = -480, dayCertain = true)},
+            ${chrono("9am ET", month = 2, day = 5, hour = 9, timezone = -300, dayCertain = true)}
         ]"""
-        val c = fullPipeline(json)
+        val geminiJson = """[
+            ${gemini(time = "06:00", date = "2026-02-05", timezone = "America/Los_Angeles", original = "6am PT")},
+            ${gemini(time = "09:00", date = "2026-02-05", timezone = "America/New_York", original = "9am ET")}
+        ]"""
+        val c = fullPipeline(chronoJson, input, geminiJson)
         assertEquals(2, c.size)
+        // Both should be same instant → same Sydney time
+        val sydneyTimes = c.map { it.localDateTime }.toSet()
+        assertEquals("PT and ET should convert to same Sydney time", 1, sydneyTimes.size)
     }
 
-    // --- Google I/O: "10 a.m. PT" ---
+    // --- Festival of Rail: "Thursday February 5th from 18:00 UTC" ---
 
     @Test
-    fun `Google IO - 10am PT May 19`() {
-        val c = fullPipeline(
-            "[${chrono("10 a.m. PT", month = 5, day = 19, hour = 10, timezone = -420, dayCertain = true)}]",
-            "May 19 at 10 a.m. PT",
-        )
+    fun `Festival of Rail - Thursday February 5th from 18 00 UTC full string`() {
+        val input = "Thursday February 5th from 18:00 UTC"
+        val chronoJson = "[${chrono("18:00 UTC", month = 2, day = 5, hour = 18, timezone = 0, dayCertain = true)}]"
+        val geminiJson = "[${gemini(time = "18:00", date = "2026-02-05", timezone = "UTC", original = "18:00 UTC")}]"
+        val c = fullPipeline(chronoJson, input, geminiJson)
         assertEquals(1, c.size)
     }
 
-    // --- Zoom invite: "02:00 PM Eastern Time (US and Canada)" ---
+    // --- Zoom: "Apr 10, 2026 02:00 PM Eastern Time (US and Canada)" ---
 
     @Test
-    fun `Zoom invite - 2pm Eastern Time`() {
-        val c = fullPipeline(
-            "[${chrono("02:00 PM", month = 4, day = 10, hour = 14, timezone = -240, dayCertain = true)}]",
-            "Apr 10, 2026 02:00 PM Eastern Time (US and Canada)",
-        )
+    fun `Zoom invite - Apr 10 2026 02 00 PM Eastern Time full string`() {
+        val input = "Apr 10, 2026 02:00 PM Eastern Time (US and Canada)"
+        val chronoJson = "[${chrono("02:00 PM", month = 4, day = 10, hour = 14, timezone = -240, dayCertain = true)}]"
+        val geminiJson = "[${gemini(time = "14:00", date = "2026-04-10", timezone = "America/New_York", original = "02:00 PM Eastern Time")}]"
+        val c = fullPipeline(chronoJson, input, geminiJson)
         assertEquals(1, c.size)
+        assertTrue("Source tz should show New York", c[0].sourceTimezone.contains("New York"))
     }
 
     // --- Google Calendar: "Wednesday, April 15, 2026 10:00am - 11:00am (Eastern Daylight Time)" ---
 
     @Test
-    fun `Google Calendar - 10am to 11am EDT range`() {
-        val json = "[${chrono("10:00am - 11:00am", month = 4, day = 15, hour = 10, timezone = -240, dayCertain = true,
+    fun `Google Calendar - April 15 10am to 11am EDT full string`() {
+        val input = "Wednesday, April 15, 2026 10:00am - 11:00am (Eastern Daylight Time)"
+        val chronoJson = "[${chrono("10:00am - 11:00am", month = 4, day = 15, hour = 10, timezone = -240, dayCertain = true,
             end = chronoEnd(month = 4, day = 15, hour = 11, timezone = -240))}]"
-        val c = fullPipeline(json)
+        val geminiJson = "[${gemini(time = "10:00", date = "2026-04-15", timezone = "America/New_York", original = "10:00am Eastern Daylight Time")}]"
+        val c = fullPipeline(chronoJson, input, geminiJson)
         assertEquals("Range: start + end", 2, c.size)
     }
 
     // =====================================================================
-    // 17. Gaming multi-timezone with ALL ambiguous TZs
+    // 17. Gaming multi-timezone with ALL ambiguous TZs (full strings)
     // =====================================================================
 
     @Test
-    fun `gaming showcase - PT ET BST CEST - BST expands`() {
-        // "10:00AM PT / 1:00PM ET / 6:00PM BST / 7:00PM CEST"
-        val json = """[
+    fun `gaming showcase - 10AM PT 1PM ET 6PM BST 7PM CEST full string`() {
+        val input = "10:00AM PT / 1:00PM ET / 6:00PM BST / 7:00PM CEST"
+        val chronoJson = """[
             ${chrono("10:00AM PT", hour = 10, timezone = -420, dayCertain = true)},
             ${chrono("1:00PM ET", hour = 13, timezone = -240, dayCertain = true)},
             ${chrono("6:00PM BST", hour = 18, timezone = 60, dayCertain = true)},
             ${chrono("7:00PM CEST", hour = 19, timezone = 120, dayCertain = true)}
         ]"""
-        val c = fullPipeline(json)
-        // PT(1) + ET(1) + BST(2, ambiguous) + CEST(1) = 5
+        val geminiJson = """[
+            ${gemini(time = "10:00", timezone = "America/Los_Angeles", original = "10:00AM PT")},
+            ${gemini(time = "13:00", timezone = "America/New_York", original = "1:00PM ET")},
+            ${gemini(time = "18:00", timezone = "Europe/London", original = "6:00PM BST")},
+            ${gemini(time = "19:00", timezone = "Europe/Berlin", original = "7:00PM CEST")}
+        ]"""
+        val c = fullPipeline(chronoJson, input, geminiJson)
+        // PT(1) + ET(1) + BST(2, British+Bangladesh) + CEST(1) = 5
         assertEquals(5, c.size)
+        val bstCards = c.filter { it.originalText.contains("BST") }
+        assertEquals("BST expands to 2", 2, bstCards.size)
     }
 
     @Test
-    fun `gaming showcase with CST and BST - both expand`() {
-        // "6:30 am PT / 9:30 pm CST / 2:30 pm BST"
-        val json = """[
+    fun `gaming showcase - 6 30am PT 9 30pm CST 2 30pm BST full string`() {
+        val input = "6:30 am PT / 9:30 pm CST / 2:30 pm BST"
+        val chronoJson = """[
             ${chrono("6:30 am PT", hour = 6, minute = 30, timezone = -420, dayCertain = true)},
             ${chrono("9:30 pm CST", hour = 21, minute = 30, timezone = -360, dayCertain = true)},
             ${chrono("2:30 pm BST", hour = 14, minute = 30, timezone = 60, dayCertain = true)}
         ]"""
-        val c = fullPipeline(json)
+        val geminiJson = """[
+            ${gemini(time = "06:30", timezone = "America/Los_Angeles", original = "6:30 am PT")},
+            ${gemini(time = "21:30", timezone = "America/Chicago", original = "9:30 pm CST")},
+            ${gemini(time = "14:30", timezone = "Europe/London", original = "2:30 pm BST")}
+        ]"""
+        val c = fullPipeline(chronoJson, input, geminiJson)
         // PT(1) + CST(2) + BST(2) = 5
         assertEquals(5, c.size)
     }
 
     @Test
-    fun `five timezone gaming announcement with JST`() {
-        // "10:30 pm JST / 6:30 am PT / 9:30 am ET / 2:30 pm BST / 3:30 pm CEST"
-        val json = """[
+    fun `five timezone announcement full string`() {
+        val input = "10:30 pm JST / 6:30 am PT / 9:30 am ET / 2:30 pm BST / 3:30 pm CEST"
+        val chronoJson = """[
             ${chrono("10:30 pm JST", hour = 22, minute = 30, timezone = 540, dayCertain = true)},
             ${chrono("6:30 am PT", hour = 6, minute = 30, timezone = -420, dayCertain = true)},
             ${chrono("9:30 am ET", hour = 9, minute = 30, timezone = -240, dayCertain = true)},
             ${chrono("2:30 pm BST", hour = 14, minute = 30, timezone = 60, dayCertain = true)},
             ${chrono("3:30 pm CEST", hour = 15, minute = 30, timezone = 120, dayCertain = true)}
         ]"""
-        val c = fullPipeline(json)
+        val geminiJson = """[
+            ${gemini(time = "22:30", timezone = "Asia/Tokyo", original = "10:30 pm JST")},
+            ${gemini(time = "06:30", timezone = "America/Los_Angeles", original = "6:30 am PT")},
+            ${gemini(time = "09:30", timezone = "America/New_York", original = "9:30 am ET")},
+            ${gemini(time = "14:30", timezone = "Europe/London", original = "2:30 pm BST")},
+            ${gemini(time = "15:30", timezone = "Europe/Berlin", original = "3:30 pm CEST")}
+        ]"""
+        val c = fullPipeline(chronoJson, input, geminiJson)
         // JST(1) + PT(1) + ET(1) + BST(2) + CEST(1) = 6
         assertEquals(6, c.size)
     }
 
     // =====================================================================
-    // 18. Sports schedule cross-date with ambiguous TZs
+    // 18. Sports cross-date with ambiguous TZs (full strings)
     // =====================================================================
 
     @Test
-    fun `World Cup final - ET BST CET IST AEST JST spanning two dates`() {
-        val json = """[
+    fun `World Cup final six timezones full string`() {
+        val input = "3:00 PM ET / 8:00 PM BST / 9:00 PM CET / 12:30 AM IST Jul 20 / 5:00 AM AEST Jul 20 / 4:00 AM JST Jul 20"
+        val chronoJson = """[
             ${chrono("3:00 PM ET", month = 7, day = 19, hour = 15, timezone = -240, dayCertain = true)},
             ${chrono("8:00 PM BST", month = 7, day = 19, hour = 20, timezone = 60, dayCertain = true)},
             ${chrono("9:00 PM CET", month = 7, day = 19, hour = 21, timezone = 60, dayCertain = true)},
@@ -942,48 +957,65 @@ class AmbiguityExpansionTest {
             ${chrono("5:00 AM AEST", month = 7, day = 20, hour = 5, timezone = 600, dayCertain = true)},
             ${chrono("4:00 AM JST", month = 7, day = 20, hour = 4, timezone = 540, dayCertain = true)}
         ]"""
-        val c = fullPipeline(json)
+        val geminiJson = """[
+            ${gemini(time = "15:00", date = "2026-07-19", timezone = "America/New_York", original = "3:00 PM ET")},
+            ${gemini(time = "20:00", date = "2026-07-19", timezone = "Europe/London", original = "8:00 PM BST")},
+            ${gemini(time = "21:00", date = "2026-07-19", timezone = "Europe/Paris", original = "9:00 PM CET")},
+            ${gemini(time = "00:30", date = "2026-07-20", timezone = "Asia/Kolkata", original = "12:30 AM IST")},
+            ${gemini(time = "05:00", date = "2026-07-20", timezone = "Australia/Sydney", original = "5:00 AM AEST")},
+            ${gemini(time = "04:00", date = "2026-07-20", timezone = "Asia/Tokyo", original = "4:00 AM JST")}
+        ]"""
+        val c = fullPipeline(chronoJson, input, geminiJson)
         // ET(1) + BST(2) + CET(1) + IST(2) + AEST(1) + JST(1) = 8
         assertEquals(8, c.size)
     }
 
     @Test
-    fun `match kickoff - 9pm ET with IST next day`() {
-        val json = """[
+    fun `match kickoff 9pm ET 6 30am IST next day full string`() {
+        val input = "9:00 PM ET Jun 20 / 6:30 AM IST Jun 21"
+        val chronoJson = """[
             ${chrono("9:00 PM ET", month = 6, day = 20, hour = 21, timezone = -240, dayCertain = true)},
             ${chrono("6:30 AM IST", month = 6, day = 21, hour = 6, minute = 30, timezone = 330, dayCertain = true)}
         ]"""
-        val c = fullPipeline(json)
+        val geminiJson = """[
+            ${gemini(time = "21:00", date = "2026-06-20", timezone = "America/New_York", original = "9:00 PM ET")},
+            ${gemini(time = "06:30", date = "2026-06-21", timezone = "Asia/Kolkata", original = "6:30 AM IST")}
+        ]"""
+        val c = fullPipeline(chronoJson, input, geminiJson)
         // ET(1) + IST(2) = 3
         assertEquals(3, c.size)
     }
 
     // =====================================================================
-    // 19. Edge: ambiguous TZ at midnight / day boundary
+    // 19. Edge: ambiguous TZ at midnight / day boundary (full strings)
     // =====================================================================
 
     @Test
     fun `CST midnight - US vs China give different Sydney times`() {
-        val json = "[${chrono("12:00 AM CST", month = 4, day = 15, hour = 0, timezone = -360, dayCertain = true)}]"
-        val c = fullPipeline(json)
+        val input = "The server maintenance window is 12:00 AM CST"
+        val chronoJson = "[${chrono("12:00 AM CST", month = 4, day = 15, hour = 0, timezone = -360, dayCertain = true)}]"
+        val geminiJson = "[${gemini(time = "00:00", date = "2026-04-15", timezone = "America/Chicago", original = "12:00 AM CST")}]"
+        val c = fullPipeline(chronoJson, input, geminiJson)
         assertEquals(2, c.size)
-        // US: midnight UTC-6 = 06:00 UTC = 4pm AEST
-        // China: midnight UTC+8 = 16:00 UTC prev day = 2am AEST
         val times = c.map { it.localDateTime }.toSet()
         assertEquals("Midnight CST in US vs China should produce different Sydney times", 2, times.size)
     }
 
     @Test
-    fun `BST midnight - British vs Bangladesh`() {
-        val json = "[${chrono("12:00 AM BST", month = 6, day = 7, hour = 0, timezone = 60, dayCertain = true)}]"
-        val c = fullPipeline(json)
+    fun `BST midnight - British vs Bangladesh full string`() {
+        val input = "Release window: 12:00 am BST Saturday"
+        val chronoJson = "[${chrono("12:00 am BST", month = 6, day = 7, hour = 0, timezone = 60, dayCertain = true)}]"
+        val geminiJson = "[${gemini(time = "00:00", date = "2026-06-07", timezone = "Europe/London", original = "12:00 am BST")}]"
+        val c = fullPipeline(chronoJson, input, geminiJson)
         assertEquals(2, c.size)
     }
 
     @Test
-    fun `IST 11 59pm - near midnight India vs Ireland`() {
-        val json = "[${chrono("11:59 PM IST", hour = 23, minute = 59, timezone = 330)}]"
-        val c = fullPipeline(json)
+    fun `IST 11 59pm near midnight full string`() {
+        val input = "Submit your report by 11:59 PM IST"
+        val chronoJson = "[${chrono("11:59 PM IST", hour = 23, minute = 59, timezone = 330)}]"
+        val geminiJson = "[${gemini(time = "23:59", timezone = "Asia/Kolkata", original = "11:59 PM IST")}]"
+        val c = fullPipeline(chronoJson, input, geminiJson)
         assertEquals(2, c.size)
     }
 }

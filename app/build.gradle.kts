@@ -78,6 +78,7 @@ dependencies {
     implementation(libs.zipline)
 
     // Test
+    testImplementation(libs.zipline.jvm)
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.kotlinx.datetime)
