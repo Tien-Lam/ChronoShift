@@ -28,6 +28,11 @@ class MainViewModel @Inject constructor(
         _uiState.update { it.copy(inputText = text) }
     }
 
+    fun clear() {
+        extractionJob?.cancel()
+        _uiState.update { MainUiState() }
+    }
+
     fun convert() {
         val text = _uiState.value.inputText.trim()
         if (text.isEmpty()) return

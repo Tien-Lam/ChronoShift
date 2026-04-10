@@ -22,6 +22,7 @@ fun ChronoShiftTheme(
 
     MaterialExpressiveTheme(
         colorScheme = colorScheme,
+        typography = ChronoTypography,
         content = content,
     )
 }

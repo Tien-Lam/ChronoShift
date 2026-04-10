@@ -5,6 +5,7 @@ import android.util.Log
 import app.cash.zipline.QuickJs
 import com.chronoshift.conversion.ExtractedTime
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.io.Closeable
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -12,7 +13,7 @@ import javax.inject.Singleton
 class ChronoExtractor @Inject constructor(
     @param:ApplicationContext private val context: Context,
     private val cityResolver: CityResolverInterface,
-) : SpanAwareTimeExtractor {
+) : SpanAwareTimeExtractor, Closeable {
 
     private var engine: QuickJs? = null
 
@@ -66,7 +67,8 @@ class ChronoExtractor @Inject constructor(
     }
 
     private fun evaluateChrono(qjs: QuickJs, text: String): String? {
-        val escaped = text.replace("\\", "\\\\").replace("'", "\\'").replace("\n", "\\n")
+        val escaped = text.replace("\\", "\\\\").replace("'", "\\'")
+            .replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
         val json = qjs.evaluate("chronoParse('$escaped')") as? String
         Log.d(TAG, "chrono.js raw: $json")
         return json
@@ -86,6 +88,11 @@ class ChronoExtractor @Inject constructor(
             Log.w(TAG, "Failed to initialize Chrono.js", e)
             null
         }
+    }
+
+    override fun close() {
+        engine?.close()
+        engine = null
     }
 
     companion object {

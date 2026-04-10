@@ -16,11 +16,11 @@ class LiteRtExtractor @Inject constructor(
 ) : TimeExtractor {
 
     private var engine: Engine? = null
-    private var permanentlyUnavailable = false
+    private var initFailed = false
 
     override suspend fun isAvailable(): Boolean {
         if (engine != null && engine!!.isInitialized()) return true
-        if (permanentlyUnavailable) return false
+        if (initFailed) return false
         return initEngine()
     }
 
@@ -45,7 +45,6 @@ class LiteRtExtractor @Inject constructor(
         val modelFile = findModel()
         if (modelFile == null) {
             Log.d(TAG, "No LiteRT model found on device")
-            permanentlyUnavailable = true
             return false
         }
 
@@ -57,11 +56,12 @@ class LiteRtExtractor @Inject constructor(
             val eng = Engine(config)
             eng.initialize()
             engine = eng
+            initFailed = false
             Log.d(TAG, "LiteRT engine initialized: ${modelFile.name}")
             true
         } catch (e: Exception) {
             Log.w(TAG, "LiteRT init failed", e)
-            permanentlyUnavailable = true
+            initFailed = true
             false
         }
     }

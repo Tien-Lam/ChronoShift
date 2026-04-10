@@ -15,6 +15,8 @@ import androidx.compose.animation.scaleOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
+import android.content.ClipboardManager
+import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,10 +32,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Send
+import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.ContentPaste
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FilledIconButton
@@ -48,7 +54,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.chronoshift.R
@@ -92,6 +100,7 @@ fun MainScreen(
                     error = state.error,
                     onInputChanged = viewModel::onInputChanged,
                     onConvert = viewModel::convert,
+                    onClear = viewModel::clear,
                     onNavigateToSettings = onNavigateToSettings,
                 )
             } else {
@@ -118,6 +127,7 @@ private fun InputLayout(
     onConvert: () -> Unit,
     onNavigateToSettings: () -> Unit = {},
 ) {
+    val context = LocalContext.current
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -148,6 +158,8 @@ private fun InputLayout(
                     )
                 },
                 textStyle = MaterialTheme.typography.headlineSmall,
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Go),
+                keyboardActions = KeyboardActions(onGo = { onConvert() }),
                 colors = TextFieldDefaults.colors(
                     focusedContainerColor = MaterialTheme.colorScheme.surface,
                     unfocusedContainerColor = MaterialTheme.colorScheme.surface,
@@ -169,30 +181,55 @@ private fun InputLayout(
                 )
             }
 
-            AnimatedVisibility(
-                visible = inputText.isNotBlank(),
-                enter = fadeIn() + scaleIn(spring(dampingRatio = Spring.DampingRatioMediumBouncy)),
-                exit = fadeOut() + scaleOut(),
+            Row(
+                modifier = Modifier.padding(top = 24.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                if (isProcessing) {
-                    LoadingIndicator(
-                        modifier = Modifier
-                            .padding(top = 24.dp)
-                            .size(48.dp),
-                        color = MaterialTheme.colorScheme.primary,
-                    )
-                } else {
-                    FilledIconButton(
-                        onClick = onConvert,
-                        modifier = Modifier
-                            .padding(top = 24.dp)
-                            .size(56.dp),
-                        shape = MaterialTheme.shapes.large,
+                AnimatedVisibility(
+                    visible = inputText.isBlank(),
+                    enter = fadeIn() + scaleIn(spring(dampingRatio = Spring.DampingRatioMediumBouncy)),
+                    exit = fadeOut() + scaleOut(),
+                ) {
+                    IconButton(
+                        onClick = {
+                            val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                            val clip = clipboard.primaryClip
+                            if (clip != null && clip.itemCount > 0) {
+                                val pasted = clip.getItemAt(0).coerceToText(context).toString()
+                                if (pasted.isNotBlank()) onInputChanged(pasted)
+                            }
+                        },
                     ) {
                         Icon(
-                            imageVector = Icons.AutoMirrored.Filled.Send,
-                            contentDescription = stringResource(R.string.convert),
+                            imageVector = Icons.Filled.ContentPaste,
+                            contentDescription = stringResource(R.string.paste),
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
+                    }
+                }
+
+                AnimatedVisibility(
+                    visible = inputText.isNotBlank(),
+                    enter = fadeIn() + scaleIn(spring(dampingRatio = Spring.DampingRatioMediumBouncy)),
+                    exit = fadeOut() + scaleOut(),
+                ) {
+                    if (isProcessing) {
+                        LoadingIndicator(
+                            modifier = Modifier.size(48.dp),
+                            color = MaterialTheme.colorScheme.primary,
+                        )
+                    } else {
+                        FilledIconButton(
+                            onClick = onConvert,
+                            modifier = Modifier.size(56.dp),
+                            shape = MaterialTheme.shapes.large,
+                        ) {
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Filled.Send,
+                                contentDescription = stringResource(R.string.convert),
+                            )
+                        }
                     }
                 }
             }
@@ -209,6 +246,7 @@ private fun ResultsLayout(
     error: String?,
     onInputChanged: (String) -> Unit,
     onConvert: () -> Unit,
+    onClear: () -> Unit = {},
     onNavigateToSettings: () -> Unit = {},
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
@@ -226,6 +264,8 @@ private fun ResultsLayout(
                 placeholder = { Text(stringResource(R.string.input_hint), maxLines = 1) },
                 textStyle = MaterialTheme.typography.bodyLarge,
                 singleLine = true,
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Go),
+                keyboardActions = KeyboardActions(onGo = { onConvert() }),
                 colors = TextFieldDefaults.colors(
                     focusedContainerColor = MaterialTheme.colorScheme.surface,
                     unfocusedContainerColor = MaterialTheme.colorScheme.surface,
@@ -242,6 +282,13 @@ private fun ResultsLayout(
                 IconButton(onClick = onConvert) {
                     Icon(Icons.AutoMirrored.Filled.Send, contentDescription = stringResource(R.string.convert))
                 }
+            }
+            IconButton(onClick = onClear) {
+                Icon(
+                    imageVector = Icons.Filled.Clear,
+                    contentDescription = stringResource(R.string.clear),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
             }
             IconButton(onClick = onNavigateToSettings) {
                 Icon(

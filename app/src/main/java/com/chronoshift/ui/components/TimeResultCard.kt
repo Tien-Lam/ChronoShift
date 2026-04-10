@@ -3,6 +3,7 @@ package com.chronoshift.ui.components
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.os.Build
 import android.widget.Toast
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.SizeTransform
@@ -76,7 +77,9 @@ fun TimeResultCard(
                 clipboard.setPrimaryClip(
                     ClipData.newPlainText("Converted time", "${result.localDateTime} ${result.localTimezone}")
                 )
-                Toast.makeText(context, R.string.copied, Toast.LENGTH_SHORT).show()
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                    Toast.makeText(context, R.string.copied, Toast.LENGTH_SHORT).show()
+                }
             }
             .padding(vertical = 16.dp),
     ) {
