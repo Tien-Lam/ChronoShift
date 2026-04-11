@@ -37,11 +37,11 @@ Input text
      → emit final results
 ```
 
-Orchestrated by `TieredTimeExtractor` (uses `SpanAwareTimeExtractor`, `SpanDetector`, `TimeExtractor` interfaces). ViewModel collects `Flow<ExtractionResult>`.
+Orchestrated by `TieredTimeExtractor` (uses `SpanAwareTimeExtractor`, `SpanDetector`, `TimeExtractor` interfaces). ViewModel collects `Flow<ExtractionResult>`. Full data flow and interface details in [docs/architecture/nlp-pipeline.md](docs/architecture/nlp-pipeline.md).
 
 ### Merge Philosophy
 
-**Show all interpretations, don't guess.** When timestamps are ambiguous (e.g. "CST" = US Central or China Standard), both conversions are shown. Only true duplicates (same instant + same timezone) merge. User picks the right one.
+**Show all interpretations, don't guess.** When timestamps are ambiguous (e.g. "CST" = US Central or China Standard), both conversions are shown. Only true duplicates (same instant + same timezone) merge. User picks the right one. Merge rules in [docs/architecture/merge-philosophy.md](docs/architecture/merge-philosophy.md).
 
 ### Key Files
 
@@ -70,7 +70,7 @@ Timezone displayed as `UTC+N CityName` (e.g. "UTC-7 Los Angeles"). Curated city 
 
 ## Testing
 
-Tests use real parsers (not manual ExtractedTime construction) to catch field-population bugs. `TestCityResolver` (delegates to `IanaCityLookup`) for unit tests. Injectable `localZone` on `TimeConverter` for deterministic output. `unitTests.isReturnDefaultValues = true` for `android.util.Log` in TieredTimeExtractor tests.
+Tests use real parsers (not manual ExtractedTime construction) to catch field-population bugs. `TestCityResolver` (delegates to `IanaCityLookup`) for unit tests. Injectable `localZone` on `TimeConverter` for deterministic output. `unitTests.isReturnDefaultValues = true` for `android.util.Log` in TieredTimeExtractor tests. Test suites and how to add tests in [docs/developer/testing.md](docs/developer/testing.md).
 
 ## Gotchas
 
