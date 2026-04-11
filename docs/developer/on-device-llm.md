@@ -4,9 +4,8 @@ ChronoShift uses two on-device LLMs as Stage 2 extractors. Both are optional —
 
 ## LiteRT (Gemma 4 E2B)
 
-**Engine:** Google LiteRT-LM (`com.google.ai.edge:litertlm`)
-**Model:** Gemma 4 E2B (~1.5GB, `.litertlm` format)
-**Speed:** ~1-2 seconds
+**Engine:** Google LiteRT-LM
+**Model:** Gemma (`.litertlm` format, downloaded at runtime)
 **Download:** Via the Settings screen, which fetches the model from Hugging Face using `ModelDownloader`
 
 ### How It Works
@@ -23,8 +22,7 @@ The prompt asks for a JSON array with `time`, `date`, `timezone`, and `original`
 ## Gemini Nano
 
 **Engine:** ML Kit GenAI Prompt API
-**Speed:** ~7 seconds
-**Availability:** Device-dependent (Pixel 8+, select Samsung devices)
+**Availability:** Device-dependent (requires on-device Gemini support)
 
 ### Status Codes
 
@@ -51,6 +49,6 @@ Both LLM extractors delegate response parsing to `LlmResultParser`, which handle
 
 ## Racing Strategy
 
-`TieredTimeExtractor` runs both LLMs concurrently. Whichever finishes first emits an intermediate result immediately. The second merges in when done. This means users typically see LiteRT results in ~1-2s and Gemini Nano results in ~7s, rather than waiting for both.
+`TieredTimeExtractor` runs both LLMs concurrently. Whichever finishes first emits an intermediate result immediately. The second merges in when done. LiteRT is typically faster than Gemini Nano.
 
 If neither LLM is available (no model downloaded, device unsupported), Stage 1 results are the final results.

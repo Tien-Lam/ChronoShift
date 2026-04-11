@@ -1,6 +1,6 @@
 # Testing
 
-381 tests across 11 suites, including a 354-pattern timestamp corpus.
+Run `./gradlew testDebugUnitTest` to see current test counts. The suite includes a large timestamp pattern corpus for pipeline resilience testing.
 
 ## Running Tests
 
@@ -47,7 +47,7 @@ Chrono.js integration tests run the real QuickJS engine via `zipline-jvm`. The t
 
 | Suite | Focus |
 |---|---|
-| `TimestampCorpusTest` | 354-pattern corpus covering real-world timestamp formats |
+| `TimestampCorpusTest` | Large corpus covering real-world timestamp formats |
 | `IntegrationTest` | End-to-end parser data flow through real Chrono.js |
 | `EndToEndTest` | Settings, model download, LiteRT pipeline |
 | `ChronoResultParserTest` | JSON parsing, offset-to-IANA, date propagation, span merge |

@@ -2,9 +2,9 @@
 
 ## Prerequisites
 
-- **Android Studio** (any recent version with bundled JBR 21)
+- **Android Studio** with bundled JBR
 - **Android SDK** (installed via Android Studio SDK Manager)
-  - Compile SDK 35, Min SDK 26
+  - See `app/build.gradle.kts` for current compileSdk / minSdk
 
 Java and Gradle do **not** need to be installed separately. The project uses the Gradle wrapper (`gradlew`) and Android Studio's bundled JBR.
 
@@ -36,13 +36,13 @@ The debug APK is written to `app/build/outputs/apk/debug/app-debug.apk`.
 
 ## CI
 
-GitHub Actions runs unit tests on every push to `main` and on pull requests. The workflow uses JetBrains JDK 21 (required by Kotlin 2.2 + AGP 9.1).
+GitHub Actions runs unit tests on every push to `main` and on pull requests. See `.github/workflows/test.yml` for the current CI configuration.
 
 Releases are triggered by pushing a version tag:
 
 ```bash
-git tag v0.1.0
-git push origin v0.1.0
+git tag v<version>
+git push origin v<version>
 ```
 
 This runs tests, builds a release APK, and creates a GitHub Release with the APK attached.
@@ -54,7 +54,7 @@ Single-module app. All source code lives under `app/`:
 ```
 app/
   src/main/
-    assets/chrono.js          # Bundled chrono-node (251KB, esbuild)
+    assets/chrono.js          # Bundled chrono-node (esbuild)
     java/com/chronoshift/
       MainActivity.kt         # Compose entry point
       ProcessTextActivity.kt  # ACTION_PROCESS_TEXT handler
@@ -63,7 +63,7 @@ app/
       nlp/                    # NLP pipeline (extractors, parsers, merger)
       ui/                     # Compose screens, theme, components
     res/                      # Android resources
-  src/test/                   # Unit tests (381 tests, 11 suites)
+  src/test/                   # Unit tests
 ```
 
 ## ProGuard

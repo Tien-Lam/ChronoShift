@@ -4,21 +4,31 @@ ChronoShift extracts timestamps from arbitrary text using a tiered, streaming pi
 
 ## Overview
 
-```
-Input text
-  ├─ Stage 1 (~50ms) ─────────────────────────
-  │   ML Kit → detects datetime spans
-  │   Chrono.js (QuickJS) → parses spans + full text
-  │   Regex → unix timestamps, "time in City"
-  │   → emit results immediately
-  │
-  ├─ Stage 2 (~1-7s, concurrent) ─────────────
-  │   LiteRT (Gemma 4 E2B) → fast on-device LLM
-  │   Gemini Nano → high-quality on-device LLM
-  │   → emit as each completes, merge duplicates
-  │
-  └─ expand ambiguous abbreviations
-     → emit final results
+```mermaid
+flowchart TD
+    input[Input text]
+
+    subgraph stage1[Stage 1 — instant]
+        mlkit[ML Kit — detect datetime spans]
+        chrono[Chrono.js / QuickJS — parse spans + full text]
+        regex[Regex — unix timestamps, time in City]
+        mlkit --> chrono
+    end
+
+    subgraph stage2[Stage 2 — background, concurrent]
+        litert[LiteRT — fast on-device LLM]
+        gemini[Gemini Nano — high-quality on-device LLM]
+    end
+
+    expand[Expand ambiguous abbreviations]
+
+    input --> stage1
+    input --> stage2
+    stage1 -- emit immediately --> merge1[ResultMerger]
+    stage2 -- emit as each completes --> merge2[ResultMerger]
+    merge1 --> merge2
+    merge2 --> expand
+    expand -- emit final --> results[ExtractionResult]
 ```
 
 ## Orchestration
@@ -35,15 +45,15 @@ Three extractors run concurrently:
 
 3. **Regex** (`RegexExtractor`) — handles unix timestamps (e.g. `1700000000`) and "time in City" patterns. Delegates city-to-timezone resolution to `CityResolver`.
 
-ML Kit and Chrono run as a coordinated pair (spans feed into Chrono). Regex runs independently. All three complete in ~50ms and results are merged and emitted.
+ML Kit and Chrono run as a coordinated pair (spans feed into Chrono). Regex runs independently. All three complete near-instantly and results are merged and emitted.
 
 ### Stage 2: On-Device LLMs
 
 Two LLM extractors run concurrently. Whichever finishes first emits an intermediate result, and the second merges in when done:
 
-1. **LiteRT** (`LiteRtExtractor`) — runs Gemma 4 E2B (~1.5GB model) via Google LiteRT-LM. Fastest LLM option (~1-2s). Model must be downloaded separately via Settings.
+1. **LiteRT** (`LiteRtExtractor`) — runs a Gemma model via Google LiteRT-LM. Faster of the two. Model must be downloaded separately via Settings.
 
-2. **Gemini Nano** (`GeminiNanoExtractor`) — uses the on-device Gemini model via ML Kit GenAI. Higher quality but slower (~7s). Availability depends on device support.
+2. **Gemini Nano** (`GeminiNanoExtractor`) — uses the on-device Gemini model via ML Kit GenAI. Higher quality but slower. Availability depends on device support.
 
 Both LLMs receive a structured prompt asking for JSON output with time, date, timezone, and original text fields. `LlmResultParser` handles response parsing for both.
 
@@ -62,28 +72,30 @@ After all stages complete, `ChronoResultParser.expandAmbiguous()` expands timezo
 
 ## Data Flow
 
-```
-text ──┬── MlKitEntityExtractor.detectSpans() → List<DateTimeSpan>
-       │        │
-       │        ▼
-       ├── ChronoExtractor.extractWithSpans()
-       │        │
-       │   ChronoResultParser.parse() ──→ List<ExtractedTime>
-       │   ChronoResultParser.mergeSpanAndFullResults()
-       │
-       ├── RegexExtractor.extract() ──→ List<ExtractedTime>
-       │
-       ├── ResultMerger.mergeResults() ──→ emit Stage 1
-       │
-       ├── LiteRtExtractor.extract()
-       │   LlmResultParser.parseResponse() ──→ List<ExtractedTime>
-       │
-       ├── GeminiNanoExtractor.extract()
-       │   LlmResultParser.parseResponse() ──→ List<ExtractedTime>
-       │
-       ├── ResultMerger.mergeResults() ──→ emit per LLM
-       │
-       └── ChronoResultParser.expandAmbiguous() ──→ emit final
+```mermaid
+flowchart LR
+    text[text]
+
+    text --> mlkit["MlKitEntityExtractor\n.detectSpans()"]
+    mlkit --> chrono["ChronoExtractor\n.extractWithSpans()"]
+    chrono --> chronoparse["ChronoResultParser\n.parse() + .mergeSpanAndFullResults()"]
+
+    text --> regex["RegexExtractor\n.extract()"]
+
+    chronoparse --> merge1["ResultMerger — emit Stage 1"]
+    regex --> merge1
+
+    text --> litert["LiteRtExtractor\n.extract()"]
+    text --> gemini["GeminiNanoExtractor\n.extract()"]
+    litert --> llmparse1["LlmResultParser\n.parseResponse()"]
+    gemini --> llmparse2["LlmResultParser\n.parseResponse()"]
+
+    llmparse1 --> merge2["ResultMerger — emit per LLM"]
+    llmparse2 --> merge2
+    merge1 --> merge2
+
+    merge2 --> expand["ChronoResultParser\n.expandAmbiguous()"]
+    expand --> final[emit final]
 ```
 
 ## Key Design Decisions

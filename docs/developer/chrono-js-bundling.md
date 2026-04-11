@@ -1,6 +1,6 @@
 # Updating chrono.js
 
-ChronoShift bundles [chrono-node](https://github.com/wanasit/chrono) as a single JavaScript file that runs in QuickJS via [Zipline](https://github.com/nicholasgasior/nicholasgasior). The bundle lives at `app/src/main/assets/chrono.js` (~251KB minified).
+ChronoShift bundles [chrono-node](https://github.com/wanasit/chrono) as a single JavaScript file that runs in QuickJS via [Zipline](https://github.com/nicholasgasior/nicholasgasior). The bundle lives at `app/src/main/assets/chrono.js`.
 
 ## How It Works
 
