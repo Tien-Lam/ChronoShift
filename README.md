@@ -1,5 +1,9 @@
 # ChronoShift
 
+[![Tests](https://github.com/Tien-Lam/ChronoShift/actions/workflows/test.yml/badge.svg)](https://github.com/Tien-Lam/ChronoShift/actions/workflows/test.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Android min SDK](https://img.shields.io/badge/min%20SDK-26-green.svg)](app/build.gradle.kts)
+
 NLP-powered timezone converter for Android. Select text anywhere on your device and instantly convert timestamps to your local time.
 
 ## Features
@@ -9,14 +13,18 @@ NLP-powered timezone converter for Android. Select text anywhere on your device 
 - **Multiple Interpretations** — ambiguous timezones (e.g. "CST") show all possible conversions instead of guessing
 - **Fully On-Device** — no network calls for conversion; privacy-first
 
+## Install
+
+Download the latest APK from [Releases](https://github.com/Tien-Lam/ChronoShift/releases) and sideload it, or build from source (see below).
+
 ## How It Works
 
 ChronoShift uses a tiered extraction pipeline that streams results as they become available:
 
 | Stage | Engine | Speed | Purpose |
 |---|---|---|---|
-| 1 | ML Kit + Chrono.js + Regex | ~50ms | Instant datetime detection, parsing, and unix timestamp handling |
-| 2 | Gemma 4 E2B (LiteRT) | ~7s | On-device LLM for complex/ambiguous timestamps |
+| 1 | ML Kit + Chrono.js + Regex | Instant | Datetime detection, parsing, and unix timestamp handling |
+| 2 | Gemma (LiteRT) + Gemini Nano | Background | On-device LLMs for complex/ambiguous timestamps |
 
 Stage 1 results appear immediately. Stage 2 adds and merges results in the background. Duplicates are merged; ambiguous interpretations are kept.
 
@@ -30,8 +38,7 @@ ANDROID_HOME="$LOCALAPPDATA/Android/Sdk" \
 ./gradlew assembleDebug
 ```
 
-**Min SDK:** 26 (Android 8.0)  
-**Target SDK:** 35
+See [docs/developer/building.md](docs/developer/building.md) for full setup and CI details.
 
 ## Tech Stack
 
