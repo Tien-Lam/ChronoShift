@@ -67,9 +67,9 @@ class ChronoExtractor @Inject constructor(
     }
 
     private fun evaluateChrono(qjs: QuickJs, text: String): String? {
-        val escaped = text.replace("\\", "\\\\").replace("'", "\\'")
-            .replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
-        val json = qjs.evaluate("chronoParse('$escaped')") as? String
+        // Use JSON.stringify to safely encode user text, preventing JS injection
+        val safeText = org.json.JSONObject.quote(text)
+        val json = qjs.evaluate("chronoParse($safeText)") as? String
         Log.d(TAG, "chrono.js raw: $json")
         return json
     }
@@ -79,7 +79,7 @@ class ChronoExtractor @Inject constructor(
         if (engine != null) return engine
         return try {
             val qjs = QuickJs.create()
-            val script = context.assets.open("chrono.js").bufferedReader().readText()
+            val script = context.assets.open("chrono.js").use { it.bufferedReader().readText() }
             qjs.evaluate(script)
             engine = qjs
             Log.d(TAG, "Chrono.js engine initialized")

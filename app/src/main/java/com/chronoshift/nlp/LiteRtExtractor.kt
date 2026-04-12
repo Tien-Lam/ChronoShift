@@ -87,7 +87,9 @@ Extract all timestamps, times, and dates from this text. For each one found, ret
 
 Return ONLY the JSON array, no other text. If no timestamps found, return [].
 
-Text: $text
+<user_text>
+$text
+</user_text>
 """.trimIndent()
     }
 

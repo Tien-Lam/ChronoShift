@@ -2,6 +2,12 @@
 
 ChronoShift bundles [chrono-node](https://github.com/wanasit/chrono) as a single JavaScript file that runs in QuickJS via [Zipline](https://github.com/nicholasgasior/nicholasgasior). The bundle lives at `app/src/main/assets/chrono.js`.
 
+## Current Bundle
+
+- **Source**: chrono-node (`npm install chrono-node`)
+- **Bundled**: 2026-04-06
+- **Note**: The minified bundle has no embedded version. To verify, run `npm list chrono-node` after installing, or check the [chrono-node releases](https://github.com/wanasit/chrono/releases) against the bundle date.
+
 ## How It Works
 
 Chrono.js is a JavaScript NLP library for parsing natural-language dates and times. Since Android can't run Node.js, ChronoShift embeds a QuickJS engine (provided by Zipline) and loads the bundled script at runtime.

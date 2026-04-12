@@ -19,6 +19,7 @@ coroutines = "1.9.0"
 junit = "4.13.2"
 kotlinx-coroutines-test = "1.9.0"
 turbine = "1.2.0"
+json = "20240303"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -46,6 +47,7 @@ litertlm = { group = "com.google.ai.edge.litertlm", name = "litertlm-android", v
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-test" }
 turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+json = { group = "org.json", name = "json", version.ref = "json" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

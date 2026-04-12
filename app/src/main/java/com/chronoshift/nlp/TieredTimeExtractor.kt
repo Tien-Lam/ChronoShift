@@ -28,6 +28,9 @@ class TieredTimeExtractor @Inject constructor(
     }
 
     override fun extractStream(text: String): Flow<ExtractionResult> = flow {
+        require(text.length <= MAX_INPUT_LENGTH) {
+            "Input too long (${text.length} chars, max $MAX_INPUT_LENGTH)"
+        }
         Log.d(TAG, "═══ extractStream input: \"$text\" ═══")
         var merged = listOf<ExtractedTime>()
         val ran = mutableListOf<String>()
@@ -161,6 +164,7 @@ class TieredTimeExtractor @Inject constructor(
 
     companion object {
         private const val TAG = "TieredTimeExtractor"
+        private const val MAX_INPUT_LENGTH = 10_000
 
         fun logExtractedTime(method: String, index: Int, t: ExtractedTime) {
             Log.d(TAG, "  [$method #$index] text=\"${t.originalText}\" " +

@@ -305,7 +305,10 @@ class TimeConverterTest {
         )
         assertEquals(1, results.size)
         // EST 09:00 → UTC 13:00 (EDT in April) → JST 22:00
-        assertTrue(results[0].localDateTime.contains("10:00") || results[0].localDateTime.contains("22"))
+        assertTrue(
+            "Expected 10:00 PM (12h) or 22:00 (24h) in Tokyo, got '${results[0].localDateTime}'",
+            results[0].localDateTime.contains("10:00") || results[0].localDateTime.contains("22:00"),
+        )
         assertTrue(results[0].localTimezone.contains("UTC+9"))
         assertTrue(results[0].sourceTimezone.contains("UTC") || results[0].sourceTimezone.contains("EDT") || results[0].sourceTimezone.contains("EST"))
     }
@@ -380,7 +383,7 @@ class TimeConverterTest {
         )
         assertEquals(1, results.size)
         // UTC 00:00 Jan 1 → HST (UTC-10) → 14:00 Dec 31 previous year
-        assertTrue(results[0].localDate.contains("Dec") || results[0].localDate.contains("31"))
+        assertTrue(results[0].localDate.contains("Dec") && results[0].localDate.contains("31"))
     }
 
     // ========== Half-hour timezone offsets ==========

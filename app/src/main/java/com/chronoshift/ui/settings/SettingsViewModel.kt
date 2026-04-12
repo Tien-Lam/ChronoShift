@@ -35,6 +35,12 @@ class SettingsViewModel @Inject constructor(
     val uiState: StateFlow<SettingsUiState> = _uiState
 
     init {
+        viewModelScope.launch {
+            val gemini = geminiNanoExtractor.isAvailable()
+            val mlKit = mlKitEntityExtractor.isAvailable()
+            _modelStatus.value = ModelStatus(geminiNano = gemini, mlKit = mlKit)
+        }
+
         combine(modelDownloader.state, _modelStatus) { downloadState, status ->
             val installed = modelDownloader.isModelInstalled()
             val sizeBytes = modelDownloader.getModelSizeBytes()
@@ -46,12 +52,6 @@ class SettingsViewModel @Inject constructor(
                 mlKitAvailable = status.mlKit,
             )
         }.onEach { _uiState.value = it }.launchIn(viewModelScope)
-
-        viewModelScope.launch {
-            val gemini = geminiNanoExtractor.isAvailable()
-            val mlKit = mlKitEntityExtractor.isAvailable()
-            _modelStatus.value = ModelStatus(geminiNano = gemini, mlKit = mlKit)
-        }
     }
 
     fun downloadModel() {

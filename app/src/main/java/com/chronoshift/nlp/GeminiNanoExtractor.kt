@@ -91,7 +91,9 @@ Important: If multiple times are listed together (e.g. separated by "/" or ","),
 
 Return ONLY the JSON array, no other text. If no timestamps found, return [].
 
-Text: $text
+<user_text>
+$text
+</user_text>
 """.trimIndent()
     }
 

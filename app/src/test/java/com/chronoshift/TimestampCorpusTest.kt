@@ -230,4 +230,17 @@ class TimestampCorpusTest {
         assertTrue("Should have 10+ cases with ranges, got $hasRange", hasRange >= 10)
         assertTrue("Should have 10+ cases with city/region names, got $hasCity", hasCity >= 10)
     }
+
+    // ========== Stale date canary ==========
+
+    @Test
+    fun `canary - test reference year 2026 has not passed`() {
+        val currentYear = java.time.Year.now().value
+        assertTrue(
+            "TestData uses hardcoded year 2026 as reference. Current year is $currentYear. " +
+                "If this fails, Chrono.js may interpret these as past dates with different behavior. " +
+                "Update TestData.kt reference dates to the current year.",
+            currentYear <= 2026,
+        )
+    }
 }

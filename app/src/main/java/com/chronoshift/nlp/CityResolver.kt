@@ -124,20 +124,32 @@ class CityResolver @Inject constructor(
     }
 
     private fun timezoneFromCoordinates(lat: Double, lng: Double): String {
-        // Find the IANA timezone whose representative city is closest to the coordinates.
-        // This is a simple nearest-match heuristic using the zone's rules offset as a proxy.
-        // For accurate results on zone boundaries, a full shapefile lookup would be needed,
-        // but for city-level resolution this works well.
-        val offsetHours = lng / 15.0
-        val targetOffsetSeconds = (offsetHours * 3600).toInt()
-
+        // Match coordinates to the IANA zone with the closest offset, preferring
+        // zones in the same hemisphere. For accurate zone-boundary results, a
+        // shapefile lookup would be needed, but this handles city-level resolution.
+        val targetOffsetSeconds = (lng / 15.0 * 3600).toInt()
         val now = java.time.Instant.now()
+
+        val preferredRegion = when {
+            lat > 15 -> NORTHERN_REGIONS
+            lat < -15 -> SOUTHERN_REGIONS
+            else -> emptySet()
+        }
+
         return ZoneId.getAvailableZoneIds()
             .filter { '/' in it && !it.startsWith("Etc/") && !it.startsWith("SystemV/") }
             .minByOrNull { zoneId ->
                 val offset = ZoneId.of(zoneId).rules.getOffset(now).totalSeconds
-                Math.abs(offset - targetOffsetSeconds)
+                val offsetDiff = Math.abs(offset - targetOffsetSeconds)
+                val region = zoneId.substringBefore('/')
+                val regionPenalty = if (preferredRegion.isNotEmpty() && region !in preferredRegion) 3600 else 0
+                offsetDiff + regionPenalty
             } ?: "UTC"
+    }
+
+    companion object {
+        private val NORTHERN_REGIONS = setOf("America", "Europe", "Asia", "Arctic")
+        private val SOUTHERN_REGIONS = setOf("Australia", "Pacific", "Antarctica", "Africa")
     }
 
 }

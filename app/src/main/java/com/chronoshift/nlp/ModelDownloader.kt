@@ -90,7 +90,11 @@ class ModelDownloader @Inject constructor(
                     }
                 }
 
-                tempFile.renameTo(modelPath)
+                if (!tempFile.renameTo(modelPath)) {
+                    tempFile.delete()
+                    _state.value = DownloadState.Failed("Failed to move downloaded file")
+                    return@withContext
+                }
                 _state.value = DownloadState.Completed
                 Log.d(TAG, "Model download completed")
             } catch (e: Exception) {

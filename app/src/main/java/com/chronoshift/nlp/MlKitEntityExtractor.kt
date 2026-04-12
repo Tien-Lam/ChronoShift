@@ -7,6 +7,7 @@ import com.google.mlkit.nl.entityextraction.EntityExtraction
 import com.google.mlkit.nl.entityextraction.EntityExtractorOptions
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.suspendCancellableCoroutine
+import android.util.Log
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.coroutines.resume
@@ -38,7 +39,10 @@ class MlKitEntityExtractor @Inject constructor(
                     modelReady = true
                     cont.resume(true)
                 }
-                .addOnFailureListener { cont.resume(false) }
+                .addOnFailureListener { e ->
+                    Log.w(TAG, "ML Kit model download failed", e)
+                    cont.resume(false)
+                }
         }
     }
 
@@ -48,7 +52,10 @@ class MlKitEntityExtractor @Inject constructor(
         val annotations = suspendCancellableCoroutine { cont ->
             extractor.annotate(text)
                 .addOnSuccessListener { cont.resume(it) }
-                .addOnFailureListener { cont.resume(emptyList()) }
+                .addOnFailureListener { e ->
+                    Log.w(TAG, "ML Kit annotation failed", e)
+                    cont.resume(emptyList())
+                }
         }
 
         return annotations.flatMap { annotation ->
@@ -64,5 +71,9 @@ class MlKitEntityExtractor @Inject constructor(
                     )
                 }
         }
+    }
+
+    companion object {
+        private const val TAG = "MlKitEntityExtractor"
     }
 }

@@ -94,7 +94,7 @@ class IntegrationTest {
 
     private fun geminiEntry(
         time: String,
-        date: String = "2026-04-11",
+        date: String = java.time.LocalDate.now().toString(),
         timezone: String = "",
         original: String,
     ): String = """{"time":"$time","date":"$date","timezone":"$timezone","original":"$original"}"""
@@ -167,10 +167,13 @@ class IntegrationTest {
         val json = chronoParse(input)!!
         val chronoResults = ChronoResultParser.parse(json, input, null)
 
+        // Chrono.js uses forwardDate:true — "April 11" resolves to the next April 11 from today.
+        // Gemini date must match what Chrono produces.
+        val chronoDate = chronoResults[0].localDateTime!!.date.toString()
         val geminiJson = """[
-            ${geminiEntry(time = "04:30:00", timezone = "America/Los_Angeles", original = "April 11 at 4:30 a.m. PT")},
-            ${geminiEntry(time = "07:30:00", timezone = "America/New_York", original = "7:30 a.m. ET")},
-            ${geminiEntry(time = "19:30:00", timezone = "America/Chicago", original = "19:30 CST")}
+            ${geminiEntry(time = "04:30:00", date = chronoDate, timezone = "America/Los_Angeles", original = "April 11 at 4:30 a.m. PT")},
+            ${geminiEntry(time = "07:30:00", date = chronoDate, timezone = "America/New_York", original = "7:30 a.m. ET")},
+            ${geminiEntry(time = "19:30:00", date = chronoDate, timezone = "America/Chicago", original = "19:30 CST")}
         ]"""
         val geminiResults = LlmResultParser.parseResponse(geminiJson)
 
@@ -2414,7 +2417,7 @@ class IntegrationTest {
         assertEquals(1, chronoResults.size)
 
         val geminiJson = geminiEntry(
-            time = "19:30", date = "2026-04-11",
+            time = "19:30",
             timezone = "America/Chicago", original = "19:30 CST",
         )
         val geminiResults = LlmResultParser.parseResponse("[$geminiJson]")
