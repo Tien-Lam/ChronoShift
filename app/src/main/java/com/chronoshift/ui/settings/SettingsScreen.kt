@@ -114,11 +114,6 @@ fun SettingsScreen(
                 available = state.modelInstalled,
             )
             PipelineRow(
-                name = "Gemini Nano",
-                status = if (state.geminiNanoAvailable) stringResource(R.string.available) else stringResource(R.string.unavailable),
-                available = state.geminiNanoAvailable,
-            )
-            PipelineRow(
                 name = "ML Kit",
                 status = if (state.mlKitAvailable) stringResource(R.string.available) else stringResource(R.string.unavailable),
                 available = state.mlKitAvailable,

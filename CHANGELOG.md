@@ -15,8 +15,7 @@ Initial release.
   - **ML Kit** entity extraction for datetime span detection
   - **Chrono.js** (via Zipline/QuickJS) for instant datetime parsing
   - **Regex** extractor for unix timestamps and "time in City" patterns
-  - **Gemma** (LiteRT) as fast on-device LLM
-  - **Gemini Nano** as high-quality on-device LLM
+  - **Gemma** (LiteRT) as on-device LLM
 - Ambiguity expansion — ambiguous abbreviations (CST, ET, PT, etc.) show all interpretations
 - Timezone display as `UTC+N CityName` with curated city labels
 - Result merging with instant-based dedup (same instant + same timezone merges, different interpretations kept)

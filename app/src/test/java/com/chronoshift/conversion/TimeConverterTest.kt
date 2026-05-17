@@ -555,7 +555,7 @@ class TimeConverterTest {
 
     @Test
     fun `long method field with special chars is preserved`() {
-        val method = "Chrono + ML Kit + Gemini Nano"
+        val method = "Chrono + ML Kit + LiteRT"
         val results = converter.toLocal(
             listOf(
                 ExtractedTime(

@@ -558,7 +558,6 @@ class AdversarialInputTest {
         return TieredTimeExtractor(
             chronoExtractor = NoOpSpanAwareExtractor(),
             liteRtExtractor = NoOpTimeExtractor("LiteRT"),
-            geminiExtractor = NoOpTimeExtractor("Gemini Nano"),
             mlKitExtractor = NoOpSpanDetector(),
             regexExtractor = NoOpTimeExtractor("Regex"),
         )

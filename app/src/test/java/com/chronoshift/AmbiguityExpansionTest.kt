@@ -70,7 +70,7 @@ class AmbiguityExpansionTest {
         val chronoResults = ChronoResultParser.parse(json, input, cityResolver)
         var merged = if (geminiJson != null) {
             val geminiResults = LlmResultParser.parseResponse(geminiJson)
-            ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
+            ResultMerger.mergeResults(chronoResults, geminiResults, "LiteRT")
         } else {
             chronoResults
         }

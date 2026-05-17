@@ -28,10 +28,9 @@ Input text
   │   Regex → unix timestamps, "time in city"
   │   → emit results immediately
   │
-  ├─ Stage 2 (background, concurrent) ─────────
-  │   LiteRT (Gemma) → fast on-device LLM
-  │   Gemini Nano → high-quality on-device LLM
-  │   → emit as each completes, merge duplicates
+  ├─ Stage 2 (background) ─────────────────────
+  │   LiteRT (Gemma) → on-device LLM
+  │   → emit and merge duplicates
   │
   └─ expand ambiguous abbreviations
      → emit final results
@@ -49,13 +48,13 @@ Orchestrated by `TieredTimeExtractor` (uses `SpanAwareTimeExtractor`, `SpanDetec
 - `nlp/ChronoExtractor.kt` — Zipline/QuickJS engine, loads `assets/chrono.js`
 - `nlp/ChronoResultParser.kt` — Chrono parsing, date propagation, span merging
 - `nlp/ResultMerger.kt` — merge/dedup (instant-based: same instant merges, different instants kept separate)
-- `nlp/LlmResultParser.kt` — LLM JSON parsing (shared by Gemini Nano + LiteRT)
+- `nlp/LlmResultParser.kt` — LLM JSON parsing for LiteRT responses
 - `nlp/LiteRtExtractor.kt` — LiteRT/Gemma engine, model loading, prompt building
 - `nlp/ModelDownloader.kt` — Hugging Face model download for LiteRT
 - `nlp/TimezoneAbbreviations.kt` — abbreviation→offset resolution, ambiguity detection, instant correction
 - `nlp/RegexExtractor.kt` — unix timestamps + city resolution only
 - `nlp/CityResolver.kt` — `IanaCityLookup` (shared IANA + aliases + fuzzy edit distance), `CityResolver` (Geocoder wrapper)
-- `di/Qualifiers.kt` — `@LiteRt`, `@Gemini`, `@Regex` qualifier annotations for DI
+- `di/Qualifiers.kt` — `@LiteRt`, `@Regex` qualifier annotations for DI
 - `conversion/TimeConverter.kt` — conversion + `formatZoneName` with city labels
 - `ui/main/MainScreen.kt` — two-state layout: InputLayout ↔ ResultsLayout
 - `ui/components/TimeResultCard.kt` — input line → hero time → date → tz+method
@@ -76,7 +75,6 @@ Tests use real parsers (not manual ExtractedTime construction) to catch field-po
 
 - Zipline (`app.cash.zipline`) provides QuickJS with 16KB-aligned native libs
 - `chrono.js` in `assets/` is a bundled esbuild build. Update: `npm install chrono-node && npx esbuild entry.js --bundle --format=iife --minify --outfile=chrono_bundle.js`
-- Gemini Nano `checkStatus()`: 0=UNAVAILABLE, 1=DOWNLOADABLE, 2=DOWNLOADING, 3=AVAILABLE
 - ML Kit detects datetime spans but has NO timezone awareness — it's a spotter for Chrono
 - Chrono returns timezone as minute offsets. Instant is computed from the raw offset (not IANA zone DST rules). `offsetToTimezone(offset, instant)` finds a matching IANA zone at the parsed instant for display
 - `mergeSpanAndFullResults()` upgrades span results with timezone from full-text results

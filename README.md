@@ -24,7 +24,7 @@ ChronoShift uses a tiered extraction pipeline that streams results as they becom
 | Stage | Engine | Speed | Purpose |
 |---|---|---|---|
 | 1 | ML Kit + Chrono.js + Regex | Instant | Datetime detection, parsing, and unix timestamp handling |
-| 2 | Gemma (LiteRT) + Gemini Nano | Background | On-device LLMs for complex/ambiguous timestamps |
+| 2 | Gemma (LiteRT) | Background | On-device LLM for complex/ambiguous timestamps |
 
 Stage 1 results appear immediately. Stage 2 adds and merges results in the background. Duplicates are merged; ambiguous interpretations are kept.
 

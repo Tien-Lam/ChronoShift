@@ -3,7 +3,6 @@ package com.chronoshift.ui.settings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chronoshift.nlp.DownloadState
-import com.chronoshift.nlp.GeminiNanoExtractor
 import com.chronoshift.nlp.MlKitEntityExtractor
 import com.chronoshift.nlp.ModelDownloader
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,14 +18,12 @@ data class SettingsUiState(
     val modelInstalled: Boolean = false,
     val modelSizeMb: String = "",
     val downloadState: DownloadState = DownloadState.Idle,
-    val geminiNanoAvailable: Boolean = false,
     val mlKitAvailable: Boolean = false,
 )
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
     private val modelDownloader: ModelDownloader,
-    private val geminiNanoExtractor: GeminiNanoExtractor,
     private val mlKitEntityExtractor: MlKitEntityExtractor,
 ) : ViewModel() {
 
@@ -36,9 +33,8 @@ class SettingsViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val gemini = geminiNanoExtractor.isAvailable()
             val mlKit = mlKitEntityExtractor.isAvailable()
-            _modelStatus.value = ModelStatus(geminiNano = gemini, mlKit = mlKit)
+            _modelStatus.value = ModelStatus(mlKit = mlKit)
         }
 
         combine(modelDownloader.state, _modelStatus) { downloadState, status ->
@@ -48,7 +44,6 @@ class SettingsViewModel @Inject constructor(
                 modelInstalled = installed,
                 modelSizeMb = if (sizeBytes > 0) formatSize(sizeBytes) else "",
                 downloadState = downloadState,
-                geminiNanoAvailable = status.geminiNano,
                 mlKitAvailable = status.mlKit,
             )
         }.onEach { _uiState.value = it }.launchIn(viewModelScope)
@@ -79,7 +74,6 @@ class SettingsViewModel @Inject constructor(
     }
 
     private data class ModelStatus(
-        val geminiNano: Boolean = false,
         val mlKit: Boolean = false,
     )
 }

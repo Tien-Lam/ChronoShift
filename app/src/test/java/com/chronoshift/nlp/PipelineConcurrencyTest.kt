@@ -18,7 +18,7 @@ import kotlin.time.measureTime
 /**
  * Tests for the parallel pipeline in TieredTimeExtractor:
  * - Stage 1: ML Kit + Chrono + Regex run concurrently
- * - Stage 2+3: LiteRT and Gemini run concurrently, emit as each completes
+ * - Stage 2: LiteRT emits after the fast extractors
  *
  * Also tests timing behavior, emission ordering, and the expected
  * result counts when multiple extractors produce the same/different timezones.
@@ -52,20 +52,16 @@ class PipelineConcurrencyTest {
         chronoResults: List<ExtractedTime> = emptyList(),
         regexResults: List<ExtractedTime> = emptyList(),
         liteRtResults: List<ExtractedTime> = emptyList(),
-        geminiResults: List<ExtractedTime> = emptyList(),
         chronoAvailable: Boolean = true,
         liteRtAvailable: Boolean = false,
-        geminiAvailable: Boolean = false,
         mlKitAvailable: Boolean = false,
         chronoDelayMs: Long = 0,
         liteRtDelayMs: Long = 0,
-        geminiDelayMs: Long = 0,
         mlKitDelayMs: Long = 0,
     ): TieredTimeExtractor {
         return TieredTimeExtractor(
             chronoExtractor = DelayedSpanAwareExtractor(chronoAvailable, chronoResults, chronoDelayMs),
             liteRtExtractor = DelayedTimeExtractor("LiteRT", liteRtAvailable, liteRtResults, liteRtDelayMs),
-            geminiExtractor = DelayedTimeExtractor("Gemini Nano", geminiAvailable, geminiResults, geminiDelayMs),
             mlKitExtractor = DelayedSpanDetector(mlKitAvailable, mlKitDelayMs),
             regexExtractor = DelayedTimeExtractor("Regex", true, regexResults, 0),
         )
@@ -114,7 +110,6 @@ class PipelineConcurrencyTest {
         val ext = TieredTimeExtractor(
             chronoExtractor = DelayedSpanAwareExtractor(true, listOf(time("chrono", 15, tz = ny)), 0),
             liteRtExtractor = DelayedTimeExtractor("LiteRT", false, emptyList(), 0),
-            geminiExtractor = DelayedTimeExtractor("Gemini Nano", false, emptyList(), 0),
             mlKitExtractor = FailingSpanDetector(),
             regexExtractor = DelayedTimeExtractor("Regex", true, emptyList(), 0),
         )
@@ -123,50 +118,39 @@ class PipelineConcurrencyTest {
     }
 
     // =====================================================================
-    // Stage 2+3 concurrency: LiteRT and Gemini run in parallel
+    // Stage 2: LiteRT background extraction
     // =====================================================================
 
     @Test
-    fun `stages 2 and 3 - litert and gemini run concurrently`() = runTest {
-        // LiteRT takes 100ms, Gemini takes 100ms — if sequential, >200ms; if concurrent, ~100ms
+    fun `stage 2 - litert completes within background budget`() = runTest {
         val ext = extractor(
             chronoResults = listOf(time("chrono", 15, tz = ny)),
             liteRtAvailable = true,
             liteRtResults = listOf(time("litert", 18, tz = utc)),
             liteRtDelayMs = 100,
-            geminiAvailable = true,
-            geminiResults = listOf(time("gemini", 20, tz = tokyo)),
-            geminiDelayMs = 100,
         )
         val elapsed = measureTime {
             val emissions = ext.extractStream("test").toList()
             val last = emissions.last()
-            assertTrue("Final should have 3+ results", last.times.size >= 3)
+            assertTrue("Final should have 2+ results", last.times.size >= 2)
         }
         assertTrue(
-            "Stages 2+3 should run concurrently, took ${elapsed.inWholeMilliseconds}ms",
-            elapsed < 300.milliseconds,
+            "Stage 2 should complete within budget, took ${elapsed.inWholeMilliseconds}ms",
+            elapsed < 250.milliseconds,
         )
     }
 
     @Test
-    fun `stages 2 and 3 - faster extractor emits first`() = runTest {
-        // LiteRT finishes in 50ms, Gemini in 200ms
+    fun `stage 2 - litert emits after stage 1`() = runTest {
         val ext = extractor(
             chronoResults = listOf(time("chrono", 15, tz = ny)),
             liteRtAvailable = true,
             liteRtResults = listOf(time("litert", 18, tz = utc)),
             liteRtDelayMs = 50,
-            geminiAvailable = true,
-            geminiResults = listOf(time("gemini", 20, tz = tokyo)),
-            geminiDelayMs = 200,
         )
         val emissions = ext.extractStream("test").toList()
 
-        // Should have: stage 1 emission, litert emission, final emission
         assertTrue("Should have at least 3 emissions", emissions.size >= 2)
-
-        // The second emission (after stage 1) should have LiteRT results but not yet Gemini
         val afterStage1 = emissions.filter { it.times.isNotEmpty() }
         if (afterStage1.size >= 2) {
             val midEmission = afterStage1[1]
@@ -175,61 +159,50 @@ class PipelineConcurrencyTest {
     }
 
     @Test
-    fun `stages 2 and 3 - gemini finishes first emits first`() = runTest {
-        // Gemini finishes in 50ms, LiteRT in 200ms
+    fun `stage 2 - litert emits llm results`() = runTest {
         val ext = extractor(
             liteRtAvailable = true,
             liteRtResults = listOf(time("litert", 18, tz = utc)),
             liteRtDelayMs = 200,
-            geminiAvailable = true,
-            geminiResults = listOf(time("gemini", 20, tz = tokyo)),
-            geminiDelayMs = 50,
         )
         val emissions = ext.extractStream("test").toList()
         val last = emissions.last()
-        assertTrue("Final should contain both LiteRT and Gemini",
-            last.method.contains("LiteRT") && last.method.contains("Gemini Nano"))
+        assertTrue("Final should contain LiteRT", last.method.contains("LiteRT"))
     }
 
     @Test
-    fun `stages 2 and 3 - litert unavailable does not block gemini`() = runTest {
-        val ext = extractor(
-            liteRtAvailable = false,
-            geminiAvailable = true,
-            geminiResults = listOf(time("gemini", 20, tz = tokyo)),
-            geminiDelayMs = 50,
-        )
-        val emissions = ext.extractStream("test").toList()
-        val last = emissions.last()
-        assertTrue(last.method.contains("Gemini Nano"))
-        assertTrue(last.method.contains("LiteRT unavailable"))
-    }
-
-    @Test
-    fun `stages 2 and 3 - gemini unavailable does not block litert`() = runTest {
+    fun `stage 2 - litert covers llm-only results`() = runTest {
         val ext = extractor(
             liteRtAvailable = true,
-            liteRtResults = listOf(time("litert", 18, tz = utc)),
-            geminiAvailable = false,
+            liteRtResults = listOf(time("llm", 20, tz = tokyo)),
+            liteRtDelayMs = 50,
         )
         val emissions = ext.extractStream("test").toList()
         val last = emissions.last()
         assertTrue(last.method.contains("LiteRT"))
-        assertTrue(last.method.contains("Gemini Nano unavailable"))
     }
 
     @Test
-    fun `stages 2 and 3 - both unavailable completes quickly`() = runTest {
+    fun `stage 2 - litert unavailable is reflected in method label`() = runTest {
+        val ext = extractor(
+            liteRtAvailable = false,
+        )
+        val emissions = ext.extractStream("test").toList()
+        val last = emissions.last()
+        assertTrue(last.method.contains("LiteRT unavailable"))
+    }
+
+    @Test
+    fun `stage 2 - unavailable completes quickly`() = runTest {
         val ext = extractor(
             chronoResults = listOf(time("chrono", 15, tz = ny)),
             liteRtAvailable = false,
-            geminiAvailable = false,
         )
         val elapsed = measureTime {
             ext.extractStream("test").toList()
         }
         assertTrue(
-            "Both unavailable should complete fast, took ${elapsed.inWholeMilliseconds}ms",
+            "LiteRT unavailable should complete fast, took ${elapsed.inWholeMilliseconds}ms",
             elapsed < 200.milliseconds,
         )
     }
@@ -254,23 +227,20 @@ class PipelineConcurrencyTest {
             liteRtResults = listOf(time("litert", 18, tz = utc)),
         )
         val emissions = ext.extractStream("test").toList()
-        // stage 1, litert (first to complete from select), final
+        // stage 1, litert, final
         assertEquals(3, emissions.size)
     }
 
     @Test
-    fun `emission count - all three stages produces at least 3 emissions`() = runTest {
+    fun `emission count - stage 1 plus litert produces at least 3 emissions`() = runTest {
         val ext = extractor(
             chronoResults = listOf(time("chrono", 15, tz = ny)),
             liteRtAvailable = true,
             liteRtResults = listOf(time("litert", 18, tz = utc)),
             liteRtDelayMs = 50,
-            geminiAvailable = true,
-            geminiResults = listOf(time("gemini", 20, tz = tokyo)),
-            geminiDelayMs = 100,
         )
         val emissions = ext.extractStream("test").toList()
-        // stage 1, first LLM, final (may be more if both LLMs emit separately)
+        // stage 1, LiteRT, final
         assertTrue("Should have at least 3 emissions", emissions.size >= 3)
     }
 
@@ -289,9 +259,6 @@ class PipelineConcurrencyTest {
             liteRtAvailable = true,
             liteRtResults = listOf(time("litert", 18, tz = utc)),
             liteRtDelayMs = 50,
-            geminiAvailable = true,
-            geminiResults = listOf(time("gemini", 20, tz = tokyo)),
-            geminiDelayMs = 100,
         )
         val emissions = ext.extractStream("test").toList()
         // Each emission should have >= the previous one's result count
@@ -314,9 +281,7 @@ class PipelineConcurrencyTest {
         val ext = extractor(
             chronoResults = listOf(sharedTime),
             liteRtAvailable = true,
-            liteRtResults = listOf(sharedTime),
-            geminiAvailable = true,
-            geminiResults = listOf(sharedTime),
+            liteRtResults = listOf(sharedTime, sharedTime),
         )
         val emissions = ext.extractStream("test").toList()
         val last = emissions.last()
@@ -326,14 +291,14 @@ class PipelineConcurrencyTest {
     @Test
     fun `single timestamp - chrono offset differs from LLM IANA produces 2`() = runTest {
         // "3pm EST" → Chrono maps -300 to America/Chicago (CDT=UTC-5 in April)
-        //           → Gemini returns America/New_York (EDT=UTC-4)
+        //           → LiteRT returns America/New_York (EDT=UTC-4)
         // These are DIFFERENT instants (20:00 UTC vs 19:00 UTC) → 2 results
         val chronoTime = time("3pm EST", 15, tz = chicago) // CDT = UTC-5
-        val geminiTime = time("3pm EST", 15, tz = ny)      // EDT = UTC-4
+        val liteRtTime = time("3pm EST", 15, tz = ny)      // EDT = UTC-4
         val ext = extractor(
             chronoResults = listOf(chronoTime),
-            geminiAvailable = true,
-            geminiResults = listOf(geminiTime),
+            liteRtAvailable = true,
+            liteRtResults = listOf(liteRtTime),
         )
         val emissions = ext.extractStream("test").toList()
         val last = emissions.last()
@@ -344,36 +309,34 @@ class PipelineConcurrencyTest {
     }
 
     @Test
-    fun `single timestamp - all 3 stages different tz still merges LLMs`() = runTest {
-        // Chrono: Chicago (CDT=-5), LiteRT: New York (EDT=-4), Gemini: New York (EDT=-4)
-        // LiteRT and Gemini exact-match → combine. Chrono differs → separate.
+    fun `single timestamp - litert duplicate LLM results merge`() = runTest {
+        // Chrono: Chicago (CDT=-5), LiteRT: two New York (EDT=-4) results.
+        // LiteRT duplicates exact-match → combine. Chrono differs → separate.
         val chronoTime = time("3pm EST", 15, tz = chicago)
         val liteRtTime = time("3pm EST", 15, tz = ny)
-        val geminiTime = time("3pm EST", 15, tz = ny)
+        val duplicateLiteRtTime = time("3pm EST", 15, tz = ny)
         val ext = extractor(
             chronoResults = listOf(chronoTime),
             liteRtAvailable = true,
-            liteRtResults = listOf(liteRtTime),
-            geminiAvailable = true,
-            geminiResults = listOf(geminiTime),
+            liteRtResults = listOf(liteRtTime, duplicateLiteRtTime),
         )
         val emissions = ext.extractStream("test").toList()
         val last = emissions.last()
         assertEquals(
-            "Chrono(Chicago) + LiteRT+Gemini(NY) → 2 results, not 3",
+            "Chrono(Chicago) + LiteRT duplicates (NY) → 2 results, not 3",
             2, last.times.size,
         )
     }
 
     @Test
-    fun `CST ambiguity - chrono US Central vs gemini China produces 2`() = runTest {
-        // CST: Chrono → America/Chicago (CDT=UTC-5), Gemini → Asia/Shanghai (UTC+8)
+    fun `CST ambiguity - chrono US Central vs litert China produces 2`() = runTest {
+        // CST: Chrono → America/Chicago (CDT=UTC-5), LiteRT → Asia/Shanghai (UTC+8)
         val chronoCST = time("19:30 CST", 19, 30, tz = chicago)
-        val geminiCST = time("19:30 CST", 19, 30, tz = shanghai)
+        val liteRtCST = time("19:30 CST", 19, 30, tz = shanghai)
         val ext = extractor(
             chronoResults = listOf(chronoCST),
-            geminiAvailable = true,
-            geminiResults = listOf(geminiCST),
+            liteRtAvailable = true,
+            liteRtResults = listOf(liteRtCST),
         )
         val emissions = ext.extractStream("test").toList()
         val last = emissions.last()
@@ -391,21 +354,21 @@ class PipelineConcurrencyTest {
     }
 
     @Test
-    fun `three timestamps - PT ET CST all 3 stages produces correct count`() = runTest {
+    fun `three timestamps - PT ET CST litert produces correct count`() = runTest {
         // "4:30 AM PT / 7:30 AM ET / 19:30 CST"
         // Chrono: LA, NY, Chicago(CDT) → 3 results
-        // Gemini: LA, NY, Chicago → 3 results (should all exact-match)
+        // LiteRT: LA, NY, Chicago → 3 results (should all exact-match)
         val chronoPT = time("4:30 AM PT", 4, 30, tz = la)
         val chronoET = time("7:30 AM ET", 7, 30, tz = ny)
         val chronoCST = time("19:30 CST", 19, 30, tz = chicago)
-        val geminiPT = time("4:30 AM PT", 4, 30, tz = la)
-        val geminiET = time("7:30 AM ET", 7, 30, tz = ny)
-        val geminiCST = time("19:30 CST", 19, 30, tz = chicago)
+        val liteRtPT = time("4:30 AM PT", 4, 30, tz = la)
+        val liteRtET = time("7:30 AM ET", 7, 30, tz = ny)
+        val liteRtCST = time("19:30 CST", 19, 30, tz = chicago)
 
         val ext = extractor(
             chronoResults = listOf(chronoPT, chronoET, chronoCST),
-            geminiAvailable = true,
-            geminiResults = listOf(geminiPT, geminiET, geminiCST),
+            liteRtAvailable = true,
+            liteRtResults = listOf(liteRtPT, liteRtET, liteRtCST),
         )
         val emissions = ext.extractStream("test").toList()
         val last = emissions.last()
@@ -416,17 +379,17 @@ class PipelineConcurrencyTest {
     }
 
     @Test
-    fun `three timestamps - gemini disagrees on one tz produces 4`() = runTest {
+    fun `three timestamps - litert disagrees on one tz produces 4`() = runTest {
         // Chrono: LA, NY, Chicago(CDT=-5) for CST
-        // Gemini: LA, NY, Shanghai(+8) for CST — disagrees on CST
+        // LiteRT: LA, NY, Shanghai(+8) for CST — disagrees on CST
         val ext = extractor(
             chronoResults = listOf(
                 time("4:30 AM PT", 4, 30, tz = la),
                 time("7:30 AM ET", 7, 30, tz = ny),
                 time("19:30 CST", 19, 30, tz = chicago),
             ),
-            geminiAvailable = true,
-            geminiResults = listOf(
+            liteRtAvailable = true,
+            liteRtResults = listOf(
                 time("4:30 AM PT", 4, 30, tz = la),
                 time("7:30 AM ET", 7, 30, tz = ny),
                 time("19:30 CST", 19, 30, tz = shanghai),
@@ -480,36 +443,30 @@ class PipelineConcurrencyTest {
     }
 
     @Test
-    fun `total pipeline - LLM stage bounded by slower LLM`() = runTest {
-        // LiteRT: 100ms, Gemini: 200ms → LLM stage total ~200ms (max), not 300ms (sum)
+    fun `total pipeline - LLM stage waits for litert`() = runTest {
+        // LiteRT is the only background LLM path.
         val ext = extractor(
             chronoResults = listOf(time("c", 15, tz = ny)),
             liteRtAvailable = true,
             liteRtResults = listOf(time("l", 18, tz = utc)),
             liteRtDelayMs = 100,
-            geminiAvailable = true,
-            geminiResults = listOf(time("g", 20, tz = tokyo)),
-            geminiDelayMs = 200,
         )
         val elapsed = measureTime {
             ext.extractStream("test").toList()
         }
         assertTrue(
-            "LLM stage concurrent: should be ~200ms not ~300ms, took ${elapsed.inWholeMilliseconds}ms",
-            elapsed < 350.milliseconds,
+            "LLM stage should stay bounded, took ${elapsed.inWholeMilliseconds}ms",
+            elapsed < 250.milliseconds,
         )
     }
 
     @Test
-    fun `first result is emitted before LLMs finish`() = runTest {
+    fun `first result is emitted before litert finishes`() = runTest {
         val ext = extractor(
             chronoResults = listOf(time("chrono", 15, tz = ny)),
             liteRtAvailable = true,
             liteRtResults = listOf(time("litert", 18, tz = utc)),
             liteRtDelayMs = 500,
-            geminiAvailable = true,
-            geminiResults = listOf(time("gemini", 20, tz = tokyo)),
-            geminiDelayMs = 500,
         )
         var firstEmissionTime = 0L
         val start = System.nanoTime()
@@ -520,7 +477,7 @@ class PipelineConcurrencyTest {
         }
         val firstMs = firstEmissionTime / 1_000_000
         assertTrue(
-            "First result should arrive well before LLMs (500ms), took ${firstMs}ms",
+            "First result should arrive well before LiteRT (500ms), took ${firstMs}ms",
             firstMs < 200,
         )
     }
@@ -530,25 +487,23 @@ class PipelineConcurrencyTest {
     // =====================================================================
 
     @Test
-    fun `litert crash does not cancel gemini`() = runTest {
+    fun `litert crash does not cancel stage 1`() = runTest {
         val ext = TieredTimeExtractor(
-            chronoExtractor = DelayedSpanAwareExtractor(true, emptyList(), 0),
+            chronoExtractor = DelayedSpanAwareExtractor(true, listOf(time("chrono", 15, tz = ny)), 0),
             liteRtExtractor = CrashingTimeExtractor("LiteRT"),
-            geminiExtractor = DelayedTimeExtractor("Gemini Nano", true, listOf(time("gemini", 20, tz = tokyo)), 50),
             mlKitExtractor = DelayedSpanDetector(false, 0),
             regexExtractor = DelayedTimeExtractor("Regex", true, emptyList(), 0),
         )
         val emissions = ext.extractStream("test").toList()
         val last = emissions.last()
-        assertTrue("Gemini should still produce results", last.times.isNotEmpty())
+        assertTrue("Stage 1 should still produce results", last.times.isNotEmpty())
     }
 
     @Test
-    fun `gemini crash does not cancel litert`() = runTest {
+    fun `litert result emits from the only llm path`() = runTest {
         val ext = TieredTimeExtractor(
             chronoExtractor = DelayedSpanAwareExtractor(true, emptyList(), 0),
             liteRtExtractor = DelayedTimeExtractor("LiteRT", true, listOf(time("litert", 18, tz = utc)), 50),
-            geminiExtractor = CrashingTimeExtractor("Gemini Nano"),
             mlKitExtractor = DelayedSpanDetector(false, 0),
             regexExtractor = DelayedTimeExtractor("Regex", true, emptyList(), 0),
         )

@@ -31,7 +31,7 @@ All complex logic is extracted into pure Kotlin objects with no Android dependen
 | `RegexExtractor` | `RegexExtractorTest.kt` |
 | `TimezoneAbbreviations` | `TimezoneAbbreviationsTest.kt` |
 
-Android-dependent classes (`ChronoExtractor`, `GeminiNanoExtractor`, `MlKitEntityExtractor`) are thin wrappers that delegate to these testable objects.
+Android-dependent classes (`ChronoExtractor`, `LiteRtExtractor`, `MlKitEntityExtractor`) are thin wrappers that delegate to these testable objects.
 
 ### Test Helpers
 

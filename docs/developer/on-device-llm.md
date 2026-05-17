@@ -1,6 +1,6 @@
 # On-Device LLM Setup
 
-ChronoShift uses two on-device LLMs as Stage 2 extractors. Both are optional — the app works without them, but they improve extraction quality for complex or ambiguous timestamps.
+ChronoShift uses LiteRT/Gemma as its optional Stage 2 on-device LLM. The app works without a downloaded model, but the model improves extraction quality for complex or ambiguous timestamps without requiring platform-specific LLM support.
 
 ## LiteRT (Gemma 4 E2B)
 
@@ -17,38 +17,15 @@ ChronoShift uses two on-device LLMs as Stage 2 extractors. Both are optional —
 
 ### Prompt Format
 
-The prompt asks for a JSON array with `time`, `date`, `timezone`, and `original` fields. Today's date is injected so the model can resolve relative references ("tomorrow", "next Monday").
-
-## Gemini Nano
-
-**Engine:** ML Kit GenAI Prompt API
-**Availability:** Device-dependent (requires on-device Gemini support)
-
-### Status Codes
-
-`checkStatus()` returns:
-| Code | Meaning |
-|---|---|
-| 0 | Unavailable (device not supported) |
-| 1 | Downloadable |
-| 2 | Downloading |
-| 3 | Available |
-
-### How It Works
-
-`GeminiNanoExtractor` uses the ML Kit GenAI prompt API. The response is parsed by the same `LlmResultParser` used by LiteRT — both LLMs receive the same prompt format and return JSON in the same schema.
+The prompt asks for a JSON array with `time`, `date`, `timezone`, and `original` fields. Today's date is injected so the model can resolve relative references such as "tomorrow" or "next Monday".
 
 ## Shared Parser: LlmResultParser
 
-Both LLM extractors delegate response parsing to `LlmResultParser`, which handles:
+`LiteRtExtractor` delegates response parsing to `LlmResultParser`, which handles:
 
 - JSON extraction from fenced code blocks (strips `` ```json ... ``` ``)
 - Timezone resolution from abbreviations, IANA IDs, and UTC offsets
 - Abbreviation-aware timezone matching via `TimezoneAbbreviations`
 - Graceful handling of malformed LLM output
 
-## Racing Strategy
-
-`TieredTimeExtractor` runs both LLMs concurrently. Whichever finishes first emits an intermediate result immediately. The second merges in when done. LiteRT is typically faster than Gemini Nano.
-
-If neither LLM is available (no model downloaded, device unsupported), Stage 1 results are the final results.
+If LiteRT is unavailable because no model is downloaded, Stage 1 results are the final results.

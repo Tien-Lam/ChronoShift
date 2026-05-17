@@ -8,8 +8,4 @@ annotation class LiteRt
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class Gemini
-
-@Qualifier
-@Retention(AnnotationRetention.BINARY)
 annotation class Regex

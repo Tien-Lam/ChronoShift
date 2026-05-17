@@ -179,7 +179,7 @@ class MainViewModelTest {
         )
         fakeExtractor.results = listOf(
             ExtractionResult(listOf(time1), "Chrono"),
-            ExtractionResult(listOf(time1, time2), "Chrono + Gemini"),
+            ExtractionResult(listOf(time1, time2), "Chrono + LiteRT"),
         )
 
         viewModel = createViewModel()

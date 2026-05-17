@@ -234,13 +234,13 @@ class TimezoneAbbreviationsTest {
     }
 
     @Test
-    fun `computeInstant - corrects Gemini wrong instant for EST`() {
-        // Gemini returns America/New_York for "3pm EST". In summer, NY is EDT (-4).
+    fun `computeInstant - corrects LLM wrong instant for EST`() {
+        // An LLM may return America/New_York for "3pm EST". In summer, NY is EDT (-4).
         // computeInstant should correct to EST (-5).
         val dt = LocalDateTime(2026, 7, 15, 15, 0)
-        val geminiZone = TimeZone.of("America/New_York")
+        val llmZone = TimeZone.of("America/New_York")
 
-        val corrected = TimezoneAbbreviations.computeInstant(dt, geminiZone, "3pm EST")
+        val corrected = TimezoneAbbreviations.computeInstant(dt, llmZone, "3pm EST")
         val expected = dt.toInstant(TimezoneAbbreviations.fixedOffsetTimezone(-300))
         assertEquals(expected, corrected)
     }
@@ -259,18 +259,18 @@ class TimezoneAbbreviationsTest {
     // ========== Cross-extractor consistency ==========
 
     @Test
-    fun `same input 3pm EST produces same instant from both Chrono and Gemini paths`() {
+    fun `same input 3pm EST produces same instant from both Chrono and LLM paths`() {
         val dt = LocalDateTime(2026, 7, 15, 15, 0)
 
         // Chrono path: raw offset -300 → fixed offset timezone
         val chronoInstant = dt.toInstant(TimezoneAbbreviations.fixedOffsetTimezone(-300))
 
-        // Gemini path: IANA zone + abbreviation correction
-        val geminiInstant = TimezoneAbbreviations.computeInstant(
+        // LLM path: IANA zone + abbreviation correction
+        val llmInstant = TimezoneAbbreviations.computeInstant(
             dt, TimeZone.of("America/New_York"), "3pm EST"
         )
 
-        assertEquals(chronoInstant, geminiInstant)
+        assertEquals(chronoInstant, llmInstant)
     }
 
     @Test
@@ -278,10 +278,10 @@ class TimezoneAbbreviationsTest {
         val dt = LocalDateTime(2026, 7, 15, 15, 0)
 
         val chronoInstant = dt.toInstant(TimezoneAbbreviations.fixedOffsetTimezone(-480))
-        val geminiInstant = TimezoneAbbreviations.computeInstant(
+        val llmInstant = TimezoneAbbreviations.computeInstant(
             dt, TimeZone.of("America/Los_Angeles"), "3pm PST"
         )
 
-        assertEquals(chronoInstant, geminiInstant)
+        assertEquals(chronoInstant, llmInstant)
     }
 }

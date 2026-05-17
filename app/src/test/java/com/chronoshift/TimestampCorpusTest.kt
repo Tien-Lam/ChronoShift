@@ -182,7 +182,7 @@ class TimestampCorpusTest {
             val gemini = LlmResultParser.parseResponse(geminiJson)
 
             try {
-                val merged = ResultMerger.mergeResults(chrono, gemini, "Gemini Nano")
+                val merged = ResultMerger.mergeResults(chrono, gemini, "LiteRT")
                 assertTrue("Merged should have >= 0 results", merged.isNotEmpty() || merged.isEmpty())
             } catch (e: Exception) {
                 throw AssertionError("ResultMerger crashed on '${tc.input}': ${e.message}", e)

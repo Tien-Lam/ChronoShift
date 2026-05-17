@@ -203,7 +203,7 @@ private fun PreviewTwoCards() {
                         localDateTime = "6:00 PM",
                         localTimezone = "UTC+2",
                         localDate = "Apr 9, 2026",
-                        method = "ML Kit + Chrono + Gemini Nano",
+                        method = "ML Kit + Chrono + LiteRT",
                     ),
                     animationIndex = 1,
                 )

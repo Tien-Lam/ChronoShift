@@ -1,6 +1,6 @@
 # NLP Pipeline
 
-ChronoShift extracts timestamps from arbitrary text using a tiered, streaming pipeline. Results appear as each stage completes — the user sees fast results immediately, with LLM-quality results merging in seconds later.
+ChronoShift extracts timestamps from arbitrary text using a tiered, streaming pipeline. Fast results appear immediately, with LiteRT/Gemma results merging in later when the optional on-device model is installed.
 
 ## Overview
 
@@ -15,9 +15,8 @@ flowchart TD
         mlkit --> chrono
     end
 
-    subgraph stage2[Stage 2 — background, concurrent]
-        litert[LiteRT — fast on-device LLM]
-        gemini[Gemini Nano — high-quality on-device LLM]
+    subgraph stage2[Stage 2 — background]
+        litert[LiteRT — on-device Gemma LLM]
     end
 
     expand[Expand ambiguous abbreviations]
@@ -25,7 +24,7 @@ flowchart TD
     input --> stage1
     input --> stage2
     stage1 -- emit immediately --> merge1[ResultMerger]
-    stage2 -- emit as each completes --> merge2[ResultMerger]
+    stage2 -- emit when available --> merge2[ResultMerger]
     merge1 --> merge2
     merge2 --> expand
     expand -- emit final --> results[ExtractionResult]
@@ -47,15 +46,11 @@ Three extractors run concurrently:
 
 ML Kit and Chrono run as a coordinated pair (spans feed into Chrono). Regex runs independently. All three complete near-instantly and results are merged and emitted.
 
-### Stage 2: On-Device LLMs
+### Stage 2: On-Device LLM
 
-Two LLM extractors run concurrently. Whichever finishes first emits an intermediate result, and the second merges in when done:
+**LiteRT** (`LiteRtExtractor`) runs a Gemma model via Google LiteRT-LM. The model must be downloaded separately via Settings. It receives a structured prompt asking for JSON output with time, date, timezone, and original text fields. `LlmResultParser` parses the response.
 
-1. **LiteRT** (`LiteRtExtractor`) — runs a Gemma model via Google LiteRT-LM. Faster of the two. Model must be downloaded separately via Settings.
-
-2. **Gemini Nano** (`GeminiNanoExtractor`) — uses the on-device Gemini model via ML Kit GenAI. Higher quality but slower. Availability depends on device support.
-
-Both LLMs receive a structured prompt asking for JSON output with time, date, timezone, and original text fields. `LlmResultParser` handles response parsing for both.
+If no LiteRT model is installed, Stage 1 results remain the final results.
 
 ### Final Step: Ambiguity Expansion
 
@@ -86,12 +81,8 @@ flowchart LR
     regex --> merge1
 
     text --> litert["LiteRtExtractor\n.extract()"]
-    text --> gemini["GeminiNanoExtractor\n.extract()"]
-    litert --> llmparse1["LlmResultParser\n.parseResponse()"]
-    gemini --> llmparse2["LlmResultParser\n.parseResponse()"]
-
-    llmparse1 --> merge2["ResultMerger — emit per LLM"]
-    llmparse2 --> merge2
+    litert --> llmparse["LlmResultParser\n.parseResponse()"]
+    llmparse --> merge2["ResultMerger — emit Stage 2"]
     merge1 --> merge2
 
     merge2 --> expand["ChronoResultParser\n.expandAmbiguous()"]
@@ -102,5 +93,5 @@ flowchart LR
 
 - **ML Kit is a spotter, not a parser.** It detects datetime spans but has no timezone awareness. Chrono does the actual parsing.
 - **Span + full-text dual parse.** Chrono parses each ML Kit span individually (for precision) and the full text (for timezone context). The merge step upgrades span results with timezone info from the full-text parse.
-- **LLMs race, first wins.** LiteRT and Gemini Nano run concurrently. The first to finish emits immediately so the user doesn't wait for the slower one.
-- **Timezone from offsets, not names.** Chrono returns timezone as minute offsets. `ChronoResultParser.offsetToTimezone()` finds a matching IANA zone at the parsed instant — this means the same offset can map to different zones depending on DST.
+- **LiteRT is optional.** The app keeps working on devices without a downloaded model; when present, the Gemma model adds background LLM-quality results.
+- **Timezone from offsets, not names.** Chrono returns timezone as minute offsets. `ChronoResultParser.offsetToTimezone()` finds a matching IANA zone at the parsed instant, which means the same offset can map to different zones depending on DST.

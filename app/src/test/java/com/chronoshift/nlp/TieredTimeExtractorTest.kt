@@ -31,11 +31,9 @@ class TieredTimeExtractorTest {
     private fun extractor(
         chronoResults: List<ExtractedTime> = emptyList(),
         liteRtResults: List<ExtractedTime> = emptyList(),
-        geminiResults: List<ExtractedTime> = emptyList(),
         regexResults: List<ExtractedTime> = emptyList(),
         chronoAvailable: Boolean = true,
         liteRtAvailable: Boolean = false,
-        geminiAvailable: Boolean = false,
         mlKitAvailable: Boolean = false,
         chronoThrows: Boolean = false,
         liteRtThrows: Boolean = false,
@@ -44,7 +42,6 @@ class TieredTimeExtractorTest {
         return TieredTimeExtractor(
             chronoExtractor = FakeSpanAwareExtractor(chronoAvailable, chronoResults, chronoThrows),
             liteRtExtractor = FakeTimeExtractor("LiteRT", liteRtAvailable, liteRtResults, liteRtThrows),
-            geminiExtractor = FakeTimeExtractor("Gemini Nano", geminiAvailable, geminiResults),
             mlKitExtractor = FakeSpanDetector(mlKitAvailable, mlKitSpans),
             regexExtractor = FakeTimeExtractor("Regex", true, regexResults),
         )
@@ -112,27 +109,12 @@ class TieredTimeExtractorTest {
     }
 
     @Test
-    fun `gemini adds to merged results in stage 3`() = runTest {
-        val chronoTime = time("chrono", hour = 15)
-        val geminiTime = time("gemini new", hour = 20)
-        val ext = extractor(
-            chronoResults = listOf(chronoTime),
-            geminiAvailable = true,
-            geminiResults = listOf(geminiTime),
-        )
-        val emissions = ext.extractStream("test").toList()
-
-        val last = emissions.last()
-        assertTrue("Final should have 2+ results", last.times.size >= 2)
-    }
-
-    @Test
     fun `duplicate results across stages are merged`() = runTest {
         val sharedTime = time("3pm", hour = 15, tz = utc)
         val ext = extractor(
             chronoResults = listOf(sharedTime),
-            geminiAvailable = true,
-            geminiResults = listOf(sharedTime),
+            liteRtAvailable = true,
+            liteRtResults = listOf(sharedTime),
         )
         val emissions = ext.extractStream("test").toList()
         val last = emissions.last()
@@ -144,18 +126,16 @@ class TieredTimeExtractorTest {
     // ========== Three stages together ==========
 
     @Test
-    fun `all three stages produce combined results`() = runTest {
+    fun `fast and litert stages produce combined results`() = runTest {
         val ext = extractor(
             chronoResults = listOf(time("chrono", hour = 10)),
             liteRtAvailable = true,
             liteRtResults = listOf(time("litert", hour = 14)),
-            geminiAvailable = true,
-            geminiResults = listOf(time("gemini", hour = 18)),
         )
         val emissions = ext.extractStream("test").toList()
         val last = emissions.last()
 
-        assertEquals("Should have 3 unique results", 3, last.times.size)
+        assertEquals("Should have 2 unique results", 2, last.times.size)
     }
 
     @Test
@@ -181,7 +161,6 @@ class TieredTimeExtractorTest {
         val ext = extractor(
             chronoAvailable = false,
             liteRtAvailable = false,
-            geminiAvailable = false,
         )
         val emissions = ext.extractStream("test").toList()
         val last = emissions.last()
@@ -192,11 +171,10 @@ class TieredTimeExtractorTest {
     fun `method label shows unavailable extractors`() = runTest {
         val ext = extractor(
             liteRtAvailable = false,
-            geminiAvailable = false,
         )
         val emissions = ext.extractStream("test").toList()
         val last = emissions.last()
-        assertTrue("Should mention unavailable", last.method.contains("unavailable"))
+        assertTrue("Should mention LiteRT unavailable", last.method.contains("LiteRT unavailable"))
     }
 
     @Test
@@ -287,7 +265,6 @@ class TieredTimeExtractorTest {
         val ext = TieredTimeExtractor(
             chronoExtractor = FakeSpanAwareExtractor(true, listOf(result)),
             liteRtExtractor = FakeTimeExtractor("LiteRT", false, emptyList()),
-            geminiExtractor = FakeTimeExtractor("Gemini Nano", false, emptyList()),
             mlKitExtractor = FailingSpanDetector(),
             regexExtractor = FakeTimeExtractor("Regex", true, emptyList()),
         )

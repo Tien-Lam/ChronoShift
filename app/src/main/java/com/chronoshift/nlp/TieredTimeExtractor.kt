@@ -4,7 +4,6 @@ import android.util.Log
 import com.chronoshift.conversion.ExtractedTime
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.selects.select
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -14,7 +13,6 @@ import javax.inject.Singleton
 class TieredTimeExtractor @Inject constructor(
     private val chronoExtractor: SpanAwareTimeExtractor,
     @com.chronoshift.di.LiteRt private val liteRtExtractor: TimeExtractor,
-    @com.chronoshift.di.Gemini private val geminiExtractor: TimeExtractor,
     private val mlKitExtractor: SpanDetector,
     @com.chronoshift.di.Regex private val regexExtractor: TimeExtractor,
 ) : TimeExtractor, StreamingTimeExtractor {
@@ -84,53 +82,14 @@ class TieredTimeExtractor @Inject constructor(
             emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
         }
 
-        // Stage 2+3: LiteRT and Gemini Nano run concurrently.
-        // Emit as each completes so the faster one (LiteRT ~1-2s) shows before the slower one (Gemini ~7s).
-        coroutineScope {
-            val liteRtDeferred = async { tryExtract(liteRtExtractor, text) }
-            val geminiDeferred = async { tryExtract(geminiExtractor, text) }
-
-            // Wait for whichever finishes first
-            val first = select {
-                liteRtDeferred.onAwait { "litert" to it }
-                geminiDeferred.onAwait { "gemini" to it }
-            }
-
-            if (first.first == "litert") {
-                val liteRtResult = first.second
-                if (liteRtResult != null) {
-                    ran.add("LiteRT")
-                    merged = ResultMerger.mergeResults(merged, liteRtResult.times, "LiteRT")
-                    emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
-                } else {
-                    unavailable.add("LiteRT")
-                }
-                // Now wait for Gemini
-                val geminiResult = geminiDeferred.await()
-                if (geminiResult != null) {
-                    ran.add("Gemini Nano")
-                    merged = ResultMerger.mergeResults(merged, geminiResult.times, "Gemini Nano")
-                } else {
-                    unavailable.add("Gemini Nano")
-                }
-            } else {
-                val geminiResult = first.second
-                if (geminiResult != null) {
-                    ran.add("Gemini Nano")
-                    merged = ResultMerger.mergeResults(merged, geminiResult.times, "Gemini Nano")
-                    emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
-                } else {
-                    unavailable.add("Gemini Nano")
-                }
-                // Now wait for LiteRT
-                val liteRtResult = liteRtDeferred.await()
-                if (liteRtResult != null) {
-                    ran.add("LiteRT")
-                    merged = ResultMerger.mergeResults(merged, liteRtResult.times, "LiteRT")
-                } else {
-                    unavailable.add("LiteRT")
-                }
-            }
+        // Stage 2: LiteRT background extraction.
+        val liteRtResult = tryExtract(liteRtExtractor, text)
+        if (liteRtResult != null) {
+            ran.add("LiteRT")
+            merged = ResultMerger.mergeResults(merged, liteRtResult.times, "LiteRT")
+            emit(ExtractionResult(merged, buildLabel(ran, unavailable)))
+        } else {
+            unavailable.add("LiteRT")
         }
 
         merged = ChronoResultParser.expandAmbiguous(merged)

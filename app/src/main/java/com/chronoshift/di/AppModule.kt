@@ -3,7 +3,6 @@ package com.chronoshift.di
 import com.chronoshift.nlp.ChronoExtractor
 import com.chronoshift.nlp.CityResolver
 import com.chronoshift.nlp.CityResolverInterface
-import com.chronoshift.nlp.GeminiNanoExtractor
 import com.chronoshift.nlp.LiteRtExtractor
 import com.chronoshift.nlp.MlKitEntityExtractor
 import com.chronoshift.nlp.RegexExtractor
@@ -38,9 +37,6 @@ abstract class AppModule {
 
     @Binds @LiteRt
     abstract fun bindLiteRtExtractor(impl: LiteRtExtractor): TimeExtractor
-
-    @Binds @Gemini
-    abstract fun bindGeminiExtractor(impl: GeminiNanoExtractor): TimeExtractor
 
     @Binds @Regex
     abstract fun bindRegexExtractor(impl: RegexExtractor): TimeExtractor

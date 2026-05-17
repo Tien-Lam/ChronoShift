@@ -291,6 +291,84 @@ class ChronoResultParserMergeTest {
     }
 
     @Test
+    fun `parseRaw - orders results by source index with range end after start`() {
+        val json = """[
+            {
+                "text": "noon PST",
+                "index": 10,
+                "start": {
+                    "year": 2026, "month": 4, "day": 9,
+                    "hour": 12, "minute": 0, "second": 0,
+                    "timezone": -480,
+                    "isCertain": {"hour": true, "day": false}
+                },
+                "end": null
+            },
+            {
+                "text": "10am PST",
+                "index": 0,
+                "start": {
+                    "year": 2026, "month": 4, "day": 9,
+                    "hour": 10, "minute": 0, "second": 0,
+                    "timezone": -480,
+                    "isCertain": {"hour": true, "day": false}
+                },
+                "end": null
+            },
+            {
+                "text": "3pm - 4pm PST",
+                "index": 20,
+                "start": {
+                    "year": 2026, "month": 4, "day": 9,
+                    "hour": 15, "minute": 0, "second": 0,
+                    "timezone": -480,
+                    "isCertain": {"hour": true, "day": false}
+                },
+                "end": {
+                    "year": 2026, "month": 4, "day": 9,
+                    "hour": 16, "minute": 0, "second": 0,
+                    "timezone": -480
+                }
+            }
+        ]"""
+
+        val results = ChronoResultParser.parseRaw(json)
+
+        assertEquals(4, results.size)
+        assertEquals("10am PST", results[0].extracted.originalText)
+        assertEquals("noon PST", results[1].extracted.originalText)
+        assertEquals("3pm - 4pm PST", results[2].extracted.originalText)
+        assertEquals("3pm - 4pm PST (end)", results[3].extracted.originalText)
+    }
+
+    @Test
+    fun `parseRaw - corrects Chrono range endpoints when source text order is reversed`() {
+        val json = """[{
+            "text": "10am to noon PST",
+            "index": 0,
+            "start": {
+                "year": 2026, "month": 5, "day": 17,
+                "hour": 12, "minute": 0, "second": 0,
+                "timezone": -480,
+                "isCertain": {"hour": true, "day": false}
+            },
+            "end": {
+                "year": 2026, "month": 5, "day": 18,
+                "hour": 10, "minute": 0, "second": 0,
+                "timezone": -480
+            }
+        }]"""
+
+        val results = ChronoResultParser.parseRaw(json)
+
+        assertEquals(2, results.size)
+        assertEquals(10, results[0].extracted.localDateTime!!.hour)
+        assertEquals(17, results[0].extracted.localDateTime!!.dayOfMonth)
+        assertEquals(12, results[1].extracted.localDateTime!!.hour)
+        assertEquals(17, results[1].extracted.localDateTime!!.dayOfMonth)
+    }
+
+    @Test
     fun `propagateDates - uses raw offset for instant recomputation`() {
         // Date-certain entry + time-only entry with raw offset
         val dateCertain = ChronoResultParser.ParsedResult(

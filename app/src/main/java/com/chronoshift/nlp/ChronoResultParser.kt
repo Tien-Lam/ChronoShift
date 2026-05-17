@@ -3,6 +3,7 @@ package com.chronoshift.nlp
 import android.util.Log
 import com.chronoshift.conversion.ExtractedTime
 import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.UtcOffset
@@ -15,9 +16,16 @@ object ChronoResultParser {
         val extracted: ExtractedTime,
         val dateCertain: Boolean,
         val rawOffsetMinutes: Int? = null,
+        val sourceIndex: Int = Int.MAX_VALUE,
+        val rangeOrder: Int = 0,
+        val sequence: Int = 0,
     )
 
     private const val TAG = "ChronoResultParser"
+
+    private val parsedResultOrder = compareBy<ParsedResult> { it.sourceIndex }
+        .thenBy { it.rangeOrder }
+        .thenBy { it.sequence }
 
     fun parse(json: String, originalText: String, cityResolver: CityResolverInterface?): List<ExtractedTime> {
         Log.d(TAG, "parse: input=\"$originalText\" jsonLength=${json.length}")
@@ -25,12 +33,14 @@ object ChronoResultParser {
         Log.d(TAG, "parseRaw: ${parsed.size} entry(ies)")
         parsed.forEachIndexed { i, p ->
             Log.d(TAG, "  [raw #$i] text=\"${p.extracted.originalText}\" localDt=${p.extracted.localDateTime} " +
-                "rawOffset=${p.rawOffsetMinutes} tz=${p.extracted.sourceTimezone?.id} instant=${p.extracted.instant}")
+                "index=${p.sourceIndex} order=${p.rangeOrder} rawOffset=${p.rawOffsetMinutes} " +
+                "tz=${p.extracted.sourceTimezone?.id} instant=${p.extracted.instant}")
         }
-        val propagated = propagateDates(parsed)
-        val hasRealTimes = propagated.any { it.confidence > 0.0f }
-        val filtered = if (hasRealTimes) propagated.filter { it.confidence > 0.0f } else propagated
-        val results = resolveCities(filtered, originalText, cityResolver)
+        val propagated = propagateParsedDates(parsed)
+        val hasRealTimes = propagated.any { it.extracted.confidence > 0.0f }
+        val filtered = if (hasRealTimes) propagated.filter { it.extracted.confidence > 0.0f } else propagated
+        val ordered = filtered.sortedWith(parsedResultOrder).map { it.extracted }
+        val results = resolveCities(ordered, originalText, cityResolver)
         Log.d(TAG, "parse: ${results.size} final result(s)")
         return results
     }
@@ -43,6 +53,7 @@ object ChronoResultParser {
             val obj = try { array.getJSONObject(i) } catch (_: Exception) { continue }
             try {
                 val text = obj.getString("text")
+                val sourceIndex = obj.optInt("index", i)
                 val start = obj.getJSONObject("start")
                 val isCertain = start.optJSONObject("isCertain")
 
@@ -72,7 +83,7 @@ object ChronoResultParser {
                 // Detect by: hour is uncertain, uses default value (12), and no timezone.
                 val isDateOnly = !hourCertain && hour == 12 && minute == 0 && tz == null
 
-                parsed.add(ParsedResult(
+                val startParsed = ParsedResult(
                     extracted = ExtractedTime(
                         instant = instant,
                         localDateTime = dt,
@@ -82,7 +93,10 @@ object ChronoResultParser {
                     ),
                     dateCertain = dateCertain,
                     rawOffsetMinutes = tzOffsetMinutes,
-                ))
+                    sourceIndex = sourceIndex,
+                    rangeOrder = 0,
+                    sequence = parsed.size,
+                )
 
                 if (!obj.isNull("end")) {
                     val end = obj.getJSONObject("end")
@@ -98,7 +112,7 @@ object ChronoResultParser {
                         offsetToTimezone(endRawOffset, endInstant)
                     } else tz
 
-                    parsed.add(ParsedResult(
+                    val endParsed = ParsedResult(
                         extracted = ExtractedTime(
                             instant = endInstant,
                             localDateTime = endDt,
@@ -108,18 +122,149 @@ object ChronoResultParser {
                         ),
                         dateCertain = false,
                         rawOffsetMinutes = endRawOffset,
-                    ))
+                        sourceIndex = sourceIndex,
+                        rangeOrder = 1,
+                        sequence = parsed.size,
+                    )
+
+                    if (shouldSwapRangeEndpoints(text, dt, endDt)) {
+                        val rangeDate = dt.date
+                        parsed.add(rangePosition(
+                            template = endParsed,
+                            originalText = text,
+                            date = rangeDate,
+                            dateCertain = dateCertain,
+                            confidence = startParsed.extracted.confidence,
+                            sourceIndex = sourceIndex,
+                            rangeOrder = 0,
+                            sequence = parsed.size,
+                        ))
+                        parsed.add(rangePosition(
+                            template = startParsed,
+                            originalText = "$text (end)",
+                            date = rangeDate,
+                            dateCertain = false,
+                            confidence = 0.85f,
+                            sourceIndex = sourceIndex,
+                            rangeOrder = 1,
+                            sequence = parsed.size,
+                        ))
+                    } else {
+                        parsed.add(startParsed.copy(sequence = parsed.size))
+                        parsed.add(endParsed.copy(sequence = parsed.size))
+                    }
+                } else {
+                    parsed.add(startParsed.copy(sequence = parsed.size))
                 }
             } catch (_: Exception) {
                 // skip malformed entry
             }
         }
-        return parsed
+        return parsed.sortedWith(parsedResultOrder)
+    }
+
+    private fun shouldSwapRangeEndpoints(
+        text: String,
+        start: LocalDateTime,
+        end: LocalDateTime,
+    ): Boolean {
+        if (!rangeConnectorPattern.containsMatchIn(text)) return false
+        val startPosition = findTimePosition(text, start) ?: return false
+        val endPosition = findTimePosition(text, end) ?: return false
+        return endPosition < startPosition
+    }
+
+    private fun rangePosition(
+        template: ParsedResult,
+        originalText: String,
+        date: LocalDate,
+        dateCertain: Boolean,
+        confidence: Float,
+        sourceIndex: Int,
+        rangeOrder: Int,
+        sequence: Int,
+    ): ParsedResult {
+        val currentDt = template.extracted.localDateTime
+        val fixedDt = currentDt?.let { LocalDateTime(date, it.time) }
+        val rawOffset = template.rawOffsetMinutes
+        val tz = template.extracted.sourceTimezone
+        val newInstant = if (fixedDt != null && rawOffset != null) {
+            fixedDt.toInstant(TimezoneAbbreviations.fixedOffsetTimezone(rawOffset))
+        } else if (fixedDt != null && tz != null) {
+            fixedDt.toInstant(tz)
+        } else {
+            template.extracted.instant
+        }
+        val newTz = if (rawOffset != null && newInstant != null) {
+            offsetToTimezone(rawOffset, newInstant)
+        } else {
+            tz
+        }
+
+        return template.copy(
+            extracted = template.extracted.copy(
+                localDateTime = fixedDt,
+                instant = newInstant,
+                sourceTimezone = newTz,
+                originalText = originalText,
+                confidence = confidence,
+            ),
+            dateCertain = dateCertain,
+            sourceIndex = sourceIndex,
+            rangeOrder = rangeOrder,
+            sequence = sequence,
+        )
+    }
+
+    private val rangeConnectorPattern = Regex(
+        """\b(?:to|until|through|till)\b|[-–—]""",
+        RegexOption.IGNORE_CASE,
+    )
+
+    private fun findTimePosition(text: String, dateTime: LocalDateTime): Int? {
+        val lower = text.lowercase()
+        val tokens = timeTokens(dateTime.hour, dateTime.minute)
+        return tokens.mapNotNull { token ->
+            val pattern = Regex("""(?<![a-z0-9])${Regex.escape(token.lowercase())}(?![a-z0-9])""")
+            pattern.find(lower)?.range?.first
+        }.minOrNull()
+    }
+
+    private fun timeTokens(hour: Int, minute: Int): List<String> {
+        val tokens = linkedSetOf<String>()
+        if (minute == 0) {
+            if (hour == 0) tokens.add("midnight")
+            if (hour == 12) tokens.add("noon")
+        }
+
+        val hour12 = when {
+            hour == 0 -> 12
+            hour > 12 -> hour - 12
+            else -> hour
+        }
+        val ampm = if (hour < 12) "am" else "pm"
+        val paddedMinute = minute.toString().padStart(2, '0')
+
+        if (minute == 0) {
+            tokens.add("$hour12$ampm")
+            tokens.add("$hour12 $ampm")
+            tokens.add("$hour12${ampm.first()}.m.")
+            tokens.add("$hour12 ${ampm.first()}.m.")
+        }
+        tokens.add("$hour12:$paddedMinute$ampm")
+        tokens.add("$hour12:$paddedMinute $ampm")
+        tokens.add("$hour12:$paddedMinute ${ampm.first()}.m.")
+        tokens.add("$hour:$paddedMinute")
+        return tokens.toList()
     }
 
     fun propagateDates(parsed: List<ParsedResult>): List<ExtractedTime> {
+        return propagateParsedDates(parsed).map { it.extracted }
+    }
+
+    private fun propagateParsedDates(parsed: List<ParsedResult>): List<ParsedResult> {
         val refDate = parsed.firstOrNull { it.dateCertain }?.extracted?.localDateTime?.date
-            ?: return parsed.map { it.extracted }
+            ?: return parsed
 
         return parsed.map { p ->
             if (!p.dateCertain && p.extracted.localDateTime != null) {
@@ -134,13 +279,15 @@ object ChronoResultParser {
                 val newTz = if (rawOffset != null && newInstant != null) {
                     offsetToTimezone(rawOffset, newInstant)
                 } else tz
-                p.extracted.copy(
-                    localDateTime = fixed,
-                    instant = newInstant,
-                    sourceTimezone = newTz,
+                p.copy(
+                    extracted = p.extracted.copy(
+                        localDateTime = fixed,
+                        instant = newInstant,
+                        sourceTimezone = newTz,
+                    ),
                 )
             } else {
-                p.extracted
+                p
             }
         }
     }

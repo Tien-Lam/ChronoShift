@@ -92,7 +92,7 @@ class ResultMergerTest {
     fun `mergeResults - fuzzy match both have different tz and different offset keeps both`() {
         val existing = listOf(time(localDateTime = baseDt, tz = tokyo, method = "Chrono"))
         val incoming = listOf(time(localDateTime = baseDt, tz = newYork))
-        val result = ResultMerger.mergeResults(existing, incoming, "Gemini Nano")
+        val result = ResultMerger.mergeResults(existing, incoming, "LiteRT")
         // Tokyo (+9) and New York (-5/-4) have different offsets → genuinely different
         assertEquals(2, result.size)
         assertEquals(tokyo, result[0].sourceTimezone)
@@ -109,17 +109,17 @@ class ResultMergerTest {
 
         val existing = listOf(time(instant = instant, localDateTime = dt, tz = vancouver, method = "Chrono"))
         val incoming = listOf(time(instant = instant, localDateTime = dt, tz = la))
-        val result = ResultMerger.mergeResults(existing, incoming, "Gemini Nano")
+        val result = ResultMerger.mergeResults(existing, incoming, "LiteRT")
         // Same instant → same interpretation → merge
         assertEquals(1, result.size)
-        assertEquals("Chrono + Gemini Nano", result[0].method)
+        assertEquals("Chrono + LiteRT", result[0].method)
     }
 
     @Test
     fun `mergeResults - fuzzy match same tz keeps existing`() {
         val existing = listOf(time(localDateTime = baseDt, tz = tokyo, method = "Chrono"))
         val incoming = listOf(time(localDateTime = baseDt, tz = tokyo))
-        val result = ResultMerger.mergeResults(existing, incoming, "Gemini Nano")
+        val result = ResultMerger.mergeResults(existing, incoming, "LiteRT")
         assertEquals(1, result.size)
         assertEquals(tokyo, result[0].sourceTimezone)
     }
@@ -295,10 +295,10 @@ class ResultMergerTest {
     // ========== Device scenario reproduction ==========
 
     @Test
-    fun `merge Chrono 3 results plus Gemini 3 results device scenario`() {
-        // REAL device scenario: Gemini results have instant + localDateTime + sourceTimezone
+    fun `merge Chrono 3 results plus LiteRT 3 results device scenario`() {
+        // REAL device scenario: LiteRT results have instant + localDateTime + sourceTimezone
         // Chrono results have instant + localDateTime + sourceTimezone
-        // Key difference: Gemini used to NOT set localDateTime, causing fuzzy match to fail
+        // Key difference: LLM results must set localDateTime so fuzzy matching can deduplicate.
         val vancouver = TimeZone.of("America/Vancouver")
         val la = TimeZone.of("America/Los_Angeles")
         val ny = TimeZone.of("America/New_York")
@@ -319,14 +319,13 @@ class ResultMergerTest {
             ExtractedTime(instant = correctInstant, localDateTime = dt1930, sourceTimezone = shanghai, originalText = "19:30 CST", method = "ML Kit + Chrono"),
         )
 
-        // Gemini results: NOW have localDateTime (after fix), enabling fuzzy match
-        val geminiResults = listOf(
-            ExtractedTime(instant = correctInstant, localDateTime = dt430, sourceTimezone = la, originalText = "April 11 at 4:30 a.m. PT", method = "Gemini Nano"),
-            ExtractedTime(instant = correctInstant, localDateTime = dt730, sourceTimezone = ny, originalText = "7:30 a.m. ET", method = "Gemini Nano"),
-            ExtractedTime(instant = wrongInstant, localDateTime = dt1930, sourceTimezone = chicago, originalText = "19:30 CST", method = "Gemini Nano"),
+        val liteRtResults = listOf(
+            ExtractedTime(instant = correctInstant, localDateTime = dt430, sourceTimezone = la, originalText = "April 11 at 4:30 a.m. PT", method = "LiteRT"),
+            ExtractedTime(instant = correctInstant, localDateTime = dt730, sourceTimezone = ny, originalText = "7:30 a.m. ET", method = "LiteRT"),
+            ExtractedTime(instant = wrongInstant, localDateTime = dt1930, sourceTimezone = chicago, originalText = "19:30 CST", method = "LiteRT"),
         )
 
-        val merged = ResultMerger.mergeResults(chronoResults, geminiResults, "Gemini Nano")
+        val merged = ResultMerger.mergeResults(chronoResults, liteRtResults, "LiteRT")
 
         // ET exact-matches (same instant + same tz New_York).
         // PT: Vancouver vs LA have different IANA IDs but same instant → merged via isSameInstant.
@@ -339,8 +338,8 @@ class ResultMergerTest {
     }
 
     @Test
-    fun `mergeResults - 3pm EST from Chrono and Gemini produces one result`() {
-        // Core bug scenario: "3pm EST" → Chrono uses raw offset -300, Gemini uses America/New_York
+    fun `mergeResults - 3pm EST from Chrono and LiteRT produces one result`() {
+        // Core bug scenario: "3pm EST" → Chrono uses raw offset -300, LiteRT uses America/New_York
         // Both should produce the same instant (3pm at UTC-5 = 8pm UTC) and merge
         val dt = LocalDateTime(2026, 7, 15, 15, 0)
         val estOffset = TimezoneAbbreviations.fixedOffsetTimezone(-300)
@@ -353,16 +352,16 @@ class ResultMergerTest {
             original = "3pm EST",
             method = "Chrono",
         )
-        val geminiResult = time(
+        val liteRtResult = time(
             instant = correctInstant, // After abbreviation correction
             localDateTime = dt,
             tz = TimeZone.of("America/New_York"),
             original = "3pm EST",
         )
 
-        val merged = ResultMerger.mergeResults(listOf(chronoResult), listOf(geminiResult), "Gemini Nano")
+        val merged = ResultMerger.mergeResults(listOf(chronoResult), listOf(liteRtResult), "LiteRT")
         assertEquals(1, merged.size)
-        assertEquals("Chrono + Gemini Nano", merged[0].method)
+        assertEquals("Chrono + LiteRT", merged[0].method)
     }
 
     @Test
@@ -379,21 +378,21 @@ class ResultMergerTest {
             original = "3pm CST",
             method = "Chrono",
         )
-        val geminiResult = time(
+        val liteRtResult = time(
             instant = shanghaiInstant,
             localDateTime = dt,
             tz = TimeZone.of("Asia/Shanghai"),
             original = "3pm CST",
         )
 
-        val merged = ResultMerger.mergeResults(listOf(chronoResult), listOf(geminiResult), "Gemini Nano")
+        val merged = ResultMerger.mergeResults(listOf(chronoResult), listOf(liteRtResult), "LiteRT")
         // Different instants → genuinely different interpretations → keep both
         assertEquals(2, merged.size)
     }
 
     @Test
-    fun `merge fails when Gemini results lack localDateTime`() {
-        // This reproduces the ORIGINAL bug: Gemini didn't set localDateTime,
+    fun `merge fails when LLM results lack localDateTime`() {
+        // This reproduces the ORIGINAL bug: LLM results did not set localDateTime,
         // so fuzzy match couldn't deduplicate, producing 5 results instead of 3
         val vancouver = TimeZone.of("America/Vancouver")
         val la = TimeZone.of("America/Los_Angeles")
@@ -414,20 +413,20 @@ class ResultMergerTest {
             ExtractedTime(instant = correctInstant, localDateTime = dt1930, sourceTimezone = shanghai, originalText = "19:30 CST"),
         )
 
-        // Gemini results WITHOUT localDateTime (the old bug)
-        val geminiResultsNoDt = listOf(
+        // LLM results WITHOUT localDateTime (the old bug)
+        val llmResultsNoDt = listOf(
             ExtractedTime(instant = correctInstant, localDateTime = null, sourceTimezone = la, originalText = "April 11 at 4:30 a.m. PT"),
             ExtractedTime(instant = correctInstant, localDateTime = null, sourceTimezone = ny, originalText = "7:30 a.m. ET"),
             ExtractedTime(instant = wrongInstant, localDateTime = null, sourceTimezone = chicago, originalText = "19:30 CST"),
         )
 
-        val merged = ResultMerger.mergeResults(chronoResults, geminiResultsNoDt, "Gemini Nano")
+        val merged = ResultMerger.mergeResults(chronoResults, llmResultsNoDt, "LiteRT")
 
         // Without localDateTime, fuzzy match fails → 5 results (the bug)
-        // Gemini ET has same instant+tz as Chrono ET → exact match → dedup to 1
-        // Gemini PT has same instant but different tz (LA vs Vancouver) → no exact match
+        // LiteRT ET has same instant+tz as Chrono ET → exact match → dedup to 1
+        // LiteRT PT has same instant but different tz (LA vs Vancouver) → no exact match
         //   AND no fuzzy match (localDateTime is null) → added as new → 4 results
-        // Gemini CST has different instant AND no fuzzy match → added as new → 5 results
+        // LiteRT CST has different instant AND no fuzzy match → added as new → 5 results
         assertEquals(
             "Without localDateTime, merge produces 5 (the bug): ${merged.map { "${it.originalText} tz=${it.sourceTimezone?.id}" }}",
             5, merged.size
