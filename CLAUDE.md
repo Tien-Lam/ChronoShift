@@ -2,7 +2,7 @@
 
 NLP-powered timezone converter for Android. Select text anywhere → converts timestamps to local time.
 
-See [AGENTS.md](AGENTS.md) for issue tracking (beads) and agent workflow.
+See [AGENTS.md](AGENTS.md) for agent workflow.
 
 ## Build
 
