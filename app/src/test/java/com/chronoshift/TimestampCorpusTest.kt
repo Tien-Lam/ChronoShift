@@ -78,7 +78,7 @@ class TimestampCorpusTest {
         }
     }
 
-    // ========== Pipeline resilience: simulate Gemini output for each case ==========
+    // ========== Pipeline resilience: simulate LLM output for each case ==========
 
     @Test
     fun `LlmResultParser handles all single-timestamp cases without crash`() {
@@ -171,18 +171,18 @@ class TimestampCorpusTest {
     }
 
     @Test
-    fun `ResultMerger handles mixed Chrono and Gemini output for all cases without crash`() {
+    fun `ResultMerger handles mixed Chrono and LLM output for all cases without crash`() {
         testCases.filter { it.expected.isNotEmpty() }.take(50).forEach { tc ->
             val exp = tc.expected[0]
             val chronoJson = """[{"text":"${tc.input.take(30).replace("\"", "")}","index":0,"start":{"year":2026,"month":4,"day":9,"hour":${exp.hour},"minute":${exp.minute},"second":0,"timezone":null,"isCertain":{"day":false}},"end":null}]"""
             val chrono = ChronoResultParser.parse(chronoJson, tc.input, cityResolver)
 
             val tz = exp.timezone ?: ""
-            val geminiJson = """[{"time":"${"%02d".format(exp.hour)}:${"%02d".format(exp.minute)}","date":"2026-04-09","timezone":"$tz","original":"${tc.input.take(30).replace("\"", "")}"}]"""
-            val gemini = LlmResultParser.parseResponse(geminiJson)
+            val llmJson = """[{"time":"${"%02d".format(exp.hour)}:${"%02d".format(exp.minute)}","date":"2026-04-09","timezone":"$tz","original":"${tc.input.take(30).replace("\"", "")}"}]"""
+            val llm = LlmResultParser.parseResponse(llmJson)
 
             try {
-                val merged = ResultMerger.mergeResults(chrono, gemini, "LiteRT")
+                val merged = ResultMerger.mergeResults(chrono, llm, "LiteRT")
                 assertTrue("Merged should have >= 0 results", merged.isNotEmpty() || merged.isEmpty())
             } catch (e: Exception) {
                 throw AssertionError("ResultMerger crashed on '${tc.input}': ${e.message}", e)

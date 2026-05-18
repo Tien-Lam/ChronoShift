@@ -94,6 +94,15 @@ fun SettingsScreen(
 
             ModelStatusRow(state)
 
+            state.modelCatalogError?.let { error ->
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = stringResource(R.string.model_update_check_failed, error),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error,
+                )
+            }
+
             Spacer(Modifier.height(12.dp))
 
             ModelActionButton(

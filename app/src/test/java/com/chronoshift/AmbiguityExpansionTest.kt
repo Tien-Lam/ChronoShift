@@ -63,14 +63,14 @@ class AmbiguityExpansionTest {
 
     private fun pipeline(
         input: String,
-        geminiJson: String? = null,
+        llmJson: String? = null,
         localZone: TimeZone = sydney,
     ): List<ConvertedTime> {
         val json = chronoParse(input) ?: return emptyList()
         val chronoResults = ChronoResultParser.parse(json, input, cityResolver)
-        var merged = if (geminiJson != null) {
-            val geminiResults = LlmResultParser.parseResponse(geminiJson)
-            ResultMerger.mergeResults(chronoResults, geminiResults, "LiteRT")
+        var merged = if (llmJson != null) {
+            val llmResults = LlmResultParser.parseResponse(llmJson)
+            ResultMerger.mergeResults(chronoResults, llmResults, "LiteRT")
         } else {
             chronoResults
         }
@@ -84,7 +84,7 @@ class AmbiguityExpansionTest {
         return ChronoResultParser.expandAmbiguous(chronoResults)
     }
 
-    private fun gemini(
+    private fun llm(
         time: String, date: String,
         timezone: String = "", original: String,
     ): String = """{"time":"$time","date":"$date","timezone":"$timezone","original":"$original"}"""
@@ -109,18 +109,18 @@ class AmbiguityExpansionTest {
     }
 
     @Test
-    fun `CST with Gemini agreeing does not duplicate`() {
+    fun `CST with LLM agreeing does not duplicate`() {
         val input = "April 11, 2026 10am CST"
-        val geminiJson = "[${gemini(time = "10:00", date = "2026-04-11", timezone = "America/Chicago", original = "10am CST")}]"
-        val c = pipeline(input, geminiJson)
+        val llmJson = "[${llm(time = "10:00", date = "2026-04-11", timezone = "America/Chicago", original = "10am CST")}]"
+        val c = pipeline(input, llmJson)
         assertEquals(2, c.size)
     }
 
     @Test
-    fun `CST with Gemini saying China produces 2 not 3`() {
+    fun `CST with LLM saying China produces 2 not 3`() {
         val input = "April 11, 2026 10am CST"
-        val geminiJson = "[${gemini(time = "10:00", date = "2026-04-11", timezone = "Asia/Shanghai", original = "10am CST")}]"
-        val c = pipeline(input, geminiJson)
+        val llmJson = "[${llm(time = "10:00", date = "2026-04-11", timezone = "Asia/Shanghai", original = "10am CST")}]"
+        val c = pipeline(input, llmJson)
         assertEquals(2, c.size)
     }
 
@@ -155,19 +155,19 @@ class AmbiguityExpansionTest {
     }
 
     @Test
-    fun `IST with Gemini picking India keeps both`() {
+    fun `IST with LLM picking India keeps both`() {
         val input = "April 11, 2026 9am IST"
-        val geminiJson = "[${gemini(time = "09:00", date = "2026-04-11", timezone = "Asia/Kolkata", original = "9am IST")}]"
-        val c = pipeline(input, geminiJson)
+        val llmJson = "[${llm(time = "09:00", date = "2026-04-11", timezone = "Asia/Kolkata", original = "9am IST")}]"
+        val c = pipeline(input, llmJson)
         assertEquals("Expand adds Irish interpretation", 2, c.size)
     }
 
     @Test
-    fun `IST with Gemini picking Ireland keeps both`() {
+    fun `IST with LLM picking Ireland keeps both`() {
         val input = "April 11, 2026 9am IST"
-        val geminiJson = "[${gemini(time = "09:00", date = "2026-04-11", timezone = "Europe/Dublin", original = "9am IST")}]"
-        val c = pipeline(input, geminiJson)
-        // Chrono picks India (+330), Gemini picks Ireland (Dublin). Different instants → kept separate.
+        val llmJson = "[${llm(time = "09:00", date = "2026-04-11", timezone = "Europe/Dublin", original = "9am IST")}]"
+        val c = pipeline(input, llmJson)
+        // Chrono picks India (+330), LLM picks Ireland (Dublin). Different instants → kept separate.
         // Expansion adds +60 alternate for chrono's India result → 3 total (India, Dublin, London).
         assertTrue("Both India and Ireland interpretations present", c.size >= 2)
     }
@@ -199,10 +199,10 @@ class AmbiguityExpansionTest {
     }
 
     @Test
-    fun `BST with Gemini picking London`() {
+    fun `BST with LLM picking London`() {
         val input = "April 11, 2026 3pm BST"
-        val geminiJson = "[${gemini(time = "15:00", date = "2026-04-11", timezone = "Europe/London", original = "3pm BST")}]"
-        val c = pipeline(input, geminiJson)
+        val llmJson = "[${llm(time = "15:00", date = "2026-04-11", timezone = "Europe/London", original = "3pm BST")}]"
+        val c = pipeline(input, llmJson)
         assertEquals("Expand adds Bangladesh interpretation", 2, c.size)
     }
 
@@ -231,10 +231,10 @@ class AmbiguityExpansionTest {
     }
 
     @Test
-    fun `meeting 10am AST with Gemini picking Arabia`() {
+    fun `meeting 10am AST with LLM picking Arabia`() {
         val input = "April 11, 2026 10am AST"
-        val geminiJson = "[${gemini(time = "10:00", date = "2026-04-11", timezone = "Asia/Riyadh", original = "10am AST")}]"
-        val c = pipeline(input, geminiJson)
+        val llmJson = "[${llm(time = "10:00", date = "2026-04-11", timezone = "Asia/Riyadh", original = "10am AST")}]"
+        val c = pipeline(input, llmJson)
         assertEquals("Expand adds Atlantic interpretation", 2, c.size)
     }
 
@@ -551,18 +551,18 @@ class AmbiguityExpansionTest {
 
     // =====================================================================
     // 16. Real-world full-string tests (verbatim from websites)
-    // Each test passes the FULL input string through real Chrono.js + optional Gemini.
+    // Each test passes the FULL input string through real Chrono.js + optional LLM.
     // =====================================================================
 
     @Test
     fun `Summer Game Fest - 2pm PT 5pm ET 9pm GMT full string`() {
         val input = "Friday, June 5 2026 2pm PT / 5pm ET / 9pm GMT"
-        val geminiJson = """[
-            ${gemini(time = "14:00", date = "2026-06-05", timezone = "America/Los_Angeles", original = "2pm PT")},
-            ${gemini(time = "17:00", date = "2026-06-05", timezone = "America/New_York", original = "5pm ET")},
-            ${gemini(time = "21:00", date = "2026-06-05", timezone = "Europe/London", original = "9pm GMT")}
+        val llmJson = """[
+            ${llm(time = "14:00", date = "2026-06-05", timezone = "America/Los_Angeles", original = "2pm PT")},
+            ${llm(time = "17:00", date = "2026-06-05", timezone = "America/New_York", original = "5pm ET")},
+            ${llm(time = "21:00", date = "2026-06-05", timezone = "Europe/London", original = "9pm GMT")}
         ]"""
-        val c = pipeline(input, geminiJson)
+        val c = pipeline(input, llmJson)
         assertEquals("PT + ET + GMT, no ambiguous → 3", 3, c.size)
         val sydneyTimes = c.map { it.localDateTime }.toSet()
         assertEquals("All 3 should convert to same Sydney time", 1, sydneyTimes.size)
@@ -571,11 +571,11 @@ class AmbiguityExpansionTest {
     @Test
     fun `Summer Game Fest - June 03 9 30 pm CST 6 30 am PT full string`() {
         val input = "June 03 2026 9:30 pm CST / 6:30 am PT"
-        val geminiJson = """[
-            ${gemini(time = "21:30", date = "2026-06-03", timezone = "America/Chicago", original = "9:30 pm CST")},
-            ${gemini(time = "06:30", date = "2026-06-03", timezone = "America/Los_Angeles", original = "6:30 am PT")}
+        val llmJson = """[
+            ${llm(time = "21:30", date = "2026-06-03", timezone = "America/Chicago", original = "9:30 pm CST")},
+            ${llm(time = "06:30", date = "2026-06-03", timezone = "America/Los_Angeles", original = "6:30 am PT")}
         ]"""
-        val c = pipeline(input, geminiJson)
+        val c = pipeline(input, llmJson)
         // PT(1) + CST(2, US Central + China) = 3
         assertEquals(3, c.size)
         val cstCards = c.filter { it.originalText.contains("CST") }
@@ -587,22 +587,22 @@ class AmbiguityExpansionTest {
     @Test
     fun `Summer Game Fest - June 3 2 30 pm BST 6 30 am PT full string`() {
         val input = "June 3 2026 2:30 pm BST / 6:30 am PT"
-        val geminiJson = """[
-            ${gemini(time = "14:30", date = "2026-06-03", timezone = "Europe/London", original = "2:30 pm BST")},
-            ${gemini(time = "06:30", date = "2026-06-03", timezone = "America/Los_Angeles", original = "6:30 am PT")}
+        val llmJson = """[
+            ${llm(time = "14:30", date = "2026-06-03", timezone = "Europe/London", original = "2:30 pm BST")},
+            ${llm(time = "06:30", date = "2026-06-03", timezone = "America/Los_Angeles", original = "6:30 am PT")}
         ]"""
-        val c = pipeline(input, geminiJson)
+        val c = pipeline(input, llmJson)
         assertEquals("PT(1) + BST(2, British + Bangladesh) = 3", 3, c.size)
     }
 
     @Test
     fun `Summer Game Fest - midnight BST vs 4pm PT cross-day full string`() {
         val input = "June 7 2026 12:00 am BST / June 6 2026 4:00 pm PT"
-        val geminiJson = """[
-            ${gemini(time = "00:00", date = "2026-06-07", timezone = "Europe/London", original = "12:00 am BST")},
-            ${gemini(time = "16:00", date = "2026-06-06", timezone = "America/Los_Angeles", original = "4:00 pm PT")}
+        val llmJson = """[
+            ${llm(time = "00:00", date = "2026-06-07", timezone = "Europe/London", original = "12:00 am BST")},
+            ${llm(time = "16:00", date = "2026-06-06", timezone = "America/Los_Angeles", original = "4:00 pm PT")}
         ]"""
-        val c = pipeline(input, geminiJson)
+        val c = pipeline(input, llmJson)
         // PT(1) + BST midnight(2) = 3
         assertEquals(3, c.size)
     }
@@ -610,12 +610,12 @@ class AmbiguityExpansionTest {
     @Test
     fun `World Cup - 3pm ET 8pm BST 12 30am IST full string`() {
         val input = "3:00 PM ET on Sunday July 19, 2026 / 8:00 PM BST in the UK / 12:30 AM IST on July 20 in India"
-        val geminiJson = """[
-            ${gemini(time = "15:00", date = "2026-07-19", timezone = "America/New_York", original = "3:00 PM ET")},
-            ${gemini(time = "20:00", date = "2026-07-19", timezone = "Europe/London", original = "8:00 PM BST")},
-            ${gemini(time = "00:30", date = "2026-07-20", timezone = "Asia/Kolkata", original = "12:30 AM IST")}
+        val llmJson = """[
+            ${llm(time = "15:00", date = "2026-07-19", timezone = "America/New_York", original = "3:00 PM ET")},
+            ${llm(time = "20:00", date = "2026-07-19", timezone = "Europe/London", original = "8:00 PM BST")},
+            ${llm(time = "00:30", date = "2026-07-20", timezone = "Asia/Kolkata", original = "12:30 AM IST")}
         ]"""
-        val c = pipeline(input, geminiJson)
+        val c = pipeline(input, llmJson)
         // ET(1) + BST(2) + IST(2) = 5
         assertEquals(5, c.size)
         val bstCards = c.filter { it.originalText.contains("BST") }
@@ -627,19 +627,19 @@ class AmbiguityExpansionTest {
     @Test
     fun `World Cup - 5am AEST 4am JST next day unambiguous full string`() {
         val input = "5:00 AM AEST on July 20 2026 in Australia / 4:00 AM JST on July 20 2026 in Japan"
-        val geminiJson = """[
-            ${gemini(time = "05:00", date = "2026-07-20", timezone = "Australia/Sydney", original = "5:00 AM AEST")},
-            ${gemini(time = "04:00", date = "2026-07-20", timezone = "Asia/Tokyo", original = "4:00 AM JST")}
+        val llmJson = """[
+            ${llm(time = "05:00", date = "2026-07-20", timezone = "Australia/Sydney", original = "5:00 AM AEST")},
+            ${llm(time = "04:00", date = "2026-07-20", timezone = "Asia/Tokyo", original = "4:00 AM JST")}
         ]"""
-        val c = pipeline(input, geminiJson)
+        val c = pipeline(input, llmJson)
         assertEquals("AEST + JST both unambiguous", 2, c.size)
     }
 
     @Test
     fun `Apple WWDC - June 8 at 10 am Pacific Time full string`() {
         val input = "June 8 2026 at 10:00 a.m. Pacific Time"
-        val geminiJson = "[${gemini(time = "10:00", date = "2026-06-08", timezone = "America/Los_Angeles", original = "10:00 a.m. Pacific Time")}]"
-        val c = pipeline(input, geminiJson)
+        val llmJson = "[${llm(time = "10:00", date = "2026-06-08", timezone = "America/Los_Angeles", original = "10:00 a.m. Pacific Time")}]"
+        val c = pipeline(input, llmJson)
         assertEquals(1, c.size)
         assertTrue("Source should show Los Angeles", c[0].sourceTimezone.contains("Los Angeles"))
     }
@@ -647,35 +647,35 @@ class AmbiguityExpansionTest {
     @Test
     fun `NVIDIA GTC - Monday March 16 11 am PT full string`() {
         val input = "Monday, March 16, 2026 11:00 a.m. PT"
-        val geminiJson = "[${gemini(time = "11:00", date = "2026-03-16", timezone = "America/Los_Angeles", original = "11:00 a.m. PT")}]"
-        val c = pipeline(input, geminiJson)
+        val llmJson = "[${llm(time = "11:00", date = "2026-03-16", timezone = "America/Los_Angeles", original = "11:00 a.m. PT")}]"
+        val c = pipeline(input, llmJson)
         assertEquals(1, c.size)
     }
 
     @Test
     fun `Eventbrite - Sat Apr 25 12 00 AM CDT full string`() {
         val input = "Sat, Apr 25 2026 12:00 AM CDT"
-        val geminiJson = "[${gemini(time = "00:00", date = "2026-04-25", timezone = "America/Chicago", original = "12:00 AM CDT")}]"
-        val c = pipeline(input, geminiJson)
+        val llmJson = "[${llm(time = "00:00", date = "2026-04-25", timezone = "America/Chicago", original = "12:00 AM CDT")}]"
+        val c = pipeline(input, llmJson)
         assertEquals("CDT is unambiguous", 1, c.size)
     }
 
     @Test
     fun `Meetup - Sat Apr 11 10 00 AM AEST full string`() {
         val input = "Sat, Apr 11 2026 10:00 AM AEST"
-        val geminiJson = "[${gemini(time = "10:00", date = "2026-04-11", timezone = "Australia/Sydney", original = "10:00 AM AEST")}]"
-        val c = pipeline(input, geminiJson)
+        val llmJson = "[${llm(time = "10:00", date = "2026-04-11", timezone = "Australia/Sydney", original = "10:00 AM AEST")}]"
+        val c = pipeline(input, llmJson)
         assertEquals(1, c.size)
     }
 
     @Test
     fun `Nintendo Direct - Feb 5 at 6am PT 9am ET full string`() {
         val input = "Feb 5 2026 6am PT / Feb 5 2026 9am ET"
-        val geminiJson = """[
-            ${gemini(time = "06:00", date = "2026-02-05", timezone = "America/Los_Angeles", original = "6am PT")},
-            ${gemini(time = "09:00", date = "2026-02-05", timezone = "America/New_York", original = "9am ET")}
+        val llmJson = """[
+            ${llm(time = "06:00", date = "2026-02-05", timezone = "America/Los_Angeles", original = "6am PT")},
+            ${llm(time = "09:00", date = "2026-02-05", timezone = "America/New_York", original = "9am ET")}
         ]"""
-        val c = pipeline(input, geminiJson)
+        val c = pipeline(input, llmJson)
         assertEquals(2, c.size)
         val sydneyTimes = c.map { it.localDateTime }.toSet()
         assertEquals("PT and ET should convert to same Sydney time", 1, sydneyTimes.size)
@@ -684,16 +684,16 @@ class AmbiguityExpansionTest {
     @Test
     fun `Festival of Rail - Thursday February 5th from 18 00 UTC full string`() {
         val input = "Thursday February 5th 2026 from 18:00 UTC"
-        val geminiJson = "[${gemini(time = "18:00", date = "2026-02-05", timezone = "UTC", original = "18:00 UTC")}]"
-        val c = pipeline(input, geminiJson)
+        val llmJson = "[${llm(time = "18:00", date = "2026-02-05", timezone = "UTC", original = "18:00 UTC")}]"
+        val c = pipeline(input, llmJson)
         assertEquals(1, c.size)
     }
 
     @Test
     fun `Zoom invite - Apr 10 2026 02 00 PM Eastern Time full string`() {
         val input = "Apr 10, 2026 02:00 PM Eastern Time (US and Canada)"
-        val geminiJson = "[${gemini(time = "14:00", date = "2026-04-10", timezone = "America/New_York", original = "02:00 PM Eastern Time")}]"
-        val c = pipeline(input, geminiJson)
+        val llmJson = "[${llm(time = "14:00", date = "2026-04-10", timezone = "America/New_York", original = "02:00 PM Eastern Time")}]"
+        val c = pipeline(input, llmJson)
         assertEquals(1, c.size)
         assertTrue("Source tz should show New York", c[0].sourceTimezone.contains("New York"))
     }
@@ -701,8 +701,8 @@ class AmbiguityExpansionTest {
     @Test
     fun `Google Calendar - April 15 10am to 11am EDT full string`() {
         val input = "Wednesday, April 15, 2026 10:00am - 11:00am (Eastern Daylight Time)"
-        val geminiJson = "[${gemini(time = "10:00", date = "2026-04-15", timezone = "America/New_York", original = "10:00am Eastern Daylight Time")}]"
-        val c = pipeline(input, geminiJson)
+        val llmJson = "[${llm(time = "10:00", date = "2026-04-15", timezone = "America/New_York", original = "10:00am Eastern Daylight Time")}]"
+        val c = pipeline(input, llmJson)
         assertEquals("Range: start + end", 2, c.size)
     }
 
@@ -713,13 +713,13 @@ class AmbiguityExpansionTest {
     @Test
     fun `gaming showcase - 10AM PT 1PM ET 6PM BST 7PM CEST full string`() {
         val input = "10:00AM PT / 1:00PM ET / 6:00PM BST / 7:00PM CEST"
-        val geminiJson = """[
-            ${gemini(time = "10:00", date = "2026-04-11", timezone = "America/Los_Angeles", original = "10:00AM PT")},
-            ${gemini(time = "13:00", date = "2026-04-11", timezone = "America/New_York", original = "1:00PM ET")},
-            ${gemini(time = "18:00", date = "2026-04-11", timezone = "Europe/London", original = "6:00PM BST")},
-            ${gemini(time = "19:00", date = "2026-04-11", timezone = "Europe/Berlin", original = "7:00PM CEST")}
+        val llmJson = """[
+            ${llm(time = "10:00", date = "2026-04-11", timezone = "America/Los_Angeles", original = "10:00AM PT")},
+            ${llm(time = "13:00", date = "2026-04-11", timezone = "America/New_York", original = "1:00PM ET")},
+            ${llm(time = "18:00", date = "2026-04-11", timezone = "Europe/London", original = "6:00PM BST")},
+            ${llm(time = "19:00", date = "2026-04-11", timezone = "Europe/Berlin", original = "7:00PM CEST")}
         ]"""
-        val c = pipeline(input, geminiJson)
+        val c = pipeline(input, llmJson)
         // PT(1) + ET(1) + BST(2, British+Bangladesh) + CEST(1) = 5
         assertEquals(5, c.size)
         val bstCards = c.filter { it.originalText.contains("BST") }
@@ -729,12 +729,12 @@ class AmbiguityExpansionTest {
     @Test
     fun `gaming showcase - 6 30am PT 9 30pm CST 2 30pm BST full string`() {
         val input = "6:30 am PT / 9:30 pm CST / 2:30 pm BST"
-        val geminiJson = """[
-            ${gemini(time = "06:30", date = "2026-04-11", timezone = "America/Los_Angeles", original = "6:30 am PT")},
-            ${gemini(time = "21:30", date = "2026-04-11", timezone = "America/Chicago", original = "9:30 pm CST")},
-            ${gemini(time = "14:30", date = "2026-04-11", timezone = "Europe/London", original = "2:30 pm BST")}
+        val llmJson = """[
+            ${llm(time = "06:30", date = "2026-04-11", timezone = "America/Los_Angeles", original = "6:30 am PT")},
+            ${llm(time = "21:30", date = "2026-04-11", timezone = "America/Chicago", original = "9:30 pm CST")},
+            ${llm(time = "14:30", date = "2026-04-11", timezone = "Europe/London", original = "2:30 pm BST")}
         ]"""
-        val c = pipeline(input, geminiJson)
+        val c = pipeline(input, llmJson)
         // PT(1) + CST(2) + BST(2) = 5
         assertEquals(5, c.size)
     }
@@ -742,14 +742,14 @@ class AmbiguityExpansionTest {
     @Test
     fun `five timezone announcement full string`() {
         val input = "10:30 pm JST / 6:30 am PT / 9:30 am ET / 2:30 pm BST / 3:30 pm CEST"
-        val geminiJson = """[
-            ${gemini(time = "22:30", date = "2026-04-11", timezone = "Asia/Tokyo", original = "10:30 pm JST")},
-            ${gemini(time = "06:30", date = "2026-04-11", timezone = "America/Los_Angeles", original = "6:30 am PT")},
-            ${gemini(time = "09:30", date = "2026-04-11", timezone = "America/New_York", original = "9:30 am ET")},
-            ${gemini(time = "14:30", date = "2026-04-11", timezone = "Europe/London", original = "2:30 pm BST")},
-            ${gemini(time = "15:30", date = "2026-04-11", timezone = "Europe/Berlin", original = "3:30 pm CEST")}
+        val llmJson = """[
+            ${llm(time = "22:30", date = "2026-04-11", timezone = "Asia/Tokyo", original = "10:30 pm JST")},
+            ${llm(time = "06:30", date = "2026-04-11", timezone = "America/Los_Angeles", original = "6:30 am PT")},
+            ${llm(time = "09:30", date = "2026-04-11", timezone = "America/New_York", original = "9:30 am ET")},
+            ${llm(time = "14:30", date = "2026-04-11", timezone = "Europe/London", original = "2:30 pm BST")},
+            ${llm(time = "15:30", date = "2026-04-11", timezone = "Europe/Berlin", original = "3:30 pm CEST")}
         ]"""
-        val c = pipeline(input, geminiJson)
+        val c = pipeline(input, llmJson)
         // JST(1) + PT(1) + ET(1) + BST(2) + CEST(1) = 6
         assertEquals(6, c.size)
     }
@@ -761,27 +761,27 @@ class AmbiguityExpansionTest {
     @Test
     fun `World Cup final six timezones full string`() {
         val input = "Jul 19 2026 3:00 PM ET / Jul 19 2026 8:00 PM BST / Jul 19 2026 9:00 PM CET / 12:30 AM IST Jul 20 2026 / 5:00 AM AEST Jul 20 2026 / 4:00 AM JST Jul 20 2026"
-        val geminiJson = """[
-            ${gemini(time = "15:00", date = "2026-07-19", timezone = "America/New_York", original = "3:00 PM ET")},
-            ${gemini(time = "20:00", date = "2026-07-19", timezone = "Europe/London", original = "8:00 PM BST")},
-            ${gemini(time = "21:00", date = "2026-07-19", timezone = "Europe/Paris", original = "9:00 PM CET")},
-            ${gemini(time = "00:30", date = "2026-07-20", timezone = "Asia/Kolkata", original = "12:30 AM IST")},
-            ${gemini(time = "05:00", date = "2026-07-20", timezone = "Australia/Sydney", original = "5:00 AM AEST")},
-            ${gemini(time = "04:00", date = "2026-07-20", timezone = "Asia/Tokyo", original = "4:00 AM JST")}
+        val llmJson = """[
+            ${llm(time = "15:00", date = "2026-07-19", timezone = "America/New_York", original = "3:00 PM ET")},
+            ${llm(time = "20:00", date = "2026-07-19", timezone = "Europe/London", original = "8:00 PM BST")},
+            ${llm(time = "21:00", date = "2026-07-19", timezone = "Europe/Paris", original = "9:00 PM CET")},
+            ${llm(time = "00:30", date = "2026-07-20", timezone = "Asia/Kolkata", original = "12:30 AM IST")},
+            ${llm(time = "05:00", date = "2026-07-20", timezone = "Australia/Sydney", original = "5:00 AM AEST")},
+            ${llm(time = "04:00", date = "2026-07-20", timezone = "Asia/Tokyo", original = "4:00 AM JST")}
         ]"""
-        val c = pipeline(input, geminiJson)
-        // ET(1) + BST(2) + CET(2: chrono CEST+2 vs Gemini CET+1 don't merge) + IST(2) + AEST(1) + JST(1) = 9
+        val c = pipeline(input, llmJson)
+        // ET(1) + BST(2) + CET(2: chrono CEST+2 vs LLM CET+1 don't merge) + IST(2) + AEST(1) + JST(1) = 9
         assertEquals(9, c.size)
     }
 
     @Test
     fun `match kickoff 9pm ET 6 30am IST next day full string`() {
         val input = "9:00 PM ET Jun 20 2026 / 6:30 AM IST Jun 21 2026"
-        val geminiJson = """[
-            ${gemini(time = "21:00", date = "2026-06-20", timezone = "America/New_York", original = "9:00 PM ET")},
-            ${gemini(time = "06:30", date = "2026-06-21", timezone = "Asia/Kolkata", original = "6:30 AM IST")}
+        val llmJson = """[
+            ${llm(time = "21:00", date = "2026-06-20", timezone = "America/New_York", original = "9:00 PM ET")},
+            ${llm(time = "06:30", date = "2026-06-21", timezone = "Asia/Kolkata", original = "6:30 AM IST")}
         ]"""
-        val c = pipeline(input, geminiJson)
+        val c = pipeline(input, llmJson)
         // ET(1) + IST(2) = 3
         assertEquals(3, c.size)
     }
@@ -793,8 +793,8 @@ class AmbiguityExpansionTest {
     @Test
     fun `CST midnight - US vs China give different Sydney times`() {
         val input = "The server maintenance window is April 15, 2026 12:00 AM CST"
-        val geminiJson = "[${gemini(time = "00:00", date = "2026-04-15", timezone = "America/Chicago", original = "12:00 AM CST")}]"
-        val c = pipeline(input, geminiJson)
+        val llmJson = "[${llm(time = "00:00", date = "2026-04-15", timezone = "America/Chicago", original = "12:00 AM CST")}]"
+        val c = pipeline(input, llmJson)
         assertEquals(2, c.size)
         val times = c.map { it.localDateTime }.toSet()
         assertEquals("Midnight CST in US vs China should produce different Sydney times", 2, times.size)
@@ -803,16 +803,16 @@ class AmbiguityExpansionTest {
     @Test
     fun `BST midnight - British vs Bangladesh full string`() {
         val input = "Release window: June 7, 2026 12:00 am BST"
-        val geminiJson = "[${gemini(time = "00:00", date = "2026-06-07", timezone = "Europe/London", original = "12:00 am BST")}]"
-        val c = pipeline(input, geminiJson)
+        val llmJson = "[${llm(time = "00:00", date = "2026-06-07", timezone = "Europe/London", original = "12:00 am BST")}]"
+        val c = pipeline(input, llmJson)
         assertEquals(2, c.size)
     }
 
     @Test
     fun `IST 11 59pm near midnight full string`() {
         val input = "Submit your report by April 11, 2026 11:59 PM IST"
-        val geminiJson = "[${gemini(time = "23:59", date = "2026-04-11", timezone = "Asia/Kolkata", original = "11:59 PM IST")}]"
-        val c = pipeline(input, geminiJson)
+        val llmJson = "[${llm(time = "23:59", date = "2026-04-11", timezone = "Asia/Kolkata", original = "11:59 PM IST")}]"
+        val c = pipeline(input, llmJson)
         assertEquals(2, c.size)
     }
 }
