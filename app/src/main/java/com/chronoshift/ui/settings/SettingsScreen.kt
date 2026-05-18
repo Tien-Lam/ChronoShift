@@ -77,10 +77,18 @@ fun SettingsScreen(
             Spacer(Modifier.height(12.dp))
 
             Text(
-                text = stringResource(R.string.gemma_model_name),
+                text = state.modelName.ifEmpty { stringResource(R.string.gemma_model_name) },
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onSurface,
             )
+            if (state.modelVersion.isNotEmpty()) {
+                Spacer(Modifier.height(2.dp))
+                Text(
+                    text = stringResource(R.string.model_version, state.modelVersion),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
 
             Spacer(Modifier.height(4.dp))
 
@@ -91,6 +99,7 @@ fun SettingsScreen(
             ModelActionButton(
                 downloadState = state.downloadState,
                 modelInstalled = state.modelInstalled,
+                updateAvailable = state.updateAvailable,
                 onDownload = viewModel::downloadModel,
                 onCancel = viewModel::cancelDownload,
                 onDelete = viewModel::deleteModel,
@@ -110,7 +119,7 @@ fun SettingsScreen(
             )
             PipelineRow(
                 name = "LiteRT-LM",
-                status = if (state.modelInstalled) stringResource(R.string.installed) else stringResource(R.string.not_installed),
+                status = if (state.modelInstalled) state.modelName else stringResource(R.string.not_installed),
                 available = state.modelInstalled,
             )
             PipelineRow(
@@ -144,6 +153,18 @@ private fun ModelStatusRow(state: SettingsUiState) {
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
+                if (state.updateAvailable) {
+                    Spacer(Modifier.height(4.dp))
+                    Text(
+                        text = stringResource(
+                            R.string.model_update_available,
+                            state.updateModelName,
+                            state.updateModelVersion,
+                        ),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.primary,
+                    )
+                }
             } else {
                 Text(
                     text = stringResource(R.string.not_installed),
@@ -190,6 +211,7 @@ private fun ModelStatusRow(state: SettingsUiState) {
 private fun ModelActionButton(
     downloadState: DownloadState,
     modelInstalled: Boolean,
+    updateAvailable: Boolean,
     onDownload: () -> Unit,
     onCancel: () -> Unit,
     onDelete: () -> Unit,
@@ -206,13 +228,26 @@ private fun ModelActionButton(
             }
         }
         else -> {
-            if (modelInstalled) {
-                OutlinedButton(onClick = onDelete) {
-                    Text(stringResource(R.string.delete_model))
+            when {
+                modelInstalled && updateAvailable -> {
+                    Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        FilledTonalButton(onClick = onDownload) {
+                            Text(stringResource(R.string.update_model))
+                        }
+                        OutlinedButton(onClick = onDelete) {
+                            Text(stringResource(R.string.delete_model))
+                        }
+                    }
                 }
-            } else {
-                FilledTonalButton(onClick = onDownload) {
-                    Text(stringResource(R.string.download_model))
+                modelInstalled -> {
+                    OutlinedButton(onClick = onDelete) {
+                        Text(stringResource(R.string.delete_model))
+                    }
+                }
+                else -> {
+                    FilledTonalButton(onClick = onDownload) {
+                        Text(stringResource(R.string.download_model))
+                    }
                 }
             }
         }

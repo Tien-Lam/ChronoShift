@@ -1,16 +1,15 @@
 package com.chronoshift.nlp
 
-import android.content.Context
 import android.util.Log
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.withContext
-import java.io.File
+import java.io.BufferedInputStream
 import java.net.HttpURLConnection
 import java.net.URL
+import java.security.MessageDigest
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -23,7 +22,7 @@ sealed class DownloadState {
 
 @Singleton
 class ModelDownloader @Inject constructor(
-    @ApplicationContext private val context: Context,
+    private val modelRepository: ModelRepository,
 ) {
     private val _state = MutableStateFlow<DownloadState>(DownloadState.Idle)
     val state: StateFlow<DownloadState> = _state.asStateFlow()
@@ -31,31 +30,28 @@ class ModelDownloader @Inject constructor(
     @Volatile
     private var cancelled = false
 
-    private val modelsDir: File
-        get() = File(context.filesDir, "models")
+    fun isModelInstalled(): Boolean = modelRepository.isModelInstalled()
 
-    private val modelPath: File
-        get() = File(modelsDir, MODEL_NAME)
+    fun getModelFile() = modelRepository.getSelectedModelFile()
 
-    fun isModelInstalled(): Boolean = modelPath.exists()
-
-    fun getModelFile(): File? = if (modelPath.exists()) modelPath else null
-
-    fun getModelSizeBytes(): Long = if (modelPath.exists()) modelPath.length() else 0L
+    fun getModelSizeBytes(): Long = modelRepository.getModelSizeBytes()
 
     suspend fun download() {
         if (_state.value is DownloadState.Downloading) return
 
+        val model = modelRepository.getDownloadTarget()
         cancelled = false
         _state.value = DownloadState.Downloading(0f)
 
         withContext(Dispatchers.IO) {
             var connection: HttpURLConnection? = null
             try {
-                modelsDir.mkdirs()
-                val tempFile = File(modelsDir, "$MODEL_NAME.tmp")
+                modelRepository.modelsDir.mkdirs()
+                val tempFile = modelRepository.tempFile(model)
+                val modelFile = modelRepository.modelFile(model)
+                tempFile.delete()
 
-                val url = URL(DOWNLOAD_URL)
+                val url = URL(model.url)
                 connection = url.openConnection() as HttpURLConnection
                 connection.connectTimeout = 30_000
                 connection.readTimeout = 30_000
@@ -69,7 +65,7 @@ class ModelDownloader @Inject constructor(
                 val contentLength = connection.contentLengthLong
                 var bytesRead = 0L
 
-                connection.inputStream.use { input ->
+                BufferedInputStream(connection.inputStream).use { input ->
                     tempFile.outputStream().use { output ->
                         val buffer = ByteArray(8192)
                         var read: Int
@@ -90,13 +86,27 @@ class ModelDownloader @Inject constructor(
                     }
                 }
 
-                if (!tempFile.renameTo(modelPath)) {
+                val expectedHash = model.sha256
+                if (!expectedHash.isNullOrBlank() && sha256(tempFile) != expectedHash.lowercase()) {
+                    tempFile.delete()
+                    _state.value = DownloadState.Failed("Downloaded model failed checksum verification")
+                    return@withContext
+                }
+
+                if (modelFile.exists() && !modelFile.delete()) {
+                    tempFile.delete()
+                    _state.value = DownloadState.Failed("Failed to replace existing model")
+                    return@withContext
+                }
+
+                if (!tempFile.renameTo(modelFile)) {
                     tempFile.delete()
                     _state.value = DownloadState.Failed("Failed to move downloaded file")
                     return@withContext
                 }
+                modelRepository.markInstalled(model)
                 _state.value = DownloadState.Completed
-                Log.d(TAG, "Model download completed")
+                Log.d(TAG, "Model download completed: ${model.id} ${model.versionName}")
             } catch (e: Exception) {
                 if (cancelled) {
                     _state.value = DownloadState.Idle
@@ -115,17 +125,23 @@ class ModelDownloader @Inject constructor(
     }
 
     suspend fun deleteModel() {
-        withContext(Dispatchers.IO) {
-            modelPath.delete()
-            File(modelsDir, "$MODEL_NAME.tmp").delete()
-        }
+        modelRepository.deleteInstalledModel()
         _state.value = DownloadState.Idle
+    }
+
+    private fun sha256(file: java.io.File): String {
+        val digest = MessageDigest.getInstance("SHA-256")
+        file.inputStream().use { input ->
+            val buffer = ByteArray(8192)
+            var read: Int
+            while (input.read(buffer).also { read = it } != -1) {
+                digest.update(buffer, 0, read)
+            }
+        }
+        return digest.digest().joinToString("") { "%02x".format(it) }
     }
 
     companion object {
         private const val TAG = "ModelDownloader"
-        const val MODEL_NAME = "gemma-4-E2B-it.litertlm"
-        private const val DOWNLOAD_URL =
-            "https://huggingface.co/litert-community/gemma-4-E2B-it-litert-lm/resolve/main/gemma-4-E2B-it.litertlm"
     }
 }

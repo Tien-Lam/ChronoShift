@@ -48,7 +48,7 @@ ML Kit and Chrono run as a coordinated pair (spans feed into Chrono). Regex runs
 
 ### Stage 2: On-Device LLM
 
-**LiteRT** (`LiteRtExtractor`) runs a Gemma model via Google LiteRT-LM. The model must be downloaded separately via Settings. It receives a structured prompt asking for JSON output with time, date, timezone, and original text fields. `LlmResultParser` parses the response.
+**LiteRT** (`LiteRtExtractor`) runs a selected Gemma model via Google LiteRT-LM. Compatible models are listed in `model-manifest.json`; Settings can fetch that manifest, show update availability, and download the recommended model through `ModelDownloader`. The model receives a structured prompt asking for JSON output with time, date, timezone, and original text fields. `LlmResultParser` parses the response.
 
 If no LiteRT model is installed, Stage 1 results remain the final results.
 

@@ -131,4 +131,67 @@ class ModelDownloaderTest {
         assertTrue(DownloadState.Idle === DownloadState.Idle)
         assertTrue(DownloadState.Completed === DownloadState.Completed)
     }
+
+    @Test
+    fun `manifest parser keeps compatible LiteRT models`() {
+        val json = """{
+            "models": [
+                {
+                    "id": "newer",
+                    "name": "Newer Gemma",
+                    "versionName": "2",
+                    "versionCode": 2,
+                    "fileName": "newer.litertlm",
+                    "url": "https://example.com/newer.litertlm",
+                    "format": "litertlm",
+                    "minAppVersionCode": 1,
+                    "promptVersion": 1,
+                    "recommended": true
+                }
+            ]
+        }"""
+
+        val models = ModelManifestParser.parse(json)
+
+        assertEquals(1, models.size)
+        assertEquals("newer", models[0].id)
+        assertTrue(models[0].recommended)
+    }
+
+    @Test
+    fun `manifest parser filters incompatible model formats`() {
+        val json = """{
+            "models": [
+                {
+                    "id": "wrong-format",
+                    "name": "Wrong Format",
+                    "versionName": "1",
+                    "versionCode": 1,
+                    "fileName": "wrong.gguf",
+                    "url": "https://example.com/wrong.gguf",
+                    "format": "gguf",
+                    "minAppVersionCode": 1,
+                    "promptVersion": 1,
+                    "recommended": true
+                }
+            ]
+        }"""
+
+        val models = ModelManifestParser.parse(json)
+
+        assertTrue(models.isEmpty())
+    }
+
+    @Test
+    fun `catalog state detects recommended update for installed model`() {
+        val installed = ModelDescriptor.Default.copy(versionCode = 1, recommended = false)
+        val newer = installed.copy(versionName = "2", versionCode = 2, recommended = true)
+
+        val state = ModelCatalogState(
+            availableModels = listOf(installed, newer),
+            installedModel = InstalledModel(installed, sizeBytes = 123L),
+        )
+
+        assertEquals(newer, state.updateCandidate)
+    }
 }

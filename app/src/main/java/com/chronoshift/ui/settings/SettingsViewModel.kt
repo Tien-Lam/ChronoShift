@@ -4,7 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chronoshift.nlp.DownloadState
 import com.chronoshift.nlp.MlKitEntityExtractor
+import com.chronoshift.nlp.ModelCatalogState
 import com.chronoshift.nlp.ModelDownloader
+import com.chronoshift.nlp.ModelRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +18,13 @@ import javax.inject.Inject
 
 data class SettingsUiState(
     val modelInstalled: Boolean = false,
+    val modelName: String = "",
+    val modelVersion: String = "",
     val modelSizeMb: String = "",
+    val updateAvailable: Boolean = false,
+    val updateModelName: String = "",
+    val updateModelVersion: String = "",
+    val modelCatalogError: String? = null,
     val downloadState: DownloadState = DownloadState.Idle,
     val mlKitAvailable: Boolean = false,
 )
@@ -24,6 +32,7 @@ data class SettingsUiState(
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
     private val modelDownloader: ModelDownloader,
+    private val modelRepository: ModelRepository,
     private val mlKitEntityExtractor: MlKitEntityExtractor,
 ) : ViewModel() {
 
@@ -37,15 +46,12 @@ class SettingsViewModel @Inject constructor(
             _modelStatus.value = ModelStatus(mlKit = mlKit)
         }
 
-        combine(modelDownloader.state, _modelStatus) { downloadState, status ->
-            val installed = modelDownloader.isModelInstalled()
-            val sizeBytes = modelDownloader.getModelSizeBytes()
-            SettingsUiState(
-                modelInstalled = installed,
-                modelSizeMb = if (sizeBytes > 0) formatSize(sizeBytes) else "",
-                downloadState = downloadState,
-                mlKitAvailable = status.mlKit,
-            )
+        viewModelScope.launch {
+            modelRepository.refreshManifest()
+        }
+
+        combine(modelDownloader.state, modelRepository.state, _modelStatus) { downloadState, catalog, status ->
+            toUiState(downloadState, catalog, status)
         }.onEach { _uiState.value = it }.launchIn(viewModelScope)
     }
 
@@ -71,6 +77,29 @@ class SettingsViewModel @Inject constructor(
         } else {
             "%.1f MB".format(mb)
         }
+    }
+
+    private fun toUiState(
+        downloadState: DownloadState,
+        catalog: ModelCatalogState,
+        status: ModelStatus,
+    ): SettingsUiState {
+        val installed = catalog.installedModel
+        val selected = installed?.descriptor ?: catalog.selectedModel
+        val update = catalog.updateCandidate
+        val sizeBytes = installed?.sizeBytes ?: 0L
+        return SettingsUiState(
+            modelInstalled = installed != null,
+            modelName = selected.name,
+            modelVersion = selected.versionName,
+            modelSizeMb = if (sizeBytes > 0) formatSize(sizeBytes) else "",
+            updateAvailable = update != null,
+            updateModelName = update?.name.orEmpty(),
+            updateModelVersion = update?.versionName.orEmpty(),
+            modelCatalogError = catalog.refreshError,
+            downloadState = downloadState,
+            mlKitAvailable = status.mlKit,
+        )
     }
 
     private data class ModelStatus(

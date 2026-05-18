@@ -1,27 +1,26 @@
 package com.chronoshift.nlp
 
-import android.content.Context
 import android.util.Log
 import com.google.ai.edge.litertlm.Backend
 import com.google.ai.edge.litertlm.Engine
 import com.google.ai.edge.litertlm.EngineConfig
-import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class LiteRtExtractor @Inject constructor(
-    @param:ApplicationContext private val context: Context,
+    private val modelRepository: ModelRepository,
 ) : TimeExtractor {
 
     private var engine: Engine? = null
-    private var initFailed = false
+    private var failedModelPath: String? = null
 
     override suspend fun isAvailable(): Boolean {
         if (engine != null && engine!!.isInitialized()) return true
-        if (initFailed) return false
-        return initEngine()
+        val modelFile = modelRepository.getSelectedModelFile() ?: return false
+        if (failedModelPath == modelFile.absolutePath) return false
+        return initEngine(modelFile)
     }
 
     override suspend fun extract(text: String): ExtractionResult {
@@ -41,13 +40,7 @@ class LiteRtExtractor @Inject constructor(
         }
     }
 
-    private fun initEngine(): Boolean {
-        val modelFile = findModel()
-        if (modelFile == null) {
-            Log.d(TAG, "No LiteRT model found on device")
-            return false
-        }
-
+    private fun initEngine(modelFile: File): Boolean {
         return try {
             val config = EngineConfig(
                 modelPath = modelFile.absolutePath,
@@ -56,24 +49,14 @@ class LiteRtExtractor @Inject constructor(
             val eng = Engine(config)
             eng.initialize()
             engine = eng
-            initFailed = false
+            failedModelPath = null
             Log.d(TAG, "LiteRT engine initialized: ${modelFile.name}")
             true
         } catch (e: Exception) {
             Log.w(TAG, "LiteRT init failed", e)
-            initFailed = true
+            failedModelPath = modelFile.absolutePath
             false
         }
-    }
-
-    private fun findModel(): File? {
-        // Check app-specific storage for downloaded models
-        val modelsDir = File(context.filesDir, "models")
-        if (!modelsDir.exists()) return null
-
-        return modelsDir.listFiles()
-            ?.filter { it.extension == "litertlm" || it.name.contains("gemma") }
-            ?.maxByOrNull { it.lastModified() }
     }
 
     private fun buildPrompt(text: String): String {
