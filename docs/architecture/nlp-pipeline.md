@@ -94,4 +94,5 @@ flowchart LR
 - **ML Kit is a spotter, not a parser.** It detects datetime spans but has no timezone awareness. Chrono does the actual parsing.
 - **Span + full-text dual parse.** Chrono parses each ML Kit span individually (for precision) and the full text (for timezone context). The merge step upgrades span results with timezone info from the full-text parse.
 - **LiteRT is optional.** The app keeps working on devices without a downloaded model; when present, the Gemma model adds background LLM-quality results.
+- **Model updates are explicit.** The manifest can advertise newer compatible LiteRT models, but installed users stay on their current model until they choose the update in Settings.
 - **Timezone from offsets, not names.** Chrono returns timezone as minute offsets. `ChronoResultParser.offsetToTimezone()` finds a matching IANA zone at the parsed instant, which means the same offset can map to different zones depending on DST.

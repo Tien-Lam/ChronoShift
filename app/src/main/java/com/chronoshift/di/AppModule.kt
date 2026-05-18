@@ -4,7 +4,9 @@ import com.chronoshift.nlp.ChronoExtractor
 import com.chronoshift.nlp.CityResolver
 import com.chronoshift.nlp.CityResolverInterface
 import com.chronoshift.nlp.LiteRtExtractor
+import com.chronoshift.nlp.LiteRtEngineFactory
 import com.chronoshift.nlp.MlKitEntityExtractor
+import com.chronoshift.nlp.RealLiteRtEngineFactory
 import com.chronoshift.nlp.RegexExtractor
 import com.chronoshift.nlp.SpanAwareTimeExtractor
 import com.chronoshift.nlp.SpanDetector
@@ -37,6 +39,9 @@ abstract class AppModule {
 
     @Binds @LiteRt
     abstract fun bindLiteRtExtractor(impl: LiteRtExtractor): TimeExtractor
+
+    @Binds
+    abstract fun bindLiteRtEngineFactory(impl: RealLiteRtEngineFactory): LiteRtEngineFactory
 
     @Binds @Regex
     abstract fun bindRegexExtractor(impl: RegexExtractor): TimeExtractor

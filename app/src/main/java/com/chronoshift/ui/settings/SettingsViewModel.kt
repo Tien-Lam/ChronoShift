@@ -3,10 +3,10 @@ package com.chronoshift.ui.settings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chronoshift.nlp.DownloadState
-import com.chronoshift.nlp.MlKitEntityExtractor
 import com.chronoshift.nlp.ModelCatalogState
 import com.chronoshift.nlp.ModelDownloader
 import com.chronoshift.nlp.ModelRepository
+import com.chronoshift.nlp.SpanDetector
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -33,7 +33,7 @@ data class SettingsUiState(
 class SettingsViewModel @Inject constructor(
     private val modelDownloader: ModelDownloader,
     private val modelRepository: ModelRepository,
-    private val mlKitEntityExtractor: MlKitEntityExtractor,
+    private val mlKitEntityExtractor: SpanDetector,
 ) : ViewModel() {
 
     private val _modelStatus = MutableStateFlow(ModelStatus())

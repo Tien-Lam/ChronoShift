@@ -15,14 +15,21 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ModelRepository @Inject constructor(
-    @param:ApplicationContext private val context: Context,
+class ModelRepository internal constructor(
+    private val modelDirectory: File,
+    private val manifestUrl: String,
 ) {
+    @Inject
+    constructor(@ApplicationContext context: Context) : this(
+        modelDirectory = File(context.filesDir, "models"),
+        manifestUrl = MANIFEST_URL,
+    )
+
     private val _state = MutableStateFlow(buildState(listOf(ModelDescriptor.Default), null))
     val state: StateFlow<ModelCatalogState> = _state.asStateFlow()
 
     val modelsDir: File
-        get() = File(context.filesDir, "models")
+        get() = modelDirectory
 
     private val selectedModelMetadata: File
         get() = File(modelsDir, SELECTED_MODEL_METADATA)
@@ -35,7 +42,7 @@ class ModelRepository @Inject constructor(
         withContext(Dispatchers.IO) {
             var connection: HttpURLConnection? = null
             try {
-                val url = URL(MANIFEST_URL)
+                val url = URL(manifestUrl)
                 connection = url.openConnection() as HttpURLConnection
                 connection.connectTimeout = 10_000
                 connection.readTimeout = 10_000
@@ -45,12 +52,7 @@ class ModelRepository @Inject constructor(
                     throw IllegalStateException("HTTP ${connection.responseCode}")
                 }
 
-                val body = connection.inputStream.bufferedReader().use { it.readText() }
-                val remoteModels = ModelManifestParser.parse(body)
-                val models = (remoteModels + ModelDescriptor.Default)
-                    .distinctBy { it.id to it.versionCode }
-                    .sortedByDescending { it.versionCode }
-                _state.value = buildState(models, null)
+                applyManifest(connection.inputStream.bufferedReader().use { it.readText() })
             } catch (e: Exception) {
                 Log.w(TAG, "Model manifest refresh failed", e)
                 _state.value = buildState(_state.value.availableModels, e.message ?: "Manifest refresh failed")
@@ -58,6 +60,14 @@ class ModelRepository @Inject constructor(
                 connection?.disconnect()
             }
         }
+    }
+
+    internal fun applyManifest(json: String) {
+        val remoteModels = ModelManifestParser.parse(json)
+        val models = (remoteModels + ModelDescriptor.Default)
+            .distinctBy { it.id to it.versionCode }
+            .sortedByDescending { it.versionCode }
+        _state.value = buildState(models, null)
     }
 
     fun getDownloadTarget(): ModelDescriptor {
@@ -94,8 +104,13 @@ class ModelRepository @Inject constructor(
     fun tempFile(model: ModelDescriptor): File = File(modelsDir, "${model.fileName}.tmp")
 
     fun markInstalled(model: ModelDescriptor) {
+        val previous = getInstalledModel()?.descriptor
         modelsDir.mkdirs()
         selectedModelMetadata.writeText(ModelManifestParser.toJson(model))
+        if (previous != null && modelFile(previous).absolutePath != modelFile(model).absolutePath) {
+            modelFile(previous).delete()
+            tempFile(previous).delete()
+        }
         _state.value = buildState(_state.value.availableModels, null)
     }
 

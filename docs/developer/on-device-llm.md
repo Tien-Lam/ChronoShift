@@ -12,7 +12,7 @@ ChronoShift uses LiteRT/Gemma as its optional Stage 2 on-device LLM. The app wor
 
 1. `ModelRepository` fetches `model-manifest.json` from the project repository and filters entries to compatible LiteRT-LM models for this app version and prompt contract.
 2. User downloads the recommended model, or an update when the manifest advertises a newer compatible recommendation. The model is saved to `{app filesDir}/models/`.
-3. `ModelDownloader` downloads to a temp file, verifies `sha256` when the manifest provides one, then stores selected-model metadata.
+3. `ModelDownloader` downloads to a temp file, verifies `sha256`, then stores selected-model metadata. When an update installs a different filename, the previous selected model file is removed.
 4. `LiteRtExtractor` loads the selected installed model. It does not auto-select arbitrary newer local files.
 5. The engine is initialized with CPU backend on first use.
 6. Each extraction creates a conversation, sends a structured prompt, and parses the JSON response via `LlmResultParser`.
@@ -26,7 +26,9 @@ The manifest lives at the repository root as `model-manifest.json`. Add new mode
 - The JSON response contract parsed by `LlmResultParser`
 - The current app version or newer via `minAppVersionCode`
 
-Newer remote models are offered in Settings as updates; the app does not silently switch models.
+Newer remote models are offered in Settings as updates; the app does not silently switch models. Users keep the installed model until they choose **Update Model**.
+
+The default Gemma 4 E2B entry includes the Hugging Face LFS SHA-256 and byte size. If the upstream model file changes, update both `model-manifest.json` and `ModelDescriptor.Default` together.
 
 ### Prompt Format
 
@@ -42,3 +44,7 @@ The prompt asks for a JSON array with `time`, `date`, `timezone`, and `original`
 - Graceful handling of malformed LLM output
 
 If LiteRT is unavailable because no model is downloaded, Stage 1 results are the final results.
+
+## Model Evaluation Fixtures
+
+`app/src/test/java/com/chronoshift/nlp/AiExtractionFixtures.kt` contains exact structured fixtures for LLM extraction behavior. These fixtures assert result count, order, time, date, timezone, original text, and instant creation through `LlmResultParser`. Add cases there before allowing a new manifest recommendation.

@@ -1,9 +1,6 @@
 package com.chronoshift.nlp
 
 import android.util.Log
-import com.google.ai.edge.litertlm.Backend
-import com.google.ai.edge.litertlm.Engine
-import com.google.ai.edge.litertlm.EngineConfig
 import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -11,14 +8,18 @@ import javax.inject.Singleton
 @Singleton
 class LiteRtExtractor @Inject constructor(
     private val modelRepository: ModelRepository,
+    private val engineFactory: LiteRtEngineFactory,
 ) : TimeExtractor {
 
-    private var engine: Engine? = null
+    private var engine: LiteRtEngineSession? = null
+    private var activeModelPath: String? = null
     private var failedModelPath: String? = null
 
     override suspend fun isAvailable(): Boolean {
-        if (engine != null && engine!!.isInitialized()) return true
         val modelFile = modelRepository.getSelectedModelFile() ?: return false
+        if (engine != null && engine!!.isInitialized() && activeModelPath == modelFile.absolutePath) {
+            return true
+        }
         if (failedModelPath == modelFile.absolutePath) return false
         return initEngine(modelFile)
     }
@@ -27,13 +28,9 @@ class LiteRtExtractor @Inject constructor(
         val eng = engine ?: return ExtractionResult(emptyList(), "LiteRT")
 
         return try {
-            eng.createConversation().use { conversation ->
-                val prompt = buildPrompt(text)
-                val response = conversation.sendMessage(prompt)
-                val responseText = response.contents.toString()
-                Log.d(TAG, "Response: $responseText")
-                ExtractionResult(LlmResultParser.parseResponse(responseText), "LiteRT")
-            }
+            val responseText = eng.generate(buildPrompt(text))
+            Log.d(TAG, "Response: $responseText")
+            ExtractionResult(LlmResultParser.parseResponse(responseText), "LiteRT")
         } catch (e: Exception) {
             Log.w(TAG, "LiteRT inference failed", e)
             ExtractionResult(emptyList(), "LiteRT")
@@ -42,18 +39,16 @@ class LiteRtExtractor @Inject constructor(
 
     private fun initEngine(modelFile: File): Boolean {
         return try {
-            val config = EngineConfig(
-                modelPath = modelFile.absolutePath,
-                backend = Backend.CPU(),
-            )
-            val eng = Engine(config)
+            val eng = engineFactory.create(modelFile)
             eng.initialize()
             engine = eng
+            activeModelPath = modelFile.absolutePath
             failedModelPath = null
             Log.d(TAG, "LiteRT engine initialized: ${modelFile.name}")
             true
         } catch (e: Exception) {
             Log.w(TAG, "LiteRT init failed", e)
+            activeModelPath = null
             failedModelPath = modelFile.absolutePath
             false
         }
