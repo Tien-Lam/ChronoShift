@@ -94,6 +94,35 @@ fun SettingsScreen(
 
             ModelStatusRow(state)
 
+            if (state.downloadSize.isNotEmpty()) {
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = stringResource(R.string.model_download_size, state.downloadSize),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            if (!state.downloadHasEnoughStorage) {
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = stringResource(
+                        R.string.model_storage_warning,
+                        state.downloadRequiredStorage,
+                        state.downloadAvailableStorage,
+                    ),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error,
+                )
+            }
+            if (state.downloadMeteredNetwork) {
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = stringResource(R.string.model_metered_network_warning),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+
             state.modelCatalogError?.let { error ->
                 Spacer(Modifier.height(4.dp))
                 Text(
@@ -109,6 +138,7 @@ fun SettingsScreen(
                 downloadState = state.downloadState,
                 modelInstalled = state.modelInstalled,
                 updateAvailable = state.updateAvailable,
+                downloadEnabled = state.downloadHasEnoughStorage,
                 onDownload = viewModel::downloadModel,
                 onCancel = viewModel::cancelDownload,
                 onDelete = viewModel::deleteModel,
@@ -207,8 +237,9 @@ private fun ModelStatusRow(state: SettingsUiState) {
             )
         }
         is DownloadState.Failed -> {
+            val failed = state.downloadState as DownloadState.Failed
             Text(
-                text = stringResource(R.string.download_failed),
+                text = stringResource(R.string.download_failed_with_reason, failed.error),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.error,
             )
@@ -221,6 +252,7 @@ private fun ModelActionButton(
     downloadState: DownloadState,
     modelInstalled: Boolean,
     updateAvailable: Boolean,
+    downloadEnabled: Boolean,
     onDownload: () -> Unit,
     onCancel: () -> Unit,
     onDelete: () -> Unit,
@@ -232,7 +264,7 @@ private fun ModelActionButton(
             }
         }
         is DownloadState.Failed -> {
-            FilledTonalButton(onClick = onDownload) {
+            FilledTonalButton(onClick = onDownload, enabled = downloadEnabled) {
                 Text(stringResource(R.string.download_model))
             }
         }
@@ -240,7 +272,7 @@ private fun ModelActionButton(
             when {
                 modelInstalled && updateAvailable -> {
                     Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                        FilledTonalButton(onClick = onDownload) {
+                        FilledTonalButton(onClick = onDownload, enabled = downloadEnabled) {
                             Text(stringResource(R.string.update_model))
                         }
                         OutlinedButton(onClick = onDelete) {
@@ -254,7 +286,7 @@ private fun ModelActionButton(
                     }
                 }
                 else -> {
-                    FilledTonalButton(onClick = onDownload) {
+                    FilledTonalButton(onClick = onDownload, enabled = downloadEnabled) {
                         Text(stringResource(R.string.download_model))
                     }
                 }

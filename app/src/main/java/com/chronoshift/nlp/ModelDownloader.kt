@@ -1,6 +1,8 @@
 package com.chronoshift.nlp
 
+import android.content.Context
 import android.util.Log
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -21,9 +23,21 @@ sealed class DownloadState {
 }
 
 @Singleton
-class ModelDownloader @Inject constructor(
+class ModelDownloader internal constructor(
     private val modelRepository: ModelRepository,
+    private val environment: ModelDownloadEnvironment,
 ) {
+    @Inject
+    constructor(
+        modelRepository: ModelRepository,
+        @ApplicationContext context: Context,
+    ) : this(modelRepository, AndroidModelDownloadEnvironment(context))
+
+    internal constructor(modelRepository: ModelRepository) : this(
+        modelRepository,
+        UnknownModelDownloadEnvironment,
+    )
+
     private val _state = MutableStateFlow<DownloadState>(DownloadState.Idle)
     val state: StateFlow<DownloadState> = _state.asStateFlow()
 
@@ -36,10 +50,29 @@ class ModelDownloader @Inject constructor(
 
     fun getModelSizeBytes(): Long = modelRepository.getModelSizeBytes()
 
+    fun getDownloadPreflight(model: ModelDescriptor = modelRepository.getDownloadTarget()): ModelDownloadPreflight {
+        val requiredBytes = if (model.sizeBytes > 0L) model.sizeBytes + MIN_FREE_AFTER_DOWNLOAD_BYTES else 0L
+        return ModelDownloadPreflight(
+            model = model,
+            requiredBytes = requiredBytes,
+            availableBytes = environment.availableBytes(modelRepository.modelsDir),
+            isMeteredNetwork = environment.isActiveNetworkMetered(),
+        )
+    }
+
     suspend fun download() {
         if (_state.value is DownloadState.Downloading) return
 
         val model = modelRepository.getDownloadTarget()
+        val preflight = getDownloadPreflight(model)
+        if (!preflight.hasEnoughStorage) {
+            _state.value = DownloadState.Failed(
+                "Not enough free storage. Need ${formatBytes(preflight.requiredBytes)} available; " +
+                    "${formatBytes(preflight.availableBytes ?: 0L)} free."
+            )
+            return
+        }
+
         cancelled = false
         _state.value = DownloadState.Downloading(0f)
 
@@ -58,7 +91,7 @@ class ModelDownloader @Inject constructor(
                 connection.connect()
 
                 if (connection.responseCode != HttpURLConnection.HTTP_OK) {
-                    _state.value = DownloadState.Failed("HTTP ${connection.responseCode}")
+                    _state.value = DownloadState.Failed("Model download failed with HTTP ${connection.responseCode}")
                     return@withContext
                 }
 
@@ -141,7 +174,17 @@ class ModelDownloader @Inject constructor(
         return digest.digest().joinToString("") { "%02x".format(it) }
     }
 
+    private fun formatBytes(bytes: Long): String {
+        val mb = bytes / (1024.0 * 1024.0)
+        return if (mb >= 1024) {
+            "%.1f GB".format(mb / 1024.0)
+        } else {
+            "%.1f MB".format(mb)
+        }
+    }
+
     companion object {
         private const val TAG = "ModelDownloader"
+        private const val MIN_FREE_AFTER_DOWNLOAD_BYTES = 256L * 1024L * 1024L
     }
 }

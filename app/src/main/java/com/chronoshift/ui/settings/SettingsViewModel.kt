@@ -24,6 +24,11 @@ data class SettingsUiState(
     val updateAvailable: Boolean = false,
     val updateModelName: String = "",
     val updateModelVersion: String = "",
+    val downloadSize: String = "",
+    val downloadRequiredStorage: String = "",
+    val downloadAvailableStorage: String = "",
+    val downloadHasEnoughStorage: Boolean = true,
+    val downloadMeteredNetwork: Boolean = false,
     val modelCatalogError: String? = null,
     val downloadState: DownloadState = DownloadState.Idle,
     val mlKitAvailable: Boolean = false,
@@ -87,6 +92,8 @@ class SettingsViewModel @Inject constructor(
         val installed = catalog.installedModel
         val selected = installed?.descriptor ?: catalog.selectedModel
         val update = catalog.updateCandidate
+        val downloadTarget = update ?: if (installed == null) selected else null
+        val preflight = downloadTarget?.let { modelDownloader.getDownloadPreflight(it) }
         val sizeBytes = installed?.sizeBytes ?: 0L
         return SettingsUiState(
             modelInstalled = installed != null,
@@ -96,6 +103,11 @@ class SettingsViewModel @Inject constructor(
             updateAvailable = update != null,
             updateModelName = update?.name.orEmpty(),
             updateModelVersion = update?.versionName.orEmpty(),
+            downloadSize = downloadTarget?.sizeBytes?.takeIf { it > 0L }?.let { formatSize(it) }.orEmpty(),
+            downloadRequiredStorage = preflight?.requiredBytes?.takeIf { it > 0L }?.let { formatSize(it) }.orEmpty(),
+            downloadAvailableStorage = preflight?.availableBytes?.let { formatSize(it) }.orEmpty(),
+            downloadHasEnoughStorage = preflight?.hasEnoughStorage ?: true,
+            downloadMeteredNetwork = preflight?.isMeteredNetwork ?: false,
             modelCatalogError = catalog.refreshError,
             downloadState = downloadState,
             mlKitAvailable = status.mlKit,

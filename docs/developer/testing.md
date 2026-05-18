@@ -24,6 +24,14 @@ python scripts/validate_model_manifest.py
 
 Run the network validator before recommending a new model. It checks Hugging Face LFS `X-Linked-Size` and `X-Linked-ETag` headers against the manifest without downloading the model.
 
+GitHub also runs this script on a weekly schedule and via manual dispatch in `.github/workflows/model-manifest.yml`.
+
+`DeviceModelEvalTest` is an instrumented test for the actual installed LiteRT model. It is not part of the normal JVM suite because it requires a device and a downloaded model:
+
+```bash
+./gradlew connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.chronoshift.nlp.DeviceModelEvalTest
+```
+
 ## Test Architecture
 
 ### Real Parsers, Not Manual Construction
@@ -67,6 +75,7 @@ Chrono.js integration tests run the real QuickJS engine via `zipline-jvm`. The t
 | `LlmResultParserTest` | LLM JSON parsing, fence stripping, tz resolution |
 | `AiExtractionFixtureTest` | Exact model-output fixtures for ordering and structured parser behavior |
 | `ModelManifestValidationTest` | Checked-in model manifest contract and default descriptor drift |
+| `DeviceModelEvalTest` | Instrumented eval against the actual installed LiteRT model |
 | `TimeConverterTest` | Timezone conversion, city labels, UTC display |
 | `RegexExtractorTest` | Unix timestamps, city resolution |
 | `TimezoneAbbreviationsTest` | Abbreviation expansion, ambiguity detection |

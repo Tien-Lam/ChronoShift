@@ -68,6 +68,20 @@ Expected:
 - Stage 2 can merge in without duplicating correct Stage 1 results.
 - Logcat contains LiteRT initialization for the selected `.litertlm` file and no fatal exception.
 
+## Device Model Eval
+
+After the model is installed, run the instrumented model-output eval:
+
+```powershell
+./gradlew connectedDebugAndroidTest "-Pandroid.testInstrumentationRunnerArguments.class=com.chronoshift.nlp.DeviceModelEvalTest"
+```
+
+Expected:
+
+- The test loads the installed LiteRT model through `LiteRtExtractor`.
+- The model returns structured output for city, UTC range, and explicit winter timezone cases.
+- The test skips if the model is not installed.
+
 ## Delete And Fallback Again
 
 In Settings:

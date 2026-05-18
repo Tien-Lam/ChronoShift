@@ -1,9 +1,12 @@
 package com.chronoshift.nlp
 
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.io.File
+import java.nio.file.Files
 
 class ModelDownloaderTest {
 
@@ -193,5 +196,72 @@ class ModelDownloaderTest {
         )
 
         assertEquals(newer, state.updateCandidate)
+    }
+
+    @Test
+    fun `download preflight reports model size storage and metered network`() {
+        val root = Files.createTempDirectory("chronoshift-preflight").toFile()
+        try {
+            val repository = ModelRepository(File(root, "models"), "https://example.com/manifest.json")
+            val downloader = ModelDownloader(
+                repository,
+                FakeDownloadEnvironment(
+                    availableBytes = 1_000L,
+                    metered = true,
+                ),
+            )
+            val model = ModelDescriptor.Default.copy(sizeBytes = 500L)
+
+            val preflight = downloader.getDownloadPreflight(model)
+
+            assertEquals(model, preflight.model)
+            assertEquals(1_000L, preflight.availableBytes)
+            assertTrue(preflight.isMeteredNetwork)
+            assertTrue(preflight.requiredBytes > model.sizeBytes)
+            assertFalse(preflight.hasEnoughStorage)
+        } finally {
+            root.deleteRecursively()
+        }
+    }
+
+    @Test
+    fun `download fails before network when storage is insufficient`() = runTest {
+        val root = Files.createTempDirectory("chronoshift-low-storage").toFile()
+        try {
+            val model = ModelDescriptor.Default.copy(
+                id = "small-test-model",
+                versionCode = 2,
+                fileName = "small-test-model.litertlm",
+                url = "https://example.com/never-opened.litertlm",
+                sha256 = null,
+                sizeBytes = 500L,
+                recommended = true,
+            )
+            val repository = ModelRepository(File(root, "models"), "https://example.com/manifest.json")
+            repository.applyManifest("""{"schemaVersion":1,"models":[${ModelManifestParser.toJson(model)}]}""")
+            val downloader = ModelDownloader(
+                repository,
+                FakeDownloadEnvironment(
+                    availableBytes = 1_000L,
+                    metered = false,
+                ),
+            )
+
+            downloader.download()
+
+            val failed = downloader.state.value as DownloadState.Failed
+            assertTrue(failed.error.contains("Not enough free storage"))
+            assertFalse(repository.modelFile(model).exists())
+        } finally {
+            root.deleteRecursively()
+        }
+    }
+
+    private class FakeDownloadEnvironment(
+        private val availableBytes: Long?,
+        private val metered: Boolean,
+    ) : ModelDownloadEnvironment {
+        override fun availableBytes(directory: File): Long? = availableBytes
+        override fun isActiveNetworkMetered(): Boolean = metered
     }
 }

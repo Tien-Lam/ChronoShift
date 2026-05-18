@@ -56,3 +56,5 @@ python scripts/validate_model_manifest.py
 ```
 
 Before recommending a new model, also run the real-device smoke flow in `docs/developer/device-smoke-test.md`.
+
+The Settings screen shows target download size, metered-network warning, and low-storage warnings before download. `ModelDownloader` also enforces the low-storage check before opening the network connection.

@@ -1,0 +1,16 @@
+name: Model Manifest
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * 1"
+
+jobs:
+  validate-model-manifest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5  # v4
+
+      - name: Validate model manifest headers
+        run: python scripts/validate_model_manifest.py
