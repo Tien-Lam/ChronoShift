@@ -65,4 +65,52 @@ internal val aiExtractionFixtures = listOf(
             ExpectedAiExtraction("15:30", "2026-01-09", "America/New_York", "3:30 PM EST"),
         ),
     ),
+    AiExtractionFixture(
+        name = "relative date resolves to explicit model date",
+        input = "Reminder: standup at 9:30am PT tomorrow",
+        modelResponseJson = """[
+            {"time":"09:30","date":"2026-01-10","timezone":"America/Los_Angeles","original":"9:30am PT tomorrow"}
+        ]""",
+        expected = listOf(
+            ExpectedAiExtraction("09:30", "2026-01-10", "America/Los_Angeles", "9:30am PT tomorrow"),
+        ),
+    ),
+    AiExtractionFixture(
+        name = "city name resolves to IANA timezone",
+        input = "Let's meet at 5pm in Tokyo",
+        modelResponseJson = """[
+            {"time":"17:00","date":"2026-01-09","timezone":"Asia/Tokyo","original":"5pm in Tokyo"}
+        ]""",
+        expected = listOf(
+            ExpectedAiExtraction("17:00", "2026-01-09", "Asia/Tokyo", "5pm in Tokyo"),
+        ),
+    ),
+    AiExtractionFixture(
+        name = "ambiguous CST can intentionally mean China",
+        input = "Shanghai office review at 10am CST",
+        modelResponseJson = """[
+            {"time":"10:00","date":"2026-01-09","timezone":"Asia/Shanghai","original":"10am CST"}
+        ]""",
+        expected = listOf(
+            ExpectedAiExtraction("10:00", "2026-01-09", "Asia/Shanghai", "10am CST"),
+        ),
+    ),
+    AiExtractionFixture(
+        name = "calendar invite range keeps start and end",
+        input = "Deploy window: 2:00 AM - 4:00 AM UTC",
+        modelResponseJson = """[
+            {"time":"02:00","date":"2026-01-09","timezone":"UTC","original":"2:00 AM UTC"},
+            {"time":"04:00","date":"2026-01-09","timezone":"UTC","original":"4:00 AM UTC"}
+        ]""",
+        expected = listOf(
+            ExpectedAiExtraction("02:00", "2026-01-09", "UTC", "2:00 AM UTC"),
+            ExpectedAiExtraction("04:00", "2026-01-09", "UTC", "4:00 AM UTC"),
+        ),
+    ),
+    AiExtractionFixture(
+        name = "malformed model output is ignored",
+        input = "3pm ET",
+        modelResponseJson = """not json""",
+        expected = emptyList(),
+    ),
 )

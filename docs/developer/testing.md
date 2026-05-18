@@ -12,6 +12,18 @@ ANDROID_HOME="$LOCALAPPDATA/Android/Sdk" \
 
 Test results are written to `app/build/test-results/` (JUnit XML) and `app/build/reports/tests/` (HTML).
 
+## Model Validation
+
+`ModelManifestValidationTest` is part of the normal unit suite. It validates that the checked-in `model-manifest.json` is complete, compatible with the app's prompt/model contract, has non-empty checksums and sizes, has no duplicate id/version pairs, and matches `ModelDescriptor.Default` for the bundled default entry.
+
+Remote download headers are intentionally checked outside the unit suite because they require network access:
+
+```bash
+python scripts/validate_model_manifest.py
+```
+
+Run the network validator before recommending a new model. It checks Hugging Face LFS `X-Linked-Size` and `X-Linked-ETag` headers against the manifest without downloading the model.
+
 ## Test Architecture
 
 ### Real Parsers, Not Manual Construction
@@ -53,6 +65,8 @@ Chrono.js integration tests run the real QuickJS engine via `zipline-jvm`. The t
 | `ChronoResultParserTest` | JSON parsing, offset-to-IANA, date propagation, span merge |
 | `ResultMergerTest` | Exact/fuzzy matching, tz dedup, method combining |
 | `LlmResultParserTest` | LLM JSON parsing, fence stripping, tz resolution |
+| `AiExtractionFixtureTest` | Exact model-output fixtures for ordering and structured parser behavior |
+| `ModelManifestValidationTest` | Checked-in model manifest contract and default descriptor drift |
 | `TimeConverterTest` | Timezone conversion, city labels, UTC display |
 | `RegexExtractorTest` | Unix timestamps, city resolution |
 | `TimezoneAbbreviationsTest` | Abbreviation expansion, ambiguity detection |
@@ -64,3 +78,4 @@ Chrono.js integration tests run the real QuickJS engine via `zipline-jvm`. The t
 1. For new timestamp patterns, add them to the corpus in `TimestampCorpusTest`.
 2. For parser logic changes, add cases to the relevant `*Test.kt` file using real parser invocations.
 3. For cross-component behavior, add to `IntegrationTest` which traces data through the full pipeline.
+4. For model recommendation changes, add exact cases to `AiExtractionFixtures.kt` and run the device smoke test in `docs/developer/device-smoke-test.md`.

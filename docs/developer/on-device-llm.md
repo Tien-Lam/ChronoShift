@@ -48,3 +48,11 @@ If LiteRT is unavailable because no model is downloaded, Stage 1 results are the
 ## Model Evaluation Fixtures
 
 `app/src/test/java/com/chronoshift/nlp/AiExtractionFixtures.kt` contains exact structured fixtures for LLM extraction behavior. These fixtures assert result count, order, time, date, timezone, original text, and instant creation through `LlmResultParser`. Add cases there before allowing a new manifest recommendation.
+
+`ModelManifestValidationTest` validates the checked-in manifest during unit tests. For network validation of remote model headers, run:
+
+```bash
+python scripts/validate_model_manifest.py
+```
+
+Before recommending a new model, also run the real-device smoke flow in `docs/developer/device-smoke-test.md`.
