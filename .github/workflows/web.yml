@@ -35,6 +35,8 @@ jobs:
       cancel-in-progress: true
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - name: Capture the checked-in corpus audit
+        run: cp -f docs/planning/corpus-audit.json "$RUNNER_TEMP/chronoshift-corpus-audit.json"
       - uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db # v3
       - run: bun install --frozen-lockfile
       - name: Verify the pinned browser image matches the dependency
@@ -54,7 +56,7 @@ jobs:
       - name: Verify the standalone conversion corpus audit
         run: |
           bun run corpus:audit
-          git diff --exit-code -- docs/planning/corpus-audit.json
+          diff -u "$RUNNER_TEMP/chronoshift-corpus-audit.json" docs/planning/corpus-audit.json
       - run: bun run test:browser
       - id: pages
         if: inputs.publish-pages
@@ -77,6 +79,7 @@ jobs:
         with:
           name: chronoshift-web-failure-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
+            docs/planning/corpus-audit.json
             playwright-report/
             test-results/
           retention-days: 3
