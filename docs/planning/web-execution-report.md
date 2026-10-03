@@ -13,7 +13,7 @@ Builds include notices for all six production runtime packages (MIT, ISC and Apa
 ## Local verification, 3 October 2026
 
 - Type check and production build pass with the locked mise/Bun toolchain.
-- Fresh [GitHub web CI passed on 222d6a2](https://github.com/Tien-Lam/ChronoShift/actions/runs/37126227799), including frozen install, all browser/subpath checks and build/test artifacts.
+- Latest code [GitHub web CI passed on b395c68](https://github.com/Tien-Lam/ChronoShift/actions/runs/37127793996), including frozen install, all browser/subpath checks and build/test artifacts.
 - 72 unit tests pass, including 64 independent temporal fixtures and real execution of all 353 imported Android corpus inputs.
 - 55 browser scenarios plus one repository-subpath scenario pass in Chromium, Firefox, WebKit, Android Chrome emulation and iPhone WebKit emulation. Each profile runs the 64 exact fixture expectations in the production worker.
 - Scenarios cover cached close/reopen followed by fresh input, ambiguity/copy/paste, preference restart/storage denial, input recovery and keyboard shortcuts, 320px light/dark/reduced-motion accessibility checks, worker failure/late-response cancellation, single-use offline POST sharing, explicit update draft restore and incomplete-update recovery, cache-loss/reconnection repair and inert HTML/URL injection.
