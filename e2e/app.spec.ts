@@ -61,6 +61,52 @@ async function ready(page: Page) {
   await page.goto("/");
   await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
 }
+test("missing cache reports incomplete and reconnect repairs the complete offline app", async ({
+  page,
+  context,
+  origin,
+}) => {
+  await ready(page);
+  await page.evaluate(async () => {
+    Object.defineProperty(navigator, "onLine", {
+      value: false,
+      configurable: true,
+    });
+    await Promise.all((await caches.keys()).map((key) => caches.delete(key)));
+    window.dispatchEvent(new Event("pageshow"));
+  });
+  await expect(page.getByText("Offline ready", { exact: true })).toHaveCount(0);
+  await expect(
+    page.getByText("Offline setup is incomplete.", { exact: false }),
+  ).toBeVisible();
+  await page.evaluate(() => {
+    Object.defineProperty(navigator, "onLine", {
+      value: true,
+      configurable: true,
+    });
+    window.dispatchEvent(new Event("online"));
+  });
+  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
+  await page.close();
+  await disconnect(context, origin);
+  const reopened = await context.newPage();
+  await reopened.goto("/");
+  await convert(reopened, "April 9, 2026 3pm EST");
+});
+test("pasted HTML cannot execute or fetch its URL", async ({ page }) => {
+  const external: string[] = [];
+  page.on("request", (r) => {
+    if (r.url().includes("example.invalid")) external.push(r.url());
+  });
+  await ready(page);
+  await convert(
+    page,
+    '<img src="https://example.invalid/secret" onerror="window.__xss=true"> April 9, 2026 3pm UTC',
+  );
+  expect(await page.evaluate(() => (window as any).__xss)).toBeUndefined();
+  await expect(page.locator("img")).toHaveCount(0);
+  expect(external).toEqual([]);
+});
 async function convert(page: Page, text = "April 9, 2026 3pm EST") {
   await page.getByLabel("Message with a date or time").fill(text);
   await page.getByRole("button", { name: "Convert", exact: true }).click();

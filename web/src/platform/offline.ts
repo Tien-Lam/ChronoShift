@@ -43,7 +43,7 @@ export async function setupOffline(
               error:
                 "Offline assets could not be confirmed. Reconnect and reload to try again.",
             });
-        }, 3000);
+        }, 15000);
         channel.port1.onmessage = (event) => {
           clearTimeout(timeout);
           confirmed = event.data.ready === true;
@@ -60,7 +60,10 @@ export async function setupOffline(
             });
           channel.port1.close();
         };
-        controller.postMessage({ type: "CHECK_READY" }, [channel.port2]);
+        controller.postMessage(
+          { type: "CHECK_READY", repairIfMissing: navigator.onLine },
+          [channel.port2],
+        );
       } else report({ ready: false });
     };
     if (ready.active) inspect();

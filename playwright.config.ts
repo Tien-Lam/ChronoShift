@@ -1,4 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
+const port = process.env.PLAYWRIGHT_PORT || "4173";
 export default defineConfig({
   testDir: "./e2e",
   testIgnore: "**/subpath.spec.ts",
@@ -9,7 +10,7 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   reporter: [["list"], ["html", { open: "never" }]],
   use: {
-    baseURL: "http://127.0.0.1:4173",
+    baseURL: `http://127.0.0.1:${port}`,
     locale: "en-AU",
     timezoneId: "Australia/Sydney",
     trace: "retain-on-failure",
@@ -26,8 +27,8 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "CHRONOSHIFT_TEST_SERVER=1 bun scripts/serve-web.ts",
-    url: "http://127.0.0.1:4173",
+    command: `PORT=${port} CHRONOSHIFT_TEST_SERVER=1 bun scripts/serve-web.ts`,
+    url: `http://127.0.0.1:${port}`,
     reuseExistingServer: false,
   },
 });

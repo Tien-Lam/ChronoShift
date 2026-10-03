@@ -6,7 +6,7 @@
   "packageManager": "bun@1.4.0",
   "scripts": {
     "dev": "bunx --bun vite --host 127.0.0.1",
-    "build": "bun run typecheck && bunx --bun vite build && bun scripts/build-offline.ts",
+    "build": "bun run typecheck && bun scripts/third-party-notices.ts && bunx --bun vite build && bun scripts/build-offline.ts",
     "preview": "bun scripts/serve-web.ts",
     "typecheck": "bunx --bun tsc --noEmit",
     "test": "bun test tests",

@@ -1063,3 +1063,5 @@ Keeping Android release instructions and automated model maintenance active afte
 ## Prepared publication payload
 
 [`offline-web-roadmap.linear.json`](offline-web-roadmap.linear.json) preserves the approved scope and planning keys. The initiative, projects, milestones, tickets and dependencies have been published and verified; real IDs and URLs are in [`offline-web-linear-map.json`](offline-web-linear-map.json). Current implementation evidence and remaining release gates are in [`web-execution-report.md`](web-execution-report.md).
+
+Execution follow-up: [TIE-322 — Triage retained Android conversion tests](https://linear.app/tienlam/issue/TIE-322/triage-the-110-failures-in-retained-android-conversion-tests) records 110 failures out of 855 tests after the obsolete SDK setup package was fixed. It belongs to the delivery project/release-candidate milestone and blocks Android cutover pending triage. The original 30-ticket plan is preserved; there are now 31 tickets including this discovered follow-up.

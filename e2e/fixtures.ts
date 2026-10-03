@@ -44,7 +44,10 @@ export const test = base.extend<{ origin: Origin | undefined }>({
     }
   },
   baseURL: async ({ origin }, use) =>
-    use(origin?.url || "http://127.0.0.1:4173"),
+    use(
+      origin?.url ||
+        `http://127.0.0.1:${process.env.PLAYWRIGHT_PORT || "4173"}`,
+    ),
 });
 export async function disconnect(
   context: BrowserContext,

@@ -4,17 +4,33 @@ const BASE = __BASE__;
 const PRECACHE = __PRECACHE__;
 const CACHE = `chronoshift-${VERSION}`;
 const assetPaths = new Set(PRECACHE);
+async function fill(cache) {
+  for (const path of PRECACHE) {
+    const response = await fetch(new Request(path,{cache:'reload',credentials:'same-origin'}));
+    if (!response.ok || response.type === 'opaque') throw new Error('Incomplete offline assets');
+    const type=response.headers.get('content-type')||'';
+    if ((path.endsWith('.js')&&!/javascript/.test(type)) || (path.endsWith('.css')&&!/text\/css/.test(type)) || (path.endsWith('.html')&&!/text\/html/.test(type))) throw new Error('Unexpected offline asset type');
+    await cache.put(path,response);
+  }
+}
+let repairing;
+function repair() {
+  if (repairing) return repairing;
+  repairing=(async()=>{
+    const stage=`chronoshift-staging-${VERSION}`;
+    try {
+      const temporary=await caches.open(stage);await fill(temporary);
+      const active=await caches.open(CACHE);
+      for (const path of PRECACHE) await active.put(path,await temporary.match(path));
+    } finally {await caches.delete(stage);}
+  })().finally(()=>{repairing=undefined;});
+  return repairing;
+}
 self.addEventListener('install', event => {
   event.waitUntil((async()=>{
     const cache = await caches.open(CACHE);
     try {
-      for (const path of PRECACHE) {
-        const response = await fetch(new Request(path,{cache:'reload',credentials:'same-origin'}));
-        if (!response.ok || response.type === 'opaque') throw new Error('Incomplete offline assets');
-        const type=response.headers.get('content-type')||'';
-        if ((path.endsWith('.js')&&!/javascript/.test(type)) || (path.endsWith('.css')&&!/text\/css/.test(type)) || (path.endsWith('.html')&&!/text\/html/.test(type))) throw new Error('Unexpected offline asset type');
-        await cache.put(path,response);
-      }
+      await fill(cache);
     } catch (error) { await caches.delete(CACHE); throw error; }
   })());
 });
@@ -25,7 +41,7 @@ self.addEventListener('activate',event=>{
     // When there is only one tab, retain the previous version for recovery.
     const clients = await self.clients.matchAll({type:'window',includeUncontrolled:true});
     if (clients.length <= 1) {
-      const versions = (await caches.keys()).filter(k=>k.startsWith('chronoshift-'));
+      const versions = (await caches.keys()).filter(k=>k.startsWith('chronoshift-')&&!k.startsWith('chronoshift-staging-'));
       const previous = versions.filter(k=>k!==CACHE).at(-1);
       await Promise.all(versions.filter(k=>k!==CACHE && k!==previous).map(k=>caches.delete(k)));
     }
@@ -35,7 +51,8 @@ self.addEventListener('message',event=>{
   if (event.data?.type === 'ACTIVATE_UPDATE') event.waitUntil(self.skipWaiting());
   if (event.data?.type === 'CHECK_READY') event.waitUntil((async()=>{
     const cache = await caches.open(CACHE);
-    const ready = (await Promise.all(PRECACHE.map(path=>cache.match(path)))).every(Boolean);
+    let ready = (await Promise.all(PRECACHE.map(path=>cache.match(path)))).every(Boolean);
+    if(!ready&&event.data.repairIfMissing){try{await repair();}catch{}ready=(await Promise.all(PRECACHE.map(path=>cache.match(path)))).every(Boolean);}
     event.ports[0]?.postMessage({ready,version:VERSION});
   })());
 });

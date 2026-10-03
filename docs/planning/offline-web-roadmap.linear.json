@@ -1102,5 +1102,16 @@
     "recommendation": "Temporal span tagging + deterministic Chrono/timezone normalization",
     "firstBenchmarkCandidate": "knowledgator/gliner-bi-edge-v2.0",
     "proposedCompactTrainedCandidate": "prajjwal1/bert-tiny"
-  }
+  },
+  "executionFollowups": [
+    {
+      "key": "D7",
+      "title": "Triage the 110 failures in retained Android conversion tests",
+      "description": "## Problem\nAfter repairing SDK setup, the retained Android CI executes 855 unit tests and reports 110 failures across conversion, merge and ambiguity cases. Android app/test sources are unchanged in the web migration PR. This requires explicit triage before cutover; do not hide the failures or treat synthetic outputs as browser accuracy evidence.\n\n## Scope\n- Reproduce against the unchanged base using the corrected SDK setup; group failures by underlying cause and distinguish environment/date assumptions from source defects.\n- Compare affected cases with the independent web fixtures and extend exact browser expectations where coverage is missing.\n- Decide whether a small Android maintenance fix is needed during migration or whether the failure belongs in the documented retirement decision.\n- Keep the retained Android checks visible; do not disable assertions solely to obtain a green check.\n\n## Acceptance criteria\n- [ ] Failure groups and reproducible baseline evidence are documented.\n- [ ] Any affected web launch behavior has independently specified exact fixtures.\n- [ ] Necessary maintenance fixes or explicit cutover decisions are tracked and the PR/check disposition is clear.\n\n## Evidence\n- [Android CI run: 110/855 failing](https://github.com/Tien-Lam/ChronoShift/actions/runs/37126768788)\n- [Offline web PR #16](https://github.com/Tien-Lam/ChronoShift/pull/16)\n- Initial SDK failure was the obsolete `tools` package; setup/lint now pass with `platform-tools`.\n",
+      "id": "TIE-322",
+      "uuid": "acbcf5f0-e1de-431a-88da-67e65dff489b",
+      "url": "https://linear.app/tienlam/issue/TIE-322/triage-the-110-failures-in-retained-android-conversion-tests",
+      "state": "Todo"
+    }
+  ]
 }
