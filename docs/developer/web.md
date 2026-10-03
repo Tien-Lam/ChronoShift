@@ -39,6 +39,8 @@ The site is https://tien-lam.github.io/ChronoShift/, owned by the repository own
 
 For rollback, select a successful **GitHub Pages** run at the desired source SHA, then `gh run rerun RUN_ID --repo Tien-Lam/ChronoShift`. The workflow rebuilds the pinned source and replaces the site; the release file/cache version returns to that source. Re-running a deployment does not revert Git branches. Verify the live release file and hosted checks, then ask an existing client to check for an update and choose **Update now**. Users with old tabs continue on their cached release until opting in. A server rollback cannot forcibly revoke an installed offline version. To restore the latest release, re-run its successful Pages run. Concurrent publications are queued rather than canceled.
 
+For a reproducible existing-client proof, run `bun scripts/verify-hosted-rollout.ts COMMAND_JSON REPORT_JSON` against the initial deployment. Keep it running while deploying the next version, re-running the old run for rollback, and restoring the new run. After each deployment, write `{ "stage": "update" | "rollback" | "restore", "sourceCommit": "FULL_SHA" }` to COMMAND_JSON. The probe requires a waiting update, checks that the old page stays active until opt-in, verifies draft preservation, and closes/reopens offline to convert a fresh message after every transition. It writes a report only after actual assertions pass.
+
 ## Architecture
 
 - `engine/parser.ts`: pinned Chrono English parsers with bounded military/shorthand/range extensions. No Android bridge or model runtime.

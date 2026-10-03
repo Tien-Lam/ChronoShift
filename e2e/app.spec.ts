@@ -297,7 +297,10 @@ test("an update waits, preserves draft on opt-in, and survives a partial next up
   await expect(page.getByLabel("Message with a date or time")).toHaveValue(
     "Keep April 9, 2026 3pm EST",
   );
-  await page.getByRole("button", { name: "Update now" }).click();
+  await Promise.all([
+    page.waitForEvent("domcontentloaded"),
+    page.getByRole("button", { name: "Update now" }).click(),
+  ]);
   await expect(page.getByLabel("Message with a date or time")).toHaveValue(
     "Keep April 9, 2026 3pm EST",
   );

@@ -503,7 +503,7 @@
       "key": "U2",
       "project": "experience",
       "milestone": "usable",
-      "title": "Build the responsive conversion page and request state",
+      "title": "Build the adaptive conversion page for desktop, mobile and foldables",
       "priority": 2,
       "size": "M",
       "blockedBy": [
@@ -515,7 +515,8 @@
       "scope": [
         "Implement labeled multiline input, examples, Convert, Clear and result region.",
         "Wire request/cancellation state to F10; preserve editable input with results.",
-        "Support mobile keyboards and a documented keyboard shortcut without stealing normal textarea Enter."
+        "Support mobile keyboards and a documented keyboard shortcut without stealing normal textarea Enter.",
+        "Adapt to cover screens, tablets, desktop windows and foldable screen segments, preserving work during resize; respect safe areas and short landscape viewports."
       ],
       "acceptance": [
         "Paste/type → Convert renders real engine results on phone and desktop.",
@@ -1014,7 +1015,7 @@
       ],
       "problem": "APK releases must be replaced with a stable HTTPS origin suitable for service workers.",
       "scope": [
-        "Choose the static hosting target/domain and base path during implementation; document ownership and cost.",
+        "Publish on GitHub Pages at https://tien-lam.github.io/ChronoShift/ with /ChronoShift/ as the base path; document repository ownership and public-repository hosting.",
         "Build preview/release deployment with correct MIME, scope, headers and cache policy; no conversion server required.",
         "Release only after candidate gates pass, retain immutable release artifacts and exercise N→N+1 update/rollback on the deployed origin.",
         "Document readiness, first online load and installation behavior."
@@ -1029,8 +1030,8 @@
         "README.md"
       ],
       "optional": false,
-      "state": "Backlog",
-      "description": "## Problem\nAPK releases must be replaced with a stable HTTPS origin suitable for service workers.\n\n## Scope\n- Choose the static hosting target/domain and base path during implementation; document ownership and cost.\n- Build preview/release deployment with correct MIME, scope, headers and cache policy; no conversion server required.\n- Release only after candidate gates pass, retain immutable release artifacts and exercise N→N+1 update/rollback on the deployed origin.\n- Document readiness, first online load and installation behavior.\n\n## Acceptance criteria\n- [ ] Production HTTPS URL works in browser and installed modes; new input converts after offline restart.\n- [ ] Deployment checks catch bad base paths, mixed-content/CDN dependencies and incorrect service-worker caching.\n- [ ] Rollback restores a known working release with existing-client update behavior verified.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: D2, D3, D4\n\n## Repository evidence\n- [.github/workflows/release.yml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/.github/workflows/release.yml)\n- [README.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/README.md)"
+      "state": "In Progress",
+      "description": "## Problem\nAPK releases must be replaced with a stable HTTPS origin suitable for service workers.\n\n## Scope\n- Publish on GitHub Pages at https://tien-lam.github.io/ChronoShift/ with /ChronoShift/ as the base path; document repository ownership and public-repository hosting.\n- Build preview/release deployment with correct MIME, scope, headers and cache policy; no conversion server required.\n- Release only after candidate gates pass, retain immutable release artifacts and exercise N→N+1 update/rollback on the deployed origin.\n- Document readiness, first online load and installation behavior.\n\n## Acceptance criteria\n- [ ] Production HTTPS URL works in browser and installed modes; new input converts after offline restart.\n- [ ] Deployment checks catch bad base paths, mixed-content/CDN dependencies and incorrect service-worker caching.\n- [ ] Rollback restores a known working release with existing-client update behavior verified.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: D2, D3, D4\n\n## Repository evidence\n- [.github/workflows/release.yml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/.github/workflows/release.yml)\n- [README.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/README.md)"
     },
     {
       "key": "D6",
@@ -1113,5 +1114,13 @@
       "url": "https://linear.app/tienlam/issue/TIE-322/triage-the-110-failures-in-retained-android-conversion-tests",
       "state": "In Progress"
     }
-  ]
+  ],
+  "hosting": {
+    "provider": "GitHub Pages",
+    "url": "https://tien-lam.github.io/ChronoShift/",
+    "basePath": "/ChronoShift/",
+    "workflow": ".github/workflows/pages.yml",
+    "previewBranch": "codex/offline-web-migration",
+    "primaryBranch": "main"
+  }
 }

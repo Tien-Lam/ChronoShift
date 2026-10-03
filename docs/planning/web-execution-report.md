@@ -10,6 +10,16 @@ The typed engine uses pinned Chrono and bundled Temporal in a cancellable worker
 
 Builds include notices for all six production runtime packages (MIT, ISC and Apache-2.0). The PWA precaches all required assets, confirms readiness, reopens offline, accepts supported offline POST shares, persists preferences only, and waits for an explicit update action. Temporary shared text/update drafts are consumed and removed. Partial updates retain the current version.
 
+## GitHub Pages and adaptive preview, 4 October 2026
+
+The user chose GitHub Pages. The preview is published at https://tien-lam.github.io/ChronoShift/ through pinned official Pages Actions, after full web verification. The `github-pages` environment permits only main and the migration branch; PR events cannot publish. The first published source is ee5d8207841a10dd7a33285356ba0303e55625bc, [successful deployment run](https://github.com/Tien-Lam/ChronoShift/actions/runs/37129610428). HTTPS is enforced, all assets are under `/ChronoShift/`, and the static HTML enforces a same-origin CSP plus no-referrer policy. Pages header limitations are recorded in the developer guide.
+
+The adaptive layout uses fluid/container reflow, safe-area padding, 16px controls, touch targets and short-landscape spacing. Ten viewport sizes from 280 to 1920 CSS pixels retain draft/results in five browser profiles. Three Chromium tests exercise actual viewport-segment media queries: vertical-hinge panel separation, upper-screen tabletop scrolling and notch/home-indicator insets. Browsers without the segment API retain the normal responsive layout. The API follows the [Chrome viewport segments documentation](https://developer.chrome.com/blog/viewport-segments-api-shipped).
+
+68 scenarios pass locally (the original 55 plus 10 responsive and three foldable scenarios), with the additional repository-subpath check passing. Initial Pages CI completed successfully with 67 first-pass scenarios and one successful retry: the iPhone update test inspected storage before reload finished. The test now explicitly waits for DOMContentLoaded; five consecutive local iPhone update runs pass. Four additional checks pass against the public HTTPS origin in desktop and Pixel browser profiles, including offline close/reopen with fresh input, local-only asset requests, manifest/scope/MIME and an actually blocked inline script.
+
+The release file identifies the source commit and participates in the cache version. Hosted update/rollback evidence is tracked separately from preview publishing. Physical Android/iPhone/foldable installation, folding/keyboard behavior, screen-reader/task acceptance and phone performance remain open gates; publishing the preview does not mark Android retirement complete.
+
 ## Local verification, 3 October 2026
 
 - Type check and production build pass with the locked mise/Bun toolchain.
