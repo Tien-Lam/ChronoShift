@@ -51,3 +51,17 @@ bun run test:hosted
 Four live HTTPS checks cover desktop/Pixel profiles, manifest/scope/MIME, effective CSP, local-only requests and fresh input after offline close/reopen. Set `HOSTED_EXPECTED_COMMIT` to assert a particular full release SHA. The existing-client update/rollback probe and artifact restoration procedure are in [web.md](web.md).
 
 Emulation does not certify physical installation, folding, virtual keyboards, actual browser zoom, screen readers or representative-phone performance. Follow [the browser smoke test](device-smoke-test.md) and record these results in Linear.
+
+## CI efficiency
+
+CI runs all 68 browser scenarios using four workers on the public repository’s four-core Linux runner. It installs Chromium’s headless shell, Firefox and WebKit; it does not download the unused headed Chromium binary. The root build and repository-path build are both tested. Publishing uploads the verified repository-path files directly, without rebuilding in a separate job.
+
+A publishing push and its PR intentionally verify different refs: the branch head and GitHub’s merge ref. After cutover, `main` is checked only through Pages, avoiding a second independent push verification. Superseded verification is canceled per branch/PR while active deployments are protected. Successful PRs upload no diagnostics; failures retain reports/traces for three days. Pages artifacts remain available for 14 days.
+
+Measure equivalent successful event pairs with the read-only `gh`-based tool:
+
+```bash
+bun scripts/ci-metrics.ts --baseline BASELINE_PR_RUN,BASELINE_PAGES_RUN --candidate NEW_PR_RUN,NEW_PAGES_RUN --output docs/planning/ci-efficiency.json
+```
+
+The report includes source commits, run links, every job/step duration, per-job rounded-minute estimates and artifact retention byte-hours. It exits unsuccessfully unless each usage reduction reaches 20%. This is a sample comparison, not an account-wide billing statement or a guarantee of future timings. Standard hosted runners are [free for public repositories](https://docs.github.com/en/billing/concepts/product-billing/github-actions); private-repository minute allowances and storage quotas still make reduced usage valuable.

@@ -1,8 +1,13 @@
 name: Web
 on:
   workflow_call:
-  push:
-    branches: [main]
+    inputs:
+      publish-pages:
+        description: Upload the verified repository-path build for deployment
+        type: boolean
+        default: false
+  # Publishing branches are verified by pages.yml through workflow_call.
+  # A PR still tests GitHub's merge ref, independently of its preview branch.
   pull_request:
     branches: [main]
 permissions:
@@ -11,31 +16,49 @@ jobs:
   web:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      contents: read
+      pages: read
+    concurrency:
+      group: web-verify-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db # v3
       - run: bun install --frozen-lockfile
       - run: bun run format:check
-      - run: bun run check
+      - name: Unit tests and production build
+        run: |
+          bun run test
+          bun run build
       - name: Verify the standalone conversion corpus audit
         run: |
           bun run corpus:audit
           git diff --exit-code -- docs/planning/corpus-audit.json
       - name: Install browser engines and OS libraries
-        run: bunx --bun playwright install --with-deps chromium firefox webkit
+        run: bunx --bun playwright install --with-deps --only-shell chromium firefox webkit
       - run: bun run test:browser
+      - id: pages
+        if: inputs.publish-pages
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - name: Verify repository-subpath deployment
         run: |
-          BASE_PATH=/ChronoShift/ bun run build
-          bunx --bun playwright test --config=playwright.subpath.config.ts
           bun run build
-      - name: Publish static build and test diagnostics
-        if: always()
+          bunx --bun playwright test --config=playwright.subpath.config.ts
+        env:
+          BASE_PATH: ${{ inputs.publish-pages && format('{0}/', steps.pages.outputs.base_path) || '/ChronoShift/' }}
+      - name: Upload the verified Pages build
+        if: inputs.publish-pages
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: dist
+          retention-days: 14
+      - name: Publish failure diagnostics
+        if: failure()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: chronoshift-web-${{ github.sha }}
+          name: chronoshift-web-failure-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
-            dist/
             playwright-report/
             test-results/
-          retention-days: 14
+          retention-days: 3

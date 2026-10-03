@@ -10,7 +10,8 @@ export default defineConfig({
   timeout: 30000,
   expect: { timeout: 10000 },
   fullyParallel: true,
-  workers: process.env.CI ? 2 : 3,
+  // Standard Linux runners for this public repository have four CPU cores.
+  workers: process.env.CI ? 4 : 3,
   retries: process.env.CI ? 1 : 0,
   reporter: [["list"], ["html", { open: "never" }]],
   use: {

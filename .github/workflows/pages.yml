@@ -3,38 +3,26 @@ on:
   push:
     # Publish the migration preview now; remove this branch after web cutover.
     branches: [main, codex/offline-web-migration]
+    paths-ignore:
+      - "**/*.md"
+      - "docs/design/**"
+      - "docs/planning/ci-efficiency.json"
   workflow_dispatch:
 permissions:
   contents: read
-concurrency:
-  group: github-pages
-  cancel-in-progress: false
+  pages: read
 jobs:
   verify:
     uses: ./.github/workflows/web.yml
-  build:
+    with:
+      publish-pages: true
+  deploy:
     needs: verify
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: read
-    steps:
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
-      - uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db # v3
-      - run: bun install --frozen-lockfile
-      - id: pages
-        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
-      - name: Build at the Pages repository path
-        run: bun run build
-        env:
-          BASE_PATH: ${{ steps.pages.outputs.base_path }}/
-      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
-        with:
-          path: dist
-          retention-days: 14
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
     permissions:
       pages: write
       id-token: write
