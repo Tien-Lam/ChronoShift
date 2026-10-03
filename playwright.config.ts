@@ -1,0 +1,33 @@
+import { defineConfig, devices } from "@playwright/test";
+export default defineConfig({
+  testDir: "./e2e",
+  testIgnore: "**/subpath.spec.ts",
+  timeout: 30000,
+  expect: { timeout: 10000 },
+  fullyParallel: true,
+  workers: process.env.CI ? 2 : 3,
+  retries: process.env.CI ? 1 : 0,
+  reporter: [["list"], ["html", { open: "never" }]],
+  use: {
+    baseURL: "http://127.0.0.1:4173",
+    locale: "en-AU",
+    timezoneId: "Australia/Sydney",
+    trace: "retain-on-failure",
+    screenshot: "only-on-failure",
+  },
+  projects: [
+    { name: "chromium", use: { ...devices["Desktop Chrome"] } },
+    { name: "firefox", use: { ...devices["Desktop Firefox"] } },
+    { name: "webkit", use: { ...devices["Desktop Safari"] } },
+    { name: "android-emulation", use: { ...devices["Pixel 7"] } },
+    {
+      name: "iphone-emulation",
+      use: { ...devices["iPhone 13"], defaultBrowserType: "webkit" },
+    },
+  ],
+  webServer: {
+    command: "CHRONOSHIFT_TEST_SERVER=1 bun scripts/serve-web.ts",
+    url: "http://127.0.0.1:4173",
+    reuseExistingServer: false,
+  },
+});

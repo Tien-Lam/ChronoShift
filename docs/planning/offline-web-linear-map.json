@@ -1,0 +1,239 @@
+{
+  "initiative": {
+    "id": "I-4",
+    "uuid": "0b5f8e78-6d80-476a-9659-535aa5f0e8f4",
+    "url": "https://linear.app/tienlam/initiative/chronoshift-simple-offline-web-app-d90101850ba1"
+  },
+  "projects": {
+    "foundation": {
+      "id": "P-TIE-14",
+      "uuid": "1b014dbc-997d-43eb-8348-8e3423366fe9",
+      "url": "https://linear.app/tienlam/project/chronoshift-web-conversion-foundations-39a0ab099497"
+    },
+    "experience": {
+      "id": "P-TIE-15",
+      "uuid": "45f37141-2933-4c97-b807-4cd34e5a8532",
+      "url": "https://linear.app/tienlam/project/chronoshift-simple-web-experience-a5ef2bb5c20c"
+    },
+    "offline": {
+      "id": "P-TIE-16",
+      "uuid": "dd88bc63-3bf3-416e-b819-e7092d8014e5",
+      "url": "https://linear.app/tienlam/project/chronoshift-offline-pwa-dca3345bd8d8"
+    },
+    "delivery": {
+      "id": "P-TIE-17",
+      "uuid": "302fdd5f-a683-490b-9c4b-71073e0dd834",
+      "url": "https://linear.app/tienlam/project/chronoshift-web-delivery-and-android-cutover-dab90fb49a74"
+    }
+  },
+  "milestones": {
+    "foundation/baseline": {
+      "id": "563034f1-6adb-4c03-8656-cba38ec9b8df",
+      "name": "Contract & browser baseline",
+      "description": "Conversion/UX contract recorded, reproducible web scaffold builds, portable exact fixtures exist, and the timezone adapter works on the target browser matrix.",
+      "progress": 0,
+      "sortOrder": 65
+    },
+    "foundation/parity": {
+      "id": "4a977be3-d961-4b27-b91c-045d0e34d1c1",
+      "name": "Conversion parity",
+      "description": "Real browser parser passes the approved fixture set: date context/ranges/order, fixed offsets vs IANA DST, supported cities and Unix seconds, ambiguity and deduplication. Cancellation and input limits are verified.",
+      "progress": 0,
+      "sortOrder": 1162
+    },
+    "experience/usable": {
+      "id": "015e5e0e-88d6-40ee-a77a-481b10521575",
+      "name": "Usable conversion flow",
+      "description": "The responsive core page converts real input, shows original text and local date/time/zone, makes ambiguous options clear, and provides a searchable timezone override.",
+      "progress": 0,
+      "sortOrder": -57
+    },
+    "experience/polish": {
+      "id": "0569b268-af61-4fd2-8309-ec07ae448c40",
+      "name": "Accessible, low-friction experience",
+      "description": "Copy/paste fallbacks, errors and correction, empty/large-input states, keyboard/screen reader support and a small task-based usability check all pass.",
+      "progress": 0,
+      "sortOrder": 861
+    },
+    "offline/ready": {
+      "id": "022a0291-2b00-406e-9ac8-955c84e8639c",
+      "name": "Offline-ready PWA",
+      "description": "App shell/parser/data are cached, readiness is accurate, the app reopens and converts fresh input without networking, preferences survive normal restarts, and installation works where supported.",
+      "progress": 0,
+      "sortOrder": 14
+    },
+    "offline/resilient": {
+      "id": "5ce0ae4b-2370-45b9-b87b-3ef5c6977d04",
+      "name": "Safe updates & offline entry points",
+      "description": "Version updates cannot mix incompatible assets or erase active input; supported installed share targets work offline through POST, and offline/storage/upgrade regressions are covered.",
+      "progress": 0,
+      "sortOrder": 915
+    },
+    "delivery/candidate": {
+      "id": "dd4052cc-9fd3-4bc9-8366-d9921b9f7f19",
+      "name": "Web release candidate",
+      "description": "Web CI, exact browser acceptance, offline checks, accessibility evidence, performance budgets and privacy audit pass with no unresolved conversion correctness defects.",
+      "progress": 0,
+      "sortOrder": -1
+    },
+    "delivery/cutover": {
+      "id": "897e485b-5c7b-4ee1-8769-df0af789a3aa",
+      "name": "Web becomes the primary app",
+      "description": "HTTPS production release and rollback are proven, usage/developer docs describe the web product, and Android release/model/dependency workflows are retired without deleting history.",
+      "progress": 0,
+      "sortOrder": 1032
+    }
+  },
+  "tickets": {
+    "F1": {
+      "id": "TIE-292",
+      "uuid": "edb32b80-ed28-4217-abd5-92acc81b4573",
+      "url": "https://linear.app/tienlam/issue/TIE-292/define-the-web-product-contract-and-migration-acceptance-cases"
+    },
+    "F2": {
+      "id": "TIE-293",
+      "uuid": "545b735b-4e0b-4d19-8235-37244629a708",
+      "url": "https://linear.app/tienlam/issue/TIE-293/create-the-typescript-web-scaffold-with-bun-and-mise"
+    },
+    "F3": {
+      "id": "TIE-294",
+      "uuid": "d2ae4d46-4800-444f-af4e-54bd3f4367e9",
+      "url": "https://linear.app/tienlam/issue/TIE-294/turn-kotlin-examples-into-a-portable-exact-conversion-fixture-suite"
+    },
+    "F4": {
+      "id": "TIE-295",
+      "uuid": "20199913-1edf-49ac-b96f-a1ebadc3071c",
+      "url": "https://linear.app/tienlam/issue/TIE-295/implement-a-browser-timezone-adapter-with-explicit-dst-semantics"
+    },
+    "F5": {
+      "id": "TIE-296",
+      "uuid": "13feda34-091e-40a6-96a9-8fb40f297dd6",
+      "url": "https://linear.app/tienlam/issue/TIE-296/replace-quickjs-with-a-maintained-browser-chrono-node-adapter"
+    },
+    "F6": {
+      "id": "TIE-297",
+      "uuid": "dd84ec43-e1d5-4208-9c1f-93ddcab8ff1d",
+      "url": "https://linear.app/tienlam/issue/TIE-297/port-contextual-date-propagation-range-endpoints-and-source-ordering"
+    },
+    "F7": {
+      "id": "TIE-298",
+      "uuid": "2bd04667-263b-47c6-ae52-4e94588d4431",
+      "url": "https://linear.app/tienlam/issue/TIE-298/port-abbreviation-resolution-and-preserve-ambiguous-timezone"
+    },
+    "F8": {
+      "id": "TIE-299",
+      "uuid": "5ea8c1f3-ed9a-492c-8de9-b5f37834d20f",
+      "url": "https://linear.app/tienlam/issue/TIE-299/port-unix-seconds-and-a-deterministic-offline-city-resolver"
+    },
+    "F9": {
+      "id": "TIE-300",
+      "uuid": "3e67d97d-9527-49c7-a63c-01788a5657cc",
+      "url": "https://linear.app/tienlam/issue/TIE-300/port-result-merging-without-losing-distinct-source-interpretations"
+    },
+    "F10": {
+      "id": "TIE-301",
+      "uuid": "68da910d-164f-4ef1-863e-2c4120413b4f",
+      "url": "https://linear.app/tienlam/issue/TIE-301/build-a-cancellable-local-conversion-pipeline-with-input-limits"
+    },
+    "F11": {
+      "id": "TIE-302",
+      "uuid": "efb3942d-352e-4e6a-a2e3-69e8d59371b3",
+      "url": "https://linear.app/tienlam/issue/TIE-302/benchmark-lightweight-temporal-span-models-against-the-chrono-baseline"
+    },
+    "U1": {
+      "id": "TIE-303",
+      "uuid": "0c6e1532-0e46-40e5-9ffc-843f9d6e32d6",
+      "url": "https://linear.app/tienlam/issue/TIE-303/design-the-minimal-paste-convert-copy-interface"
+    },
+    "U2": {
+      "id": "TIE-304",
+      "uuid": "96303fae-3855-4acf-9243-e4d7be7888cc",
+      "url": "https://linear.app/tienlam/issue/TIE-304/build-the-responsive-conversion-page-and-request-state"
+    },
+    "U3": {
+      "id": "TIE-305",
+      "uuid": "4a3a567c-03a4-4a35-ad08-efe7e36380be",
+      "url": "https://linear.app/tienlam/issue/TIE-305/show-clear-conversion-cards-assumptions-ranges-and-ambiguity-choices"
+    },
+    "U4": {
+      "id": "TIE-306",
+      "uuid": "25f15b7c-a663-4319-82bd-93eb30c78f11",
+      "url": "https://linear.app/tienlam/issue/TIE-306/add-device-timezone-default-and-a-searchable-target-timezone-override"
+    },
+    "U5": {
+      "id": "TIE-307",
+      "uuid": "82496555-a1c0-40ea-92d7-99f011eee8e2",
+      "url": "https://linear.app/tienlam/issue/TIE-307/implement-user-triggered-paste-and-copy-with-permission-fallbacks"
+    },
+    "U6": {
+      "id": "TIE-308",
+      "uuid": "45c72ebe-5755-450c-999f-ad53df2b8c42",
+      "url": "https://linear.app/tienlam/issue/TIE-308/add-helpful-no-result-correction-and-large-input-recovery-states"
+    },
+    "U7": {
+      "id": "TIE-309",
+      "uuid": "105b7272-552b-4157-8a17-f33890930d8e",
+      "url": "https://linear.app/tienlam/issue/TIE-309/verify-accessibility-and-first-time-task-completion"
+    },
+    "P1": {
+      "id": "TIE-310",
+      "uuid": "c0c4ac7b-418c-4d03-ad55-6beab9363bcf",
+      "url": "https://linear.app/tienlam/issue/TIE-310/precache-the-complete-app-and-verify-offline-readiness"
+    },
+    "P2": {
+      "id": "TIE-311",
+      "uuid": "f4a3814b-334f-4347-b0f4-e5d0ff2e5114",
+      "url": "https://linear.app/tienlam/issue/TIE-311/add-a-pwa-manifest-and-unobtrusive-install-guidance"
+    },
+    "P3": {
+      "id": "TIE-312",
+      "uuid": "0431f474-1fcd-4555-a9fe-833bfa73003d",
+      "url": "https://linear.app/tienlam/issue/TIE-312/persist-minimal-preferences-and-recover-from-unavailable-browser"
+    },
+    "P4": {
+      "id": "TIE-313",
+      "uuid": "e72d7265-ae71-4930-bd5b-d7563e9d8e11",
+      "url": "https://linear.app/tienlam/issue/TIE-313/implement-safe-service-worker-upgrades-without-losing-active-input"
+    },
+    "P5": {
+      "id": "TIE-314",
+      "uuid": "7f9e84c8-b5d5-48e0-9c3e-134e61dc2f63",
+      "url": "https://linear.app/tienlam/issue/TIE-314/receive-shared-text-in-supported-installed-browsers-with-an-offline"
+    },
+    "P6": {
+      "id": "TIE-315",
+      "uuid": "e2c37c4c-f318-4519-beb4-230f1db6a3f3",
+      "url": "https://linear.app/tienlam/issue/TIE-315/automate-offline-restart-update-storage-and-share-regression-checks"
+    },
+    "D1": {
+      "id": "TIE-316",
+      "uuid": "f985199e-95a8-4bbd-8b6e-84e7d275af2c",
+      "url": "https://linear.app/tienlam/issue/TIE-316/add-reproducible-web-ci-and-browser-test-gates"
+    },
+    "D2": {
+      "id": "TIE-317",
+      "uuid": "cb9d3d22-1ba6-4aff-a87a-759ba2de81df",
+      "url": "https://linear.app/tienlam/issue/TIE-317/verify-exact-conversion-behavior-across-desktop-and-mobile-browsers"
+    },
+    "D3": {
+      "id": "TIE-318",
+      "uuid": "209fed7e-cce5-4285-b0e3-888e25789c5a",
+      "url": "https://linear.app/tienlam/issue/TIE-318/measure-startup-and-conversion-performance-on-a-representative-phone"
+    },
+    "D4": {
+      "id": "TIE-319",
+      "uuid": "9717d98e-b0d9-4f13-bd3c-2cc2986fc14f",
+      "url": "https://linear.app/tienlam/issue/TIE-319/audit-local-only-text-handling-and-production-web-security"
+    },
+    "D5": {
+      "id": "TIE-320",
+      "uuid": "0cc916f3-da61-42c5-80d9-52f89c6e2618",
+      "url": "https://linear.app/tienlam/issue/TIE-320/release-the-static-web-app-over-https-with-an-exercised-rollback"
+    },
+    "D6": {
+      "id": "TIE-321",
+      "uuid": "f821551a-6149-45dc-8ec1-30a72b09e5cc",
+      "url": "https://linear.app/tienlam/issue/TIE-321/make-the-web-app-primary-and-retire-active-android-delivery"
+    }
+  }
+}

@@ -1,0 +1,342 @@
+[
+  {
+    "name": "fixed EST in spring",
+    "text": "April 9, 2026 at 3pm EST",
+    "instants": ["2026-04-09T20:00:00Z"]
+  },
+  {
+    "name": "fixed PST in summer",
+    "text": "July 15, 2026 at 3pm PST",
+    "instants": ["2026-07-15T23:00:00Z"]
+  },
+  {
+    "name": "regional PT summer",
+    "text": "July 15, 2026 at 3pm PT",
+    "instants": ["2026-07-15T22:00:00Z"]
+  },
+  {
+    "name": "regional PT winter",
+    "text": "January 15, 2026 at 3pm PT",
+    "instants": ["2026-01-15T23:00:00Z"]
+  },
+  {
+    "name": "regional ET",
+    "text": "July 15, 2026 at 3pm ET",
+    "instants": ["2026-07-15T19:00:00Z"]
+  },
+  {
+    "name": "CST ambiguity",
+    "text": "April 9, 2026 at 3pm CST",
+    "instants": ["2026-04-09T21:00:00Z", "2026-04-09T07:00:00Z"]
+  },
+  {
+    "name": "IST ambiguity",
+    "text": "April 9, 2026 at 3pm IST",
+    "instants": ["2026-04-09T09:30:00Z", "2026-04-09T14:00:00Z"]
+  },
+  {
+    "name": "BST ambiguity",
+    "text": "April 9, 2026 at 3pm BST",
+    "instants": ["2026-04-09T14:00:00Z", "2026-04-09T09:00:00Z"]
+  },
+  {
+    "name": "AST ambiguity",
+    "text": "April 9, 2026 at 3pm AST",
+    "instants": ["2026-04-09T19:00:00Z", "2026-04-09T12:00:00Z"]
+  },
+  {
+    "name": "quarter hour offset",
+    "text": "2026-04-09 15:00 UTC+05:45",
+    "instants": ["2026-04-09T09:15:00Z"]
+  },
+  {
+    "name": "negative half hour offset",
+    "text": "2026-04-09 15:00 UTC-03:30",
+    "instants": ["2026-04-09T18:30:00Z"]
+  },
+  {
+    "name": "invalid minutes",
+    "text": "April 9, 2026 15:00 UTC+05:75",
+    "instants": [],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "invalid offset bound",
+    "text": "April 9, 2026 15:00 UTC+15:00",
+    "instants": [],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "ISO offset",
+    "text": "2026-04-09T15:00:30+02:00",
+    "instants": ["2026-04-09T13:00:30Z"]
+  },
+  {
+    "name": "relative tomorrow",
+    "text": "Tomorrow at 9am UTC",
+    "instants": ["2026-04-07T09:00:00Z"]
+  },
+  {
+    "name": "relative in Tokyo",
+    "text": "Tomorrow at 9am in Tokyo",
+    "instants": ["2026-04-07T00:00:00Z"]
+  },
+  {
+    "name": "source date across midnight",
+    "text": "9am JST",
+    "now": "2026-04-06T23:00:00Z",
+    "instants": ["2026-04-07T00:00:00Z"]
+  },
+  {
+    "name": "city Tokyo",
+    "text": "April 9, 2026 3pm in Tokyo",
+    "instants": ["2026-04-09T06:00:00Z"]
+  },
+  {
+    "name": "city Mumbai",
+    "text": "April 9, 2026 3pm in Mumbai",
+    "instants": ["2026-04-09T09:30:00Z"]
+  },
+  {
+    "name": "city Berlin summer",
+    "text": "July 15, 2026 3pm in Berlin",
+    "instants": ["2026-07-15T13:00:00Z"]
+  },
+  {
+    "name": "accented city",
+    "text": "April 9, 2026 3pm in São Paulo",
+    "instants": ["2026-04-09T18:00:00Z"]
+  },
+  {
+    "name": "unique typo disclosure",
+    "text": "April 9, 2026 3pm in Tokyp",
+    "instants": ["2026-04-09T06:00:00Z"],
+    "assumption": "City interpreted"
+  },
+  {
+    "name": "unknown city",
+    "text": "April 9, 2026 3pm in Atlantis",
+    "instants": [],
+    "warning": "Couldn't identify"
+  },
+  {
+    "name": "unknown abbreviation",
+    "text": "April 9, 2026 3pm XYZ",
+    "instants": [],
+    "warning": "Unknown timezone"
+  },
+  {
+    "name": "IANA identity",
+    "text": "April 9, 2026 3pm America/New_York",
+    "instants": ["2026-04-09T19:00:00Z"]
+  },
+  {
+    "name": "spring gap",
+    "text": "March 8, 2026 2:30am America/New_York",
+    "instants": [],
+    "warning": "doesn't exist"
+  },
+  {
+    "name": "autumn fold",
+    "text": "November 1, 2026 1:30am America/New_York",
+    "instants": ["2026-11-01T05:30:00Z", "2026-11-01T06:30:00Z"]
+  },
+  {
+    "name": "Sydney spring gap",
+    "text": "October 4, 2026 2:30am Australia/Sydney",
+    "instants": [],
+    "warning": "doesn't exist"
+  },
+  {
+    "name": "Sydney autumn fold",
+    "text": "April 5, 2026 2:30am Australia/Sydney",
+    "instants": ["2026-04-04T15:30:00Z", "2026-04-04T16:30:00Z"]
+  },
+  {
+    "name": "date only",
+    "text": "April 9, 2026",
+    "instants": [],
+    "dates": ["2026-04-09"]
+  },
+  {
+    "name": "month day convention",
+    "text": "04/09/2026 at 3pm UTC",
+    "instants": ["2026-04-09T15:00:00Z"]
+  },
+  {
+    "name": "day month convention",
+    "text": "04/09/2026 at 3pm UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-09-04T15:00:00Z"]
+  },
+  {
+    "name": "header date context",
+    "text": "April 9, 2026:\n9am UTC\n3pm UTC",
+    "instants": ["2026-04-09T09:00:00Z", "2026-04-09T15:00:00Z"]
+  },
+  {
+    "name": "paragraph isolation",
+    "text": "April 9, 2026 at 9am UTC\n\nSeparate meeting at 3pm UTC",
+    "instants": ["2026-04-09T09:00:00Z", "2026-04-06T15:00:00Z"]
+  },
+  {
+    "name": "second explicit date",
+    "text": "April 9, 2026 9am UTC; April 10, 2026 3pm UTC",
+    "instants": ["2026-04-09T09:00:00Z", "2026-04-10T15:00:00Z"]
+  },
+  {
+    "name": "same date range",
+    "text": "April 9, 2026 9am-11am UTC",
+    "instants": ["2026-04-09T09:00:00Z", "2026-04-09T11:00:00Z"]
+  },
+  {
+    "name": "overnight range",
+    "text": "April 9, 2026 11pm-1am UTC",
+    "instants": ["2026-04-09T23:00:00Z", "2026-04-10T01:00:00Z"]
+  },
+  {
+    "name": "Unix seconds",
+    "text": "Epoch 1775736000",
+    "instants": ["2026-04-09T12:00:00Z"]
+  },
+  {
+    "name": "Unix text order",
+    "text": "1775736000 and April 10, 2026 3pm UTC",
+    "instants": ["2026-04-09T12:00:00Z", "2026-04-10T15:00:00Z"]
+  },
+  {
+    "name": "duplicate mentions",
+    "text": "April 9, 2026 3pm UTC; April 9, 2026 3pm UTC",
+    "instants": ["2026-04-09T15:00:00Z"],
+    "occurrences": 2
+  },
+  {
+    "name": "distinct dates retained",
+    "text": "April 9, 2026 3pm UTC; April 10, 2026 3pm UTC",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-10T15:00:00Z"]
+  },
+  {
+    "name": "missing timezone source default",
+    "text": "April 9, 2026 3pm",
+    "sourceZone": "Europe/London",
+    "instants": ["2026-04-09T14:00:00Z"],
+    "assumption": "Source timezone assumed"
+  },
+  {
+    "name": "no matching time",
+    "text": "Just saying hello",
+    "instants": []
+  },
+  {
+    "name": "HTML remains text",
+    "text": "<img src=x onerror=alert(1)> April 9, 2026 3pm UTC",
+    "instants": ["2026-04-09T15:00:00Z"]
+  },
+  {
+    "name": "relative source date at UTC midnight",
+    "text": "Tomorrow at 9am JST",
+    "now": "2026-04-06T23:00:00Z",
+    "instants": ["2026-04-08T00:00:00Z"]
+  },
+  {
+    "name": "relative header in source zone",
+    "text": "Tomorrow:\n9am JST",
+    "now": "2026-04-06T23:00:00Z",
+    "instants": ["2026-04-08T00:00:00Z"]
+  },
+  {
+    "name": "unrelated sentence date reset",
+    "text": "April 9, 2026 9am UTC. Another meeting at 3pm UTC",
+    "instants": ["2026-04-09T09:00:00Z", "2026-04-06T15:00:00Z"]
+  },
+  {
+    "name": "military time with fixed zone",
+    "text": "April 9, 2026 1430 PST",
+    "instants": ["2026-04-09T22:30:00Z"]
+  },
+  {
+    "name": "military Zulu",
+    "text": "1200 Zulu",
+    "instants": ["2026-04-06T12:00:00Z"]
+  },
+  {
+    "name": "shorthand meridiem",
+    "text": "April 9, 2026 3p EST",
+    "instants": ["2026-04-09T20:00:00Z"]
+  },
+  {
+    "name": "between range",
+    "text": "April 9, 2026 between 3 and 5pm ET",
+    "instants": ["2026-04-09T19:00:00Z", "2026-04-09T21:00:00Z"]
+  },
+  {
+    "name": "unknown IANA wins over adjacent UTC token",
+    "text": "April 9, 2026 3pm America/Atlantis UTC",
+    "instants": [],
+    "warning": "Unknown timezone"
+  },
+  {
+    "name": "leap day retained",
+    "text": "February 29, 2024 3pm UTC",
+    "instants": ["2024-02-29T15:00:00Z"]
+  },
+  {
+    "name": "bare city summer rules",
+    "text": "July 15, 2026 9am London",
+    "instants": ["2026-07-15T08:00:00Z"]
+  },
+  {
+    "name": "city before prose",
+    "text": "April 9, 2026 3pm in Tokyo for lunch",
+    "instants": ["2026-04-09T06:00:00Z"]
+  },
+  {
+    "name": "NYC alias",
+    "text": "April 9, 2026 3pm in NYC",
+    "instants": ["2026-04-09T19:00:00Z"]
+  },
+  {
+    "name": "Melbourne alias",
+    "text": "April 9, 2026 3pm in Melbourne",
+    "instants": ["2026-04-09T05:00:00Z"]
+  },
+  {
+    "name": "2015 Unix boundary",
+    "text": "1420070400",
+    "instants": ["2015-01-01T00:00:00Z"]
+  },
+  {
+    "name": "2035 Unix boundary",
+    "text": "2082758399",
+    "instants": ["2035-12-31T23:59:59Z"]
+  },
+  {
+    "name": "explicit zone upgrades default duplicate",
+    "text": "April 9, 2026 3pm; April 9, 2026 3pm UTC",
+    "instants": ["2026-04-09T15:00:00Z"],
+    "occurrences": 2
+  },
+  {
+    "name": "ISO fractional seconds",
+    "text": "2026-04-09T15:00:30.123+02:00",
+    "instants": ["2026-04-09T13:00:30.123Z"]
+  },
+  {
+    "name": "partial colloquial match must not convert wrong time",
+    "text": "half past noon EST",
+    "instants": [],
+    "warning": "needs a clear clock time"
+  },
+  {
+    "name": "vague approximate hour",
+    "text": "3ish EST",
+    "instants": [],
+    "warning": "needs a clear clock time"
+  },
+  {
+    "name": "no invented end of business hour",
+    "text": "EOD EST",
+    "instants": [],
+    "warning": "does not specify a clock time"
+  }
+]

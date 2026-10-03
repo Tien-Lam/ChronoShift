@@ -10,6 +10,12 @@
 local.properties
 /app/build
 
+# Web build and verification outputs
+node_modules/
+/dist/
+/test-results/
+/playwright-report/
+
 # Beads / Dolt files (added by bd init)
 .dolt/
 *.db

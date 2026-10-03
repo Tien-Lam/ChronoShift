@@ -1,5 +1,18 @@
 # ChronoShift
 
+ChronoShift is moving to a simple, private web app that works offline after its first complete online load. The web preview supports natural-language times, cities, explicit zones/offsets, ranges, Unix seconds and labeled timezone ambiguity. Paste → Convert → Copy, with no account or conversion server.
+
+```bash
+mise install
+bun install --frozen-lockfile
+bun run build
+bun run preview
+```
+
+Open `http://127.0.0.1:4173` and wait for **Offline ready** before disconnecting. `bun run dev` is for development; offline caching runs in the production preview. See [web development and release gates](docs/developer/web.md), the [migration initiative](https://linear.app/tienlam/initiative/chronoshift-simple-offline-web-app-d90101850ba1), and [implementation evidence](docs/planning/web-execution-report.md).
+
+The web release is still undergoing real-device, accessibility and deployment acceptance. The Android implementation below remains available during migration.
+
 [![Tests](https://github.com/Tien-Lam/ChronoShift/actions/workflows/test.yml/badge.svg)](https://github.com/Tien-Lam/ChronoShift/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Android min SDK](https://img.shields.io/badge/min%20SDK-26-green.svg)](app/build.gradle.kts)

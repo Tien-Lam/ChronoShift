@@ -1,0 +1,40 @@
+name: Web
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db # v3
+      - run: bun install --frozen-lockfile
+      - run: bun run format:check
+      - run: bun run check
+      - name: Verify portable corpus stays synchronized
+        run: |
+          bun run corpus:import
+          git diff --exit-code -- tests/fixtures/android-corpus.json
+      - name: Install browser engines and OS libraries
+        run: bunx --bun playwright install --with-deps chromium firefox webkit
+      - run: bun run test:browser
+      - name: Verify repository-subpath deployment
+        run: |
+          BASE_PATH=/ChronoShift/ bun run build
+          bunx --bun playwright test --config=playwright.subpath.config.ts
+          bun run build
+      - name: Publish static build and test diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: chronoshift-web-${{ github.sha }}
+          path: |
+            dist/
+            playwright-report/
+            test-results/
+          retention-days: 14

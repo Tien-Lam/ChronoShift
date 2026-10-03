@@ -1,0 +1,36 @@
+{
+  "name": "chronoshift",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "bun@1.4.0",
+  "scripts": {
+    "dev": "bunx --bun vite --host 127.0.0.1",
+    "build": "bun run typecheck && bunx --bun vite build && bun scripts/build-offline.ts",
+    "preview": "bun scripts/serve-web.ts",
+    "typecheck": "bunx --bun tsc --noEmit",
+    "test": "bun test tests",
+    "test:browser": "bunx --bun playwright test",
+    "check": "bun run typecheck && bun run test && bun run build",
+    "corpus:import": "bun scripts/import-android-corpus.ts",
+    "corpus:audit": "bun scripts/audit-corpus.ts",
+    "format:check": "bunx --bun prettier --check web scripts/*.ts tests e2e *.ts",
+    "format": "bunx --bun prettier --write web scripts/*.ts tests e2e *.ts"
+  },
+  "dependencies": {
+    "@js-temporal/polyfill": "0.5.1",
+    "chrono-node": "2.10.2",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0",
+    "@types/bun": "1.4.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "prettier": "3.9.9",
+    "typescript": "7.0.2",
+    "vite": "8.3.2"
+  }
+}
