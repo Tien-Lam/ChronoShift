@@ -11,9 +11,9 @@ labels: bug
 
 
 **Steps to reproduce**
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
 **Example input (use sample text, not private messages)**
 ```
@@ -21,10 +21,10 @@ labels: bug
 ```
 
 **Device info**
-- Device: 
-- Operating system: 
-- Browser and version: 
-- Window size or folded/unfolded state: 
-- Online/offline and whether “Offline ready” appeared: 
-- Installed app or browser tab: 
-- ChronoShift release (from /ChronoShift/release.json, if available): 
+- Device:
+- Operating system:
+- Browser and version:
+- Window size or folded/unfolded state:
+- Online/offline and whether “Offline ready” appeared:
+- Installed app or browser tab:
+- ChronoShift release (from /ChronoShift/release.json, if available):
