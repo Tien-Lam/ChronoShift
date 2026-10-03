@@ -1,71 +1,38 @@
-# Building
+# Building ChronoShift
 
-## Prerequisites
-
-- **Android Studio** with bundled JBR
-- **Android SDK** (installed via Android Studio SDK Manager)
-  - See `app/build.gradle.kts` for current compileSdk / minSdk
-
-Java and Gradle do **not** need to be installed separately. The project uses the Gradle wrapper (`gradlew`) and Android Studio's bundled JBR.
-
-## Environment
-
-The build requires two environment variables because neither Java nor Gradle is on PATH:
+ChronoShift is a static TypeScript web app. The runtimes in `mise.toml` and dependencies in `bun.lock` are pinned; no native SDK is required.
 
 ```bash
-export JAVA_HOME="C:/Program Files/Android/Android Studio/jbr"
-export ANDROID_HOME="$LOCALAPPDATA/Android/Sdk"
+mise install
+bun install --frozen-lockfile
+bun run dev
 ```
 
-Set these before every Gradle command, or add them to your shell profile.
-
-## Build Commands
+The development server supplies live reload. Service-worker caching is tested in the production build:
 
 ```bash
-# Debug APK
-./gradlew assembleDebug
-
-# Release APK (uses debug signing by default)
-./gradlew assembleRelease
-
-# Run unit tests
-./gradlew testDebugUnitTest
+bun run check
+bun run format:check
+bun run preview
 ```
 
-The debug APK is written to `app/build/outputs/apk/debug/app-debug.apk`.
+Open http://127.0.0.1:4173. Wait for **Offline ready** before disconnecting. Opening HTML directly from the filesystem does not enable service workers.
 
-## CI
+## Repository layout
 
-GitHub Actions runs unit tests on every push to `main` and on pull requests. See `.github/workflows/test.yml` for the current CI configuration.
+- `web/`: browser UI, engine, worker, platform helpers and public assets.
+- `scripts/`: static build, preview, dependency notices, corpus audit and verification tools.
+- `tests/`: real-engine unit tests, exact temporal fixtures and a standalone resilience corpus.
+- `e2e/`: browser, offline, responsive, hinge and hosted checks.
+- `.github/workflows/`: web verification and GitHub Pages publishing.
 
-Releases are triggered by pushing a version tag:
+## Pages build
 
 ```bash
-git tag v<version>
-git push origin v<version>
+BASE_PATH=/ChronoShift/ bun run build
+BASE_PATH=/ChronoShift/ bun run preview
 ```
 
-This runs tests, builds a release APK, and creates a GitHub Release with the APK attached.
+Use the same trailing-slash base path for building and serving. All assets, the manifest and service worker share it. GitHub Actions obtains the production base from Pages and deploys `dist/`; no Bun server runs on the host.
 
-## Project Structure
-
-Single-module app. All source code lives under `app/`:
-
-```
-app/
-  src/main/
-    assets/chrono.js          # Bundled chrono-node (esbuild)
-    java/com/chronoshift/
-      MainActivity.kt         # Compose entry point
-      ProcessTextActivity.kt  # ACTION_PROCESS_TEXT handler
-      conversion/             # TimeConverter, data classes
-      di/                     # Hilt modules and qualifiers
-      nlp/                    # NLP pipeline (extractors, parsers, merger)
-      ui/                     # Compose screens, theme, components
-    res/                      # Android resources
-  src/test/                   # Unit tests
-```
-
-## ProGuard
-
-Release builds have `isMinifyEnabled = true`. ProGuard rules are in `app/proguard-rules.pro`. If adding new reflection-based libraries, add keep rules there.
+See [web architecture and publishing](web.md), [testing](testing.md) and [device acceptance](device-smoke-test.md).

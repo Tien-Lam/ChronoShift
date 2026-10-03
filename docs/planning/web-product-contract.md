@@ -67,19 +67,19 @@ Adapt dynamically when a window resizes or a device folds/rotates, preserving dr
 
 ## Offline and privacy
 
-Host on GitHub Pages at https://tien-lam.github.io/ChronoShift/. All asset URLs, manifest and service-worker scope use `/ChronoShift/`. Publish a preview from the migration branch while release gates remain open; reviewed main updates become the continuing publishing source. Keep Android cutover separate from preview publishing.
+Host on GitHub Pages at https://tien-lam.github.io/ChronoShift/. All asset URLs, manifest and service-worker scope use `/ChronoShift/`. Publish a preview from the migration branch while release gates remain open; reviewed main updates become the continuing publishing source. The user has retired native app support now; remaining web acceptance does not require native sources or tooling.
 
 - Offline conversion becomes available after the first online visit completes all required cache assets. Only show Offline ready after successful preparation and control. Installation is optional.
 - No text in URLs, conversion requests, analytics, server logs or permanent storage. Only preferences persist by default. Explicit update reload and shared-text entry may use a short-lived local handoff, consumed/deleted immediately with a five-minute maximum age.
 - Cache parser, polyfill, worker, CSS, icons and any data on the same origin. No runtime CDN fonts/scripts. No automatic clipboard reads.
 - Service-worker updates wait for user action and preserve active input only for that action. Partial updates retain the last usable version. Cleared/denied browser storage may require reconnecting and must not crash the app.
-- Installed share reception is a browser capability enhancement via POST intercepted locally. Ordinary paste works on every supported browser. Android PROCESS_TEXT, extensions and native wrappers are deferred.
+- Installed share reception is a browser capability enhancement via POST intercepted locally. Ordinary paste works on every supported browser. Extensions and native wrappers are outside this web product's scope.
 
 ## Supported matrix and release gates
 
-Test current supported Chrome/Edge, Firefox and Safari on desktop; Android Chrome and iOS Safari on real devices before cutover. Automated Chromium, Firefox and WebKit checks supplement real-device evidence and do not replace it. Installation/share reception are separately feature-detected. Use a bundled Temporal compatibility path, browser Intl timezone data, and exact DST fixtures; no promise to freeze OS timezone rules forever.
+Test current supported Chrome/Edge, Firefox and Safari on desktop; Android Chrome and iOS Safari on real devices before release acceptance. Automated Chromium, Firefox and WebKit checks supplement real-device evidence and do not replace it. Installation/share reception are separately feature-detected. Use a bundled Temporal compatibility path, browser Intl timezone data, and exact DST fixtures; no promise to freeze OS timezone rules forever.
 
-The first release requires exact engine fixtures, fresh-input conversion after offline reopen, clipboard/storage/update fallbacks, keyboard/screen-reader checks, phone performance measurements, HTTPS release/rollback and local-only data audit. AI is an optional experiment and may only enhance deterministic results if benchmarks justify it. Android source and release workflows remain during migration until the release gates are met.
+The first release requires exact engine fixtures, fresh-input conversion after offline reopen, clipboard/storage/update fallbacks, keyboard/screen-reader checks, phone performance measurements, HTTPS release/rollback and local-only data audit. AI is an optional experiment and may only enhance deterministic results if benchmarks justify it. The repository is web-only at the user's request; native source and build/release/model maintenance are removed independently of remaining web acceptance.
 
 ## Known behavior changes
 

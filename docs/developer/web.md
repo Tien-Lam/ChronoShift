@@ -1,6 +1,6 @@
 # Web development
 
-The web app is an independent TypeScript implementation in `web/`. Android remains a reference until web release acceptance. Use the tool versions in `mise.toml`; dependencies and CLI tools are project-local and locked by `bun.lock`.
+ChronoShift is a TypeScript web app in `web/`. Native sources and tooling have been removed at the user's request; historical commits and standalone conversion fixtures remain. Use the tool versions in `mise.toml`; dependencies and CLI tools are project-local and locked by `bun.lock`.
 
 ```bash
 mise install
@@ -33,7 +33,7 @@ The preview server sets a restrictive CSP and avoids request/body logging. GitHu
 
 ## GitHub Pages publishing
 
-The site is https://tien-lam.github.io/ChronoShift/, owned by the repository owner. It uses GitHub's public-repository Pages hosting without a conversion backend or purchased domain. `.github/workflows/pages.yml` runs the complete web verification workflow before building at the base path returned by Pages, uploading a 14-day retained artifact, then deploying with pinned official Pages actions. The `github-pages` environment allows only `main` and `codex/offline-web-migration`; PR events cannot publish. The migration branch publishes the preview now. Remove that trigger and its environment branch policy when reviewed main becomes the sole source. Android retirement remains gated separately.
+The site is https://tien-lam.github.io/ChronoShift/, owned by the repository owner. It uses GitHub's public-repository Pages hosting without a conversion backend or purchased domain. `.github/workflows/pages.yml` runs the complete web verification workflow before building at the base path returned by Pages, uploading a 14-day retained artifact, then deploying with pinned official Pages actions. The `github-pages` environment allows only `main` and `codex/offline-web-migration`; PR events cannot publish. The migration branch publishes the preview now. Remove that trigger and its environment branch policy when reviewed main becomes the sole source. Native app maintenance has been retired; remaining acceptance concerns the web app.
 
 `release.json` identifies the source commit and base path. It participates in the cache version, making releases reproducible and observable. After deployment, run `bun run test:hosted`; optionally set `HOSTED_EXPECTED_COMMIT` to the full deployed SHA. Checks cover HTTPS assets/MIME, effective meta CSP, manifest/scope, local-only requests and new conversion after an offline close/reopen.
 
@@ -43,7 +43,7 @@ For a reproducible existing-client proof, run `bun scripts/verify-hosted-rollout
 
 ## Architecture
 
-- `engine/parser.ts`: pinned Chrono English parsers with bounded military/shorthand/range extensions. No Android bridge or model runtime.
+- `engine/parser.ts`: pinned Chrono English parsers with bounded military/shorthand/range extensions. No model download is required.
 - `engine/convert.ts`: injected reference clock, context, source zones, DST disambiguation, Unix seconds and deduplication. Target changes only reformat results.
 - `engine/time.ts`: bundled Temporal compatibility path plus browser Intl zone data; fixed offsets retain offset labels. Seconds and milliseconds are retained when present.
 - `engine/worker.ts`: a disposable worker per conversion with request IDs. Editing, clearing and source/date changes invalidate pending work.
@@ -57,14 +57,13 @@ Old tabs may still need their own hashed worker. Cache cleanup retains older ver
 
 ## Verification and evidence
 
-`tests/fixtures/temporal.json` has independently specified instant/date expectations. Unit checks use the real parser; browser checks run the same fixtures in the built worker. `tests/fixtures/android-corpus.json` preserves all 353 inputs and metadata from `TestData.kt`; resilience/count comparisons are an inventory, not an accuracy oracle.
+`tests/fixtures/temporal.json` has independently specified instant/date expectations. Unit checks use the real parser; browser checks run the same fixtures in the built worker. `tests/fixtures/resilience-corpus.json` preserves 353 historical inputs and metadata as standalone web data, with immutable Git provenance. Maintain it directly; resilience/count comparisons are an inventory, not an accuracy oracle.
 
 ```bash
-bun run corpus:import
 bun run corpus:audit
 bun scripts/benchmark-web.ts
 ```
 
 CI runs formatting, type checks, real-engine tests, the frozen production build and all browser scenarios. Chromium/Firefox use network-offline emulation. WebKit uses a stopped dedicated origin plus a negative uncached-network check because of [Playwright issue 42775](https://github.com/microsoft/playwright/issues/42775); it does not skip offline tests.
 
-Before release, record real Android Chrome/iOS Safari and desktop Chrome/Edge/Firefox/Safari versions; offline reopen with fresh input; installed share where supported; actual screen-reader/task checks; phone startup and p95 conversions; host headers and N→N+1→rollback. Emulation and desktop benchmarks cannot close those gates. Keep Android release workflows until TIE-320 and TIE-321 acceptance.
+Before release, record real Android Chrome/iOS Safari and desktop Chrome/Edge/Firefox/Safari versions; offline reopen with fresh input; installed share where supported; actual screen-reader/task checks; phone startup and p95 conversions; host headers and N→N+1→rollback. Emulation and desktop benchmarks cannot close those gates. Dependency maintenance targets Bun and GitHub Actions. Bun's text lockfile is supported by [Dependabot's Bun ecosystem](https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference).

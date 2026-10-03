@@ -1,97 +1,30 @@
-# Real-Device Smoke Test
+# Browser and device acceptance
 
-Run this before recommending a new model in `model-manifest.json`, and after changing `ModelRepository`, `ModelDownloader`, `LiteRtExtractor`, or Settings model controls.
+Test the published app at https://tien-lam.github.io/ChronoShift/. Record the release SHA from `/ChronoShift/release.json`, device, operating system, browser/version, screen size/posture and network conditions. This checklist concerns browser behavior; no native package or SDK is needed.
 
-## Prerequisites
+## Main task
 
-- Android device or emulator visible in `adb devices`
-- Enough free device storage for the model download
-- Network connection on the device
+1. Paste/type a dated message, choose a target timezone, Convert and inspect the full date/offset. Copy and paste into a text editor.
+2. Try ambiguous CST and a DST gap/fold using the independently specified examples in the product contract. Alternatives must be labeled; nonexistent times need correction.
+3. Open More options, change source/reference date and numeric dates, then reconvert. Denied clipboard/storage permissions must leave a usable manual path.
+4. Verify keyboard navigation, normal textarea Enter, Ctrl/Cmd+Enter, 200% browser zoom, system theme, reduced motion and a real screen reader.
+5. Resize, rotate and fold/unfold with a draft and results present. Neither should disappear. Long zones and messages must not cause horizontal page scrolling.
+6. On phones and cover screens, open/close the virtual keyboard and reach Convert/Copy. On segmented displays, verify vertical-hinge separation and upper-screen tabletop scrolling.
 
-```powershell
-$env:JAVA_HOME = 'C:/Program Files/Android/Android Studio/jbr'
-$env:ANDROID_HOME = "$env:LOCALAPPDATA/Android/Sdk"
-$adb = "$env:ANDROID_HOME/platform-tools/adb.exe"
-& $adb devices
-```
+## Offline and installation
 
-## Install Fresh
+1. Start online and wait for **Offline ready**.
+2. Close the tab/app, disable network, reopen the cached app and enter a fresh message. Conversion must succeed.
+3. Install from the browser menu where supported; repeat the offline task. Installation is optional for ordinary conversion.
+4. Exercise installed POST share reception where offered. Do not include private text in reports. Shared URLs must stay inert and messages must not appear in the address bar.
+5. Clear site storage, reconnect and restore readiness before sharing. A fresh uncached offline visit must not claim readiness.
 
-```powershell
-./gradlew assembleDebug
-& $adb install -r app/build/outputs/apk/debug/app-debug.apk
-& $adb shell pm clear com.chronoshift
-& $adb shell monkey -p com.chronoshift 1
-```
+## Updates and recovery
 
-Expected:
+Keep a draft while a new release is published. It must remain active until Update now is chosen, then survive the reload. Exercise partial downloads, cache eviction/repair, multiple tabs and a rollback. Record old/new release SHAs and the exact recovery behavior. The automated single-client hosted rollback is supplementary evidence.
 
-- App launches without a model installed.
-- Settings shows the Gemma model name and either update availability or a non-blocking update-check warning.
-- Main conversion still works using Stage 1.
+## Performance
 
-## Stage 1 Fallback
+Record cold online/warm offline startup and conversion p95 on a representative phone for typical 2,000-character and limit 10,000-character input. Editing and Clear must remain responsive.
 
-In the app, convert:
-
-```text
-10am to noon PST
-```
-
-Expected:
-
-- The app returns two ordered results.
-- No LiteRT model is required.
-- No crash appears in logcat:
-
-```powershell
-& $adb logcat -d -t 300 | Select-String "FATAL EXCEPTION|AndroidRuntime|ChronoShift"
-```
-
-## Download And LiteRT Path
-
-In Settings:
-
-1. Tap **Download Model** or **Update Model**.
-2. Wait for completion.
-3. Confirm Settings shows the model as installed with a non-zero size.
-
-Then convert:
-
-```text
-Flight UA123 departs SFO at 7:00 AM PST, arrives JFK at 3:30 PM EST
-```
-
-Expected:
-
-- Results include both departure and arrival times.
-- Stage 2 can merge in without duplicating correct Stage 1 results.
-- Logcat contains LiteRT initialization for the selected `.litertlm` file and no fatal exception.
-
-## Device Model Eval
-
-After the model is installed, run the instrumented model-output eval:
-
-```powershell
-./gradlew connectedDebugAndroidTest "-Pandroid.testInstrumentationRunnerArguments.class=com.chronoshift.nlp.DeviceModelEvalTest"
-```
-
-Expected:
-
-- The test loads the installed LiteRT model through `LiteRtExtractor`.
-- The model returns structured output for city, UTC range, and explicit winter timezone cases.
-- The test skips if the model is not installed.
-
-## Delete And Fallback Again
-
-In Settings:
-
-1. Tap **Delete Model**.
-2. Confirm the model shows as not installed.
-3. Convert `Movie night starts at 8pm EST (5pm PST)`.
-
-Expected:
-
-- The app still returns Stage 1 results.
-- LiteRT is unavailable but non-fatal.
-- Download controls remain available.
+Supported browser targets include desktop Chrome/Edge, Firefox and Safari, Android Chrome and iPhone Safari. Keep capability-specific installation/share results separate from core conversion; paste is the universal entry point.

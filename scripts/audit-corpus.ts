@@ -1,4 +1,4 @@
-import corpus from "../tests/fixtures/android-corpus.json";
+import corpus from "../tests/fixtures/resilience-corpus.json";
 import { convert } from "../web/src/engine/convert";
 import { Temporal } from "@js-temporal/polyfill";
 const reference = {
@@ -40,7 +40,7 @@ const differences = rows.filter(
 );
 const errors = rows.filter((r) => "error" in r);
 await Bun.write(
-  "docs/planning/android-corpus-audit.json",
+  "docs/planning/corpus-audit.json",
   JSON.stringify(
     {
       reference,

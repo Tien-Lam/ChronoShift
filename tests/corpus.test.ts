@@ -1,7 +1,7 @@
 import { expect, test } from "bun:test";
-import corpus from "./fixtures/android-corpus.json";
+import corpus from "./fixtures/resilience-corpus.json";
 import { convert } from "../web/src/engine/convert";
-test("all imported Android inputs execute the real browser engine without crashing", () => {
+test("all resilience corpus inputs execute the browser engine without crashing", () => {
   expect(corpus.cases.length).toBeGreaterThanOrEqual(300);
   for (const fixture of corpus.cases)
     expect(() =>

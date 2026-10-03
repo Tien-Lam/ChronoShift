@@ -12,11 +12,11 @@
   },
   "initiative": {
     "name": "ChronoShift — Simple Offline Web App",
-    "summary": "Replace the Android app with a fast, private, easy-to-use timezone converter that works offline on phones and computers.",
+    "summary": "Build and maintain a private, adaptive offline timezone web app across desktop and mobile browsers.",
     "leadTeam": "7a88d71d-eac6-404e-a83d-f3b37d5c6efa",
     "status": "Active",
     "priority": 2,
-    "description": "## Objective\nMake ChronoShift a browser-based timezone converter that is easy to use on a phone or computer and works offline after its first successful online load. Paste or type text, convert it to your timezone, inspect ambiguous interpretations, and copy the result. No account or conversion server.\n\n## First release\n- Natural-language dates/times, explicit offsets and IANA zones, relative dates, ranges, Unix seconds, supported city aliases, and ambiguous abbreviations.\n- Device timezone by default with a searchable override; explicit missing-zone/date assumptions; readable day changes.\n- Local conversion, bundled parser/data/fonts, installable PWA where supported, cached launch and conversion with networking disabled.\n- Accessible responsive interface, copy/paste fallbacks, clear recovery states, reliable updates.\n- HTTPS static distribution with reproducible web builds; Android becomes a reference during migration and is retired from active release workflows after web acceptance.\n\n## Scope decisions\nUse a TypeScript web implementation and reuse Kotlin behavior/data/test cases as the specification. Recommended baseline: React + Vite + chrono-node, a tested timezone adapter (Temporal with a bundled compatibility path if needed), and a service worker. Confirm versions and bundle cost in the foundation tickets.\nML Kit and the existing LiteRT Android runtime are not browser ports. AI is optional today; ship a deterministic conversion baseline and evaluate browser AI separately in a backlog spike. Never introduce cloud inference as an offline dependency.\nAndroid PROCESS_TEXT has no general web equivalent. Paste is universal; installed share-target reception is a capability-based enhancement with an offline POST handler. Extensions, native wrappers, accounts, sync, persistent conversion history, multilingual expansion, and mandatory AI downloads are outside the first release.\n\n## Delivery gates\n1. Contract & browser baseline → tested conversion parity.\n2. Usable conversion flow → accessible and clear interaction.\n3. Offline-ready installation → safe updates and optional share reception.\n4. Cross-browser release candidate → web-primary cutover.\n\n## Success / definition of done\n- Supported conversion fixtures assert exact instants, interpretation counts/order, and date rollovers through real parsers; current Kotlin bugs are documented rather than reproduced silently.\n- New input can be converted after closing and reopening the cached app with networking disabled.\n- No pasted text appears in network requests, server logs, URLs, telemetry, or persistent storage by default.\n- Core flow passes mobile/desktop browser and accessibility checks; share/install permissions are not prerequisites to conversion.\n- HTTPS release, rollback procedure, documentation and Android cutover are complete.\n\nNo dates or assignees are committed until capacity is known. Work is ordered by dependencies, with AI discovery outside the critical path.\nRepository reviewed at b7ef48a: https://github.com/Tien-Lam/ChronoShift/tree/b7ef48a"
+    "description": "## Objective\nMake ChronoShift a browser-based timezone converter that is easy to use on a phone or computer and works offline after its first successful online load. Paste or type text, convert it to your timezone, inspect ambiguous interpretations, and copy the result. No account or conversion server.\n\n## First release\n- Natural-language dates/times, explicit offsets and IANA zones, relative dates, ranges, Unix seconds, supported city aliases, and ambiguous abbreviations.\n- Device timezone by default with a searchable override; explicit missing-zone/date assumptions; readable day changes.\n- Local conversion, bundled parser/data/fonts, installable PWA where supported, cached launch and conversion with networking disabled.\n- Accessible responsive interface, copy/paste fallbacks, clear recovery states, reliable updates.\n- GitHub Pages static distribution with reproducible web builds. Native app maintenance is retired at the user's explicit request; retain standalone web fixtures and historical Git provenance.\n\n## Scope decisions\nUse a TypeScript web implementation and reuse Kotlin behavior/data/test cases as the specification. Recommended baseline: React + Vite + chrono-node, a tested timezone adapter (Temporal with a bundled compatibility path if needed), and a service worker. Confirm versions and bundle cost in the foundation tickets.\nML Kit and the existing LiteRT Android runtime are not browser ports. AI is optional today; ship a deterministic conversion baseline and evaluate browser AI separately in a backlog spike. Never introduce cloud inference as an offline dependency.\nAndroid PROCESS_TEXT has no general web equivalent. Paste is universal; installed share-target reception is a capability-based enhancement with an offline POST handler. Extensions, native wrappers, accounts, sync, persistent conversion history, multilingual expansion, and mandatory AI downloads are outside the first release.\n\n## Delivery gates\n1. Contract & browser baseline → tested conversion parity.\n2. Usable conversion flow → accessible and clear interaction.\n3. Offline-ready installation → safe updates and optional share reception.\n4. Cross-browser release candidate → web-primary cutover.\n\n## Success / definition of done\n- Supported conversion fixtures assert exact instants, interpretation counts/order, and date rollovers through real parsers; current Kotlin bugs are documented rather than reproduced silently.\n- New input can be converted after closing and reopening the cached app with networking disabled.\n- No pasted text appears in network requests, server logs, URLs, telemetry, or persistent storage by default.\n- Core flow passes mobile/desktop browser and accessibility checks; share/install permissions are not prerequisites to conversion.\n- HTTPS release, rollback, web-only documentation and browser acceptance are complete.\n\nNo dates or assignees are committed until capacity is known. Work is ordered by dependencies, with AI discovery outside the critical path.\nRepository reviewed at b7ef48a: https://github.com/Tien-Lam/ChronoShift/tree/b7ef48a\n\n## Scope update — 4 October 2026\nThe user explicitly retired native Android support. Remove the active native source/tooling now; cancel TIE-322 and retain independent web fixtures plus historical provenance. Remaining web acceptance does not require native support."
   },
   "projects": [
     {
@@ -90,10 +90,10 @@
     },
     {
       "key": "delivery",
-      "name": "ChronoShift — Web Delivery & Android Cutover",
-      "summary": "Validate, release and document the web app, then retire active Android delivery.",
+      "name": "ChronoShift — Web Delivery",
+      "summary": "Validate, publish and maintain the offline web app on GitHub Pages.",
       "priority": 3,
-      "description": "Establish reproducible Bun/mise web CI, assert cross-browser correctness and performance, audit local-only data handling, and publish HTTPS static assets with rollback. Preserve Android source/history and existing APKs as migration references until web release gates pass; then make web the primary supported app.",
+      "description": "Reproducible Bun/mise web CI, exact browser correctness and performance, local-only data handling, and GitHub Pages publishing/rollback. Native app maintenance is retired at the user's request; historical commits and standalone web fixtures remain. Physical browser acceptance stays separate.",
       "milestones": [
         {
           "key": "candidate",
@@ -102,11 +102,11 @@
         },
         {
           "key": "cutover",
-          "name": "Web becomes the primary app",
-          "description": "HTTPS production release and rollback are proven, usage/developer docs describe the web product, and Android release/model/dependency workflows are retired without deleting history."
+          "name": "Web-only delivery",
+          "description": "Web-only source, build, publishing, dependencies and documentation; native maintenance retired with historical provenance preserved."
         }
       ],
-      "state": "Planned",
+      "state": "In Progress",
       "addTeams": [
         "7a88d71d-eac6-404e-a83d-f3b37d5c6efa"
       ]
@@ -142,7 +142,7 @@
         "app/src/test/java/com/chronoshift/TimestampCorpusTest.kt"
       ],
       "optional": false,
-      "state": "Todo",
+      "state": "Done",
       "description": "## Problem\nThe existing Android interaction and parser assumptions need an explicit web contract before a rewrite.\n\n## Scope\n- Record paste/type → Convert → Copy as the primary flow, device target timezone plus override, no account/backend and English-first support.\n- Define reference date/zone, missing-zone/date assumptions, date-only output, source ordering and range behavior.\n- Set the supported browser/OS matrix: desktop Chrome/Edge/Firefox/Safari, Android Chrome and iOS Safari at tested supported versions. Record install/share capability separately.\n- Audit code/doc mismatches: CT/ET/PT use date-based IANA rules in code; date-only data currently defaults to noon; corpus resilience is not an exact parity oracle; city Geocoder is not an offline guarantee.\n\n## Acceptance criteria\n- [ ] Versioned contract lists launch features, optional features and deferred scope.\n- [ ] Examples cover ambiguous CST, explicit EST in summer, PT/ET with a date, missing timezone, date-only, midnight rollover and DST gaps/folds.\n- [ ] Offline means a successful online load and completed cache preparation before a later offline reopen; first-ever disconnected visit and user-cleared site storage are explained.\n- [ ] Acceptance and capability matrix is linked from every workstream; no mandatory AI download.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: None\n\n## Repository evidence\n- [README.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/README.md)\n- [docs/architecture/merge-philosophy.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/architecture/merge-philosophy.md)\n- [app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt)\n- [app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt)\n- [app/src/test/java/com/chronoshift/TimestampCorpusTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/TimestampCorpusTest.kt)"
     },
     {
@@ -172,43 +172,40 @@
         "docs/developer/building.md"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Review",
       "description": "## Problem\nThe repository has no maintained web source, package lockfile or browser build.\n\n## Scope\n- Create a web workspace with React, Vite and TypeScript as the recommended minimal baseline; confirm fit and pin versions.\n- Manage CLI/runtime versions with mise, packages/scripts with Bun and a committed lockfile.\n- Separate pure conversion modules from UI/platform adapters; provide dev/build/typecheck/test scripts and a short architecture decision.\n\n## Acceptance criteria\n- [ ] A fresh checkout installs reproducibly and produces static assets without an Android SDK.\n- [ ] Production build has no conversion backend or runtime CDN imports.\n- [ ] UI and pure engine tests can run independently; source maps and public asset policy are explicit.\n\n## Delivery\n- Priority: High\n- Relative complexity: S (S = small, M = medium; not a time commitment)\n- Dependencies: F1\n\n## Repository evidence\n- [app/build.gradle.kts](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/build.gradle.kts)\n- [settings.gradle.kts](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/settings.gradle.kts)\n- [docs/developer/building.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/developer/building.md)"
     },
     {
       "key": "F3",
       "project": "foundation",
       "milestone": "baseline",
-      "title": "Turn Kotlin examples into a portable exact conversion fixture suite",
+      "title": "Maintain independent web fixtures and a standalone conversion corpus",
       "priority": 2,
       "size": "M",
       "blockedBy": [
         "F1"
       ],
-      "problem": "Existing corpus tests mix resilience checks and synthetic LLM outputs; they do not all prove real parser correctness.",
+      "problem": "Web correctness needs independently specified exact expectations and a self-contained input inventory.",
       "scope": [
-        "Extract reusable corpus/integration/ambiguity/merge/adversarial cases into versioned JSON fixtures with fixed clock, source zone, target zone and locale.",
-        "Classify deterministic launch cases, ML Kit-dependent cases, AI-only cases and known defects.",
-        "Assert exact instants, source spans, interpretation count/order, endpoints, date rollovers and displayed assumptions; use the actual parser adapter.",
-        "Record justified behavior changes instead of automatically approving snapshots."
+        "Maintain standalone versioned JSON fixtures with explicit clock, source zone, target zone and locale.",
+        "Retain all 353 original input cases/metadata and immutable Git provenance; no native source import/build is required.",
+        "Assert exact instants, interpretations, ranges, date rollovers and assumptions through the actual browser parser.",
+        "Maintain the deterministic corpus audit directly; document intentional changes and unsupported inputs."
       ],
       "acceptance": [
-        "All cases in TestData.kt are inventoried and categorized; launch subset and expected values are explicit.",
-        "Expected instants are independently reviewed, not derived from the implementation under test.",
-        "DST, half/quarter-hour offsets, leap-day, missing zone/date, multiline context and duplicate/cross-date cases are included.",
-        "AI fixtures remain evidence for the optional spike and cannot conceal deterministic baseline gaps."
+        "All 353 historical inputs and metadata are retained unchanged as standalone web data.",
+        "Exact temporal expectations are independently reviewed rather than derived from the implementation.",
+        "DST, fractional offsets, leap dates, missing zones/dates, multiline context and duplicate/cross-date cases are covered.",
+        "Optional learned extraction cannot conceal deterministic baseline gaps."
       ],
       "references": [
-        "app/src/test/java/com/chronoshift/TestData.kt",
-        "app/src/test/java/com/chronoshift/TimestampCorpusTest.kt",
-        "app/src/test/java/com/chronoshift/IntegrationTest.kt",
-        "app/src/test/java/com/chronoshift/AmbiguityExpansionTest.kt",
-        "app/src/test/java/com/chronoshift/nlp/ChronoResultParserMergeTest.kt",
-        "app/src/test/java/com/chronoshift/AdversarialInputTest.kt"
+        "tests/fixtures/temporal.json",
+        "tests/fixtures/resilience-corpus.json",
+        "scripts/audit-corpus.ts"
       ],
       "optional": false,
-      "state": "Backlog",
-      "description": "## Problem\nExisting corpus tests mix resilience checks and synthetic LLM outputs; they do not all prove real parser correctness.\n\n## Scope\n- Extract reusable corpus/integration/ambiguity/merge/adversarial cases into versioned JSON fixtures with fixed clock, source zone, target zone and locale.\n- Classify deterministic launch cases, ML Kit-dependent cases, AI-only cases and known defects.\n- Assert exact instants, source spans, interpretation count/order, endpoints, date rollovers and displayed assumptions; use the actual parser adapter.\n- Record justified behavior changes instead of automatically approving snapshots.\n\n## Acceptance criteria\n- [ ] All cases in TestData.kt are inventoried and categorized; launch subset and expected values are explicit.\n- [ ] Expected instants are independently reviewed, not derived from the implementation under test.\n- [ ] DST, half/quarter-hour offsets, leap-day, missing zone/date, multiline context and duplicate/cross-date cases are included.\n- [ ] AI fixtures remain evidence for the optional spike and cannot conceal deterministic baseline gaps.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: F1\n\n## Repository evidence\n- [app/src/test/java/com/chronoshift/TestData.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/TestData.kt)\n- [app/src/test/java/com/chronoshift/TimestampCorpusTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/TimestampCorpusTest.kt)\n- [app/src/test/java/com/chronoshift/IntegrationTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/IntegrationTest.kt)\n- [app/src/test/java/com/chronoshift/AmbiguityExpansionTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/AmbiguityExpansionTest.kt)\n- [app/src/test/java/com/chronoshift/nlp/ChronoResultParserMergeTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/ChronoResultParserMergeTest.kt)\n- [app/src/test/java/com/chronoshift/AdversarialInputTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/AdversarialInputTest.kt)"
+      "state": "In Review",
+      "description": "## Problem\nWeb correctness needs independently specified exact expectations and a self-contained input inventory.\n\n## Scope\n- Maintain standalone versioned JSON fixtures with explicit clock, source zone, target zone and locale.\n- Retain all 353 original input cases/metadata and immutable Git provenance; no native source import/build is required.\n- Assert exact instants, interpretations, ranges, date rollovers and assumptions through the actual browser parser.\n- Maintain the deterministic corpus audit directly; document intentional changes and unsupported inputs.\n\n## Acceptance criteria\n- [ ] All 353 historical inputs and metadata are retained unchanged as standalone web data.\n- [ ] Exact temporal expectations are independently reviewed rather than derived from the implementation.\n- [ ] DST, fractional offsets, leap dates, missing zones/dates, multiline context and duplicate/cross-date cases are covered.\n- [ ] Optional learned extraction cannot conceal deterministic baseline gaps.\n\n## Delivery\n- Dependencies: F1\n- State: In Review"
     },
     {
       "key": "F4",
@@ -240,14 +237,14 @@
         "app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Review",
       "description": "## Problem\nKotlinx/java.time conversion and Java zone discovery are unavailable in the browser; fixed offsets must not be confused with regional zones.\n\n## Scope\n- Define domain types for instant, civil date/time, source zone/offset, certainty, matched span, assumptions and optional range endpoints.\n- Evaluate Temporal with a locally bundled compatibility path; confirm Intl zone support offline and choose a pinned fallback data policy if needed.\n- Inject reference clock, source/default zone, target zone and locale; separate raw fixed-offset labels from geographic IANA labels.\n- Specify DST nonexistent/repeated civil-time behavior and allow clear correction or distinct interpretations per contract.\n\n## Acceptance criteria\n- [ ] Exact DST gap/fold, seasonal PT vs fixed PST/EST, +05:45, +09:30 and negative fractional offset cases pass.\n- [ ] An offset alone does not falsely identify a specific city; supplied IANA context is preserved.\n- [ ] Output timezone offsets are computed at the parsed instant; missing source zone is explicitly reported.\n- [ ] Supported browser matrix has a tested feature/fallback path, with no online timezone lookup.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: F2, F3\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/conversion/ExtractedTime.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/ExtractedTime.kt)\n- [app/src/main/java/com/chronoshift/conversion/TimeConverter.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/TimeConverter.kt)\n- [app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt)"
     },
     {
       "key": "F5",
       "project": "foundation",
       "milestone": "parity",
-      "title": "Replace QuickJS with a maintained browser chrono-node adapter",
+      "title": "Maintain the typed browser chrono-node adapter",
       "priority": 2,
       "size": "M",
       "blockedBy": [
@@ -257,24 +254,23 @@
       ],
       "problem": "Chrono is already JavaScript, but the committed minified Android bundle is unversioned and its bridge is not maintained as normal web source.",
       "scope": [
-        "Import a pinned chrono-node package and expose a small typed adapter with injected reference date/timezone.",
-        "Replace Zipline JSON evaluation with typed parser results while preserving spans, certainty, offset and both range endpoints.",
-        "Evaluate full-text parsing and focused parsing against ML Kit-dependent fixtures; add a lightweight span strategy only if measured gaps justify it."
+        "Use pinned chrono-node with a typed adapter and injected reference date/timezone.",
+        "Preserve spans, certainty, offsets and both range endpoints in typed results.",
+        "Evaluate independent temporal fixtures and the standalone corpus; optional learned span detection requires measured web accuracy/size/latency justification."
       ],
       "acceptance": [
-        "Real chrono-node integration tests assert supported natural-language, ISO/offset and contextual examples.",
-        "No QuickJS/Zipline or opaque copied Android bundle is required by the browser.",
-        "ML Kit removal has a documented accuracy comparison and all launch-critical gaps have a deterministic solution or contract change."
+        "Real chrono-node integration tests assert supported natural-language, ISO/offset and context cases.",
+        "No native bridge or copied runtime bundle is required.",
+        "Supported web launch behavior has independent exact expectations; unsupported vague expressions require correction."
       ],
       "references": [
-        "app/src/main/java/com/chronoshift/nlp/ChronoExtractor.kt",
-        "app/src/main/java/com/chronoshift/nlp/MlKitEntityExtractor.kt",
-        "docs/developer/chrono-js-bundling.md",
-        "app/src/main/assets/chrono.js"
+        "web/src/engine/parser.ts",
+        "web/src/engine/convert.ts",
+        "tests/fixtures/temporal.json"
       ],
       "optional": false,
-      "state": "Backlog",
-      "description": "## Problem\nChrono is already JavaScript, but the committed minified Android bundle is unversioned and its bridge is not maintained as normal web source.\n\n## Scope\n- Import a pinned chrono-node package and expose a small typed adapter with injected reference date/timezone.\n- Replace Zipline JSON evaluation with typed parser results while preserving spans, certainty, offset and both range endpoints.\n- Evaluate full-text parsing and focused parsing against ML Kit-dependent fixtures; add a lightweight span strategy only if measured gaps justify it.\n\n## Acceptance criteria\n- [ ] Real chrono-node integration tests assert supported natural-language, ISO/offset and contextual examples.\n- [ ] No QuickJS/Zipline or opaque copied Android bundle is required by the browser.\n- [ ] ML Kit removal has a documented accuracy comparison and all launch-critical gaps have a deterministic solution or contract change.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: F2, F3, F4\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/nlp/ChronoExtractor.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/ChronoExtractor.kt)\n- [app/src/main/java/com/chronoshift/nlp/MlKitEntityExtractor.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/MlKitEntityExtractor.kt)\n- [docs/developer/chrono-js-bundling.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/developer/chrono-js-bundling.md)\n- [app/src/main/assets/chrono.js](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/assets/chrono.js)"
+      "state": "In Review",
+      "description": "## Problem\nChrono is already JavaScript, but the committed minified Android bundle is unversioned and its bridge is not maintained as normal web source.\n\n## Scope\n- Use pinned chrono-node with a typed adapter and injected reference date/timezone.\n- Preserve spans, certainty, offsets and both range endpoints in typed results.\n- Evaluate independent temporal fixtures and the standalone corpus; optional learned span detection requires measured web accuracy/size/latency justification.\n\n## Acceptance criteria\n- [ ] Real chrono-node integration tests assert supported natural-language, ISO/offset and context cases.\n- [ ] No native bridge or copied runtime bundle is required.\n- [ ] Supported web launch behavior has independent exact expectations; unsupported vague expressions require correction.\n\n## Delivery\n- Dependencies: F2, F3, F4\n- State: In Review"
     },
     {
       "key": "F6",
@@ -303,7 +299,7 @@
         "app/src/test/java/com/chronoshift/IntegrationTest.kt"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Review",
       "description": "## Problem\nChrono results need project-specific context handling to avoid wrong dates and reordered range endpoints.\n\n## Scope\n- Port certainty-aware date propagation and contextual span/full-result reconciliation.\n- Preserve textual result ordering and endpoint identity, including overnight ranges.\n- Represent date-only matches explicitly instead of presenting an invented noon time; filter contextual-only date fragments when real time matches exist.\n\n## Acceptance criteria\n- [ ] Fixtures assert both endpoints and source order for normal, reversed-token and overnight ranges.\n- [ ] Uncertain dates inherit only the relevant context; separate explicit dates remain distinct.\n- [ ] Date-only display follows the contract and no synthetic time appears as a parsed certainty.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: F5\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt)\n- [app/src/test/java/com/chronoshift/nlp/ChronoResultParserMergeTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/ChronoResultParserMergeTest.kt)\n- [app/src/test/java/com/chronoshift/IntegrationTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/IntegrationTest.kt)"
     },
     {
@@ -334,7 +330,7 @@
         "app/src/test/java/com/chronoshift/nlp/TimezoneAbbreviationsTest.kt"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Review",
       "description": "## Problem\nAbbreviations like CST are ambiguous, while explicit standard/daylight offsets and colloquial regional abbreviations have different semantics.\n\n## Scope\n- Port the reviewed supported abbreviation data and ambiguity expansion.\n- Preserve explicit EST/PST/etc fixed offsets; resolve ET/PT/CT/MT using regional rules for the event date.\n- Expose distinct valid interpretations and assumption metadata for the UI rather than silently choosing one.\n\n## Acceptance criteria\n- [ ] CST produces the supported US Central and China interpretations without silent collapse.\n- [ ] PT/ET winter/summer and explicit EST/PST in summer yield exact expected instants.\n- [ ] Abbreviation recognition avoids lowercase ordinary-word false positives and unsupported abbreviations have a clear fallback.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: F5, F4\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt)\n- [app/src/test/java/com/chronoshift/AmbiguityExpansionTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/AmbiguityExpansionTest.kt)\n- [app/src/test/java/com/chronoshift/nlp/TimezoneAbbreviationsTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/TimezoneAbbreviationsTest.kt)"
     },
     {
@@ -368,7 +364,7 @@
         "app/src/test/java/com/chronoshift/nlp/RegexExtractorTest.kt"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Review",
       "description": "## Problem\nUnix/city extraction is Kotlin and the Android Geocoder fallback can use services or approximate a zone incorrectly.\n\n## Scope\n- Port supported Unix seconds semantics and document the current 2015–2035/range assumptions; do not silently add millisecond parsing.\n- Bundle a curated city/alias → IANA table and reviewed deterministic fuzzy matching.\n- Use explicit unknown/ambiguous-city handling; remove network geocoding and longitude-based zone guessing.\n- Resolve city-local reference dates with the injected clock.\n\n## Acceptance criteria\n- [ ] Unix fixtures cover supported boundaries, invalid values and ordinary-number false positives.\n- [ ] NYC/Tokyo/Melbourne and aliases work with all network requests blocked.\n- [ ] Unknown/ambiguous cities prompt correction rather than guess from coordinates; fuzzy matching has deterministic tie behavior.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: F2, F3, F4\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/nlp/RegexExtractor.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/RegexExtractor.kt)\n- [app/src/main/java/com/chronoshift/nlp/CityResolver.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/CityResolver.kt)\n- [app/src/test/java/com/chronoshift/nlp/IanaCityLookupTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/IanaCityLookupTest.kt)\n- [app/src/test/java/com/chronoshift/nlp/RegexExtractorTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/RegexExtractorTest.kt)"
     },
     {
@@ -401,7 +397,7 @@
         "app/src/test/java/com/chronoshift/nlp/ResultMergerTest.kt"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Review",
       "description": "## Problem\nDeduplication must reduce repeats without hiding timezone ambiguity or merging different dates.\n\n## Scope\n- Port exact instant+source-zone merging, context upgrades and stable source ordering.\n- Keep different instants, dates and meaningful source-zone interpretations distinct; audit fuzzy and final display dedup against the documented philosophy.\n- Keep parser method/confidence metadata internal unless it explains a user-visible assumption.\n\n## Acceptance criteria\n- [ ] Actual parser fixtures verify true duplicates merge and different instants/source zones/dates survive.\n- [ ] Null-zone upgrades preserve the right source span and assumptions.\n- [ ] Repeated mentions and range endpoints have explicit identity rules; formatting cannot collapse distinct interpretations.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: F6, F7, F8\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/nlp/ResultMerger.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/ResultMerger.kt)\n- [app/src/main/java/com/chronoshift/conversion/TimeConverter.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/TimeConverter.kt)\n- [docs/architecture/merge-philosophy.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/architecture/merge-philosophy.md)\n- [app/src/test/java/com/chronoshift/nlp/ResultMergerTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/ResultMergerTest.kt)"
     },
     {
@@ -432,7 +428,7 @@
         "app/src/test/java/com/chronoshift/AdversarialInputTest.kt"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Review",
       "description": "## Problem\nThe Android streaming Flow and ViewModel cancellation need a browser equivalent that cannot display results for an old request.\n\n## Scope\n- Compose deterministic parsing, merging, ambiguity expansion and conversion behind one typed API.\n- Use a dedicated Web Worker if profiling justifies it; keep a request ID/cancellation boundary and separate worker errors from no-result cases.\n- Preserve the 10,000-character limit with a clear error; bound expensive work and result count per contract.\n\n## Acceptance criteria\n- [ ] Clear, edit and rapid repeated Convert actions never resurrect stale results.\n- [ ] Worker/runtime failure is recoverable and an unsupported background stage cannot block deterministic results.\n- [ ] Real end-to-end fixture suite and 10,000/10,001-character tests pass with network disabled.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: F9\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/nlp/TieredTimeExtractor.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/TieredTimeExtractor.kt)\n- [app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt)\n- [app/src/test/java/com/chronoshift/nlp/PipelineConcurrencyTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/PipelineConcurrencyTest.kt)\n- [app/src/test/java/com/chronoshift/AdversarialInputTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/AdversarialInputTest.kt)"
     },
     {
@@ -496,7 +492,7 @@
         "app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt"
       ],
       "optional": false,
-      "state": "Todo",
+      "state": "Done",
       "description": "## Problem\nThe Android two-layout/icon-heavy design needs a web interaction designed for discoverability and small screens.\n\n## Scope\n- Create reviewable phone/desktop sketches with a labeled input, visible Convert, example text, target timezone and simple result cards.\n- Keep input easy to edit when results appear; show date/day changes and assumptions near the result.\n- Specify empty, ambiguous, no-result, loading, offline-ready and update states; honor system theme.\n\n## Acceptance criteria\n- [ ] A first-time user can identify where to paste, how to convert and how to copy without instructions.\n- [ ] Prototype covers one timestamp, CST alternatives, a range, a long pasted message and date-only input.\n- [ ] Core conversion is available without visiting settings, installing the app or enabling AI.\n\n## Delivery\n- Priority: High\n- Relative complexity: S (S = small, M = medium; not a time commitment)\n- Dependencies: None\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/ui/main/MainScreen.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainScreen.kt)\n- [app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt)"
     },
     {
@@ -529,7 +525,7 @@
         "app/src/main/java/com/chronoshift/ui/main/MainUiState.kt"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Progress",
       "description": "## Problem\nThe web app needs a focused entry point wired to the tested engine.\n\n## Scope\n- Implement labeled multiline input, examples, Convert, Clear and result region.\n- Wire request/cancellation state to F10; preserve editable input with results.\n- Support mobile keyboards and a documented keyboard shortcut without stealing normal textarea Enter.\n\n## Acceptance criteria\n- [ ] Paste/type → Convert renders real engine results on phone and desktop.\n- [ ] Clear/reconvert handles pending work consistently and no stale results appear.\n- [ ] Layout works at 320 CSS pixels and 200% zoom with long input.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: F2, U1, F10\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/ui/main/MainScreen.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainScreen.kt)\n- [app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt)\n- [app/src/main/java/com/chronoshift/ui/main/MainUiState.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainUiState.kt)"
     },
     {
@@ -559,7 +555,7 @@
         "docs/architecture/merge-philosophy.md"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Review",
       "description": "## Problem\nCorrect results still need to explain which source time/zone was interpreted and whether the local date changed.\n\n## Scope\n- Display original matched text, prominent target time, target date/zone/offset and concise source context.\n- Group ambiguous alternatives by source match without hiding options; show assumption/correction controls progressively.\n- Label endpoints/date-only results accurately and keep engine method badges out of the main flow.\n\n## Acceptance criteria\n- [ ] User can distinguish CST alternatives and identify the correct one before copying.\n- [ ] Missing-zone/date assumptions are visible; date rollover and range endpoints are unambiguous.\n- [ ] Fixed offsets never imply an unsupported city, and each visible result is traceable to its source span.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: U2\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt)\n- [app/src/main/java/com/chronoshift/conversion/ConvertedTime.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/ConvertedTime.kt)\n- [docs/architecture/merge-philosophy.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/architecture/merge-philosophy.md)"
     },
     {
@@ -591,7 +587,7 @@
         "app/src/main/java/com/chronoshift/ui/settings/SettingsScreen.kt"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Review",
       "description": "## Problem\nThe Android app converts only to the device timezone; web users need an easy visible default and correction.\n\n## Scope\n- Detect the device IANA timezone with a safe explicit fallback.\n- Provide a searchable city/IANA zone selector and minimal locale/12–24-hour preference.\n- Apply target-zone changes immediately to existing results; use explicit controls to correct source-zone or reference-date assumptions without overwriting explicit parsed values.\n\n## Acceptance criteria\n- [ ] Default zone is visible, unknown detection leads to a usable selector, and device-zone changes are handled.\n- [ ] Selector works offline with keyboard/screen reader and includes supported city aliases.\n- [ ] Changing target zone changes formatting/conversion without reparsing or losing source interpretations.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: U2, F4, F8\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/conversion/TimeConverter.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/TimeConverter.kt)\n- [app/src/main/java/com/chronoshift/nlp/CityResolver.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/CityResolver.kt)\n- [app/src/main/java/com/chronoshift/ui/settings/SettingsScreen.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/settings/SettingsScreen.kt)"
     },
     {
@@ -620,7 +616,7 @@
         "app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Review",
       "description": "## Problem\nBrowser clipboard APIs can be unavailable or denied; ordinary keyboard/manual copy must remain usable.\n\n## Scope\n- Add optional Paste and per-result Copy, with plain text including date, target zone and relevant ambiguity context.\n- Read clipboard only on explicit user action; show success/failure feedback.\n- Offer manual select/copy and ordinary paste instructions when browser APIs are unsupported or denied.\n\n## Acceptance criteria\n- [ ] Allowed and denied clipboard flows both complete without blocking conversion.\n- [ ] No clipboard reads occur on page load, focus or timers.\n- [ ] Copied output identifies the selected interpretation and includes rollover/range context.\n\n## Delivery\n- Priority: Medium\n- Relative complexity: S (S = small, M = medium; not a time commitment)\n- Dependencies: U3\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/ui/main/MainScreen.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainScreen.kt)\n- [app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt)"
     },
     {
@@ -651,7 +647,7 @@
         "app/src/main/res/values/strings.xml"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Review",
       "description": "## Problem\nThe current UI mainly shows raw errors or no_timestamp; web users need a useful next step.\n\n## Scope\n- Write clear messages for empty/no timestamp, invalid source zone, DST conflict, input limit and runtime failure.\n- Keep input intact and provide examples or editable assumptions with a direct retry action.\n- Render pasted text as text, tolerate long/multiline messages and avoid jumpy layouts.\n\n## Acceptance criteria\n- [ ] No-result state explains how to try again without erasing the message.\n- [ ] 10,001-character input reports the limit immediately and supports editing.\n- [ ] Malformed/untrusted text cannot render HTML; source corrections do not replace explicit offsets silently.\n\n## Delivery\n- Priority: Medium\n- Relative complexity: S (S = small, M = medium; not a time commitment)\n- Dependencies: U3, U4\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt)\n- [app/src/test/java/com/chronoshift/AdversarialInputTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/AdversarialInputTest.kt)\n- [app/src/main/res/values/strings.xml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/res/values/strings.xml)"
     },
     {
@@ -682,7 +678,7 @@
         "app/src/main/java/com/chronoshift/ui/theme/Theme.kt"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Progress",
       "description": "## Problem\nSimple use needs observable keyboard, screen reader and mobile evidence.\n\n## Scope\n- Check WCAG 2.2 AA-relevant contrast, focus order, labels, announcements, touch targets, reduced motion and system light/dark.\n- Run automated checks plus manual keyboard/screen-reader and mobile review.\n- Run a small task-based check: paste meeting text, choose a CST interpretation, change target timezone, copy and reopen offline; document evidence and fix blocking friction.\n\n## Acceptance criteria\n- [ ] All core tasks work with keyboard alone and a screen reader; results/errors are announced once appropriately.\n- [ ] 320px, 200% zoom, long text and reduced-motion states remain usable.\n- [ ] Task-check findings and resolved issues are recorded; no critical accessibility or discoverability defect remains.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: U4, U5, U6\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/ui/main/MainScreen.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainScreen.kt)\n- [app/src/main/java/com/chronoshift/ui/theme/Theme.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/theme/Theme.kt)"
     },
     {
@@ -712,7 +708,7 @@
         "docs/architecture/nlp-pipeline.md"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Review",
       "description": "## Problem\nA web shell that loads while online is insufficient: every conversion dependency must be available after offline restart.\n\n## Scope\n- Add a service worker and versioned precache for HTML, JS, worker, CSS, icons, fonts and required parser/zone/city data.\n- Use navigation fallback for supported entry URLs; avoid runtime CDN fonts, online geocoding and conversion fetches.\n- Report offline-ready only after cache preparation succeeds; handle unsupported service workers, partial install and fresh offline visit honestly.\n\n## Acceptance criteria\n- [ ] Warm online once, wait for readiness, close the app, disable network, reopen and convert newly entered text.\n- [ ] Network-blocked conversion needs no uncached module/font/data or model.\n- [ ] Incomplete cache/download never reports ready; hosting scope/base-path tests pass.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: F2, F10\n\n## Repository evidence\n- [README.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/README.md)\n- [docs/architecture/nlp-pipeline.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/architecture/nlp-pipeline.md)"
     },
     {
@@ -742,7 +738,7 @@
         "app/src/main/AndroidManifest.xml"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Progress",
       "description": "## Problem\nUsers should be able to keep the converter on a home screen or desktop without making installation mandatory.\n\n## Scope\n- Provide name, icons, stable app ID, start URL/scope, standalone display and theme metadata.\n- Capability-detect install prompting and provide browser-specific manual guidance where appropriate.\n- Test normal browser and installed modes on Android, iOS and desktop.\n\n## Acceptance criteria\n- [ ] Manifest/start URL/icon validation passes and installed launch reaches the converter offline.\n- [ ] Install guidance appears only when relevant and can be dismissed.\n- [ ] Unsupported installation does not remove normal browser conversion or show a dead button.\n\n## Delivery\n- Priority: Medium\n- Relative complexity: S (S = small, M = medium; not a time commitment)\n- Dependencies: P1, U2\n\n## Repository evidence\n- [app/src/main/res/drawable/ic_launcher_foreground.xml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/res/drawable/ic_launcher_foreground.xml)\n- [app/src/main/AndroidManifest.xml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/AndroidManifest.xml)"
     },
     {
@@ -772,7 +768,7 @@
         "app/src/main/java/com/chronoshift/ui/settings/SettingsViewModel.kt"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Progress",
       "description": "## Problem\nBrowser storage can be denied, full, cleared or evicted; conversion must still work with defaults.\n\n## Scope\n- Persist only target-zone/time-format/theme preferences in a small versioned local store; use IndexedDB only where shared service-worker handoff needs it.\n- Default input/results to in-memory data; provide reset preferences and safe schema migration.\n- Catch storage failures and use a clear fallback. Offline cache readiness should respond accurately to missing resources; persistence requests cannot guarantee storage forever.\n\n## Acceptance criteria\n- [ ] Preferences survive normal browser/installed restarts and migration from an old schema.\n- [ ] Storage denial/quota/clear scenarios leave usable defaults and no crash.\n- [ ] Pasted text and conversion history are not persisted by default; reset removes app preferences.\n\n## Delivery\n- Priority: Medium\n- Relative complexity: S (S = small, M = medium; not a time commitment)\n- Dependencies: P1, U4\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/ui/settings/SettingsScreen.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/settings/SettingsScreen.kt)\n- [app/src/main/java/com/chronoshift/ui/settings/SettingsViewModel.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/settings/SettingsViewModel.kt)"
     },
     {
@@ -804,7 +800,7 @@
         "app/src/main/java/com/chronoshift/ui/main/MainUiState.kt"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Progress",
       "description": "## Problem\nUncontrolled service-worker activation can mix assets or force reloads while the user is editing.\n\n## Scope\n- Version caches atomically and preserve the last working version when a new install is incomplete.\n- Notify of an available update with an explicit reload action; preserve active input through that action only using a bounded temporary handoff cleared immediately after restore.\n- Define compatible message/storage contracts across tabs and remove obsolete caches after successful activation; document rollback behavior.\n\n## Acceptance criteria\n- [ ] Interrupted update leaves the old app operational offline.\n- [ ] Old tab/new tab and two successive releases do not mix incompatible parser/worker assets.\n- [ ] Accepting an update restores current input and clears temporary text; dismissing preserves the current session.\n- [ ] Rollback and obsolete-cache cleanup are exercised without deleting preferences.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: P1, P3, U2\n\n## Repository evidence\n- [.github/workflows/release.yml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/.github/workflows/release.yml)\n- [app/src/main/java/com/chronoshift/ui/main/MainUiState.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainUiState.kt)"
     },
     {
@@ -836,7 +832,7 @@
         "app/src/main/AndroidManifest.xml"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Progress",
       "description": "## Problem\nAndroid PROCESS_TEXT cannot be recreated everywhere by a web page; supported installed share targets can reduce copy/paste friction.\n\n## Scope\n- Add capability-based manifest share_target using POST and a service-worker fetch handler.\n- Hand title/text/url safely to the input page without network processing; consume and immediately clear any temporary IndexedDB handoff.\n- Enforce origin/type/size checks, treat incoming values as untrusted text, never auto-fetch shared URLs.\n- Keep ordinary paste as the documented path on unsupported browsers; extension/native context-menu integration is deferred.\n\n## Acceptance criteria\n- [ ] Installed supported browser shares text while offline and opens a usable input/result flow.\n- [ ] Shared message does not appear in request query strings, server logs or persistent history.\n- [ ] Unsupported browser and invalid/oversized payload scenarios have a clear paste/correction path.\n\n## Delivery\n- Priority: Medium\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: P2, P3, U2\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/ProcessTextActivity.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ProcessTextActivity.kt)\n- [app/src/main/AndroidManifest.xml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/AndroidManifest.xml)"
     },
     {
@@ -868,7 +864,7 @@
         "app/src/test/java/com/chronoshift/EndToEndTest.kt"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Progress",
       "description": "## Problem\nOnline happy-path tests do not prove offline durability or capability fallbacks.\n\n## Scope\n- Create browser scenarios for first online preparation, cached close/reopen offline, new input, preference restart, deep-link navigation and denied clipboard.\n- Cover incomplete caching, cleared/denied storage, version N→N+1, multi-tab and supported POST share target; complement automation with real-device checks.\n- Capture unexpected network requests and distinguish permitted online asset/update loading from forbidden conversion/text transmission.\n\n## Acceptance criteria\n- [ ] Offline scenarios convert newly typed text with all network routes blocked.\n- [ ] Upgrade/storage scenarios preserve usable behavior and readiness is truthful.\n- [ ] Share/clipboard fallbacks have recorded browser capability coverage.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: P3, P4, P5, U5\n\n## Repository evidence\n- [docs/developer/device-smoke-test.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/developer/device-smoke-test.md)\n- [app/src/test/java/com/chronoshift/EndToEndTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/EndToEndTest.kt)"
     },
     {
@@ -886,7 +882,7 @@
       "scope": [
         "Add mise-managed developer tools, Bun frozen-lock install, typecheck, formatting/lint as appropriate, engine fixtures and production build.",
         "Run meaningful browser integration/offline tests as they land, with failures publishing readable diagnostics.",
-        "Keep existing Android checks during the migration and document required web gates."
+        "Run web-only checks and publishing gates; remove obsolete native workflows and source-dependent corpus import."
       ],
       "acceptance": [
         "Fresh CI build succeeds without relying on a local package cache or unpinned tool versions.",
@@ -894,12 +890,13 @@
         "Build/test artifacts contain no user input or secrets and commands are documented."
       ],
       "references": [
-        ".github/workflows/test.yml",
+        ".github/workflows/web.yml",
+        ".github/workflows/pages.yml",
         "docs/developer/testing.md"
       ],
       "optional": false,
-      "state": "Backlog",
-      "description": "## Problem\nCurrent CI builds/lints/tests Android only.\n\n## Scope\n- Add mise-managed developer tools, Bun frozen-lock install, typecheck, formatting/lint as appropriate, engine fixtures and production build.\n- Run meaningful browser integration/offline tests as they land, with failures publishing readable diagnostics.\n- Keep existing Android checks during the migration and document required web gates.\n\n## Acceptance criteria\n- [ ] Fresh CI build succeeds without relying on a local package cache or unpinned tool versions.\n- [ ] Exact conversion failures and browser/offline regressions fail the web gate.\n- [ ] Build/test artifacts contain no user input or secrets and commands are documented.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: F2, F3\n\n## Repository evidence\n- [.github/workflows/test.yml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/.github/workflows/test.yml)\n- [docs/developer/testing.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/developer/testing.md)"
+      "state": "In Review",
+      "description": "## Problem\nCurrent CI builds/lints/tests Android only.\n\n## Scope\n- Add mise-managed developer tools, Bun frozen-lock install, typecheck, formatting/lint as appropriate, engine fixtures and production build.\n- Run meaningful browser integration/offline tests as they land, with failures publishing readable diagnostics.\n- Run web-only checks and publishing gates; remove obsolete native workflows and source-dependent corpus import.\n\n## Acceptance criteria\n- [ ] Fresh CI build succeeds without relying on a local package cache or unpinned tool versions.\n- [ ] Exact conversion failures and browser/offline regressions fail the web gate.\n- [ ] Build/test artifacts contain no user input or secrets and commands are documented.\n\n## Delivery\n- Dependencies: F2, F3\n- State: In Review"
     },
     {
       "key": "D2",
@@ -932,7 +929,7 @@
         "docs/developer/device-smoke-test.md"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Progress",
       "description": "## Problem\nJavaScript date/zone behavior and browser API capabilities vary; Android tests alone cannot certify the web release.\n\n## Scope\n- Run exact launch fixtures on Chromium, Firefox and WebKit and record real Android Chrome/iOS Safari evidence.\n- Check DST transitions, device-zone differences, non-English display locales, 12/24-hour format, date rollover and explicit offset labels.\n- Maintain a feature matrix for conversion, caching, install, clipboard and share; log intentional changes from Android and resolve all correctness gaps.\n\n## Acceptance criteria\n- [ ] Every launch-critical fixture passes or has an explicitly approved contract change with independent expected values.\n- [ ] Real mobile cached offline restart, timezone selection and copying are verified.\n- [ ] There are no open correctness defects that silently change an instant or hide ambiguity.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: F10, U7, P6, D1\n\n## Repository evidence\n- [app/src/test/java/com/chronoshift/IntegrationTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/IntegrationTest.kt)\n- [app/src/test/java/com/chronoshift/TimestampCorpusTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/TimestampCorpusTest.kt)\n- [app/src/test/java/com/chronoshift/conversion/TimeConverterTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/conversion/TimeConverterTest.kt)\n- [docs/developer/device-smoke-test.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/developer/device-smoke-test.md)"
     },
     {
@@ -963,7 +960,7 @@
         "app/src/test/java/com/chronoshift/AdversarialInputTest.kt"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Progress",
       "description": "## Problem\nPorting parser/data/UI can create a slow first launch or block typing on phones.\n\n## Scope\n- Establish and record device/test conditions and provisional budgets: <500 KiB compressed initial assets, p95 <250 ms for typical ≤2,000-character conversions and <1 s at the 10,000-character limit.\n- Measure production cold online and warm offline startup, long-input responsiveness and result rendering.\n- Trim unused locales/assets, split only assets that still become offline-ready and move expensive parsing to a worker if justified; revise budgets only with measured rationale.\n\n## Acceptance criteria\n- [ ] Benchmark report includes bundle breakdown and reproducible p95 measurements.\n- [ ] Typical flow meets the agreed budgets and worst-case input does not freeze editing/clear controls.\n- [ ] Performance optimization preserves exact fixtures and offline readiness.\n\n## Delivery\n- Priority: Medium\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: F10, U2, P1\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/nlp/TieredTimeExtractor.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/TieredTimeExtractor.kt)\n- [app/src/test/java/com/chronoshift/AdversarialInputTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/AdversarialInputTest.kt)"
     },
     {
@@ -998,7 +995,7 @@
         "app/src/main/res/xml/network_security_config.xml"
       ],
       "optional": false,
-      "state": "Backlog",
+      "state": "In Progress",
       "description": "## Problem\nA static app can still leak pasted text through logging, URLs, share handling, analytics or external dependencies.\n\n## Scope\n- Audit request/log/storage/URL paths with distinctive test text; keep conversions client-side and persistent history off by default.\n- Render input only as text, bound incoming data, avoid fetching arbitrary shared URLs and configure a compatible CSP/security header policy.\n- Review static asset dependencies/licenses and remove external runtime fonts/scripts and unnecessary telemetry.\n- Verify temporary share/update handoffs expire and clear; normal conversion is independent of storage or permissions.\n\n## Acceptance criteria\n- [ ] Request interception and storage/log inspection find no pasted test text outside approved temporary local handoff.\n- [ ] Injection payloads cannot execute or generate arbitrary external requests.\n- [ ] CSP works with required workers/service workers; offline and exact fixtures still pass.\n- [ ] Privacy behavior is accurately documented in plain language.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: U6, P5, P4, D1\n\n## Repository evidence\n- [app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt)\n- [app/src/main/java/com/chronoshift/conversion/TimeConverter.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/TimeConverter.kt)\n- [app/src/main/res/xml/network_security_config.xml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/res/xml/network_security_config.xml)"
     },
     {
@@ -1037,37 +1034,37 @@
       "key": "D6",
       "project": "delivery",
       "milestone": "cutover",
-      "title": "Make the web app primary and retire active Android delivery",
+      "title": "Make the repository web-only and remove native app maintenance",
       "priority": 2,
       "size": "M",
-      "blockedBy": [
-        "D5"
-      ],
-      "problem": "Keeping Android release instructions and automated model maintenance active after cutover would confuse users and maintainers.",
+      "blockedBy": [],
+      "problem": "The user explicitly requests removal of native app support; all active source, tooling and docs must describe the web product.",
       "scope": [
-        "Rewrite README, contributor/agent instructions, build/test/architecture docs and release notes around the web product.",
-        "Explain the paste/share transition, supported browser capability differences and optional AI decision.",
-        "After accepted web release, remove or disable active APK/model-manifest/device-eval automation and Gradle-only dependency update configuration; resolve existing Android Dependabot PRs appropriately.",
-        "Preserve Android source in an explicit legacy location/ref and existing APK releases; document that there is no conversion-history database to migrate after checking actual settings."
+        "Remove the native app, Gradle wrappers/configuration and native model maintenance.",
+        "Remove native unit/lint, APK release and scheduled model workflows; disable obsolete jobs and close native-only dependency PRs.",
+        "Rewrite user/agent/build/test/architecture/browser-smoke docs and templates for the offline web app.",
+        "Keep the 353-input corpus as standalone web data with immutable Git provenance; remove native-source generation.",
+        "Use Bun and GitHub Actions dependency maintenance; preserve historical commits and releases without retaining a native directory."
       ],
       "acceptance": [
-        "README leads with the web URL, offline setup and web development commands; no active instructions direct users to build/sideload for normal use.",
-        "Default CI/releases/dependency maintenance target web and obsolete Android/model automation no longer runs.",
-        "Legacy source/releases remain discoverable and no historical artifact is destroyed.",
-        "Final acceptance checklist links browser/offline/usability/privacy evidence."
+        "Active tests/build/CI do not require a native SDK or source file.",
+        "Web unit/browser/subpath/hosted checks pass and the deterministic corpus audit has zero crashes.",
+        "Docs/templates describe web usage and GitHub Pages publishing remains functional.",
+        "Native workflow/dependency maintenance is retired and Linear records the changed scope."
       ],
       "references": [
         "README.md",
-        "CLAUDE.md",
         "AGENTS.md",
-        ".github/workflows/release.yml",
-        ".github/workflows/model-manifest.yml",
+        "CLAUDE.md",
+        ".github/workflows/web.yml",
+        ".github/workflows/pages.yml",
         ".github/dependabot.yml",
-        "docs/developer/building.md"
+        "docs/developer/building.md",
+        "tests/fixtures/resilience-corpus.json"
       ],
       "optional": false,
-      "state": "Backlog",
-      "description": "## Problem\nKeeping Android release instructions and automated model maintenance active after cutover would confuse users and maintainers.\n\n## Scope\n- Rewrite README, contributor/agent instructions, build/test/architecture docs and release notes around the web product.\n- Explain the paste/share transition, supported browser capability differences and optional AI decision.\n- After accepted web release, remove or disable active APK/model-manifest/device-eval automation and Gradle-only dependency update configuration; resolve existing Android Dependabot PRs appropriately.\n- Preserve Android source in an explicit legacy location/ref and existing APK releases; document that there is no conversion-history database to migrate after checking actual settings.\n\n## Acceptance criteria\n- [ ] README leads with the web URL, offline setup and web development commands; no active instructions direct users to build/sideload for normal use.\n- [ ] Default CI/releases/dependency maintenance target web and obsolete Android/model automation no longer runs.\n- [ ] Legacy source/releases remain discoverable and no historical artifact is destroyed.\n- [ ] Final acceptance checklist links browser/offline/usability/privacy evidence.\n\n## Delivery\n- Priority: High\n- Relative complexity: M (S = small, M = medium; not a time commitment)\n- Dependencies: D5\n\n## Repository evidence\n- [README.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/README.md)\n- [CLAUDE.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/CLAUDE.md)\n- [AGENTS.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/AGENTS.md)\n- [.github/workflows/release.yml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/.github/workflows/release.yml)\n- [.github/workflows/model-manifest.yml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/.github/workflows/model-manifest.yml)\n- [.github/dependabot.yml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/.github/dependabot.yml)\n- [docs/developer/building.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/developer/building.md)"
+      "state": "In Review",
+      "description": "## Problem\nThe user explicitly requests removal of native app support; all active source, tooling and docs must describe the web product.\n\n## Scope\n- Remove the native app, Gradle wrappers/configuration and native model maintenance.\n- Remove native unit/lint, APK release and scheduled model workflows; disable obsolete jobs and close native-only dependency PRs.\n- Rewrite user/agent/build/test/architecture/browser-smoke docs and templates for the offline web app.\n- Keep the 353-input corpus as standalone web data with immutable Git provenance; remove native-source generation.\n- Use Bun and GitHub Actions dependency maintenance; preserve historical commits and releases without retaining a native directory.\n\n## Acceptance criteria\n- [ ] Active tests/build/CI do not require a native SDK or source file.\n- [ ] Web unit/browser/subpath/hosted checks pass and the deterministic corpus audit has zero crashes.\n- [ ] Docs/templates describe web usage and GitHub Pages publishing remains functional.\n- [ ] Native workflow/dependency maintenance is retired and Linear records the changed scope.\n\n## Delivery\n- Dependencies: None\n- State: In Review"
     }
   ],
   "sources": [
@@ -1108,11 +1105,11 @@
     {
       "key": "D7",
       "title": "Triage the 110 failures in retained Android conversion tests",
-      "description": "## Problem\nAfter repairing SDK setup, the retained Android CI executes 855 unit tests and reports 110 failures across conversion, merge and ambiguity cases. Android app/test sources are unchanged in the web migration PR. This requires explicit triage before cutover; do not hide the failures or treat synthetic outputs as browser accuracy evidence.\n\n## Scope\n- Reproduce against the unchanged base using the corrected SDK setup; group failures by underlying cause and distinguish environment/date assumptions from source defects.\n- Compare affected cases with the independent web fixtures and extend exact browser expectations where coverage is missing.\n- Decide whether a small Android maintenance fix is needed during migration or whether the failure belongs in the documented retirement decision.\n- Keep the retained Android checks visible; do not disable assertions solely to obtain a green check.\n\n## Acceptance criteria\n- [ ] Failure groups and reproducible baseline evidence are documented.\n- [ ] Any affected web launch behavior has independently specified exact fixtures.\n- [ ] Necessary maintenance fixes or explicit cutover decisions are tracked and the PR/check disposition is clear.\n\n## Evidence\n- [Android CI run: 110/855 failing](https://github.com/Tien-Lam/ChronoShift/actions/runs/37126768788)\n- [Offline web PR #16](https://github.com/Tien-Lam/ChronoShift/pull/16)\n- Initial SDK failure was the obsolete `tools` package; setup/lint now pass with `platform-tools`.\n",
+      "description": "Canceled at the user's explicit retirement of native app support. Historical native failures were not repaired; they no longer block the web-only repository. Web exact fixtures and standalone input corpus remain.",
       "id": "TIE-322",
       "uuid": "acbcf5f0-e1de-431a-88da-67e65dff489b",
       "url": "https://linear.app/tienlam/issue/TIE-322/triage-the-110-failures-in-retained-android-conversion-tests",
-      "state": "In Progress"
+      "state": "Canceled"
     }
   ],
   "hosting": {
@@ -1122,5 +1119,7 @@
     "workflow": ".github/workflows/pages.yml",
     "previewBranch": "codex/offline-web-migration",
     "primaryBranch": "main"
-  }
+  },
+  "scopeUpdatedOn": "2026-10-04",
+  "scopeUpdate": "The user explicitly retired native Android support. Remove the active native source/tooling now; cancel TIE-322 and retain independent web fixtures plus historical provenance. Remaining web acceptance does not require native support."
 }

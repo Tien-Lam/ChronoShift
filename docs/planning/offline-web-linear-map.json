@@ -23,7 +23,7 @@
     "delivery": {
       "id": "P-TIE-17",
       "uuid": "302fdd5f-a683-490b-9c4b-71073e0dd834",
-      "url": "https://linear.app/tienlam/project/chronoshift-web-delivery-and-android-cutover-dab90fb49a74"
+      "url": "https://linear.app/tienlam/project/chronoshift-web-delivery-dab90fb49a74"
     }
   },
   "milestones": {
@@ -78,8 +78,8 @@
     },
     "delivery/cutover": {
       "id": "897e485b-5c7b-4ee1-8769-df0af789a3aa",
-      "name": "Web becomes the primary app",
-      "description": "HTTPS production release and rollback are proven, usage/developer docs describe the web product, and Android release/model/dependency workflows are retired without deleting history.",
+      "name": "Web-only delivery",
+      "description": "Web-only source, build, publishing, dependencies and documentation; native maintenance retired with historical provenance preserved.",
       "progress": 0,
       "sortOrder": 1032
     }
@@ -100,7 +100,7 @@
     "F3": {
       "id": "TIE-294",
       "uuid": "d2ae4d46-4800-444f-af4e-54bd3f4367e9",
-      "url": "https://linear.app/tienlam/issue/TIE-294/turn-kotlin-examples-into-a-portable-exact-conversion-fixture-suite",
+      "url": "https://linear.app/tienlam/issue/TIE-294/maintain-independent-web-fixtures-and-a-standalone-conversion-corpus",
       "state": "In Review"
     },
     "F4": {
@@ -112,8 +112,8 @@
     "F5": {
       "id": "TIE-296",
       "uuid": "13feda34-091e-40a6-96a9-8fb40f297dd6",
-      "url": "https://linear.app/tienlam/issue/TIE-296/replace-quickjs-with-a-maintained-browser-chrono-node-adapter",
-      "state": "In Progress"
+      "url": "https://linear.app/tienlam/issue/TIE-296/maintain-the-typed-browser-chrono-node-adapter",
+      "state": "In Review"
     },
     "F6": {
       "id": "TIE-297",
@@ -262,14 +262,14 @@
     "D6": {
       "id": "TIE-321",
       "uuid": "f821551a-6149-45dc-8ec1-30a72b09e5cc",
-      "url": "https://linear.app/tienlam/issue/TIE-321/make-the-web-app-primary-and-retire-active-android-delivery",
-      "state": "Backlog"
+      "url": "https://linear.app/tienlam/issue/TIE-321/make-the-repository-web-only-and-remove-native-app-maintenance",
+      "state": "In Review"
     },
     "D7": {
       "id": "TIE-322",
       "uuid": "acbcf5f0-e1de-431a-88da-67e65dff489b",
       "url": "https://linear.app/tienlam/issue/TIE-322/triage-the-110-failures-in-retained-android-conversion-tests",
-      "state": "In Progress"
+      "state": "Canceled"
     }
   }
 }

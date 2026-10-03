@@ -13,7 +13,6 @@
     "test:browser": "bunx --bun playwright test",
     "test:hosted": "bunx --bun playwright test --config=playwright.hosted.config.ts",
     "check": "bun run typecheck && bun run test && bun run build",
-    "corpus:import": "bun scripts/import-android-corpus.ts",
     "corpus:audit": "bun scripts/audit-corpus.ts",
     "format:check": "bunx --bun prettier --check web scripts/*.ts tests e2e *.ts",
     "format": "bunx --bun prettier --write web scripts/*.ts tests e2e *.ts"
