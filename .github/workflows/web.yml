@@ -15,6 +15,17 @@ permissions:
 jobs:
   web:
     runs-on: ubuntu-latest
+    container:
+      # Playwright 1.63.0 / Ubuntu 24.04, pinned official multi-platform image.
+      # Update this digest and the version guard with @playwright/test.
+      image: mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
+      options: --ipc=host --init
+    defaults:
+      run:
+        shell: bash
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+      PLAYWRIGHT_IMAGE_VERSION: "1.63.0"
     timeout-minutes: 20
     permissions:
       contents: read
@@ -26,6 +37,15 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db # v3
       - run: bun install --frozen-lockfile
+      - name: Verify the pinned browser image matches the dependency
+        run: >-
+          bun -e 'const pkg = await Bun.file("node_modules/playwright/package.json").json();
+          if (pkg.version !== process.env.PLAYWRIGHT_IMAGE_VERSION)
+          throw new Error("Update the pinned Playwright image and version guard with the dependency");
+          const { chromium, firefox, webkit } = await import("@playwright/test");
+          for (const browser of [chromium, firefox, webkit])
+          if (!(await Bun.file(browser.executablePath()).exists()))
+          throw new Error("The pinned image is missing " + browser.name());'
       - run: bun run format:check
       - name: Unit tests and production build
         run: |
@@ -35,8 +55,6 @@ jobs:
         run: |
           bun run corpus:audit
           git diff --exit-code -- docs/planning/corpus-audit.json
-      - name: Install browser engines and OS libraries
-        run: bunx --bun playwright install --with-deps --only-shell chromium firefox webkit
       - run: bun run test:browser
       - id: pages
         if: inputs.publish-pages

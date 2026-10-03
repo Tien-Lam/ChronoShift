@@ -18,7 +18,7 @@ export default defineConfig({
     baseURL: `http://127.0.0.1:${port}`,
     locale: "en-AU",
     timezoneId: "Australia/Sydney",
-    trace: "retain-on-failure",
+    trace: process.env.CI ? "on-first-retry" : "retain-on-failure",
     screenshot: "only-on-failure",
   },
   projects: [
