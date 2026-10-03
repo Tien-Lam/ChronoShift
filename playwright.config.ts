@@ -2,7 +2,11 @@ import { defineConfig, devices } from "@playwright/test";
 const port = process.env.PLAYWRIGHT_PORT || "4173";
 export default defineConfig({
   testDir: "./e2e",
-  testIgnore: "**/subpath.spec.ts",
+  testIgnore: [
+    "**/subpath.spec.ts",
+    "**/foldable.spec.ts",
+    "**/hosted.spec.ts",
+  ],
   timeout: 30000,
   expect: { timeout: 10000 },
   fullyParallel: true,
@@ -17,6 +21,12 @@ export default defineConfig({
     screenshot: "only-on-failure",
   },
   projects: [
+    {
+      name: "foldable",
+      testMatch: "**/foldable.spec.ts",
+      testIgnore: [],
+      use: { ...devices["Desktop Chrome"] },
+    },
     { name: "chromium", use: { ...devices["Desktop Chrome"] } },
     { name: "firefox", use: { ...devices["Desktop Firefox"] } },
     { name: "webkit", use: { ...devices["Desktop Safari"] } },

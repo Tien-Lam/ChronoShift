@@ -2,6 +2,8 @@
 
 ChronoShift is moving to a simple, private web app that works offline after its first complete online load. The web preview supports natural-language times, cities, explicit zones/offsets, ranges, Unix seconds and labeled timezone ambiguity. Paste → Convert → Copy, with no account or conversion server.
 
+[Open the web preview](https://tien-lam.github.io/ChronoShift/). The interface adapts to phones, tablets, desktop windows and foldable screens; supported browsers keep input and results clear of a hinge. Wait for **Offline ready** before disconnecting.
+
 ```bash
 mise install
 bun install --frozen-lockfile

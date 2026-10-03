@@ -63,7 +63,11 @@ China Standard                     [Copy]
 
 Desktop uses a readable centered workspace, with input/results side by side when space allows; phone stacks them. No horizontal scroll at 320 CSS pixels or 200% zoom. Keyboard Enter remains a textarea newline; Ctrl/Cmd+Enter converts. Result/error announcements and labels support a screen reader. Copy/paste are user actions with manual fallbacks.
 
+Adapt dynamically when a window resizes or a device folds/rotates, preserving draft input, results and preferences. Cover screens down to 280 CSS pixels, tablets, unfolded screens and short landscape windows must reflow without horizontal page scrolling. Respect display safe areas and offer controls at least 44 pixels high on touch screens. When supported, CSS viewport segments place input/results on separate sides of a vertical hinge; tabletop posture keeps the scrollable task within the upper segment. Other browsers use the fluid single/two-column layout. Actual folding and virtual-keyboard behavior require physical-device acceptance.
+
 ## Offline and privacy
+
+Host on GitHub Pages at https://tien-lam.github.io/ChronoShift/. All asset URLs, manifest and service-worker scope use `/ChronoShift/`. Publish a preview from the migration branch while release gates remain open; reviewed main updates become the continuing publishing source. Keep Android cutover separate from preview publishing.
 
 - Offline conversion becomes available after the first online visit completes all required cache assets. Only show Offline ready after successful preparation and control. Installation is optional.
 - No text in URLs, conversion requests, analytics, server logs or permanent storage. Only preferences persist by default. Explicit update reload and shared-text entry may use a short-lived local handoff, consumed/deleted immediately with a five-minute maximum age.

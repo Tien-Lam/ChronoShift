@@ -3,6 +3,18 @@ import { join } from "node:path";
 const base = process.env.BASE_PATH || "/";
 if (!/^\/(?:[A-Za-z0-9_-]+\/)*$/.test(base))
   throw new Error("BASE_PATH must be / or a path such as /ChronoShift/");
+// Pages cannot set custom response headers. Enforce the static policy in HTML.
+// Inject at build time so the development server can still use Vite's HMR.
+const csp =
+  "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'";
+const html = await Bun.file("dist/index.html").text();
+await Bun.write(
+  "dist/index.html",
+  html.replace(
+    "<head>",
+    `<head>\n    <meta http-equiv="Content-Security-Policy" content="${csp}">\n    <meta name="referrer" content="no-referrer">`,
+  ),
+);
 async function files(dir: string): Promise<string[]> {
   const entries = await readdir(dir, { withFileTypes: true });
   const nested = await Promise.all(
@@ -14,6 +26,14 @@ async function files(dir: string): Promise<string[]> {
   );
   return nested.flat();
 }
+await Bun.write(
+  "dist/release.json",
+  JSON.stringify(
+    { sourceCommit: process.env.GITHUB_SHA || "local", base },
+    null,
+    2,
+  ),
+);
 const assets = (await files("dist"))
   .filter((p) => !p.endsWith("/sw.js") && !p.endsWith("/sw-template.js"))
   .sort();

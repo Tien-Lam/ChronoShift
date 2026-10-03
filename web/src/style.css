@@ -23,6 +23,7 @@
 }
 body {
   margin: 0;
+  min-height: 100svh;
 }
 button,
 input,
@@ -58,14 +59,17 @@ button {
   color: var(--ink);
 }
 .topbar {
-  height: 88px;
+  min-height: 88px;
   max-width: 1200px;
-  padding: 0 40px;
+  padding: env(safe-area-inset-top, 0px)
+    max(20px, env(safe-area-inset-right, 0px)) 0
+    max(20px, env(safe-area-inset-left, 0px));
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  flex-wrap: wrap;
   border-bottom: 1px solid var(--border);
 }
 .brand {
@@ -131,7 +135,11 @@ button {
 main {
   max-width: 1120px;
   margin: auto;
-  padding: 64px 40px 28px;
+  padding: clamp(28px, 5vw, 64px)
+    max(clamp(12px, 3vw, 40px), env(safe-area-inset-right, 0px))
+    max(28px, env(safe-area-inset-bottom, 0px))
+    max(clamp(12px, 3vw, 40px), env(safe-area-inset-left, 0px));
+  container-type: inline-size;
 }
 .intro {
   margin-bottom: 44px;
@@ -163,7 +171,7 @@ h1 span {
 }
 .workspace {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   border: 1px solid var(--border);
   border-radius: 20px;
   background: var(--surface);
@@ -172,7 +180,9 @@ h1 span {
 }
 .input-panel,
 .result-panel {
-  padding: 30px;
+  padding: clamp(14px, 2.5vw, 30px);
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .input-panel {
   border-right: 1px solid var(--border);
@@ -182,6 +192,7 @@ h1 span {
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
   margin-bottom: 24px;
 }
 h2 {
@@ -212,6 +223,9 @@ select {
   max-width: 100%;
   width: 100%;
   padding: 12px;
+  min-width: 0;
+  font-size: 16px;
+  min-height: 44px;
 }
 #message {
   resize: vertical;
@@ -231,6 +245,7 @@ input::placeholder {
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
   margin-top: 9px;
 }
 .text-button {
@@ -389,6 +404,7 @@ input::placeholder {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+  flex-wrap: wrap;
 }
 .source-label {
   font-size: 11px;
@@ -416,6 +432,7 @@ input::placeholder {
   line-height: 1.25;
   margin: 12px 0 5px;
   font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
 }
 .result-date {
   font-size: 14px;
@@ -521,8 +538,11 @@ footer p span {
 }
 @media (max-width: 760px) {
   .topbar {
-    height: 72px;
-    padding: 0 22px;
+    min-height: 72px;
+    padding: max(12px, env(safe-area-inset-top, 0px))
+      max(12px, env(safe-area-inset-right, 0px)) 12px
+      max(12px, env(safe-area-inset-left, 0px));
+    gap: 10px;
   }
   .brand {
     font-size: 18px;
@@ -531,7 +551,7 @@ footer p span {
     font-size: 10px;
   }
   main {
-    padding: 36px 20px 22px;
+    padding-top: 36px;
   }
   .intro {
     margin-bottom: 30px;
@@ -557,13 +577,13 @@ footer p span {
   }
   .input-panel,
   .result-panel {
-    padding: 23px;
+    padding: clamp(14px, 3vw, 23px);
   }
   .result-placeholder {
     min-height: 210px;
   }
   .hero-time {
-    font-size: 40px;
+    font-size: clamp(28px, 7vw, 40px);
   }
   footer {
     align-items: flex-start;
@@ -593,6 +613,80 @@ footer p span {
     align-items: flex-start;
     flex-direction: column;
     gap: 10px;
+  }
+}
+/* Reflow according to the space available to the app, including split windows. */
+@container (max-width: 680px) {
+  .workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .input-panel {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .result-placeholder {
+    min-height: 210px;
+  }
+}
+@media (max-height: 500px) {
+  main {
+    padding-top: 24px;
+  }
+  .intro {
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-size: clamp(34px, 5vw, 52px);
+  }
+}
+@media (pointer: coarse) {
+  .copy-button,
+  .text-button {
+    min-height: 44px;
+  }
+}
+/* Progressive enhancement: other browsers retain the fluid layout above. */
+@media (horizontal-viewport-segments: 2) {
+  .topbar {
+    width: env(viewport-segment-width 0 0);
+    max-width: none;
+    margin: 0;
+  }
+  main {
+    max-width: none;
+    margin: 0;
+    padding-inline: 0;
+  }
+  main > :not(.workspace) {
+    max-width: env(viewport-segment-width 0 0);
+    padding-inline: max(12px, env(safe-area-inset-left, 0px));
+  }
+  .workspace {
+    grid-template-columns: minmax(0, env(viewport-segment-width 0 0)) minmax(
+        0,
+        env(viewport-segment-width 1 0)
+      );
+    column-gap: calc(
+      env(viewport-segment-left 1 0) - env(viewport-segment-right 0 0)
+    );
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+  .input-panel,
+  .result-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+}
+/* In a tabletop posture, keep the scrollable task within the upper screen. */
+@media (vertical-viewport-segments: 2) {
+  #root {
+    height: env(viewport-segment-height 0 0);
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
   }
 }
 @media (prefers-color-scheme: dark) {

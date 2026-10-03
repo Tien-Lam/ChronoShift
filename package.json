@@ -11,6 +11,7 @@
     "typecheck": "bunx --bun tsc --noEmit",
     "test": "bun test tests",
     "test:browser": "bunx --bun playwright test",
+    "test:hosted": "bunx --bun playwright test --config=playwright.hosted.config.ts",
     "check": "bun run typecheck && bun run test && bun run build",
     "corpus:import": "bun scripts/import-android-corpus.ts",
     "corpus:audit": "bun scripts/audit-corpus.ts",
