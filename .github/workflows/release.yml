@@ -19,6 +19,8 @@ jobs:
           java-version: 21
 
       - uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407  # v3
+        with:
+          packages: platform-tools
 
       - uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a  # v4
 
@@ -29,7 +31,7 @@ jobs:
         run: ./gradlew assembleRelease
 
       - name: Rename APK
-        run: mv app/build/outputs/apk/release/app-release.apk app/build/outputs/apk/release/ChronoShift-${{ github.ref_name }}.apk
+        run: mv -f app/build/outputs/apk/release/app-release.apk app/build/outputs/apk/release/ChronoShift-${{ github.ref_name }}.apk
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65  # v2

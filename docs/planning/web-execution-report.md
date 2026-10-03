@@ -13,6 +13,7 @@ The PWA precaches all required assets, confirms readiness, reopens offline, acce
 ## Local verification, 3 October 2026
 
 - Type check and production build pass with the locked mise/Bun toolchain.
+- Fresh [GitHub web CI passed on 222d6a2](https://github.com/Tien-Lam/ChronoShift/actions/runs/37126227799), including frozen install, all browser/subpath checks and build/test artifacts.
 - 72 unit tests pass, including 64 independent temporal fixtures and real execution of all 353 imported Android corpus inputs.
 - 45 browser scenarios plus one repository-subpath scenario pass in Chromium, Firefox, WebKit, Android Chrome emulation and iPhone WebKit emulation. Each profile runs the 64 exact fixture expectations in the production worker.
 - Scenarios cover cached close/reopen followed by fresh input, ambiguity/copy/paste, preference restart/storage denial, input recovery and keyboard shortcuts, 320px light/dark/reduced-motion accessibility checks, worker failure/late-response cancellation, single-use offline POST sharing, explicit update draft restore and incomplete-update recovery.
@@ -31,3 +32,5 @@ The Android corpus audit has zero crashes and 29 differences: 21 concern intenti
 - Optional learned temporal-span benchmark (TIE-302); research recommends a small learned tagger plus deterministic normalization, but no model has been trained/exported/benchmarked yet.
 
 Android sources, tests, APK releases and existing maintenance PRs remain until cutover acceptance. The implementation branch can be reviewed and run now; the initiative remains active.
+
+The retained Android CI failed during SDK setup because the action default requests the discontinued `tools` package. Test/release workflows now explicitly request `platform-tools`; Android sources are unchanged. The subsequent Android run remains an independent migration check.
