@@ -682,25 +682,31 @@ export default function App() {
               );
               return (
                 <article className="result-group" key={group}>
-                  <div className="result-source">
-                    <p>
-                      “{entries[0].original}”
-                      {entries[0].endpoint ? ` · ${entries[0].endpoint}` : ""}
-                    </p>
-                    {entries.length > 1 && (
-                      <span className="ambiguity">
-                        {entries.length} possible interpretations
-                      </span>
-                    )}
-                  </div>
-                  {entries.map((result) => {
+                  {entries.map((result, index) => {
                     const d = formatResult(result, displayOptions);
                     return (
                       <div className="result" key={result.id}>
                         <div className="result-top">
-                          <span className="source-label">
-                            {result.interpretation || result.sourceLabel}
-                          </span>
+                          <div className="result-output">
+                            {d.time && (
+                              <div className="hero-time">{d.time}</div>
+                            )}
+                            <p
+                              className={`result-date${result.dateOnly ? " hero-date" : ""}`}
+                            >
+                              {d.date}
+                            </p>
+                            <p className="result-zone">
+                              {d.zone}
+                              {d.dateShift !== 0 && (
+                                <span className="day-shift">
+                                  {d.dateShift > 0 ? "+" : ""}
+                                  {d.dateShift} day
+                                  {Math.abs(d.dateShift) !== 1 ? "s" : ""}
+                                </span>
+                              )}
+                            </p>
+                          </div>
                           <button
                             type="button"
                             className="copy-button"
@@ -710,18 +716,20 @@ export default function App() {
                             Copy
                           </button>
                         </div>
-                        {d.time && <div className="hero-time">{d.time}</div>}
-                        <p className="result-date">{d.date}</p>
-                        <p className="result-zone">
-                          {d.zone}
-                          {d.dateShift !== 0 && (
-                            <span className="day-shift">
-                              {d.dateShift > 0 ? "+" : ""}
-                              {d.dateShift} day
-                              {Math.abs(d.dateShift) !== 1 ? "s" : ""}
+                        <div className="result-context">
+                          {index === 0 && entries.length > 1 && (
+                            <span className="ambiguity">
+                              {entries.length} possible interpretations
                             </span>
                           )}
-                        </p>
+                          <p>
+                            {result.endpoint ? `${result.endpoint} · ` : ""}
+                            Source:{" "}
+                            <span className="source-label">
+                              {result.interpretation || result.sourceLabel}
+                            </span>
+                          </p>
+                        </div>
                         {result.dateOnly && (
                           <p className="assumption">
                             A date without a time cannot be shifted between
@@ -741,6 +749,9 @@ export default function App() {
                       </div>
                     );
                   })}
+                  <div className="result-source">
+                    <p>Original: “{entries[0].original}”</p>
+                  </div>
                 </article>
               );
             })}
