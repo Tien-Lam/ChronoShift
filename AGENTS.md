@@ -14,6 +14,6 @@ ChronoShift is an offline, local-only TypeScript web app hosted on GitHub Pages.
 
 ## Review and Delivery
 
-- For substantial changes, use two independent agents with clean context: an adversarial reviewer and a code reviewer. Provide intended behavior, revision and scope. Fix actionable findings, add meaningful regression coverage and repeat review until both report no blockers and required checks pass.
-- Record findings, fixes and verification in the PR. When authorized, merge and complete only Linear tickets whose acceptance criteria have evidence. Keep unverified physical-device or human acceptance work open.
+- For substantial changes, use two independent agents with clean context: an adversarial reviewer and a code reviewer. Follow [the review workflow](docs/developer/review.md); save the original report, timings/environment, base/head revisions, scope and evidence gaps in the PR. Review surrounding lifecycle paths as well as the diff. Fix actionable findings and repeat review until both report no blockers and required checks pass.
+- Record each reviewer's tested conditions, findings and separate implementation/report-resolution verdicts. Approval of a bounded fix does not establish that the original report is resolved. When authorized, merge and complete only Linear tickets with matching acceptance evidence; keep unresolved report, physical-device or human acceptance gaps open.
 - Publish only `main`. Reuse successful trusted PR artifacts only after digest and exact source-tree verification; otherwise run the complete gate. Serialize the entire publishing workflow so older deployments cannot overtake newer ones.
