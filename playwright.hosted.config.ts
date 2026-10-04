@@ -13,7 +13,15 @@ export default defineConfig({
     screenshot: "only-on-failure",
   },
   projects: [
-    { name: "hosted-desktop", use: { ...devices["Desktop Chrome"] } },
+    {
+      name: "hosted-desktop",
+      use: {
+        ...devices["Desktop Chrome"],
+        ...(process.env.PLAYWRIGHT_CHROMIUM_CHANNEL
+          ? { channel: process.env.PLAYWRIGHT_CHROMIUM_CHANNEL }
+          : {}),
+      },
+    },
     { name: "hosted-phone", use: { ...devices["Pixel 7"] } },
   ],
 });
