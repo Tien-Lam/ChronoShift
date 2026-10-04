@@ -520,6 +520,23 @@ input::placeholder {
 .option-fields {
   padding: 0 0 12px;
 }
+.diagnostic-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-bottom: 0;
+  cursor: pointer;
+  color: var(--ink);
+}
+.diagnostic-toggle input {
+  width: 18px;
+  height: 18px;
+  min-height: 18px;
+  padding: 0;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+}
 .examples {
   border-top: 1px solid var(--border);
   margin-top: 4px;

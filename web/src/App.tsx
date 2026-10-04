@@ -24,6 +24,11 @@ import {
 } from "./platform/handoff";
 import { setupOffline } from "./platform/offline";
 import type { OfflineState } from "./platform/offline";
+import {
+  diagnostic,
+  detailedLogsEnabled,
+  setDetailedLogs,
+} from "./platform/diagnostics";
 import { ChoiceSelect, ZoneChoice } from "./components/Choices";
 import { DateChoice } from "./components/DateChoice";
 
@@ -45,6 +50,7 @@ export default function App() {
   const [device, setDevice] = useState(deviceTimezone);
   const [referenceDate, setReferenceDate] = useState("");
   const [referenceReset, setReferenceReset] = useState(0);
+  const [detailedLogs, setDetailedLogsChecked] = useState(detailedLogsEnabled);
   const referenceValid = useRef(true);
   const [conversion, setConversion] = useState<Conversion>({
     results: [],
@@ -208,6 +214,8 @@ export default function App() {
     }
     request.current++;
     const id = request.current;
+    const started = performance.now();
+    diagnostic("conversion.start", { requestId: id, characters: text.length });
     worker.current?.terminate();
     setBusy(true);
     setError("");
@@ -220,6 +228,13 @@ export default function App() {
       worker.current = current;
       current.onmessage = (event) => {
         if (event.data.id !== request.current) return;
+        diagnostic("conversion.complete", {
+          requestId: id,
+          elapsedMs: performance.now() - started,
+          reason: event.data.error ? "engine-error" : "success",
+          results: event.data.conversion?.results.length,
+          warnings: event.data.conversion?.warnings.length,
+        });
         setBusy(false);
         if (event.data.error) setError(event.data.error);
         else {
@@ -237,6 +252,11 @@ export default function App() {
       };
       current.onerror = () => {
         if (id !== request.current) return;
+        diagnostic("conversion.failed", {
+          requestId: id,
+          elapsedMs: performance.now() - started,
+          reason: "worker-error",
+        });
         setBusy(false);
         setError("Could not start conversion. Choose Convert to try again.");
         current.terminate();
@@ -248,6 +268,11 @@ export default function App() {
         options: { ...displayOptions, now: new Date().toISOString() },
       });
     } catch {
+      diagnostic("conversion.failed", {
+        requestId: id,
+        elapsedMs: performance.now() - started,
+        reason: "worker-start-failed",
+      });
       setBusy(false);
       setError(
         "This browser could not start conversion. Reload and try again.",
@@ -309,11 +334,15 @@ export default function App() {
     const pending = offline.update;
     if (pending?.state !== "installed") return;
     if (draft.current && !preserveForUpdate(draft.current)) {
+      diagnostic("offline.update-blocked", {
+        reason: "draft-preservation-failed",
+      });
       setNotice(
         "Copy your message somewhere safe, then clear it before updating. This browser cannot preserve it during a reload.",
       );
       return;
     }
+    diagnostic("offline.update-accepted");
     navigator.serviceWorker.addEventListener(
       "controllerchange",
       () => location.reload(),
@@ -555,10 +584,27 @@ export default function App() {
                     { id: "24", label: "24-hour (15:00)" },
                   ]}
                 />
+                <label className="diagnostic-toggle">
+                  <input
+                    type="checkbox"
+                    checked={detailedLogs}
+                    onChange={(event) => {
+                      const enabled = event.target.checked;
+                      setDetailedLogsChecked(enabled);
+                      setDetailedLogs(enabled);
+                    }}
+                  />
+                  <span>Enable detailed logs</span>
+                </label>
+                <span className="field-note">
+                  Console only. Message text excluded.
+                </span>
                 <button
                   type="button"
                   className="text-button"
                   onClick={() => {
+                    setDetailedLogs(false);
+                    setDetailedLogsChecked(false);
                     resetPreferences();
                     setPrefs({ ...DEFAULTS });
                     setReferenceDate("");

@@ -1,0 +1,117 @@
+[
+  {
+    "condition": "installed first",
+    "state": {
+      "ready": "true",
+      "warnings": [],
+      "update": false,
+      "controller": "activated",
+      "caches": [
+        "chronoshift-test-first"
+      ]
+    }
+  },
+  {
+    "elapsedMs": 1002,
+    "state": {
+      "ready": "true",
+      "warnings": [],
+      "update": true,
+      "controller": "activated",
+      "waiting": "installed",
+      "caches": [
+        "chronoshift-test-first",
+        "chronoshift-test-second",
+        "chronoshift-staging-test-first"
+      ]
+    }
+  },
+  {
+    "elapsedMs": 16001,
+    "state": {
+      "ready": "false",
+      "warnings": [
+        "Offline assets could not be confirmed. Reconnect and reload to try again."
+      ],
+      "update": true,
+      "controller": "activated",
+      "waiting": "installed",
+      "caches": [
+        "chronoshift-test-first",
+        "chronoshift-test-second",
+        "chronoshift-staging-test-first"
+      ]
+    }
+  },
+  {
+    "elapsedMs": 24001,
+    "state": {
+      "ready": "false",
+      "warnings": [
+        "Offline assets could not be confirmed. Reconnect and reload to try again."
+      ],
+      "update": true,
+      "controller": "activated",
+      "waiting": "installed",
+      "caches": [
+        "chronoshift-test-first",
+        "chronoshift-test-second"
+      ]
+    }
+  },
+  {
+    "browser": "154.0.8037.93",
+    "missingPath": "/index.html",
+    "condition": "22-second old-release cache-bust fetch if requested; current release install not delayed; click Convert to after waiting install",
+    "repairRequests": [
+      "sw.js",
+      "assets/geist-latin-variable-Dm3htQBi.woff2",
+      "assets/test-second-index-I6Su5lMo.js",
+      "index.html",
+      "index.html?chronoshift-release=test-first",
+      "assets/test-second-index-zF0QLNOv.css",
+      "assets/test-second-worker-C690IjaR.js",
+      "fonts/README.txt",
+      "fonts/geist-OFL.txt",
+      "icon-192.png",
+      "icon-512.png",
+      "icon.svg",
+      "index.html",
+      "manifest.webmanifest",
+      "release.json",
+      "third-party-notices.txt"
+    ]
+  },
+  {
+    "condition": "unblocked repair; re-probe manually triggered by pageshow",
+    "state": {
+      "ready": "false",
+      "warnings": [
+        "Offline assets could not be confirmed. Reconnect and reload to try again."
+      ],
+      "update": true,
+      "controller": "activated",
+      "waiting": "installed",
+      "caches": [
+        "chronoshift-test-first",
+        "chronoshift-test-second",
+        "chronoshift-staging-test-first"
+      ]
+    },
+    "conversion": "1:00 am"
+  },
+  {
+    "condition": "explicit update activation recovery",
+    "state": {
+      "ready": "true",
+      "warnings": [],
+      "update": false,
+      "controller": "activated",
+      "caches": [
+        "chronoshift-test-first",
+        "chronoshift-test-second"
+      ]
+    },
+    "draftPreserved": true
+  }
+]

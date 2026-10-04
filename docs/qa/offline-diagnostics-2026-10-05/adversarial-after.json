@@ -1,0 +1,1435 @@
+[
+  {
+    "name": "candidate retained cache after published artifact retires immutable paths",
+    "browser": "154.0.8037.93",
+    "started": 1791136643459,
+    "errors": [],
+    "logs": [
+      [
+        "[ChronoShift] diagnostics.enabled",
+        {
+          "at": "2026-10-04T17:57:23.683Z"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T17:57:23.684Z",
+          "online": true,
+          "controlled": true,
+          "reason": "detailed-logs-enabled"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T17:57:23.696Z",
+          "ready": true,
+          "elapsedMs": 12,
+          "version": "1460f6d684a688d0",
+          "assets": []
+        }
+      ],
+      [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T17:57:23.696Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ],
+      [
+        "[ChronoShift] ui.zone-focus",
+        {
+          "at": "2026-10-04T17:57:23.701Z",
+          "field": "target-zone"
+        }
+      ],
+      [
+        "[ChronoShift] ui.zone-focus",
+        {
+          "at": "2026-10-04T17:57:23.718Z",
+          "field": "target-zone"
+        }
+      ],
+      [
+        "[ChronoShift] conversion.start",
+        {
+          "at": "2026-10-04T17:57:23.747Z",
+          "requestId": 2,
+          "characters": 52
+        }
+      ],
+      [
+        "[ChronoShift] conversion.complete",
+        {
+          "at": "2026-10-04T17:57:23.775Z",
+          "elapsedMs": 28,
+          "requestId": 2,
+          "results": 1,
+          "warnings": 0,
+          "reason": "success"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T17:57:23.802Z",
+          "online": true,
+          "controlled": true,
+          "reason": "page-show"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T17:57:23.804Z",
+          "ready": true,
+          "elapsedMs": 2,
+          "version": "1460f6d684a688d0",
+          "assets": []
+        }
+      ],
+      [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T17:57:23.804Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ],
+      [
+        "[ChronoShift] ui.zone-focus",
+        {
+          "at": "2026-10-04T17:57:23.830Z",
+          "field": "target-zone"
+        }
+      ],
+      [
+        "[ChronoShift] offline.install-state",
+        {
+          "at": "2026-10-04T17:57:25.449Z",
+          "state": "installing"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T17:57:25.450Z",
+          "online": true,
+          "controlled": true,
+          "reason": "lifecycle"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T17:57:25.454Z",
+          "ready": true,
+          "elapsedMs": 4,
+          "version": "1460f6d684a688d0",
+          "assets": []
+        }
+      ],
+      [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T17:57:25.455Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ],
+      [
+        "[ChronoShift] offline.install-state",
+        {
+          "at": "2026-10-04T17:57:25.515Z",
+          "state": "installed"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T17:57:25.515Z",
+          "online": true,
+          "controlled": true,
+          "reason": "lifecycle"
+        }
+      ],
+      [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T17:57:25.515Z",
+          "ready": true,
+          "updateAvailable": true,
+          "reason": "update-available"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T17:57:25.519Z",
+          "ready": true,
+          "elapsedMs": 4,
+          "version": "1460f6d684a688d0",
+          "assets": []
+        }
+      ],
+      [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T17:57:25.519Z",
+          "ready": true,
+          "updateAvailable": true,
+          "reason": "probe-result"
+        }
+      ],
+      [
+        "[ChronoShift] ui.zone-focus",
+        {
+          "at": "2026-10-04T17:57:44.840Z",
+          "field": "target-zone"
+        }
+      ],
+      [
+        "[ChronoShift] conversion.start",
+        {
+          "at": "2026-10-04T17:57:44.879Z",
+          "requestId": 3,
+          "characters": 52
+        }
+      ],
+      [
+        "[ChronoShift] conversion.complete",
+        {
+          "at": "2026-10-04T17:57:44.907Z",
+          "elapsedMs": 28,
+          "requestId": 3,
+          "results": 1,
+          "warnings": 0,
+          "reason": "success"
+        }
+      ]
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/?audit=SensitiveQuerySentinel",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-BjtJ2w8M.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-C8hA_kff.css",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/sw.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-BjtJ2w8M.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon.svg",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-C8hA_kff.css",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/worker-C690IjaR.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/fonts/README.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/fonts/geist-OFL.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon-192.png",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon-512.png",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon.svg",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/index.html",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/manifest.webmanifest",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/release.json",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/third-party-notices.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/worker-C690IjaR.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/fonts/README.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/sw.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-B1Onfw0N.css",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-FdxLUOhD.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/worker-C690IjaR.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/fonts/README.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/fonts/geist-OFL.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon-192.png",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon-512.png",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon.svg",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/index.html",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/manifest.webmanifest",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/release.json",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/third-party-notices.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/worker-C690IjaR.js",
+        "body": null
+      }
+    ],
+    "retiredCSSStatus": 404,
+    "missingRepair": {
+      "ready": true,
+      "version": "1460f6d684a688d0",
+      "diagnostics": {
+        "unavailable": [
+          "/ChronoShift/fonts/README.txt"
+        ],
+        "repair": {
+          "reused": 12,
+          "fetched": 1
+        }
+      }
+    },
+    "afterFocusMs": 21454,
+    "afterFocus": {
+      "ready": true,
+      "version": "1460f6d684a688d0",
+      "diagnostics": {
+        "unavailable": []
+      }
+    },
+    "staging": [
+      "chronoshift-1460f6d684a688d0",
+      "chronoshift-fedcd4a1116faa6d"
+    ]
+  },
+  {
+    "name": "corrupt mutable cache rejects changed release and explicit update restores draft",
+    "browser": "154.0.8037.93",
+    "started": 1791136665014,
+    "errors": [],
+    "logs": [
+      [
+        "[ChronoShift] diagnostics.enabled",
+        {
+          "at": "2026-10-04T17:57:45.249Z"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T17:57:45.250Z",
+          "online": true,
+          "controlled": true,
+          "reason": "detailed-logs-enabled"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T17:57:45.262Z",
+          "ready": true,
+          "elapsedMs": 11,
+          "version": "1460f6d684a688d0",
+          "assets": []
+        }
+      ],
+      [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T17:57:45.262Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ],
+      [
+        "[ChronoShift] ui.zone-focus",
+        {
+          "at": "2026-10-04T17:57:45.267Z",
+          "field": "target-zone"
+        }
+      ],
+      [
+        "[ChronoShift] ui.zone-focus",
+        {
+          "at": "2026-10-04T17:57:45.283Z",
+          "field": "target-zone"
+        }
+      ],
+      [
+        "[ChronoShift] conversion.start",
+        {
+          "at": "2026-10-04T17:57:45.314Z",
+          "requestId": 2,
+          "characters": 52
+        }
+      ],
+      [
+        "[ChronoShift] conversion.complete",
+        {
+          "at": "2026-10-04T17:57:45.342Z",
+          "elapsedMs": 28,
+          "requestId": 2,
+          "results": 1,
+          "warnings": 0,
+          "reason": "success"
+        }
+      ],
+      [
+        "[ChronoShift] offline.install-state",
+        {
+          "at": "2026-10-04T17:57:45.353Z",
+          "state": "installing"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T17:57:45.353Z",
+          "online": true,
+          "controlled": true,
+          "reason": "lifecycle"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T17:57:45.356Z",
+          "ready": true,
+          "elapsedMs": 3,
+          "version": "1460f6d684a688d0",
+          "assets": []
+        }
+      ],
+      [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T17:57:45.356Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ],
+      [
+        "[ChronoShift] offline.install-state",
+        {
+          "at": "2026-10-04T17:57:45.404Z",
+          "state": "installed"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T17:57:45.404Z",
+          "online": true,
+          "controlled": true,
+          "reason": "lifecycle"
+        }
+      ],
+      [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T17:57:45.404Z",
+          "ready": true,
+          "updateAvailable": true,
+          "reason": "update-available"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T17:57:45.408Z",
+          "ready": true,
+          "elapsedMs": 4,
+          "version": "1460f6d684a688d0",
+          "assets": []
+        }
+      ],
+      [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T17:57:45.408Z",
+          "ready": true,
+          "updateAvailable": true,
+          "reason": "probe-result"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T17:57:45.449Z",
+          "online": true,
+          "controlled": true,
+          "reason": "page-show"
+        }
+      ],
+      [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T17:57:45.449Z",
+          "ready": true,
+          "updateAvailable": true,
+          "reason": "update-available"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T17:57:45.459Z",
+          "ready": false,
+          "elapsedMs": 11,
+          "version": "1460f6d684a688d0",
+          "assets": [
+            "/ChronoShift/release.json"
+          ],
+          "repair": {
+            "reused": 11,
+            "fetched": 0,
+            "failure": "release-mismatch"
+          }
+        }
+      ],
+      [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T17:57:45.460Z",
+          "ready": false,
+          "updateAvailable": true,
+          "reason": "probe-result"
+        }
+      ],
+      [
+        "[ChronoShift] ui.zone-focus",
+        {
+          "at": "2026-10-04T17:57:45.512Z",
+          "field": "target-zone"
+        }
+      ],
+      [
+        "[ChronoShift] offline.update-accepted",
+        {
+          "at": "2026-10-04T17:58:02.561Z"
+        }
+      ],
+      [
+        "[ChronoShift] offline.install-state {at: 2026-10-04T17:58:02.564Z, state: redundant}",
+        "object capture unavailable during navigation"
+      ],
+      [
+        "[ChronoShift] offline.probe-start {at: 2026-10-04T17:58:02.564Z, online: true, controlled: true, reason: lifecycle}",
+        "object capture unavailable during navigation"
+      ],
+      [
+        "[ChronoShift] offline.state {at: 2026-10-04T17:58:02.564Z, ready: false, updateAvailable: true, reason: update-available}",
+        "object capture unavailable during navigation"
+      ],
+      [
+        "[ChronoShift] offline.install-state {at: 2026-10-04T17:58:02.564Z, state: activating}",
+        "object capture unavailable during navigation"
+      ],
+      [
+        "[ChronoShift] offline.probe-start {at: 2026-10-04T17:58:02.564Z, online: true, controlled: true, reason: lifecycle}",
+        "object capture unavailable during navigation"
+      ],
+      [
+        "[ChronoShift] offline.probe-start {at: 2026-10-04T17:58:02.564Z, online: true, controlled: true, reason: controller-change}",
+        "object capture unavailable during navigation"
+      ],
+      [
+        "[ChronoShift] offline.probe-result {at: 2026-10-04T17:58:02.568Z, ready: true, elapsedMs: 4, version: fedcd4a1116faa6d}",
+        "object capture unavailable during navigation"
+      ],
+      [
+        "[ChronoShift] offline.state {at: 2026-10-04T17:58:02.568Z, ready: true, updateAvailable: false, reason: probe-result}",
+        "object capture unavailable during navigation"
+      ],
+      [
+        "[ChronoShift] offline.install-state {at: 2026-10-04T17:58:03.566Z, state: activated}",
+        "object capture unavailable during navigation"
+      ],
+      [
+        "[ChronoShift] offline.probe-start {at: 2026-10-04T17:58:03.566Z, online: true, controlled: true, reason: lifecycle}",
+        "object capture unavailable during navigation"
+      ]
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/?audit=SensitiveQuerySentinel",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-BjtJ2w8M.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-C8hA_kff.css",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/sw.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-BjtJ2w8M.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon.svg",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-C8hA_kff.css",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/worker-C690IjaR.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/fonts/README.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/fonts/geist-OFL.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon-192.png",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon-512.png",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon.svg",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/index.html",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/manifest.webmanifest",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/release.json",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/third-party-notices.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/worker-C690IjaR.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/sw.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-B1Onfw0N.css",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-FdxLUOhD.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/worker-C690IjaR.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/fonts/README.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/fonts/geist-OFL.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon-192.png",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon-512.png",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon.svg",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/index.html",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/manifest.webmanifest",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/release.json",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/third-party-notices.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/release.json",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/release.json?chronoshift-release=1460f6d684a688d0",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/release.json",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/release.json?chronoshift-release=1460f6d684a688d0",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/?audit=SensitiveQuerySentinel",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-FdxLUOhD.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-B1Onfw0N.css",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon.svg",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/worker-C690IjaR.js",
+        "body": null
+      }
+    ],
+    "beforeHTML": "46bf55bbc54450573b173740feab06f293c7231b59154a89792f6401af6ff884",
+    "corruptRepair": {
+      "ready": false,
+      "version": "1460f6d684a688d0",
+      "diagnostics": {
+        "unavailable": [
+          "/ChronoShift/release.json"
+        ],
+        "repair": {
+          "reused": 11,
+          "fetched": 0,
+          "failure": "release-mismatch"
+        }
+      }
+    },
+    "warningAfterDeadline": [
+      "Offline setup is incomplete. Reconnect and reload to try again."
+    ],
+    "afterHTML": "46bf55bbc54450573b173740feab06f293c7231b59154a89792f6401af6ff884",
+    "captureGaps": 10,
+    "afterUpdate": {
+      "ready": true,
+      "version": "fedcd4a1116faa6d"
+    }
+  },
+  {
+    "name": "corrupt unchanged icon rejects cached bytes and repairs",
+    "browser": "154.0.8037.93",
+    "started": 1791136683812,
+    "errors": [],
+    "logs": [],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/?audit=SensitiveQuerySentinel",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-BjtJ2w8M.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-C8hA_kff.css",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/sw.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-BjtJ2w8M.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon.svg",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-C8hA_kff.css",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/worker-C690IjaR.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/fonts/README.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/fonts/geist-OFL.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon-192.png",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon-512.png",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon.svg",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/index.html",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/manifest.webmanifest",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/release.json",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/third-party-notices.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon.svg",
+        "body": null
+      }
+    ],
+    "iconRepair": {
+      "ready": true,
+      "version": "1460f6d684a688d0",
+      "diagnostics": {
+        "unavailable": [
+          "/ChronoShift/icon.svg"
+        ],
+        "repair": {
+          "reused": 12,
+          "fetched": 1
+        }
+      }
+    }
+  },
+  {
+    "name": "logging privacy and rendered layout",
+    "browser": "154.0.8037.93",
+    "started": 1791136684161,
+    "errors": [],
+    "logs": [
+      [
+        "[ChronoShift] diagnostics.enabled",
+        {
+          "at": "2026-10-04T17:58:04.587Z"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T17:58:04.588Z",
+          "online": true,
+          "controlled": true,
+          "reason": "detailed-logs-enabled"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T17:58:04.602Z",
+          "ready": true,
+          "elapsedMs": 14,
+          "version": "1460f6d684a688d0",
+          "assets": []
+        }
+      ],
+      [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T17:58:04.603Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ],
+      [
+        "[ChronoShift] ui.zone-focus",
+        {
+          "at": "2026-10-04T17:58:04.719Z",
+          "field": "target-zone"
+        }
+      ],
+      [
+        "[ChronoShift] ui.zone-focus",
+        {
+          "at": "2026-10-04T17:58:04.726Z",
+          "field": "target-zone"
+        }
+      ],
+      [
+        "[ChronoShift] conversion.start",
+        {
+          "at": "2026-10-04T17:58:04.753Z",
+          "requestId": 3,
+          "characters": 52
+        }
+      ],
+      [
+        "[ChronoShift] conversion.complete",
+        {
+          "at": "2026-10-04T17:58:04.781Z",
+          "elapsedMs": 28,
+          "requestId": 3,
+          "results": 1,
+          "warnings": 0,
+          "reason": "success"
+        }
+      ],
+      [
+        "[ChronoShift] offline.register-attempt",
+        {
+          "at": "2026-10-04T17:58:05.848Z",
+          "online": true,
+          "attempt": 1
+        }
+      ],
+      [
+        "[ChronoShift] offline.registered",
+        {
+          "at": "2026-10-04T17:58:05.857Z",
+          "online": true,
+          "controlled": true
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T17:58:05.857Z",
+          "online": true,
+          "controlled": true,
+          "reason": "startup"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T17:58:05.857Z",
+          "online": true,
+          "controlled": true,
+          "reason": "lifecycle"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T17:58:05.862Z",
+          "ready": true,
+          "elapsedMs": 4,
+          "version": "1460f6d684a688d0",
+          "assets": []
+        }
+      ],
+      [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T17:58:05.862Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ]
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/?audit=SensitiveQuerySentinel",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-BjtJ2w8M.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-C8hA_kff.css",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/sw.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-BjtJ2w8M.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon.svg",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-C8hA_kff.css",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/worker-C690IjaR.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/fonts/README.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/fonts/geist-OFL.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon-192.png",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon-512.png",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon.svg",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/index.html",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/manifest.webmanifest",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/release.json",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/third-party-notices.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/worker-C690IjaR.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/worker-C690IjaR.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/?audit=SensitiveQuerySentinel",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-BjtJ2w8M.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-C8hA_kff.css",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon.svg",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/?audit=SensitiveQuerySentinel",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-BjtJ2w8M.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-C8hA_kff.css",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon.svg",
+        "body": null
+      }
+    ],
+    "session": {
+      "chronoshift-detailed-logs": "true"
+    },
+    "layouts": [
+      {
+        "theme": "dark",
+        "width": 1280,
+        "label": {
+          "x": 129,
+          "y": 622,
+          "width": 487,
+          "height": 44
+        },
+        "checkbox": {
+          "width": 18,
+          "height": 18
+        },
+        "documentWidth": 1280,
+        "viewport": 1280
+      },
+      {
+        "theme": "light",
+        "width": 1280,
+        "label": {
+          "x": 129,
+          "y": 622,
+          "width": 487,
+          "height": 44
+        },
+        "checkbox": {
+          "width": 18,
+          "height": 18
+        },
+        "documentWidth": 1280,
+        "viewport": 1280
+      },
+      {
+        "theme": "dark",
+        "width": 320,
+        "label": {
+          "x": 33,
+          "y": 402.5,
+          "width": 254,
+          "height": 44
+        },
+        "checkbox": {
+          "width": 18,
+          "height": 18
+        },
+        "documentWidth": 320,
+        "viewport": 320
+      },
+      {
+        "theme": "light",
+        "width": 320,
+        "label": {
+          "x": 33,
+          "y": 402.5,
+          "width": 254,
+          "height": 44
+        },
+        "checkbox": {
+          "width": 18,
+          "height": 18
+        },
+        "documentWidth": 320,
+        "viewport": 320
+      }
+    ],
+    "resetStopped": true
+  },
+  {
+    "name": "logging denied storage",
+    "browser": "154.0.8037.93",
+    "started": 1791136686300,
+    "errors": [],
+    "logs": [
+      [
+        "[ChronoShift] diagnostics.enabled",
+        {
+          "at": "2026-10-04T17:58:06.622Z"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T17:58:06.623Z",
+          "online": true,
+          "controlled": true,
+          "reason": "detailed-logs-enabled"
+        }
+      ],
+      [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T17:58:06.638Z",
+          "ready": true,
+          "elapsedMs": 15,
+          "version": "1460f6d684a688d0",
+          "assets": []
+        }
+      ],
+      [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T17:58:06.638Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ],
+      [
+        "[ChronoShift] ui.zone-focus",
+        {
+          "at": "2026-10-04T17:58:06.756Z",
+          "field": "target-zone"
+        }
+      ],
+      [
+        "[ChronoShift] ui.zone-focus",
+        {
+          "at": "2026-10-04T17:58:06.762Z",
+          "field": "target-zone"
+        }
+      ],
+      [
+        "[ChronoShift] conversion.start",
+        {
+          "at": "2026-10-04T17:58:06.789Z",
+          "requestId": 3,
+          "characters": 52
+        }
+      ],
+      [
+        "[ChronoShift] conversion.complete",
+        {
+          "at": "2026-10-04T17:58:06.819Z",
+          "elapsedMs": 30,
+          "requestId": 3,
+          "results": 1,
+          "warnings": 0,
+          "reason": "success"
+        }
+      ]
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/?audit=SensitiveQuerySentinel",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-BjtJ2w8M.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-C8hA_kff.css",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/sw.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-BjtJ2w8M.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/index-C8hA_kff.css",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/worker-C690IjaR.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon.svg",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/fonts/README.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/fonts/geist-OFL.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon-192.png",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon-512.png",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/icon.svg",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/index.html",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/manifest.webmanifest",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/release.json",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/third-party-notices.txt",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/worker-C690IjaR.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/worker-C690IjaR.js",
+        "body": null
+      },
+      {
+        "url": "http://127.0.0.1:4235/ChronoShift/assets/worker-C690IjaR.js",
+        "body": null
+      }
+    ],
+    "session": "denied",
+    "disabledStopped": true
+  }
+]
