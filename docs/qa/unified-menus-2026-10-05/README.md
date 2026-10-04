@@ -26,14 +26,20 @@ policy violations, beyond page errors alone. WebKit screenshot instrumentation
 injects a rejected `body {}` stylesheet; screenshot-only violations are retained
 as harness evidence and kept outside the normal interaction journey.
 
-Runtime reviewed through `b2be4d445d7bc596bd6efa38fb3c9e369d01332b`.
-The final test-only WebKit capture adjustment was separately approved by the
-code reviewer; it retains all behavior/layout/normal-CSP assertions. All15
-controls cases pass across five profiles, in19.4s. The earlier complete run
-passed168 unrelated cases; the final PR gate must run all183 and Pages subpath.
-Unit108, typecheck/build and formatting pass. Publication evidence is pending
-and will identify the exact trusted artifact and matching hosted journey.
+Final runtime reviewed through `8e73756d3f01dfe0dc046d276e4a38b92b9427eb`.
+Final PR head `72950c0a09ac40bd8619d489bf979e1b66da6170` adds tests and evidence.
+The frozen artifact controls run passed all 15 cases across five profiles in
+18.8s. CI 37220330336 passed all 183 browser cases, 108 unit tests, formatting,
+build, corpus comparison and the Pages subpath gate. Both reviewers approved
+the calendar delta; original findings and failed intermediate fixes are retained.
 
+[Publication evidence](publication.md) records merged PR #29, exact trusted
+artifact reuse and matching hosted acceptance. [Delivery audit](delivery-audit.md)
+independently verifies ZIP digests, equal source trees and byte-identical files.
+The retained old client stayed unchanged until explicit Update now; draft and
+preferences survived, all six menus worked and offline reopening converted new
+input. Root's actual IAB captures and the independent 280px hosted measurements
+record their distinct capabilities and limits.
 Final visual delta: root's actual IAB inspection found the desktop calendar
 surface stretched to486px around a280px grid. A later shared selector overrode
 the calendar's intended width. `8e73756d3f01dfe0dc046d276e4a38b92b9427eb` gives
@@ -46,7 +52,8 @@ exact-artifact evidence. Root IAB before/after captures are retained. The review
 workflow now explicitly checks popup content balance and CSS cascade, beyond
 outer viewport bounds, to address the gap in the initial reviews.
 
-[Browser measurements](browser-performance.json) identify the reviewed runtime:
+[Browser measurements](browser-performance.json) identify runtime
+`b2be4d445d7bc596bd6efa38fb3c9e369d01332b`, before the final calendar CSS delta:
 JS/CSS gzip302,088bytes; complete offline asset gzip373,162bytes versus the
 earlier255,458-byte inventory. The extra interaction library adds about118kB to
 the offline payload. Local desktop p95 form startup101ms, offline readiness181ms,
