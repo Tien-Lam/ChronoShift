@@ -62,6 +62,71 @@ async function ready(page: Page) {
   await page.goto("/");
   await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
 }
+test("an intact offline app survives a failed registration check while changing target zones", async ({
+  page,
+}) => {
+  await ready(page);
+  await page.addInitScript(() => {
+    navigator.serviceWorker.register = async () => {
+      throw new TypeError("Simulated transient registration failure");
+    };
+  });
+  await page.reload();
+  await expect(page.locator("main")).toHaveAttribute(
+    "data-offline-ready",
+    "true",
+  );
+  await convert(page, "June 18, 2026 at 5:20pm in Tokyo");
+  await page.getByLabel("Convert to").fill("UTC");
+  await page.getByRole("button", { name: "Convert", exact: true }).click();
+  await expect(page.locator(".hero-time")).toHaveText(/8:20 am/i);
+  await page.getByLabel("Convert to").fill("Europe/London");
+  await page.getByRole("button", { name: "Convert", exact: true }).click();
+  await expect(page.locator(".hero-time")).toHaveText(/9:20 am/i);
+  await expect(
+    page.getByText("Offline setup is incomplete.", { exact: false }),
+  ).toHaveCount(0);
+});
+test("a delayed failed readiness probe cannot overwrite a newer successful check", async ({
+  page,
+}) => {
+  await ready(page);
+  await page.addInitScript(() => {
+    const post = ServiceWorker.prototype.postMessage;
+    let held = false;
+    (window as any).oldProbeDelivered = false;
+    ServiceWorker.prototype.postMessage = function (message, transfer: any) {
+      if (message?.type === "CHECK_READY" && !held) {
+        held = true;
+        const port = transfer[0];
+        setTimeout(() => {
+          port.postMessage({ ready: false });
+          port.close();
+          (window as any).oldProbeDelivered = true;
+        }, 200);
+        return;
+      }
+      post.call(this, message, transfer);
+    };
+  });
+  await page.reload();
+  await expect(page.locator("main")).toHaveAttribute(
+    "data-offline-ready",
+    "true",
+  );
+  await page.getByLabel("Convert to").fill("UTC");
+  await convert(page, "June 18, 2026 at 5:20pm in Tokyo");
+  await expect
+    .poll(() => page.evaluate(() => (window as any).oldProbeDelivered))
+    .toBe(true);
+  await expect(page.locator("main")).toHaveAttribute(
+    "data-offline-ready",
+    "true",
+  );
+  await expect(
+    page.getByText("Offline setup is incomplete.", { exact: false }),
+  ).toHaveCount(0);
+});
 test("missing cache reports incomplete and reconnect repairs the complete offline app", async ({
   page,
   context,

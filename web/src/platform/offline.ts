@@ -14,13 +14,27 @@ export async function setupOffline(
   )
     return;
   try {
-    const registration = await navigator.serviceWorker.register(
-      `${import.meta.env.BASE_URL}sw.js`,
-      { scope: import.meta.env.BASE_URL, updateViaCache: "none" },
-    );
+    const scope = new URL(import.meta.env.BASE_URL, location.href).href;
+    const script = new URL("sw.js", scope).href;
+    let registration: ServiceWorkerRegistration;
+    try {
+      registration = await navigator.serviceWorker.register(script, {
+        scope,
+        updateViaCache: "none",
+      });
+    } catch (error) {
+      // An update check can fail while the existing offline app is intact.
+      // Confirm that registration's cache instead of declaring it incomplete.
+      const existing = await navigator.serviceWorker.getRegistration(scope);
+      if (!existing || existing.scope !== scope) throw error;
+      registration = existing;
+    }
+    if (signal.aborted) return;
     let readyTimer: ReturnType<typeof setTimeout>;
     const ready = await Promise.race([
-      navigator.serviceWorker.ready,
+      navigator.serviceWorker.controller?.scriptURL === script
+        ? Promise.resolve(registration)
+        : navigator.serviceWorker.ready,
       new Promise<never>((_, reject) => {
         readyTimer = setTimeout(
           () => reject(new Error("Offline setup timeout")),
@@ -31,6 +45,8 @@ export async function setupOffline(
     if (signal.aborted) return;
     let confirmed = false;
     let installedUpdate: ServiceWorker | undefined;
+    let cancelInspection = () => {};
+    signal.addEventListener("abort", () => cancelInspection(), { once: true });
     const pendingUpdate = () =>
       registration.waiting ||
       (installedUpdate?.state === "installed" &&
@@ -40,27 +56,36 @@ export async function setupOffline(
         : undefined);
     const inspect = () => {
       if (signal.aborted) return;
+      // Installation and pageshow may overlap. Only the latest probe may
+      // change readiness; close superseded ports and their timeout together.
+      cancelInspection();
       const controller = navigator.serviceWorker.controller;
-      if (controller) {
+      if (controller?.scriptURL === script) {
         const channel = new MessageChannel();
-        const timeout = setTimeout(() => {
+        let settled = false;
+        const current = () =>
+          !settled &&
+          !signal.aborted &&
+          navigator.serviceWorker.controller === controller;
+        const close = () => {
+          settled = true;
+          clearTimeout(timeout);
           channel.port1.close();
-          if (
-            !signal.aborted &&
-            navigator.serviceWorker.controller === controller
-          )
+        };
+        const timeout = setTimeout(() => {
+          if (current()) {
+            confirmed = false;
             report({
               ready: false,
               error:
                 "Offline assets could not be confirmed. Reconnect and reload to try again.",
             });
+          }
+          close();
         }, 15000);
+        cancelInspection = close;
         channel.port1.onmessage = (event) => {
-          clearTimeout(timeout);
-          if (
-            !signal.aborted &&
-            navigator.serviceWorker.controller === controller
-          ) {
+          if (current()) {
             confirmed = event.data.ready === true;
             const update = pendingUpdate();
             report({
@@ -74,13 +99,29 @@ export async function setupOffline(
                 : {}),
             });
           }
-          channel.port1.close();
+          close();
         };
-        controller.postMessage(
-          { type: "CHECK_READY", repairIfMissing: navigator.onLine },
-          [channel.port2],
-        );
-      } else report({ ready: false });
+        try {
+          controller.postMessage(
+            { type: "CHECK_READY", repairIfMissing: navigator.onLine },
+            [channel.port2],
+          );
+        } catch {
+          if (current()) {
+            confirmed = false;
+            report({
+              ready: false,
+              error:
+                "Offline assets could not be confirmed. Reconnect and reload to try again.",
+            });
+          }
+          close();
+          channel.port2.close();
+        }
+      } else {
+        confirmed = false;
+        report({ ready: false });
+      }
     };
     if (ready.active) inspect();
     navigator.serviceWorker.addEventListener("controllerchange", inspect, {

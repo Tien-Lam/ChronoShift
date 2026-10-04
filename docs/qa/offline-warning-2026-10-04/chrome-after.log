@@ -1,0 +1,14 @@
+
+Running 3 tests using 3 workers
+
+(node:69662) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:69661) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:69663) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  2 [google-chrome] › e2e/app.spec.ts:65:0 › an intact offline app survives a failed registration check while changing target zones (777ms)
+  ✓  3 [google-chrome] › e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (811ms)
+  ✓  1 [google-chrome] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (810ms)
+
+  3 passed (1.7s)

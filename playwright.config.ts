@@ -39,7 +39,13 @@ export default defineConfig({
     },
     {
       name: "chromium",
-      use: { ...devices["Desktop Chrome"], ...desktopWindow },
+      use: {
+        ...devices["Desktop Chrome"],
+        ...desktopWindow,
+        ...(process.env.PLAYWRIGHT_CHROMIUM_CHANNEL
+          ? { channel: process.env.PLAYWRIGHT_CHROMIUM_CHANNEL }
+          : {}),
+      },
     },
     {
       name: "firefox",
