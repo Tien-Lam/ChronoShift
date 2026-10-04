@@ -1,19 +1,19 @@
 {
   "stateSnapshot": {
     "date": "2026-10-05",
-    "implementationRevision": "f5860328667226e11330a1d194c731b83964913e",
-    "testedArtifactRevision": "0c73dd5c48b2b248fbdd15de7c8de5e951f7d5d0",
+    "implementationRevision": "f31e78f22fa1a6b8e5d2892b96c888d458827fcd",
+    "testedArtifactRevision": "aa99397c07b058447c4c18fa1c938ced4f09ba97",
     "counts": {
-      "Done": 29,
+      "Done": 30,
       "In Progress": 9,
       "Todo": 1,
       "Canceled": 1
     },
-    "note": "All four project issue lists reread after TIE-369 completion and TIE-370 creation. Result-first layout is published and independently verified in desktop/narrow light/dark Chrome and the browser side panel. Nine physical/installed/human acceptance gaps remain In Progress; TIE-370 remains Todo for two CI retry observations and diagnostic retention. Project/milestone metadata retains prior snapshot, not live state. Evidence path: docs/qa/result-hierarchy-2026-10-05.",
-    "reviewWorkflowRevision": "ab1ad4e1d8c1c249e9e7941a20043fb7627f477c",
-    "previousEvidenceRevision": "ab1ad4e1d8c1c249e9e7941a20043fb7627f477c",
-    "evidencePath": "docs/qa/result-hierarchy-2026-10-05",
-    "reviewWorkflowNote": "Baseline workflow revision; this documentation update adds smallest-width long-time/digit-wrapping guidance and final evidence."
+    "note": "All four project issue lists reread after TIE-371 completion. Live conversion published and independently verified; 232 first-attempt CI browser passes, six CDP-only skips and hosted/offline/update-draft evidence. Nine physical/installed/human gaps remain In Progress; TIE-370 remains Todo for older-worker explicit-update CI behavior and first-attempt diagnostic retention (console navigation capture helper fixed in TIE-371). Project/milestone metadata retains prior snapshot, not live state.",
+    "reviewWorkflowRevision": "ac90f3880e630f7e4aed8b5ec02512caec022b70",
+    "previousEvidenceRevision": "ac90f3880e630f7e4aed8b5ec02512caec022b70",
+    "evidencePath": "docs/qa/live-convert-2026-10-05",
+    "reviewWorkflowNote": "Baseline workflow revision; this documentation update adds steady-state assertion and legacy rollout-control guidance from the pre-merge CI failure."
   },
   "initiative": {
     "id": "I-4",
@@ -344,6 +344,12 @@
       "uuid": "b96ff52a-1ddf-42ea-9065-2aff29cc49d8",
       "url": "https://linear.app/tienlam/issue/TIE-370/diagnose-offline-update-ci-flake-and-retain-retry-diagnostics",
       "state": "Todo"
+    },
+    "U14": {
+      "id": "TIE-371",
+      "uuid": "b708bdfc-1d9a-455f-afad-aa6cfa67528f",
+      "url": "https://linear.app/tienlam/issue/TIE-371/convert-text-live-without-pressing-convert",
+      "state": "Done"
     }
   }
 }

@@ -1,0 +1,59 @@
+
+Running 15 tests using 1 worker
+
+(node:48377) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓   1 [chromium] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (1.4s)
+  ✓   2 [chromium] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (2.0s)
+  ✓   3 [chromium] › e2e/imports.spec.ts:171:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (1.8s)
+  ✓   4 [chromium] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (1.8s)
+  ✓   5 [chromium] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (4.1s)
+(node:48419) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓   6 [firefox] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (2.2s)
+  ✓   7 [firefox] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (2.7s)
+  ✓   8 [firefox] › e2e/imports.spec.ts:171:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (1.5s)
+  ✓   9 [firefox] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (2.1s)
+  ✘  10 [firefox] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (1.6s)
+(node:48475) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  11 [webkit] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (1.7s)
+  ✓  12 [webkit] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (2.5s)
+  ✓  13 [webkit] › e2e/imports.spec.ts:171:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (1.6s)
+  ✓  14 [webkit] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (2.1s)
+  ✓  15 [webkit] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (4.2s)
+
+
+  1) [firefox] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 1
+    Received: 2
+
+      70 |     .poll(() => page.evaluate(() => (window as any).delivered))
+      71 |     .toBe(1);
+    > 72 |   expect(await page.evaluate(() => (window as any).queued)).toBe(1);
+         |                                                            ^
+      73 |   await expect(page.locator(".result")).toHaveCount(0);
+      74 |   await input.dispatchEvent("compositionend");
+      75 |   await expect(page.locator(".hero-time")).toHaveText(/4:00 pm/i);
+        at /Users/tien/Developer/ChronoShift/e2e/live.spec.ts:72:60
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../../../tmp/chronoshift-live-code/playwright-results/live-composition-defers-co-40bc0-not-overwrite-a-newer-draft-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../../../tmp/chronoshift-live-code/playwright-results/live-composition-defers-co-40bc0-not-overwrite-a-newer-draft-firefox/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../../../tmp/chronoshift-live-code/playwright-results/live-composition-defers-co-40bc0-not-overwrite-a-newer-draft-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../../../tmp/chronoshift-live-code/playwright-results/live-composition-defers-co-40bc0-not-overwrite-a-newer-draft-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [firefox] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft 
+  14 passed (34.7s)

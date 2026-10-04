@@ -1,0 +1,20 @@
+import { createHash } from "node:crypto";
+const origin = "https://tien-lam.github.io";
+const artifactRoot = "/tmp/chronoshift-live-ci-artifact";
+const sha = (bytes: Uint8Array) => createHash("sha256").update(bytes).digest("hex");
+const response = await fetch(origin + "/ChronoShift/sw.js", { cache: "no-store" });
+if (!response.ok) throw new Error("Worker status " + response.status);
+const bytes = new Uint8Array(await response.arrayBuffer());
+if (sha(bytes) !== sha(await Bun.file(artifactRoot + "/sw.js").bytes())) throw new Error("Public worker differs from tested CI artifact");
+const sw = new TextDecoder().decode(bytes);
+const integrity = JSON.parse(sw.match(/const INTEGRITY = (.*);/)![1]);
+const assets = await Promise.all(Object.entries(integrity).map(async ([path, expected]) => {
+  const asset = await fetch(origin + path, { cache: "no-store" });
+  const body = new Uint8Array(await asset.arrayBuffer());
+  if (!asset.ok || sha(body) !== expected) throw new Error("Public asset mismatch " + path);
+  return { path, bytes: body.length, sha256: sha(body) };
+}));
+const metadata = await Bun.file("/tmp/chronoshift-live-publication-meta.json").json();
+const data = { ...metadata, at: new Date().toISOString(), version: sw.match(/const VERSION = '([^']+)'/)![1], workerSha256: sha(bytes), assets };
+await Bun.write("docs/qa/live-convert-2026-10-05/publication.json", JSON.stringify(data, null, 2) + "\n");
+console.log(JSON.stringify({ ...data, assets: assets.length }));

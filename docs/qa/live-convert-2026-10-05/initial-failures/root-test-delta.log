@@ -1,0 +1,153 @@
+
+Running 65 tests using 3 workers
+
+(node:49373) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:49372) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:49374) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✘   2 [chromium] › e2e/diagnostics.spec.ts:80:0 › detailed logging survives a tab reload and reset preferences disables it (375ms)
+  ✓   3 [chromium] › e2e/diagnostics.spec.ts:105:0 › detailed logs still work in memory when session storage is denied (527ms)
+(node:49387) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓   4 [chromium] › e2e/diagnostics.spec.ts:175:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (374ms)
+  ✓   1 [chromium] › e2e/diagnostics.spec.ts:22:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (1.6s)
+  ✓   5 [chromium] › e2e/diagnostics.spec.ts:129:0 › a retired release repairs only missing files using its intact cached assets (1.1s)
+  ✓   7 [chromium] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (2.3s)
+  ✓   6 [chromium] › e2e/diagnostics.spec.ts:211:0 › waiting updates remain actionable when a current cache probe times out (3.5s)
+  ✓   9 [chromium] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (650ms)
+  ✓   8 [chromium] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (4.1s)
+  ✓  11 [chromium] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (1.6s)
+  ✓  10 [chromium] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (2.3s)
+(node:49420) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  14 [firefox] › e2e/diagnostics.spec.ts:22:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (2.1s)
+  ✓  15 [firefox] › e2e/diagnostics.spec.ts:80:0 › detailed logging survives a tab reload and reset preferences disables it (587ms)
+  ✓  16 [firefox] › e2e/diagnostics.spec.ts:105:0 › detailed logs still work in memory when session storage is denied (647ms)
+  ✓  12 [chromium] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (5.0s)
+  ✓  13 [chromium] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (4.8s)
+(node:49453) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:49454) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  17 [firefox] › e2e/diagnostics.spec.ts:129:0 › a retired release repairs only missing files using its intact cached assets (740ms)
+  ✓  18 [firefox] › e2e/diagnostics.spec.ts:175:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (912ms)
+  ✓  20 [firefox] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (2.1s)
+  ✓  22 [firefox] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (820ms)
+  ✓  19 [firefox] › e2e/diagnostics.spec.ts:211:0 › waiting updates remain actionable when a current cache probe times out (4.1s)
+  ✓  21 [firefox] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (4.2s)
+  ✓  24 [firefox] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (1.7s)
+  ✓  23 [firefox] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (3.5s)
+(node:49488) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  27 [webkit] › e2e/diagnostics.spec.ts:22:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (1.9s)
+  ✓  28 [webkit] › e2e/diagnostics.spec.ts:80:0 › detailed logging survives a tab reload and reset preferences disables it (632ms)
+  ✓  29 [webkit] › e2e/diagnostics.spec.ts:105:0 › detailed logs still work in memory when session storage is denied (760ms)
+  ✓  25 [firefox] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (5.5s)
+  ✓  30 [webkit] › e2e/diagnostics.spec.ts:129:0 › a retired release repairs only missing files using its intact cached assets (738ms)
+(node:49510) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  26 [firefox] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (5.3s)
+(node:49526) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  32 [webkit] › e2e/diagnostics.spec.ts:175:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (600ms)
+  ✓  31 [webkit] › e2e/diagnostics.spec.ts:211:0 › waiting updates remain actionable when a current cache probe times out (2.6s)
+  ✓  33 [webkit] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (2.2s)
+  ✓  35 [webkit] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (898ms)
+  ✓  37 [webkit] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (831ms)
+  ✓  36 [webkit] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (1.9s)
+  ✓  34 [webkit] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (4.3s)
+(node:49680) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  39 [webkit] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (2.0s)
+(node:49687) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  40 [android-emulation] › e2e/diagnostics.spec.ts:22:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (2.2s)
+  ✓  41 [android-emulation] › e2e/diagnostics.spec.ts:80:0 › detailed logging survives a tab reload and reset preferences disables it (509ms)
+  ✓  38 [webkit] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (3.6s)
+(node:49696) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  42 [android-emulation] › e2e/diagnostics.spec.ts:105:0 › detailed logs still work in memory when session storage is denied (628ms)
+  ✓  44 [android-emulation] › e2e/diagnostics.spec.ts:175:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (467ms)
+  ✓  43 [android-emulation] › e2e/diagnostics.spec.ts:129:0 › a retired release repairs only missing files using its intact cached assets (1.2s)
+  ✓  46 [android-emulation] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (2.7s)
+  ✓  45 [android-emulation] › e2e/diagnostics.spec.ts:211:0 › waiting updates remain actionable when a current cache probe times out (3.5s)
+  ✓  48 [android-emulation] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (680ms)
+  ✓  47 [android-emulation] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (4.2s)
+  ✓  50 [android-emulation] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (1.6s)
+  ✓  49 [android-emulation] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (2.3s)
+(node:49884) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  53 [iphone-emulation] › e2e/diagnostics.spec.ts:22:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (1.8s)
+  ✓  54 [iphone-emulation] › e2e/diagnostics.spec.ts:80:0 › detailed logging survives a tab reload and reset preferences disables it (626ms)
+  ✓  55 [iphone-emulation] › e2e/diagnostics.spec.ts:105:0 › detailed logs still work in memory when session storage is denied (699ms)
+  ✓  56 [iphone-emulation] › e2e/diagnostics.spec.ts:129:0 › a retired release repairs only missing files using its intact cached assets (721ms)
+  ✓  51 [android-emulation] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (5.2s)
+  ✓  52 [android-emulation] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (4.8s)
+(node:49930) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:49931) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  57 [iphone-emulation] › e2e/diagnostics.spec.ts:175:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (467ms)
+  ✓  59 [iphone-emulation] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (2.2s)
+  ✓  58 [iphone-emulation] › e2e/diagnostics.spec.ts:211:0 › waiting updates remain actionable when a current cache probe times out (2.7s)
+  ✓  61 [iphone-emulation] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (779ms)
+  ✓  63 [iphone-emulation] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (649ms)
+  ✓  60 [iphone-emulation] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (4.3s)
+  ✓  62 [iphone-emulation] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (1.5s)
+  ✓  65 [iphone-emulation] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (2.0s)
+  ✓  64 [iphone-emulation] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (3.5s)
+
+
+  1) [chromium] › e2e/diagnostics.spec.ts:80:0 › detailed logging survives a tab reload and reset preferences disables it 
+
+    Error: jsonValue: Execution context was destroyed, most likely because of a navigation
+
+       9 |     records.push(
+      10 |       JSON.stringify(
+    > 11 |         await Promise.all(message.args().map((arg) => arg.jsonValue())),
+         |                                         ^
+      12 |       ),
+      13 |     );
+      14 |   });
+        at /Users/tien/Developer/ChronoShift/e2e/diagnostics.spec.ts:11:41
+
+    Error: click: Test ended.
+    Call log:
+      - waiting for getByText('More options', { exact: true })
+        - locator resolved to <summary>More options</summary>
+      - attempting click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+
+
+      16 | }
+      17 | async function toggle(page: Page) {
+    > 18 |   await page.getByText("More options", { exact: true }).click();
+         |                                                        ^
+      19 |   return page.getByRole("checkbox", { name: "Enable detailed logs" });
+      20 | }
+      21 |
+        at toggle (/Users/tien/Developer/ChronoShift/e2e/diagnostics.spec.ts:18:56)
+        at /Users/tien/Developer/ChronoShift/e2e/diagnostics.spec.ts:87:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../../../tmp/chronoshift-live-root-delta/diagnostics-detailed-loggi-1b3a5-set-preferences-disables-it-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../../../tmp/chronoshift-live-root-delta/diagnostics-detailed-loggi-1b3a5-set-preferences-disables-it-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../../../tmp/chronoshift-live-root-delta/diagnostics-detailed-loggi-1b3a5-set-preferences-disables-it-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../../../tmp/chronoshift-live-root-delta/diagnostics-detailed-loggi-1b3a5-set-preferences-disables-it-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e/diagnostics.spec.ts:80:0 › detailed logging survives a tab reload and reset preferences disables it 
+  64 passed (48.7s)
