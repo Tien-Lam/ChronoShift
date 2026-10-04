@@ -1,5 +1,5 @@
 {
-  "measuredAt": "2026-10-03T16:51:39.340Z",
+  "measuredAt": "2026-10-04T00:57:44.988Z",
   "scope": "One successful push publication and its successful pull-request verification, before and after optimization",
   "caveats": [
     "This public repository uses free standard hosted runners; runner usage is not a dollar billing statement.",
@@ -237,28 +237,28 @@
   "candidate": {
     "runs": [
       {
-        "id": 37138175771,
+        "id": 37165852924,
         "workflow": "Web",
-        "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37138175771",
-        "sourceCommit": "6b8e08aefb103cc0d849be2f52a6e5f8077ed5cd",
+        "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37165852924",
+        "sourceCommit": "f1fd6c16b08e750a287d4bf85ee2c1062118a266",
         "event": "pull_request",
-        "elapsedSeconds": 117,
+        "elapsedSeconds": 140,
         "jobs": [
           {
             "name": "web",
-            "runnerSeconds": 114,
+            "runnerSeconds": 135,
             "steps": [
               {
                 "name": "Set up job",
-                "seconds": 1
+                "seconds": 2
               },
               {
                 "name": "Initialize containers",
-                "seconds": 27
+                "seconds": 28
               },
               {
                 "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
-                "seconds": 0
+                "seconds": 1
               },
               {
                 "name": "Capture the checked-in corpus audit",
@@ -266,31 +266,31 @@
               },
               {
                 "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
-                "seconds": 5
+                "seconds": 6
               },
               {
                 "name": "Run bun install --frozen-lockfile",
-                "seconds": 0
+                "seconds": 1
               },
               {
                 "name": "Verify the pinned browser image matches the dependency",
-                "seconds": 1
-              },
-              {
-                "name": "Run bun run format:check",
-                "seconds": 1
-              },
-              {
-                "name": "Unit tests and production build",
-                "seconds": 2
-              },
-              {
-                "name": "Verify the standalone conversion corpus audit",
                 "seconds": 0
               },
               {
+                "name": "Run bun run format:check",
+                "seconds": 2
+              },
+              {
+                "name": "Unit tests and production build",
+                "seconds": 1
+              },
+              {
+                "name": "Verify the standalone conversion corpus audit",
+                "seconds": 1
+              },
+              {
                 "name": "Run bun run test:browser",
-                "seconds": 71
+                "seconds": 86
               },
               {
                 "name": "Verify repository-subpath deployment",
@@ -298,7 +298,7 @@
               },
               {
                 "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
-                "seconds": 1
+                "seconds": 0
               },
               {
                 "name": "Stop containers",
@@ -311,29 +311,29 @@
             ]
           }
         ],
-        "runnerSeconds": 114,
-        "roundedRunnerMinutes": 2,
+        "runnerSeconds": 135,
+        "roundedRunnerMinutes": 3,
         "artifacts": []
       },
       {
-        "id": 37138173128,
+        "id": 37165851345,
         "workflow": "GitHub Pages",
-        "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37138173128",
-        "sourceCommit": "6b8e08aefb103cc0d849be2f52a6e5f8077ed5cd",
+        "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37165851345",
+        "sourceCommit": "f1fd6c16b08e750a287d4bf85ee2c1062118a266",
         "event": "push",
-        "elapsedSeconds": 118,
+        "elapsedSeconds": 122,
         "jobs": [
           {
             "name": "verify / web",
-            "runnerSeconds": 103,
+            "runnerSeconds": 105,
             "steps": [
               {
                 "name": "Set up job",
-                "seconds": 3
+                "seconds": 2
               },
               {
                 "name": "Initialize containers",
-                "seconds": 35
+                "seconds": 36
               },
               {
                 "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
@@ -349,11 +349,11 @@
               },
               {
                 "name": "Run bun install --frozen-lockfile",
-                "seconds": 1
+                "seconds": 0
               },
               {
                 "name": "Verify the pinned browser image matches the dependency",
-                "seconds": 0
+                "seconds": 1
               },
               {
                 "name": "Run bun run format:check",
@@ -361,15 +361,15 @@
               },
               {
                 "name": "Unit tests and production build",
-                "seconds": 1
-              },
-              {
-                "name": "Verify the standalone conversion corpus audit",
                 "seconds": 0
               },
               {
+                "name": "Verify the standalone conversion corpus audit",
+                "seconds": 1
+              },
+              {
                 "name": "Run bun run test:browser",
-                "seconds": 51
+                "seconds": 52
               },
               {
                 "name": "Run actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b",
@@ -389,7 +389,7 @@
               },
               {
                 "name": "Stop containers",
-                "seconds": 1
+                "seconds": 0
               },
               {
                 "name": "Complete job",
@@ -399,7 +399,7 @@
           },
           {
             "name": "deploy",
-            "runnerSeconds": 9,
+            "runnerSeconds": 11,
             "steps": [
               {
                 "name": "Set up job",
@@ -407,35 +407,37 @@
               },
               {
                 "name": "Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e",
-                "seconds": 6
+                "seconds": 7
               },
               {
                 "name": "Complete job",
-                "seconds": 0
+                "seconds": 1
               }
             ]
           }
         ],
-        "runnerSeconds": 112,
+        "runnerSeconds": 116,
         "roundedRunnerMinutes": 3,
         "artifacts": [
           {
             "name": "github-pages",
-            "bytes": 220772,
+            "bytes": 221789,
             "retentionHours": 335.9997222222222
           }
         ]
       }
     ],
-    "runnerSeconds": 226,
-    "roundedRunnerMinutes": 5,
-    "artifactBytes": 220772,
-    "projectedArtifactByteHours": 74179330.67444444
+    "runnerSeconds": 251,
+    "roundedRunnerMinutes": 6,
+    "artifactBytes": 221789,
+    "projectedArtifactByteHours": 74521042.39194444
   },
   "reductions": {
-    "runnerSecondsPercent": 26.38,
-    "roundedRunnerMinutesPercent": 37.5,
-    "projectedArtifactByteHoursPercent": 83.19
+    "runnerSecondsPercent": 18.24,
+    "roundedRunnerMinutesPercent": 25,
+    "projectedArtifactByteHoursPercent": 83.11
   },
-  "meetsTwentyPercentTarget": true
+  "meetsTwentyPercentTarget": false,
+  "meetsTwentyPercentQuotaAndStorageTarget": true,
+  "isFaster": true
 }

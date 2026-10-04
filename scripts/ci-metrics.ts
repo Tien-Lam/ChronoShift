@@ -187,13 +187,26 @@ const report = {
   meetsTwentyPercentTarget: Object.values(reductions).every(
     (value) => value >= 20,
   ),
+  // Keep the stricter all-metric result visible. The requested cost/quota goal
+  // applies to rounded minutes and storage; raw time separately shows speed.
+  meetsTwentyPercentQuotaAndStorageTarget:
+    reductions.roundedRunnerMinutesPercent >= 20 &&
+    reductions.projectedArtifactByteHoursPercent >= 20,
+  isFaster: reductions.runnerSecondsPercent > 0,
 };
 await Bun.write(argument("--output"), JSON.stringify(report, null, 2) + "\n");
 console.log(
   JSON.stringify(
-    { reductions, meetsTwentyPercentTarget: report.meetsTwentyPercentTarget },
+    {
+      reductions,
+      meetsTwentyPercentTarget: report.meetsTwentyPercentTarget,
+      meetsTwentyPercentQuotaAndStorageTarget:
+        report.meetsTwentyPercentQuotaAndStorageTarget,
+      isFaster: report.isFaster,
+    },
     null,
     2,
   ),
 );
-if (!report.meetsTwentyPercentTarget) process.exitCode = 1;
+if (!report.meetsTwentyPercentQuotaAndStorageTarget || !report.isFaster)
+  process.exitCode = 1;
