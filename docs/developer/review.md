@@ -53,3 +53,14 @@ runtime assets in a fresh profile without a controller. DOM-only extension
 mutation is a distinct control and does not change bytes fetched by the worker.
 Verify the final build-owned CSP shell, strict rejection of corrupted runtime
 assets, missing-shell recovery after deployment replacement and offline reopen.
+
+For Chrome readiness reports with `no-controller`, distinguish the document's
+controller from the registration's active worker. A hard refresh can leave a
+document uncontrolled while an activated worker has a complete cache, and later
+ordinary interactions in that same tab retain that state. Exercise a real hard
+refresh, perform interactions at the reported times and observe beyond the
+startup deadline. Record
+active/installing/waiting/controller states separately. Cache verification alone
+does not establish that the document is controlled; recovery must confirm actual
+controller identity. With an older active worker and a waiting update, verify
+that waiting-worker activation remains explicit and preserves the draft.

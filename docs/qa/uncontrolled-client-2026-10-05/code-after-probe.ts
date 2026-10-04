@@ -1,0 +1,41 @@
+import { chromium } from '/Users/tien/Developer/ChronoShift/node_modules/playwright/index.mjs';
+import { enterZone } from '/tmp/chronoshift-uncontrolled-code-final-source/e2e/choices.ts';
+const browser=await chromium.launch({channel:'chrome',headless:true});
+const context=await browser.newContext();
+const page=await context.newPage();
+const logs:any[]=[];
+await page.addInitScript(()=>{
+ sessionStorage.setItem('chronoshift-detailed-logs','true');
+ (window as any).initialControl=!!navigator.serviceWorker.controller;
+ const native=ServiceWorker.prototype.postMessage;
+ ServiceWorker.prototype.postMessage=function(message,...args){
+  if(message?.type==='CHECK_READY'&&message.claimUncontrolled===true){setTimeout(()=>native.call(this,message,...args),1200);return;}
+  return native.call(this,message,...args);
+ };
+});
+page.on('console',async m=>{if(m.text().includes('[ChronoShift]'))logs.push({text:m.text(),args:await Promise.all(m.args().map(a=>a.jsonValue().catch(()=>null)))});});
+const base='http://127.0.0.1:4243/';
+await page.goto(base);
+await page.locator('main[data-offline-ready="true"]').waitFor();
+const cdp=await context.newCDPSession(page);
+logs.length=0;
+let navigations=0;page.on('framenavigated',f=>{if(f===page.mainFrame())navigations++});
+await Promise.all([page.waitForEvent('domcontentloaded'),cdp.send('Page.reload',{ignoreCache:true})]);
+const started=Date.now();
+const initialControl=await page.evaluate(()=>(window as any).initialControl);
+await page.getByLabel('Message with a date or time').fill('June 18, 2026 at 5:20pm Tokyo');
+await enterZone(page,'Europe/London');
+await page.getByRole('button',{name:'Convert',exact:true}).click();
+const conversionBeforeRecovery=await page.locator('.hero-time').innerText();
+await page.locator('main[data-offline-ready="true"]').waitFor();
+const recoveredMs=Date.now()-started;
+await page.waitForTimeout(Math.max(0,16000-(Date.now()-started)));
+const state=await page.evaluate(async()=>{const r=await navigator.serviceWorker.getRegistration();return {controlled:!!navigator.serviceWorker.controller,active:r?.active?.state,waiting:r?.waiting?.state,ready:document.querySelector('main')?.getAttribute('data-offline-ready'),warning:document.querySelector('.message.warning')?.textContent}});
+const draft=await page.getByLabel('Message with a date or time').inputValue();
+await page.close();await context.setOffline(true);
+const reopened=await context.newPage();await reopened.goto(base);
+await reopened.locator('main[data-offline-ready="true"]').waitFor();
+await reopened.getByLabel('Message with a date or time').fill('June 19, 2026 at 5:20pm Tokyo');await enterZone(reopened,'Europe/London');await reopened.getByRole('button',{name:'Convert',exact:true}).click();
+const offlineConversion=await reopened.locator('.hero-time').innerText();
+console.log(JSON.stringify({browser:browser.version(),initialControl,recoveredMs,navigations,conversionBeforeRecovery,state,draft,offlineConversion,logs},null,2));
+await browser.close();

@@ -1,0 +1,11 @@
+import {chromium,expect} from '/Users/tien/Developer/ChronoShift/node_modules/@playwright/test';
+const browser=await chromium.launch({channel:'chrome'});
+const context=await browser.newContext();const page=await context.newPage();const logs:any[]=[];
+page.on('console',async m=>{if(m.text().startsWith('[ChronoShift]'))try{logs.push(await Promise.all(m.args().map(a=>a.jsonValue())))}catch{}});
+await page.addInitScript(()=>sessionStorage.setItem('chronoshift-detailed-logs','true'));
+await page.goto('https://tien-lam.github.io/ChronoShift/');await expect(page.locator('main')).toHaveAttribute('data-offline-ready','true');
+const session=await context.newCDPSession(page);
+await Promise.all([page.waitForEvent('domcontentloaded'),session.send('Page.reload',{ignoreCache:true})]);
+await page.waitForTimeout(16000);
+const state=await page.evaluate(async()=>{const r=await navigator.serviceWorker.getRegistration();return{ready:document.querySelector('main')?.getAttribute('data-offline-ready'),warning:document.querySelector('.message.warning')?.textContent,controller:navigator.serviceWorker.controller?.state,active:r?.active?.state,waiting:r?.waiting?.state,installing:r?.installing?.state}});
+await Bun.write('/tmp/chronoshift-uncontrolled-hardreload.json',JSON.stringify({state,logs},null,2));console.log(state);await browser.close();

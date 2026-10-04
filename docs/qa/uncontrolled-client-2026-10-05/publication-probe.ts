@@ -1,0 +1,23 @@
+import {createHash} from 'node:crypto';
+const base='https://tien-lam.github.io';
+const root='/tmp/chronoshift-uncontrolled-ci-artifact';
+const sha=(v:Uint8Array)=>createHash('sha256').update(v).digest('hex');
+const res=await fetch(base+'/ChronoShift/sw.js',{cache:'no-store'});
+if(!res.ok)throw new Error('Worker status '+res.status);
+const bytes=new Uint8Array(await res.arrayBuffer());
+const local=new Uint8Array(await Bun.file(root+'/sw.js').arrayBuffer());
+if(sha(bytes)!==sha(local))throw new Error('Public worker differs from CI artifact');
+const sw=new TextDecoder().decode(bytes);
+const integrity=JSON.parse(sw.match(/const INTEGRITY = (.*);/)![1]);
+const assets=await Promise.all(Object.entries(integrity).map(async([path,expected])=>{
+ const response=await fetch(base+path,{cache:'no-store'});
+ const body=new Uint8Array(await response.arrayBuffer());
+ if(!response.ok||sha(body)!==expected)throw new Error('Asset mismatch '+path);
+ return {path,sha256:sha(body),bytes:body.length};
+}));
+const ciArtifacts=await Bun.file('/tmp/chronoshift-uncontrolled-ci-artifacts.json').json();
+const pagesArtifacts=await Bun.file('/tmp/chronoshift-uncontrolled-pages-artifacts.json').json();
+const artifact=(v:any)=>{const a=v.artifacts.find((a:any)=>a.name==='github-pages');return{id:a.id,zipSha256:a.digest.replace('sha256:','')};};
+const data={at:new Date().toISOString(),merge:'54cc09e1c8a14dceddf36083893436a57f78bae5',testedSource:'4a771b9d102dbcaf3a807f096fb26861bbfa8e5f',tree:'e2f47a192b63d19a9b8eed70f6ffed82d6014a34',ci:37226904832,pages:37227337390,ciArtifact:artifact(ciArtifacts),pagesArtifact:artifact(pagesArtifacts),version:sw.match(/const VERSION = '([^']+)'/)![1],workerSha256:sha(bytes),assets,hostedGate:{cases:4,elapsedSeconds:26.9,desktop:'installed Chrome 154',phone:'Pixel 7 Chromium emulation'}};
+await Bun.write('docs/qa/uncontrolled-client-2026-10-05/publication.json',JSON.stringify(data,null,2)+'\n');
+console.log(JSON.stringify({...data,assets:assets.length}));

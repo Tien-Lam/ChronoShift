@@ -1,0 +1,498 @@
+{
+  "browser": "154.0.8037.93",
+  "cases": [
+    {
+      "label": "fresh",
+      "snapshot": {
+        "at": 558.5,
+        "controller": "https://tien-lam.github.io/ChronoShift/sw.js",
+        "active": "activated",
+        "ready": "true",
+        "warning": []
+      }
+    },
+    {
+      "label": "CDP Page.reload ignoreCache true",
+      "snapshot": {
+        "at": 17133.899999976158,
+        "controller": null,
+        "active": "activated",
+        "ready": "false",
+        "warning": [
+          "Offline setup is incomplete. Reconnect and reload to try again."
+        ]
+      },
+      "result": "9:20"
+    },
+    {
+      "label": "CDP Network.setBypassServiceWorker true",
+      "snapshot": {
+        "at": 17024.20000001788,
+        "controller": "https://tien-lam.github.io/ChronoShift/sw.js",
+        "active": "activated",
+        "ready": "true",
+        "warning": []
+      }
+    },
+    {
+      "label": "bypass disabled and normal reload",
+      "snapshot": {
+        "at": 1016.1000000238419,
+        "controller": "https://tien-lam.github.io/ChronoShift/sw.js",
+        "active": "activated",
+        "ready": "true",
+        "warning": []
+      }
+    }
+  ],
+  "release": {
+    "sourceCommit": "15b8accd00efd019921e3aef6df62e8ce4b30dd1",
+    "base": "/ChronoShift/"
+  },
+  "logs": [
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.register-attempt {at: 2026-10-04T19:00:40.921Z, online: true, attempt: 1}",
+      "fields": {
+        "at": "2026-10-04T19:00:40.921Z",
+        "online": true,
+        "attempt": 1
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.registered {at: 2026-10-04T19:00:40.943Z, online: true, controlled: false}",
+      "fields": {
+        "at": "2026-10-04T19:00:40.943Z",
+        "online": true,
+        "controlled": false
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.probe-start {at: 2026-10-04T19:00:40.943Z, online: true, controlled: false, reason: startup}",
+      "fields": {
+        "at": "2026-10-04T19:00:40.943Z",
+        "online": true,
+        "controlled": false,
+        "reason": "startup"
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.state {at: 2026-10-04T19:00:40.943Z, ready: false, updateAvailable: false, reason: no-controller}",
+      "fields": {
+        "at": "2026-10-04T19:00:40.943Z",
+        "ready": false,
+        "updateAvailable": false,
+        "reason": "no-controller"
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.install-state {at: 2026-10-04T19:00:40.944Z, state: installing}",
+      "fields": {
+        "at": "2026-10-04T19:00:40.944Z",
+        "state": "installing"
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.probe-start {at: 2026-10-04T19:00:40.944Z, online: true, controlled: false, reason: lifecycle}",
+      "fields": {
+        "at": "2026-10-04T19:00:40.944Z",
+        "online": true,
+        "controlled": false,
+        "reason": "lifecycle"
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.state {at: 2026-10-04T19:00:40.944Z, ready: false, updateAvailable: false, reason: no-controller}",
+      "fields": {
+        "at": "2026-10-04T19:00:40.944Z",
+        "ready": false,
+        "updateAvailable": false,
+        "reason": "no-controller"
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.install-state {at: 2026-10-04T19:00:41.244Z, state: installed}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.244Z",
+        "state": "installed"
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.probe-start {at: 2026-10-04T19:00:41.244Z, online: true, controlled: false, reason: lifecycle}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.244Z",
+        "online": true,
+        "controlled": false,
+        "reason": "lifecycle"
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.state {at: 2026-10-04T19:00:41.244Z, ready: false, updateAvailable: true, reason: update-available}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.244Z",
+        "ready": false,
+        "updateAvailable": true,
+        "reason": "update-available"
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.state {at: 2026-10-04T19:00:41.244Z, ready: false, updateAvailable: true, reason: no-controller}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.244Z",
+        "ready": false,
+        "updateAvailable": true,
+        "reason": "no-controller"
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.install-state {at: 2026-10-04T19:00:41.244Z, state: activating}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.244Z",
+        "state": "activating"
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.probe-start {at: 2026-10-04T19:00:41.244Z, online: true, controlled: false, reason: lifecycle}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.244Z",
+        "online": true,
+        "controlled": false,
+        "reason": "lifecycle"
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.state {at: 2026-10-04T19:00:41.244Z, ready: false, updateAvailable: false, reason: no-controller}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.244Z",
+        "ready": false,
+        "updateAvailable": false,
+        "reason": "no-controller"
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.probe-start {at: 2026-10-04T19:00:41.244Z, online: true, controlled: true, reason: controller-change}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.244Z",
+        "online": true,
+        "controlled": true,
+        "reason": "controller-change"
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.install-state {at: 2026-10-04T19:00:41.249Z, state: activated}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.249Z",
+        "state": "activated"
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.probe-start {at: 2026-10-04T19:00:41.249Z, online: true, controlled: true, reason: lifecycle}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.249Z",
+        "online": true,
+        "controlled": true,
+        "reason": "lifecycle"
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.probe-result {at: 2026-10-04T19:00:41.251Z, ready: true, elapsedMs: 2, version: 3ac0e622535455b5, assets: Array(0)}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.251Z",
+        "ready": true,
+        "elapsedMs": 2,
+        "version": "3ac0e622535455b5",
+        "assets": []
+      }
+    },
+    {
+      "label": "fresh",
+      "event": "[ChronoShift] offline.state {at: 2026-10-04T19:00:41.251Z, ready: true, updateAvailable: false, reason: probe-result}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.251Z",
+        "ready": true,
+        "updateAvailable": false,
+        "reason": "probe-result"
+      }
+    },
+    {
+      "label": "CDP Page.reload ignoreCache true",
+      "event": "[ChronoShift] offline.register-attempt {at: 2026-10-04T19:00:41.411Z, online: true, attempt: 1}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.411Z",
+        "online": true,
+        "attempt": 1
+      }
+    },
+    {
+      "label": "CDP Page.reload ignoreCache true",
+      "event": "[ChronoShift] offline.registered {at: 2026-10-04T19:00:41.416Z, online: true, controlled: false}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.416Z",
+        "online": true,
+        "controlled": false
+      }
+    },
+    {
+      "label": "CDP Page.reload ignoreCache true",
+      "event": "[ChronoShift] offline.probe-start {at: 2026-10-04T19:00:41.416Z, online: true, controlled: false, reason: startup}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.416Z",
+        "online": true,
+        "controlled": false,
+        "reason": "startup"
+      }
+    },
+    {
+      "label": "CDP Page.reload ignoreCache true",
+      "event": "[ChronoShift] offline.state {at: 2026-10-04T19:00:41.416Z, ready: false, updateAvailable: false, reason: no-controller}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.416Z",
+        "ready": false,
+        "updateAvailable": false,
+        "reason": "no-controller"
+      }
+    },
+    {
+      "label": "CDP Page.reload ignoreCache true",
+      "event": "[ChronoShift] offline.probe-start {at: 2026-10-04T19:00:41.416Z, online: true, controlled: false, reason: lifecycle}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.416Z",
+        "online": true,
+        "controlled": false,
+        "reason": "lifecycle"
+      }
+    },
+    {
+      "label": "CDP Page.reload ignoreCache true",
+      "event": "[ChronoShift] offline.state {at: 2026-10-04T19:00:41.416Z, ready: false, updateAvailable: false, reason: no-controller}",
+      "fields": {
+        "at": "2026-10-04T19:00:41.416Z",
+        "ready": false,
+        "updateAvailable": false,
+        "reason": "no-controller"
+      }
+    },
+    {
+      "label": "CDP Page.reload ignoreCache true",
+      "event": "[ChronoShift] offline.probe-start {at: 2026-10-04T19:00:42.419Z, online: true, controlled: false, reason: lifecycle}",
+      "fields": {
+        "at": "2026-10-04T19:00:42.419Z",
+        "online": true,
+        "controlled": false,
+        "reason": "lifecycle"
+      }
+    },
+    {
+      "label": "CDP Page.reload ignoreCache true",
+      "event": "[ChronoShift] offline.state {at: 2026-10-04T19:00:42.419Z, ready: false, updateAvailable: false, reason: no-controller}",
+      "fields": {
+        "at": "2026-10-04T19:00:42.419Z",
+        "ready": false,
+        "updateAvailable": false,
+        "reason": "no-controller"
+      }
+    },
+    {
+      "label": "CDP Page.reload ignoreCache true",
+      "event": "[ChronoShift] offline.probe-start {at: 2026-10-04T19:00:45.422Z, online: true, controlled: false, reason: lifecycle}",
+      "fields": {
+        "at": "2026-10-04T19:00:45.422Z",
+        "online": true,
+        "controlled": false,
+        "reason": "lifecycle"
+      }
+    },
+    {
+      "label": "CDP Page.reload ignoreCache true",
+      "event": "[ChronoShift] offline.state {at: 2026-10-04T19:00:45.422Z, ready: false, updateAvailable: false, reason: no-controller}",
+      "fields": {
+        "at": "2026-10-04T19:00:45.422Z",
+        "ready": false,
+        "updateAvailable": false,
+        "reason": "no-controller"
+      }
+    },
+    {
+      "label": "CDP Page.reload ignoreCache true",
+      "event": "[ChronoShift] ui.zone-focus {at: 2026-10-04T19:00:53.371Z, field: target-zone}",
+      "fields": {
+        "at": "2026-10-04T19:00:53.371Z",
+        "field": "target-zone"
+      }
+    },
+    {
+      "label": "CDP Page.reload ignoreCache true",
+      "event": "[ChronoShift] ui.zone-focus {at: 2026-10-04T19:00:53.395Z, field: target-zone}",
+      "fields": {
+        "at": "2026-10-04T19:00:53.395Z",
+        "field": "target-zone"
+      }
+    },
+    {
+      "label": "CDP Page.reload ignoreCache true",
+      "event": "[ChronoShift] conversion.start {at: 2026-10-04T19:00:54.463Z, requestId: 2, characters: 29}",
+      "fields": {
+        "at": "2026-10-04T19:00:54.463Z",
+        "requestId": 2,
+        "characters": 29
+      }
+    },
+    {
+      "label": "CDP Page.reload ignoreCache true",
+      "event": "[ChronoShift] conversion.complete {at: 2026-10-04T19:00:54.512Z, elapsedMs: 49, requestId: 2, results: 1, warnings: 0}",
+      "fields": {
+        "at": "2026-10-04T19:00:54.512Z",
+        "elapsedMs": 49,
+        "requestId": 2,
+        "results": 1,
+        "warnings": 0,
+        "reason": "success"
+      }
+    },
+    {
+      "label": "CDP Page.reload ignoreCache true",
+      "event": "[ChronoShift] offline.state {at: 2026-10-04T19:00:56.418Z, ready: false, updateAvailable: false, reason: startup-deadline}",
+      "fields": {
+        "at": "2026-10-04T19:00:56.418Z",
+        "ready": false,
+        "updateAvailable": false,
+        "reason": "startup-deadline"
+      }
+    },
+    {
+      "label": "CDP Network.setBypassServiceWorker true",
+      "event": "[ChronoShift] offline.register-attempt {at: 2026-10-04T19:00:58.546Z, online: true, attempt: 1}",
+      "fields": {
+        "at": "2026-10-04T19:00:58.546Z",
+        "online": true,
+        "attempt": 1
+      }
+    },
+    {
+      "label": "CDP Network.setBypassServiceWorker true",
+      "event": "[ChronoShift] offline.registered {at: 2026-10-04T19:00:58.551Z, online: true, controlled: true}",
+      "fields": {
+        "at": "2026-10-04T19:00:58.551Z",
+        "online": true,
+        "controlled": true
+      }
+    },
+    {
+      "label": "CDP Network.setBypassServiceWorker true",
+      "event": "[ChronoShift] offline.probe-start {at: 2026-10-04T19:00:58.551Z, online: true, controlled: true, reason: startup}",
+      "fields": {
+        "at": "2026-10-04T19:00:58.551Z",
+        "online": true,
+        "controlled": true,
+        "reason": "startup"
+      }
+    },
+    {
+      "label": "CDP Network.setBypassServiceWorker true",
+      "event": "[ChronoShift] offline.probe-start {at: 2026-10-04T19:00:58.551Z, online: true, controlled: true, reason: lifecycle}",
+      "fields": {
+        "at": "2026-10-04T19:00:58.551Z",
+        "online": true,
+        "controlled": true,
+        "reason": "lifecycle"
+      }
+    },
+    {
+      "label": "CDP Network.setBypassServiceWorker true",
+      "event": "[ChronoShift] offline.probe-result {at: 2026-10-04T19:00:58.554Z, ready: true, elapsedMs: 3, version: 3ac0e622535455b5, assets: Array(0)}",
+      "fields": {
+        "at": "2026-10-04T19:00:58.554Z",
+        "ready": true,
+        "elapsedMs": 3,
+        "version": "3ac0e622535455b5",
+        "assets": []
+      }
+    },
+    {
+      "label": "CDP Network.setBypassServiceWorker true",
+      "event": "[ChronoShift] offline.state {at: 2026-10-04T19:00:58.554Z, ready: true, updateAvailable: false, reason: probe-result}",
+      "fields": {
+        "at": "2026-10-04T19:00:58.554Z",
+        "ready": true,
+        "updateAvailable": false,
+        "reason": "probe-result"
+      }
+    },
+    {
+      "label": "bypass disabled and normal reload",
+      "event": "[ChronoShift] offline.register-attempt {at: 2026-10-04T19:01:15.571Z, online: true, attempt: 1}",
+      "fields": {
+        "at": "2026-10-04T19:01:15.571Z",
+        "online": true,
+        "attempt": 1
+      }
+    },
+    {
+      "label": "bypass disabled and normal reload",
+      "event": "[ChronoShift] offline.registered {at: 2026-10-04T19:01:15.578Z, online: true, controlled: true}",
+      "fields": {
+        "at": "2026-10-04T19:01:15.578Z",
+        "online": true,
+        "controlled": true
+      }
+    },
+    {
+      "label": "bypass disabled and normal reload",
+      "event": "[ChronoShift] offline.probe-start {at: 2026-10-04T19:01:15.578Z, online: true, controlled: true, reason: startup}",
+      "fields": {
+        "at": "2026-10-04T19:01:15.578Z",
+        "online": true,
+        "controlled": true,
+        "reason": "startup"
+      }
+    },
+    {
+      "label": "bypass disabled and normal reload",
+      "event": "[ChronoShift] offline.probe-start {at: 2026-10-04T19:01:15.579Z, online: true, controlled: true, reason: lifecycle}",
+      "fields": {
+        "at": "2026-10-04T19:01:15.579Z",
+        "online": true,
+        "controlled": true,
+        "reason": "lifecycle"
+      }
+    },
+    {
+      "label": "bypass disabled and normal reload",
+      "event": "[ChronoShift] offline.probe-result {at: 2026-10-04T19:01:15.582Z, ready: true, elapsedMs: 4, version: 3ac0e622535455b5, assets: Array(0)}",
+      "fields": {
+        "at": "2026-10-04T19:01:15.582Z",
+        "ready": true,
+        "elapsedMs": 4,
+        "version": "3ac0e622535455b5",
+        "assets": []
+      }
+    },
+    {
+      "label": "bypass disabled and normal reload",
+      "event": "[ChronoShift] offline.state {at: 2026-10-04T19:01:15.582Z, ready: true, updateAvailable: false, reason: probe-result}",
+      "fields": {
+        "at": "2026-10-04T19:01:15.582Z",
+        "ready": true,
+        "updateAvailable": false,
+        "reason": "probe-result"
+      }
+    }
+  ]
+}

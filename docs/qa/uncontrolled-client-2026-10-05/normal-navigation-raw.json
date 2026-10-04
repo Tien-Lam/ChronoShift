@@ -1,0 +1,2212 @@
+{
+  "started": "2026-10-04T19:08:47.274Z",
+  "sourceHead": "63c9cdc442eac03c30dbae7871d1452b1049c7b0",
+  "policy": "No force/hard refresh, no API mocks, no altered network, no user profile. Observer injection plus opt-in session flag only.",
+  "journeys": [
+    {
+      "name": "fresh-first-visit",
+      "start": "2026-10-04T19:08:47.802Z",
+      "samples": [
+        {
+          "elapsed": 0,
+          "at": "2026-10-04T19:08:48.526Z",
+          "ms": 722,
+          "url": "https://tien-lam.github.io/ChronoShift/",
+          "online": true,
+          "controller": null,
+          "registration": null,
+          "ready": "false",
+          "warning": null,
+          "events": [
+            {
+              "at": "2026-10-04T19:08:48.140Z",
+              "ms": 336,
+              "event": "observer-init",
+              "controlled": false,
+              "controllerState": null
+            },
+            {
+              "at": "2026-10-04T19:08:48.466Z",
+              "ms": 662,
+              "event": "pageshow",
+              "controlled": false,
+              "controllerState": null,
+              "persisted": false
+            }
+          ],
+          "nav": [
+            {
+              "type": "navigate",
+              "activationStart": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 1002,
+          "at": "2026-10-04T19:08:49.472Z",
+          "ms": 1668,
+          "url": "https://tien-lam.github.io/ChronoShift/",
+          "online": true,
+          "controller": null,
+          "registration": {
+            "scope": "https://tien-lam.github.io/ChronoShift/",
+            "active": null,
+            "installing": {
+              "state": "installing",
+              "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+            },
+            "waiting": null
+          },
+          "ready": "false",
+          "warning": null,
+          "events": [
+            {
+              "at": "2026-10-04T19:08:48.140Z",
+              "ms": 336,
+              "event": "observer-init",
+              "controlled": false,
+              "controllerState": null
+            },
+            {
+              "at": "2026-10-04T19:08:48.466Z",
+              "ms": 662,
+              "event": "pageshow",
+              "controlled": false,
+              "controllerState": null,
+              "persisted": false
+            }
+          ],
+          "nav": [
+            {
+              "type": "navigate",
+              "activationStart": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 4002,
+          "at": "2026-10-04T19:08:52.472Z",
+          "ms": 4668,
+          "url": "https://tien-lam.github.io/ChronoShift/",
+          "online": true,
+          "controller": {
+            "state": "activated",
+            "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+          },
+          "registration": {
+            "scope": "https://tien-lam.github.io/ChronoShift/",
+            "active": {
+              "state": "activated",
+              "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+            },
+            "installing": null,
+            "waiting": null
+          },
+          "ready": "true",
+          "warning": null,
+          "events": [
+            {
+              "at": "2026-10-04T19:08:48.140Z",
+              "ms": 336,
+              "event": "observer-init",
+              "controlled": false,
+              "controllerState": null
+            },
+            {
+              "at": "2026-10-04T19:08:48.466Z",
+              "ms": 662,
+              "event": "pageshow",
+              "controlled": false,
+              "controllerState": null,
+              "persisted": false
+            },
+            {
+              "at": "2026-10-04T19:08:50.681Z",
+              "ms": 2877,
+              "event": "controllerchange",
+              "controlled": true,
+              "controllerState": "activating"
+            }
+          ],
+          "nav": [
+            {
+              "type": "navigate",
+              "activationStart": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 16002,
+          "at": "2026-10-04T19:09:04.471Z",
+          "ms": 16667,
+          "url": "https://tien-lam.github.io/ChronoShift/",
+          "online": true,
+          "controller": {
+            "state": "activated",
+            "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+          },
+          "registration": {
+            "scope": "https://tien-lam.github.io/ChronoShift/",
+            "active": {
+              "state": "activated",
+              "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+            },
+            "installing": null,
+            "waiting": null
+          },
+          "ready": "true",
+          "warning": null,
+          "events": [
+            {
+              "at": "2026-10-04T19:08:48.140Z",
+              "ms": 336,
+              "event": "observer-init",
+              "controlled": false,
+              "controllerState": null
+            },
+            {
+              "at": "2026-10-04T19:08:48.466Z",
+              "ms": 662,
+              "event": "pageshow",
+              "controlled": false,
+              "controllerState": null,
+              "persisted": false
+            },
+            {
+              "at": "2026-10-04T19:08:50.681Z",
+              "ms": 2877,
+              "event": "controllerchange",
+              "controlled": true,
+              "controllerState": "activating"
+            }
+          ],
+          "nav": [
+            {
+              "type": "navigate",
+              "activationStart": 0
+            }
+          ]
+        }
+      ],
+      "response": {
+        "status": 200,
+        "url": "https://tien-lam.github.io/ChronoShift/",
+        "fromSW": false
+      },
+      "end": "2026-10-04T19:09:04.473Z"
+    },
+    {
+      "name": "ordinary-soft-reload",
+      "start": "2026-10-04T19:09:04.567Z",
+      "samples": [
+        {
+          "elapsed": 0,
+          "at": "2026-10-04T19:09:04.611Z",
+          "ms": 42,
+          "url": "https://tien-lam.github.io/ChronoShift/",
+          "online": true,
+          "controller": {
+            "state": "activated",
+            "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+          },
+          "registration": {
+            "scope": "https://tien-lam.github.io/ChronoShift/",
+            "active": {
+              "state": "activated",
+              "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+            },
+            "installing": null,
+            "waiting": null
+          },
+          "ready": "false",
+          "warning": null,
+          "events": [
+            {
+              "at": "2026-10-04T19:09:04.576Z",
+              "ms": 6,
+              "event": "observer-init",
+              "controlled": true,
+              "controllerState": "activated"
+            },
+            {
+              "at": "2026-10-04T19:09:04.593Z",
+              "ms": 24,
+              "event": "pageshow",
+              "controlled": true,
+              "controllerState": "activated",
+              "persisted": false
+            }
+          ],
+          "nav": [
+            {
+              "type": "reload",
+              "activationStart": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 1002,
+          "at": "2026-10-04T19:09:05.597Z",
+          "ms": 1028,
+          "url": "https://tien-lam.github.io/ChronoShift/",
+          "online": true,
+          "controller": {
+            "state": "activated",
+            "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+          },
+          "registration": {
+            "scope": "https://tien-lam.github.io/ChronoShift/",
+            "active": {
+              "state": "activated",
+              "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+            },
+            "installing": null,
+            "waiting": null
+          },
+          "ready": "true",
+          "warning": null,
+          "events": [
+            {
+              "at": "2026-10-04T19:09:04.576Z",
+              "ms": 6,
+              "event": "observer-init",
+              "controlled": true,
+              "controllerState": "activated"
+            },
+            {
+              "at": "2026-10-04T19:09:04.593Z",
+              "ms": 24,
+              "event": "pageshow",
+              "controlled": true,
+              "controllerState": "activated",
+              "persisted": false
+            }
+          ],
+          "nav": [
+            {
+              "type": "reload",
+              "activationStart": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 4001,
+          "at": "2026-10-04T19:09:08.597Z",
+          "ms": 4028,
+          "url": "https://tien-lam.github.io/ChronoShift/",
+          "online": true,
+          "controller": {
+            "state": "activated",
+            "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+          },
+          "registration": {
+            "scope": "https://tien-lam.github.io/ChronoShift/",
+            "active": {
+              "state": "activated",
+              "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+            },
+            "installing": null,
+            "waiting": null
+          },
+          "ready": "true",
+          "warning": null,
+          "events": [
+            {
+              "at": "2026-10-04T19:09:04.576Z",
+              "ms": 6,
+              "event": "observer-init",
+              "controlled": true,
+              "controllerState": "activated"
+            },
+            {
+              "at": "2026-10-04T19:09:04.593Z",
+              "ms": 24,
+              "event": "pageshow",
+              "controlled": true,
+              "controllerState": "activated",
+              "persisted": false
+            }
+          ],
+          "nav": [
+            {
+              "type": "reload",
+              "activationStart": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 16002,
+          "at": "2026-10-04T19:09:20.597Z",
+          "ms": 16028,
+          "url": "https://tien-lam.github.io/ChronoShift/",
+          "online": true,
+          "controller": {
+            "state": "activated",
+            "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+          },
+          "registration": {
+            "scope": "https://tien-lam.github.io/ChronoShift/",
+            "active": {
+              "state": "activated",
+              "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+            },
+            "installing": null,
+            "waiting": null
+          },
+          "ready": "true",
+          "warning": null,
+          "events": [
+            {
+              "at": "2026-10-04T19:09:04.576Z",
+              "ms": 6,
+              "event": "observer-init",
+              "controlled": true,
+              "controllerState": "activated"
+            },
+            {
+              "at": "2026-10-04T19:09:04.593Z",
+              "ms": 24,
+              "event": "pageshow",
+              "controlled": true,
+              "controllerState": "activated",
+              "persisted": false
+            }
+          ],
+          "nav": [
+            {
+              "type": "reload",
+              "activationStart": 0
+            }
+          ]
+        }
+      ],
+      "response": {
+        "status": 200,
+        "url": "https://tien-lam.github.io/ChronoShift/",
+        "fromSW": true
+      },
+      "end": "2026-10-04T19:09:20.599Z"
+    },
+    {
+      "name": "address-navigation-same-url",
+      "start": "2026-10-04T19:09:20.600Z",
+      "samples": [
+        {
+          "elapsed": 0,
+          "at": "2026-10-04T19:09:20.647Z",
+          "ms": 41,
+          "url": "https://tien-lam.github.io/ChronoShift/",
+          "online": true,
+          "controller": {
+            "state": "activated",
+            "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+          },
+          "registration": {
+            "scope": "https://tien-lam.github.io/ChronoShift/",
+            "active": {
+              "state": "activated",
+              "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+            },
+            "installing": null,
+            "waiting": null
+          },
+          "ready": "false",
+          "warning": null,
+          "events": [
+            {
+              "at": "2026-10-04T19:09:20.617Z",
+              "ms": 12,
+              "event": "observer-init",
+              "controlled": true,
+              "controllerState": "activated"
+            },
+            {
+              "at": "2026-10-04T19:09:20.623Z",
+              "ms": 18,
+              "event": "pageshow",
+              "controlled": true,
+              "controllerState": "activated",
+              "persisted": false
+            }
+          ],
+          "nav": [
+            {
+              "type": "navigate",
+              "activationStart": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 1001,
+          "at": "2026-10-04T19:09:21.628Z",
+          "ms": 1023,
+          "url": "https://tien-lam.github.io/ChronoShift/",
+          "online": true,
+          "controller": {
+            "state": "activated",
+            "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+          },
+          "registration": {
+            "scope": "https://tien-lam.github.io/ChronoShift/",
+            "active": {
+              "state": "activated",
+              "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+            },
+            "installing": null,
+            "waiting": null
+          },
+          "ready": "true",
+          "warning": null,
+          "events": [
+            {
+              "at": "2026-10-04T19:09:20.617Z",
+              "ms": 12,
+              "event": "observer-init",
+              "controlled": true,
+              "controllerState": "activated"
+            },
+            {
+              "at": "2026-10-04T19:09:20.623Z",
+              "ms": 18,
+              "event": "pageshow",
+              "controlled": true,
+              "controllerState": "activated",
+              "persisted": false
+            }
+          ],
+          "nav": [
+            {
+              "type": "navigate",
+              "activationStart": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 4001,
+          "at": "2026-10-04T19:09:24.628Z",
+          "ms": 4022,
+          "url": "https://tien-lam.github.io/ChronoShift/",
+          "online": true,
+          "controller": {
+            "state": "activated",
+            "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+          },
+          "registration": {
+            "scope": "https://tien-lam.github.io/ChronoShift/",
+            "active": {
+              "state": "activated",
+              "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+            },
+            "installing": null,
+            "waiting": null
+          },
+          "ready": "true",
+          "warning": null,
+          "events": [
+            {
+              "at": "2026-10-04T19:09:20.617Z",
+              "ms": 12,
+              "event": "observer-init",
+              "controlled": true,
+              "controllerState": "activated"
+            },
+            {
+              "at": "2026-10-04T19:09:20.623Z",
+              "ms": 18,
+              "event": "pageshow",
+              "controlled": true,
+              "controllerState": "activated",
+              "persisted": false
+            }
+          ],
+          "nav": [
+            {
+              "type": "navigate",
+              "activationStart": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 16001,
+          "at": "2026-10-04T19:09:36.629Z",
+          "ms": 16024,
+          "url": "https://tien-lam.github.io/ChronoShift/",
+          "online": true,
+          "controller": {
+            "state": "activated",
+            "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+          },
+          "registration": {
+            "scope": "https://tien-lam.github.io/ChronoShift/",
+            "active": {
+              "state": "activated",
+              "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+            },
+            "installing": null,
+            "waiting": null
+          },
+          "ready": "true",
+          "warning": null,
+          "events": [
+            {
+              "at": "2026-10-04T19:09:20.617Z",
+              "ms": 12,
+              "event": "observer-init",
+              "controlled": true,
+              "controllerState": "activated"
+            },
+            {
+              "at": "2026-10-04T19:09:20.623Z",
+              "ms": 18,
+              "event": "pageshow",
+              "controlled": true,
+              "controllerState": "activated",
+              "persisted": false
+            }
+          ],
+          "nav": [
+            {
+              "type": "navigate",
+              "activationStart": 0
+            }
+          ]
+        }
+      ],
+      "response": {
+        "status": 200,
+        "url": "https://tien-lam.github.io/ChronoShift/",
+        "fromSW": true
+      },
+      "end": "2026-10-04T19:09:36.631Z"
+    },
+    {
+      "name": "history-back-from-out-of-scope",
+      "start": "2026-10-04T19:09:37.884Z",
+      "samples": [],
+      "error": "TimeoutError: goBack: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for navigation until \"load\"\u001b[22m\n\u001b[2m    - navigated to \"https://tien-lam.github.io/ChronoShift/\"\u001b[22m\n"
+    },
+    {
+      "name": "history-back-second-time",
+      "start": "2026-10-04T19:10:08.906Z",
+      "samples": [],
+      "error": "TimeoutError: goBack: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for navigation until \"load\"\u001b[22m\n\u001b[2m    - navigated to \"https://tien-lam.github.io/ChronoShift/\"\u001b[22m\n"
+    },
+    {
+      "name": "new-tab-with-active-registration",
+      "start": "2026-10-04T19:10:38.936Z",
+      "samples": [
+        {
+          "elapsed": 0,
+          "at": "2026-10-04T19:10:39.040Z",
+          "ms": 101,
+          "url": "https://tien-lam.github.io/ChronoShift/",
+          "online": true,
+          "controller": {
+            "state": "activated",
+            "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+          },
+          "registration": {
+            "scope": "https://tien-lam.github.io/ChronoShift/",
+            "active": {
+              "state": "activated",
+              "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+            },
+            "installing": null,
+            "waiting": null
+          },
+          "ready": "false",
+          "warning": null,
+          "events": [
+            {
+              "at": "2026-10-04T19:10:38.943Z",
+              "ms": 5,
+              "event": "observer-init",
+              "controlled": true,
+              "controllerState": "activated"
+            },
+            {
+              "at": "2026-10-04T19:10:38.995Z",
+              "ms": 56,
+              "event": "pageshow",
+              "controlled": true,
+              "controllerState": "activated",
+              "persisted": false
+            }
+          ],
+          "nav": [
+            {
+              "type": "navigate",
+              "activationStart": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 1002,
+          "at": "2026-10-04T19:10:39.999Z",
+          "ms": 1061,
+          "url": "https://tien-lam.github.io/ChronoShift/",
+          "online": true,
+          "controller": {
+            "state": "activated",
+            "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+          },
+          "registration": {
+            "scope": "https://tien-lam.github.io/ChronoShift/",
+            "active": {
+              "state": "activated",
+              "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+            },
+            "installing": null,
+            "waiting": null
+          },
+          "ready": "true",
+          "warning": null,
+          "events": [
+            {
+              "at": "2026-10-04T19:10:38.943Z",
+              "ms": 5,
+              "event": "observer-init",
+              "controlled": true,
+              "controllerState": "activated"
+            },
+            {
+              "at": "2026-10-04T19:10:38.995Z",
+              "ms": 56,
+              "event": "pageshow",
+              "controlled": true,
+              "controllerState": "activated",
+              "persisted": false
+            }
+          ],
+          "nav": [
+            {
+              "type": "navigate",
+              "activationStart": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 4002,
+          "at": "2026-10-04T19:10:42.999Z",
+          "ms": 4061,
+          "url": "https://tien-lam.github.io/ChronoShift/",
+          "online": true,
+          "controller": {
+            "state": "activated",
+            "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+          },
+          "registration": {
+            "scope": "https://tien-lam.github.io/ChronoShift/",
+            "active": {
+              "state": "activated",
+              "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+            },
+            "installing": null,
+            "waiting": null
+          },
+          "ready": "true",
+          "warning": null,
+          "events": [
+            {
+              "at": "2026-10-04T19:10:38.943Z",
+              "ms": 5,
+              "event": "observer-init",
+              "controlled": true,
+              "controllerState": "activated"
+            },
+            {
+              "at": "2026-10-04T19:10:38.995Z",
+              "ms": 56,
+              "event": "pageshow",
+              "controlled": true,
+              "controllerState": "activated",
+              "persisted": false
+            }
+          ],
+          "nav": [
+            {
+              "type": "navigate",
+              "activationStart": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 16002,
+          "at": "2026-10-04T19:10:54.999Z",
+          "ms": 16061,
+          "url": "https://tien-lam.github.io/ChronoShift/",
+          "online": true,
+          "controller": {
+            "state": "activated",
+            "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+          },
+          "registration": {
+            "scope": "https://tien-lam.github.io/ChronoShift/",
+            "active": {
+              "state": "activated",
+              "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+            },
+            "installing": null,
+            "waiting": null
+          },
+          "ready": "true",
+          "warning": null,
+          "events": [
+            {
+              "at": "2026-10-04T19:10:38.943Z",
+              "ms": 5,
+              "event": "observer-init",
+              "controlled": true,
+              "controllerState": "activated"
+            },
+            {
+              "at": "2026-10-04T19:10:38.995Z",
+              "ms": 56,
+              "event": "pageshow",
+              "controlled": true,
+              "controllerState": "activated",
+              "persisted": false
+            }
+          ],
+          "nav": [
+            {
+              "type": "navigate",
+              "activationStart": 0
+            }
+          ]
+        }
+      ],
+      "response": {
+        "status": 200,
+        "url": "https://tien-lam.github.io/ChronoShift/",
+        "fromSW": true
+      },
+      "end": "2026-10-04T19:10:55.001Z"
+    },
+    {
+      "name": "scope-redirect-slashless",
+      "start": "2026-10-04T19:10:55.019Z",
+      "samples": [
+        {
+          "elapsed": 0,
+          "at": "2026-10-04T19:10:55.302Z",
+          "ms": 279,
+          "url": "https://tien-lam.github.io/ChronoShift/",
+          "online": true,
+          "controller": {
+            "state": "activated",
+            "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+          },
+          "registration": {
+            "scope": "https://tien-lam.github.io/ChronoShift/",
+            "active": {
+              "state": "activated",
+              "url": "https://tien-lam.github.io/ChronoShift/sw.js"
+            },
+            "installing": null,
+            "waiting": null
+          },
+          "ready": "false",
+          "warning": null,
+          "events": [
+            {
+              "at": "2026-10-04T19:10:55.269Z",
+              "ms": 246,
+              "event": "observer-init",
+              "controlled": true,
+              "controllerState": "activated"
+            },
+            {
+              "at": "2026-10-04T19:10:55.277Z",
+              "ms": 254,
+              "event": "pageshow",
+              "controlled": true,
+              "controllerState": "activated",
+              "persisted": false
+            }
+          ],
+          "nav": [
+            {
+              "type": "navigate",
+              "activationStart": 0
+            }
+          ]
+        }
+      ],
+      "response": {
+        "status": 200,
+        "url": "https://tien-lam.github.io/ChronoShift/",
+        "fromSW": true
+      },
+      "error": "Error: waitForTimeout: Target page, context or browser has been closed"
+    }
+  ],
+  "console": [
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:48.510Z",
+      "values": [
+        "[ChronoShift] offline.register-attempt",
+        {
+          "at": "2026-10-04T19:08:48.508Z",
+          "online": true,
+          "attempt": 1
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:48.768Z",
+      "values": [
+        "[ChronoShift] offline.registered",
+        {
+          "at": "2026-10-04T19:08:48.768Z",
+          "online": true,
+          "controlled": false
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:48.769Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:08:48.768Z",
+          "online": true,
+          "controlled": false,
+          "reason": "startup"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:48.769Z",
+      "values": [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T19:08:48.768Z",
+          "ready": false,
+          "updateAvailable": false,
+          "reason": "no-controller"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:48.769Z",
+      "values": [
+        "[ChronoShift] offline.install-state",
+        {
+          "at": "2026-10-04T19:08:48.768Z",
+          "state": "installing"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:48.769Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:08:48.768Z",
+          "online": true,
+          "controlled": false,
+          "reason": "lifecycle"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:48.769Z",
+      "values": [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T19:08:48.768Z",
+          "ready": false,
+          "updateAvailable": false,
+          "reason": "no-controller"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:50.684Z",
+      "values": [
+        "[ChronoShift] offline.install-state",
+        {
+          "at": "2026-10-04T19:08:50.680Z",
+          "state": "installed"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:50.684Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:08:50.680Z",
+          "online": true,
+          "controlled": false,
+          "reason": "lifecycle"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:50.684Z",
+      "values": [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T19:08:50.680Z",
+          "ready": false,
+          "updateAvailable": true,
+          "reason": "update-available"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:50.684Z",
+      "values": [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T19:08:50.681Z",
+          "ready": false,
+          "updateAvailable": true,
+          "reason": "no-controller"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:50.684Z",
+      "values": [
+        "[ChronoShift] offline.install-state",
+        {
+          "at": "2026-10-04T19:08:50.681Z",
+          "state": "activating"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:50.685Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:08:50.681Z",
+          "online": true,
+          "controlled": false,
+          "reason": "lifecycle"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:50.685Z",
+      "values": [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T19:08:50.681Z",
+          "ready": false,
+          "updateAvailable": false,
+          "reason": "no-controller"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:50.685Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:08:50.681Z",
+          "online": true,
+          "controlled": true,
+          "reason": "controller-change"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:50.686Z",
+      "values": [
+        "[ChronoShift] offline.install-state",
+        {
+          "at": "2026-10-04T19:08:50.686Z",
+          "state": "activated"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:50.687Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:08:50.686Z",
+          "online": true,
+          "controlled": true,
+          "reason": "lifecycle"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:50.689Z",
+      "values": [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T19:08:50.689Z",
+          "ready": true,
+          "elapsedMs": 2,
+          "version": "3ac0e622535455b5",
+          "assets": []
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:50.689Z",
+      "values": [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T19:08:50.689Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ]
+    },
+    {
+      "label": "ordinary-soft-reload",
+      "at": "2026-10-04T19:09:04.604Z",
+      "values": [
+        "[ChronoShift] offline.register-attempt",
+        {
+          "at": "2026-10-04T19:09:04.604Z",
+          "online": true,
+          "attempt": 1
+        }
+      ]
+    },
+    {
+      "label": "ordinary-soft-reload",
+      "at": "2026-10-04T19:09:04.609Z",
+      "values": [
+        "[ChronoShift] offline.registered",
+        {
+          "at": "2026-10-04T19:09:04.609Z",
+          "online": true,
+          "controlled": true
+        }
+      ]
+    },
+    {
+      "label": "ordinary-soft-reload",
+      "at": "2026-10-04T19:09:04.609Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:09:04.609Z",
+          "online": true,
+          "controlled": true,
+          "reason": "startup"
+        }
+      ]
+    },
+    {
+      "label": "ordinary-soft-reload",
+      "at": "2026-10-04T19:09:04.610Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:09:04.609Z",
+          "online": true,
+          "controlled": true,
+          "reason": "lifecycle"
+        }
+      ]
+    },
+    {
+      "label": "ordinary-soft-reload",
+      "at": "2026-10-04T19:09:04.614Z",
+      "values": [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T19:09:04.614Z",
+          "ready": true,
+          "elapsedMs": 5,
+          "version": "3ac0e622535455b5",
+          "assets": []
+        }
+      ]
+    },
+    {
+      "label": "ordinary-soft-reload",
+      "at": "2026-10-04T19:09:04.614Z",
+      "values": [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T19:09:04.614Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ]
+    },
+    {
+      "label": "address-navigation-same-url",
+      "at": "2026-10-04T19:09:20.639Z",
+      "values": [
+        "[ChronoShift] offline.register-attempt",
+        {
+          "at": "2026-10-04T19:09:20.638Z",
+          "online": true,
+          "attempt": 1
+        }
+      ]
+    },
+    {
+      "label": "address-navigation-same-url",
+      "at": "2026-10-04T19:09:20.643Z",
+      "values": [
+        "[ChronoShift] offline.registered",
+        {
+          "at": "2026-10-04T19:09:20.642Z",
+          "online": true,
+          "controlled": true
+        }
+      ]
+    },
+    {
+      "label": "address-navigation-same-url",
+      "at": "2026-10-04T19:09:20.643Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:09:20.642Z",
+          "online": true,
+          "controlled": true,
+          "reason": "startup"
+        }
+      ]
+    },
+    {
+      "label": "address-navigation-same-url",
+      "at": "2026-10-04T19:09:20.643Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:09:20.643Z",
+          "online": true,
+          "controlled": true,
+          "reason": "lifecycle"
+        }
+      ]
+    },
+    {
+      "label": "address-navigation-same-url",
+      "at": "2026-10-04T19:09:20.647Z",
+      "values": [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T19:09:20.647Z",
+          "ready": true,
+          "elapsedMs": 4,
+          "version": "3ac0e622535455b5",
+          "assets": []
+        }
+      ]
+    },
+    {
+      "label": "address-navigation-same-url",
+      "at": "2026-10-04T19:09:20.647Z",
+      "values": [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T19:09:20.647Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ]
+    },
+    {
+      "label": "history-back-from-out-of-scope",
+      "at": "2026-10-04T19:09:37.892Z",
+      "values": [
+        "[ChronoShift] offline.register-attempt",
+        {
+          "at": "2026-10-04T19:09:20.638Z",
+          "online": true,
+          "attempt": 1
+        }
+      ]
+    },
+    {
+      "label": "history-back-from-out-of-scope",
+      "at": "2026-10-04T19:09:37.892Z",
+      "values": [
+        "[ChronoShift] offline.registered",
+        {
+          "at": "2026-10-04T19:09:20.642Z",
+          "online": true,
+          "controlled": true
+        }
+      ]
+    },
+    {
+      "label": "history-back-from-out-of-scope",
+      "at": "2026-10-04T19:09:37.892Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:09:20.642Z",
+          "online": true,
+          "controlled": true,
+          "reason": "startup"
+        }
+      ]
+    },
+    {
+      "label": "history-back-from-out-of-scope",
+      "at": "2026-10-04T19:09:37.892Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:09:20.643Z",
+          "online": true,
+          "controlled": true,
+          "reason": "lifecycle"
+        }
+      ]
+    },
+    {
+      "label": "history-back-from-out-of-scope",
+      "at": "2026-10-04T19:09:37.893Z",
+      "values": [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T19:09:20.647Z",
+          "ready": true,
+          "elapsedMs": 4,
+          "version": "3ac0e622535455b5",
+          "assets": []
+        }
+      ]
+    },
+    {
+      "label": "history-back-from-out-of-scope",
+      "at": "2026-10-04T19:09:37.893Z",
+      "values": [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T19:09:20.647Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ]
+    },
+    {
+      "label": "history-back-from-out-of-scope",
+      "at": "2026-10-04T19:09:37.894Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:09:37.890Z",
+          "online": true,
+          "controlled": true,
+          "reason": "page-show"
+        }
+      ]
+    },
+    {
+      "label": "history-back-from-out-of-scope",
+      "at": "2026-10-04T19:09:37.897Z",
+      "values": [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T19:09:37.895Z",
+          "ready": true,
+          "elapsedMs": 5,
+          "version": "3ac0e622535455b5",
+          "assets": []
+        }
+      ]
+    },
+    {
+      "label": "history-back-from-out-of-scope",
+      "at": "2026-10-04T19:09:37.897Z",
+      "values": [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T19:09:37.895Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ]
+    },
+    {
+      "label": "history-back-second-time",
+      "at": "2026-10-04T19:10:08.911Z",
+      "values": [
+        "[ChronoShift] offline.register-attempt",
+        {
+          "at": "2026-10-04T19:09:20.638Z",
+          "online": true,
+          "attempt": 1
+        }
+      ]
+    },
+    {
+      "label": "history-back-second-time",
+      "at": "2026-10-04T19:10:08.911Z",
+      "values": [
+        "[ChronoShift] offline.registered",
+        {
+          "at": "2026-10-04T19:09:20.642Z",
+          "online": true,
+          "controlled": true
+        }
+      ]
+    },
+    {
+      "label": "history-back-second-time",
+      "at": "2026-10-04T19:10:08.911Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:09:20.642Z",
+          "online": true,
+          "controlled": true,
+          "reason": "startup"
+        }
+      ]
+    },
+    {
+      "label": "history-back-second-time",
+      "at": "2026-10-04T19:10:08.911Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:09:20.643Z",
+          "online": true,
+          "controlled": true,
+          "reason": "lifecycle"
+        }
+      ]
+    },
+    {
+      "label": "history-back-second-time",
+      "at": "2026-10-04T19:10:08.912Z",
+      "values": [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T19:09:20.647Z",
+          "ready": true,
+          "elapsedMs": 4,
+          "version": "3ac0e622535455b5",
+          "assets": []
+        }
+      ]
+    },
+    {
+      "label": "history-back-second-time",
+      "at": "2026-10-04T19:10:08.912Z",
+      "values": [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T19:09:20.647Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ]
+    },
+    {
+      "label": "history-back-second-time",
+      "at": "2026-10-04T19:10:08.912Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:09:37.890Z",
+          "online": true,
+          "controlled": true,
+          "reason": "page-show"
+        }
+      ]
+    },
+    {
+      "label": "history-back-second-time",
+      "at": "2026-10-04T19:10:08.912Z",
+      "values": [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T19:09:37.895Z",
+          "ready": true,
+          "elapsedMs": 5,
+          "version": "3ac0e622535455b5",
+          "assets": []
+        }
+      ]
+    },
+    {
+      "label": "history-back-second-time",
+      "at": "2026-10-04T19:10:08.913Z",
+      "values": [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T19:09:37.895Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ]
+    },
+    {
+      "label": "history-back-second-time",
+      "at": "2026-10-04T19:10:08.913Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:10:08.911Z",
+          "online": true,
+          "controlled": true,
+          "reason": "page-show"
+        }
+      ]
+    },
+    {
+      "label": "history-back-second-time",
+      "at": "2026-10-04T19:10:08.915Z",
+      "values": [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T19:10:08.914Z",
+          "ready": true,
+          "elapsedMs": 4,
+          "version": "3ac0e622535455b5",
+          "assets": []
+        }
+      ]
+    },
+    {
+      "label": "history-back-second-time",
+      "at": "2026-10-04T19:10:08.915Z",
+      "values": [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T19:10:08.915Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ]
+    },
+    {
+      "label": "new-tab-with-active-registration",
+      "at": "2026-10-04T19:10:39.020Z",
+      "values": [
+        "[ChronoShift] offline.register-attempt",
+        {
+          "at": "2026-10-04T19:10:39.018Z",
+          "online": true,
+          "attempt": 1
+        }
+      ]
+    },
+    {
+      "label": "new-tab-with-active-registration",
+      "at": "2026-10-04T19:10:39.036Z",
+      "values": [
+        "[ChronoShift] offline.registered",
+        {
+          "at": "2026-10-04T19:10:39.035Z",
+          "online": true,
+          "controlled": true
+        }
+      ]
+    },
+    {
+      "label": "new-tab-with-active-registration",
+      "at": "2026-10-04T19:10:39.036Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:10:39.036Z",
+          "online": true,
+          "controlled": true,
+          "reason": "startup"
+        }
+      ]
+    },
+    {
+      "label": "new-tab-with-active-registration",
+      "at": "2026-10-04T19:10:39.036Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:10:39.036Z",
+          "online": true,
+          "controlled": true,
+          "reason": "lifecycle"
+        }
+      ]
+    },
+    {
+      "label": "new-tab-with-active-registration",
+      "at": "2026-10-04T19:10:39.040Z",
+      "values": [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T19:10:39.040Z",
+          "ready": true,
+          "elapsedMs": 4,
+          "version": "3ac0e622535455b5",
+          "assets": []
+        }
+      ]
+    },
+    {
+      "label": "new-tab-with-active-registration",
+      "at": "2026-10-04T19:10:39.041Z",
+      "values": [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T19:10:39.040Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ]
+    },
+    {
+      "label": "scope-redirect-slashless",
+      "at": "2026-10-04T19:10:55.293Z",
+      "values": [
+        "[ChronoShift] offline.register-attempt",
+        {
+          "at": "2026-10-04T19:10:55.293Z",
+          "online": true,
+          "attempt": 1
+        }
+      ]
+    },
+    {
+      "label": "scope-redirect-slashless",
+      "at": "2026-10-04T19:10:55.302Z",
+      "values": [
+        "[ChronoShift] offline.registered",
+        {
+          "at": "2026-10-04T19:10:55.301Z",
+          "online": true,
+          "controlled": true
+        }
+      ]
+    },
+    {
+      "label": "scope-redirect-slashless",
+      "at": "2026-10-04T19:10:55.302Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:10:55.301Z",
+          "online": true,
+          "controlled": true,
+          "reason": "startup"
+        }
+      ]
+    },
+    {
+      "label": "scope-redirect-slashless",
+      "at": "2026-10-04T19:10:55.302Z",
+      "values": [
+        "[ChronoShift] offline.probe-start",
+        {
+          "at": "2026-10-04T19:10:55.301Z",
+          "online": true,
+          "controlled": true,
+          "reason": "lifecycle"
+        }
+      ]
+    },
+    {
+      "label": "scope-redirect-slashless",
+      "at": "2026-10-04T19:10:55.307Z",
+      "values": [
+        "[ChronoShift] offline.probe-result",
+        {
+          "at": "2026-10-04T19:10:55.307Z",
+          "ready": true,
+          "elapsedMs": 6,
+          "version": "3ac0e622535455b5",
+          "assets": []
+        }
+      ]
+    },
+    {
+      "label": "scope-redirect-slashless",
+      "at": "2026-10-04T19:10:55.307Z",
+      "values": [
+        "[ChronoShift] offline.state",
+        {
+          "at": "2026-10-04T19:10:55.307Z",
+          "ready": true,
+          "updateAvailable": false,
+          "reason": "probe-result"
+        }
+      ]
+    }
+  ],
+  "cdp": [
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:47.803Z",
+      "kind": "registrations",
+      "registrations": []
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:47.803Z",
+      "kind": "versions",
+      "versions": []
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:48.527Z",
+      "kind": "registrations",
+      "registrations": [
+        {
+          "registrationId": "0",
+          "scopeURL": "https://tien-lam.github.io/ChronoShift/",
+          "isDeleted": false
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:48.527Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "stopped",
+          "status": "new",
+          "scriptLastModified": 0,
+          "scriptResponseTime": 0,
+          "controlledClients": []
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:48.765Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "stopped",
+          "status": "new",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": []
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:48.765Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "starting",
+          "status": "new",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": []
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:48.765Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "starting",
+          "status": "new",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:48.768Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "starting",
+          "status": "installing",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:48.768Z",
+      "kind": "registrations",
+      "registrations": [
+        {
+          "registrationId": "0",
+          "scopeURL": "https://tien-lam.github.io/ChronoShift/",
+          "isDeleted": false
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:48.768Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "running",
+          "status": "installing",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:50.684Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "running",
+          "status": "installed",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:50.684Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "running",
+          "status": "activating",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:50.684Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "running",
+          "status": "activating",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [
+            "2A0F38362DB085473D9BD350358CF777"
+          ],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "fresh-first-visit",
+      "at": "2026-10-04T19:08:50.685Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "running",
+          "status": "activated",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [
+            "2A0F38362DB085473D9BD350358CF777"
+          ],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "ordinary-soft-reload",
+      "at": "2026-10-04T19:09:04.571Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "running",
+          "status": "activated",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [
+            "2A0F38362DB085473D9BD350358CF777"
+          ],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "ordinary-soft-reload",
+      "at": "2026-10-04T19:09:04.584Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "running",
+          "status": "activated",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "ordinary-soft-reload",
+      "at": "2026-10-04T19:09:04.604Z",
+      "kind": "registrations",
+      "registrations": [
+        {
+          "registrationId": "0",
+          "scopeURL": "https://tien-lam.github.io/ChronoShift/",
+          "isDeleted": false
+        }
+      ]
+    },
+    {
+      "label": "address-navigation-same-url",
+      "at": "2026-10-04T19:09:20.608Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "running",
+          "status": "activated",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "address-navigation-same-url",
+      "at": "2026-10-04T19:09:20.614Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "running",
+          "status": "activated",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "address-navigation-same-url",
+      "at": "2026-10-04T19:09:20.639Z",
+      "kind": "registrations",
+      "registrations": [
+        {
+          "registrationId": "0",
+          "scopeURL": "https://tien-lam.github.io/ChronoShift/",
+          "isDeleted": false
+        }
+      ]
+    },
+    {
+      "label": "navigate-out-for-history",
+      "at": "2026-10-04T19:09:36.885Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "running",
+          "status": "activated",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "history-back-from-out-of-scope",
+      "at": "2026-10-04T19:09:37.895Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "running",
+          "status": "activated",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [
+            "2A0F38362DB085473D9BD350358CF777"
+          ],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "history-back-from-out-of-scope",
+      "at": "2026-10-04T19:10:07.906Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "running",
+          "status": "activated",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "history-back-second-time",
+      "at": "2026-10-04T19:10:08.913Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "running",
+          "status": "activated",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [
+            "2A0F38362DB085473D9BD350358CF777"
+          ],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "new-tab-with-active-registration",
+      "at": "2026-10-04T19:10:38.939Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "running",
+          "status": "activated",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [
+            "2A0F38362DB085473D9BD350358CF777"
+          ],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "new-tab-with-active-registration",
+      "at": "2026-10-04T19:10:39.020Z",
+      "kind": "registrations",
+      "registrations": [
+        {
+          "registrationId": "0",
+          "scopeURL": "https://tien-lam.github.io/ChronoShift/",
+          "isDeleted": false
+        }
+      ]
+    },
+    {
+      "label": "scope-redirect-slashless",
+      "at": "2026-10-04T19:10:55.026Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "running",
+          "status": "activated",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [
+            "2A0F38362DB085473D9BD350358CF777"
+          ],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "scope-redirect-slashless",
+      "at": "2026-10-04T19:10:55.261Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "running",
+          "status": "activated",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [
+            "2A0F38362DB085473D9BD350358CF777"
+          ],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "scope-redirect-slashless",
+      "at": "2026-10-04T19:10:55.267Z",
+      "kind": "versions",
+      "versions": [
+        {
+          "versionId": "0",
+          "registrationId": "0",
+          "scriptURL": "https://tien-lam.github.io/ChronoShift/sw.js",
+          "runningStatus": "running",
+          "status": "activated",
+          "scriptLastModified": 1791139463,
+          "scriptResponseTime": 1791140928.764236,
+          "controlledClients": [],
+          "targetId": "FA56C0E94AD2DC52BE9F3B417F1E562A"
+        }
+      ]
+    },
+    {
+      "label": "scope-redirect-slashless",
+      "at": "2026-10-04T19:10:55.294Z",
+      "kind": "registrations",
+      "registrations": [
+        {
+          "registrationId": "0",
+          "scopeURL": "https://tien-lam.github.io/ChronoShift/",
+          "isDeleted": false
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "profile": "/tmp/chronoshift-normal-navigation-chrome-profile-1791140927274",
+  "chrome": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/154.0.8037.93",
+    "revision": "@f89f3a4363808e117c592adedcf9947882ac3b79",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "jsVersion": "15.4.80.19"
+  },
+  "release": {
+    "sourceCommit": "15b8accd00efd019921e3aef6df62e8ce4b30dd1",
+    "base": "/ChronoShift/"
+  },
+  "worker": {
+    "sha256": "a2da153d2902b3dcd3c30ce5ff0c6b7cbf21089b47a09e3f067c5d1a68d1e661",
+    "firstLines": [
+      "/* Generated at build time. No conversion text is sent to the network. */",
+      "const VERSION = '3ac0e622535455b5';",
+      "const BASE = \"/ChronoShift/\";",
+      "const PRECACHE = [\"/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2\",\"/ChronoShift/assets/index-BjtJ2w8M.js\",\"/ChronoShift/assets/index-C8hA_kff.css\",\"/ChronoShift/assets/worker-C690IjaR.js\",\"/ChronoShift/fonts/README.txt\",\"/ChronoShift/fonts/geist-OFL.txt\",\"/ChronoShift/icon-192.png\",\"/ChronoShift/icon-512.png\",\"/ChronoShift/icon.svg\",\"/ChronoShift/index.html\",\"/ChronoShift/manifest.webmanifest\",\"/ChronoShift/release.json\",\"/ChronoShift/third-party-notices.txt\"];",
+      "const INTEGRITY = {\"/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2\":\"0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316\",\"/ChronoShift/assets/index-BjtJ2w8M.js\":\"e2201fdf2bd73dc4bb7a1fcb9c74c7c3e497d6e0761384f6223e8c51f0ddcef5\",\"/ChronoShift/assets/index-C8hA_kff.css\":\"35c2d39a2278bb422e1365c7f8310e89bc534ecc166658e8902c78b52804d931\",\"/ChronoShift/assets/worker-C690IjaR.js\":\"e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704\",\"/ChronoShift/fonts/README.txt\":\"542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d\",\"/ChronoShift/fonts/geist-OFL.txt\":\"cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952\",\"/ChronoShift/icon-192.png\":\"cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754\",\"/ChronoShift/icon-512.png\":\"b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7\",\"/ChronoShift/icon.svg\":\"62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f\",\"/ChronoShift/index.html\":\"46bf55bbc54450573b173740feab06f293c7231b59154a89792f6401af6ff884\",\"/ChronoShift/manifest.webmanifest\":\"28d27d867912adc530496f0de3e80cc0f65cde9f9f9f55281a0a007eda0d8dde\",\"/ChronoShift/release.json\":\"7de02e03f96cb9854c268ee9d04c14a404f530b625e6c1511ad8178521c2862a\",\"/ChronoShift/third-party-notices.txt\":\"615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037\"};"
+    ],
+    "headers": {
+      "connection": "keep-alive",
+      "content-length": "4416",
+      "server": "GitHub.com",
+      "content-type": "application/javascript; charset=utf-8",
+      "x-origin-cache": "HIT",
+      "last-modified": "Sun, 04 Oct 2026 18:44:23 GMT",
+      "access-control-allow-origin": "*",
+      "strict-transport-security": "max-age=31556952",
+      "etag": "W/\"6ac29e87-2c25\"",
+      "expires": "Sun, 04 Oct 2026 19:04:08 GMT",
+      "cache-control": "max-age=600",
+      "content-encoding": "gzip",
+      "x-proxy-cache": "MISS",
+      "x-github-request-id": "2B40:23EF8C:159E5C2:176B466:6AC2A0CF",
+      "x-github-edge-region": "iad",
+      "accept-ranges": "bytes",
+      "date": "Sun, 04 Oct 2026 19:09:04 GMT",
+      "via": "1.1 varnish",
+      "age": "16",
+      "x-served-by": "cache-wsi-ysbk1060069-WSI",
+      "x-cache": "HIT",
+      "x-cache-hits": "1",
+      "x-timer": "S1791140945.555796,VS0,VE1",
+      "vary": "Accept-Encoding",
+      "x-fastly-request-id": "578b0a4796ddf52d2fd06cf510d599971f081f08"
+    }
+  },
+  "ended": "2026-10-04T19:10:56.155Z"
+}
