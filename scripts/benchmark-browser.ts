@@ -154,14 +154,15 @@ try {
   const workloads = [2000, 10000].map((length) => ({
     name: `meeting-${length}`,
     text: phrase.repeat(Math.floor(length / phrase.length)).padEnd(length, " "),
-    budget: length === 2000 ? 250 : 1000,
+    // Retain the execution allowance and explicitly add the 250ms typing debounce.
+    budget: length === 2000 ? 500 : 1250,
   }));
   workloads.push({
     name: "noisy-10000",
     text:
       "build 1.2.3 ID 12345678 price $123; ".repeat(400).slice(0, 9978) +
       " April 9, 2026 3pm UTC",
-    budget: 1000,
+    budget: 1250,
   });
   const conversions = [];
   for (const design of ["command"]) {
@@ -226,7 +227,7 @@ try {
     device:
       "Development computer, 390×844 CSS-pixel viewport. No mobile hardware, CPU or network emulation.",
     method:
-      "Ten fresh browser contexts for cold local HTTP navigation, ten offline cached reopenings; Playwright wall-clock navigation-to-visible-form/complete-cache includes automation overhead. Five warmups + thirty timed conversions per Glass Command workload use the production disposable worker and real result DOM; click capture to DOM completion includes worker startup, parsing and rendering. Frame gaps are diagnostic, not an input responsiveness certification. Local gzip estimates exclude HTTP headers. assets/totalGzipBytes cover only top-level dist/assets JS/CSS; offlineAssets/totalOfflineGzipBytes cover every final dist file including HTML, manifests, icons, notices, release metadata and the service worker. Fixed synthetic workloads are not worst-case proof.",
+      "Ten fresh browser contexts for cold local HTTP navigation, ten offline cached reopenings; Playwright wall-clock navigation-to-visible-form/complete-cache includes automation overhead. Five warmups + thirty timed conversions per Glass Command workload use the production disposable worker and real result DOM; input event to DOM completion includes the 250ms typing debounce, worker startup, parsing and rendering; provisional budgets explicitly include that debounce and are not comparable to historical click-driven timings. Frame gaps are diagnostic, not an input responsiveness certification. Local gzip estimates exclude HTTP headers. assets/totalGzipBytes cover only top-level dist/assets JS/CSS; offlineAssets/totalOfflineGzipBytes cover every final dist file including HTML, manifests, icons, notices, release metadata and the service worker. Fixed synthetic workloads are not worst-case proof.",
     assets,
     totalGzipBytes: assets.reduce((sum, asset) => sum + asset.gzipBytes, 0),
     offlineAssets,

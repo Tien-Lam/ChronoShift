@@ -194,6 +194,8 @@ async function revision(page: Page) {
   );
 }
 async function convert(page: Page, release: string) {
+  // Exercise a fresh edit even when the same input was converted earlier.
+  await page.getByLabel("Message with a date or time").fill("");
   const worker = page.waitForEvent("worker");
   await page
     .getByLabel("Message with a date or time")

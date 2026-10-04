@@ -66,6 +66,7 @@ test("detailed logs are opt-in, local, exclude message and selected zones, and s
   await checkbox.uncheck();
   const stopped = logs.length;
   await page.getByRole("combobox", { name: "Convert to", exact: true }).click();
+  await page.getByLabel("Message with a date or time").fill(draft + "  ");
   await expect(page.locator(".hero-time")).toBeVisible();
   await page.waitForTimeout(100);
   expect(logs).toHaveLength(stopped);

@@ -64,7 +64,22 @@ test("composition defers conversion and queued work cannot overwrite a newer dra
   await input.fill("April 9, 2026 3pm UTC");
   await expect.poll(() => page.evaluate(() => (window as any).queued)).toBe(1);
   await input.dispatchEvent("compositionstart");
-  await input.fill("April 9, 2026 4pm UTC");
+  // Playwright fill ends composition in Firefox. Keep this intermediate event
+  // in composition explicitly rather than simulating a committed native paste.
+  await input.evaluate((element: HTMLTextAreaElement) => {
+    Object.getOwnPropertyDescriptor(
+      HTMLTextAreaElement.prototype,
+      "value",
+    )!.set!.call(element, "April 9, 2026 4pm UTC");
+    element.dispatchEvent(
+      new InputEvent("input", {
+        bubbles: true,
+        inputType: "insertCompositionText",
+        data: "4pm",
+        isComposing: true,
+      }),
+    );
+  });
   // Beyond debounce and injected old completion; neither may publish during IME.
   await expect
     .poll(() => page.evaluate(() => (window as any).delivered))
