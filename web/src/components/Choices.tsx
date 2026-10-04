@@ -9,6 +9,7 @@ import {
   Text,
 } from "react-aria-components/Select";
 import { ComboBox, Input } from "react-aria-components/ComboBox";
+import { Group } from "react-aria-components/Group";
 import { cityAliases, resolveCity, zoneIds, zoneName } from "../engine/zones";
 
 type Option = { id: string; label: string; description?: string };
@@ -189,7 +190,7 @@ export function ZoneChoice({
       isInvalid={invalid}
       validationBehavior="aria"
     >
-      <div className="choice-control">
+      <Group className="choice-control">
         <Input
           id={id}
           placeholder={placeholder}
@@ -199,7 +200,7 @@ export function ZoneChoice({
         <Button className="choice-toggle" aria-label={triggerLabel}>
           <Chevron />
         </Button>
-      </div>
+      </Group>
       <Popover
         className="choice-popover"
         placement="bottom start"
