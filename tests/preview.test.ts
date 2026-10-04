@@ -1,11 +1,13 @@
 import { test, expect } from "bun:test";
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdir, mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 
 test("preview publication accepts identical trees and rejects merged content differences", async () => {
   const cwd = await mkdtemp(join(tmpdir(), "chronoshift-preview-"));
   const script = resolve("scripts/verify-preview-tree.ts");
+  const build = resolve("scripts/build-offline.ts");
+  const template = Bun.file("web/sw-template.js");
   const git = (...args: string[]) => {
     const result = Bun.spawnSync(
       [
@@ -40,6 +42,24 @@ test("preview publication accepts identical trees and rejects merged content dif
     );
     expect(git("rev-parse", "HEAD")).not.toBe(source);
     expect(verify(source).exitCode).toBe(0);
+    await mkdir(join(cwd, "dist"));
+    await mkdir(join(cwd, "web"));
+    await Bun.write(join(cwd, "dist/index.html"), "<head></head>");
+    await Bun.write(join(cwd, "web/sw-template.js"), template);
+    const built = Bun.spawnSync([process.execPath, build], {
+      cwd,
+      env: {
+        ...process.env,
+        BASE_PATH: "/ChronoShift/",
+        GITHUB_SHA: git("rev-parse", "HEAD"),
+        CHRONOSHIFT_SOURCE_COMMIT: source,
+      },
+    });
+    expect(built.exitCode).toBe(0);
+    expect(await Bun.file(join(cwd, "dist/release.json")).json()).toEqual({
+      sourceCommit: source,
+      base: "/ChronoShift/",
+    });
     await Bun.write(join(cwd, "app.txt"), "different merged content");
     git("add", "app.txt");
     git("commit", "--quiet", "-m", "main introduced another change");

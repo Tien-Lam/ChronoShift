@@ -1,6 +1,13 @@
 import { readdir } from "node:fs/promises";
 import { join } from "node:path";
 const base = process.env.BASE_PATH || "/";
+const sourceCommit =
+  process.env.CHRONOSHIFT_SOURCE_COMMIT || process.env.GITHUB_SHA || "local";
+if (
+  process.env.CHRONOSHIFT_SOURCE_COMMIT &&
+  !/^[a-f0-9]{40}$/.test(sourceCommit)
+)
+  throw new Error("CHRONOSHIFT_SOURCE_COMMIT must be a full source SHA");
 if (!/^\/(?:[A-Za-z0-9_-]+\/)*$/.test(base))
   throw new Error("BASE_PATH must be / or a path such as /ChronoShift/");
 // Pages cannot set custom response headers. Enforce the static policy in HTML.
@@ -28,11 +35,7 @@ async function files(dir: string): Promise<string[]> {
 }
 await Bun.write(
   "dist/release.json",
-  JSON.stringify(
-    { sourceCommit: process.env.GITHUB_SHA || "local", base },
-    null,
-    2,
-  ),
+  JSON.stringify({ sourceCommit, base }, null, 2),
 );
 const assets = (await files("dist"))
   .filter((p) => !p.endsWith("/sw.js") && !p.endsWith("/sw-template.js"))

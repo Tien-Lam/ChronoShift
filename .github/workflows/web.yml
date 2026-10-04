@@ -58,6 +58,7 @@ jobs:
           git fetch --no-tags --depth=1 origin "$PREVIEW_HEAD_SHA"
           bun scripts/verify-preview-tree.ts "$PREVIEW_HEAD_SHA"
           git checkout --detach "$PREVIEW_HEAD_SHA"
+          echo "CHRONOSHIFT_SOURCE_COMMIT=$PREVIEW_HEAD_SHA" >> "$GITHUB_ENV"
           echo "publish=true" >> "$GITHUB_OUTPUT"
       - name: Verify the pinned browser image matches the dependency
         run: >-
