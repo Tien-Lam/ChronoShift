@@ -20,6 +20,7 @@
   --ink: #f4f4f5;
   --muted: #a1a1aa;
   --border: #323237;
+  --control-border: #73737d;
   --soft: #222226;
   --accent: #b8b0ff;
   --focus: #b8b0ff;
@@ -37,6 +38,7 @@
   --ink: #18181b;
   --muted: #62626b;
   --border: #d4d4d8;
+  --control-border: #85858e;
   --soft: #f0f0f2;
   --accent: #5546b8;
   --focus: #5546b8;
@@ -177,7 +179,7 @@ a:focus-visible {
   gap: 8px;
   min-height: 44px;
   padding: 8px 12px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--control-border);
   border-radius: 8px;
   background: var(--surface);
 }
@@ -254,7 +256,7 @@ label {
 textarea,
 input,
 select {
-  border: 1px solid var(--border);
+  border: 1px solid var(--control-border);
   background: var(--well);
   color: var(--ink);
   border-radius: 8px;
@@ -268,7 +270,7 @@ select {
 textarea:hover,
 input:hover,
 select:hover {
-  border-color: color-mix(in srgb, var(--border) 75%, var(--muted));
+  border-color: var(--muted);
 }
 #message {
   display: block;
@@ -477,7 +479,7 @@ input::placeholder {
 }
 .copy-button {
   padding: 8px 12px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--control-border);
   background: var(--surface);
   border-radius: 8px;
   font-size: 12px;
