@@ -1,10 +1,15 @@
 import { test, expect, disconnect } from "./fixtures";
 import type { BrowserContext, Page } from "@playwright/test";
+test.use({ isolatedOrigin: true });
 
 async function publish(context: BrowserContext, page: Page, version: string) {
-  await context.addCookies([
-    { name: "test-version", value: version, url: new URL(page.url()).origin },
-  ]);
+  expect(
+    (
+      await context.request.post(new URL("__test-release", page.url()).href, {
+        data: version,
+      })
+    ).status(),
+  ).toBe(204);
   await page.evaluate(async () => {
     await (await navigator.serviceWorker.getRegistration())!.update();
   });
@@ -72,9 +77,13 @@ test("old and new tabs retain their own workers across successive releases and o
   baseURL,
   origin,
 }) => {
-  await context.addCookies([
-    { name: "test-version", value: "first", url: baseURL! },
-  ]);
+  expect(
+    (
+      await context.request.post(new URL("__test-release", baseURL!).href, {
+        data: "first",
+      })
+    ).status(),
+  ).toBe(204);
   await page.goto("/");
   await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
   await page.getByLabel("Message with a date or time").fill("Old tab draft");
@@ -131,9 +140,13 @@ test("rollback preserves draft and preferences and removes obsolete caches with 
   baseURL,
   origin,
 }) => {
-  await context.addCookies([
-    { name: "test-version", value: "first", url: baseURL! },
-  ]);
+  expect(
+    (
+      await context.request.post(new URL("__test-release", baseURL!).href, {
+        data: "first",
+      })
+    ).status(),
+  ).toBe(204);
   await page.goto("/");
   await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
   await page.getByLabel("Appearance", { exact: true }).click();

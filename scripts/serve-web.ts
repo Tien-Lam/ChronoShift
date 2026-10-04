@@ -5,6 +5,7 @@ const root = resolve("dist"),
   base = process.env.BASE_PATH || "/",
   testMode = process.env.CHRONOSHIFT_TEST_SERVER === "1";
 const fixtures = testMode ? await testReleases(root) : undefined;
+let publishedVersion: string | undefined;
 const mime: Record<string, string> = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
@@ -18,6 +19,17 @@ const server = Bun.serve({
   port: process.env.PORT || 4173,
   async fetch(request) {
     const url = new URL(request.url);
+    if (
+      testMode &&
+      url.pathname === `${base}__test-release` &&
+      request.method === "POST"
+    ) {
+      const version = await request.text();
+      if (!fixtures?.releases.has(version))
+        return new Response("Unknown test release", { status: 400 });
+      publishedVersion = version;
+      return new Response(null, { status: 204 });
+    }
     if (!["GET", "HEAD"].includes(request.method))
       return new Response("Paste shared text into ChronoShift.", {
         status: 405,
@@ -28,11 +40,13 @@ const server = Bun.serve({
     const path = resolve(root, relative);
     if (!path.startsWith(root + "/"))
       return new Response("Not found", { status: 404 });
-    const version = testMode
-      ? request.headers
-          .get("cookie")
-          ?.match(/(?:^|; )test-version=([^;]+)/)?.[1]
-      : undefined;
+    const version =
+      publishedVersion ??
+      (testMode
+        ? request.headers
+            .get("cookie")
+            ?.match(/(?:^|; )test-version=([^;]+)/)?.[1]
+        : undefined);
     const variant =
       fixtures?.immutable.get(relative) ??
       fixtures?.releases.get(version || "")?.get(relative);

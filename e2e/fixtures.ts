@@ -2,12 +2,16 @@ import { test as base, expect } from "@playwright/test";
 import { spawn } from "node:child_process";
 import type { BrowserContext } from "@playwright/test";
 type Origin = { url: string; stop: () => Promise<void> };
-export const test = base.extend<{ origin: Origin | undefined }>({
+export const test = base.extend<{
+  origin: Origin | undefined;
+  isolatedOrigin: boolean;
+}>({
+  isolatedOrigin: [false, { option: true }],
   // Playwright 1.63's WebKit offline flag rejects even literal SW responses:
   // https://github.com/microsoft/playwright/issues/42775
   // Stop a dedicated origin instead, and prove uncached network access fails.
-  origin: async ({ browserName }, use) => {
-    if (browserName !== "webkit") {
+  origin: async ({ browserName, isolatedOrigin }, use) => {
+    if (browserName !== "webkit" && !isolatedOrigin) {
       await use(undefined);
       return;
     }
