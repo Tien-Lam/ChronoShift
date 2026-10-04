@@ -6,6 +6,7 @@ const root = resolve("dist"),
   testMode = process.env.CHRONOSHIFT_TEST_SERVER === "1";
 const fixtures = testMode ? await testReleases(root) : undefined;
 let publishedVersion: string | undefined;
+let interruptedRequests = 0;
 const mime: Record<string, string> = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
@@ -28,7 +29,13 @@ const server = Bun.serve({
       if (
         !fixtures?.releases.has(version) &&
         version !== "broken" &&
-        version !== "first-interrupted"
+        version !== "first-interrupted" &&
+        ![
+          "offline-stale",
+          "offline-corrupt",
+          "offline-delayed",
+          "offline-interrupted",
+        ].includes(version)
       )
         return new Response("Unknown test release", { status: 400 });
       publishedVersion = version;
@@ -58,8 +65,29 @@ const server = Bun.serve({
       relative.endsWith(".css")
     )
       return new Response("Simulated partial update", { status: 503 });
+    if (version === "offline-delayed" && relative === "icon.svg")
+      await Bun.sleep(600);
+    if (relative === "index.html" && url.pathname.endsWith("index.html")) {
+      if (
+        version === "offline-corrupt" ||
+        (version === "offline-stale" &&
+          !url.searchParams.has("chronoshift-release"))
+      )
+        return new Response("<html>Stale release</html>", {
+          headers: { "Content-Type": "text/html" },
+        });
+      if (version === "offline-interrupted") {
+        if (++interruptedRequests >= 2) publishedVersion = undefined;
+        return new Response("Interrupted first install", { status: 503 });
+      }
+    }
     let body: BodyInit = variant ?? file;
-    if (version && relative === "sw.js" && variant === undefined)
+    if (
+      version &&
+      !version.startsWith("offline-") &&
+      relative === "sw.js" &&
+      variant === undefined
+    )
       body = (await file.text()).replace(
         /const VERSION = '[^']+';/,
         `const VERSION = 'test-${version}';`,

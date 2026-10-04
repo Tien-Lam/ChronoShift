@@ -32,6 +32,16 @@ test("public Pages deployment converts fresh input after offline close and reope
       page.getByText("Offline setup is incomplete.", { exact: false }),
     ).toHaveCount(0);
   }
+  // The reported warning appears after 10–20s; fast smoke alone missed it.
+  await page.waitForTimeout(21000);
+  await expect(page.locator("main")).toHaveAttribute(
+    "data-offline-ready",
+    "true",
+  );
+  await expect(page.locator(".message.warning")).toHaveCount(0);
+  await page.getByLabel("Convert to").fill("Europe/London");
+  await page.getByRole("button", { name: "Convert", exact: true }).click();
+  await expect(page.locator(".hero-time")).toHaveText(/9:20 am/i);
   await page.close();
   await context.setOffline(true);
   const reopened = await context.newPage();

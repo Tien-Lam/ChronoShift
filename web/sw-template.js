@@ -13,11 +13,18 @@ async function intact(path, response) {
 }
 async function fill(cache) {
   for (const path of PRECACHE) {
-    const response = await fetch(new Request(path,{cache:'reload',credentials:'same-origin'}));
+    let response = await fetch(new Request(path,{cache:'reload',credentials:'same-origin'}));
+    if (!response.ok || response.type === 'opaque' || !await intact(path, response)) {
+      // A CDN/browser may serve a stale mutable file during a Pages rollout.
+      // Fetch a fresh cache key, but still require this release's exact bytes.
+      const fresh = new URL(path, self.location.origin);
+      fresh.searchParams.set('chronoshift-release', VERSION);
+      response = await fetch(new Request(fresh,{cache:'no-store',credentials:'same-origin'}));
+    }
     if (!response.ok || response.type === 'opaque') throw new Error('Incomplete offline assets');
     const type=response.headers.get('content-type')||'';
     if ((path.endsWith('.js')&&!/javascript/.test(type)) || (path.endsWith('.css')&&!/text\/css/.test(type)) || (path.endsWith('.html')&&!/text\/html/.test(type))) throw new Error('Unexpected offline asset type');
-    if (!await intact(path, response)) throw new Error('Offline asset belongs to another release');
+    if (!await intact(path, response)) throw new Error(`Offline asset belongs to another release: ${path} (expected ${VERSION})`);
     await cache.put(path,response);
   }
 }
