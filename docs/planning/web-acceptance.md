@@ -1,6 +1,6 @@
 # ChronoShift acceptance status
 
-Implementation: [PR #16](https://github.com/Tien-Lam/ChronoShift/pull/16), update/privacy work at `63a2553` and immediate update activation at `946c303`. Published preview: https://tien-lam.github.io/ChronoShift/.
+Implementation: [PR #16](https://github.com/Tien-Lam/ChronoShift/pull/16), update/privacy work at `63a2553` and immediate update activation at `946c303`. Published from main: https://tien-lam.github.io/ChronoShift/.
 
 ## Browser capability evidence
 
@@ -31,9 +31,9 @@ The WebKit offline method stops a dedicated origin and confirms an uncached netw
 | Work | Linear tickets | Evidence required |
 | --- | --- | --- |
 | Physical phone/foldable task | TIE-304, TIE-311, TIE-312, TIE-314, TIE-315, TIE-317 | Device/OS/browser version, installed offline restart, virtual keyboard, rotation/folding, clipboard, supported share menu |
-| Human accessibility/usability | TIE-309 | Keyboard and screen-reader task, actual 200% browser zoom, CST choice, target change, copy and offline reopen; record observed friction |
+| Human accessibility/usability | TIE-309 | Includes TIE-306 selector screen-reader acceptance. Keyboard and screen-reader task, actual 200% browser zoom, CST choice, target change, copy and offline reopen; record observed friction |
 | Representative-phone performance | TIE-318 | Named device/conditions, cold online/warm offline startup, typical and 10,000-character p95, editing/Clear responsiveness |
-| Release cutover | TIE-320 | User authorized independent reviews, iterative fixes and autonomous merge. Main-only publication replaces preview policies/job; measure the ≥20% CI quota/storage target for equivalent PR + main publication. Physical installed-mode acceptance above remains open. |
+| Release cutover | TIE-320 | User authorized independent reviews, iterative fixes and autonomous merge. Main-only publication replaces preview policies/job; the measured equivalent PR + main workload passes: 25% fewer rounded minutes and 81.74% less retained artifact storage. Physical installed-mode acceptance above remains open. |
 | Optional ML discovery | TIE-302 | Actual model export/runtime feasibility, independently reviewed held-out conversion comparison and phone size/latency/memory; no model accuracy claim yet |
 
 Use [device-smoke-test.md](../developer/device-smoke-test.md). Record each physical test with: release SHA, date, device, OS, browser/version, design/theme, posture, network mode, task, observed result, pass/fail, and reproducible defect. Pending entries are not assumed passes. Use synthetic messages only in evidence.
@@ -41,3 +41,5 @@ Use [device-smoke-test.md](../developer/device-smoke-test.md). Record each physi
 Browser performance reports identify their exact source release, asset breakdown, browser/platform and method. Development-machine samples do not close TIE-318. The benchmark remains outside routine CI so timing work does not consume recurring Actions quota.
 
 Independent review and regression evidence: [review-2026-10-04.md](review-2026-10-04.md). Both reviewers approved after fixes; merge authorization does not claim physical-device acceptance.
+
+Merged main 9e7c1cb passes the final GitHub gate (108 units, 113 browser scenarios and subpath), exact-artifact main publication and four live HTTPS checks. Seventeen accepted engineering tickets are Done after the two independent reviews. Existing TIE-292/TIE-303 were already Done. Physical/human/phone criteria remain open; no device evidence was fabricated.
