@@ -1,0 +1,42 @@
+
+Running 1 test using 1 worker
+
+(node:94973) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✘  1 [chromium] › e2e/controls.spec.ts:3:0 › native choices share alignment in both themes and retain editing and keyboard behavior (353ms)
+
+
+  1) [chromium] › e2e/controls.spec.ts:3:0 › native choices share alignment in both themes and retain editing and keyboard behavior 
+
+    Error: theme
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 44
+    Received: 45
+
+      44 |       });
+      45 |       for (const control of dimensions) {
+    > 46 |         expect(control.height, control.id).toBe(44);
+         |                                           ^
+      47 |         expect(control.inset, control.id).toBe("12px");
+      48 |         expect(control.font, control.id).toBe("16px");
+      49 |         expect(control.lineHeight, control.id).toBe("24px");
+        at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:46:43
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../../../tmp/chronoshift-controls-old-results/controls-native-choices-sh-c5c2c-iting-and-keyboard-behavior-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../../../tmp/chronoshift-controls-old-results/controls-native-choices-sh-c5c2c-iting-and-keyboard-behavior-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../../../tmp/chronoshift-controls-old-results/controls-native-choices-sh-c5c2c-iting-and-keyboard-behavior-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../../../tmp/chronoshift-controls-old-results/controls-native-choices-sh-c5c2c-iting-and-keyboard-behavior-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e/controls.spec.ts:3:0 › native choices share alignment in both themes and retain editing and keyboard behavior 

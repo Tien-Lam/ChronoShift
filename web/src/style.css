@@ -27,6 +27,9 @@
   --primary: #f4f4f5;
   --primary-ink: #18181b;
   --shadow: #00000030;
+  --control-height: 44px;
+  --control-radius: 8px;
+  --control-inset: 12px;
   color: var(--ink);
   background: var(--page);
 }
@@ -178,7 +181,7 @@ a:focus-visible {
   right: 0;
   top: calc(100% + 8px);
   width: min(220px, calc(100vw - 32px));
-  padding: 12px 16px 16px;
+  padding: 16px;
   border: 1px solid var(--border);
   border-radius: 10px;
   background: var(--surface);
@@ -250,6 +253,41 @@ select {
   padding: 10px 12px;
   font-size: 16px;
   min-height: 44px;
+}
+/* One control size and text inset across native selects, search and date fields. */
+input,
+select {
+  display: block;
+  height: var(--control-height);
+  min-height: var(--control-height);
+  border-radius: var(--control-radius);
+  padding: 9px var(--control-inset);
+  line-height: 24px;
+}
+.choice-control {
+  position: relative;
+  min-width: 0;
+}
+.choice-control input,
+.choice-control select {
+  appearance: none;
+  padding-inline-end: 40px;
+}
+.choice-control::after {
+  content: "";
+  position: absolute;
+  inset-inline-end: 16px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+/* Keep the browser's datalist hit target; only replace its visual indicator. */
+.choice-control input::-webkit-calendar-picker-indicator {
+  opacity: 0;
 }
 textarea:hover,
 input:hover,
@@ -324,7 +362,7 @@ input::placeholder {
 .convert-button {
   width: 132px;
   min-height: 44px;
-  margin-top: 12px;
+  margin-top: 0;
   padding: 10px 16px;
   border: 1px solid var(--primary);
   border-radius: 8px;

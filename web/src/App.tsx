@@ -354,20 +354,22 @@ export default function App() {
             </summary>
             <div className="appearance-fields">
               <label htmlFor="theme">Theme</label>
-              <select
-                id="theme"
-                value={prefs.theme}
-                onChange={(e) =>
-                  setPrefs({
-                    ...prefs,
-                    theme: e.target.value as "dark" | "light" | "system",
-                  })
-                }
-              >
-                <option value="dark">Dark</option>
-                <option value="light">Light</option>
-                <option value="system">System</option>
-              </select>
+              <div className="choice-control">
+                <select
+                  id="theme"
+                  value={prefs.theme}
+                  onChange={(e) =>
+                    setPrefs({
+                      ...prefs,
+                      theme: e.target.value as "dark" | "light" | "system",
+                    })
+                  }
+                >
+                  <option value="dark">Dark</option>
+                  <option value="light">Light</option>
+                  <option value="system">System</option>
+                </select>
+              </div>
             </div>
           </details>
         </div>
@@ -424,80 +426,84 @@ export default function App() {
                   : "Ctrl / ⌘ + Enter"}
               </span>
             </div>
-            <div className="conversion-controls">
-              <div className="target-field">
-                <label htmlFor="target-zone">Convert to</label>
-                <input
-                  id="target-zone"
-                  list="zones"
-                  value={prefs.target}
-                  onChange={(e) => {
-                    copyRequest.current++;
-                    setPrefs({ ...prefs, target: e.target.value });
-                    setError("");
-                    setManualCopy("");
-                    setNotice("");
-                  }}
-                  aria-invalid={!targetZone}
-                  aria-describedby="target-zone-help"
-                  placeholder={`Your timezone · ${zoneName(device)}`}
-                  autoComplete="off"
-                />
-                <span className="field-note" id="target-zone-help">
-                  {targetZone
-                    ? `${zoneName(targetZone)} · ${targetZone}`
-                    : "Choose a timezone or city from the list"}
-                </span>
-              </div>
-              <datalist id="zones">
-                {zoneIds.map((zone) => (
-                  <option key={zone} value={zone}>
-                    {zoneName(zone)}
-                  </option>
-                ))}
-                {cityAliases.map((city) => (
-                  <option key={city} value={city}>
-                    {zoneName(resolveCity(city).zones[0])}
-                  </option>
-                ))}
-              </datalist>
-              <button
-                type="button"
-                className="convert-button"
-                onClick={run}
-                aria-busy={busy}
-              >
-                {busy ? "Converting…" : "Convert"}
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  aria-hidden="true"
+            <div className="target-field">
+              <label htmlFor="target-zone">Convert to</label>
+              <div className="conversion-controls">
+                <div className="choice-control">
+                  <input
+                    id="target-zone"
+                    list="zones"
+                    value={prefs.target}
+                    onChange={(e) => {
+                      copyRequest.current++;
+                      setPrefs({ ...prefs, target: e.target.value });
+                      setError("");
+                      setManualCopy("");
+                      setNotice("");
+                    }}
+                    aria-invalid={!targetZone}
+                    aria-describedby="target-zone-help"
+                    placeholder={`Your timezone · ${zoneName(device)}`}
+                    autoComplete="off"
+                  />
+                </div>
+                <button
+                  type="button"
+                  className="convert-button"
+                  onClick={run}
+                  aria-busy={busy}
                 >
-                  <path d="M5 12h14m-5-5 5 5-5 5" />
-                </svg>
-              </button>
+                  {busy ? "Converting…" : "Convert"}
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14m-5-5 5 5-5 5" />
+                  </svg>
+                </button>
+              </div>
+              <span className="field-note" id="target-zone-help">
+                {targetZone
+                  ? `${zoneName(targetZone)} · ${targetZone}`
+                  : "Choose a timezone or city from the list"}
+              </span>
             </div>
+            <datalist id="zones">
+              {zoneIds.map((zone) => (
+                <option key={zone} value={zone}>
+                  {zoneName(zone)}
+                </option>
+              ))}
+              {cityAliases.map((city) => (
+                <option key={city} value={city}>
+                  {zoneName(resolveCity(city).zones[0])}
+                </option>
+              ))}
+            </datalist>
             <details className="options">
               <summary>More options</summary>
               <div className="option-fields">
                 <label htmlFor="source-zone">
                   Source timezone when none is given
                 </label>
-                <input
-                  id="source-zone"
-                  list="zones"
-                  value={prefs.source}
-                  onChange={(e) => {
-                    setPrefs({ ...prefs, source: e.target.value });
-                    invalidate();
-                  }}
-                  placeholder={`Device timezone · ${device}`}
-                  autoComplete="off"
-                />
+                <div className="choice-control">
+                  <input
+                    id="source-zone"
+                    list="zones"
+                    value={prefs.source}
+                    onChange={(e) => {
+                      setPrefs({ ...prefs, source: e.target.value });
+                      invalidate();
+                    }}
+                    placeholder={`Device timezone · ${device}`}
+                    autoComplete="off"
+                  />
+                </div>
                 <label htmlFor="reference-date">
                   Reference date for this message
                 </label>
@@ -514,38 +520,44 @@ export default function App() {
                   Leave empty to use today. Useful for an older message.
                 </span>
                 <label htmlFor="date-order">Numeric dates</label>
-                <select
-                  id="date-order"
-                  value={prefs.dateOrder}
-                  onChange={(e) => {
-                    setPrefs({
-                      ...prefs,
-                      dateOrder: e.target.value as "mdy" | "dmy",
-                    });
-                    invalidate();
-                  }}
-                >
-                  <option value="mdy">Month / day (04/09 = April 9)</option>
-                  <option value="dmy">Day / month (04/09 = 4 September)</option>
-                </select>
+                <div className="choice-control">
+                  <select
+                    id="date-order"
+                    value={prefs.dateOrder}
+                    onChange={(e) => {
+                      setPrefs({
+                        ...prefs,
+                        dateOrder: e.target.value as "mdy" | "dmy",
+                      });
+                      invalidate();
+                    }}
+                  >
+                    <option value="mdy">Month / day (04/09 = April 9)</option>
+                    <option value="dmy">
+                      Day / month (04/09 = 4 September)
+                    </option>
+                  </select>
+                </div>
                 <label htmlFor="time-format">Time display</label>
-                <select
-                  id="time-format"
-                  value={prefs.hourCycle}
-                  onChange={(e) => {
-                    copyRequest.current++;
-                    setManualCopy("");
-                    setNotice("");
-                    setPrefs({
-                      ...prefs,
-                      hourCycle: e.target.value as "auto" | "12" | "24",
-                    });
-                  }}
-                >
-                  <option value="auto">Use my device format</option>
-                  <option value="12">12-hour (3:00 PM)</option>
-                  <option value="24">24-hour (15:00)</option>
-                </select>
+                <div className="choice-control">
+                  <select
+                    id="time-format"
+                    value={prefs.hourCycle}
+                    onChange={(e) => {
+                      copyRequest.current++;
+                      setManualCopy("");
+                      setNotice("");
+                      setPrefs({
+                        ...prefs,
+                        hourCycle: e.target.value as "auto" | "12" | "24",
+                      });
+                    }}
+                  >
+                    <option value="auto">Use my device format</option>
+                    <option value="12">12-hour (3:00 PM)</option>
+                    <option value="24">24-hour (15:00)</option>
+                  </select>
+                </div>
                 <button
                   type="button"
                   className="text-button"
