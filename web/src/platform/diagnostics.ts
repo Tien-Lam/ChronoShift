@@ -27,8 +27,16 @@ type Fields = {
   ready?: boolean;
   online?: boolean;
   controlled?: boolean;
+  activeMatches?: boolean;
+  controllerMatches?: boolean;
+  scopeMatches?: boolean;
   updateAvailable?: boolean;
   state?: ServiceWorkerState;
+  activeState?: ServiceWorkerState | "absent";
+  controllerState?: ServiceWorkerState | "absent";
+  installingState?: ServiceWorkerState | "absent";
+  waitingState?: ServiceWorkerState | "absent";
+  claim?: unknown;
   version?: string;
   elapsedMs?: number;
   requestId?: number;
@@ -48,6 +56,9 @@ export function diagnostic(event: string, fields: Fields = {}) {
     "ready",
     "online",
     "controlled",
+    "activeMatches",
+    "controllerMatches",
+    "scopeMatches",
     "updateAvailable",
   ] as const)
     if (typeof fields[name] === "boolean") safe[name] = fields[name];
@@ -61,12 +72,23 @@ export function diagnostic(event: string, fields: Fields = {}) {
   ] as const)
     if (typeof fields[name] === "number" && Number.isFinite(fields[name]))
       safe[name] = Math.max(0, Math.round(fields[name]));
-  for (const name of ["reason", "version", "state", "field"] as const)
+  for (const name of [
+    "reason",
+    "version",
+    "state",
+    "field",
+    "activeState",
+    "controllerState",
+    "installingState",
+    "waitingState",
+  ] as const)
     if (
       typeof fields[name] === "string" &&
       /^[a-zA-Z0-9_.-]{1,80}$/.test(fields[name])
     )
       safe[name] = fields[name];
+  if (["claimed", "failed", "not-requested"].includes(fields.claim as string))
+    safe.claim = fields.claim;
   if (Array.isArray(fields.assets))
     safe.assets = fields.assets
       .filter(

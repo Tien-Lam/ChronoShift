@@ -128,3 +128,64 @@ for (const corrupted of [false, true]) {
     expect(temporary.size).toBe(0);
   });
 }
+
+for (const [complete, inside, expectedClaims] of [
+  [true, true, 1],
+  [false, true, 0],
+  [true, false, 0],
+] as const) {
+  test(`claim requires a verified cache and scoped window: complete=${complete}, inside=${inside}`, async () => {
+    const html = "<html>Trusted shell</html>";
+    const path = "/ChronoShift/index.html";
+    const digest = new Bun.CryptoHasher("sha256").update(html).digest("hex");
+    let receive!: (event: any) => void;
+    let claims = 0;
+    let answer: any;
+    const template = readFileSync("web/sw-template.js", "utf8")
+      .replace("__VERSION__", "claim-release")
+      .replace("__BASE__", '"/ChronoShift/"')
+      .replace("__PRECACHE__", JSON.stringify([path]))
+      .replace("__INTEGRITY__", JSON.stringify({ [path]: digest }))
+      .replace("__SHELL__", () => JSON.stringify(html));
+    new Function("self", "caches", template)(
+      {
+        location: { origin: "https://example.test" },
+        clients: {
+          claim: async () => {
+            claims++;
+          },
+        },
+        addEventListener: (name: string, handler: typeof receive) => {
+          if (name === "message") receive = handler;
+        },
+      },
+      {
+        open: async () => ({
+          match: async () => (complete ? new Response(html) : undefined),
+        }),
+      },
+    );
+    let pending!: Promise<void>;
+    receive({
+      data: { type: "CHECK_READY", claimUncontrolled: true },
+      source: {
+        type: "window",
+        url: `https://example.test/${inside ? "ChronoShift/" : "outside/"}`,
+      },
+      ports: [
+        {
+          postMessage: (message: any) => {
+            answer = message;
+          },
+        },
+      ],
+      waitUntil: (promise: Promise<void>) => {
+        pending = promise;
+      },
+    });
+    await pending;
+    expect(claims).toBe(expectedClaims);
+    expect(answer.ready).toBe(complete);
+    expect(answer.claim).toBe(expectedClaims ? "claimed" : "not-requested");
+  });
+}

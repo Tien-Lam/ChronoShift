@@ -37,6 +37,7 @@ const server = Bun.serve({
           "offline-delayed",
           "offline-interrupted",
           "offline-filtered",
+          "first-no-claim",
           "second-retired",
           "second-stalled",
         ].includes(version)
@@ -56,7 +57,12 @@ const server = Bun.serve({
     if (!path.startsWith(root + "/"))
       return new Response("Not found", { status: 404 });
     const version = publishedVersion;
-    const releaseVersion = version?.startsWith("second-") ? "second" : version;
+    const releaseVersion =
+      version === "first-no-claim"
+        ? "first"
+        : version?.startsWith("second-")
+          ? "second"
+          : version;
     // Pages replaces the deployment tree: previously published hashed assets
     // need not remain fetchable even though old controlling caches retain them.
     if (
@@ -97,6 +103,11 @@ const server = Bun.serve({
       }
     }
     let body: BodyInit = variant ?? file;
+    if (version === "first-no-claim" && relative === "sw.js")
+      body = (variant ?? (await file.text())).replace(
+        "event.data.claimUncontrolled===true",
+        "false",
+      );
     // A network content filter can change HTML while every runtime file stays
     // intact. Exercise the real worker fetch, not just a DOM-only mutation.
     if (version === "offline-filtered" && relative === "index.html")
