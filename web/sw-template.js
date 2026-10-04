@@ -99,6 +99,7 @@ self.addEventListener('message',event=>{
   if (event.data?.type === 'ACTIVATE_UPDATE') event.waitUntil(self.skipWaiting());
   if (event.data?.type === 'CHECK_READY') event.waitUntil((async()=>{
     const diagnostics={unavailable:[],repair:undefined};
+    let claim='not-requested';
     let ready=false;
     try {
       const cache = await caches.open(CACHE);
@@ -114,7 +115,13 @@ self.addEventListener('message',event=>{
         ready=(await unavailable()).length===0;
       }
     } catch { diagnostics.repair={failure:'storage-error'}; }
-    event.ports[0]?.postMessage({ready,version:VERSION,...(event.data.detailedLogs===true?{diagnostics}:{})});
+    if(ready && event.data.claimUncontrolled===true && event.source?.type==='window') {
+      const clientURL=new URL(event.source.url);
+      if(clientURL.origin===self.location.origin && clientURL.pathname.startsWith(BASE)) {
+        try {await self.clients.claim();claim='claimed';} catch {claim='failed';}
+      }
+    }
+    event.ports[0]?.postMessage({ready,version:VERSION,claim,...(event.data.detailedLogs===true?{diagnostics}:{})});
   })());
 });
 async function handoff(request) {
