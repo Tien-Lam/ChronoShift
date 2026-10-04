@@ -1,0 +1,51 @@
+import { chromium } from '@playwright/test';
+const origin='https://tien-lam.github.io/ChronoShift/';
+const output=process.env.ADVERSARIAL_HOSTED_OUTPUT||'/tmp/chronoshift-html-hosted-before.json';
+const browser=await chromium.launch({channel:'chrome',headless:true});
+const context=await browser.newContext();
+await context.addInitScript(()=>sessionStorage.setItem('chronoshift-detailed-logs','true'));
+const routed:any[]=[],requests:any[]=[],logs:any[]=[];
+const sha=(value:string|ArrayBuffer|Uint8Array)=>new Bun.CryptoHasher('sha256').update(value).digest('hex');
+const release=await(await context.request.get(origin+'release.json')).json();
+const sw=await(await context.request.get(origin+'sw.js')).text();
+const canonical=await(await context.request.get(origin+'index.html')).text();
+const version=sw.match(/const VERSION = '([^']+)'/)?.[1];
+const integrity=JSON.parse(sw.match(/const INTEGRITY = (.+);/)![1]);
+if(process.env.ADVERSARIAL_EXPECTED_SOURCE&&release.sourceCommit!==process.env.ADVERSARIAL_EXPECTED_SOURCE)throw new Error(`wrong hosted source ${release.sourceCommit}`);
+if(sha(canonical)!==integrity['/ChronoShift/index.html'])throw new Error('hosted HTML differs from worker identity');
+await context.route('**/ChronoShift/**',async route=>{
+ const request=route.request(),url=new URL(request.url());
+ if(url.pathname==='/ChronoShift/'||url.pathname==='/ChronoShift/index.html'){
+   const response=await route.fetch();const html=await response.text();const changed=html.replace('<head>','<head>\n<!-- privacy filter inspected this HTML -->');
+   routed.push({at:Date.now(),url:request.url(),workerOwned:!!request.serviceWorker(),originalHash:sha(html),servedHash:sha(changed)});
+   await route.fulfill({response,body:changed});
+ }else await route.continue();
+});
+context.on('request',request=>requests.push({at:Date.now(),url:request.url(),method:request.method(),workerOwned:!!request.serviceWorker()}));
+const page=await context.newPage();
+page.on('console',async msg=>logs.push({at:Date.now(),type:msg.type(),text:msg.text(),args:await Promise.all(msg.args().map(a=>a.jsonValue().catch(()=>null)))}));
+page.on('pageerror',error=>logs.push({at:Date.now(),type:'pageerror',text:error.message}));
+const cdp=await context.newCDPSession(page);await cdp.send('ServiceWorker.enable');cdp.on('ServiceWorker.workerErrorReported',value=>logs.push({at:Date.now(),type:'workererror',value}));
+const started=Date.now();await page.goto(origin);
+await page.getByLabel('Message with a date or time').fill('June 18, 2026 at 5:20pm Tokyo');
+const target=page.getByLabel('Convert to',{exact:true});await target.click();await target.fill('Europe/London');await target.press('Tab');
+await page.getByRole('button',{name:'Convert',exact:true}).click();await page.waitForTimeout(21000);
+const state=await page.evaluate(async()=>({ready:document.querySelector('main')?.getAttribute('data-offline-ready'),warning:document.querySelector('.message.warning')?.textContent||null,result:document.querySelector('.hero-time')?.textContent,draft:(document.querySelector('textarea') as HTMLTextAreaElement)?.value,controlled:!!navigator.serviceWorker.controller,caches:await caches.keys(),registrations:(await navigator.serviceWorker.getRegistrations()).map(r=>({active:r.active?.state,waiting:r.waiting?.state,installing:r.installing?.state}))}));
+const elapsedMs=Date.now()-started;
+await page.screenshot({path:output.replace('.json','.png')});
+let offline:any=null;
+if(state.ready==='true'){
+ const cached=await page.evaluate(async()=>{const name=(await caches.keys()).find(n=>n.startsWith('chronoshift-')&&!n.includes('staging'))!;return await(await(await caches.open(name)).match('/ChronoShift/index.html'))!.text();});
+ if(sha(cached)!==integrity['/ChronoShift/index.html'])throw new Error('noncanonical cache shell');
+ await context.unrouteAll({behavior:'wait'});await page.close();await context.setOffline(true);
+ const reopened=await context.newPage();await reopened.goto(origin);
+ await reopened.getByLabel('Message with a date or time').fill('June 18, 2026 at 5:20pm Tokyo');
+ const next=reopened.getByLabel('Convert to',{exact:true});await next.click();await next.fill('Europe/London');await next.press('Tab');
+ await reopened.getByRole('button',{name:'Convert',exact:true}).click();await reopened.locator('.hero-time').waitFor();
+ offline={result:await reopened.locator('.hero-time').textContent(),warning:await reopened.locator('.message.warning').count(),ready:await reopened.locator('main').getAttribute('data-offline-ready'),canonicalHash:sha(cached)};
+ await reopened.screenshot({path:output.replace('.json','-offline.png')});
+}
+const report={browser:browser.version(),origin,release,version,workerHash:sha(sw),canonicalHash:sha(canonical),elapsedMs,state,offline,routed,requests,logs};
+await Bun.write(output,JSON.stringify(report,null,2));
+console.log(JSON.stringify({browser:report.browser,release,version,elapsedMs,state,offline,routed,workerErrors:logs.filter(l=>l.type==='workererror')},null,2));
+await context.close();await browser.close();

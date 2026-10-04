@@ -1,0 +1,1306 @@
+{
+  "browser": "154.0.8037.93",
+  "source": "00ddf8c8e37e9a59583d3191bc5e46e8d7cf6917",
+  "dist": "/tmp/chronoshift-html-code/artifact",
+  "cases": [
+    {
+      "scenario": "transformed",
+      "elapsedMs": 21234,
+      "state": {
+        "ready": "false",
+        "warning": "Offline setup is incomplete. Reconnect and reload to try again.",
+        "result": "9:20",
+        "draft": "June 18, 2026 at 5:20pm Tokyo",
+        "controlled": false,
+        "caches": [
+          "chronoshift-01ee9fa94a59f910"
+        ],
+        "registrations": []
+      },
+      "logs": [
+        {
+          "at": 1791139096253,
+          "type": "info",
+          "text": "[ChronoShift] offline.register-attempt {at: 2026-10-04T18:38:16.251Z, online: true, attempt: 1}",
+          "args": [
+            "[ChronoShift] offline.register-attempt",
+            {
+              "at": "2026-10-04T18:38:16.251Z",
+              "online": true,
+              "attempt": 1
+            }
+          ]
+        },
+        {
+          "at": 1791139096275,
+          "type": "info",
+          "text": "[ChronoShift] offline.registered {at: 2026-10-04T18:38:16.274Z, online: true, controlled: false}",
+          "args": [
+            "[ChronoShift] offline.registered",
+            {
+              "at": "2026-10-04T18:38:16.274Z",
+              "online": true,
+              "controlled": false
+            }
+          ]
+        },
+        {
+          "at": 1791139096276,
+          "type": "info",
+          "text": "[ChronoShift] offline.probe-start {at: 2026-10-04T18:38:16.274Z, online: true, controlled: false, reason: startup}",
+          "args": [
+            "[ChronoShift] offline.probe-start",
+            {
+              "at": "2026-10-04T18:38:16.274Z",
+              "online": true,
+              "controlled": false,
+              "reason": "startup"
+            }
+          ]
+        },
+        {
+          "at": 1791139096276,
+          "type": "info",
+          "text": "[ChronoShift] offline.state {at: 2026-10-04T18:38:16.274Z, ready: false, updateAvailable: false, reason: no-controller}",
+          "args": [
+            "[ChronoShift] offline.state",
+            {
+              "at": "2026-10-04T18:38:16.274Z",
+              "ready": false,
+              "updateAvailable": false,
+              "reason": "no-controller"
+            }
+          ]
+        },
+        {
+          "at": 1791139096276,
+          "type": "info",
+          "text": "[ChronoShift] offline.install-state {at: 2026-10-04T18:38:16.274Z, state: installing}",
+          "args": [
+            "[ChronoShift] offline.install-state",
+            {
+              "at": "2026-10-04T18:38:16.274Z",
+              "state": "installing"
+            }
+          ]
+        },
+        {
+          "at": 1791139096276,
+          "type": "info",
+          "text": "[ChronoShift] offline.probe-start {at: 2026-10-04T18:38:16.274Z, online: true, controlled: false, reason: lifecycle}",
+          "args": [
+            "[ChronoShift] offline.probe-start",
+            {
+              "at": "2026-10-04T18:38:16.274Z",
+              "online": true,
+              "controlled": false,
+              "reason": "lifecycle"
+            }
+          ]
+        },
+        {
+          "at": 1791139096276,
+          "type": "info",
+          "text": "[ChronoShift] offline.state {at: 2026-10-04T18:38:16.274Z, ready: false, updateAvailable: false, reason: no-controller}",
+          "args": [
+            "[ChronoShift] offline.state",
+            {
+              "at": "2026-10-04T18:38:16.274Z",
+              "ready": false,
+              "updateAvailable": false,
+              "reason": "no-controller"
+            }
+          ]
+        },
+        {
+          "at": 1791139096301,
+          "type": "workererror",
+          "value": {
+            "errorMessage": {
+              "errorMessage": "Failed to register a ServiceWorker for scope ('http://127.0.0.1:4327/ChronoShift/') with script ('http://127.0.0.1:4327/ChronoShift/sw.js'): ServiceWorker failed to install: ServiceWorker failed to handle event (event.waitUntil Promise rejected)",
+              "registrationId": "0",
+              "versionId": "0",
+              "sourceURL": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            }
+          }
+        },
+        {
+          "at": 1791139096301,
+          "type": "workererror",
+          "value": {
+            "errorMessage": {
+              "errorMessage": "Uncaught (in promise) Error: Offline preparation failed: release-mismatch, /ChronoShift/index.html (expected 01ee9fa94a59f910)",
+              "registrationId": "0",
+              "versionId": "0",
+              "sourceURL": "http://127.0.0.1:4327/ChronoShift/sw.js",
+              "lineNumber": 17,
+              "columnNumber": -1
+            }
+          }
+        },
+        {
+          "at": 1791139096302,
+          "type": "info",
+          "text": "[ChronoShift] offline.install-state {at: 2026-10-04T18:38:16.301Z, state: redundant}",
+          "args": [
+            "[ChronoShift] offline.install-state",
+            {
+              "at": "2026-10-04T18:38:16.301Z",
+              "state": "redundant"
+            }
+          ]
+        },
+        {
+          "at": 1791139096302,
+          "type": "info",
+          "text": "[ChronoShift] offline.probe-start {at: 2026-10-04T18:38:16.301Z, online: true, controlled: false, reason: lifecycle}",
+          "args": [
+            "[ChronoShift] offline.probe-start",
+            {
+              "at": "2026-10-04T18:38:16.301Z",
+              "online": true,
+              "controlled": false,
+              "reason": "lifecycle"
+            }
+          ]
+        },
+        {
+          "at": 1791139096302,
+          "type": "info",
+          "text": "[ChronoShift] offline.state {at: 2026-10-04T18:38:16.301Z, ready: false, updateAvailable: false, reason: no-controller}",
+          "args": [
+            "[ChronoShift] offline.state",
+            {
+              "at": "2026-10-04T18:38:16.301Z",
+              "ready": false,
+              "updateAvailable": false,
+              "reason": "no-controller"
+            }
+          ]
+        },
+        {
+          "at": 1791139096309,
+          "type": "info",
+          "text": "[ChronoShift] ui.zone-focus {at: 2026-10-04T18:38:16.308Z, field: target-zone}",
+          "args": [
+            "[ChronoShift] ui.zone-focus",
+            {
+              "at": "2026-10-04T18:38:16.308Z",
+              "field": "target-zone"
+            }
+          ]
+        },
+        {
+          "at": 1791139096328,
+          "type": "info",
+          "text": "[ChronoShift] ui.zone-focus {at: 2026-10-04T18:38:16.327Z, field: target-zone}",
+          "args": [
+            "[ChronoShift] ui.zone-focus",
+            {
+              "at": "2026-10-04T18:38:16.327Z",
+              "field": "target-zone"
+            }
+          ]
+        },
+        {
+          "at": 1791139096357,
+          "type": "info",
+          "text": "[ChronoShift] conversion.start {at: 2026-10-04T18:38:16.356Z, requestId: 2, characters: 29}",
+          "args": [
+            "[ChronoShift] conversion.start",
+            {
+              "at": "2026-10-04T18:38:16.356Z",
+              "requestId": 2,
+              "characters": 29
+            }
+          ]
+        },
+        {
+          "at": 1791139096415,
+          "type": "info",
+          "text": "[ChronoShift] conversion.complete {at: 2026-10-04T18:38:16.415Z, elapsedMs: 59, requestId: 2, results: 1, warnings: 0}",
+          "args": [
+            "[ChronoShift] conversion.complete",
+            {
+              "at": "2026-10-04T18:38:16.415Z",
+              "elapsedMs": 59,
+              "requestId": 2,
+              "results": 1,
+              "warnings": 0,
+              "reason": "success"
+            }
+          ]
+        },
+        {
+          "at": 1791139097310,
+          "type": "info",
+          "text": "[ChronoShift] offline.install-state {at: 2026-10-04T18:38:17.309Z, state: installing}",
+          "args": [
+            "[ChronoShift] offline.install-state",
+            {
+              "at": "2026-10-04T18:38:17.309Z",
+              "state": "installing"
+            }
+          ]
+        },
+        {
+          "at": 1791139097310,
+          "type": "info",
+          "text": "[ChronoShift] offline.probe-start {at: 2026-10-04T18:38:17.309Z, online: true, controlled: false, reason: lifecycle}",
+          "args": [
+            "[ChronoShift] offline.probe-start",
+            {
+              "at": "2026-10-04T18:38:17.309Z",
+              "online": true,
+              "controlled": false,
+              "reason": "lifecycle"
+            }
+          ]
+        },
+        {
+          "at": 1791139097311,
+          "type": "info",
+          "text": "[ChronoShift] offline.state {at: 2026-10-04T18:38:17.309Z, ready: false, updateAvailable: false, reason: no-controller}",
+          "args": [
+            "[ChronoShift] offline.state",
+            {
+              "at": "2026-10-04T18:38:17.309Z",
+              "ready": false,
+              "updateAvailable": false,
+              "reason": "no-controller"
+            }
+          ]
+        },
+        {
+          "at": 1791139097349,
+          "type": "workererror",
+          "value": {
+            "errorMessage": {
+              "errorMessage": "Failed to register a ServiceWorker for scope ('http://127.0.0.1:4327/ChronoShift/') with script ('http://127.0.0.1:4327/ChronoShift/sw.js'): ServiceWorker failed to install: ServiceWorker failed to handle event (event.waitUntil Promise rejected)",
+              "registrationId": "1",
+              "versionId": "1",
+              "sourceURL": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            }
+          }
+        },
+        {
+          "at": 1791139097350,
+          "type": "workererror",
+          "value": {
+            "errorMessage": {
+              "errorMessage": "Uncaught (in promise) Error: Offline preparation failed: release-mismatch, /ChronoShift/index.html (expected 01ee9fa94a59f910)",
+              "registrationId": "1",
+              "versionId": "1",
+              "sourceURL": "http://127.0.0.1:4327/ChronoShift/sw.js",
+              "lineNumber": 17,
+              "columnNumber": -1
+            }
+          }
+        },
+        {
+          "at": 1791139097349,
+          "type": "info",
+          "text": "[ChronoShift] offline.install-state {at: 2026-10-04T18:38:17.349Z, state: redundant}",
+          "args": [
+            "[ChronoShift] offline.install-state",
+            {
+              "at": "2026-10-04T18:38:17.349Z",
+              "state": "redundant"
+            }
+          ]
+        },
+        {
+          "at": 1791139097350,
+          "type": "info",
+          "text": "[ChronoShift] offline.probe-start {at: 2026-10-04T18:38:17.349Z, online: true, controlled: false, reason: lifecycle}",
+          "args": [
+            "[ChronoShift] offline.probe-start",
+            {
+              "at": "2026-10-04T18:38:17.349Z",
+              "online": true,
+              "controlled": false,
+              "reason": "lifecycle"
+            }
+          ]
+        },
+        {
+          "at": 1791139097350,
+          "type": "info",
+          "text": "[ChronoShift] offline.state {at: 2026-10-04T18:38:17.349Z, ready: false, updateAvailable: false, reason: no-controller}",
+          "args": [
+            "[ChronoShift] offline.state",
+            {
+              "at": "2026-10-04T18:38:17.349Z",
+              "ready": false,
+              "updateAvailable": false,
+              "reason": "no-controller"
+            }
+          ]
+        },
+        {
+          "at": 1791139100356,
+          "type": "info",
+          "text": "[ChronoShift] offline.install-state {at: 2026-10-04T18:38:20.355Z, state: installing}",
+          "args": [
+            "[ChronoShift] offline.install-state",
+            {
+              "at": "2026-10-04T18:38:20.355Z",
+              "state": "installing"
+            }
+          ]
+        },
+        {
+          "at": 1791139100356,
+          "type": "info",
+          "text": "[ChronoShift] offline.probe-start {at: 2026-10-04T18:38:20.355Z, online: true, controlled: false, reason: lifecycle}",
+          "args": [
+            "[ChronoShift] offline.probe-start",
+            {
+              "at": "2026-10-04T18:38:20.355Z",
+              "online": true,
+              "controlled": false,
+              "reason": "lifecycle"
+            }
+          ]
+        },
+        {
+          "at": 1791139100356,
+          "type": "info",
+          "text": "[ChronoShift] offline.state {at: 2026-10-04T18:38:20.355Z, ready: false, updateAvailable: false, reason: no-controller}",
+          "args": [
+            "[ChronoShift] offline.state",
+            {
+              "at": "2026-10-04T18:38:20.355Z",
+              "ready": false,
+              "updateAvailable": false,
+              "reason": "no-controller"
+            }
+          ]
+        },
+        {
+          "at": 1791139100391,
+          "type": "workererror",
+          "value": {
+            "errorMessage": {
+              "errorMessage": "Failed to register a ServiceWorker for scope ('http://127.0.0.1:4327/ChronoShift/') with script ('http://127.0.0.1:4327/ChronoShift/sw.js'): ServiceWorker failed to install: ServiceWorker failed to handle event (event.waitUntil Promise rejected)",
+              "registrationId": "2",
+              "versionId": "2",
+              "sourceURL": "",
+              "lineNumber": -1,
+              "columnNumber": -1
+            }
+          }
+        },
+        {
+          "at": 1791139100391,
+          "type": "workererror",
+          "value": {
+            "errorMessage": {
+              "errorMessage": "Uncaught (in promise) Error: Offline preparation failed: release-mismatch, /ChronoShift/index.html (expected 01ee9fa94a59f910)",
+              "registrationId": "2",
+              "versionId": "2",
+              "sourceURL": "http://127.0.0.1:4327/ChronoShift/sw.js",
+              "lineNumber": 17,
+              "columnNumber": -1
+            }
+          }
+        },
+        {
+          "at": 1791139100391,
+          "type": "info",
+          "text": "[ChronoShift] offline.install-state {at: 2026-10-04T18:38:20.391Z, state: redundant}",
+          "args": [
+            "[ChronoShift] offline.install-state",
+            {
+              "at": "2026-10-04T18:38:20.391Z",
+              "state": "redundant"
+            }
+          ]
+        },
+        {
+          "at": 1791139100392,
+          "type": "info",
+          "text": "[ChronoShift] offline.probe-start {at: 2026-10-04T18:38:20.391Z, online: true, controlled: false, reason: lifecycle}",
+          "args": [
+            "[ChronoShift] offline.probe-start",
+            {
+              "at": "2026-10-04T18:38:20.391Z",
+              "online": true,
+              "controlled": false,
+              "reason": "lifecycle"
+            }
+          ]
+        },
+        {
+          "at": 1791139100392,
+          "type": "info",
+          "text": "[ChronoShift] offline.state {at: 2026-10-04T18:38:20.391Z, ready: false, updateAvailable: false, reason: no-controller}",
+          "args": [
+            "[ChronoShift] offline.state",
+            {
+              "at": "2026-10-04T18:38:20.391Z",
+              "ready": false,
+              "updateAvailable": false,
+              "reason": "no-controller"
+            }
+          ]
+        },
+        {
+          "at": 1791139111276,
+          "type": "info",
+          "text": "[ChronoShift] offline.state {at: 2026-10-04T18:38:31.276Z, ready: false, updateAvailable: false, reason: startup-deadline}",
+          "args": [
+            "[ChronoShift] offline.state",
+            {
+              "at": "2026-10-04T18:38:31.276Z",
+              "ready": false,
+              "updateAvailable": false,
+              "reason": "startup-deadline"
+            }
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "at": 1791139096170,
+          "mode": "transformed",
+          "path": "/ChronoShift/",
+          "query": "",
+          "originalHash": "3817009189122549545",
+          "servedHash": "8916880047208952847"
+        },
+        {
+          "at": 1791139096181,
+          "mode": "transformed",
+          "path": "/ChronoShift/assets/index-C8hA_kff.css",
+          "query": "",
+          "originalHash": "3866530324470639416",
+          "servedHash": "3866530324470639416"
+        },
+        {
+          "at": 1791139096181,
+          "mode": "transformed",
+          "path": "/ChronoShift/assets/index-BjtJ2w8M.js",
+          "query": "",
+          "originalHash": "17883149304123135671",
+          "servedHash": "17883149304123135671"
+        },
+        {
+          "at": 1791139096255,
+          "mode": "transformed",
+          "path": "/ChronoShift/sw.js",
+          "query": "",
+          "originalHash": "11243120867069833670",
+          "servedHash": "11243120867069833670"
+        },
+        {
+          "at": 1791139096259,
+          "mode": "transformed",
+          "path": "/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+          "query": "",
+          "originalHash": "3906347667057586506",
+          "servedHash": "3906347667057586506"
+        },
+        {
+          "at": 1791139096262,
+          "mode": "transformed",
+          "path": "/ChronoShift/assets/index-BjtJ2w8M.js",
+          "query": "",
+          "originalHash": "17883149304123135671",
+          "servedHash": "17883149304123135671"
+        },
+        {
+          "at": 1791139096273,
+          "mode": "transformed",
+          "path": "/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+          "query": "",
+          "originalHash": "3906347667057586506",
+          "servedHash": "3906347667057586506"
+        },
+        {
+          "at": 1791139096274,
+          "mode": "transformed",
+          "path": "/ChronoShift/icon.svg",
+          "query": "",
+          "originalHash": "6186539062391977595",
+          "servedHash": "6186539062391977595"
+        },
+        {
+          "at": 1791139096278,
+          "mode": "transformed",
+          "path": "/ChronoShift/assets/index-C8hA_kff.css",
+          "query": "",
+          "originalHash": "3866530324470639416",
+          "servedHash": "3866530324470639416"
+        },
+        {
+          "at": 1791139096279,
+          "mode": "transformed",
+          "path": "/ChronoShift/assets/worker-C690IjaR.js",
+          "query": "",
+          "originalHash": "16853696038259388649",
+          "servedHash": "16853696038259388649"
+        },
+        {
+          "at": 1791139096291,
+          "mode": "transformed",
+          "path": "/ChronoShift/fonts/README.txt",
+          "query": "",
+          "originalHash": "5492494016453674988",
+          "servedHash": "5492494016453674988"
+        },
+        {
+          "at": 1791139096293,
+          "mode": "transformed",
+          "path": "/ChronoShift/fonts/geist-OFL.txt",
+          "query": "",
+          "originalHash": "7925117625745076251",
+          "servedHash": "7925117625745076251"
+        },
+        {
+          "at": 1791139096294,
+          "mode": "transformed",
+          "path": "/ChronoShift/icon-192.png",
+          "query": "",
+          "originalHash": "9872270504182170199",
+          "servedHash": "9872270504182170199"
+        },
+        {
+          "at": 1791139096295,
+          "mode": "transformed",
+          "path": "/ChronoShift/icon-512.png",
+          "query": "",
+          "originalHash": "15144930728479738153",
+          "servedHash": "15144930728479738153"
+        },
+        {
+          "at": 1791139096296,
+          "mode": "transformed",
+          "path": "/ChronoShift/icon.svg",
+          "query": "",
+          "originalHash": "6186539062391977595",
+          "servedHash": "6186539062391977595"
+        },
+        {
+          "at": 1791139096298,
+          "mode": "transformed",
+          "path": "/ChronoShift/index.html",
+          "query": "",
+          "originalHash": "3817009189122549545",
+          "servedHash": "8916880047208952847"
+        },
+        {
+          "at": 1791139096300,
+          "mode": "transformed",
+          "path": "/ChronoShift/index.html",
+          "query": "?chronoshift-release=01ee9fa94a59f910",
+          "originalHash": "3817009189122549545",
+          "servedHash": "8916880047208952847"
+        },
+        {
+          "at": 1791139096357,
+          "mode": "transformed",
+          "path": "/ChronoShift/assets/worker-C690IjaR.js",
+          "query": "",
+          "originalHash": "16853696038259388649",
+          "servedHash": "16853696038259388649"
+        },
+        {
+          "at": 1791139097305,
+          "mode": "transformed",
+          "path": "/ChronoShift/sw.js",
+          "query": "",
+          "originalHash": "11243120867069833670",
+          "servedHash": "11243120867069833670"
+        },
+        {
+          "at": 1791139097311,
+          "mode": "transformed",
+          "path": "/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+          "query": "",
+          "originalHash": "3906347667057586506",
+          "servedHash": "3906347667057586506"
+        },
+        {
+          "at": 1791139097314,
+          "mode": "transformed",
+          "path": "/ChronoShift/assets/index-BjtJ2w8M.js",
+          "query": "",
+          "originalHash": "17883149304123135671",
+          "servedHash": "17883149304123135671"
+        },
+        {
+          "at": 1791139097329,
+          "mode": "transformed",
+          "path": "/ChronoShift/assets/index-C8hA_kff.css",
+          "query": "",
+          "originalHash": "3866530324470639416",
+          "servedHash": "3866530324470639416"
+        },
+        {
+          "at": 1791139097330,
+          "mode": "transformed",
+          "path": "/ChronoShift/assets/worker-C690IjaR.js",
+          "query": "",
+          "originalHash": "16853696038259388649",
+          "servedHash": "16853696038259388649"
+        },
+        {
+          "at": 1791139097342,
+          "mode": "transformed",
+          "path": "/ChronoShift/fonts/README.txt",
+          "query": "",
+          "originalHash": "5492494016453674988",
+          "servedHash": "5492494016453674988"
+        },
+        {
+          "at": 1791139097343,
+          "mode": "transformed",
+          "path": "/ChronoShift/fonts/geist-OFL.txt",
+          "query": "",
+          "originalHash": "7925117625745076251",
+          "servedHash": "7925117625745076251"
+        },
+        {
+          "at": 1791139097344,
+          "mode": "transformed",
+          "path": "/ChronoShift/icon-192.png",
+          "query": "",
+          "originalHash": "9872270504182170199",
+          "servedHash": "9872270504182170199"
+        },
+        {
+          "at": 1791139097345,
+          "mode": "transformed",
+          "path": "/ChronoShift/icon-512.png",
+          "query": "",
+          "originalHash": "15144930728479738153",
+          "servedHash": "15144930728479738153"
+        },
+        {
+          "at": 1791139097346,
+          "mode": "transformed",
+          "path": "/ChronoShift/icon.svg",
+          "query": "",
+          "originalHash": "6186539062391977595",
+          "servedHash": "6186539062391977595"
+        },
+        {
+          "at": 1791139097348,
+          "mode": "transformed",
+          "path": "/ChronoShift/index.html",
+          "query": "",
+          "originalHash": "3817009189122549545",
+          "servedHash": "8916880047208952847"
+        },
+        {
+          "at": 1791139097348,
+          "mode": "transformed",
+          "path": "/ChronoShift/index.html",
+          "query": "?chronoshift-release=01ee9fa94a59f910",
+          "originalHash": "3817009189122549545",
+          "servedHash": "8916880047208952847"
+        },
+        {
+          "at": 1791139100352,
+          "mode": "transformed",
+          "path": "/ChronoShift/sw.js",
+          "query": "",
+          "originalHash": "11243120867069833670",
+          "servedHash": "11243120867069833670"
+        },
+        {
+          "at": 1791139100357,
+          "mode": "transformed",
+          "path": "/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+          "query": "",
+          "originalHash": "3906347667057586506",
+          "servedHash": "3906347667057586506"
+        },
+        {
+          "at": 1791139100359,
+          "mode": "transformed",
+          "path": "/ChronoShift/assets/index-BjtJ2w8M.js",
+          "query": "",
+          "originalHash": "17883149304123135671",
+          "servedHash": "17883149304123135671"
+        },
+        {
+          "at": 1791139100373,
+          "mode": "transformed",
+          "path": "/ChronoShift/assets/index-C8hA_kff.css",
+          "query": "",
+          "originalHash": "3866530324470639416",
+          "servedHash": "3866530324470639416"
+        },
+        {
+          "at": 1791139100375,
+          "mode": "transformed",
+          "path": "/ChronoShift/assets/worker-C690IjaR.js",
+          "query": "",
+          "originalHash": "16853696038259388649",
+          "servedHash": "16853696038259388649"
+        },
+        {
+          "at": 1791139100385,
+          "mode": "transformed",
+          "path": "/ChronoShift/fonts/README.txt",
+          "query": "",
+          "originalHash": "5492494016453674988",
+          "servedHash": "5492494016453674988"
+        },
+        {
+          "at": 1791139100386,
+          "mode": "transformed",
+          "path": "/ChronoShift/fonts/geist-OFL.txt",
+          "query": "",
+          "originalHash": "7925117625745076251",
+          "servedHash": "7925117625745076251"
+        },
+        {
+          "at": 1791139100387,
+          "mode": "transformed",
+          "path": "/ChronoShift/icon-192.png",
+          "query": "",
+          "originalHash": "9872270504182170199",
+          "servedHash": "9872270504182170199"
+        },
+        {
+          "at": 1791139100388,
+          "mode": "transformed",
+          "path": "/ChronoShift/icon-512.png",
+          "query": "",
+          "originalHash": "15144930728479738153",
+          "servedHash": "15144930728479738153"
+        },
+        {
+          "at": 1791139100389,
+          "mode": "transformed",
+          "path": "/ChronoShift/icon.svg",
+          "query": "",
+          "originalHash": "6186539062391977595",
+          "servedHash": "6186539062391977595"
+        },
+        {
+          "at": 1791139100390,
+          "mode": "transformed",
+          "path": "/ChronoShift/index.html",
+          "query": "",
+          "originalHash": "3817009189122549545",
+          "servedHash": "8916880047208952847"
+        },
+        {
+          "at": 1791139100391,
+          "mode": "transformed",
+          "path": "/ChronoShift/index.html",
+          "query": "?chronoshift-release=01ee9fa94a59f910",
+          "originalHash": "3817009189122549545",
+          "servedHash": "8916880047208952847"
+        }
+      ]
+    },
+    {
+      "scenario": "dom-only",
+      "elapsedMs": 21199,
+      "state": {
+        "ready": "true",
+        "warning": null,
+        "result": "9:20",
+        "draft": "June 18, 2026 at 5:20pm Tokyo",
+        "controlled": true,
+        "caches": [
+          "chronoshift-01ee9fa94a59f910"
+        ],
+        "registrations": [
+          {
+            "active": "activated"
+          }
+        ]
+      },
+      "logs": [
+        {
+          "at": 1791139117623,
+          "type": "error",
+          "text": "Applying inline style violates the following Content Security Policy directive 'style-src 'self' 'sha256-38RhXrc7EdReTKsOm23ZPOCUgniTUUcjky8QOOrQx6o=' 'sha256-gYiS/BvZvRcK27JIXTuwhZ3hs2+VJ1X+2gUlE+farlg=''. Either the 'unsafe-inline' keyword, a hash ('sha256-KbCZ2j5u+Hyc9oY5C56O2kgcI+ArcLDf3KBSHuUiEok='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+          "args": []
+        },
+        {
+          "at": 1791139117599,
+          "type": "info",
+          "text": "[ChronoShift] offline.register-attempt {at: 2026-10-04T18:38:37.597Z, online: true, attempt: 1}",
+          "args": [
+            "[ChronoShift] offline.register-attempt",
+            {
+              "at": "2026-10-04T18:38:37.597Z",
+              "online": true,
+              "attempt": 1
+            }
+          ]
+        },
+        {
+          "at": 1791139117617,
+          "type": "info",
+          "text": "[ChronoShift] offline.registered {at: 2026-10-04T18:38:37.616Z, online: true, controlled: false}",
+          "args": [
+            "[ChronoShift] offline.registered",
+            {
+              "at": "2026-10-04T18:38:37.616Z",
+              "online": true,
+              "controlled": false
+            }
+          ]
+        },
+        {
+          "at": 1791139117617,
+          "type": "info",
+          "text": "[ChronoShift] offline.probe-start {at: 2026-10-04T18:38:37.617Z, online: true, controlled: false, reason: startup}",
+          "args": [
+            "[ChronoShift] offline.probe-start",
+            {
+              "at": "2026-10-04T18:38:37.617Z",
+              "online": true,
+              "controlled": false,
+              "reason": "startup"
+            }
+          ]
+        },
+        {
+          "at": 1791139117617,
+          "type": "info",
+          "text": "[ChronoShift] offline.state {at: 2026-10-04T18:38:37.617Z, ready: false, updateAvailable: false, reason: no-controller}",
+          "args": [
+            "[ChronoShift] offline.state",
+            {
+              "at": "2026-10-04T18:38:37.617Z",
+              "ready": false,
+              "updateAvailable": false,
+              "reason": "no-controller"
+            }
+          ]
+        },
+        {
+          "at": 1791139117618,
+          "type": "info",
+          "text": "[ChronoShift] offline.install-state {at: 2026-10-04T18:38:37.617Z, state: installing}",
+          "args": [
+            "[ChronoShift] offline.install-state",
+            {
+              "at": "2026-10-04T18:38:37.617Z",
+              "state": "installing"
+            }
+          ]
+        },
+        {
+          "at": 1791139117618,
+          "type": "info",
+          "text": "[ChronoShift] offline.probe-start {at: 2026-10-04T18:38:37.617Z, online: true, controlled: false, reason: lifecycle}",
+          "args": [
+            "[ChronoShift] offline.probe-start",
+            {
+              "at": "2026-10-04T18:38:37.617Z",
+              "online": true,
+              "controlled": false,
+              "reason": "lifecycle"
+            }
+          ]
+        },
+        {
+          "at": 1791139117618,
+          "type": "info",
+          "text": "[ChronoShift] offline.state {at: 2026-10-04T18:38:37.617Z, ready: false, updateAvailable: false, reason: no-controller}",
+          "args": [
+            "[ChronoShift] offline.state",
+            {
+              "at": "2026-10-04T18:38:37.617Z",
+              "ready": false,
+              "updateAvailable": false,
+              "reason": "no-controller"
+            }
+          ]
+        },
+        {
+          "at": 1791139117646,
+          "type": "info",
+          "text": "[ChronoShift] ui.zone-focus {at: 2026-10-04T18:38:37.646Z, field: target-zone}",
+          "args": [
+            "[ChronoShift] ui.zone-focus",
+            {
+              "at": "2026-10-04T18:38:37.646Z",
+              "field": "target-zone"
+            }
+          ]
+        },
+        {
+          "at": 1791139117664,
+          "type": "info",
+          "text": "[ChronoShift] ui.zone-focus {at: 2026-10-04T18:38:37.664Z, field: target-zone}",
+          "args": [
+            "[ChronoShift] ui.zone-focus",
+            {
+              "at": "2026-10-04T18:38:37.664Z",
+              "field": "target-zone"
+            }
+          ]
+        },
+        {
+          "at": 1791139117666,
+          "type": "info",
+          "text": "[ChronoShift] offline.install-state {at: 2026-10-04T18:38:37.666Z, state: installed}",
+          "args": [
+            "[ChronoShift] offline.install-state",
+            {
+              "at": "2026-10-04T18:38:37.666Z",
+              "state": "installed"
+            }
+          ]
+        },
+        {
+          "at": 1791139117667,
+          "type": "info",
+          "text": "[ChronoShift] offline.probe-start {at: 2026-10-04T18:38:37.666Z, online: true, controlled: false, reason: lifecycle}",
+          "args": [
+            "[ChronoShift] offline.probe-start",
+            {
+              "at": "2026-10-04T18:38:37.666Z",
+              "online": true,
+              "controlled": false,
+              "reason": "lifecycle"
+            }
+          ]
+        },
+        {
+          "at": 1791139117667,
+          "type": "info",
+          "text": "[ChronoShift] offline.state {at: 2026-10-04T18:38:37.666Z, ready: false, updateAvailable: true, reason: update-available}",
+          "args": [
+            "[ChronoShift] offline.state",
+            {
+              "at": "2026-10-04T18:38:37.666Z",
+              "ready": false,
+              "updateAvailable": true,
+              "reason": "update-available"
+            }
+          ]
+        },
+        {
+          "at": 1791139117667,
+          "type": "info",
+          "text": "[ChronoShift] offline.state {at: 2026-10-04T18:38:37.666Z, ready: false, updateAvailable: true, reason: no-controller}",
+          "args": [
+            "[ChronoShift] offline.state",
+            {
+              "at": "2026-10-04T18:38:37.666Z",
+              "ready": false,
+              "updateAvailable": true,
+              "reason": "no-controller"
+            }
+          ]
+        },
+        {
+          "at": 1791139117667,
+          "type": "info",
+          "text": "[ChronoShift] offline.install-state {at: 2026-10-04T18:38:37.666Z, state: activating}",
+          "args": [
+            "[ChronoShift] offline.install-state",
+            {
+              "at": "2026-10-04T18:38:37.666Z",
+              "state": "activating"
+            }
+          ]
+        },
+        {
+          "at": 1791139117667,
+          "type": "info",
+          "text": "[ChronoShift] offline.probe-start {at: 2026-10-04T18:38:37.666Z, online: true, controlled: false, reason: lifecycle}",
+          "args": [
+            "[ChronoShift] offline.probe-start",
+            {
+              "at": "2026-10-04T18:38:37.666Z",
+              "online": true,
+              "controlled": false,
+              "reason": "lifecycle"
+            }
+          ]
+        },
+        {
+          "at": 1791139117667,
+          "type": "info",
+          "text": "[ChronoShift] offline.state {at: 2026-10-04T18:38:37.666Z, ready: false, updateAvailable: false, reason: no-controller}",
+          "args": [
+            "[ChronoShift] offline.state",
+            {
+              "at": "2026-10-04T18:38:37.666Z",
+              "ready": false,
+              "updateAvailable": false,
+              "reason": "no-controller"
+            }
+          ]
+        },
+        {
+          "at": 1791139117667,
+          "type": "info",
+          "text": "[ChronoShift] offline.probe-start {at: 2026-10-04T18:38:37.666Z, online: true, controlled: true, reason: controller-change}",
+          "args": [
+            "[ChronoShift] offline.probe-start",
+            {
+              "at": "2026-10-04T18:38:37.666Z",
+              "online": true,
+              "controlled": true,
+              "reason": "controller-change"
+            }
+          ]
+        },
+        {
+          "at": 1791139117667,
+          "type": "info",
+          "text": "[ChronoShift] offline.install-state {at: 2026-10-04T18:38:37.666Z, state: activated}",
+          "args": [
+            "[ChronoShift] offline.install-state",
+            {
+              "at": "2026-10-04T18:38:37.666Z",
+              "state": "activated"
+            }
+          ]
+        },
+        {
+          "at": 1791139117667,
+          "type": "info",
+          "text": "[ChronoShift] offline.probe-start {at: 2026-10-04T18:38:37.666Z, online: true, controlled: true, reason: lifecycle}",
+          "args": [
+            "[ChronoShift] offline.probe-start",
+            {
+              "at": "2026-10-04T18:38:37.666Z",
+              "online": true,
+              "controlled": true,
+              "reason": "lifecycle"
+            }
+          ]
+        },
+        {
+          "at": 1791139117670,
+          "type": "info",
+          "text": "[ChronoShift] offline.probe-result {at: 2026-10-04T18:38:37.670Z, ready: true, elapsedMs: 3, version: 01ee9fa94a59f910, assets: Array(0)}",
+          "args": [
+            "[ChronoShift] offline.probe-result",
+            {
+              "at": "2026-10-04T18:38:37.670Z",
+              "ready": true,
+              "elapsedMs": 3,
+              "version": "01ee9fa94a59f910",
+              "assets": []
+            }
+          ]
+        },
+        {
+          "at": 1791139117671,
+          "type": "info",
+          "text": "[ChronoShift] offline.state {at: 2026-10-04T18:38:37.670Z, ready: true, updateAvailable: false, reason: probe-result}",
+          "args": [
+            "[ChronoShift] offline.state",
+            {
+              "at": "2026-10-04T18:38:37.670Z",
+              "ready": true,
+              "updateAvailable": false,
+              "reason": "probe-result"
+            }
+          ]
+        },
+        {
+          "at": 1791139117701,
+          "type": "info",
+          "text": "[ChronoShift] conversion.start {at: 2026-10-04T18:38:37.700Z, requestId: 2, characters: 29}",
+          "args": [
+            "[ChronoShift] conversion.start",
+            {
+              "at": "2026-10-04T18:38:37.700Z",
+              "requestId": 2,
+              "characters": 29
+            }
+          ]
+        },
+        {
+          "at": 1791139117747,
+          "type": "info",
+          "text": "[ChronoShift] conversion.complete {at: 2026-10-04T18:38:37.747Z, elapsedMs: 46, requestId: 2, results: 1, warnings: 0}",
+          "args": [
+            "[ChronoShift] conversion.complete",
+            {
+              "at": "2026-10-04T18:38:37.747Z",
+              "elapsedMs": 46,
+              "requestId": 2,
+              "results": 1,
+              "warnings": 0,
+              "reason": "success"
+            }
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "at": 1791139117531,
+          "mode": "dom-only",
+          "path": "/ChronoShift/",
+          "query": "",
+          "originalHash": "3817009189122549545",
+          "servedHash": "3817009189122549545"
+        },
+        {
+          "at": 1791139117537,
+          "mode": "dom-only",
+          "path": "/ChronoShift/assets/index-BjtJ2w8M.js",
+          "query": "",
+          "originalHash": "17883149304123135671",
+          "servedHash": "17883149304123135671"
+        },
+        {
+          "at": 1791139117537,
+          "mode": "dom-only",
+          "path": "/ChronoShift/assets/index-C8hA_kff.css",
+          "query": "",
+          "originalHash": "3866530324470639416",
+          "servedHash": "3866530324470639416"
+        },
+        {
+          "at": 1791139117600,
+          "mode": "dom-only",
+          "path": "/ChronoShift/sw.js",
+          "query": "",
+          "originalHash": "11243120867069833670",
+          "servedHash": "11243120867069833670"
+        },
+        {
+          "at": 1791139117605,
+          "mode": "dom-only",
+          "path": "/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+          "query": "",
+          "originalHash": "3906347667057586506",
+          "servedHash": "3906347667057586506"
+        },
+        {
+          "at": 1791139117607,
+          "mode": "dom-only",
+          "path": "/ChronoShift/assets/index-BjtJ2w8M.js",
+          "query": "",
+          "originalHash": "17883149304123135671",
+          "servedHash": "17883149304123135671"
+        },
+        {
+          "at": 1791139117617,
+          "mode": "dom-only",
+          "path": "/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2",
+          "query": "",
+          "originalHash": "3906347667057586506",
+          "servedHash": "3906347667057586506"
+        },
+        {
+          "at": 1791139117622,
+          "mode": "dom-only",
+          "path": "/ChronoShift/assets/index-C8hA_kff.css",
+          "query": "",
+          "originalHash": "3866530324470639416",
+          "servedHash": "3866530324470639416"
+        },
+        {
+          "at": 1791139117623,
+          "mode": "dom-only",
+          "path": "/ChronoShift/icon.svg",
+          "query": "",
+          "originalHash": "6186539062391977595",
+          "servedHash": "6186539062391977595"
+        },
+        {
+          "at": 1791139117623,
+          "mode": "dom-only",
+          "path": "/ChronoShift/assets/worker-C690IjaR.js",
+          "query": "",
+          "originalHash": "16853696038259388649",
+          "servedHash": "16853696038259388649"
+        },
+        {
+          "at": 1791139117635,
+          "mode": "dom-only",
+          "path": "/ChronoShift/fonts/README.txt",
+          "query": "",
+          "originalHash": "5492494016453674988",
+          "servedHash": "5492494016453674988"
+        },
+        {
+          "at": 1791139117636,
+          "mode": "dom-only",
+          "path": "/ChronoShift/fonts/geist-OFL.txt",
+          "query": "",
+          "originalHash": "7925117625745076251",
+          "servedHash": "7925117625745076251"
+        },
+        {
+          "at": 1791139117637,
+          "mode": "dom-only",
+          "path": "/ChronoShift/icon-192.png",
+          "query": "",
+          "originalHash": "9872270504182170199",
+          "servedHash": "9872270504182170199"
+        },
+        {
+          "at": 1791139117638,
+          "mode": "dom-only",
+          "path": "/ChronoShift/icon-512.png",
+          "query": "",
+          "originalHash": "15144930728479738153",
+          "servedHash": "15144930728479738153"
+        },
+        {
+          "at": 1791139117639,
+          "mode": "dom-only",
+          "path": "/ChronoShift/icon.svg",
+          "query": "",
+          "originalHash": "6186539062391977595",
+          "servedHash": "6186539062391977595"
+        },
+        {
+          "at": 1791139117640,
+          "mode": "dom-only",
+          "path": "/ChronoShift/index.html",
+          "query": "",
+          "originalHash": "3817009189122549545",
+          "servedHash": "3817009189122549545"
+        },
+        {
+          "at": 1791139117641,
+          "mode": "dom-only",
+          "path": "/ChronoShift/manifest.webmanifest",
+          "query": "",
+          "originalHash": "4929829748598358313",
+          "servedHash": "4929829748598358313"
+        },
+        {
+          "at": 1791139117642,
+          "mode": "dom-only",
+          "path": "/ChronoShift/release.json",
+          "query": "",
+          "originalHash": "14361960837504173859",
+          "servedHash": "14361960837504173859"
+        },
+        {
+          "at": 1791139117643,
+          "mode": "dom-only",
+          "path": "/ChronoShift/third-party-notices.txt",
+          "query": "",
+          "originalHash": "4571867238321034846",
+          "servedHash": "4571867238321034846"
+        },
+        {
+          "at": 1791139118751,
+          "mode": "dom-only",
+          "path": "/ChronoShift/sw.js",
+          "query": "",
+          "originalHash": "11243120867069833670",
+          "servedHash": "11243120867069833670"
+        }
+      ]
+    }
+  ]
+}
