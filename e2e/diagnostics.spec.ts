@@ -2,18 +2,8 @@ import { test, expect, publishRelease } from "./fixtures";
 import { enterZone } from "./choices";
 import type { Page } from "@playwright/test";
 
-function consoleDiagnostics(page: Page) {
-  const records: string[] = [];
-  page.on("console", async (message) => {
-    if (!message.text().startsWith("[ChronoShift]")) return;
-    records.push(
-      JSON.stringify(
-        await Promise.all(message.args().map((arg) => arg.jsonValue())),
-      ),
-    );
-  });
-  return records;
-}
+import { consoleDiagnostics } from "./console";
+
 async function toggle(page: Page) {
   await page.getByText("More options", { exact: true }).click();
   return page.getByRole("checkbox", { name: "Enable detailed logs" });
@@ -35,13 +25,25 @@ test("detailed logs are opt-in, local, exclude message and selected zones, and s
   await page.getByLabel("Message with a date or time").fill(draft);
   await enterZone(page, "Pacific/Chatham");
   await expect(page.locator(".hero-time")).toBeVisible();
-  expect(logs).toEqual([]);
+  await logs.flush();
+  expect([...logs]).toEqual([]);
   await checkbox.check();
-  await expect.poll(() => logs.join("\n")).toContain("offline.probe-result");
+  await expect
+    .poll(async () => {
+      await logs.flush();
+      return logs.join("\n");
+    })
+    .toContain("offline.probe-result");
   await page.getByRole("combobox", { name: "Convert to", exact: true }).click();
   await page.getByLabel("Message with a date or time").fill(draft + " ");
-  await expect.poll(() => logs.join("\n")).toContain("conversion.complete");
+  await expect
+    .poll(async () => {
+      await logs.flush();
+      return logs.join("\n");
+    })
+    .toContain("conversion.complete");
   expect(logs.join("\n")).toContain("ui.zone-focus");
+  await logs.flush();
   const raw = logs.join("\n");
   for (const privateValue of [
     "PrivatePlanningSentinel",
@@ -64,11 +66,13 @@ test("detailed logs are opt-in, local, exclude message and selected zones, and s
     ),
   ).not.toContain("PrivatePlanningSentinel");
   await checkbox.uncheck();
+  await logs.flush();
   const stopped = logs.length;
   await page.getByRole("combobox", { name: "Convert to", exact: true }).click();
   await page.getByLabel("Message with a date or time").fill(draft + "  ");
   await expect(page.locator(".hero-time")).toBeVisible();
   await page.waitForTimeout(100);
+  await logs.flush();
   expect(logs).toHaveLength(stopped);
   expect(
     await page.evaluate(() =>
@@ -87,7 +91,10 @@ test("detailed logging survives a tab reload and reset preferences disables it",
   const checkbox = await toggle(page);
   await expect(checkbox).toBeChecked();
   await expect
-    .poll(() => logs.join("\n"))
+    .poll(async () => {
+      await logs.flush();
+      return logs.join("\n");
+    })
     .toContain("offline.register-attempt");
   await page.getByRole("button", { name: "Reset preferences" }).click();
   await expect(checkbox).not.toBeChecked();
@@ -96,9 +103,11 @@ test("detailed logging survives a tab reload and reset preferences disables it",
       sessionStorage.getItem("chronoshift-detailed-logs"),
     ),
   ).toBeNull();
+  await logs.flush();
   const stopped = logs.length;
   await page.reload();
   await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
+  await logs.flush();
   expect(logs).toHaveLength(stopped);
 });
 
@@ -117,11 +126,18 @@ test("detailed logs still work in memory when session storage is denied", async 
   await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
   const checkbox = await toggle(page);
   await checkbox.check();
-  await expect.poll(() => logs.join("\n")).toContain("offline.probe-result");
+  await expect
+    .poll(async () => {
+      await logs.flush();
+      return logs.join("\n");
+    })
+    .toContain("offline.probe-result");
   await checkbox.uncheck();
+  await logs.flush();
   const stopped = logs.length;
   await page.getByRole("combobox", { name: "Convert to", exact: true }).click();
   await page.waitForTimeout(100);
+  await logs.flush();
   expect(logs).toHaveLength(stopped);
 });
 
@@ -190,7 +206,12 @@ cacheTest(
     await expect(page.locator(".message.warning")).toContainText(
       "Offline setup is incomplete.",
     );
-    await expect.poll(() => logs.join("\n")).toContain("release-mismatch");
+    await expect
+      .poll(async () => {
+        await logs.flush();
+        return logs.join("\n");
+      })
+      .toContain("release-mismatch");
     expect(logs.join("\n")).toContain("/release.json");
     expect(logs.join("\n")).not.toContain("corrupt private data");
     expect(
