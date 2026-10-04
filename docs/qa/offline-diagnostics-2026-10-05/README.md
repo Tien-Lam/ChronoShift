@@ -1,0 +1,29 @@
+# Offline diagnostics and bounded recovery
+
+Base: `d924853274fe795423640d347a8375705cd35ee2`. Runtime candidate: `bf4177192f95d9688b1d8f6db7035b6e9053bd0c`; final runtime delta: `b18150b2a98f4c376f245ffe2eb0e9cabf689318`. User correction: the recurring warning appears a few seconds after clicking **Convert to**, not immediately. Regular Chrome was identified; affected browser version, cache/controller release, failed asset and historical update/network conditions remain unknown.
+
+TIE-356 adds **More options → Enable detailed logs**, off by default, session opt-in, console only. No message, parsed values, selected zones, clipboard/share content, URL queries, raw error bodies or diagnostic history is persisted/transmitted. TIE-324 remains open: independent checks demonstrate adjacent recovery defects and their prevention, not the natural user's historical cause.
+
+## Independent review
+
+The [saved candidate brief](brief.md) was sent to both independent clean-context reviewers after their initial independent derivation. Their [initial code report](code-initial.md) and [initial adversarial report](adversarial-initial.md) retain original symptoms, environment, timings and unknowns. Initial original dispatch prompts were not separately retained verbatim in this record; the candidate brief is exact, and initial reports retain the assessed original report. Neither reviewer consulted the counterpart verdict before initial assessment.
+
+Code reviewer independently reproduced a lost waiting-update action through a real application deadline. With a server idle timeout explicitly raised to 60 seconds and a 22-second old-document delay, the [baseline](code-before-controlled-document.json) hides Update now at 1/16/24 seconds while the [candidate](code-after-document.json) retains it. Explicit activation preserves the draft and restores readiness. Earlier initial JSON used Bun's default 10-second idle timeout and is retained as qualified evidence, rather than proof of an uninterrupted 22-second transport. [Missing unchanged icon](code-after-icon.json) proves verified cached reuse avoids the old document download altogether. [Privacy/lifetime](code-privacy.json) and [safe first-install error](code-error-delta.json) checks supplement the [final code verdict](code-final.md).
+
+Adversarial review uses real installed Chrome, byte-preserved actual old/current published artifacts and candidate builds under `/ChronoShift/`. It distinguishes a healthy retained controller, a deliberately missing unchanged README after old CSS retirement, corrupt release bytes, and explicit update recovery. A first-install diagnostic regression was caught: generic failure text had lost the static asset and expected release before a controller existed. The final runtime delta restores bounded path/version errors while excluding response bodies. Detailed final report and evidence are retained alongside this record when supplied.
+
+Both roles distinguish implementation approval within tested scope from unresolved original-report disposition. No comparative model evaluation establishes that different reviewer models would have caught earlier defects. The demonstrated workflow gaps were state selection and interpretation: healthy retained caches, fixtures retaining all old immutable assets, and readiness success did not establish damaged retained-cache recovery or waiting-update availability through a probe deadline. [Review guidance](../../developer/review.md) now requires those relevant transitions and matching evidence before closure.
+
+## Root verification
+
+Environment: macOS arm64, mise-managed Bun 1.4.0; installed Chrome 154 independently reviewed. Root default profiles use bundled Chromium, Firefox and WebKit plus Android/iPhone and foldable emulation. Physical device/installed/OS-share/screen-reader/actual zoom/phone performance remain separate acceptance gaps.
+
+- `mise exec -- bun run check`: initial 108 units and production typecheck/build passed; added first-install contract regression brings the final suite to 109 passing units. The regression executes the actual worker template's installation path and requires exact safe error text, fresh-key retry and staging cleanup.
+- `mise exec -- bun run format:check`: passed.
+- Targeted Chromium diagnostics/update suite: 11 passed (8.0s), port 4190, isolated output `/tmp/chronoshift-diagnostics-targeted`.
+- Complete 213-case browser run: 186 passed (1.7m); 27 Firefox navigations failed because port 4190 is restricted by Firefox (page explicitly says “This address is restricted”). No application assertions were reached for those failures. All 42 Firefox cases rerun on allowed port 4191 passed (26.3s). These results establish the complete exercised set without claiming the first run passed.
+- Final SW error-text delta: all 55 diagnostics/first-install cases passed across five profiles (35.5s), port 4191, `/tmp/chronoshift-diagnostics-delta`.
+- `BASE_PATH=/ChronoShift/ CHRONOSHIFT_SOURCE_COMMIT=b18150b2a98f4c376f245ffe2eb0e9cabf689318 mise exec -- bun run build`; Pages-subpath test: 1 passed (857ms), artifact worker `7e5e07a67ca3237f`, then root build restored. Reviewer root artifacts `ec91b736f1bb6523` / `051fa0718bb9401d` are separately identified local builds, not published identities.
+- Root browser side panel independently accepted the local waiting update, enabled logs, focused target and converted synthetic Tokyo June 18 5:20pm to London 9:20am. Readiness true, no warning; console events show opt-in/probe/focus/start/complete. Checkbox measured 18×18, clickable label 44px tall. Fresh hosted prior release remained ready/no warning, which does not resolve an unknown damaged historical profile.
+
+Required trusted PR CI, main-only publication and exact hosted acceptance are recorded after delivery. Local artifacts and browser emulation do not certify publication or physical devices.

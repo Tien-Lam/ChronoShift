@@ -8,7 +8,7 @@ bun run format:check
 bun run check
 ```
 
-`check` runs strict TypeScript checks, 108 unit tests and the static production build. The 98 temporal fixtures specify expected instants/dates independently of the parser. Relative dates receive an explicit reference instant and source timezone. Tests cover DST folds/gaps, fixed versus regional offsets, ambiguity, range endpoints, date context, city resolution, Unix boundaries, precision, formatting and recovery. A Git fixture verifies identical trees for distinct commits and rejects changed merge content or invalid refs; production publication now follows the main-only artifact verification described below.
+`check` runs strict TypeScript checks, 109 unit tests and the static production build. The 98 temporal fixtures specify expected instants/dates independently of the parser. Relative dates receive an explicit reference instant and source timezone. Tests cover DST folds/gaps, fixed versus regional offsets, ambiguity, range endpoints, date context, city resolution, Unix boundaries, precision, formatting and recovery. A Git fixture verifies identical trees for distinct commits and rejects changed merge content or invalid refs; production publication now follows the main-only artifact verification described below.
 
 For independent review and bug closure, follow [review.md](review.md). A green suite verifies its exercised states; document relevant untested timing, cache history and browser capabilities separately. Parallel review tests need separate ports **and output directories** so one run cannot overwrite another's evidence.
 
