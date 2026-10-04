@@ -1,0 +1,28 @@
+{
+  "before": {
+    "styles": [
+      "@layer {\n  [data-react-aria-pressable] {\n    touch-action: pan-x pan-y pinch-zoom;\n  }\n}"
+    ],
+    "violations": []
+  },
+  "after": {
+    "styles": [
+      "@layer {\n  [data-react-aria-pressable] {\n    touch-action: pan-x pan-y pinch-zoom;\n  }\n}",
+      "body {}"
+    ],
+    "violations": [
+      {
+        "directive": "style-src-elem",
+        "uri": "inline"
+      },
+      {
+        "directive": "style-src-elem",
+        "uri": "inline"
+      }
+    ]
+  },
+  "errors": [
+    "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+    "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+  ]
+}

@@ -1,10 +1,11 @@
 import { test, expect } from "./fixtures";
+import { choose, enterZone } from "./choices";
 
 test("reflows across cover screens, phones, tablets and desktops without losing work", async ({
   page,
 }) => {
   await page.goto("/");
-  await page.getByLabel("Convert to").fill("Pacific/Chatham");
+  await enterZone(page, "Pacific/Chatham");
   const message = "April 9, 2026 3:15:30pm in Tokyo";
   await page.getByLabel("Message with a date or time").fill(message);
   await page.getByRole("button", { name: "Convert", exact: true }).click();
@@ -50,11 +51,11 @@ test("reflows across cover screens, phones, tablets and desktops without losing 
       await expect(page.getByRole("button", { name: /^Copy / })).toBeVisible();
     });
   }
-  await page.getByLabel("Convert to").fill("UTC");
+  await enterZone(page, "UTC");
   await expect(page.locator(".hero-time")).toHaveText(/6:15:30 am/i);
   await page.getByText("More options", { exact: true }).click();
   await page.getByLabel("Appearance", { exact: true }).click();
-  await page.getByLabel("Theme", { exact: true }).selectOption("light");
+  await choose(page, "Theme", "light");
   await page.getByLabel("Appearance", { exact: true }).click();
   for (const width of [280, 390, 1280]) {
     await page.setViewportSize({ width, height: 844 });

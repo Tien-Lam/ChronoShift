@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-04T16:58:21.812Z",
+  "expectation": "Theme opens a themed DOM popover with three accessible options",
+  "report": [
+    {
+      "release": "base-b5447ef",
+      "url": "http://127.0.0.1:4210/",
+      "browser": "153.0.8010.12",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "themeTrigger": "SELECT",
+      "result": "FAIL",
+      "failure": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.choice-popover:visible')\nExpected: 1\nReceived: 0\nTimeout:  1000ms\n\nCall log:"
+    },
+    {
+      "release": "candidate",
+      "url": "http://127.0.0.1:4185/",
+      "browser": "153.0.8010.12",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "themeTrigger": "BUTTON",
+      "result": "PASS",
+      "failure": ""
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+import {chromium,expect} from '@playwright/test';
+import {createHash} from 'node:crypto';
+const out='/tmp/chronoshift-menu-adversarial',url='http://127.0.0.1:4205/';
+const browser=await chromium.launch();
+const ctx=await browser.newContext({locale:'en-AU',timezoneId:'Australia/Sydney',viewport:{width:1280,height:900}});
+const page=await ctx.newPage();const diagnostic:string[]=[];const observations:any[]=[];
+page.setDefaultTimeout(10000);
+try {
+page.on('pageerror',e=>diagnostic.push('pageerror '+e.message));page.on('console',m=>{if(m.type()==='error')diagnostic.push('console '+m.text());});
+await page.goto(url);await expect(page.locator('main[data-offline-ready=true]')).toBeVisible();
+await page.locator('#target-zone').fill('Pacific/Chatham');await page.locator('#target-zone').press('Tab');
+await page.getByRole('button',{name:'Show target timezones',exact:true}).click();
+await expect(page.locator('.choice-popover')).toBeVisible();await page.waitForTimeout(250);
+await expect(page.locator('.choice-popover')).toBeVisible();
+observations.push({case:'committed-Chatham-arrow-stays-open',value:await page.locator('#target-zone').inputValue(),options:await page.locator('.choice-item').count()});
+await page.locator('#target-zone').press('Escape');await expect(page.locator('.choice-popover')).toHaveCount(0);
+await page.locator('#target-zone').fill('+05:45');await page.locator('#target-zone').press('Tab');
+await page.locator('#message').fill('April 9, 2026 3pm UTC');await page.getByRole('button',{name:'Convert',exact:true}).click();
+await expect(page.locator('.hero-time')).toContainText('8:45');
+observations.push({case:'freeform-offset-converts',input:await page.locator('#target-zone').inputValue(),result:await page.locator('.result').textContent()});
+await page.locator('#target-zone').fill('CST');await page.locator('#target-zone').press('Tab');await expect(page.locator('.result')).toHaveCount(0);
+await page.locator('#target-zone').fill('Tokyo');await page.locator('#target-zone').press('Tab');await expect(page.locator('.result-zone')).toContainText('Tokyo');
+await page.locator('.options summary').click();
+await page.locator('#source-zone').fill('UTC');await page.locator('#source-zone').press('Tab');
+await page.getByRole('button',{name:'Convert',exact:true}).click();await expect(page.locator('.result-zone')).toContainText('Tokyo');
+observations.push({case:'source-target-independence-and-ambiguity-recovery',source:await page.locator('#source-zone').inputValue(),target:await page.locator('#target-zone').inputValue()});
+console.log('date-partial-start');await page.locator('.date-choice-calendar-button').click();
+await expect(page.locator('.calendar-popover')).toBeVisible();
+await page.locator('.calendar-day').filter({hasText:/^20$/}).first().click();
+await expect(page.locator('.calendar-popover')).toHaveCount(0);
+const dateBefore=await page.locator('.date-input').textContent();
+for(let i=0;i<4;i++)await page.locator('.date-choice-segment[data-type=year]').press('Backspace');
+await page.getByRole('button',{name:'Convert',exact:true}).click();await expect(page.getByRole('alert')).toContainText('Complete or clear the reference date');
+observations.push({case:'partial-reference-blocks-old-committed-date',dateBefore,partial:await page.locator('.date-input').textContent(),alert:await page.getByRole('alert').textContent()});
+await page.locator('.date-choice-calendar-button').click();await page.getByRole('button',{name:'Clear reference date',exact:true}).last().click();
+await page.getByRole('button',{name:'Convert',exact:true}).click();await expect(page.locator('.result')).toHaveCount(1);await expect(page.getByRole('alert')).toHaveCount(0);
+await page.locator('.date-choice-segment[data-type=day]').press('1');await page.getByRole('button',{name:'Reset preferences',exact:true}).click();
+await page.getByRole('button',{name:'Convert',exact:true}).click();await expect(page.locator('.result')).toHaveCount(1);
+observations.push({case:'automatic-clear-and-reset-recover-partial',date:await page.locator('.date-input').textContent(),result:await page.locator('.result').textContent()});
+async function theme(value:string){await page.locator('.appearance summary').click();await page.locator('#theme').click();await page.locator(`.choice-item[data-value=${value}]`).click();await page.locator('.appearance summary').click();}
+async function measure(name:string){
+ const m=await page.evaluate(()=>{
+   const box=(el:Element)=>{const r=el.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height,right:r.right,bottom:r.bottom};};
+   const p=document.querySelector('.choice-popover')!,s=getComputedStyle(p);
+   return{viewport:{width:innerWidth,height:innerHeight},theme:document.documentElement.dataset.theme,popover:box(p),background:s.backgroundColor,opacity:s.opacity,overflow:s.overflow,maxHeight:s.maxHeight,placement:p.getAttribute('data-placement'),rows:[...p.querySelectorAll('.choice-item,.calendar-day')].slice(0,4).map(el=>({...box(el),font:getComputedStyle(el).fontSize,padding:getComputedStyle(el).padding})),fields:[...document.querySelectorAll('#theme,#target-zone,#source-zone,#date-order,#time-format,.date-choice-control')].map(el=>({id:el.id,...box(el),font:getComputedStyle(el).fontSize,line:getComputedStyle(el).lineHeight,padding:getComputedStyle(el).padding})),documentWidth:document.documentElement.scrollWidth,active:document.activeElement?.outerHTML.slice(0,250)};
+ });
+ await page.screenshot({path:`${out}/${name}.png`,fullPage:false});observations.push({case:name,...m});
+ expect(m.popover.x).toBeGreaterThanOrEqual(11);expect(m.popover.right).toBeLessThanOrEqual(m.viewport.width-11);expect(m.documentWidth).toBeLessThanOrEqual(m.viewport.width);
+}
+for(const width of [280,1280])for(const t of ['dark','light']){
+ console.log('matrix',width,t);
+ await page.setViewportSize({width,height:900});await theme(t);
+ for(const id of ['theme','date-order','time-format']){
+  if(id==='theme')await page.locator('.appearance summary').click();
+  await page.locator('#'+id).click();await expect(page.locator('.choice-popover')).toBeVisible();await measure(`${width}-${t}-${id}`);
+  await page.keyboard.press('Escape');await expect(page.locator('.choice-popover')).toHaveCount(0);
+  if(id==='theme')await page.locator('.appearance summary').click();
+ }
+ for(const id of ['target','source']){
+  await page.locator(`#${id}-zone`).fill('Tokyo');await page.locator(`#${id}-zone`).press('Tab');
+  await page.getByRole('button',{name:`Show ${id} timezones`,exact:true}).click();await expect(page.locator('.choice-popover')).toBeVisible();await measure(`${width}-${t}-${id}`);await page.keyboard.press('Escape');
+ }
+ await page.locator('.date-choice-calendar-button').click();await expect(page.locator('.calendar-popover')).toBeVisible();await measure(`${width}-${t}-calendar`);await page.keyboard.press('Escape');
+}
+await page.setViewportSize({width:390,height:300});await page.locator('#time-format').click();await expect(page.locator('.choice-popover')).toBeVisible();await measure('short-viewport-time-format');
+await page.keyboard.press('ArrowDown');await page.keyboard.press('Enter');await expect(page.locator('.choice-popover')).toHaveCount(0);
+await page.locator('.date-choice-calendar-button').click();await expect(page.locator('.calendar-popover')).toBeVisible();await measure('short-viewport-calendar');await page.keyboard.press('Escape');
+await page.setViewportSize({width:1280,height:900});await page.locator('#target-zone').fill('Pacific/Chatham');await page.locator('#target-zone').press('Tab');await page.getByRole('button',{name:'Convert',exact:true}).click();await expect(page.locator('.result')).toHaveCount(1);
+const preserved=await page.locator('.result').textContent();await page.getByRole('button',{name:'Show target timezones',exact:true}).click();await page.setViewportSize({width:280,height:600});await expect(page.locator('.choice-popover')).toBeVisible();await measure('resize-open-menu');await page.keyboard.press('Escape');
+await expect(page.locator('#message')).toHaveValue('April 9, 2026 3pm UTC');await expect(page.locator('.result')).toHaveText(preserved!);
+await page.locator('#target-zone').fill('not a known zone');await expect(page.locator('.choice-empty')).toHaveText('No matches');await page.locator('#target-zone').press('Escape');await page.locator('#target-zone').fill('UTC');await page.locator('#target-zone').press('Tab');await expect(page.locator('.result-zone')).toHaveText('UTC');
+await page.locator('#time-format').click();await page.mouse.click(270,10);await expect(page.locator('.choice-popover')).toHaveCount(0);
+observations.push({case:'resize-draft-result-preserved-empty-filter-and-outside-click-recovery',text:await page.locator('#message').inputValue(),result:await page.locator('.result').textContent()});
+const assets=await page.evaluate(()=>[...document.querySelectorAll('link[rel=stylesheet],script[src]')].map(el=>el.getAttribute('href')||el.getAttribute('src')));
+const hashes=[];for(const asset of assets){const r=await ctx.request.get(new URL(asset!,url).href);hashes.push({asset,sha256:createHash('sha256').update(await r.body()).digest('hex')});}
+const result={revision:'e8d625c6f01dc2e0403c13fc800c592cfa7e61c8',browser:browser.version(),release:await(await ctx.request.get(url+'release.json')).json(),hashes,diagnostic,observations};
+await Bun.write(out+'/observations.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));await browser.close();
+} catch(error){await Bun.write(out+'/partial-observations.json',JSON.stringify({observations,diagnostic,error:String(error)},null,2));await page.screenshot({path:out+'/probe-failure.png',fullPage:true});console.log(String(error));console.log(await page.locator('body').innerText());await browser.close();throw error;}

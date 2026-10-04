@@ -1,4 +1,5 @@
 import { test, expect, publishRelease, disconnect } from "./fixtures";
+import { enterZone } from "./choices";
 
 const installTest = test.extend({ isolatedOrigin: true });
 
@@ -23,7 +24,7 @@ async function convert(page: import("@playwright/test").Page) {
   await page
     .getByLabel("Message with a date or time")
     .fill("June 18, 2026 at 5:20pm Tokyo");
-  await page.getByLabel("Convert to").fill("Europe/London");
+  await enterZone(page, "Europe/London");
   await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toHaveText(/9:20 am/i);
 }

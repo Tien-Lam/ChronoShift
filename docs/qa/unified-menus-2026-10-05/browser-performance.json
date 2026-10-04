@@ -1,0 +1,183 @@
+{
+  "measuredAt": "2026-10-04T17:13:58.905Z",
+  "release": {
+    "sourceCommit": "b2be4d445d7bc596bd6efa38fb3c9e369d01332b",
+    "base": "/"
+  },
+  "environment": "darwin/arm64, chromium 153.0.8010.12, Bun 1.4.0",
+  "device": "Development computer, 390×844 CSS-pixel viewport. No mobile hardware, CPU or network emulation.",
+  "method": "Ten fresh browser contexts for cold local HTTP navigation, ten offline cached reopenings; Playwright wall-clock navigation-to-visible-form/complete-cache includes automation overhead. Five warmups + thirty timed conversions per Glass Command workload use the production disposable worker and real result DOM; click capture to DOM completion includes worker startup, parsing and rendering. Frame gaps are diagnostic, not an input responsiveness certification. Local gzip estimates exclude HTTP headers. assets/totalGzipBytes cover only top-level dist/assets JS/CSS; offlineAssets/totalOfflineGzipBytes cover every final dist file including HTML, manifests, icons, notices, release metadata and the service worker. Fixed synthetic workloads are not worst-case proof.",
+  "assets": [
+    {
+      "name": "index-BVv0iSpp.js",
+      "bytes": 769452,
+      "gzipBytes": 233216
+    },
+    {
+      "name": "index-CLVwLFnt.css",
+      "bytes": 18394,
+      "gzipBytes": 4295
+    },
+    {
+      "name": "worker-C690IjaR.js",
+      "bytes": 221144,
+      "gzipBytes": 64577
+    }
+  ],
+  "totalGzipBytes": 302088,
+  "offlineAssets": [
+    {
+      "name": "assets/geist-latin-variable-Dm3htQBi.woff2",
+      "bytes": 28400,
+      "gzipBytes": 28428
+    },
+    {
+      "name": "assets/index-BVv0iSpp.js",
+      "bytes": 769452,
+      "gzipBytes": 233216
+    },
+    {
+      "name": "assets/index-CLVwLFnt.css",
+      "bytes": 18394,
+      "gzipBytes": 4295
+    },
+    {
+      "name": "assets/worker-C690IjaR.js",
+      "bytes": 221144,
+      "gzipBytes": 64577
+    },
+    {
+      "name": "fonts/README.txt",
+      "bytes": 483,
+      "gzipBytes": 319
+    },
+    {
+      "name": "fonts/geist-OFL.txt",
+      "bytes": 4386,
+      "gzipBytes": 1980
+    },
+    {
+      "name": "icon-192.png",
+      "bytes": 7136,
+      "gzipBytes": 7159
+    },
+    {
+      "name": "icon-512.png",
+      "bytes": 19658,
+      "gzipBytes": 19437
+    },
+    {
+      "name": "icon.svg",
+      "bytes": 355,
+      "gzipBytes": 228
+    },
+    {
+      "name": "index.html",
+      "bytes": 1200,
+      "gzipBytes": 652
+    },
+    {
+      "name": "manifest.webmanifest",
+      "bytes": 838,
+      "gzipBytes": 359
+    },
+    {
+      "name": "release.json",
+      "bytes": 79,
+      "gzipBytes": 95
+    },
+    {
+      "name": "sw.js",
+      "bytes": 7915,
+      "gzipBytes": 3288
+    },
+    {
+      "name": "third-party-notices.txt",
+      "bytes": 112585,
+      "gzipBytes": 9129
+    }
+  ],
+  "totalOfflineGzipBytes": 373162,
+  "coldOnlineNavigationToForm": {
+    "runs": 10,
+    "p50Ms": 92.66,
+    "p95Ms": 101.39,
+    "maxMs": 101.39
+  },
+  "coldOnlineNavigationToOfflineReady": {
+    "runs": 10,
+    "p50Ms": 175.53,
+    "p95Ms": 181.01,
+    "maxMs": 181.01
+  },
+  "warmOfflineNavigationToForm": {
+    "runs": 10,
+    "p50Ms": 80.06,
+    "p95Ms": 91.17,
+    "maxMs": 91.17
+  },
+  "conversions": [
+    {
+      "design": "command",
+      "workload": "meeting-2000",
+      "characters": 2000,
+      "conversion": {
+        "runs": 30,
+        "p50Ms": 51,
+        "p95Ms": 54.7,
+        "maxMs": 55.3
+      },
+      "maxFrameGap": {
+        "runs": 30,
+        "p50Ms": 18.6,
+        "p95Ms": 20,
+        "maxMs": 20.2
+      },
+      "provisionalBudgetMs": 250,
+      "meetsBudgetOnThisMachine": true
+    },
+    {
+      "design": "command",
+      "workload": "meeting-10000",
+      "characters": 10000,
+      "conversion": {
+        "runs": 30,
+        "p50Ms": 76.5,
+        "p95Ms": 85.2,
+        "maxMs": 85.5
+      },
+      "maxFrameGap": {
+        "runs": 30,
+        "p50Ms": 16.7,
+        "p95Ms": 18.8,
+        "maxMs": 20
+      },
+      "provisionalBudgetMs": 1000,
+      "meetsBudgetOnThisMachine": true
+    },
+    {
+      "design": "command",
+      "workload": "noisy-10000",
+      "characters": 10000,
+      "conversion": {
+        "runs": 30,
+        "p50Ms": 33.2,
+        "p95Ms": 34.4,
+        "maxMs": 36.5
+      },
+      "maxFrameGap": {
+        "runs": 30,
+        "p50Ms": 18.8,
+        "p95Ms": 20.23,
+        "maxMs": 20.43
+      },
+      "provisionalBudgetMs": 1000,
+      "meetsBudgetOnThisMachine": true
+    }
+  ],
+  "pending": [
+    "Named physical-phone startup/conversion p95",
+    "Real virtual-keyboard and Clear responsiveness",
+    "Representative phone network conditions"
+  ]
+}

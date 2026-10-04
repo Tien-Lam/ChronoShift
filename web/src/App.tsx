@@ -1,14 +1,14 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import type { Conversion, ConversionOptions, TimeResult } from "./engine/types";
 import { MAX_INPUT } from "./engine/limits";
 import { copyText, formatResult } from "./engine/time";
-import {
-  cityAliases,
-  resolveCity,
-  validZone,
-  zoneIds,
-  zoneName,
-} from "./engine/zones";
+import { resolveCity, validZone, zoneName } from "./engine/zones";
 import {
   DEFAULTS,
   deviceTimezone,
@@ -24,6 +24,8 @@ import {
 } from "./platform/handoff";
 import { setupOffline } from "./platform/offline";
 import type { OfflineState } from "./platform/offline";
+import { ChoiceSelect, ZoneChoice } from "./components/Choices";
+import { DateChoice } from "./components/DateChoice";
 
 const examples = [
   "April 9 at 9am PT / 12pm ET",
@@ -42,6 +44,8 @@ export default function App() {
   const [prefs, setPrefs] = useState(loadPreferences);
   const [device, setDevice] = useState(deviceTimezone);
   const [referenceDate, setReferenceDate] = useState("");
+  const [referenceReset, setReferenceReset] = useState(0);
+  const referenceValid = useRef(true);
   const [conversion, setConversion] = useState<Conversion>({
     results: [],
     warnings: [],
@@ -173,6 +177,10 @@ export default function App() {
     setError("");
     setManualCopy("");
   }
+  const referenceValidityChanged = useCallback((valid: boolean) => {
+    referenceValid.current = valid;
+    if (!valid) invalidate();
+  }, []);
   function run() {
     copyRequest.current++;
     setNotice("");
@@ -192,6 +200,10 @@ export default function App() {
       setError(
         "Choose a timezone from the list, or enter a city with one known timezone.",
       );
+      return;
+    }
+    if (!referenceValid.current) {
+      setError("Complete or clear the reference date before converting.");
       return;
     }
     request.current++;
@@ -327,7 +339,10 @@ export default function App() {
           <details
             className="appearance"
             onKeyDown={(event) => {
-              if (event.key === "Escape") {
+              if (
+                event.key === "Escape" &&
+                !document.querySelector(".choice-popover")
+              ) {
                 event.currentTarget.open = false;
                 event.currentTarget.querySelector("summary")?.focus();
               }
@@ -354,22 +369,22 @@ export default function App() {
             </summary>
             <div className="appearance-fields">
               <label htmlFor="theme">Theme</label>
-              <div className="choice-control">
-                <select
-                  id="theme"
-                  value={prefs.theme}
-                  onChange={(e) =>
-                    setPrefs({
-                      ...prefs,
-                      theme: e.target.value as "dark" | "light" | "system",
-                    })
-                  }
-                >
-                  <option value="dark">Dark</option>
-                  <option value="light">Light</option>
-                  <option value="system">System</option>
-                </select>
-              </div>
+              <ChoiceSelect
+                id="theme"
+                label="Theme"
+                value={prefs.theme}
+                onChange={(theme) =>
+                  setPrefs({
+                    ...prefs,
+                    theme: theme as "dark" | "light" | "system",
+                  })
+                }
+                options={[
+                  { id: "dark", label: "Dark" },
+                  { id: "light", label: "Light" },
+                  { id: "system", label: "System" },
+                ]}
+              />
             </div>
           </details>
         </div>
@@ -429,24 +444,22 @@ export default function App() {
             <div className="target-field">
               <label htmlFor="target-zone">Convert to</label>
               <div className="conversion-controls">
-                <div className="choice-control">
-                  <input
-                    id="target-zone"
-                    list="zones"
-                    value={prefs.target}
-                    onChange={(e) => {
-                      copyRequest.current++;
-                      setPrefs({ ...prefs, target: e.target.value });
-                      setError("");
-                      setManualCopy("");
-                      setNotice("");
-                    }}
-                    aria-invalid={!targetZone}
-                    aria-describedby="target-zone-help"
-                    placeholder={`Your timezone · ${zoneName(device)}`}
-                    autoComplete="off"
-                  />
-                </div>
+                <ZoneChoice
+                  id="target-zone"
+                  label="Convert to"
+                  value={prefs.target}
+                  onChange={(target) => {
+                    copyRequest.current++;
+                    setPrefs({ ...prefs, target });
+                    setError("");
+                    setManualCopy("");
+                    setNotice("");
+                  }}
+                  invalid={!targetZone}
+                  describedBy="target-zone-help"
+                  placeholder={`Your timezone · ${zoneName(device)}`}
+                  triggerLabel="Show target timezones"
+                />
                 <button
                   type="button"
                   className="convert-button"
@@ -473,91 +486,75 @@ export default function App() {
                   : "Choose a timezone or city from the list"}
               </span>
             </div>
-            <datalist id="zones">
-              {zoneIds.map((zone) => (
-                <option key={zone} value={zone}>
-                  {zoneName(zone)}
-                </option>
-              ))}
-              {cityAliases.map((city) => (
-                <option key={city} value={city}>
-                  {zoneName(resolveCity(city).zones[0])}
-                </option>
-              ))}
-            </datalist>
+
             <details className="options">
               <summary>More options</summary>
               <div className="option-fields">
                 <label htmlFor="source-zone">
                   Source timezone when none is given
                 </label>
-                <div className="choice-control">
-                  <input
-                    id="source-zone"
-                    list="zones"
-                    value={prefs.source}
-                    onChange={(e) => {
-                      setPrefs({ ...prefs, source: e.target.value });
-                      invalidate();
-                    }}
-                    placeholder={`Device timezone · ${device}`}
-                    autoComplete="off"
-                  />
-                </div>
-                <label htmlFor="reference-date">
-                  Reference date for this message
-                </label>
-                <input
-                  id="reference-date"
-                  type="date"
-                  value={referenceDate}
-                  onChange={(e) => {
-                    setReferenceDate(e.target.value);
+                <ZoneChoice
+                  id="source-zone"
+                  label="Source timezone when none is given"
+                  value={prefs.source}
+                  onChange={(source) => {
+                    setPrefs({ ...prefs, source });
                     invalidate();
                   }}
+                  placeholder={`Device timezone · ${device}`}
+                  triggerLabel="Show source timezones"
+                />
+                <DateChoice
+                  key={referenceReset}
+                  id="reference-date"
+                  label="Reference date for this message"
+                  value={referenceDate}
+                  onChange={(date) => {
+                    setReferenceDate(date);
+                    invalidate();
+                  }}
+                  onValidityChange={referenceValidityChanged}
                 />
                 <span className="field-note">
                   Leave empty to use today. Useful for an older message.
                 </span>
                 <label htmlFor="date-order">Numeric dates</label>
-                <div className="choice-control">
-                  <select
-                    id="date-order"
-                    value={prefs.dateOrder}
-                    onChange={(e) => {
-                      setPrefs({
-                        ...prefs,
-                        dateOrder: e.target.value as "mdy" | "dmy",
-                      });
-                      invalidate();
-                    }}
-                  >
-                    <option value="mdy">Month / day (04/09 = April 9)</option>
-                    <option value="dmy">
-                      Day / month (04/09 = 4 September)
-                    </option>
-                  </select>
-                </div>
+                <ChoiceSelect
+                  id="date-order"
+                  label="Numeric dates"
+                  value={prefs.dateOrder}
+                  onChange={(dateOrder) => {
+                    setPrefs({
+                      ...prefs,
+                      dateOrder: dateOrder as "mdy" | "dmy",
+                    });
+                    invalidate();
+                  }}
+                  options={[
+                    { id: "mdy", label: "Month / day (04/09 = April 9)" },
+                    { id: "dmy", label: "Day / month (04/09 = 4 September)" },
+                  ]}
+                />
                 <label htmlFor="time-format">Time display</label>
-                <div className="choice-control">
-                  <select
-                    id="time-format"
-                    value={prefs.hourCycle}
-                    onChange={(e) => {
-                      copyRequest.current++;
-                      setManualCopy("");
-                      setNotice("");
-                      setPrefs({
-                        ...prefs,
-                        hourCycle: e.target.value as "auto" | "12" | "24",
-                      });
-                    }}
-                  >
-                    <option value="auto">Use my device format</option>
-                    <option value="12">12-hour (3:00 PM)</option>
-                    <option value="24">24-hour (15:00)</option>
-                  </select>
-                </div>
+                <ChoiceSelect
+                  id="time-format"
+                  label="Time display"
+                  value={prefs.hourCycle}
+                  onChange={(hourCycle) => {
+                    copyRequest.current++;
+                    setManualCopy("");
+                    setNotice("");
+                    setPrefs({
+                      ...prefs,
+                      hourCycle: hourCycle as "auto" | "12" | "24",
+                    });
+                  }}
+                  options={[
+                    { id: "auto", label: "Use my device format" },
+                    { id: "12", label: "12-hour (3:00 PM)" },
+                    { id: "24", label: "24-hour (15:00)" },
+                  ]}
+                />
                 <button
                   type="button"
                   className="text-button"
@@ -565,6 +562,8 @@ export default function App() {
                     resetPreferences();
                     setPrefs({ ...DEFAULTS });
                     setReferenceDate("");
+                    referenceValid.current = true;
+                    setReferenceReset((version) => version + 1);
                     invalidate();
                     setNotice("Preferences reset.");
                   }}

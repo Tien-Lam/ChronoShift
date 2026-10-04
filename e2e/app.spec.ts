@@ -1,4 +1,5 @@
 import { test, expect, disconnect, publishRelease } from "./fixtures";
+import { choose, enterZone } from "./choices";
 import AxeBuilder from "@axe-core/playwright";
 import type { Page } from "@playwright/test";
 const releaseTest = test.extend({ isolatedOrigin: true });
@@ -77,10 +78,10 @@ test("an intact offline app survives a failed registration check while changing 
     "true",
   );
   await convert(page, "June 18, 2026 at 5:20pm in Tokyo");
-  await page.getByLabel("Convert to").fill("UTC");
+  await enterZone(page, "UTC");
   await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toHaveText(/8:20 am/i);
-  await page.getByLabel("Convert to").fill("Europe/London");
+  await enterZone(page, "Europe/London");
   await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toHaveText(/9:20 am/i);
   await expect(
@@ -114,7 +115,7 @@ test("a delayed failed readiness probe cannot overwrite a newer successful check
     "data-offline-ready",
     "true",
   );
-  await page.getByLabel("Convert to").fill("UTC");
+  await enterZone(page, "UTC");
   await convert(page, "June 18, 2026 at 5:20pm in Tokyo");
   await expect
     .poll(() => page.evaluate(() => (window as any).oldProbeDelivered))
@@ -220,7 +221,7 @@ test("close and reopen offline, then convert previously unseen input", async ({
 }) => {
   await ready(page);
   await page.getByLabel("Appearance", { exact: true }).click();
-  await page.getByLabel("Theme", { exact: true }).selectOption("light");
+  await choose(page, "Theme", "light");
   await page.close();
   await disconnect(context, origin);
   const reopened = await context.newPage();
@@ -241,11 +242,11 @@ test("preferences persist, input does not; denied storage still converts", async
   page,
 }) => {
   await ready(page);
-  await page.getByLabel("Convert to").fill("Asia/Tokyo");
+  await enterZone(page, "Asia/Tokyo");
   await convert(page);
   const result = await page.locator(".hero-time").innerText();
   await page.getByLabel("Appearance", { exact: true }).click();
-  await page.getByLabel("Theme", { exact: true }).selectOption("light");
+  await choose(page, "Theme", "light");
   await expect(page.locator(".hero-time")).toHaveText(result);
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-design", "command");
@@ -296,7 +297,7 @@ test("readable at 320px, dark mode, with no serious accessibility violations", a
   await page.setViewportSize({ width: 320, height: 740 });
   await page.emulateMedia({ colorScheme: "dark", reducedMotion: "reduce" });
   await page.getByLabel("Appearance", { exact: true }).click();
-  await page.getByLabel("Theme", { exact: true }).selectOption("system");
+  await choose(page, "Theme", "system");
   await page.getByLabel("Appearance", { exact: true }).click();
   expect(
     await page.evaluate(

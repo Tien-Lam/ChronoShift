@@ -1,4 +1,5 @@
 import { test, expect } from "./fixtures";
+import { enterZone } from "./choices";
 
 for (const source of ["clipboard", "share"] as const) {
   test(`delayed ${source} offers replacement instead of overwriting edited or cleared work`, async ({
@@ -97,7 +98,7 @@ for (const source of ["clipboard", "share"] as const) {
       const input = page.getByLabel("Message with a date or time");
       if (action === "restored") await expect(input).toHaveValue(newer);
       else if (action !== "untouched") await input.fill(newer);
-      await page.getByLabel("Convert to").fill("UTC");
+      await enterZone(page, "UTC");
       if (action === "convert") {
         await page
           .getByRole("button", { name: "Convert", exact: true })
@@ -190,7 +191,7 @@ test("an unresolved target hides copyable fallback results and correction restor
   );
   await page.goto("/");
   await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
-  await page.getByLabel("Convert to").fill("UTC");
+  await enterZone(page, "UTC");
   await page
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3pm UTC");
@@ -198,7 +199,7 @@ test("an unresolved target hides copyable fallback results and correction restor
   await expect(page.locator(".hero-time")).toContainText(/3:00 pm/i);
   await page.getByRole("button", { name: "Copy UTC", exact: true }).click();
   await expect(page.getByLabel("Text to copy")).toBeVisible();
-  await page.getByLabel("Convert to").fill("CST");
+  await enterZone(page, "CST");
   await expect(page.locator(".result")).toHaveCount(0);
   await expect(
     page.getByRole("button", { name: "Copy UTC", exact: true }),
@@ -207,7 +208,7 @@ test("an unresolved target hides copyable fallback results and correction restor
   await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.getByRole("alert")).toContainText("Choose a timezone");
   await expect(page.locator(".result")).toHaveCount(0);
-  await page.getByLabel("Convert to").fill("Asia/Tokyo");
+  await enterZone(page, "Asia/Tokyo");
   await expect(page.getByRole("alert")).toHaveCount(0);
   await expect(page.locator(".hero-time")).toContainText(/12:00 am/i);
   await expect(page.locator(".result-date")).toContainText(/10 Apr/);
@@ -220,7 +221,7 @@ test("an unresolved target hides copyable fallback results and correction restor
     (window as any).delayCopy = true;
   });
   await page.getByRole("button", { name: "Copy UTC", exact: true }).click();
-  await page.getByLabel("Convert to").fill("CST");
+  await enterZone(page, "CST");
   await page.evaluate(() =>
     (window as any).rejectCopy(new Error("Delayed clipboard rejection")),
   );

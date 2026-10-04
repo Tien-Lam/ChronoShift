@@ -1,4 +1,5 @@
 import { test, expect, disconnect, publishRelease } from "./fixtures";
+import { choose } from "./choices";
 import type { BrowserContext, Page } from "@playwright/test";
 test.use({ isolatedOrigin: true });
 
@@ -293,7 +294,7 @@ test("rollback preserves draft and preferences and removes obsolete caches with 
   await page.goto("/");
   await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
   await page.getByLabel("Appearance", { exact: true }).click();
-  await page.getByLabel("Theme", { exact: true }).selectOption("light");
+  await choose(page, "Theme", "light");
   await page.getByLabel("Appearance", { exact: true }).click();
   for (const version of ["second", "third", "first"]) {
     await page

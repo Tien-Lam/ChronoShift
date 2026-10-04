@@ -1,4 +1,9 @@
 import { join } from "node:path";
+// The published client-only marker omits its license file. Retain the upstream
+// React MIT license locally; provenance and version are in docs/licenses/README.md.
+const missingDistributionLicenses: Record<string, string> = {
+  "client-only@0.0.1": "docs/licenses/client-only.LICENSE",
+};
 const app = await Bun.file("package.json").json();
 const queue = Object.keys(app.dependencies).sort(),
   seen = new Set<string>(),
@@ -24,6 +29,8 @@ while (queue.length) {
       break;
     }
   }
+  const fallback = missingDistributionLicenses[`${name}@${pkg.version}`];
+  if (!license && fallback) license = await Bun.file(fallback).text();
   if (!license)
     throw new Error(`Review and include the distribution notice for ${name}`);
   const notice = (await Bun.file(join(root, "NOTICE")).exists())

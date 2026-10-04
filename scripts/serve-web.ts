@@ -1,5 +1,6 @@
 import { resolve, extname } from "node:path";
 import { testReleases } from "./test-releases";
+import { PREVIEW_CSP } from "./csp";
 // Same-origin static preview. Test versions exist only when explicitly enabled.
 const root = resolve("dist"),
   base = process.env.BASE_PATH || "/",
@@ -98,8 +99,7 @@ const server = Bun.serve({
         "Cache-Control": relative.startsWith("assets/")
           ? "public, max-age=31536000, immutable"
           : "no-cache",
-        "Content-Security-Policy":
-          "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; worker-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+        "Content-Security-Policy": PREVIEW_CSP,
         "X-Content-Type-Options": "nosniff",
         "Referrer-Policy": "no-referrer",
       },
