@@ -1,16 +1,15 @@
-*.iml
-.gradle
-/local.properties
-/.idea
+# Local editor and operating-system files
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
-/app/build
+/.idea
+*.iml
 
-# Beads / Dolt files (added by bd init)
+# Web build and verification outputs
+node_modules/
+/dist/
+/test-results/
+/playwright-report/
+
+# Beads / Dolt local data
 .dolt/
 *.db
 .beads-credential-key

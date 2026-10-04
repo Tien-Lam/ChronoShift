@@ -4,6 +4,19 @@ All notable changes to ChronoShift are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- Private, adaptive offline web app with local Chrono/Temporal conversion, timezone corrections, ambiguity, copying and install support.
+- GitHub Pages hosting, verified updates/rollback, exact web fixtures and browser/offline checks.
+- Desktop, phone, tablet and foldable layouts with safe-area and hinge-aware enhancements.
+
+### Removed
+
+- Native Android application, Gradle tooling, APK release/test workflows and native model maintenance.
+- Native dependency maintenance and source-dependent corpus generation. The conversion input corpus is maintained as standalone web data.
+
 ## [0.1.0] - 2026-04-11
 
 Initial release.

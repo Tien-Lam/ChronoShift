@@ -1,98 +1,39 @@
-# NLP Pipeline
+# Web conversion pipeline
 
-ChronoShift extracts timestamps from arbitrary text using a tiered, streaming pipeline. Fast results appear immediately, with LiteRT/Gemma results merging in later when the optional on-device model is installed.
-
-## Overview
-
-```mermaid
-flowchart TD
-    input[Input text]
-
-    subgraph stage1[Stage 1 — instant]
-        mlkit[ML Kit — detect datetime spans]
-        chrono[Chrono.js / QuickJS — parse spans + full text]
-        regex[Regex — unix timestamps, time in City]
-        mlkit --> chrono
-    end
-
-    subgraph stage2[Stage 2 — background]
-        litert[LiteRT — on-device Gemma LLM]
-    end
-
-    expand[Expand ambiguous abbreviations]
-
-    input --> stage1
-    input --> stage2
-    stage1 -- emit immediately --> merge1[ResultMerger]
-    stage2 -- emit when available --> merge2[ResultMerger]
-    merge1 --> merge2
-    merge2 --> expand
-    expand -- emit final --> results[ExtractionResult]
-```
-
-## Orchestration
-
-`TieredTimeExtractor` orchestrates the pipeline. It implements `StreamingTimeExtractor`, exposing a `Flow<ExtractionResult>` that emits incrementally as stages complete.
-
-### Stage 1: Fast Extractors
-
-Three extractors run concurrently:
-
-1. **ML Kit span detection** (`MlKitEntityExtractor` / `SpanDetector`) — identifies datetime-like spans in the input text. These spans are fed to Chrono for focused parsing, which improves accuracy over raw full-text parsing.
-
-2. **Chrono.js** (`ChronoExtractor` / `SpanAwareTimeExtractor`) — a JavaScript NLP datetime parser running in QuickJS via Zipline. When ML Kit provides spans, Chrono parses each span individually, then also parses the full text to capture context like timezones that isolated spans miss. `ChronoResultParser.mergeSpanAndFullResults()` combines the two.
-
-3. **Regex** (`RegexExtractor`) — handles unix timestamps (e.g. `1700000000`) and "time in City" patterns. Delegates city-to-timezone resolution to `CityResolver`.
-
-ML Kit and Chrono run as a coordinated pair (spans feed into Chrono). Regex runs independently. All three complete near-instantly and results are merged and emitted.
-
-### Stage 2: On-Device LLM
-
-**LiteRT** (`LiteRtExtractor`) runs a selected Gemma model via Google LiteRT-LM. Compatible models are listed in `model-manifest.json`; Settings can fetch that manifest, show update availability, and download the recommended model through `ModelDownloader`. The model receives a structured prompt asking for JSON output with time, date, timezone, and original text fields. `LlmResultParser` parses the response.
-
-If no LiteRT model is installed, Stage 1 results remain the final results.
-
-### Final Step: Ambiguity Expansion
-
-After all stages complete, `ChronoResultParser.expandAmbiguous()` expands timezone abbreviations that map to multiple zones (e.g., "CST" → US Central + China Standard) into separate results.
-
-## Interfaces
-
-| Interface | Purpose | Implementors |
-|---|---|---|
-| `TimeExtractor` | Basic `extract(text): ExtractionResult` | All extractors, `TieredTimeExtractor` |
-| `SpanAwareTimeExtractor` | Adds `extractWithSpans(text, spans)` | `ChronoExtractor` |
-| `SpanDetector` | `detectSpans(text): List<DateTimeSpan>` | `MlKitEntityExtractor` |
-| `StreamingTimeExtractor` | `extractStream(text): Flow<ExtractionResult>` | `TieredTimeExtractor` |
-
-## Data Flow
+ChronoShift parses messages locally in a disposable browser worker. The launch path uses pinned Chrono and bundled Temporal, without a model download or conversion service.
 
 ```mermaid
 flowchart LR
-    text[text]
-
-    text --> mlkit["MlKitEntityExtractor\n.detectSpans()"]
-    mlkit --> chrono["ChronoExtractor\n.extractWithSpans()"]
-    chrono --> chronoparse["ChronoResultParser\n.parse() + .mergeSpanAndFullResults()"]
-
-    text --> regex["RegexExtractor\n.extract()"]
-
-    chronoparse --> merge1["ResultMerger — emit Stage 1"]
-    regex --> merge1
-
-    text --> litert["LiteRtExtractor\n.extract()"]
-    litert --> llmparse["LlmResultParser\n.parseResponse()"]
-    llmparse --> merge2["ResultMerger — emit Stage 2"]
-    merge1 --> merge2
-
-    merge2 --> expand["ChronoResultParser\n.expandAmbiguous()"]
-    expand --> final[emit final]
+    input[Editable message] --> worker[Cancellable worker]
+    worker --> parse[Chrono and bounded extensions]
+    parse --> context[Source date and range context]
+    context --> zones[Offsets, regions, cities and ambiguity]
+    zones --> temporal[Exact instants and DST alternatives]
+    temporal --> merge[Stable result identity and duplicates]
+    merge --> format[Target timezone and display preferences]
+    format --> results[Date, time, zone and Copy]
 ```
 
-## Key Design Decisions
+## Parsing and source context
 
-- **ML Kit is a spotter, not a parser.** It detects datetime spans but has no timezone awareness. Chrono does the actual parsing.
-- **Span + full-text dual parse.** Chrono parses each ML Kit span individually (for precision) and the full text (for timezone context). The merge step upgrades span results with timezone info from the full-text parse.
-- **LiteRT is optional.** The app keeps working on devices without a downloaded model; when present, the Gemma model adds background LLM-quality results.
-- **Model updates are explicit.** The manifest can advertise newer compatible LiteRT models, but installed users stay on their current model until they choose the update in Settings.
-- **Timezone from offsets, not names.** Chrono returns timezone as minute offsets. `ChronoResultParser.offsetToTimezone()` finds a matching IANA zone at the parsed instant, which means the same offset can map to different zones depending on DST.
+`engine/parser.ts` clones the pinned English Chrono parsers for month/day and day/month conventions. Bounded extensions handle military hours, shorthand meridiem and between-ranges. `convert.ts` receives the reference instant, default source zone, target zone and numeric-date order explicitly.
+
+The reference day is resolved in the source zone. Date context may apply within a sentence/list and resets across unrelated text. Ranges retain endpoint order and overnight dates. Dates without times remain dates. Unix seconds use a bounded supported interval.
+
+## Timezone interpretation
+
+Explicit offsets and standard/daylight abbreviations remain fixed offsets. Regional PT/ET/CT/MT and IANA zones use event-date DST rules. Supported ambiguous abbreviations retain all labeled alternatives. Curated offline city aliases and unique bounded typo matches need no geocoder.
+
+Temporal returns both valid instants for a repeated DST local time and a warning for a nonexistent local time. Unknown zones/cities and unsupported vague expressions require correction rather than an invented answer. See [the product contract](../planning/web-product-contract.md) for exact independent examples.
+
+## Merge and display
+
+Results keep their source identity, date and range endpoint. Duplicate mentions increment occurrences; an explicit source can replace an equivalent assumed source. Target changes only reformat existing results. Display and copying preserve the full date, offset/zone, seconds and milliseconds when supplied. [Merge rules](merge-philosophy.md) explain the boundaries.
+
+## Request lifecycle and privacy
+
+`App.tsx` creates a disposable worker for each conversion. Request IDs and invalidation prevent late results from replacing edited/cleared input. Errors retain editable text. Conversion text stays in memory; only preferences persist by default. A supported POST share or explicit update uses a short-lived, single-use local handoff.
+
+The build bundles UI/parser/polyfill/worker/CSS/icons/notices on the same origin. Atomic service-worker preparation confirms all required assets before reporting Offline ready. New versions wait for explicit activation; partial installations retain the working cache.
+
+Optional learned span detection is a separate research/benchmark ticket. It must justify its browser size, latency and accuracy before enhancing the deterministic path. See [ML research](../planning/lightweight-browser-ml-research.md).

@@ -1,0 +1,41 @@
+{
+  "environment": "darwin/arm64, Bun 1.4.0",
+  "method": "Production asset gzip estimate, followed by 5 warmups + 30 timed real-engine conversions with fixed reference and synthetic repeated meeting text. This is a development-machine measurement, not phone/browser startup or worst-case proof.",
+  "assets": [
+    {
+      "name": "worker-Dcv-t75w.js",
+      "bytes": 218704,
+      "gzipBytes": 63777
+    },
+    {
+      "name": "index-BbxSBDlz.js",
+      "bytes": 400679,
+      "gzipBytes": 121051
+    },
+    {
+      "name": "index-wpxFTbJy.css",
+      "bytes": 14187,
+      "gzipBytes": 3590
+    }
+  ],
+  "totalGzipBytes": 188418,
+  "conversions": [
+    {
+      "characters": 2000,
+      "runs": 30,
+      "p50Ms": 9.36,
+      "p95Ms": 10.45
+    },
+    {
+      "characters": 10000,
+      "runs": 30,
+      "p50Ms": 43.81,
+      "p95Ms": 45.67
+    }
+  ],
+  "pending": [
+    "Representative real phone p95",
+    "Cold online and warm offline startup",
+    "Adversarial long text and UI responsiveness on real mobile"
+  ]
+}

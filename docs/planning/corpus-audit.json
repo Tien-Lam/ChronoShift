@@ -1,0 +1,347 @@
+{
+  "reference": {
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "dateOrder": "mdy"
+  },
+  "total": 353,
+  "crashes": 0,
+  "legacyCountDifferences": 27,
+  "note": "This inventories actual browser engine output. Count matches and local clock matches are not exact date/zone accuracy evidence. Reviewed exact fixtures are in tests/fixtures/temporal.json. Differences include intentional ambiguity, deduplication and date-only changes as well as parser gaps.",
+  "differences": [
+    {
+      "id": "android-012",
+      "input": "3pm CST",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-013",
+      "input": "3:00 PM CST",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-033",
+      "input": "3pm BST",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-034",
+      "input": "10:00 AM BST",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-042",
+      "input": "3pm IST",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-043",
+      "input": "15:00 IST",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-047",
+      "input": "3pm CST",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-059",
+      "input": "3pm AST",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-106",
+      "input": "9 April 2026 at 15:00 BST",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-107",
+      "input": "9 April 2026 at 3pm BST",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-111",
+      "input": "09/04/2026 3:00 PM BST",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-120",
+      "input": "June 15th 2026 14:00 IST",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-125",
+      "input": "4:30 AM PT / 7:30 AM ET / 19:30 CST",
+      "legacyExpectedCount": 3,
+      "actualCount": 4,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-132",
+      "input": "8:30 PM IST / 3:00 PM GMT / 10:00 AM EST",
+      "legacyExpectedCount": 3,
+      "actualCount": 4,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-150",
+      "input": "9 April 2026, 09:00 - 10:30 BST",
+      "legacyExpectedCount": 2,
+      "actualCount": 4,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-190",
+      "input": "13:45 BST",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-199",
+      "input": "EOD Friday PST",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "warnings": [
+        "EOD/COB does not specify a clock time. Replace it with the intended time."
+      ],
+      "dates": [
+        "2026-04-03"
+      ]
+    },
+    {
+      "id": "android-200",
+      "input": "EOD EST",
+      "legacyExpectedCount": 1,
+      "actualCount": 0,
+      "missingLocalTimes": [
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "warnings": [
+        "EOD/COB does not specify a clock time. Replace it with the intended time."
+      ],
+      "dates": []
+    },
+    {
+      "id": "android-201",
+      "input": "COB Friday EST",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "warnings": [
+        "EOD/COB does not specify a clock time. Replace it with the intended time."
+      ],
+      "dates": [
+        "2026-04-03"
+      ]
+    },
+    {
+      "id": "android-203",
+      "input": "the call is at half past 3 EST",
+      "legacyExpectedCount": 1,
+      "actualCount": 0,
+      "missingLocalTimes": [
+        {
+          "hour": 15,
+          "minute": 30,
+          "timezone": "EST"
+        }
+      ],
+      "warnings": [
+        "“half past 3” needs a clear clock time. Replace it with a time such as 3:30pm."
+      ],
+      "dates": []
+    },
+    {
+      "id": "android-204",
+      "input": "quarter to 4 PST",
+      "legacyExpectedCount": 1,
+      "actualCount": 0,
+      "missingLocalTimes": [
+        {
+          "hour": 15,
+          "minute": 45,
+          "timezone": "PST"
+        }
+      ],
+      "warnings": [
+        "“quarter to 4” needs a clear clock time. Replace it with a time such as 3:30pm."
+      ],
+      "dates": []
+    },
+    {
+      "id": "android-205",
+      "input": "quarter past 2 GMT",
+      "legacyExpectedCount": 1,
+      "actualCount": 0,
+      "missingLocalTimes": [
+        {
+          "hour": 14,
+          "minute": 15,
+          "timezone": "GMT"
+        }
+      ],
+      "warnings": [
+        "“quarter past 2” needs a clear clock time. Replace it with a time such as 3:30pm."
+      ],
+      "dates": []
+    },
+    {
+      "id": "android-206",
+      "input": "half past noon EST",
+      "legacyExpectedCount": 1,
+      "actualCount": 0,
+      "missingLocalTimes": [
+        {
+          "hour": 12,
+          "minute": 30,
+          "timezone": "EST"
+        }
+      ],
+      "warnings": [
+        "“half past noon” needs a clear clock time. Replace it with a time such as 3:30pm."
+      ],
+      "dates": []
+    },
+    {
+      "id": "android-207",
+      "input": "let's meet at 3ish EST",
+      "legacyExpectedCount": 1,
+      "actualCount": 0,
+      "missingLocalTimes": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "warnings": [
+        "“3ish” needs a clear clock time. Replace it with a time such as 3:30pm."
+      ],
+      "dates": []
+    },
+    {
+      "id": "android-227",
+      "input": "8pm (IST)",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-275",
+      "input": "3pm BST (British Summer Time)",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-276",
+      "input": "3pm IST (Indian Standard Time)",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "android-331",
+      "input": "April 9, 2026",
+      "legacyExpectedCount": 0,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": [
+        "2026-04-09"
+      ]
+    },
+    {
+      "id": "android-332",
+      "input": "04/09/2026",
+      "legacyExpectedCount": 0,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": [
+        "2026-04-09"
+      ]
+    }
+  ]
+}

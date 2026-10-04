@@ -1,0 +1,5611 @@
+{
+  "source": "https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/TestData.kt",
+  "sourceSha256": "7d9e50a9036db95233b308b583052cade3d62828716ab474f1d546401f636be7",
+  "cases": [
+    {
+      "id": "android-001",
+      "input": "3pm EST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "simple 12h + EST"
+    },
+    {
+      "id": "android-002",
+      "input": "3:00 PM EST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "12h with minutes + EST"
+    },
+    {
+      "id": "android-003",
+      "input": "15:00 EST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "24h + EST"
+    },
+    {
+      "id": "android-004",
+      "input": "3 PM EST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "space before PM + EST"
+    },
+    {
+      "id": "android-005",
+      "input": "3pm EDT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EDT"
+        }
+      ],
+      "description": "simple 12h + EDT"
+    },
+    {
+      "id": "android-006",
+      "input": "3:00 PM EDT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EDT"
+        }
+      ],
+      "description": "12h with minutes + EDT"
+    },
+    {
+      "id": "android-007",
+      "input": "3pm ET",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "ET"
+        }
+      ],
+      "description": "simple 12h + ET (generic Eastern)"
+    },
+    {
+      "id": "android-008",
+      "input": "9:30 a.m. EST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 30,
+          "timezone": "EST"
+        }
+      ],
+      "description": "dotted am + EST"
+    },
+    {
+      "id": "android-009",
+      "input": "9:30 A.M. EST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 30,
+          "timezone": "EST"
+        }
+      ],
+      "description": "dotted AM uppercase + EST"
+    },
+    {
+      "id": "android-010",
+      "input": "9:30am EST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 30,
+          "timezone": "EST"
+        }
+      ],
+      "description": "no-space am + EST"
+    },
+    {
+      "id": "android-011",
+      "input": "11:45 PM EDT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 23,
+          "minute": 45,
+          "timezone": "EDT"
+        }
+      ],
+      "description": "late evening + EDT"
+    },
+    {
+      "id": "android-012",
+      "input": "3pm CST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "CST"
+        }
+      ],
+      "description": "simple 12h + CST"
+    },
+    {
+      "id": "android-013",
+      "input": "3:00 PM CST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "CST"
+        }
+      ],
+      "description": "12h with minutes + CST"
+    },
+    {
+      "id": "android-014",
+      "input": "3pm CDT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "CDT"
+        }
+      ],
+      "description": "simple 12h + CDT"
+    },
+    {
+      "id": "android-015",
+      "input": "3pm CT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "CT"
+        }
+      ],
+      "description": "simple 12h + CT (generic Central)"
+    },
+    {
+      "id": "android-016",
+      "input": "8:15 AM CDT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 8,
+          "minute": 15,
+          "timezone": "CDT"
+        }
+      ],
+      "description": "morning + CDT"
+    },
+    {
+      "id": "android-017",
+      "input": "3pm MST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "MST"
+        }
+      ],
+      "description": "simple 12h + MST"
+    },
+    {
+      "id": "android-018",
+      "input": "3:00 PM MST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "MST"
+        }
+      ],
+      "description": "12h with minutes + MST"
+    },
+    {
+      "id": "android-019",
+      "input": "3pm MDT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "MDT"
+        }
+      ],
+      "description": "simple 12h + MDT"
+    },
+    {
+      "id": "android-020",
+      "input": "3pm MT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "MT"
+        }
+      ],
+      "description": "simple 12h + MT (generic Mountain)"
+    },
+    {
+      "id": "android-021",
+      "input": "10:00 AM MST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "MST"
+        }
+      ],
+      "description": "morning + MST"
+    },
+    {
+      "id": "android-022",
+      "input": "3pm PST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "simple 12h + PST"
+    },
+    {
+      "id": "android-023",
+      "input": "3:00 PM PST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "12h with minutes + PST"
+    },
+    {
+      "id": "android-024",
+      "input": "3pm PDT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PDT"
+        }
+      ],
+      "description": "simple 12h + PDT"
+    },
+    {
+      "id": "android-025",
+      "input": "3pm PT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PT"
+        }
+      ],
+      "description": "simple 12h + PT (generic Pacific)"
+    },
+    {
+      "id": "android-026",
+      "input": "9:30 a.m. PST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 30,
+          "timezone": "PST"
+        }
+      ],
+      "description": "dotted am + PST"
+    },
+    {
+      "id": "android-027",
+      "input": "9:30 A.M. PST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 30,
+          "timezone": "PST"
+        }
+      ],
+      "description": "dotted AM uppercase + PST"
+    },
+    {
+      "id": "android-028",
+      "input": "7:00 p.m. PDT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 19,
+          "minute": 0,
+          "timezone": "PDT"
+        }
+      ],
+      "description": "dotted pm + PDT"
+    },
+    {
+      "id": "android-029",
+      "input": "3pm GMT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "simple 12h + GMT"
+    },
+    {
+      "id": "android-030",
+      "input": "15:00 GMT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "24h + GMT"
+    },
+    {
+      "id": "android-031",
+      "input": "3pm UTC",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "simple 12h + UTC"
+    },
+    {
+      "id": "android-032",
+      "input": "15:00 UTC",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "24h + UTC"
+    },
+    {
+      "id": "android-033",
+      "input": "3pm BST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "BST"
+        }
+      ],
+      "description": "simple 12h + BST"
+    },
+    {
+      "id": "android-034",
+      "input": "10:00 AM BST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "BST"
+        }
+      ],
+      "description": "morning + BST"
+    },
+    {
+      "id": "android-035",
+      "input": "3pm CET",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "CET"
+        }
+      ],
+      "description": "simple 12h + CET"
+    },
+    {
+      "id": "android-036",
+      "input": "15:00 CET",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "CET"
+        }
+      ],
+      "description": "24h + CET"
+    },
+    {
+      "id": "android-037",
+      "input": "3pm CEST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "CEST"
+        }
+      ],
+      "description": "simple 12h + CEST"
+    },
+    {
+      "id": "android-038",
+      "input": "14:30 CEST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 30,
+          "timezone": "CEST"
+        }
+      ],
+      "description": "24h + CEST"
+    },
+    {
+      "id": "android-039",
+      "input": "3pm EET",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EET"
+        }
+      ],
+      "description": "simple 12h + EET"
+    },
+    {
+      "id": "android-040",
+      "input": "3pm EEST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EEST"
+        }
+      ],
+      "description": "simple 12h + EEST"
+    },
+    {
+      "id": "android-041",
+      "input": "3pm WET",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "WET"
+        }
+      ],
+      "description": "simple 12h + WET"
+    },
+    {
+      "id": "android-042",
+      "input": "3pm IST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "IST"
+        }
+      ],
+      "description": "simple 12h + IST (India)"
+    },
+    {
+      "id": "android-043",
+      "input": "15:00 IST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "IST"
+        }
+      ],
+      "description": "24h + IST"
+    },
+    {
+      "id": "android-044",
+      "input": "3pm JST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "simple 12h + JST"
+    },
+    {
+      "id": "android-045",
+      "input": "15:00 JST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "24h + JST"
+    },
+    {
+      "id": "android-046",
+      "input": "3pm KST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "KST"
+        }
+      ],
+      "description": "simple 12h + KST"
+    },
+    {
+      "id": "android-047",
+      "input": "3pm CST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "CST"
+        }
+      ],
+      "description": "simple 12h + CST (ambiguous: US Central or China)"
+    },
+    {
+      "id": "android-048",
+      "input": "3pm HKT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "HKT"
+        }
+      ],
+      "description": "simple 12h + HKT"
+    },
+    {
+      "id": "android-049",
+      "input": "3pm SGT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "SGT"
+        }
+      ],
+      "description": "simple 12h + SGT"
+    },
+    {
+      "id": "android-050",
+      "input": "3pm PHT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PHT"
+        }
+      ],
+      "description": "simple 12h + PHT (Philippines)"
+    },
+    {
+      "id": "android-051",
+      "input": "3pm ICT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "ICT"
+        }
+      ],
+      "description": "simple 12h + ICT (Indochina)"
+    },
+    {
+      "id": "android-052",
+      "input": "3pm WIB",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "WIB"
+        }
+      ],
+      "description": "simple 12h + WIB (Western Indonesia)"
+    },
+    {
+      "id": "android-053",
+      "input": "3pm AEST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "AEST"
+        }
+      ],
+      "description": "simple 12h + AEST"
+    },
+    {
+      "id": "android-054",
+      "input": "3pm AEDT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "AEDT"
+        }
+      ],
+      "description": "simple 12h + AEDT"
+    },
+    {
+      "id": "android-055",
+      "input": "3pm ACST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "ACST"
+        }
+      ],
+      "description": "simple 12h + ACST"
+    },
+    {
+      "id": "android-056",
+      "input": "3pm AWST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "AWST"
+        }
+      ],
+      "description": "simple 12h + AWST"
+    },
+    {
+      "id": "android-057",
+      "input": "3pm NZST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "NZST"
+        }
+      ],
+      "description": "simple 12h + NZST"
+    },
+    {
+      "id": "android-058",
+      "input": "3pm NZDT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "NZDT"
+        }
+      ],
+      "description": "simple 12h + NZDT"
+    },
+    {
+      "id": "android-059",
+      "input": "3pm AST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "AST"
+        }
+      ],
+      "description": "simple 12h + AST (Atlantic)"
+    },
+    {
+      "id": "android-060",
+      "input": "3pm AKST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "AKST"
+        }
+      ],
+      "description": "simple 12h + AKST (Alaska)"
+    },
+    {
+      "id": "android-061",
+      "input": "3pm AKDT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "AKDT"
+        }
+      ],
+      "description": "simple 12h + AKDT (Alaska daylight)"
+    },
+    {
+      "id": "android-062",
+      "input": "3pm HST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "HST"
+        }
+      ],
+      "description": "simple 12h + HST (Hawaii)"
+    },
+    {
+      "id": "android-063",
+      "input": "3pm SAST",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "SAST"
+        }
+      ],
+      "description": "simple 12h + SAST (South Africa)"
+    },
+    {
+      "id": "android-064",
+      "input": "3pm WAT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "WAT"
+        }
+      ],
+      "description": "simple 12h + WAT (West Africa)"
+    },
+    {
+      "id": "android-065",
+      "input": "3pm EAT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EAT"
+        }
+      ],
+      "description": "simple 12h + EAT (East Africa)"
+    },
+    {
+      "id": "android-066",
+      "input": "3pm PKT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PKT"
+        }
+      ],
+      "description": "simple 12h + PKT (Pakistan)"
+    },
+    {
+      "id": "android-067",
+      "input": "3pm BRT",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "BRT"
+        }
+      ],
+      "description": "simple 12h + BRT (Brazil)"
+    },
+    {
+      "id": "android-068",
+      "input": "3pm ART",
+      "category": "Simple time + timezone abbreviation",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "ART"
+        }
+      ],
+      "description": "simple 12h + ART (Argentina)"
+    },
+    {
+      "id": "android-069",
+      "input": "3pm in New York",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "America/New_York"
+        }
+      ],
+      "description": "city: New York"
+    },
+    {
+      "id": "android-070",
+      "input": "5:00 in Tokyo",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 5,
+          "minute": 0,
+          "timezone": "Asia/Tokyo"
+        }
+      ],
+      "description": "city: Tokyo, bare time"
+    },
+    {
+      "id": "android-071",
+      "input": "noon in London",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "Europe/London"
+        }
+      ],
+      "description": "city: London, noon keyword"
+    },
+    {
+      "id": "android-072",
+      "input": "3pm in Los Angeles",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "America/Los_Angeles"
+        }
+      ],
+      "description": "city: Los Angeles"
+    },
+    {
+      "id": "android-073",
+      "input": "10:30 AM in Berlin",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 30,
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "description": "city: Berlin"
+    },
+    {
+      "id": "android-074",
+      "input": "9am in Sydney",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "Australia/Sydney"
+        }
+      ],
+      "description": "city: Sydney"
+    },
+    {
+      "id": "android-075",
+      "input": "2:15 PM in Mumbai",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 15,
+          "timezone": "Asia/Kolkata"
+        }
+      ],
+      "description": "city: Mumbai"
+    },
+    {
+      "id": "android-076",
+      "input": "8pm in Dubai",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 20,
+          "minute": 0,
+          "timezone": "Asia/Dubai"
+        }
+      ],
+      "description": "city: Dubai"
+    },
+    {
+      "id": "android-077",
+      "input": "6:00 AM in Singapore",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 6,
+          "minute": 0,
+          "timezone": "Asia/Singapore"
+        }
+      ],
+      "description": "city: Singapore"
+    },
+    {
+      "id": "android-078",
+      "input": "11pm in Hong Kong",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 23,
+          "minute": 0,
+          "timezone": "Asia/Hong_Kong"
+        }
+      ],
+      "description": "city: Hong Kong"
+    },
+    {
+      "id": "android-079",
+      "input": "7:30 AM in Seoul",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 7,
+          "minute": 30,
+          "timezone": "Asia/Seoul"
+        }
+      ],
+      "description": "city: Seoul"
+    },
+    {
+      "id": "android-080",
+      "input": "4pm in Paris",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "Europe/Paris"
+        }
+      ],
+      "description": "city: Paris"
+    },
+    {
+      "id": "android-081",
+      "input": "3pm in Chicago",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "America/Chicago"
+        }
+      ],
+      "description": "city: Chicago"
+    },
+    {
+      "id": "android-082",
+      "input": "3pm in Denver",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "America/Denver"
+        }
+      ],
+      "description": "city: Denver"
+    },
+    {
+      "id": "android-083",
+      "input": "2:30 PM at San Francisco",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 30,
+          "timezone": "America/Los_Angeles"
+        }
+      ],
+      "description": "city: San Francisco, 'at' preposition"
+    },
+    {
+      "id": "android-084",
+      "input": "midnight in Auckland",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "Pacific/Auckland"
+        }
+      ],
+      "description": "city: Auckland, midnight"
+    },
+    {
+      "id": "android-085",
+      "input": "9 a.m. in Toronto",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "America/Toronto"
+        }
+      ],
+      "description": "city: Toronto, dotted am"
+    },
+    {
+      "id": "android-086",
+      "input": "5pm in São Paulo",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "America/Sao_Paulo"
+        }
+      ],
+      "description": "city: São Paulo (accented)"
+    },
+    {
+      "id": "android-087",
+      "input": "3pm Pacific",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PT"
+        }
+      ],
+      "description": "region: Pacific"
+    },
+    {
+      "id": "android-088",
+      "input": "3pm Eastern",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "ET"
+        }
+      ],
+      "description": "region: Eastern"
+    },
+    {
+      "id": "android-089",
+      "input": "3pm Central",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "CT"
+        }
+      ],
+      "description": "region: Central"
+    },
+    {
+      "id": "android-090",
+      "input": "3pm Mountain",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "MT"
+        }
+      ],
+      "description": "region: Mountain"
+    },
+    {
+      "id": "android-091",
+      "input": "3pm Pacific Time",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PT"
+        }
+      ],
+      "description": "region: Pacific Time"
+    },
+    {
+      "id": "android-092",
+      "input": "3pm Eastern Time",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "ET"
+        }
+      ],
+      "description": "region: Eastern Time"
+    },
+    {
+      "id": "android-093",
+      "input": "3pm Central Time",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "CT"
+        }
+      ],
+      "description": "region: Central Time"
+    },
+    {
+      "id": "android-094",
+      "input": "3pm Mountain Time",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "MT"
+        }
+      ],
+      "description": "region: Mountain Time"
+    },
+    {
+      "id": "android-095",
+      "input": "3pm pacific time",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PT"
+        }
+      ],
+      "description": "region: pacific time (lowercase)"
+    },
+    {
+      "id": "android-096",
+      "input": "3pm eastern time",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "ET"
+        }
+      ],
+      "description": "region: eastern time (lowercase)"
+    },
+    {
+      "id": "android-097",
+      "input": "3pm US Eastern",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "ET"
+        }
+      ],
+      "description": "region: US Eastern"
+    },
+    {
+      "id": "android-098",
+      "input": "3pm US Pacific",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PT"
+        }
+      ],
+      "description": "region: US Pacific"
+    },
+    {
+      "id": "android-099",
+      "input": "3pm US Central",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "CT"
+        }
+      ],
+      "description": "region: US Central"
+    },
+    {
+      "id": "android-100",
+      "input": "3pm US Mountain",
+      "category": "Time + city / region name",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "MT"
+        }
+      ],
+      "description": "region: US Mountain"
+    },
+    {
+      "id": "android-101",
+      "input": "April 9 at 3pm EST",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "month-day at time + tz"
+    },
+    {
+      "id": "android-102",
+      "input": "Apr 9, 2026 3:00 PM EST",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "abbreviated month with year"
+    },
+    {
+      "id": "android-103",
+      "input": "April 9 @ 3pm EST",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "@ sign separator"
+    },
+    {
+      "id": "android-104",
+      "input": "April 9th, 3:00 PM EDT",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EDT"
+        }
+      ],
+      "description": "ordinal day + comma"
+    },
+    {
+      "id": "android-105",
+      "input": "April 9th at 3:00 PM EDT",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EDT"
+        }
+      ],
+      "description": "ordinal day + at"
+    },
+    {
+      "id": "android-106",
+      "input": "9 April 2026 at 15:00 BST",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "BST"
+        }
+      ],
+      "description": "European day-month order"
+    },
+    {
+      "id": "android-107",
+      "input": "9 April 2026 at 3pm BST",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "BST"
+        }
+      ],
+      "description": "European order + 12h"
+    },
+    {
+      "id": "android-108",
+      "input": "Wednesday, April 9, 2026 4:30 AM PDT",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 4,
+          "minute": 30,
+          "timezone": "PDT"
+        }
+      ],
+      "description": "full weekday + date + time"
+    },
+    {
+      "id": "android-109",
+      "input": "Wed, Apr 9, 2026 4:30 AM PDT",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 4,
+          "minute": 30,
+          "timezone": "PDT"
+        }
+      ],
+      "description": "abbreviated weekday + date"
+    },
+    {
+      "id": "android-110",
+      "input": "04/09/2026 3:00 PM EST",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "US numeric date format"
+    },
+    {
+      "id": "android-111",
+      "input": "09/04/2026 3:00 PM BST",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "BST"
+        }
+      ],
+      "description": "European numeric date format"
+    },
+    {
+      "id": "android-112",
+      "input": "2026-04-09 3:00 PM EST",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "ISO-ish date + 12h time"
+    },
+    {
+      "id": "android-113",
+      "input": "April 9, 2026, 15:00 CET",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "CET"
+        }
+      ],
+      "description": "date comma time 24h"
+    },
+    {
+      "id": "android-114",
+      "input": "April 9, 2026 at 9:00 a.m. PST",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "date + dotted am + tz"
+    },
+    {
+      "id": "android-115",
+      "input": "Tue Apr 8 2026 10:00 AM EDT",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "EDT"
+        }
+      ],
+      "description": "Unix-style date string"
+    },
+    {
+      "id": "android-116",
+      "input": "March 15 at 2:30pm GMT",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 30,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "different month, no year"
+    },
+    {
+      "id": "android-117",
+      "input": "Jan 1, 2027 at midnight EST",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "midnight keyword in date"
+    },
+    {
+      "id": "android-118",
+      "input": "December 31, 2026 at 11:59 PM PST",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 23,
+          "minute": 59,
+          "timezone": "PST"
+        }
+      ],
+      "description": "new year's eve timestamp"
+    },
+    {
+      "id": "android-119",
+      "input": "May 1st, 2026 @ 8:00 AM JST",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 8,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "ordinal + @ + JST"
+    },
+    {
+      "id": "android-120",
+      "input": "June 15th 2026 14:00 IST",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 0,
+          "timezone": "IST"
+        }
+      ],
+      "description": "ordinal + no comma + 24h + IST"
+    },
+    {
+      "id": "android-121",
+      "input": "Fri, 10 Jul 2026 09:30:00 GMT",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 30,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "RFC 2822 style"
+    },
+    {
+      "id": "android-122",
+      "input": "Saturday, 11 April 2026 at 5pm AEST",
+      "category": "Date + time + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "AEST"
+        }
+      ],
+      "description": "European order + weekday + AEST"
+    },
+    {
+      "id": "android-123",
+      "input": "3pm ET / 12pm PT",
+      "category": "Multiple timestamps (slash-separated)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "ET"
+        },
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "PT"
+        }
+      ],
+      "description": "two times slash-separated"
+    },
+    {
+      "id": "android-124",
+      "input": "9am PT / 12pm ET / 5pm GMT",
+      "category": "Multiple timestamps (slash-separated)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "PT"
+        },
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "ET"
+        },
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "three times slash-separated"
+    },
+    {
+      "id": "android-125",
+      "input": "4:30 AM PT / 7:30 AM ET / 19:30 CST",
+      "category": "Multiple timestamps (slash-separated)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [
+        {
+          "hour": 4,
+          "minute": 30,
+          "timezone": "PT"
+        },
+        {
+          "hour": 7,
+          "minute": 30,
+          "timezone": "ET"
+        },
+        {
+          "hour": 19,
+          "minute": 30,
+          "timezone": "CST"
+        }
+      ],
+      "description": "three times mixed 12h/24h slash-separated"
+    },
+    {
+      "id": "android-126",
+      "input": "April 9 at 9:00 a.m. PT / 12:00 p.m. ET",
+      "category": "Multiple timestamps (slash-separated)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "PT"
+        },
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "ET"
+        }
+      ],
+      "description": "date + dotted am/pm slash-separated"
+    },
+    {
+      "id": "android-127",
+      "input": "3pm EST / 12pm PST / 8pm GMT",
+      "category": "Multiple timestamps (slash-separated)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        },
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "PST"
+        },
+        {
+          "hour": 20,
+          "minute": 0,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "three US + global slash-separated"
+    },
+    {
+      "id": "android-128",
+      "input": "10am JST / 1am GMT",
+      "category": "Multiple timestamps (slash-separated)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "JST"
+        },
+        {
+          "hour": 1,
+          "minute": 0,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "Asia + GMT slash-separated"
+    },
+    {
+      "id": "android-129",
+      "input": "2:00 PM EST / 11:00 AM PST / 7:00 PM GMT",
+      "category": "Multiple timestamps (slash-separated)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 0,
+          "timezone": "EST"
+        },
+        {
+          "hour": 11,
+          "minute": 0,
+          "timezone": "PST"
+        },
+        {
+          "hour": 19,
+          "minute": 0,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "three full-format slash-separated"
+    },
+    {
+      "id": "android-130",
+      "input": "noon ET / 9am PT",
+      "category": "Multiple timestamps (slash-separated)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "ET"
+        },
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "PT"
+        }
+      ],
+      "description": "noon keyword + time slash-separated"
+    },
+    {
+      "id": "android-131",
+      "input": "6pm CET / 5pm GMT / 12pm ET / 9am PT",
+      "category": "Multiple timestamps (slash-separated)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [
+        {
+          "hour": 18,
+          "minute": 0,
+          "timezone": "CET"
+        },
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "GMT"
+        },
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "ET"
+        },
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "PT"
+        }
+      ],
+      "description": "four times slash-separated"
+    },
+    {
+      "id": "android-132",
+      "input": "8:30 PM IST / 3:00 PM GMT / 10:00 AM EST",
+      "category": "Multiple timestamps (slash-separated)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [
+        {
+          "hour": 20,
+          "minute": 30,
+          "timezone": "IST"
+        },
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "GMT"
+        },
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "India + GMT + US slash-separated"
+    },
+    {
+      "id": "android-133",
+      "input": "3pm - 4pm EST",
+      "category": "Time ranges (no date)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        },
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "simple range with spaces + dash"
+    },
+    {
+      "id": "android-134",
+      "input": "3:00 PM - 4:30 PM EST",
+      "category": "Time ranges (no date)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        },
+        {
+          "hour": 16,
+          "minute": 30,
+          "timezone": "EST"
+        }
+      ],
+      "description": "range with minutes + dash"
+    },
+    {
+      "id": "android-135",
+      "input": "9am-5pm PST",
+      "category": "Time ranges (no date)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "PST"
+        },
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "compact range no spaces"
+    },
+    {
+      "id": "android-136",
+      "input": "9:00 AM – 10:30 AM CET",
+      "category": "Time ranges (no date)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "CET"
+        },
+        {
+          "hour": 10,
+          "minute": 30,
+          "timezone": "CET"
+        }
+      ],
+      "description": "range with en-dash"
+    },
+    {
+      "id": "android-137",
+      "input": "9:00 AM — 10:30 AM CET",
+      "category": "Time ranges (no date)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "CET"
+        },
+        {
+          "hour": 10,
+          "minute": 30,
+          "timezone": "CET"
+        }
+      ],
+      "description": "range with em-dash"
+    },
+    {
+      "id": "android-138",
+      "input": "from 2pm to 4pm EST",
+      "category": "Time ranges (no date)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 0,
+          "timezone": "EST"
+        },
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "'from X to Y' range"
+    },
+    {
+      "id": "android-139",
+      "input": "between 3 and 5pm ET",
+      "category": "Time ranges (no date)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "ET"
+        },
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "ET"
+        }
+      ],
+      "description": "'between X and Y' range, shared pm"
+    },
+    {
+      "id": "android-140",
+      "input": "1:00 - 2:00 PM GMT",
+      "category": "Time ranges (no date)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 13,
+          "minute": 0,
+          "timezone": "GMT"
+        },
+        {
+          "hour": 14,
+          "minute": 0,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "range where first time inherits PM from second"
+    },
+    {
+      "id": "android-141",
+      "input": "10am to noon PST",
+      "category": "Time ranges (no date)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "PST"
+        },
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "range with noon keyword"
+    },
+    {
+      "id": "android-142",
+      "input": "8:00 PM - 9:30 PM JST",
+      "category": "Time ranges (no date)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 20,
+          "minute": 0,
+          "timezone": "JST"
+        },
+        {
+          "hour": 21,
+          "minute": 30,
+          "timezone": "JST"
+        }
+      ],
+      "description": "evening range JST"
+    },
+    {
+      "id": "android-143",
+      "input": "11:30 AM - 1:00 PM EDT",
+      "category": "Time ranges (no date)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 11,
+          "minute": 30,
+          "timezone": "EDT"
+        },
+        {
+          "hour": 13,
+          "minute": 0,
+          "timezone": "EDT"
+        }
+      ],
+      "description": "range spanning noon EDT"
+    },
+    {
+      "id": "android-144",
+      "input": "14:00-15:30 CET",
+      "category": "Time ranges (no date)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 0,
+          "timezone": "CET"
+        },
+        {
+          "hour": 15,
+          "minute": 30,
+          "timezone": "CET"
+        }
+      ],
+      "description": "24h compact range CET"
+    },
+    {
+      "id": "android-145",
+      "input": "April 9 @ 12:00 pm - 12:50 pm EDT",
+      "category": "Date + time range + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "EDT"
+        },
+        {
+          "hour": 12,
+          "minute": 50,
+          "timezone": "EDT"
+        }
+      ],
+      "description": "date + @ + range + EDT"
+    },
+    {
+      "id": "android-146",
+      "input": "Wednesday, April 9, 3:00 PM - 4:30 PM EST",
+      "category": "Date + time range + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        },
+        {
+          "hour": 16,
+          "minute": 30,
+          "timezone": "EST"
+        }
+      ],
+      "description": "full weekday + date + range"
+    },
+    {
+      "id": "android-147",
+      "input": "04/09 from 9am to 11am PST",
+      "category": "Date + time range + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "PST"
+        },
+        {
+          "hour": 11,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "numeric date + from-to range"
+    },
+    {
+      "id": "android-148",
+      "input": "April 9, 2026 10:00 AM - 11:30 AM PDT",
+      "category": "Date + time range + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "PDT"
+        },
+        {
+          "hour": 11,
+          "minute": 30,
+          "timezone": "PDT"
+        }
+      ],
+      "description": "full date + range + PDT"
+    },
+    {
+      "id": "android-149",
+      "input": "Fri, April 10 from 2pm to 3:30pm ET",
+      "category": "Date + time range + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 0,
+          "timezone": "ET"
+        },
+        {
+          "hour": 15,
+          "minute": 30,
+          "timezone": "ET"
+        }
+      ],
+      "description": "weekday + date + from-to"
+    },
+    {
+      "id": "android-150",
+      "input": "9 April 2026, 09:00 - 10:30 BST",
+      "category": "Date + time range + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "BST"
+        },
+        {
+          "hour": 10,
+          "minute": 30,
+          "timezone": "BST"
+        }
+      ],
+      "description": "European date + 24h range + BST"
+    },
+    {
+      "id": "android-151",
+      "input": "March 20, 2026 1:00 PM – 2:30 PM CET",
+      "category": "Date + time range + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 13,
+          "minute": 0,
+          "timezone": "CET"
+        },
+        {
+          "hour": 14,
+          "minute": 30,
+          "timezone": "CET"
+        }
+      ],
+      "description": "date + en-dash range + CET"
+    },
+    {
+      "id": "android-152",
+      "input": "Tuesday, April 14th, 8:00 AM - 9:00 AM JST",
+      "category": "Date + time range + timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 8,
+          "minute": 0,
+          "timezone": "JST"
+        },
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "full date ordinal + range + JST"
+    },
+    {
+      "id": "android-153",
+      "input": "2026-04-09T15:00:00Z",
+      "category": "ISO 8601",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "ISO 8601 Zulu"
+    },
+    {
+      "id": "android-154",
+      "input": "2026-04-09T15:00:00+02:00",
+      "category": "ISO 8601",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC+2"
+        }
+      ],
+      "description": "ISO 8601 + positive offset"
+    },
+    {
+      "id": "android-155",
+      "input": "2026-04-09T15:00:00-05:00",
+      "category": "ISO 8601",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC-5"
+        }
+      ],
+      "description": "ISO 8601 + negative offset"
+    },
+    {
+      "id": "android-156",
+      "input": "2026-04-09T15:00:00+05:30",
+      "category": "ISO 8601",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC+5:30"
+        }
+      ],
+      "description": "ISO 8601 + half-hour offset"
+    },
+    {
+      "id": "android-157",
+      "input": "2026-04-09T15:00:00+09:00",
+      "category": "ISO 8601",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC+9"
+        }
+      ],
+      "description": "ISO 8601 + JST offset"
+    },
+    {
+      "id": "android-158",
+      "input": "2026-04-09T00:00:00Z",
+      "category": "ISO 8601",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "ISO 8601 midnight Zulu"
+    },
+    {
+      "id": "android-159",
+      "input": "2026-04-09T23:59:59Z",
+      "category": "ISO 8601",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 23,
+          "minute": 59,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "ISO 8601 end of day Zulu"
+    },
+    {
+      "id": "android-160",
+      "input": "2026-04-09 15:00Z",
+      "category": "ISO 8601",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "ISO 8601 with space separator"
+    },
+    {
+      "id": "android-161",
+      "input": "2026-04-09T15:00Z",
+      "category": "ISO 8601",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "ISO 8601 no seconds Zulu"
+    },
+    {
+      "id": "android-162",
+      "input": "2026-04-09T08:30:00-08:00",
+      "category": "ISO 8601",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 8,
+          "minute": 30,
+          "timezone": "UTC-8"
+        }
+      ],
+      "description": "ISO 8601 PST offset"
+    },
+    {
+      "id": "android-163",
+      "input": "2026-04-09T15:00:00.000Z",
+      "category": "ISO 8601",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "ISO 8601 with milliseconds"
+    },
+    {
+      "id": "android-164",
+      "input": "2026-04-09T15:00:00+00:00",
+      "category": "ISO 8601",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "ISO 8601 explicit UTC +00:00"
+    },
+    {
+      "id": "android-165",
+      "input": "2026-12-25T09:00:00-05:00",
+      "category": "ISO 8601",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "UTC-5"
+        }
+      ],
+      "description": "ISO 8601 Christmas morning EST"
+    },
+    {
+      "id": "android-166",
+      "input": "2026-04-09T15:00:00+05:45",
+      "category": "ISO 8601",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC+5:45"
+        }
+      ],
+      "description": "ISO 8601 Nepal offset +05:45"
+    },
+    {
+      "id": "android-167",
+      "input": "tomorrow at 3pm EST",
+      "category": "Relative dates",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "relative: tomorrow"
+    },
+    {
+      "id": "android-168",
+      "input": "tomorrow at 9:30 AM PST",
+      "category": "Relative dates",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 30,
+          "timezone": "PST"
+        }
+      ],
+      "description": "relative: tomorrow + minutes"
+    },
+    {
+      "id": "android-169",
+      "input": "next Tuesday at 3pm EST",
+      "category": "Relative dates",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "relative: next weekday"
+    },
+    {
+      "id": "android-170",
+      "input": "next Monday at 10am PST",
+      "category": "Relative dates",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "relative: next Monday"
+    },
+    {
+      "id": "android-171",
+      "input": "this Friday at noon PST",
+      "category": "Relative dates",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "relative: this Friday + noon"
+    },
+    {
+      "id": "android-172",
+      "input": "this Thursday at 2:30pm ET",
+      "category": "Relative dates",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 30,
+          "timezone": "ET"
+        }
+      ],
+      "description": "relative: this Thursday"
+    },
+    {
+      "id": "android-173",
+      "input": "next Wednesday at 4pm CET",
+      "category": "Relative dates",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "CET"
+        }
+      ],
+      "description": "relative: next Wednesday + CET"
+    },
+    {
+      "id": "android-174",
+      "input": "tomorrow at noon GMT",
+      "category": "Relative dates",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "relative: tomorrow + noon"
+    },
+    {
+      "id": "android-175",
+      "input": "tonight at 8pm EST",
+      "category": "Relative dates",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 20,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "relative: tonight"
+    },
+    {
+      "id": "android-176",
+      "input": "today at 5pm PST",
+      "category": "Relative dates",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "relative: today"
+    },
+    {
+      "id": "android-177",
+      "input": "next Saturday at 11am AEST",
+      "category": "Relative dates",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 11,
+          "minute": 0,
+          "timezone": "AEST"
+        }
+      ],
+      "description": "relative: next Saturday + AEST"
+    },
+    {
+      "id": "android-178",
+      "input": "1500 hours",
+      "category": "Military / 24-hour time",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": null
+        }
+      ],
+      "description": "military: 1500 hours"
+    },
+    {
+      "id": "android-179",
+      "input": "0800 hours",
+      "category": "Military / 24-hour time",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 8,
+          "minute": 0,
+          "timezone": null
+        }
+      ],
+      "description": "military: 0800 hours"
+    },
+    {
+      "id": "android-180",
+      "input": "1500 Zulu",
+      "category": "Military / 24-hour time",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "military: 1500 Zulu = UTC"
+    },
+    {
+      "id": "android-181",
+      "input": "0800 Zulu",
+      "category": "Military / 24-hour time",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 8,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "military: 0800 Zulu"
+    },
+    {
+      "id": "android-182",
+      "input": "0800 EST",
+      "category": "Military / 24-hour time",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 8,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "military: 0800 + timezone"
+    },
+    {
+      "id": "android-183",
+      "input": "1430 PST",
+      "category": "Military / 24-hour time",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 30,
+          "timezone": "PST"
+        }
+      ],
+      "description": "military: 1430 + timezone"
+    },
+    {
+      "id": "android-184",
+      "input": "2359 GMT",
+      "category": "Military / 24-hour time",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 23,
+          "minute": 59,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "military: 2359 + GMT"
+    },
+    {
+      "id": "android-185",
+      "input": "0000 UTC",
+      "category": "Military / 24-hour time",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "military: 0000 midnight UTC"
+    },
+    {
+      "id": "android-186",
+      "input": "15:00",
+      "category": "Military / 24-hour time",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": null
+        }
+      ],
+      "description": "bare 24h time, no timezone"
+    },
+    {
+      "id": "android-187",
+      "input": "08:00 CET",
+      "category": "Military / 24-hour time",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 8,
+          "minute": 0,
+          "timezone": "CET"
+        }
+      ],
+      "description": "24h colon + CET"
+    },
+    {
+      "id": "android-188",
+      "input": "22:30 JST",
+      "category": "Military / 24-hour time",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 22,
+          "minute": 30,
+          "timezone": "JST"
+        }
+      ],
+      "description": "24h colon + JST"
+    },
+    {
+      "id": "android-189",
+      "input": "00:00 UTC",
+      "category": "Military / 24-hour time",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "24h midnight + UTC"
+    },
+    {
+      "id": "android-190",
+      "input": "13:45 BST",
+      "category": "Military / 24-hour time",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 13,
+          "minute": 45,
+          "timezone": "BST"
+        }
+      ],
+      "description": "24h + BST"
+    },
+    {
+      "id": "android-191",
+      "input": "0600 hours EST",
+      "category": "Military / 24-hour time",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 6,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "military: 0600 hours + tz"
+    },
+    {
+      "id": "android-192",
+      "input": "1200 Zulu",
+      "category": "Military / 24-hour time",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "military: 1200 Zulu (noon)"
+    },
+    {
+      "id": "android-193",
+      "input": "noon EST",
+      "category": "Natural language / informal",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "noon + timezone"
+    },
+    {
+      "id": "android-194",
+      "input": "noon PST",
+      "category": "Natural language / informal",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "noon + PST"
+    },
+    {
+      "id": "android-195",
+      "input": "noon GMT",
+      "category": "Natural language / informal",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "noon + GMT"
+    },
+    {
+      "id": "android-196",
+      "input": "midnight PST",
+      "category": "Natural language / informal",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "midnight + timezone"
+    },
+    {
+      "id": "android-197",
+      "input": "midnight EST",
+      "category": "Natural language / informal",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "midnight + EST"
+    },
+    {
+      "id": "android-198",
+      "input": "midnight UTC",
+      "category": "Natural language / informal",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "midnight + UTC"
+    },
+    {
+      "id": "android-199",
+      "input": "EOD Friday PST",
+      "category": "Natural language / informal",
+      "intendedCoverage": "correction-required",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "EOD = end of day ~5pm"
+    },
+    {
+      "id": "android-200",
+      "input": "EOD EST",
+      "category": "Natural language / informal",
+      "intendedCoverage": "correction-required",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "EOD + timezone, no day"
+    },
+    {
+      "id": "android-201",
+      "input": "COB Friday EST",
+      "category": "Natural language / informal",
+      "intendedCoverage": "correction-required",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "COB = close of business ~5pm"
+    },
+    {
+      "id": "android-202",
+      "input": "morning meeting 9am London",
+      "category": "Natural language / informal",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "Europe/London"
+        }
+      ],
+      "description": "informal with city name"
+    },
+    {
+      "id": "android-203",
+      "input": "the call is at half past 3 EST",
+      "category": "Natural language / informal",
+      "intendedCoverage": "correction-required",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 30,
+          "timezone": "EST"
+        }
+      ],
+      "description": "half past + timezone"
+    },
+    {
+      "id": "android-204",
+      "input": "quarter to 4 PST",
+      "category": "Natural language / informal",
+      "intendedCoverage": "correction-required",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 45,
+          "timezone": "PST"
+        }
+      ],
+      "description": "quarter to = :45 of prior hour"
+    },
+    {
+      "id": "android-205",
+      "input": "quarter past 2 GMT",
+      "category": "Natural language / informal",
+      "intendedCoverage": "correction-required",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 15,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "quarter past = :15"
+    },
+    {
+      "id": "android-206",
+      "input": "half past noon EST",
+      "category": "Natural language / informal",
+      "intendedCoverage": "correction-required",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 30,
+          "timezone": "EST"
+        }
+      ],
+      "description": "half past noon"
+    },
+    {
+      "id": "android-207",
+      "input": "let's meet at 3ish EST",
+      "category": "Natural language / informal",
+      "intendedCoverage": "correction-required",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "informal 'ish' suffix"
+    },
+    {
+      "id": "android-208",
+      "input": "standup at 9 Pacific",
+      "category": "Natural language / informal",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "PT"
+        }
+      ],
+      "description": "informal standup time"
+    },
+    {
+      "id": "android-209",
+      "input": "lunch at noon Central",
+      "category": "Natural language / informal",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "CT"
+        }
+      ],
+      "description": "informal lunch time"
+    },
+    {
+      "id": "android-210",
+      "input": "When: Wednesday, April 9, 2026 3:00 PM - 4:00 PM (EST)",
+      "category": "Multi-line / email / calendar format",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        },
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "Outlook-style 'When:' line"
+    },
+    {
+      "id": "android-211",
+      "input": "Date: April 9, 2026\nTime: 3:00 PM EDT",
+      "category": "Multi-line / email / calendar format",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EDT"
+        }
+      ],
+      "description": "multi-line date/time separate"
+    },
+    {
+      "id": "android-212",
+      "input": "Join at 9:00 AM PT (12:00 PM ET)",
+      "category": "Multi-line / email / calendar format",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "PT"
+        },
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "ET"
+        }
+      ],
+      "description": "primary + parenthetical alternative"
+    },
+    {
+      "id": "android-213",
+      "input": "When: Thursday, April 10, 2026 10:00 AM - 11:00 AM (Eastern Time)",
+      "category": "Multi-line / email / calendar format",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "ET"
+        },
+        {
+          "hour": 11,
+          "minute": 0,
+          "timezone": "ET"
+        }
+      ],
+      "description": "Outlook 'When:' with Eastern Time"
+    },
+    {
+      "id": "android-214",
+      "input": "Start: 2:00 PM EST\nEnd: 3:30 PM EST",
+      "category": "Multi-line / email / calendar format",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 0,
+          "timezone": "EST"
+        },
+        {
+          "hour": 15,
+          "minute": 30,
+          "timezone": "EST"
+        }
+      ],
+      "description": "multi-line start/end"
+    },
+    {
+      "id": "android-215",
+      "input": "Event: Product Review\nDate: April 14, 2026\nTime: 10:30 AM - 11:30 AM PST",
+      "category": "Multi-line / email / calendar format",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 30,
+          "timezone": "PST"
+        },
+        {
+          "hour": 11,
+          "minute": 30,
+          "timezone": "PST"
+        }
+      ],
+      "description": "multi-line event block"
+    },
+    {
+      "id": "android-216",
+      "input": "RSVP for April 9 at 3pm ET. Reminder: April 8 at 3pm ET.",
+      "category": "Multi-line / email / calendar format",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "ET"
+        },
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "ET"
+        }
+      ],
+      "description": "two full timestamps in prose"
+    },
+    {
+      "id": "android-217",
+      "input": "Webinar: April 9 @ 1pm PT | 4pm ET | 9pm GMT",
+      "category": "Multi-line / email / calendar format",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [
+        {
+          "hour": 13,
+          "minute": 0,
+          "timezone": "PT"
+        },
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "ET"
+        },
+        {
+          "hour": 21,
+          "minute": 0,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "pipe-separated multi-timezone webinar"
+    },
+    {
+      "id": "android-218",
+      "input": "Office Hours: Mon/Wed/Fri 2:00 PM - 3:00 PM EST",
+      "category": "Multi-line / email / calendar format",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 0,
+          "timezone": "EST"
+        },
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "recurring schedule format"
+    },
+    {
+      "id": "android-219",
+      "input": "3pm (EST)",
+      "category": "Parenthetical timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "parenthetical: (EST)"
+    },
+    {
+      "id": "android-220",
+      "input": "3:00 PM (EST)",
+      "category": "Parenthetical timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "parenthetical: with minutes"
+    },
+    {
+      "id": "android-221",
+      "input": "3:00 PM (Eastern)",
+      "category": "Parenthetical timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "ET"
+        }
+      ],
+      "description": "parenthetical: (Eastern)"
+    },
+    {
+      "id": "android-222",
+      "input": "9am (Pacific Time)",
+      "category": "Parenthetical timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "PT"
+        }
+      ],
+      "description": "parenthetical: (Pacific Time)"
+    },
+    {
+      "id": "android-223",
+      "input": "noon (GMT+8)",
+      "category": "Parenthetical timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "GMT+8"
+        }
+      ],
+      "description": "parenthetical: (GMT+8)"
+    },
+    {
+      "id": "android-224",
+      "input": "3:00 PM (Eastern Standard Time)",
+      "category": "Parenthetical timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "parenthetical: full name"
+    },
+    {
+      "id": "android-225",
+      "input": "3:00 PM (Pacific Daylight Time)",
+      "category": "Parenthetical timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PDT"
+        }
+      ],
+      "description": "parenthetical: full daylight name"
+    },
+    {
+      "id": "android-226",
+      "input": "10am (Central)",
+      "category": "Parenthetical timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "CT"
+        }
+      ],
+      "description": "parenthetical: (Central)"
+    },
+    {
+      "id": "android-227",
+      "input": "8pm (IST)",
+      "category": "Parenthetical timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 20,
+          "minute": 0,
+          "timezone": "IST"
+        }
+      ],
+      "description": "parenthetical: (IST)"
+    },
+    {
+      "id": "android-228",
+      "input": "3pm (UTC)",
+      "category": "Parenthetical timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "parenthetical: (UTC)"
+    },
+    {
+      "id": "android-229",
+      "input": "5:30 PM (Mountain Time)",
+      "category": "Parenthetical timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 17,
+          "minute": 30,
+          "timezone": "MT"
+        }
+      ],
+      "description": "parenthetical: (Mountain Time)"
+    },
+    {
+      "id": "android-230",
+      "input": "9:00 AM (GMT)",
+      "category": "Parenthetical timezone",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "parenthetical: (GMT)"
+    },
+    {
+      "id": "android-231",
+      "input": "3pm UTC+5",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC+5"
+        }
+      ],
+      "description": "UTC positive integer offset"
+    },
+    {
+      "id": "android-232",
+      "input": "3pm UTC-8",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC-8"
+        }
+      ],
+      "description": "UTC negative integer offset"
+    },
+    {
+      "id": "android-233",
+      "input": "3pm GMT+5:30",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "GMT+5:30"
+        }
+      ],
+      "description": "GMT half-hour offset"
+    },
+    {
+      "id": "android-234",
+      "input": "15:00 UTC+2",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC+2"
+        }
+      ],
+      "description": "24h + UTC offset"
+    },
+    {
+      "id": "android-235",
+      "input": "15:00 GMT-4",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "GMT-4"
+        }
+      ],
+      "description": "24h + GMT negative offset"
+    },
+    {
+      "id": "android-236",
+      "input": "3pm UTC+0",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC+0"
+        }
+      ],
+      "description": "UTC+0 = UTC"
+    },
+    {
+      "id": "android-237",
+      "input": "3pm UTC-0",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC-0"
+        }
+      ],
+      "description": "UTC-0 = UTC"
+    },
+    {
+      "id": "android-238",
+      "input": "3pm GMT+0",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "GMT+0"
+        }
+      ],
+      "description": "GMT+0 = UTC"
+    },
+    {
+      "id": "android-239",
+      "input": "9am UTC+9",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "UTC+9"
+        }
+      ],
+      "description": "UTC+9 (Japan/Korea)"
+    },
+    {
+      "id": "android-240",
+      "input": "3pm UTC+12",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC+12"
+        }
+      ],
+      "description": "UTC+12 (NZ/Fiji)"
+    },
+    {
+      "id": "android-241",
+      "input": "3pm UTC-12",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC-12"
+        }
+      ],
+      "description": "UTC-12 (Baker Island)"
+    },
+    {
+      "id": "android-242",
+      "input": "3pm UTC+5:45",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC+5:45"
+        }
+      ],
+      "description": "UTC Nepal offset"
+    },
+    {
+      "id": "android-243",
+      "input": "3pm UTC+9:30",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC+9:30"
+        }
+      ],
+      "description": "UTC+9:30 (ACST)"
+    },
+    {
+      "id": "android-244",
+      "input": "3pm GMT+1",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "GMT+1"
+        }
+      ],
+      "description": "GMT+1 (CET)"
+    },
+    {
+      "id": "android-245",
+      "input": "3pm GMT-5",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "GMT-5"
+        }
+      ],
+      "description": "GMT-5 (EST)"
+    },
+    {
+      "id": "android-246",
+      "input": "3pm GMT+8",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "GMT+8"
+        }
+      ],
+      "description": "GMT+8 (SGT/HKT)"
+    },
+    {
+      "id": "android-247",
+      "input": "3pm GMT+10",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "GMT+10"
+        }
+      ],
+      "description": "GMT+10 (AEST)"
+    },
+    {
+      "id": "android-248",
+      "input": "3pm GMT-3",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "GMT-3"
+        }
+      ],
+      "description": "GMT-3 (BRT)"
+    },
+    {
+      "id": "android-249",
+      "input": "10:00 AM UTC+3",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "UTC+3"
+        }
+      ],
+      "description": "12h + UTC+3"
+    },
+    {
+      "id": "android-250",
+      "input": "6:30 PM GMT+5:30",
+      "category": "UTC / GMT offsets",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 18,
+          "minute": 30,
+          "timezone": "GMT+5:30"
+        }
+      ],
+      "description": "12h + GMT India offset"
+    },
+    {
+      "id": "android-251",
+      "input": "12:00 AM EST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "12:00 AM = midnight"
+    },
+    {
+      "id": "android-252",
+      "input": "12:00 PM EST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "12:00 PM = noon"
+    },
+    {
+      "id": "android-253",
+      "input": "12am EST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "12am = midnight"
+    },
+    {
+      "id": "android-254",
+      "input": "12pm EST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "12pm = noon"
+    },
+    {
+      "id": "android-255",
+      "input": "12:01 AM EST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 1,
+          "timezone": "EST"
+        }
+      ],
+      "description": "just after midnight"
+    },
+    {
+      "id": "android-256",
+      "input": "12:01 PM EST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 1,
+          "timezone": "EST"
+        }
+      ],
+      "description": "just after noon"
+    },
+    {
+      "id": "android-257",
+      "input": "12:30 AM PST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 30,
+          "timezone": "PST"
+        }
+      ],
+      "description": "half past midnight"
+    },
+    {
+      "id": "android-258",
+      "input": "12:30 PM PST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 30,
+          "timezone": "PST"
+        }
+      ],
+      "description": "half past noon"
+    },
+    {
+      "id": "android-259",
+      "input": "0:00 UTC",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "0:00 midnight UTC"
+    },
+    {
+      "id": "android-260",
+      "input": "23:59 PST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 23,
+          "minute": 59,
+          "timezone": "PST"
+        }
+      ],
+      "description": "last minute of day"
+    },
+    {
+      "id": "android-261",
+      "input": "00:00 GMT",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "00:00 midnight GMT"
+    },
+    {
+      "id": "android-262",
+      "input": "23:59:59 UTC",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 23,
+          "minute": 59,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "last second of day"
+    },
+    {
+      "id": "android-263",
+      "input": "3 pm EST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "space between number and pm"
+    },
+    {
+      "id": "android-264",
+      "input": "3PM EST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "uppercase PM, no space"
+    },
+    {
+      "id": "android-265",
+      "input": "3 P.M. EST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "dotted PM with spaces"
+    },
+    {
+      "id": "android-266",
+      "input": "3p EST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "abbreviated 'p' for pm"
+    },
+    {
+      "id": "android-267",
+      "input": "3a EST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 3,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "abbreviated 'a' for am"
+    },
+    {
+      "id": "android-268",
+      "input": "03:00 PM EST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "leading zero in 12h format"
+    },
+    {
+      "id": "android-269",
+      "input": "3.00 PM EST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "dot separator instead of colon"
+    },
+    {
+      "id": "android-270",
+      "input": "3:00PM EST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "no space before PM"
+    },
+    {
+      "id": "android-271",
+      "input": "1am EST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 1,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "1am early morning"
+    },
+    {
+      "id": "android-272",
+      "input": "1pm EST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 13,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "1pm early afternoon"
+    },
+    {
+      "id": "android-273",
+      "input": "6am PST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 6,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "6am morning"
+    },
+    {
+      "id": "android-274",
+      "input": "11pm JST",
+      "category": "Edge cases",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 23,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "11pm late night"
+    },
+    {
+      "id": "android-275",
+      "input": "3pm BST (British Summer Time)",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "BST"
+        }
+      ],
+      "description": "abbreviation + full name in parens"
+    },
+    {
+      "id": "android-276",
+      "input": "3pm IST (Indian Standard Time)",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "IST"
+        }
+      ],
+      "description": "IST + full name"
+    },
+    {
+      "id": "android-277",
+      "input": "3pm AEDT (Australian Eastern Daylight Time)",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "AEDT"
+        }
+      ],
+      "description": "AEDT + full name"
+    },
+    {
+      "id": "android-278",
+      "input": "3pm NZST (New Zealand Standard Time)",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "NZST"
+        }
+      ],
+      "description": "NZST + full name"
+    },
+    {
+      "id": "android-279",
+      "input": "10am Eastern Standard Time",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "full name: Eastern Standard Time"
+    },
+    {
+      "id": "android-280",
+      "input": "10am Eastern Daylight Time",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "EDT"
+        }
+      ],
+      "description": "full name: Eastern Daylight Time"
+    },
+    {
+      "id": "android-281",
+      "input": "10am Pacific Standard Time",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "full name: Pacific Standard Time"
+    },
+    {
+      "id": "android-282",
+      "input": "10am Pacific Daylight Time",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "PDT"
+        }
+      ],
+      "description": "full name: Pacific Daylight Time"
+    },
+    {
+      "id": "android-283",
+      "input": "10am Central Standard Time",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "CST"
+        }
+      ],
+      "description": "full name: Central Standard Time"
+    },
+    {
+      "id": "android-284",
+      "input": "10am Central Daylight Time",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "CDT"
+        }
+      ],
+      "description": "full name: Central Daylight Time"
+    },
+    {
+      "id": "android-285",
+      "input": "10am Mountain Standard Time",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "MST"
+        }
+      ],
+      "description": "full name: Mountain Standard Time"
+    },
+    {
+      "id": "android-286",
+      "input": "10am Mountain Daylight Time",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "MDT"
+        }
+      ],
+      "description": "full name: Mountain Daylight Time"
+    },
+    {
+      "id": "android-287",
+      "input": "10am Central European Time",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "CET"
+        }
+      ],
+      "description": "full name: Central European Time"
+    },
+    {
+      "id": "android-288",
+      "input": "10am Central European Summer Time",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "CEST"
+        }
+      ],
+      "description": "full name: Central European Summer Time"
+    },
+    {
+      "id": "android-289",
+      "input": "10am Greenwich Mean Time",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "full name: Greenwich Mean Time"
+    },
+    {
+      "id": "android-290",
+      "input": "10am Japan Standard Time",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "full name: Japan Standard Time"
+    },
+    {
+      "id": "android-291",
+      "input": "10am Korea Standard Time",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "KST"
+        }
+      ],
+      "description": "full name: Korea Standard Time"
+    },
+    {
+      "id": "android-292",
+      "input": "10am Australian Eastern Standard Time",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "AEST"
+        }
+      ],
+      "description": "full name: Australian Eastern Standard Time"
+    },
+    {
+      "id": "android-293",
+      "input": "10am India Standard Time",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "IST"
+        }
+      ],
+      "description": "full name: India Standard Time"
+    },
+    {
+      "id": "android-294",
+      "input": "3pm Hong Kong Time",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "HKT"
+        }
+      ],
+      "description": "full name: Hong Kong Time"
+    },
+    {
+      "id": "android-295",
+      "input": "3pm Singapore Time",
+      "category": "Non-English / expanded timezone names",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "SGT"
+        }
+      ],
+      "description": "full name: Singapore Time"
+    },
+    {
+      "id": "android-296",
+      "input": "Wed, Apr 9, 3:00 PM – 4:00 PM (EDT)",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EDT"
+        },
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "EDT"
+        }
+      ],
+      "description": "Google Calendar event format"
+    },
+    {
+      "id": "android-297",
+      "input": "Apr 9, 2026 03:00 PM Eastern Time (US and Canada)",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "ET"
+        }
+      ],
+      "description": "Zoom meeting invite format"
+    },
+    {
+      "id": "android-298",
+      "input": "Reminder: standup at 9:30am PT tomorrow",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 30,
+          "timezone": "PT"
+        }
+      ],
+      "description": "Slack reminder style"
+    },
+    {
+      "id": "android-299",
+      "input": "Wednesday, April 9, 2026 3:00 PM – 5:00 PM EDT",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EDT"
+        },
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "EDT"
+        }
+      ],
+      "description": "Eventbrite event listing"
+    },
+    {
+      "id": "android-300",
+      "input": "Going live at 2pm PT!",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 0,
+          "timezone": "PT"
+        }
+      ],
+      "description": "social media announcement"
+    },
+    {
+      "id": "android-301",
+      "input": "AMA starts at 3pm ET today",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "ET"
+        }
+      ],
+      "description": "social media AMA"
+    },
+    {
+      "id": "android-302",
+      "input": "Departs: 06:45 PST  Arrives: 15:20 EST",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 6,
+          "minute": 45,
+          "timezone": "PST"
+        },
+        {
+          "hour": 15,
+          "minute": 20,
+          "timezone": "EST"
+        }
+      ],
+      "description": "flight departure + arrival"
+    },
+    {
+      "id": "android-303",
+      "input": "Flight UA123 departs SFO at 7:00 AM PST, arrives JFK at 3:30 PM EST",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 7,
+          "minute": 0,
+          "timezone": "PST"
+        },
+        {
+          "hour": 15,
+          "minute": 30,
+          "timezone": "EST"
+        }
+      ],
+      "description": "flight with airport codes"
+    },
+    {
+      "id": "android-304",
+      "input": "Incident reported at 2:15 AM UTC on April 9, 2026",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 2,
+          "minute": 15,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "support ticket timestamp"
+    },
+    {
+      "id": "android-305",
+      "input": "Deploy window: 2:00 AM - 4:00 AM UTC",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 2,
+          "minute": 0,
+          "timezone": "UTC"
+        },
+        {
+          "hour": 4,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "deployment window"
+    },
+    {
+      "id": "android-306",
+      "input": "Movie night starts at 8pm EST (5pm PST)",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 20,
+          "minute": 0,
+          "timezone": "EST"
+        },
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "Discord-style dual timezone announcement"
+    },
+    {
+      "id": "android-307",
+      "input": "Live Session | Apr 9 at 11:00 AM PDT",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 11,
+          "minute": 0,
+          "timezone": "PDT"
+        }
+      ],
+      "description": "LinkedIn event format"
+    },
+    {
+      "id": "android-308",
+      "input": "Option A: April 9, 10:00 AM EST\nOption B: April 10, 2:00 PM EST",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "EST"
+        },
+        {
+          "hour": 14,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "meeting poll with multiple options"
+    },
+    {
+      "id": "android-309",
+      "input": "Stream schedule: Mon 7pm PT / 10pm ET",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 19,
+          "minute": 0,
+          "timezone": "PT"
+        },
+        {
+          "hour": 22,
+          "minute": 0,
+          "timezone": "ET"
+        }
+      ],
+      "description": "Twitch stream schedule"
+    },
+    {
+      "id": "android-310",
+      "input": "I will be out of office until April 14 at 9:00 AM EST",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "OOO auto-reply"
+    },
+    {
+      "id": "android-311",
+      "input": "Keynote: 9:00 AM - 10:15 AM PST | Breakout: 10:30 AM - 11:45 AM PST",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "PST"
+        },
+        {
+          "hour": 10,
+          "minute": 15,
+          "timezone": "PST"
+        },
+        {
+          "hour": 10,
+          "minute": 30,
+          "timezone": "PST"
+        },
+        {
+          "hour": 11,
+          "minute": 45,
+          "timezone": "PST"
+        }
+      ],
+      "description": "conference schedule with two sessions"
+    },
+    {
+      "id": "android-312",
+      "input": "April 9, 2026 from 3:00 PM to 4:00 PM EDT",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EDT"
+        },
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "EDT"
+        }
+      ],
+      "description": "Apple Calendar style"
+    },
+    {
+      "id": "android-313",
+      "input": "Microsoft Teams Meeting\nApril 9, 2026 3:00 PM-3:30 PM (UTC-05:00) Eastern Time",
+      "category": "Real-world copy-paste from apps",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC-5"
+        },
+        {
+          "hour": 15,
+          "minute": 30,
+          "timezone": "UTC-5"
+        }
+      ],
+      "description": "Teams meeting invite"
+    },
+    {
+      "id": "android-314",
+      "input": "3pm",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": null
+        }
+      ],
+      "description": "bare time, no timezone"
+    },
+    {
+      "id": "android-315",
+      "input": "3:00 PM",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": null
+        }
+      ],
+      "description": "bare time with minutes"
+    },
+    {
+      "id": "android-316",
+      "input": "EST 3pm",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "timezone before time"
+    },
+    {
+      "id": "android-317",
+      "input": "Available April 9 at 3pm EST or April 10 at 2pm EST",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        },
+        {
+          "hour": 14,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "two full date-times in prose"
+    },
+    {
+      "id": "android-318",
+      "input": "Hey team, just a reminder that our quarterly planning meeting is scheduled for next Wednesday, April 9th at 2:30 PM EST. Please prepare your status updates.",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 30,
+          "timezone": "EST"
+        }
+      ],
+      "description": "timestamp buried in long email text"
+    },
+    {
+      "id": "android-319",
+      "input": "3:00:00 PM EST",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "time with seconds"
+    },
+    {
+      "id": "android-320",
+      "input": "15:30:45 UTC",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 30,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "24h time with seconds"
+    },
+    {
+      "id": "android-321",
+      "input": "MEETING AT 3PM EST",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "all-caps text"
+    },
+    {
+      "id": "android-322",
+      "input": "CALL AT 9:00 AM PST",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "all-caps with colon time"
+    },
+    {
+      "id": "android-323",
+      "input": "3pm est",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "lowercase timezone"
+    },
+    {
+      "id": "android-324",
+      "input": "3pm Pst",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "mixed-case timezone"
+    },
+    {
+      "id": "android-325",
+      "input": "3pm pdt",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PDT"
+        }
+      ],
+      "description": "lowercase PDT"
+    },
+    {
+      "id": "android-326",
+      "input": "3pm ET, 12pm PT",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "ET"
+        },
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "PT"
+        }
+      ],
+      "description": "comma-separated times"
+    },
+    {
+      "id": "android-327",
+      "input": "3pm ET and 12pm PT",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "ET"
+        },
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "PT"
+        }
+      ],
+      "description": "'and'-separated times"
+    },
+    {
+      "id": "android-328",
+      "input": "Join us at 3pm EST: https://zoom.us/j/123456",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "time before URL"
+    },
+    {
+      "id": "android-329",
+      "input": "Subject: Meeting at 3pm EST",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "email subject line"
+    },
+    {
+      "id": "android-330",
+      "input": "3pm EST (that's 12pm PST)",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        },
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "PST"
+        }
+      ],
+      "description": "clarification in parens"
+    },
+    {
+      "id": "android-331",
+      "input": "April 9, 2026",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "date only, no time"
+    },
+    {
+      "id": "android-332",
+      "input": "04/09/2026",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "numeric date only, no time"
+    },
+    {
+      "id": "android-333",
+      "input": "I scored 300 points",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "number that is not a time"
+    },
+    {
+      "id": "android-334",
+      "input": "Room 1500",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "room number, not military time"
+    },
+    {
+      "id": "android-335",
+      "input": "$15.00",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "price, not a time"
+    },
+    {
+      "id": "android-336",
+      "input": "version 3.00",
+      "category": "Stress tests and tricky patterns",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "version number, not a time"
+    },
+    {
+      "id": "android-337",
+      "input": "2:00 pm EST",
+      "category": "Additional 12h format variations",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "lowercase pm + EST"
+    },
+    {
+      "id": "android-338",
+      "input": "2:00 p.m. EST",
+      "category": "Additional 12h format variations",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "dotted lowercase pm"
+    },
+    {
+      "id": "android-339",
+      "input": "2:00PM EST",
+      "category": "Additional 12h format variations",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "no space before PM caps"
+    },
+    {
+      "id": "android-340",
+      "input": "2:00pm EST",
+      "category": "Additional 12h format variations",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "no space before pm lower"
+    },
+    {
+      "id": "android-341",
+      "input": "2 PM EST",
+      "category": "Additional 12h format variations",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "no minutes, space PM"
+    },
+    {
+      "id": "android-342",
+      "input": "2PM EST",
+      "category": "Additional 12h format variations",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 14,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "no minutes, no space PM"
+    },
+    {
+      "id": "android-343",
+      "input": "10:00 A.M. CDT",
+      "category": "Additional 12h format variations",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "CDT"
+        }
+      ],
+      "description": "dotted AM uppercase + CDT"
+    },
+    {
+      "id": "android-344",
+      "input": "10:00 a.m. CDT",
+      "category": "Additional 12h format variations",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "CDT"
+        }
+      ],
+      "description": "dotted am lowercase + CDT"
+    },
+    {
+      "id": "android-345",
+      "input": "3:00 PM EST | 12:00 PM PST | 8:00 PM GMT",
+      "category": "Dash / pipe / bullet multi-timezone lists",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        },
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "PST"
+        },
+        {
+          "hour": 20,
+          "minute": 0,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "pipe-separated triple timezone"
+    },
+    {
+      "id": "android-346",
+      "input": "9am PT • 12pm ET • 5pm GMT",
+      "category": "Dash / pipe / bullet multi-timezone lists",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "PT"
+        },
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "ET"
+        },
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "bullet-separated triple timezone"
+    },
+    {
+      "id": "android-347",
+      "input": "- 9:00 AM PST\n- 12:00 PM EST\n- 5:00 PM GMT",
+      "category": "Dash / pipe / bullet multi-timezone lists",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "PST"
+        },
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "EST"
+        },
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "GMT"
+        }
+      ],
+      "description": "bullet-list multi-timezone"
+    },
+    {
+      "id": "android-348",
+      "input": "April 1st at 3pm EST",
+      "category": "Times with date ordinals (1st, 2nd, 3rd, etc.)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "1st ordinal"
+    },
+    {
+      "id": "android-349",
+      "input": "April 2nd at 3pm EST",
+      "category": "Times with date ordinals (1st, 2nd, 3rd, etc.)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "2nd ordinal"
+    },
+    {
+      "id": "android-350",
+      "input": "April 3rd at 3pm EST",
+      "category": "Times with date ordinals (1st, 2nd, 3rd, etc.)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "3rd ordinal"
+    },
+    {
+      "id": "android-351",
+      "input": "April 22nd at 3pm EST",
+      "category": "Times with date ordinals (1st, 2nd, 3rd, etc.)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "22nd ordinal"
+    },
+    {
+      "id": "android-352",
+      "input": "April 11th at 3pm EST",
+      "category": "Times with date ordinals (1st, 2nd, 3rd, etc.)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "11th ordinal"
+    },
+    {
+      "id": "android-353",
+      "input": "April 21st at 3pm EST",
+      "category": "Times with date ordinals (1st, 2nd, 3rd, etc.)",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "EST"
+        }
+      ],
+      "description": "21st ordinal"
+    }
+  ],
+  "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."
+}

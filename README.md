@@ -1,54 +1,54 @@
 # ChronoShift
 
-[![Tests](https://github.com/Tien-Lam/ChronoShift/actions/workflows/test.yml/badge.svg)](https://github.com/Tien-Lam/ChronoShift/actions/workflows/test.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Android min SDK](https://img.shields.io/badge/min%20SDK-26-green.svg)](app/build.gradle.kts)
+[Open ChronoShift](https://tien-lam.github.io/ChronoShift/) — a private timezone converter that works offline after its first complete online load.
 
-NLP-powered timezone converter for Android. Select text anywhere on your device and instantly convert timestamps to your local time.
+Paste or type a message, choose your timezone, press **Convert**, then copy the result with its date and zone. ChronoShift handles natural-language dates/times, cities, explicit offsets and IANA zones, ranges, Unix seconds and labeled ambiguity. Corrections and display preferences are under **More options**.
 
-## Features
+The layout adapts to phones, tablets, desktop windows and foldable displays. Supported browsers place input and results clear of a hinge. Conversion runs entirely on your device with no account, conversion server or mandatory model download.
 
-- **Text Selection Integration** — select any text containing a timestamp, tap "ChronoShift" from the context menu, and see it converted
-- **Streaming NLP Pipeline** — instant results from fast extractors, refined by on-device LLM in the background
-- **Multiple Interpretations** — ambiguous timezones (e.g. "CST") show all possible conversions instead of guessing
-- **Fully On-Device** — no network calls for conversion; privacy-first
+Use **Appearance** in the header to switch between **Liquid Lens** and **Glass Command**, with **Dark**, **Light** or **System** themes. Appearance preferences are saved locally; switching keeps your current message and results. The converter opens directly, without a marketing hero. See [design behavior](docs/developer/appearance.md).
 
-## Install
+## Use offline
 
-Download the latest APK from [Releases](https://github.com/Tien-Lam/ChronoShift/releases) and sideload it, or build from source (see below).
+Open the app online once and wait for **Offline ready** before disconnecting. Install it from your browser's menu if offered, or bookmark it. Clearing browser storage requires another complete online visit. Updates wait for **Update now** and preserve your current message when accepted.
 
-## How It Works
+Only preferences persist by default. Conversion text stays in memory; explicit updates and supported installed-app shares use a short-lived, single-use local handoff. Ordinary paste works across supported browsers.
 
-ChronoShift uses a tiered extraction pipeline that streams results as they become available:
+## Develop
 
-| Stage | Engine | Speed | Purpose |
-|---|---|---|---|
-| 1 | ML Kit + Chrono.js + Regex | Instant | Datetime detection, parsing, and unix timestamp handling |
-| 2 | Gemma (LiteRT) | Background | On-device LLM for complex/ambiguous timestamps |
-
-Stage 1 results appear immediately. Stage 2 adds and merges results in the background. Duplicates are merged; ambiguous interpretations are kept.
-
-## Build
-
-Requires Android Studio with its bundled JDK. Java and Gradle are **not** required on PATH.
+Use the project-pinned runtimes managed by mise:
 
 ```bash
-JAVA_HOME="C:/Program Files/Android/Android Studio/jbr" \
-ANDROID_HOME="$LOCALAPPDATA/Android/Sdk" \
-./gradlew assembleDebug
+mise install
+bun install --frozen-lockfile
+bun run dev
 ```
 
-See [docs/developer/building.md](docs/developer/building.md) for full setup and CI details.
+Build and run the real offline app:
 
-## Tech Stack
+```bash
+bun run check
+bun run format:check
+bun run preview
+```
 
-- Kotlin, Jetpack Compose, Material 3 Expressive
-- Hilt for dependency injection
-- [Zipline](https://github.com/nicholasgasior/nicholasgasior) (QuickJS) for running [chrono-node](https://github.com/wanasit/chrono) on-device
-- ML Kit Entity Extraction for datetime span detection
-- Google LiteRT-LM for on-device Gemma inference
-- Kotlinx Datetime, Coroutines, Flow
+Open http://127.0.0.1:4173 and wait for **Offline ready**. Offline caching is enabled in production builds. The development server provides live reload.
+
+## Verify and publish
+
+```bash
+bunx --bun playwright install chromium firefox webkit
+bun run test:browser
+bun run corpus:audit
+bun run test:hosted
+```
+
+GitHub Pages publishes verified builds at `/ChronoShift/`. The publishing workflow checks the web app before uploading and deploying static assets. No application server runs in production. The migration branch publishes the current preview; main is the continuing source after merge.
+
+See [build setup](docs/developer/building.md), [tests](docs/developer/testing.md), [publishing and rollback](docs/developer/web.md), [browser acceptance](docs/developer/device-smoke-test.md) and [the conversion pipeline](docs/architecture/nlp-pipeline.md). Physical-device, accessibility and phone-performance acceptance is tracked in the [Linear initiative](https://linear.app/tienlam/initiative/chronoshift-simple-offline-web-app-d90101850ba1).
+
+ChronoShift is maintained as a web app. The native application and its maintenance tooling have been removed; previous versions remain in Git history.
 
 ## License
 
-[MIT](LICENSE)
+MIT. Production dependency notices are bundled with every build.

@@ -11,16 +11,20 @@ labels: bug
 
 
 **Steps to reproduce**
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
-**Input text (if applicable)**
+**Example input (use sample text, not private messages)**
 ```
 
 ```
 
 **Device info**
-- Device: 
-- Android version: 
-- ChronoShift version: 
+- Device:
+- Operating system:
+- Browser and version:
+- Window size or folded/unfolded state:
+- Online/offline and whether “Offline ready” appeared:
+- Installed app or browser tab:
+- ChronoShift release (from /ChronoShift/release.json, if available):

@@ -1,43 +1,19 @@
-# Merge Philosophy
+# Merge rules
 
-**Show all interpretations, don't guess.** When a timestamp is ambiguous, ChronoShift shows every valid conversion and lets the user pick the right one.
+ChronoShift keeps ambiguous interpretations visible so users can choose the correct one. It does not guess a source timezone from geography or hide DST alternatives.
 
-## Why
+## Stable identity
 
-Timezone abbreviations are notoriously ambiguous. "CST" can mean US Central Standard Time (UTC-6), China Standard Time (UTC+8), or Cuba Standard Time (UTC-5). Guessing wrong is worse than showing options — a user scheduling a meeting across timezones needs the correct conversion, not a coin flip.
+`web/src/engine/convert.ts` merges results by exact instant (or a date-only value), normalized source timezone and range endpoint. Matching formatted hours are not sufficient. Duplicate mentions retain their occurrence count.
 
-## How Merging Works
+Equivalent explicit numeric offsets normalize to the same source identity. An explicit source label may upgrade an otherwise equivalent assumed source. Different instants, dates, source contexts or range endpoints remain separate.
 
-`ResultMerger` combines results from all extractors using a three-tier match:
+## Ambiguity and dates
 
-### 1. Exact Match (same instant + same timezone)
+- CST, IST, BST and AST produce the supported fixed-offset alternatives listed in the product contract.
+- Regional zones use the event date's DST rule. A repeated local clock time retains both valid instants; a nonexistent time requires correction.
+- Fixed EST/PST inputs do not turn into a geographic region merely to obtain a display label.
+- Date-only values remain dates, with no invented noon timestamp.
+- Range endpoints remain ordered and retain overnight day changes.
 
-If two results resolve to the same `Instant` and have the same `sourceTimezone`, they're true duplicates. The merge keeps one and combines the method labels (e.g., "ML Kit + Chrono + LiteRT").
-
-### 2. Fuzzy Match (same local time + same date)
-
-If two results have the same hour, minute, and date (`isSameLocalTime`), the merge applies these rules:
-
-- **One has a timezone, the other doesn't** — the one with timezone wins (upgrades the null-tz result).
-- **Both have timezones, same instant** — they agree, merge them.
-- **Both have timezones, different instants** — they represent different interpretations. Keep both as separate results.
-
-### 3. No Match
-
-The result is new — add it to the list.
-
-## Ambiguity Expansion
-
-After all extractors have run and results are merged, `ChronoResultParser.expandAmbiguous()` checks each result's timezone abbreviation. If it maps to multiple IANA zones (via `TimezoneAbbreviations`), the single result is expanded into one result per possible zone.
-
-For example, "3 PM CST" becomes:
-- 3:00 PM UTC-6 Chicago (US Central)
-- 3:00 PM UTC+8 Shanghai (China Standard)
-
-Zone-based abbreviations like CT, ET, PT, MT are also supported and expand to their standard/daylight variants.
-
-## What Doesn't Merge
-
-- **Same local time, different dates** — kept separate. `isSameLocalTime` checks date to prevent cross-date silent merges.
-- **Same instant, different timezones** — kept separate. "3 PM EST" and "4 PM EDT" resolve to the same instant but represent different source context, so both are shown.
-- **Date-only results** — filtered out when real time results exist from any extractor. Kept only when they're the sole result (better than nothing).
+Exact expected results are specified in `tests/fixtures/temporal.json` and run through the real production worker. The larger input corpus is supplementary resilience evidence, not an accuracy oracle.

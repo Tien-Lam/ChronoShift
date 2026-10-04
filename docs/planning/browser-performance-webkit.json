@@ -1,0 +1,167 @@
+{
+  "measuredAt": "2026-10-04T02:31:52.180Z",
+  "release": {
+    "sourceCommit": "63a25539749e3ddc81172e57b08de2656cfa288b",
+    "base": "/"
+  },
+  "environment": "darwin/arm64, webkit 26.6, Bun 1.4.0",
+  "device": "Development computer, 390×844 CSS-pixel viewport. No mobile hardware, CPU or network emulation.",
+  "method": "Ten fresh browser contexts for cold local HTTP navigation, ten offline cached reopenings; Playwright wall-clock navigation-to-visible-form/complete-cache includes automation overhead. Five warmups + thirty timed conversions per design/workload use the production disposable worker and real result DOM; click capture to DOM completion includes worker startup, parsing and rendering. Frame gaps are diagnostic, not an input responsiveness certification. Local gzip estimates exclude HTTP headers. Fixed synthetic workloads are not worst-case proof.",
+  "assets": [
+    {
+      "name": "worker-Dcv-t75w.js",
+      "bytes": 218704,
+      "gzipBytes": 63777
+    },
+    {
+      "name": "index-BbxSBDlz.js",
+      "bytes": 400679,
+      "gzipBytes": 121051
+    },
+    {
+      "name": "index-wpxFTbJy.css",
+      "bytes": 14187,
+      "gzipBytes": 3590
+    }
+  ],
+  "totalGzipBytes": 188418,
+  "coldOnlineNavigationToForm": {
+    "runs": 10,
+    "p50Ms": 56.54,
+    "p95Ms": 64.99,
+    "maxMs": 64.99
+  },
+  "coldOnlineNavigationToOfflineReady": {
+    "runs": 10,
+    "p50Ms": 88.36,
+    "p95Ms": 96.45,
+    "maxMs": 96.45
+  },
+  "warmOfflineNavigationToForm": {
+    "runs": 10,
+    "p50Ms": 54.09,
+    "p95Ms": 54.71,
+    "maxMs": 54.71
+  },
+  "conversions": [
+    {
+      "design": "lens",
+      "workload": "meeting-2000",
+      "characters": 2000,
+      "conversion": {
+        "runs": 30,
+        "p50Ms": 37,
+        "p95Ms": 39,
+        "maxMs": 39
+      },
+      "maxFrameGap": {
+        "runs": 30,
+        "p50Ms": 17,
+        "p95Ms": 18,
+        "maxMs": 19
+      },
+      "provisionalBudgetMs": 250,
+      "meetsBudgetOnThisMachine": true
+    },
+    {
+      "design": "lens",
+      "workload": "meeting-10000",
+      "characters": 10000,
+      "conversion": {
+        "runs": 30,
+        "p50Ms": 84,
+        "p95Ms": 87,
+        "maxMs": 87
+      },
+      "maxFrameGap": {
+        "runs": 30,
+        "p50Ms": 17,
+        "p95Ms": 18,
+        "maxMs": 19
+      },
+      "provisionalBudgetMs": 1000,
+      "meetsBudgetOnThisMachine": true
+    },
+    {
+      "design": "lens",
+      "workload": "noisy-10000",
+      "characters": 10000,
+      "conversion": {
+        "runs": 30,
+        "p50Ms": 31,
+        "p95Ms": 32,
+        "maxMs": 32
+      },
+      "maxFrameGap": {
+        "runs": 30,
+        "p50Ms": 17,
+        "p95Ms": 18,
+        "maxMs": 18
+      },
+      "provisionalBudgetMs": 1000,
+      "meetsBudgetOnThisMachine": true
+    },
+    {
+      "design": "command",
+      "workload": "meeting-2000",
+      "characters": 2000,
+      "conversion": {
+        "runs": 30,
+        "p50Ms": 37,
+        "p95Ms": 38,
+        "maxMs": 39
+      },
+      "maxFrameGap": {
+        "runs": 30,
+        "p50Ms": 17,
+        "p95Ms": 17,
+        "maxMs": 17
+      },
+      "provisionalBudgetMs": 250,
+      "meetsBudgetOnThisMachine": true
+    },
+    {
+      "design": "command",
+      "workload": "meeting-10000",
+      "characters": 10000,
+      "conversion": {
+        "runs": 30,
+        "p50Ms": 85,
+        "p95Ms": 86,
+        "maxMs": 86
+      },
+      "maxFrameGap": {
+        "runs": 30,
+        "p50Ms": 17,
+        "p95Ms": 18,
+        "maxMs": 18
+      },
+      "provisionalBudgetMs": 1000,
+      "meetsBudgetOnThisMachine": true
+    },
+    {
+      "design": "command",
+      "workload": "noisy-10000",
+      "characters": 10000,
+      "conversion": {
+        "runs": 30,
+        "p50Ms": 30,
+        "p95Ms": 32,
+        "maxMs": 32
+      },
+      "maxFrameGap": {
+        "runs": 30,
+        "p50Ms": 16,
+        "p95Ms": 17,
+        "maxMs": 17
+      },
+      "provisionalBudgetMs": 1000,
+      "meetsBudgetOnThisMachine": true
+    }
+  ],
+  "pending": [
+    "Named physical-phone startup/conversion p95",
+    "Real virtual-keyboard and Clear responsiveness",
+    "Representative phone network conditions"
+  ]
+}
