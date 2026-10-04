@@ -86,9 +86,9 @@ summary,
     color var(--motion-fast) ease,
     translate var(--motion-fast) var(--motion-ease);
 }
-button:not(:disabled):active,
-button[data-pressed]:not(:disabled),
-summary:active {
+.copy-button:not(:disabled):active,
+.text-button:not(:disabled):active,
+.examples button:not(:disabled):active {
   translate: 0 1px;
 }
 @media (hover: hover) {
@@ -239,7 +239,8 @@ main {
   border-radius: 12px;
   background: var(--surface);
   box-shadow: 0 4px 20px var(--shadow);
-  animation: surface-enter var(--motion-enter) var(--motion-ease);
+  /* Keep popup anchors stationary while the page appears. */
+  animation: surface-fade var(--motion-enter) var(--motion-ease);
 }
 .input-panel,
 .result-panel {
@@ -433,7 +434,8 @@ select {
   flex-direction: column;
 }
 .choice-popover[data-entering] {
-  animation: surface-enter var(--motion-fast) var(--motion-ease);
+  /* React Aria positions and dismisses this surface using its live geometry. */
+  animation: surface-fade var(--motion-fast) var(--motion-ease);
 }
 .appearance[open] .appearance-fields,
 .options[open] .option-fields,
@@ -1005,6 +1007,14 @@ footer p {
     height: env(viewport-segment-height 0 0);
     overflow-y: auto;
     overscroll-behavior-y: contain;
+  }
+}
+@keyframes surface-fade {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
   }
 }
 @keyframes surface-enter {
