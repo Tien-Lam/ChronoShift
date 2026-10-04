@@ -51,6 +51,10 @@ export default function App() {
   const [notice, setNotice] = useState("");
   const [preferenceError, setPreferenceError] = useState(false);
   const [manualCopy, setManualCopy] = useState("");
+  const [pendingImport, setPendingImport] = useState<{
+    text: string;
+    source: "Shared" | "Clipboard";
+  }>();
   const [offline, setOffline] = useState<OfflineState>({ ready: false });
   const [installPrompt, setInstallPrompt] = useState<any>();
   const [installHelp, setInstallHelp] = useState(false);
@@ -58,6 +62,8 @@ export default function App() {
     copyField = useRef<HTMLTextAreaElement>(null);
   const worker = useRef<Worker | null>(null),
     request = useRef(0);
+  const importRequest = useRef(0);
+  const copyRequest = useRef(0);
   const draft = useRef(text);
   draft.current = text;
   const shareRead = useRef(false);
@@ -104,20 +110,23 @@ export default function App() {
       key = params.get("share");
     if (!key) clearAbandonedShares().catch(() => {});
     if (key) {
+      const importId = ++importRequest.current,
+        version = request.current;
       history.replaceState(null, "", location.pathname);
       consumeShare(key)
         .then((message) => {
+          if (importId !== importRequest.current) return;
           if (message) {
-            setText(message);
-            setNotice("Shared text is ready. Choose Convert.");
+            receiveImport(message, "Shared", version, !!restore);
           } else
             setNotice("The shared text expired. Paste it here to continue.");
         })
-        .catch(() =>
-          setNotice(
-            "Could not receive shared text. Paste it here to continue.",
-          ),
-        );
+        .catch(() => {
+          if (importId === importRequest.current)
+            setNotice(
+              "Could not receive shared text. Paste it here to continue.",
+            );
+        });
     }
   }, []);
   useEffect(() => {
@@ -144,6 +153,7 @@ export default function App() {
   }, [prefs.theme]);
 
   function edit(value: string) {
+    copyRequest.current++;
     request.current++;
     worker.current?.terminate();
     worker.current = null;
@@ -154,6 +164,7 @@ export default function App() {
     setManualCopy("");
   }
   function invalidate() {
+    copyRequest.current++;
     request.current++;
     worker.current?.terminate();
     worker.current = null;
@@ -163,6 +174,7 @@ export default function App() {
     setManualCopy("");
   }
   function run() {
+    copyRequest.current++;
     setNotice("");
     setManualCopy("");
     if (!text.trim()) {
@@ -230,11 +242,30 @@ export default function App() {
       );
     }
   }
+  function receiveImport(
+    value: string,
+    source: "Shared" | "Clipboard",
+    version: number,
+    preserveDraft = false,
+  ) {
+    if (preserveDraft || version !== request.current) {
+      setPendingImport({ text: value, source });
+      return;
+    }
+    edit(value);
+    if (source === "Shared") setNotice("Shared text is ready. Choose Convert.");
+    else input.current?.focus();
+  }
   async function paste() {
+    const importId = ++importRequest.current,
+      version = request.current;
+    setPendingImport(undefined);
     try {
-      edit(await navigator.clipboard.readText());
-      input.current?.focus();
+      const value = await navigator.clipboard.readText();
+      if (importId !== importRequest.current) return;
+      receiveImport(value, "Clipboard", version);
     } catch {
+      if (importId !== importRequest.current) return;
       setNotice(
         "Paste directly into the message box using your keyboard or touch menu.",
       );
@@ -242,12 +273,16 @@ export default function App() {
     }
   }
   async function copy(result: TimeResult) {
+    if (!targetZone || !sourceZone) return;
+    const copyId = ++copyRequest.current;
     const value = copyText(result, displayOptions);
     try {
       await navigator.clipboard.writeText(value);
+      if (copyId !== copyRequest.current) return;
       setNotice("Copied with the date and timezone.");
       setManualCopy("");
     } catch {
+      if (copyId !== copyRequest.current) return;
       setManualCopy(value);
       setNotice(
         "Select the text below and copy it using your keyboard or touch menu.",
@@ -274,7 +309,9 @@ export default function App() {
     );
     pending.postMessage({ type: "ACTIVATE_UPDATE" });
   }
-  const groups = [...new Set(conversion.results.map((r) => r.group))];
+  const groups = targetZone
+    ? [...new Set(conversion.results.map((r) => r.group))]
+    : [];
   return (
     <>
       <header className="topbar">
@@ -394,13 +431,19 @@ export default function App() {
                   id="target-zone"
                   list="zones"
                   value={prefs.target}
-                  onChange={(e) =>
-                    setPrefs({ ...prefs, target: e.target.value })
-                  }
+                  onChange={(e) => {
+                    copyRequest.current++;
+                    setPrefs({ ...prefs, target: e.target.value });
+                    setError("");
+                    setManualCopy("");
+                    setNotice("");
+                  }}
+                  aria-invalid={!targetZone}
+                  aria-describedby="target-zone-help"
                   placeholder={`Your timezone · ${zoneName(device)}`}
                   autoComplete="off"
                 />
-                <span className="field-note">
+                <span className="field-note" id="target-zone-help">
                   {targetZone
                     ? `${zoneName(targetZone)} · ${targetZone}`
                     : "Choose a timezone or city from the list"}
@@ -489,12 +532,15 @@ export default function App() {
                 <select
                   id="time-format"
                   value={prefs.hourCycle}
-                  onChange={(e) =>
+                  onChange={(e) => {
+                    copyRequest.current++;
+                    setManualCopy("");
+                    setNotice("");
                     setPrefs({
                       ...prefs,
                       hourCycle: e.target.value as "auto" | "12" | "24",
-                    })
-                  }
+                    });
+                  }}
                 >
                   <option value="auto">Use my device format</option>
                   <option value="12">12-hour (3:00 PM)</option>
@@ -545,7 +591,7 @@ export default function App() {
             <div role="status" className="sr-only">
               {busy
                 ? "Converting message"
-                : conversion.results.length
+                : targetZone && conversion.results.length
                   ? `${conversion.results.length} time interpretations found`
                   : ""}
             </div>
@@ -553,6 +599,11 @@ export default function App() {
               <div className="message error" role="alert">
                 {error}
               </div>
+            )}
+            {!targetZone && !!conversion.results.length && !error && (
+              <p className="message warning" role="alert">
+                Choose a timezone to see and copy the converted time.
+              </p>
             )}
             {conversion.warnings.map((w) => (
               <div key={w} className="message warning" role="alert">
@@ -641,6 +692,34 @@ export default function App() {
         <div role="status" className="notice">
           {notice}
         </div>
+        {pendingImport && (
+          <div className="import-choice">
+            <p role="status">
+              {pendingImport.source} text arrived. Replace the current message?
+            </p>
+            <div>
+              <button
+                type="button"
+                className="text-button"
+                onClick={() => {
+                  edit(pendingImport.text);
+                  setPendingImport(undefined);
+                  setNotice("Imported text is ready. Choose Convert.");
+                  input.current?.focus();
+                }}
+              >
+                Replace with imported text
+              </button>
+              <button
+                type="button"
+                className="text-button muted"
+                onClick={() => setPendingImport(undefined)}
+              >
+                Dismiss imported text
+              </button>
+            </div>
+          </div>
+        )}
         {preferenceError && (
           <p className="message warning">
             Preferences cannot be saved in this browser. Conversion still works.
