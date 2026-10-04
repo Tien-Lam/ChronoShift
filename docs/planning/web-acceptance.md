@@ -1,10 +1,10 @@
 # ChronoShift acceptance status
 
-Implementation: merged main `9e7c1cb` ([PR #16](https://github.com/Tien-Lam/ChronoShift/pull/16)), including update/privacy work at `63a2553` and immediate update activation at `946c303`. Published from main: https://tien-lam.github.io/ChronoShift/.
+Implementation: modern Glass Command merged as main `88c4457` ([PR #22](https://github.com/Tien-Lam/ChronoShift/pull/22)), following the web migration in PR #16. Published from main: https://tien-lam.github.io/ChronoShift/. The reused artifact identifies tested CI merge `641c5c23e25aebf58db4f0911b7bec6d12fc43f9`; its source tree exactly matches merged main.
 
 ## Browser capability evidence
 
-“Automated pass” means a tested browser engine/profile, not a physical operating-system browser or installed app. The expanded 113 scenarios include 98 independent exact expectations executed through the production worker in each of the five core profiles. Three additional cases exercise Chromium viewport segments/safe areas.
+“Automated pass” means a tested browser engine/profile, not a physical operating-system browser or installed app. The expanded 118 scenarios include 98 independent exact expectations executed through the production worker in each of the five core profiles. Additional cases exercise Chromium viewport segments/safe areas and both legacy preference migrations.
 
 | Capability | Chromium desktop | Firefox desktop | WebKit desktop | Android emulation | iPhone emulation | Physical devices |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -21,8 +21,8 @@ The WebKit offline method stops a dedicated origin and confirms an uncached netw
 
 ## Completed engineering work
 
-- Foundations: exact conversion fixtures, standalone 353-input resilience corpus, typed parsing/timezone semantics, cancellation and input limit. The independent code/adversarial reviews passed after iterative fixes; TIE-302 now has a measured feasibility/deferral decision in [the isolated experiment](../../experiments/temporal-span/README.md), awaiting final review/merge.
-- Experience: the original release had Liquid Lens and Glass Command; TIE-323 consolidates these into modern Glass Command, Dark/Light/System themes, concise conversion-first layout, progressive corrections, clipboard fallbacks, fluid/foldable layouts and automated accessibility.
+- Foundations: all eleven tickets are Done and the project is Completed. Exact conversion fixtures, standalone 353-input resilience corpus, typed parsing/timezone semantics, cancellation and input limit pass independent review. TIE-302 closes as the measured feasibility/deferral outcome in [the isolated experiment](../../experiments/temporal-span/README.md); no ML deployment is proposed.
+- Experience: TIE-323 is Done. Modern Glass Command is the only layout, with Dark/Light/System themes, concise conversion-first layout, progressive corrections, clipboard fallbacks, fluid/foldable layouts and automated accessibility.
 - Offline: complete cache/readiness, cache repair, local preference migration/reset/quota recovery, bounded single-use handoffs, distinct-release multi-tab compatibility and rollback cleanup.
 - Delivery: Bun/mise CI, GitHub Pages/subpath/HTTPS checks, retained rollback artifacts, local-only security/privacy coverage and browser performance harness. Native maintenance is retired. Independent privacy/security review passed; CI usage is re-measured at main cutover.
 
@@ -48,7 +48,7 @@ Each ticket below remains **In Progress** because its original acceptance criter
 
 The available browser side panel has no native-app control, OS installation/share-menu control, screen-reader control, actual browser-zoom control or physical-phone access. Its CSS viewport emulation cannot supply those missing results. The existing [production browser report](../qa/browser-2026-10-04/README.md) remains supplementary evidence.
 
-Optional ML discovery is tracked separately as TIE-302 (**In Progress**, measured feasibility/deferral approved; merge pending); its experiment and disposition do not close any of these nine acceptance gates.
+Optional ML discovery TIE-302 is **Done** as measured feasibility/deferral; its experiment and disposition do not close any of these nine acceptance gates. No model, experimental parsing rules or inference runtime enters the app.
 
 Use [device-smoke-test.md](../developer/device-smoke-test.md). Record each physical test with: release SHA, date, device, OS, browser/version, design/theme, posture, network mode, task, observed result, pass/fail, and reproducible defect. Pending entries are not assumed passes. Use synthetic messages only in evidence.
 
@@ -56,6 +56,6 @@ Browser performance reports identify their exact source release, asset breakdown
 
 Independent review and regression evidence: [review-2026-10-04.md](review-2026-10-04.md). Both reviewers approved after fixes; merge authorization does not claim physical-device acceptance.
 
-Merged main `9e7c1cb` passes the final GitHub gate (108 units, 113 browser scenarios and subpath), exact-artifact main publication and four live HTTPS checks. The 4 October 2026 state snapshot records twenty tickets Done, including TIE-315 after the direct browser evidence review; nine In Progress, optional ML now In Progress for its measured experiment, TIE-323 In Progress for the requested redesign, and native failure maintenance Canceled. [offline-web-linear-map.json](offline-web-linear-map.json) records this snapshot, not live Linear state. Partial acceptance checkboxes and observations are recorded in Linear. No installed-mode, screen-reader, actual zoom or phone p95 result is inferred from screenshots.
+Merged main `88c4457` passes the final GitHub gate (108 units, 118 browser scenarios and subpath), exact-artifact main publication and four live HTTPS checks. The 4 October 2026 verified Linear snapshot records **22 Done, nine In Progress and one Canceled**. Foundations is Completed; the other three projects and initiative remain active. [offline-web-linear-map.json](offline-web-linear-map.json) records ticket/project/milestone states as a snapshot, not live data. Partial acceptance checkboxes and observations are recorded in Linear. No installed-mode, screen-reader, actual zoom or phone p95 result is inferred from screenshots.
 
-TIE-323 records the new user-requested single Glass Command redesign, retaining Dark/Light/System themes. Its [side-panel evidence](../qa/glass-command-2026-10-04/README.md) and final reviews/gates are recorded separately from the previously published two-design evidence.
+TIE-323 records the completed single Glass Command redesign, retaining Dark/Light/System themes. Its [side-panel evidence](../qa/glass-command-2026-10-04/README.md) includes the live publication and explicit update preserving the synthetic draft. Final source/evidence reviews approved `adf5e26` without blocking findings. Earlier two-design captures are historical evidence. Final successful PR-plus-main usage is 37.5% fewer rounded runner minutes, 40.39% fewer runner seconds and 74.96% less projected artifact byte-hours versus the recorded baseline; this paired sample excludes failed/canceled/debug runs and is not account-wide monthly billing.

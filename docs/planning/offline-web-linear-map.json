@@ -1,8 +1,14 @@
 {
   "stateSnapshot": {
     "date": "2026-10-04",
-    "implementationRevision": "9e7c1cb",
-    "note": "Ticket states are a recorded snapshot, not live Linear state. Milestone descriptions and progress are retained planning data."
+    "implementationRevision": "88c4457a4d78f6108fe17939b54dc839adfcb350",
+    "testedArtifactRevision": "641c5c23e25aebf58db4f0911b7bec6d12fc43f9",
+    "counts": {
+      "Done": 22,
+      "In Progress": 9,
+      "Canceled": 1
+    },
+    "note": "Verified Linear ticket/project/milestone snapshot, not live state. Physical and human acceptance gaps remain open."
   },
   "initiative": {
     "id": "I-4",
@@ -13,22 +19,26 @@
     "foundation": {
       "id": "P-TIE-14",
       "uuid": "1b014dbc-997d-43eb-8348-8e3423366fe9",
-      "url": "https://linear.app/tienlam/project/chronoshift-web-conversion-foundations-39a0ab099497"
+      "url": "https://linear.app/tienlam/project/chronoshift-web-conversion-foundations-39a0ab099497",
+      "state": "Completed"
     },
     "experience": {
       "id": "P-TIE-15",
       "uuid": "45f37141-2933-4c97-b807-4cd34e5a8532",
-      "url": "https://linear.app/tienlam/project/chronoshift-simple-web-experience-a5ef2bb5c20c"
+      "url": "https://linear.app/tienlam/project/chronoshift-simple-web-experience-a5ef2bb5c20c",
+      "state": "In Progress"
     },
     "offline": {
       "id": "P-TIE-16",
       "uuid": "dd88bc63-3bf3-416e-b819-e7092d8014e5",
-      "url": "https://linear.app/tienlam/project/chronoshift-offline-pwa-dca3345bd8d8"
+      "url": "https://linear.app/tienlam/project/chronoshift-offline-pwa-dca3345bd8d8",
+      "state": "In Progress"
     },
     "delivery": {
       "id": "P-TIE-17",
       "uuid": "302fdd5f-a683-490b-9c4b-71073e0dd834",
-      "url": "https://linear.app/tienlam/project/chronoshift-web-delivery-dab90fb49a74"
+      "url": "https://linear.app/tienlam/project/chronoshift-web-delivery-dab90fb49a74",
+      "state": "In Progress"
     }
   },
   "milestones": {
@@ -36,56 +46,56 @@
       "id": "563034f1-6adb-4c03-8656-cba38ec9b8df",
       "name": "Contract & browser baseline",
       "description": "Conversion/UX contract recorded, reproducible web scaffold builds, portable exact fixtures exist, and the timezone adapter works on the target browser matrix.",
-      "progress": 0,
+      "progress": 100,
       "sortOrder": 65
     },
     "foundation/parity": {
       "id": "4a977be3-d961-4b27-b91c-045d0e34d1c1",
       "name": "Conversion parity",
       "description": "Real browser parser passes the approved fixture set: date context/ranges/order, fixed offsets vs IANA DST, supported cities and Unix seconds, ambiguity and deduplication. Cancellation and input limits are verified.",
-      "progress": 0,
+      "progress": 100,
       "sortOrder": 1162
     },
     "experience/usable": {
       "id": "015e5e0e-88d6-40ee-a77a-481b10521575",
       "name": "Usable conversion flow",
       "description": "The responsive core page converts real input, shows original text and local date/time/zone, makes ambiguous options clear, and provides a searchable timezone override.",
-      "progress": 0,
+      "progress": 63,
       "sortOrder": -57
     },
     "experience/polish": {
       "id": "0569b268-af61-4fd2-8309-ec07ae448c40",
       "name": "Accessible, low-friction experience",
       "description": "Copy/paste fallbacks, errors and correction, empty/large-input states, keyboard/screen reader support and a small task-based usability check all pass.",
-      "progress": 0,
+      "progress": 75,
       "sortOrder": 861
     },
     "offline/ready": {
       "id": "022a0291-2b00-406e-9ac8-955c84e8639c",
       "name": "Offline-ready PWA",
       "description": "App shell/parser/data are cached, readiness is accurate, the app reopens and converts fresh input without networking, preferences survive normal restarts, and installation works where supported.",
-      "progress": 0,
+      "progress": 50,
       "sortOrder": 14
     },
     "offline/resilient": {
       "id": "5ce0ae4b-2370-45b9-b87b-3ef5c6977d04",
       "name": "Safe updates & offline entry points",
       "description": "Version updates cannot mix incompatible assets or erase active input; supported installed share targets work offline through POST, and offline/storage/upgrade regressions are covered.",
-      "progress": 0,
+      "progress": 75,
       "sortOrder": 915
     },
     "delivery/candidate": {
       "id": "dd4052cc-9fd3-4bc9-8366-d9921b9f7f19",
       "name": "Web release candidate",
       "description": "Web CI, exact browser acceptance, offline checks, accessibility evidence, performance budgets and privacy audit pass with no unresolved conversion correctness defects.",
-      "progress": 0,
+      "progress": 63,
       "sortOrder": -1
     },
     "delivery/cutover": {
       "id": "897e485b-5c7b-4ee1-8769-df0af789a3aa",
       "name": "Web-only delivery",
       "description": "Web-only source, build, publishing, dependencies and documentation; native maintenance retired with historical provenance preserved.",
-      "progress": 0,
+      "progress": 63,
       "sortOrder": 1032
     }
   },
@@ -154,7 +164,7 @@
       "id": "TIE-302",
       "uuid": "efb3942d-352e-4e6a-a2e3-69e8d59371b3",
       "url": "https://linear.app/tienlam/issue/TIE-302/benchmark-lightweight-temporal-span-models-against-the-chrono-baseline",
-      "state": "In Progress"
+      "state": "Done"
     },
     "U1": {
       "id": "TIE-303",
@@ -280,7 +290,7 @@
       "id": "TIE-323",
       "uuid": "3e2dc886-aab8-47e2-91d4-023fdf8f034a",
       "url": "https://linear.app/tienlam/issue/TIE-323/simplify-chronoshift-to-a-modern-glass-command-interface",
-      "state": "In Progress"
+      "state": "Done"
     }
   }
 }

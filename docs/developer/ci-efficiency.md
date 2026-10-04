@@ -1,5 +1,7 @@
 # CI efficiency
 
+Latest Glass Command pair ([Web 37197579724](https://github.com/Tien-Lam/ChronoShift/actions/runs/37197579724), [Pages 37197795794](https://github.com/Tien-Lam/ChronoShift/actions/runs/37197795794)) meets the target with **37.5% fewer rounded runner minutes, 40.39% fewer runner seconds and 74.96% lower projected artifact byte-hours** versus the same baseline. The full gate includes 118 browser scenarios and 108 units; publication reuses its digest/tree-verified artifact. The raw pair is preserved as `glassCommandSample` in [ci-efficiency.json](../planning/ci-efficiency.json). This successful-pair sample excludes failed/canceled/debug runs and is not total monthly account usage. Evidence/experiment path exclusions prevent documentation-only follow-ups from repeating verification and deployment. The earlier main-cutover measurement follows for comparison.
+
 The measured equivalent PR + main publication workload meets the requested ≥20% target: **25% fewer per-job rounded minutes, 22.8% less runner time, and 81.74% less projected retained artifact storage**. Verification coverage expanded from the baseline to 113 browser scenarios and 108 unit tests.
 
 | Metric | Baseline | Main-only workflow | Reduction |

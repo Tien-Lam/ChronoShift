@@ -1,6 +1,8 @@
 # Web implementation and delivery
 
-ChronoShift is a private, adaptive offline web app at https://tien-lam.github.io/ChronoShift/. [PR #16](https://github.com/Tien-Lam/ChronoShift/pull/16) contains the implementation. The [Linear initiative](https://linear.app/tienlam/initiative/chronoshift-simple-offline-web-app-d90101850ba1) remains active with four projects, eight milestones, 30 web tickets and one canceled native-triage follow-up.
+ChronoShift is a private, adaptive offline web app at https://tien-lam.github.io/ChronoShift/. [PR #16](https://github.com/Tien-Lam/ChronoShift/pull/16) contains the migration; [PR #22](https://github.com/Tien-Lam/ChronoShift/pull/22) publishes the modern single Glass Command layout and isolated ML feasibility decision. The [Linear initiative](https://linear.app/tienlam/initiative/chronoshift-simple-offline-web-app-d90101850ba1) remains active with four projects, eight milestones, 31 web tickets and one canceled native-triage follow-up. Verified snapshot: 22 Done, nine In Progress, one Canceled; Foundations Completed.
+
+Current application main `88c4457` passes 108 units, 118 browser scenarios and Pages-subpath verification. Main-only Pages reused the digest/tree-verified artifact from tested CI merge `641c5c23`; four live HTTPS checks pass. Actual side-panel update activation preserves the draft and reconverts correctly. [Current browser evidence](../qa/glass-command-2026-10-04/README.md), [final independent review](review-glass-command-2026-10-04.md), [remaining acceptance gaps](web-acceptance.md). Final successful PR-plus-main pair measured 37.5% fewer rounded runner minutes, 40.39% less runner time and 74.96% lower projected retained artifact byte-hours versus the recorded baseline; failed/canceled/debug runs are excluded from that paired sample, not counted as monthly savings. Earlier release measurements below are historical.
 
 ## Native app removal — 4 October 2026
 
