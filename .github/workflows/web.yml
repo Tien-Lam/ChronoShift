@@ -10,6 +10,10 @@ on:
   # A PR still tests GitHub's merge ref, independently of its preview branch.
   pull_request:
     branches: [main]
+    paths-ignore:
+      - "**/*.md"
+      - "docs/design/**"
+      - "docs/planning/ci-efficiency.json"
 permissions:
   contents: read
 jobs:
@@ -27,6 +31,9 @@ jobs:
     env:
       PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
       PLAYWRIGHT_IMAGE_VERSION: "1.63.0"
+      # The Linux runner has no GPU. Avoid accelerated compositing through a
+      # software GPU; actual layout/paint and every UI assertion remain enabled.
+      WEBKIT_DISABLE_COMPOSITING_MODE: "1"
     timeout-minutes: 20
     permissions:
       contents: read
