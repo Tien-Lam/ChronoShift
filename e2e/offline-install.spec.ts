@@ -29,6 +29,34 @@ async function convert(page: import("@playwright/test").Page) {
 }
 
 installTest(
+  "a transient initial registration failure retries before any controller exists",
+  async ({ page }) => {
+    await page.addInitScript(() => {
+      const register = navigator.serviceWorker.register.bind(
+        navigator.serviceWorker,
+      );
+      (window as any).registrationAttempts = 0;
+      navigator.serviceWorker.register = async (...args) => {
+        if (++(window as any).registrationAttempts === 1)
+          throw new TypeError("Transient first registration failure");
+        return register(...args);
+      };
+    });
+    await page.goto("/");
+    await convert(page);
+    await expect(page.locator("main")).toHaveAttribute(
+      "data-offline-ready",
+      "true",
+    );
+    expect(
+      await page.evaluate(() => (window as any).registrationAttempts),
+    ).toBe(2);
+    await expect(page.locator(".message.warning")).toHaveCount(0);
+    await expect(page.locator(".hero-time")).toHaveText(/9:20 am/i);
+  },
+);
+
+installTest(
   "slow first installation clears its expired warning without losing conversion",
   async ({ page, context, origin, baseURL }) => {
     await publishRelease(context, baseURL!, "offline-delayed");

@@ -3,6 +3,21 @@ export interface OfflineState {
   update?: ServiceWorker;
   error?: string;
 }
+function retryDelay(delay: number, signal: AbortSignal): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => {
+      signal.removeEventListener("abort", abort);
+      resolve();
+    }, delay);
+    const abort = () => {
+      clearTimeout(timer);
+      signal.removeEventListener("abort", abort);
+      reject(new DOMException("Aborted", "AbortError"));
+    };
+    signal.addEventListener("abort", abort, { once: true });
+    if (signal.aborted) abort();
+  });
+}
 export async function setupOffline(
   report: (state: OfflineState) => void,
   signal: AbortSignal,
@@ -17,17 +32,25 @@ export async function setupOffline(
     const scope = new URL(import.meta.env.BASE_URL, location.href).href;
     const script = new URL("sw.js", scope).href;
     let registration: ServiceWorkerRegistration;
-    try {
-      registration = await navigator.serviceWorker.register(script, {
-        scope,
-        updateViaCache: "none",
-      });
-    } catch (error) {
-      // An update check can fail while the existing offline app is intact.
-      // Confirm that registration's cache instead of declaring it incomplete.
-      const existing = await navigator.serviceWorker.getRegistration(scope);
-      if (!existing || existing.scope !== scope) throw error;
-      registration = existing;
+    let retries = 0;
+    for (;;) {
+      try {
+        registration = await navigator.serviceWorker.register(script, {
+          scope,
+          updateViaCache: "none",
+        });
+        break;
+      } catch (error) {
+        // An update check can fail while the existing offline app is intact.
+        const existing = await navigator.serviceWorker.getRegistration(scope);
+        if (existing?.scope === scope) {
+          registration = existing;
+          break;
+        }
+        if (!navigator.onLine || retries >= 2 || signal.aborted) throw error;
+        await retryDelay(retries === 0 ? 1000 : 3000, signal);
+        retries++;
+      }
     }
     if (signal.aborted) return;
     let confirmed = false;
@@ -35,7 +58,6 @@ export async function setupOffline(
     let installedUpdate: ServiceWorker | undefined;
     let cancelInspection = () => {};
     let retryTimer: ReturnType<typeof setTimeout> | undefined;
-    let retries = 0;
     // A slow or rejected first installation must not stop lifecycle observers.
     const readyTimer = setTimeout(() => {
       if (!signal.aborted && !confirmed) {
