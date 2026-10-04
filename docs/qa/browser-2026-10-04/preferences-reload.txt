@@ -1,0 +1,47 @@
+- banner:
+  - link "ChronoShift home":
+    - /url: /ChronoShift/
+    - text: ChronoShift
+  - generic: Offline ready
+  - generic "Appearance" [active]:
+    - generic: ◐
+  - generic: Design
+  - combobox "Design":
+    - option "Liquid Lens"
+    - option "Glass Command" [selected]
+  - generic: Theme
+  - combobox "Theme":
+    - option "Dark" [selected]
+    - option "Light"
+    - option "System"
+- main:
+  - heading "Time zone converter" [level=1]
+  - region "Time zone converter":
+    - heading "Time zone converter" [level=2]
+    - generic: 01 / INPUT
+    - generic: Message with a date or time
+    - textbox "Message with a date or time":
+      - /placeholder: e.g. Let's meet tomorrow at 3pm PT
+    - button "Paste"
+    - generic: Ctrl / ⌘ + Enter
+    - generic: Convert to
+    - combobox "Convert to": Tokyo
+    - generic: Tokyo · Asia/Tokyo
+    - button "Convert":
+      - text: Convert
+      - generic: ↗
+    - generic "More options"
+    - option "Month / day (04/09 = April 9)" [selected]
+    - option "Day / month (04/09 = 4 September)"
+    - option "Use my device format"
+    - option "12-hour (3:00 PM)" [selected]
+    - option "24-hour (15:00)"
+    - generic "Try an example"
+  - region "Converted time":
+    - heading "Converted time" [level=2]
+    - generic: 02 / RESULT
+    - status
+    - heading "Ready to convert" [level=3]
+    - paragraph: Date, time and timezone appear here.
+  - paragraph: ◈ Your text stays on this device.
+  - button "Keep ChronoShift handy ↗"

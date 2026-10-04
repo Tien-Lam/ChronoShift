@@ -1,0 +1,55 @@
+Browser tab: 10, Title: "ChronoShift — Time zone converter", URL: "https://tien-lam.github.io/ChronoShift/".
+1 AXWebArea ChronoShift — Time zone converter, URL: tien-lam.github.io/ChronoShift/
+	2 container root
+		3 container
+			4 link Description: ChronoShift home, Value: tien-lam.github.io/ChronoShift/
+			5 text Offline ready
+			6 button (collapsed) Description: Appearance, Secondary Actions: Expand
+		7 container
+			8 heading Time zone converter, Value: 1
+				9 text Time zone converter
+			10 container Time zone converter
+				11 heading Time zone converter, Value: 2, ID: input-title
+					12 text Time zone converter
+				13 text Message with a date or time
+				14 text entry area (settable) Message with a date or time, Value: March 8, 2026 at 2:30am in New York, ID: message
+				15 container
+					16 button Paste
+					45 button Clear
+				18 text Ctrl / ⌘ + Enter
+				19 text Convert to
+				20 combo box (settable) Convert to, Value: Tokyo, ID: target-zone
+				21 text Tokyo · Asia/Tokyo
+				22 button Convert
+				53 container
+					54 button (expanded) More options, Secondary Actions: Collapse
+						55 text More options
+					56 text Source timezone when none is given
+					57 combo box (settable) Source timezone when none is given, ID: source-zone
+					58 text Reference date for this message
+					59 date field (settable) Reference date for this message, ID: reference-date
+						60 container
+							61 stepper
+							62 stepper
+							63 stepper
+						64 pop up button Show date picker Show date picker
+					65 text Leave empty to use today. Useful for an older message. Numeric dates
+					66 pop up button (collapsed, settable) Numeric dates, Value: Month / day (04/09 = April 9), ID: date-order, Secondary Actions: Expand
+						67 menu
+							68 (selected) Month / day (04/09 = April 9)
+							69 Day / month (04/09 = 4 September)
+					70 text Time display
+					71 pop up button (collapsed, settable) Time display, Value: 12-hour (3:00 PM), ID: time-format, Secondary Actions: Expand
+						72 menu
+							73 Use my device format
+							74 (selected) 12-hour (3:00 PM)
+							75 24-hour (15:00)
+					76 button Reset preferences
+			25 container Converted time
+				26 heading Converted time, Value: 2, ID: result-title
+					27 text Converted time
+				77 text 2026-03-08 02:30:00 doesn't exist in New York because the clocks move forward. Edit the time or choose a source timezone.
+			31 text  Your text stays on this device.
+			32 button Keep ChronoShift handy ↗
+
+The focused UI element is 14 text entry area (settable) Message with a date or time, Value: March 8, 2026 at 2:30am in New York, ID: message

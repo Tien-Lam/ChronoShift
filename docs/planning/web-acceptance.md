@@ -28,9 +28,13 @@ The WebKit offline method stops a dedicated origin and confirms an uncached netw
 
 ## Remaining acceptance work
 
+Direct production [browser side-panel task evidence](../qa/browser-2026-10-04/README.md) now supplements the automated gate: actual Copy/Paste, keyboard navigation, CST ambiguity/target changes, date rollover, DST correction, a 10,000-character conversion, both designs/themes, preference reload and accepting a waiting live update. Seven CSS viewport sizes from 280px to 1920px preserve draft/results with no horizontal overflow. Screenshots and accessibility snapshots are saved with the report. These are browser observations; unexercised capabilities remain identified below.
+
+TIE-315 is **Done**: its recorded browser capability/fallback criterion is now satisfied alongside the existing automated restart/update/storage/share regressions. Both independent clean-context evidence reviewers approved closure. Actual OS share reception remains TIE-314.
+
 | Work | Linear tickets | Evidence required |
 | --- | --- | --- |
-| Physical phone/foldable task | TIE-304, TIE-311, TIE-312, TIE-314, TIE-315, TIE-317 | Device/OS/browser version, installed offline restart, virtual keyboard, rotation/folding, clipboard, supported share menu |
+| Capability-specific phone/foldable task | TIE-304, TIE-311, TIE-312, TIE-314, TIE-317 | Installed offline restart, virtual keyboard, rotation/folding and supported OS share menu. Actual desktop browser clipboard, responsive viewport and install-guidance fallback checks now have direct evidence. |
 | Human accessibility/usability | TIE-309 | Includes TIE-306 selector screen-reader acceptance. Keyboard and screen-reader task, actual 200% browser zoom, CST choice, target change, copy and offline reopen; record observed friction |
 | Representative-phone performance | TIE-318 | Named device/conditions, cold online/warm offline startup, typical and 10,000-character p95, editing/Clear responsiveness |
 | Release cutover | TIE-320 | User authorized independent reviews, iterative fixes and autonomous merge. Main-only publication replaces preview policies/job; the measured equivalent PR + main workload passes: 25% fewer rounded minutes and 81.74% less retained artifact storage. Physical installed-mode acceptance above remains open. |
@@ -42,4 +46,4 @@ Browser performance reports identify their exact source release, asset breakdown
 
 Independent review and regression evidence: [review-2026-10-04.md](review-2026-10-04.md). Both reviewers approved after fixes; merge authorization does not claim physical-device acceptance.
 
-Merged main 9e7c1cb passes the final GitHub gate (108 units, 113 browser scenarios and subpath), exact-artifact main publication and four live HTTPS checks. Seventeen accepted engineering tickets are Done after the two independent reviews. Existing TIE-292/TIE-303 were already Done. Physical/human/phone criteria remain open; no device evidence was fabricated.
+Merged main 9e7c1cb passes the final GitHub gate (108 units, 113 browser scenarios and subpath), exact-artifact main publication and four live HTTPS checks. Twenty tickets are now Done, including TIE-315 after the direct browser evidence review; nine remain In Progress, optional ML is Backlog and native failure maintenance is Canceled. Partial acceptance checkboxes and observations are updated in Linear. No installed-mode, screen-reader, actual zoom or phone p95 result is inferred from screenshots.

@@ -758,7 +758,7 @@ Android PROCESS_TEXT cannot be recreated everywhere by a web page; supported ins
 
 ### P6 — [Automate offline restart, update, storage and share regression checks](https://linear.app/tienlam/issue/TIE-315/automate-offline-restart-update-storage-and-share-regression-checks)
 
-State: **In Progress**. Project: **ChronoShift — Offline PWA**.
+State: **Done**. Project: **ChronoShift — Offline PWA**.
 
 ## Problem
 Online happy-path tests do not prove offline durability or capability fallbacks.
@@ -769,9 +769,11 @@ Online happy-path tests do not prove offline durability or capability fallbacks.
 - Capture unexpected network requests and distinguish permitted online asset/update loading from forbidden conversion/text transmission.
 
 ## Acceptance criteria
-- [ ] Offline scenarios convert newly typed text with all network routes blocked.
-- [ ] Upgrade/storage scenarios preserve usable behavior and readiness is truthful.
-- [ ] Share/clipboard fallbacks have recorded browser capability coverage.
+- [x] Offline scenarios convert newly typed text with all network routes blocked.
+- [x] Upgrade/storage scenarios preserve usable behavior and readiness is truthful.
+- [x] Share/clipboard fallbacks have recorded browser capability coverage.
+
+Accepted 4 October 2026 after the final automated gate and direct production browser side-panel Copy/Paste/guidance checks. Two independent reviewers approved the evidence. Installed OS-share integration remains P5/TIE-314. [Detailed evidence and screenshots](../qa/browser-2026-10-04/README.md).
 
 ## Delivery
 - Priority: High
