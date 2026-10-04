@@ -14,7 +14,8 @@ export default defineConfig({
   timeout: 30000,
   expect: { timeout: 10000 },
   fullyParallel: true,
-  // Four workers outperform oversubscription on the measured Linux runner.
+  // Keep four slots; Linux software-rendered WebKit profiles each get one.
+  // Schedule these first so other engines use the remaining CPU concurrently.
   workers: process.env.CI ? 4 : 3,
   retries: process.env.CI ? 1 : 0,
   reporter: [["list"], ["html", { open: "never" }]],
@@ -32,20 +33,25 @@ export default defineConfig({
       testIgnore: [],
       use: { ...devices["Desktop Chrome"] },
     },
-    { name: "chromium", use: { ...devices["Desktop Chrome"] } },
-    { name: "firefox", use: { ...devices["Desktop Firefox"] } },
-    { name: "webkit", use: { ...devices["Desktop Safari"] } },
     {
-      name: "android-emulation",
-      use: { ...devices["Pixel 7"], ...mobileRaster },
+      name: "webkit",
+      workers: process.env.CI ? 1 : undefined,
+      use: { ...devices["Desktop Safari"] },
     },
     {
       name: "iphone-emulation",
+      workers: process.env.CI ? 1 : undefined,
       use: {
         ...devices["iPhone 13"],
         ...mobileRaster,
         defaultBrowserType: "webkit",
       },
+    },
+    { name: "chromium", use: { ...devices["Desktop Chrome"] } },
+    { name: "firefox", use: { ...devices["Desktop Firefox"] } },
+    {
+      name: "android-emulation",
+      use: { ...devices["Pixel 7"], ...mobileRaster },
     },
   ],
   webServer: {

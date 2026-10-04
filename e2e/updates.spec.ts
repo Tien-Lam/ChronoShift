@@ -195,10 +195,8 @@ test("rollback preserves draft and preferences and removes obsolete caches with 
       (window as any).__hideWaiting = true;
     });
     await publish(context, page, version);
-    // Installed state must announce the update even before waiting is exposed.
-    await page.evaluate(() => {
-      (window as any).__hideWaiting = false;
-    });
+    // Both notification and activation use the retained installed worker even
+    // while registration.waiting is unavailable. Reload resets the hidden slot.
     await activate(page);
     expect(await revision(page)).toBe(`test-${version}`);
     await expect(page.getByLabel("Message with a date or time")).toHaveValue(

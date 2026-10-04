@@ -1,6 +1,6 @@
 export interface OfflineState {
   ready: boolean;
-  update?: ServiceWorkerRegistration;
+  update?: ServiceWorker;
   error?: string;
 }
 export async function setupOffline(
@@ -31,11 +31,13 @@ export async function setupOffline(
     if (signal.aborted) return;
     let confirmed = false;
     let installedUpdate: ServiceWorker | undefined;
-    const hasUpdate = () =>
+    const pendingUpdate = () =>
       registration.waiting ||
       (installedUpdate?.state === "installed" &&
-        navigator.serviceWorker.controller &&
-        installedUpdate !== navigator.serviceWorker.controller);
+      navigator.serviceWorker.controller &&
+      installedUpdate !== navigator.serviceWorker.controller
+        ? installedUpdate
+        : undefined);
     const inspect = () => {
       if (signal.aborted) return;
       const controller = navigator.serviceWorker.controller;
@@ -60,9 +62,10 @@ export async function setupOffline(
             navigator.serviceWorker.controller === controller
           ) {
             confirmed = event.data.ready === true;
+            const update = pendingUpdate();
             report({
               ready: confirmed,
-              ...(hasUpdate() ? { update: registration } : {}),
+              ...(update ? { update } : {}),
               ...(!confirmed
                 ? {
                     error:
@@ -103,7 +106,7 @@ export async function setupOffline(
     registration.addEventListener("updatefound", watchInstall, { signal });
     watchInstall();
     if (registration.waiting)
-      report({ ready: confirmed, update: registration });
+      report({ ready: confirmed, update: registration.waiting });
   } catch {
     if (!signal.aborted)
       report({

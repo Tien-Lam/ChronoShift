@@ -261,7 +261,8 @@ export default function App() {
     }
   }
   function update() {
-    if (!offline.update?.waiting) return;
+    const pending = offline.update;
+    if (pending?.state !== "installed") return;
     if (draft.current && !preserveForUpdate(draft.current)) {
       setNotice(
         "Copy your message somewhere safe, then clear it before updating. This browser cannot preserve it during a reload.",
@@ -273,7 +274,7 @@ export default function App() {
       () => location.reload(),
       { once: true },
     );
-    offline.update.waiting.postMessage({ type: "ACTIVATE_UPDATE" });
+    pending.postMessage({ type: "ACTIVATE_UPDATE" });
   }
   const groups = [...new Set(conversion.results.map((r) => r.group))];
   return (

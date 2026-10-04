@@ -137,11 +137,11 @@ test("expired and invalid temporary text is consumed and erased without restorin
     await expect(page.getByLabel("Message with a date or time")).toHaveValue(
       "",
     );
-    expect(
-      await page.evaluate(() =>
-        sessionStorage.getItem("chronoshift.update-draft"),
-      ),
-    ).toBeNull();
+    await expect
+      .poll(() =>
+        page.evaluate(() => sessionStorage.getItem("chronoshift.update-draft")),
+      )
+      .toBeNull();
     await page.evaluate(async (invalid) => {
       await new Promise<void>((resolve, reject) => {
         const request = indexedDB.open("chronoshift-handoff", 1);
