@@ -1,0 +1,45 @@
+import { chromium } from '/Users/tien/Developer/ChronoShift/node_modules/playwright/index.mjs';
+import { writeFile } from 'node:fs/promises';
+const out='/Users/tien/Developer/ChronoShift/docs/qa/dropdown-alignment-2026-10-05';
+const browser=await chromium.launch({channel:'chrome'});
+const page=await browser.newPage({viewport:{width:578,height:1000},locale:'en-AU',timezoneId:'Australia/Sydney'});
+const errors:string[]=[];page.on('pageerror',e=>errors.push(String(e)));
+await page.goto('https://tien-lam.github.io/ChronoShift/');
+const release=await (await page.request.get('https://tien-lam.github.io/ChronoShift/release.json')).json();
+if(release.sourceCommit !== '3d51f40a7708e42cd0a4c89bd4094b723d3c5ba3')throw Error('Wrong published release');
+await page.getByText('More options',{exact:true}).click();
+await page.getByLabel('Appearance',{exact:true}).click();
+await page.getByLabel('Convert to',{exact:true}).fill('Pacific/Chatham');
+await page.getByLabel('Source timezone when none is given',{exact:true}).fill('UTC');
+await page.getByLabel('Message with a date or time').fill('April 9, 2026 3pm UTC');
+await page.getByRole('button',{name:'Convert',exact:true}).click();
+await page.locator('.hero-time').waitFor({state:'visible'});
+const result=await page.locator('.hero-time').innerText();
+const session=await page.context().newCDPSession(page);
+function find(n:any,id:string):any {if(n.attributes?.some((a:any,i:number)=>i%2===0&&a==='id'&&n.attributes[i+1]===id))return n; for(const c of [...(n.children||[]),...(n.shadowRoots||[])]){const m=find(c,id);if(m)return m;}}
+const cases:any[]=[];
+for(const theme of ['dark','light']){
+ await page.getByLabel('Theme',{exact:true}).selectOption(theme);
+ for(const width of [320,578,1280]){
+ await page.setViewportSize({width,height:1000});
+ if(await page.locator('.hero-time').innerText()!==result)throw Error('resize/theme changed result');
+if(theme==='dark'&&width===1280||theme==='light'&&width===320)await page.screenshot({path:out+'/hosted-chrome-'+theme+'-'+width+'.png',fullPage:true,animations:'disabled'});
+for(const id of ['target-zone','source-zone']){
+ const e=page.locator('#'+id);await e.hover();const b=(await e.boundingBox())!;
+ const {root}=await session.send('DOM.getDocument',{depth:-1,pierce:true});
+ const picker=find(find(root,id),'picker');const {model}=await session.send('DOM.getBoxModel',{nodeId:picker.nodeId});
+ const xs=model.border.filter((_:any,i:number)=>i%2===0),ys=model.border.filter((_:any,i:number)=>i%2===1),center={x:b.x+b.width-20,y:b.y+b.height/2};
+ const matches=center.x>=Math.min(...xs)&&center.x<=Math.max(...xs)&&center.y>=Math.min(...ys)&&center.y<=Math.max(...ys);
+ const hit=await session.send('DOM.getNodeForLocation',{x:Math.round(center.x),y:Math.round(center.y),includeUserAgentShadowDOM:true});
+ if(hit.backendNodeId!==picker.backendNodeId)throw Error('Chevron does not hit native picker');
+ const css=await page.evaluate(()=>Array.from(document.querySelectorAll('select,input')).map(e=>({id:e.id,height:e.getBoundingClientRect().height,padding:getComputedStyle(e).padding,lineHeight:getComputedStyle(e).lineHeight})));
+ if(css.some(c=>c.height!==44))throw Error('Published control height mismatch');
+ cases.push({theme,width,id,input:b,picker:model.border,center,matches,hitNativePicker:true,controls:css}); if(!matches)throw Error('Native picker misses arrow '+JSON.stringify(cases.at(-1)));
+ }
+ }
+}
+await page.emulateMedia({forcedColors:'active'});await page.setViewportSize({width:578,height:1000});
+await page.getByLabel('Theme',{exact:true}).selectOption('dark');
+await page.screenshot({path:out+'/hosted-chrome-forced-colors.png',fullPage:true,animations:'disabled'});
+await writeFile(out+'/hosted-chrome-bounds.json',JSON.stringify({release,browser:await browser.version(),ua:await page.evaluate(()=>navigator.userAgent),cases,errors,assets:await page.evaluate(()=>Array.from(document.querySelectorAll('script[src],link[rel="stylesheet"]')).map(e=>e.getAttribute('src')||e.getAttribute('href')))},null,2));
+console.log(JSON.stringify({cases:cases.length,matches:cases.every(c=>c.matches),errors}));await session.detach();await browser.close();
