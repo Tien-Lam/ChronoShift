@@ -16,7 +16,7 @@ bun run format:check
 bun run preview
 ```
 
-Open http://127.0.0.1:4173. Wait for **Offline ready** before disconnecting. Opening HTML directly from the filesystem does not enable service workers.
+Open http://127.0.0.1:4173. Offline setup runs in the background; the header has no connection-status badge. For a development check, wait until the main element has `data-offline-ready="true"`, then verify fresh conversion after offline reopening. Opening HTML directly from the filesystem does not enable service workers.
 
 ## Repository layout
 

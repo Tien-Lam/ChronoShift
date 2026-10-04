@@ -13,11 +13,11 @@ Test the published app at https://tien-lam.github.io/ChronoShift/. Record the re
 
 ## Offline and installation
 
-1. Start online and wait for **Offline ready**.
+1. Start online and allow the initial cache download to finish. If installation help asks you to keep the page online, wait until that prompt disappears. Verify offline readiness in the following step; there is no persistent header status badge.
 2. Close the tab/app, disable network, reopen the cached app and enter a fresh message. Conversion must succeed.
 3. Install from the browser menu where supported; repeat the offline task. Installation is optional for ordinary conversion.
 4. Exercise installed POST share reception where offered. Do not include private text in reports. Shared URLs must stay inert and messages must not appear in the address bar.
-5. Clear site storage, reconnect and restore readiness before sharing. A fresh uncached offline visit must not claim readiness.
+5. Clear site storage, reconnect and restore the cache before sharing. Verify offline reopening again; incomplete setup must retain an actionable recovery message.
 
 ## Updates and recovery
 

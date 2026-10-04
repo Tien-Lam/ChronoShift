@@ -25,6 +25,6 @@ labels: bug
 - Operating system:
 - Browser and version:
 - Window size or folded/unfolded state:
-- Online/offline and whether “Offline ready” appeared:
+- Online/offline and whether offline reopening and fresh conversion worked:
 - Installed app or browser tab:
 - ChronoShift release (from /ChronoShift/release.json, if available):
