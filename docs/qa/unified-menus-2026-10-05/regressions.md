@@ -46,3 +46,19 @@ During CSP verification, WebKit reported two policy violations per screenshot be
 Final Chromium captures show the [dark 280-pixel menu](regression-evidence/menu-dark-280.png), [light 280-pixel menu](regression-evidence/menu-light-280.png) and [light 1280-pixel menu](regression-evidence/menu-light-1280.png). The full local report retains the other non-WebKit captures under the command's output directory.
 
 These checks do not establish physical-device installation, virtual-keyboard placement, OS accessibility or screen-reader acceptance. Publishing, existing-client hosted acceptance, the complete suite and independent review verdicts remain the root agent's delivery responsibilities.
+
+## Calendar compactness follow-up
+
+Direct desktop visual review found that the common popover rule overrode the calendar's intended compact width, leaving a wide surface around its narrower grid. Runtime revision `8e73756d3f01dfe0dc046d276e4a38b92b9427eb` fixes the cascade with `.choice-popover.calendar-popover` and bounds the width to `min(302px, var(--trigger-width, 302px))`.
+
+An independent expectation now requires the visible calendar surface to be at most 302 pixels wide and its left edge to align with the reference-date field, allowing the library's 12-pixel viewport clamp and one pixel of rounding. It runs in every dark/light, 280/740/1280-width and browser-profile state of the existing main scenario; the calendar still does not inherit the generic requirement to match its trigger's width.
+
+The fresh final run against explicit source `8e73756d3f01dfe0dc046d276e4a38b92b9427eb`, worker version `767f36f9a7785955`, passed **15 cases in 18.8 seconds without retries**. `dist/release.json` identified that source and base `/` before and after the run. Environment and five profiles match the earlier run. Only the test expectation changed; source and production assets stayed fixed throughout this run. Test-file formatting passed.
+
+```sh
+PLAYWRIGHT_PORT=4202 PLAYWRIGHT_HTML_OUTPUT_DIR=/tmp/chronoshift-menu-tests/calendar-compact-verified-html \
+  bunx --bun playwright test e2e/controls.spec.ts --workers=3 \
+  --output=/tmp/chronoshift-menu-tests/calendar-compact-verified-results
+```
+
+An earlier attempt at `/tmp/chronoshift-menu-tests/calendar-compact-results` passed 15 cases in 19.1 seconds but is excluded from exact-artifact acceptance: the test agent accidentally invoked `bun run check`, whose script rebuilt assets during the run and replaced release identity with `local`, version `d0f8984b2731fbea`. The root restored the explicit source build before the fresh final run above. No conclusion depends on the excluded mixed-artifact attempt.

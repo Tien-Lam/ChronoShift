@@ -106,3 +106,14 @@ Both reviewers approved that application delta. The code reviewer independently
 attributed WebKit screenshot-only `body {}` violations to Playwright, verified
 the complete calendar matrix without captures, then separately approved skipping
 WebKit routine captures while preserving all actual normal-use assertions.
+
+Late root IAB visual finding: calendar outer surface matched a wide reference
+field while its280px grid stayed at the left, because the shared popover CSS
+loaded later. Exact focused delta8e73756d3f01dfe0dc046d276e4a38b92b9427eb uses
+`.choice-popover.calendar-popover` and `min(302px, var(--trigger-width,302px))`.
+Both reviewers received that report, before/after intent and explicit request
+for wide/narrow dark/light and short-view calendar recovery checks. Both approved
+their independently recorded focused scope. Regression agent added compactness
+and field-left alignment assertions and reran15cases on an unchanged explicitly
+identified8e73756artifact (version767f36f9a7785955); the earlier mixed-build run
+is explicitly excluded. This supersedes the earlier8850a46CI as the final scope.

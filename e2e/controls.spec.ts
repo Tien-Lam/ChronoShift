@@ -198,6 +198,18 @@ test("themed choices align and their opened menus fit every breakpoint without l
           ),
         ).toBe(backgrounds.get(theme));
         await expect(page.locator(".calendar-popover")).toBeVisible();
+        const calendar = (await page
+          .locator(".calendar-popover")
+          .boundingBox())!;
+        const dateField = (await page
+          .locator("#reference-date")
+          .boundingBox())!;
+        expect(calendar.width).toBeLessThanOrEqual(302);
+        const alignedLeft = Math.max(
+          12,
+          Math.min(dateField.x, width - calendar.width - 12),
+        );
+        expect(Math.abs(calendar.x - alignedLeft)).toBeLessThanOrEqual(1);
         await expect(page.getByRole("grid")).toBeVisible();
         await dismissMenu(page);
         await expect(

@@ -21,6 +21,12 @@ Both reviewers derive relevant failure paths independently before relying on the
 
 For interface changes, inspect the actual rendered page against the agreed visual brief at the affected breakpoints/themes. Record measured CSS dimensions and asset/release identity with captures. Mockups, accessibility metrics and mobile emulation do not independently establish visual quality or physical-device usability.
 
+Check popup contents as well as their outer bounds: spacing should be balanced
+and the surface should fit its contents. Trace CSS import order and specificity
+when shared control rules can override component styles. Viewport containment
+alone does not catch an oversized calendar or other empty popup space. Separate
+normal-use console/CSP violations from stylesheet injection by screenshot tools.
+
 ## Record verdicts
 
 Each reviewer reports the exact revision/scope inspected, findings with triggers and impact, and actual commands/results or observed browser journeys. Identify browser/profile, timing, fault injection and unexercised states. Report two distinct conclusions:

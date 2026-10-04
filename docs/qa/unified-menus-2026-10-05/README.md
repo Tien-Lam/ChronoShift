@@ -34,6 +34,18 @@ passed168 unrelated cases; the final PR gate must run all183 and Pages subpath.
 Unit108, typecheck/build and formatting pass. Publication evidence is pending
 and will identify the exact trusted artifact and matching hosted journey.
 
+Final visual delta: root's actual IAB inspection found the desktop calendar
+surface stretched to486px around a280px grid. A later shared selector overrode
+the calendar's intended width. `8e73756d3f01dfe0dc046d276e4a38b92b9427eb` gives
+the calendar selector adequate specificity and bounds it to302px or the smaller
+trigger. Both reviewers independently approved balanced wide/narrow calendars
+and short-viewport scrolling/recovery. The fresh frozen-artifact15-case run
+passes in18.8s, with compactness/alignment assertions in every profile/theme.
+An accidental metadata-only rebuild during an earlier run is excluded from
+exact-artifact evidence. Root IAB before/after captures are retained. The review
+workflow now explicitly checks popup content balance and CSS cascade, beyond
+outer viewport bounds, to address the gap in the initial reviews.
+
 [Browser measurements](browser-performance.json) identify the reviewed runtime:
 JS/CSS gzip302,088bytes; complete offline asset gzip373,162bytes versus the
 earlier255,458-byte inventory. The extra interaction library adds about118kB to
