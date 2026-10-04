@@ -6,6 +6,8 @@ Paste or type a message, choose your timezone, press **Convert**, then copy the 
 
 The layout adapts to phones, tablets, desktop windows and foldable displays. Supported browsers place input and results clear of a hinge. Conversion runs entirely on your device with no account, conversion server or mandatory model download.
 
+Use **Appearance** in the header to switch between **Liquid Lens** and **Glass Command**, with **Dark**, **Light** or **System** themes. Appearance preferences are saved locally; switching keeps your current message and results. The converter opens directly, without a marketing hero. See [design behavior](docs/developer/appearance.md).
+
 ## Use offline
 
 Open the app online once and wait for **Offline ready** before disconnecting. Install it from your browser's menu if offered, or bookmark it. Clearing browser storage requires another complete online visit. Updates wait for **Update now** and preserve your current message when accepted.

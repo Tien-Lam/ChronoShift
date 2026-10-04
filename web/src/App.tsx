@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { Conversion, ConversionOptions, TimeResult } from "./engine/types";
 import { MAX_INPUT } from "./engine/limits";
 import { copyText, formatResult } from "./engine/time";
@@ -125,6 +125,25 @@ export default function App() {
   useEffect(() => {
     if (targetZone && sourceZone) setPreferenceError(!savePreferences(prefs));
   }, [prefs, targetZone, sourceZone]);
+  useLayoutEffect(() => {
+    const media = matchMedia("(prefers-color-scheme: dark)");
+    const apply = () => {
+      const theme =
+        prefs.theme === "system"
+          ? media.matches
+            ? "dark"
+            : "light"
+          : prefs.theme;
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.dataset.design = prefs.design;
+      document
+        .querySelector('meta[name="theme-color"]')
+        ?.setAttribute("content", theme === "dark" ? "#090c16" : "#e9edf6");
+    };
+    apply();
+    media.addEventListener("change", apply);
+    return () => media.removeEventListener("change", apply);
+  }, [prefs.theme, prefs.design]);
 
   function edit(value: string) {
     request.current++;
@@ -268,32 +287,75 @@ export default function App() {
           <span className="brand-clock" aria-hidden="true" />
           ChronoShift
         </a>
-        <span className={`connection ${offline.ready ? "ready" : ""}`}>
-          <i aria-hidden="true" />
-          {offline.ready
-            ? online
-              ? "Offline ready"
-              : "Working offline"
-            : online
-              ? "Private by default"
-              : "Offline setup incomplete"}
-        </span>
+        <div className="header-tools">
+          <span className={`connection ${offline.ready ? "ready" : ""}`}>
+            <i aria-hidden="true" />
+            {offline.ready
+              ? online
+                ? "Offline ready"
+                : "Working offline"
+              : online
+                ? "Private by default"
+                : "Offline setup incomplete"}
+          </span>
+          <details
+            className="appearance"
+            onKeyDown={(event) => {
+              if (event.key === "Escape") {
+                event.currentTarget.open = false;
+                event.currentTarget.querySelector("summary")?.focus();
+              }
+            }}
+          >
+            <summary aria-label="Appearance">
+              <span aria-hidden="true">◐</span>
+              <span className="appearance-label">Appearance</span>
+            </summary>
+            <div className="appearance-fields">
+              <label htmlFor="design">Design</label>
+              <select
+                id="design"
+                value={prefs.design}
+                onChange={(e) =>
+                  setPrefs({
+                    ...prefs,
+                    design: e.target.value as "lens" | "command",
+                  })
+                }
+              >
+                <option value="lens">Liquid Lens</option>
+                <option value="command">Glass Command</option>
+              </select>
+              <label htmlFor="theme">Theme</label>
+              <select
+                id="theme"
+                value={prefs.theme}
+                onChange={(e) =>
+                  setPrefs({
+                    ...prefs,
+                    theme: e.target.value as "dark" | "light" | "system",
+                  })
+                }
+              >
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+                <option value="system">System</option>
+              </select>
+            </div>
+          </details>
+        </div>
       </header>
       <main>
-        <section className="intro">
-          <p className="eyebrow">A little clarity across timezones</p>
-          <h1>
-            Make time <span>local.</span>
-          </h1>
-          <p>Paste a message. Find your time. Get on with your day.</p>
-        </section>
+        <h1 className="sr-only">Time zone converter</h1>
         <div
           className={`workspace ${conversion.results.length ? "has-results" : ""}`}
         >
           <section className="input-panel" aria-labelledby="input-title">
             <div className="panel-heading">
-              <h2 id="input-title">What time is it for you?</h2>
-              <span className="step">01 / INPUT</span>
+              <h2 id="input-title">Time zone converter</h2>
+              <span className="step" aria-hidden="true">
+                01 / INPUT
+              </span>
             </div>
             <label htmlFor="message">Message with a date or time</label>
             <textarea
@@ -338,43 +400,47 @@ export default function App() {
                   : "Ctrl / ⌘ + Enter"}
               </span>
             </div>
-            <div className="target-field">
-              <label htmlFor="target-zone">Convert to</label>
-              <input
-                id="target-zone"
-                list="zones"
-                value={prefs.target}
-                onChange={(e) => setPrefs({ ...prefs, target: e.target.value })}
-                placeholder={`Your timezone · ${zoneName(device)}`}
-                autoComplete="off"
-              />
-              <span className="field-note">
-                {targetZone
-                  ? `${zoneName(targetZone)} · ${targetZone}`
-                  : "Choose a timezone or city from the list"}
-              </span>
+            <div className="conversion-controls">
+              <div className="target-field">
+                <label htmlFor="target-zone">Convert to</label>
+                <input
+                  id="target-zone"
+                  list="zones"
+                  value={prefs.target}
+                  onChange={(e) =>
+                    setPrefs({ ...prefs, target: e.target.value })
+                  }
+                  placeholder={`Your timezone · ${zoneName(device)}`}
+                  autoComplete="off"
+                />
+                <span className="field-note">
+                  {targetZone
+                    ? `${zoneName(targetZone)} · ${targetZone}`
+                    : "Choose a timezone or city from the list"}
+                </span>
+              </div>
+              <datalist id="zones">
+                {zoneIds.map((zone) => (
+                  <option key={zone} value={zone}>
+                    {zoneName(zone)}
+                  </option>
+                ))}
+                {cityAliases.map((city) => (
+                  <option key={city} value={city}>
+                    {zoneName(resolveCity(city).zones[0])}
+                  </option>
+                ))}
+              </datalist>
+              <button
+                type="button"
+                className="convert-button"
+                onClick={run}
+                aria-busy={busy}
+              >
+                {busy ? "Converting…" : "Convert"}
+                <span aria-hidden="true">↗</span>
+              </button>
             </div>
-            <datalist id="zones">
-              {zoneIds.map((zone) => (
-                <option key={zone} value={zone}>
-                  {zoneName(zone)}
-                </option>
-              ))}
-              {cityAliases.map((city) => (
-                <option key={city} value={city}>
-                  {zoneName(resolveCity(city).zones[0])}
-                </option>
-              ))}
-            </datalist>
-            <button
-              type="button"
-              className="convert-button"
-              onClick={run}
-              aria-busy={busy}
-            >
-              {busy ? "Converting…" : "Convert"}
-              <span aria-hidden="true">↗</span>
-            </button>
             <details className="options">
               <summary>More options</summary>
               <div className="option-fields">
@@ -453,8 +519,8 @@ export default function App() {
               </div>
             </details>
             {!text && (
-              <div className="examples">
-                <p>Or try a quick example</p>
+              <details className="examples">
+                <summary>Try an example</summary>
                 {examples.map((example) => (
                   <button
                     type="button"
@@ -468,7 +534,7 @@ export default function App() {
                     <span aria-hidden="true">↗</span>
                   </button>
                 ))}
-              </div>
+              </details>
             )}
           </section>
           <section
@@ -477,8 +543,10 @@ export default function App() {
             aria-busy={busy}
           >
             <div className="panel-heading">
-              <h2 id="result-title">Your local time</h2>
-              <span className="step">02 / RESULT</span>
+              <h2 id="result-title">Converted time</h2>
+              <span className="step" aria-hidden="true">
+                02 / RESULT
+              </span>
             </div>
             <div role="status" className="sr-only">
               {busy
@@ -502,15 +570,8 @@ export default function App() {
               !conversion.warnings.length && (
                 <div className="result-placeholder">
                   <span className="large-clock" aria-hidden="true" />
-                  <h3>
-                    {busy
-                      ? "Finding your time…"
-                      : "A world of times. One clear answer."}
-                  </h3>
-                  <p>
-                    Your converted times will appear here, with the date and
-                    timezone included.
-                  </p>
+                  <h3>{busy ? "Finding your time…" : "Ready to convert"}</h3>
+                  <p>Date, time and timezone appear here.</p>
                 </div>
               )}
             {groups.map((group) => {

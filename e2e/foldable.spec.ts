@@ -35,9 +35,20 @@ test("input and results avoid a vertical hinge and survive folding", async ({
   expect(input!.x + input!.width).toBeLessThanOrEqual(400);
   expect(result!.x).toBeGreaterThanOrEqual(424);
   expect(result!.x + result!.width).toBeLessThanOrEqual(824);
+  await page.getByLabel("Appearance", { exact: true }).click();
+  await page.getByLabel("Design", { exact: true }).selectOption("command");
+  await page.getByLabel("Appearance", { exact: true }).click();
+  expect(
+    (await page.locator(".input-panel").boundingBox())!.x +
+      (await page.locator(".input-panel").boundingBox())!.width,
+  ).toBeLessThanOrEqual(400);
+  expect(
+    (await page.locator(".result-panel").boundingBox())!.x,
+  ).toBeGreaterThanOrEqual(424);
+  await expect(page.locator(".hero-time")).toHaveText(/6:00 am/i);
   for (const locator of [
     page.locator(".topbar"),
-    page.locator(".intro"),
+    page.locator(".appearance"),
     page.locator("footer"),
   ]) {
     const bounds = await locator.boundingBox();

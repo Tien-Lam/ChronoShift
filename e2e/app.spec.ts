@@ -153,10 +153,18 @@ test("close and reopen offline, then convert previously unseen input", async ({
   origin,
 }) => {
   await ready(page);
+  await page.getByLabel("Appearance", { exact: true }).click();
+  await page.getByLabel("Design", { exact: true }).selectOption("command");
+  await page.getByLabel("Theme", { exact: true }).selectOption("light");
   await page.close();
   await disconnect(context, origin);
   const reopened = await context.newPage();
   await reopened.goto("/");
+  await expect(reopened.locator("html")).toHaveAttribute(
+    "data-design",
+    "command",
+  );
+  await expect(reopened.locator("html")).toHaveAttribute("data-theme", "light");
   await expect(
     reopened.getByText(origin ? "Offline ready" : "Working offline", {
       exact: true,
@@ -172,7 +180,14 @@ test("preferences persist, input does not; denied storage still converts", async
   await ready(page);
   await page.getByLabel("Convert to").fill("Asia/Tokyo");
   await convert(page);
+  const result = await page.locator(".hero-time").innerText();
+  await page.getByLabel("Appearance", { exact: true }).click();
+  await page.getByLabel("Design", { exact: true }).selectOption("command");
+  await page.getByLabel("Theme", { exact: true }).selectOption("light");
+  await expect(page.locator(".hero-time")).toHaveText(result);
   await page.reload();
+  await expect(page.locator("html")).toHaveAttribute("data-design", "command");
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
   await expect(page.getByLabel("Convert to")).toHaveValue("Asia/Tokyo");
   await expect(page.getByLabel("Message with a date or time")).toHaveValue("");
   await page.addInitScript(() => {
@@ -218,6 +233,9 @@ test("readable at 320px, dark mode, with no serious accessibility violations", a
   await convert(page, "July 15, 2026 3pm CST");
   await page.setViewportSize({ width: 320, height: 740 });
   await page.emulateMedia({ colorScheme: "dark", reducedMotion: "reduce" });
+  await page.getByLabel("Appearance", { exact: true }).click();
+  await page.getByLabel("Theme", { exact: true }).selectOption("system");
+  await page.getByLabel("Appearance", { exact: true }).click();
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
@@ -232,6 +250,10 @@ test("readable at 320px, dark mode, with no serious accessibility violations", a
     fullPage: true,
   });
   await page.emulateMedia({ colorScheme: "light" });
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  await page.getByLabel("Appearance", { exact: true }).click();
+  await page.getByLabel("Design", { exact: true }).selectOption("command");
+  await page.getByLabel("Appearance", { exact: true }).click();
   expect(
     (
       await new AxeBuilder({ page })
@@ -239,6 +261,26 @@ test("readable at 320px, dark mode, with no serious accessibility violations", a
         .analyze()
     ).violations,
   ).toEqual([]);
+  if (info.project.name === "chromium") {
+    await page.emulateMedia({ colorScheme: "dark" });
+    expect(
+      (
+        await new AxeBuilder({ page })
+          .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+          .analyze()
+      ).violations,
+    ).toEqual([]);
+    await page.getByLabel("Appearance", { exact: true }).click();
+    await page.getByLabel("Design", { exact: true }).selectOption("lens");
+    await page.emulateMedia({ colorScheme: "light" });
+    expect(
+      (
+        await new AxeBuilder({ page })
+          .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+          .analyze()
+      ).violations,
+    ).toEqual([]);
+  }
 });
 test("offline POST share is single-use and never places message in URL", async ({
   page,

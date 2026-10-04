@@ -52,6 +52,30 @@ test("reflows across cover screens, phones, tablets and desktops without losing 
   }
   await page.getByLabel("Convert to").fill("UTC");
   await expect(page.locator(".hero-time")).toHaveText(/6:15:30 am/i);
+  await page.getByText("More options", { exact: true }).click();
+  await page.getByLabel("Appearance", { exact: true }).click();
+  await page.getByLabel("Design", { exact: true }).selectOption("command");
+  await page.getByLabel("Appearance", { exact: true }).click();
+  for (const width of [280, 390, 1280]) {
+    await page.setViewportSize({ width, height: 844 });
+    await expect(page.getByLabel("Message with a date or time")).toHaveValue(
+      message,
+    );
+    await expect(page.locator(".hero-time")).toHaveText(/6:15:30 am/i);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+    const input = await page.locator(".input-panel").boundingBox();
+    const output = await page.locator(".result-panel").boundingBox();
+    expect(output!.y).toBeGreaterThanOrEqual(input!.y + input!.height - 1);
+    if (width === 390) {
+      expect((await page.locator(".hero-time").boundingBox())!.y).toBeLessThan(
+        844,
+      );
+    }
+  }
 });
 
 test("touch-sized controls and keyboard navigation remain usable in a short viewport", async ({
