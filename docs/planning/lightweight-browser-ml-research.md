@@ -76,3 +76,6 @@ Refine F11 from generic browser LLM discovery to a lightweight temporal-span ben
 
 The subsequent user instruction authorized Linear publication and execution. This research informs [TIE-302](https://linear.app/tienlam/issue/TIE-302), the optional temporal-span benchmark; deterministic launch work proceeds independently.
 
+## Availability recheck — 4 October 2026
+
+The [upstream GLiNER-bi-edge file listing](https://huggingface.co/knowledgator/gliner-bi-edge-v2.0/tree/main) still lists a 243 MB PyTorch checkpoint plus a 3.58 MB tokenizer, with no ONNX graph in that repository. Its [model card](https://huggingface.co/knowledgator/gliner-bi-edge-v2.0) documents Python usage and H100 throughput; neither supplies browser inference evidence. The [BERT-tiny card](https://huggingface.co/prajjwal1/bert-tiny) still requires downstream training. This is an artifact-availability check, not a failed export attempt or an accuracy benchmark. TIE-302 remains optional and unfinished: a real export/tokenizer/span adapter and independently reviewed held-out comparison are still needed before bundling a model. The new production-browser performance harness measures the deterministic baseline; no model bytes or runtime dependencies were added to the app or CI.

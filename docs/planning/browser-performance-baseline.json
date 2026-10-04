@@ -1,0 +1,167 @@
+{
+  "measuredAt": "2026-10-04T02:31:29.522Z",
+  "release": {
+    "sourceCommit": "63a25539749e3ddc81172e57b08de2656cfa288b",
+    "base": "/"
+  },
+  "environment": "darwin/arm64, chromium 153.0.8010.12, Bun 1.4.0",
+  "device": "Development computer, 390×844 CSS-pixel viewport. No mobile hardware, CPU or network emulation.",
+  "method": "Ten fresh browser contexts for cold local HTTP navigation, ten offline cached reopenings; Playwright wall-clock navigation-to-visible-form/complete-cache includes automation overhead. Five warmups + thirty timed conversions per design/workload use the production disposable worker and real result DOM; click capture to DOM completion includes worker startup, parsing and rendering. Frame gaps are diagnostic, not an input responsiveness certification. Local gzip estimates exclude HTTP headers. Fixed synthetic workloads are not worst-case proof.",
+  "assets": [
+    {
+      "name": "worker-Dcv-t75w.js",
+      "bytes": 218704,
+      "gzipBytes": 63777
+    },
+    {
+      "name": "index-BbxSBDlz.js",
+      "bytes": 400679,
+      "gzipBytes": 121051
+    },
+    {
+      "name": "index-wpxFTbJy.css",
+      "bytes": 14187,
+      "gzipBytes": 3590
+    }
+  ],
+  "totalGzipBytes": 188418,
+  "coldOnlineNavigationToForm": {
+    "runs": 10,
+    "p50Ms": 52,
+    "p95Ms": 54.86,
+    "maxMs": 54.86
+  },
+  "coldOnlineNavigationToOfflineReady": {
+    "runs": 10,
+    "p50Ms": 82.97,
+    "p95Ms": 87.17,
+    "maxMs": 87.17
+  },
+  "warmOfflineNavigationToForm": {
+    "runs": 10,
+    "p50Ms": 49.15,
+    "p95Ms": 50.8,
+    "maxMs": 50.8
+  },
+  "conversions": [
+    {
+      "design": "lens",
+      "workload": "meeting-2000",
+      "characters": 2000,
+      "conversion": {
+        "runs": 30,
+        "p50Ms": 54.7,
+        "p95Ms": 55.1,
+        "maxMs": 56.1
+      },
+      "maxFrameGap": {
+        "runs": 30,
+        "p50Ms": 16.7,
+        "p95Ms": 16.8,
+        "maxMs": 16.8
+      },
+      "provisionalBudgetMs": 250,
+      "meetsBudgetOnThisMachine": true
+    },
+    {
+      "design": "lens",
+      "workload": "meeting-10000",
+      "characters": 10000,
+      "conversion": {
+        "runs": 30,
+        "p50Ms": 106.1,
+        "p95Ms": 107,
+        "maxMs": 107.2
+      },
+      "maxFrameGap": {
+        "runs": 30,
+        "p50Ms": 16.7,
+        "p95Ms": 16.8,
+        "maxMs": 16.8
+      },
+      "provisionalBudgetMs": 1000,
+      "meetsBudgetOnThisMachine": true
+    },
+    {
+      "design": "lens",
+      "workload": "noisy-10000",
+      "characters": 10000,
+      "conversion": {
+        "runs": 30,
+        "p50Ms": 31.5,
+        "p95Ms": 32.1,
+        "maxMs": 32.2
+      },
+      "maxFrameGap": {
+        "runs": 30,
+        "p50Ms": 18.4,
+        "p95Ms": 18.7,
+        "maxMs": 18.7
+      },
+      "provisionalBudgetMs": 1000,
+      "meetsBudgetOnThisMachine": true
+    },
+    {
+      "design": "command",
+      "workload": "meeting-2000",
+      "characters": 2000,
+      "conversion": {
+        "runs": 30,
+        "p50Ms": 54.5,
+        "p95Ms": 54.9,
+        "maxMs": 56.3
+      },
+      "maxFrameGap": {
+        "runs": 30,
+        "p50Ms": 16.7,
+        "p95Ms": 16.73,
+        "maxMs": 16.8
+      },
+      "provisionalBudgetMs": 250,
+      "meetsBudgetOnThisMachine": true
+    },
+    {
+      "design": "command",
+      "workload": "meeting-10000",
+      "characters": 10000,
+      "conversion": {
+        "runs": 30,
+        "p50Ms": 105.4,
+        "p95Ms": 106.4,
+        "maxMs": 109.5
+      },
+      "maxFrameGap": {
+        "runs": 30,
+        "p50Ms": 16.7,
+        "p95Ms": 16.8,
+        "maxMs": 16.8
+      },
+      "provisionalBudgetMs": 1000,
+      "meetsBudgetOnThisMachine": true
+    },
+    {
+      "design": "command",
+      "workload": "noisy-10000",
+      "characters": 10000,
+      "conversion": {
+        "runs": 30,
+        "p50Ms": 31.7,
+        "p95Ms": 32.9,
+        "maxMs": 32.9
+      },
+      "maxFrameGap": {
+        "runs": 30,
+        "p50Ms": 18.4,
+        "p95Ms": 18.7,
+        "maxMs": 18.83
+      },
+      "provisionalBudgetMs": 1000,
+      "meetsBudgetOnThisMachine": true
+    }
+  ],
+  "pending": [
+    "Named physical-phone startup/conversion p95",
+    "Real virtual-keyboard and Clear responsiveness",
+    "Representative phone network conditions"
+  ]
+}

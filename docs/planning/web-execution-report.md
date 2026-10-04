@@ -31,6 +31,18 @@ Atomic service-worker preparation verifies all required local assets before Offl
 
 ## Remaining web acceptance
 
-Record physical Android Chrome/iPhone Safari/foldable installation and keyboard/folding behavior; actual browser zoom, screen-reader/task acceptance, representative-phone startup/conversion performance, and multi-tab incompatible-release behavior. Browser emulation and desktop measurements do not certify these. They concern the web product and do not require native app support.
+Record physical Android Chrome/iPhone Safari/foldable installation and keyboard/folding behavior; actual browser zoom, screen-reader/task acceptance, representative-phone startup/conversion performance, and installed update/share capability. Browser emulation and desktop measurements do not certify these. They concern the web product and do not require native app support. The current capability and remaining-ticket matrix is [web-acceptance.md](web-acceptance.md).
+
+## Update/privacy continuation — 4 October 2026
+
+At `63a2553`, all 98 browser scenarios pass across five core profiles plus hinge/safe-area coverage; 72 unit tests, formatting/type checks, production builds and the Pages-subpath scenario also pass. The 353-input corpus remains crash-free with the same 29 documented differences.
+
+Preview-only release fixtures now have distinct immutable app/CSS/worker assets and incompatible worker contracts. A negative control rejects a mixed worker; old/new tabs successfully convert with their own lazy workers after two successive activations and offline reopen. Single-tab rollback preserves the draft and appearance preferences, clears the temporary draft and removes obsolete caches. These close the outstanding automated multi-version/cache-cleanup coverage in TIE-313.
+
+Privacy scenarios verify expired/future/malformed/oversized update/share handoffs are rejected and erased, blocked update storage preserves the active draft until it can be copied or cleared, and invalid/oversized POST shares offer a paste fallback. Legacy preference migration strips unrelated fields, quota failure keeps conversion usable, and Reset preferences removes the saved record. Reset previously recreated a default record immediately; this is corrected.
+
+`scripts/benchmark-browser.ts` measures the production page with disposable-worker startup, parsing and result DOM updates for both designs. It records fresh-context local startup and stopped-origin offline reopening, with five warmups and 30 measured conversions per workload. The development computer’s browser baseline supplements the original Bun-only measurement; named-phone performance and human accessibility still require physical evidence. Timing benchmarks do not run in CI.
+
+Committed browser reports identify source `63a2553`: 188,418 estimated gzip bytes of JS/CSS/worker assets. Chromium 153 p95 is 54.9–55.1 ms for 2,000-character meetings and 106.4–107 ms for 10,000-character meetings across both designs; WebKit 26.6 p95 is 38–39 ms and 86–87 ms respectively. Cold local navigation-to-form p95 is 54.86/64.99 ms (Chromium/WebKit), warm offline reopening 50.8/54.71 ms. These include documented automation overhead and use a desktop CPU with a phone-sized viewport, not phone hardware/network evidence. See [Chromium report](browser-performance-baseline.json) and [WebKit report](browser-performance-webkit.json).
 
 Optional learned span detection remains a separate benchmark/research ticket. No model is bundled or downloaded by the launch app. Historical native code/releases remain discoverable through Git history, without an active native source directory or workflow.
