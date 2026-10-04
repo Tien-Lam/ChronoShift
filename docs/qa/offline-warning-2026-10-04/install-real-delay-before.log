@@ -1,0 +1,19 @@
+Revision: 89d8bc002a6443e7c1093ac517a7a0e6b1213821
+Recorded from original isolated installed-Chrome reproduction, exec session 67416.
+Script: /private/tmp/chronoshift-first-install-proof.ts
+Only icon.svg network response delayed 17000ms; localhost server idleTimeout=60.
+conversion 18:20
+at16s {
+  ready: "false",
+  warning: [ "Offline setup is incomplete. Reconnect and reload to try again." ],
+  controller: undefined,
+}
+at21s {
+  ready: "false",
+  warning: [ "Offline setup is incomplete. Reconnect and reload to try again." ],
+  controller: "activated",
+  actualReady: {
+    ready: true,
+    version: "905dd8de79f20b81",
+  },
+}

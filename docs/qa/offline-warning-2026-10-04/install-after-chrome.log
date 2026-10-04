@@ -1,0 +1,17 @@
+$ bunx --bun playwright test "e2e/offline-install.spec.ts" "--project=chromium"
+
+Running 5 tests using 3 workers
+
+(node:79169) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:79167) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:79168) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  2 [chromium] › e2e/offline-install.spec.ts:82:0 › a stale mutable asset is refetched and checked before offline readiness (601ms)
+  ✓  3 [chromium] › e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (1.4s)
+  ✓  1 [chromium] › e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (1.8s)
+  ✓  4 [chromium] › e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (1.4s)
+  ✓  5 [chromium] › e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (5.7s)
+
+  5 passed (7.9s)

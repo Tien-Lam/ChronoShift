@@ -1,0 +1,141 @@
+$ bunx --bun playwright test "e2e/offline-install.spec.ts" "--project=chromium"
+
+Running 4 tests using 3 workers
+
+(node:78433) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:78432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:78431) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✘  1 [chromium] › e2e/offline-install.spec.ts:54:0 › a stale mutable asset is refetched and checked before offline readiness (10.5s)
+(node:78573) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✘  3 [chromium] › e2e/offline-install.spec.ts:78:0 › a rejected first installation retries without reloading or clearing input (10.9s)
+  ✘  2 [chromium] › e2e/offline-install.spec.ts:31:0 › slow first installation clears its expired warning without losing conversion (10.9s)
+  ✓  4 [chromium] › e2e/offline-install.spec.ts:98:0 › persistently wrong release bytes never activate or claim offline readiness (5.7s)
+
+
+  1) [chromium] › e2e/offline-install.spec.ts:31:0 › slow first installation clears its expired warning without losing conversion 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('main')
+    Expected: "true"
+    Received: "false"
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('main') with timeout 10000ms
+      - waiting for locator('main')
+        24 × locator resolved to <main data-offline-ready="false">…</main>
+           - unexpected value "false"
+
+
+      38 |     );
+      39 |     await convert(page);
+    > 40 |     await expect(page.locator("main")).toHaveAttribute(
+         |                                       ^
+      41 |       "data-offline-ready",
+      42 |       "true",
+      43 |     );
+        at /private/tmp/chronoshift-install-baseline/e2e/offline-install.spec.ts:40:39
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/offline-install-slow-first-c99d9-g-without-losing-conversion-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/offline-install-slow-first-c99d9-g-without-losing-conversion-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/offline-install-slow-first-c99d9-g-without-losing-conversion-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/offline-install-slow-first-c99d9-g-without-losing-conversion-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › e2e/offline-install.spec.ts:54:0 › a stale mutable asset is refetched and checked before offline readiness 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('main')
+    Expected: "true"
+    Received: "false"
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('main') with timeout 10000ms
+      - waiting for locator('main')
+        24 × locator resolved to <main data-offline-ready="false">…</main>
+           - unexpected value "false"
+
+
+      57 |     await publishRelease(context, baseURL!, "offline-stale");
+      58 |     await page.goto("/");
+    > 59 |     await expect(page.locator("main")).toHaveAttribute(
+         |                                       ^
+      60 |       "data-offline-ready",
+      61 |       "true",
+      62 |     );
+        at /private/tmp/chronoshift-install-baseline/e2e/offline-install.spec.ts:59:39
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/offline-install-a-stale-mu-32882-ed-before-offline-readiness-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/offline-install-a-stale-mu-32882-ed-before-offline-readiness-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/offline-install-a-stale-mu-32882-ed-before-offline-readiness-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/offline-install-a-stale-mu-32882-ed-before-offline-readiness-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › e2e/offline-install.spec.ts:78:0 › a rejected first installation retries without reloading or clearing input 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('main')
+    Expected: "true"
+    Received: "false"
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('main') with timeout 10000ms
+      - waiting for locator('main')
+        24 × locator resolved to <main data-offline-ready="false">…</main>
+           - unexpected value "false"
+
+
+      85 |     );
+      86 |     await convert(page);
+    > 87 |     await expect(page.locator("main")).toHaveAttribute(
+         |                                       ^
+      88 |       "data-offline-ready",
+      89 |       "true",
+      90 |     );
+        at /private/tmp/chronoshift-install-baseline/e2e/offline-install.spec.ts:87:39
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/offline-install-a-rejected-3ad65-reloading-or-clearing-input-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/offline-install-a-rejected-3ad65-reloading-or-clearing-input-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/offline-install-a-rejected-3ad65-reloading-or-clearing-input-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/offline-install-a-rejected-3ad65-reloading-or-clearing-input-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    [chromium] › e2e/offline-install.spec.ts:31:0 › slow first installation clears its expired warning without losing conversion 
+    [chromium] › e2e/offline-install.spec.ts:54:0 › a stale mutable asset is refetched and checked before offline readiness 
+    [chromium] › e2e/offline-install.spec.ts:78:0 › a rejected first installation retries without reloading or clearing input 
+  1 passed (17.7s)
+error: script "test:browser" exited with code 1
