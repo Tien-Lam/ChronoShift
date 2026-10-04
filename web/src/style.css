@@ -874,6 +874,12 @@ footer p {
   }
 }
 @media (max-width: 359px) {
+  .result-top {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .copy-button {
+    justify-self: start;
+  }
   .header-tools {
     gap: 8px;
   }
