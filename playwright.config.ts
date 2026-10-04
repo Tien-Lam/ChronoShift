@@ -1,5 +1,9 @@
 import { defineConfig, devices } from "@playwright/test";
 const port = process.env.PLAYWRIGHT_PORT || "4173";
+// CSS layout, touch and accessibility checks do not need high-density raster
+// output. Keep the native profile density locally; CI uses 1x mobile pixels
+// to avoid software-rendering millions of extra pixels for every interaction.
+const mobileRaster = process.env.CI ? { deviceScaleFactor: 1 } : {};
 export default defineConfig({
   testDir: "./e2e",
   testIgnore: [
@@ -31,10 +35,17 @@ export default defineConfig({
     { name: "chromium", use: { ...devices["Desktop Chrome"] } },
     { name: "firefox", use: { ...devices["Desktop Firefox"] } },
     { name: "webkit", use: { ...devices["Desktop Safari"] } },
-    { name: "android-emulation", use: { ...devices["Pixel 7"] } },
+    {
+      name: "android-emulation",
+      use: { ...devices["Pixel 7"], ...mobileRaster },
+    },
     {
       name: "iphone-emulation",
-      use: { ...devices["iPhone 13"], defaultBrowserType: "webkit" },
+      use: {
+        ...devices["iPhone 13"],
+        ...mobileRaster,
+        defaultBrowserType: "webkit",
+      },
     },
   ],
   webServer: {

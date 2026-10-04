@@ -58,6 +58,8 @@ CI runs all 68 browser scenarios using four workers on the public repository’s
 
 A publishing push and its PR intentionally verify different refs: the branch head and GitHub’s merge ref. After cutover, `main` is checked only through Pages, avoiding a second independent push verification. Superseded verification is canceled per branch/PR while active deployments are protected. Successful PRs upload no diagnostics; failures retain reports/traces for three days. Pages artifacts remain available for 14 days.
 
+Mobile CI profiles rasterize at 1x device pixel density to reduce software rendering of the glass surfaces. Their viewport sizes, mobile/touch settings, user agents, browser engines and test assertions stay the same. Local runs retain the standard Pixel/iPhone high-density profiles, which also pass. CI screenshots use fewer physical pixels; this is not a phone GPU/performance benchmark or physical-device acceptance.
+
 Measure equivalent successful event pairs with the read-only `gh`-based tool:
 
 ```bash
