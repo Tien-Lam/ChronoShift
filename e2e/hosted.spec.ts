@@ -7,7 +7,7 @@ test("public Pages deployment converts fresh input after offline close and reope
   const requests: string[] = [];
   context.on("request", (request) => requests.push(request.url()));
   await page.goto("/ChronoShift/");
-  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
   expect(
     await page.evaluate(
       async () => (await navigator.serviceWorker.getRegistration())!.scope,

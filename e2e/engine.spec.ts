@@ -5,7 +5,7 @@ test("independent exact fixture expectations run in the production browser worke
   page,
 }) => {
   await page.goto("/");
-  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
   const asset = (await readdir("dist/assets")).find((name) =>
     /^worker-.*\.js$/.test(name),
   )!;

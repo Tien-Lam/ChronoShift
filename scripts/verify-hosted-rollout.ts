@@ -24,10 +24,13 @@ const cachedCommit = async () =>
     async () =>
       (await (await fetch("release.json")).json()).sourceCommit as string,
   );
+// Retained rollback releases use the former visible readiness badge.
 const draft = "April 9, 2026 3pm in Tokyo";
 try {
   await page.goto(url);
-  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible({
+  await expect(
+    page.locator('main[data-offline-ready="true"], .connection.ready'),
+  ).toBeVisible({
     timeout: 30000,
   });
   report.initial = await cachedCommit();
@@ -71,7 +74,7 @@ try {
       { timeout: 30000 },
     );
     await expect(
-      page.getByText("Offline ready", { exact: true }),
+      page.locator('main[data-offline-ready="true"], .connection.ready'),
     ).toBeVisible();
     expect(await cachedCommit()).toBe(expected);
     await page.getByRole("button", { name: "Convert", exact: true }).click();
@@ -102,7 +105,7 @@ try {
     page = await context.newPage();
     await page.goto(url);
     await expect(
-      page.getByText("Offline ready", { exact: true }),
+      page.locator('main[data-offline-ready="true"], .connection.ready'),
     ).toBeVisible();
   }
   report.finished = new Date().toISOString();

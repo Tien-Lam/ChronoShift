@@ -10,7 +10,7 @@ test("repair refuses another release and leaves the existing offline shell intac
 }) => {
   await publishRelease(context, baseURL!, "first");
   await page.goto("/");
-  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
   await publishRelease(context, baseURL!, "second");
   const ready = await page.evaluate(async () => {
     const cache = await caches.open("chronoshift-test-first");
@@ -49,7 +49,7 @@ test("an interrupted rollback preserves a retained cache and its old tab worker"
 }) => {
   await publishRelease(context, baseURL!, "first");
   await page.goto("/");
-  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
   const next = await context.newPage();
   await next.goto("/");
   await publish(context, next, "second");
@@ -92,7 +92,7 @@ test("oversized drafts block an update until they can be safely preserved", asyn
 }) => {
   await publishRelease(context, baseURL!, "first");
   await page.goto("/");
-  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
   const draft = "x".repeat(10001);
   await page.getByLabel("Message with a date or time").fill(draft);
   await publish(context, page, "second");
@@ -150,7 +150,7 @@ async function activate(page: Page) {
     page.getByRole("button", { name: "Update now" }).click(),
   ]);
   await expect(page.getByRole("button", { name: "Update now" })).toHaveCount(0);
-  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
 }
 async function rejectMixedWorker(page: Page) {
   // Prove these fixtures actually reject an incompatible worker contract.
@@ -214,13 +214,11 @@ test("old and new tabs retain their own workers across successive releases and o
     ).status(),
   ).toBe(204);
   await page.goto("/");
-  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
   await page.getByLabel("Message with a date or time").fill("Old tab draft");
   const second = await context.newPage();
   await second.goto("/");
-  await expect(
-    second.getByText("Offline ready", { exact: true }),
-  ).toBeVisible();
+  await expect(second.locator('main[data-offline-ready="true"]')).toBeVisible();
   await rejectMixedWorker(second);
   await publish(context, second, "second");
   await activate(second);
@@ -233,7 +231,7 @@ test("old and new tabs retain their own workers across successive releases and o
   await convert(second, "second");
   const third = await context.newPage();
   await third.goto("/");
-  await expect(third.getByText("Offline ready", { exact: true })).toBeVisible();
+  await expect(third.locator('main[data-offline-ready="true"]')).toBeVisible();
   await publish(context, third, "third");
   await activate(third);
   expect(await revision(third)).toBe("test-third");
@@ -293,7 +291,7 @@ test("rollback preserves draft and preferences and removes obsolete caches with 
     ).status(),
   ).toBe(204);
   await page.goto("/");
-  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
   await page.getByLabel("Appearance", { exact: true }).click();
   await page.getByLabel("Theme", { exact: true }).selectOption("light");
   await page.getByLabel("Appearance", { exact: true }).click();

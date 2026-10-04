@@ -52,7 +52,6 @@ export default function App() {
   const [preferenceError, setPreferenceError] = useState(false);
   const [manualCopy, setManualCopy] = useState("");
   const [offline, setOffline] = useState<OfflineState>({ ready: false });
-  const [online, setOnline] = useState(navigator.onLine);
   const [installPrompt, setInstallPrompt] = useState<any>();
   const [installHelp, setInstallHelp] = useState(false);
   const input = useRef<HTMLTextAreaElement>(null),
@@ -77,7 +76,6 @@ export default function App() {
     const controller = new AbortController();
     setupOffline(setOffline, controller.signal);
     const refresh = () => {
-      setOnline(navigator.onLine);
       setDevice(deviceTimezone());
     };
     window.addEventListener("online", refresh);
@@ -289,16 +287,6 @@ export default function App() {
           ChronoShift
         </a>
         <div className="header-tools">
-          <span className={`connection ${offline.ready ? "ready" : ""}`}>
-            <i aria-hidden="true" />
-            {offline.ready
-              ? online
-                ? "Offline ready"
-                : "Working offline"
-              : online
-                ? "Private by default"
-                : "Offline setup incomplete"}
-          </span>
           <details
             className="appearance"
             onKeyDown={(event) => {
@@ -347,7 +335,7 @@ export default function App() {
           </details>
         </div>
       </header>
-      <main>
+      <main data-offline-ready={offline.ready}>
         <h1 className="sr-only">Time zone converter</h1>
         <div
           className={`workspace ${conversion.results.length ? "has-results" : ""}`}
@@ -706,10 +694,14 @@ export default function App() {
               Share menu.
             </p>
             <p>
-              You can also bookmark this page. Wait for “Offline ready” before
-              disconnecting; clearing browser storage means you’ll need to
-              reconnect once.
+              You can also bookmark this page. If you clear browser storage,
+              open it online again before using it offline.
             </p>
+            {!offline.ready && (
+              <p>
+                Keep this page open online to finish saving it for offline use.
+              </p>
+            )}
             <button
               className="text-button"
               type="button"

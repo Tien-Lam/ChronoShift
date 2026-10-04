@@ -10,7 +10,7 @@ Use **Appearance** in the header to choose **Dark**, **Light** or **System**. Th
 
 ## Use offline
 
-Open the app online once and wait for **Offline ready** before disconnecting. Install it from your browser's menu if offered, or bookmark it. Clearing browser storage requires another complete online visit. Updates wait for **Update now** and preserve your current message when accepted.
+Open the app online once and let it finish loading before disconnecting. Offline setup problems appear only when action is needed. Install it from your browser's menu if offered, or bookmark it. Clearing browser storage requires another complete online visit. Updates wait for **Update now** and preserve your current message when accepted.
 
 Only preferences persist by default. Conversion text stays in memory; explicit updates and supported installed-app shares use a short-lived, single-use local handoff. Ordinary paste works across supported browsers.
 
@@ -32,7 +32,7 @@ bun run format:check
 bun run preview
 ```
 
-Open http://127.0.0.1:4173 and wait for **Offline ready**. Offline caching is enabled in production builds. The development server provides live reload.
+Open http://127.0.0.1:4173 and let it finish loading. Offline caching is enabled in production builds. The development server provides live reload.
 
 ## Verify and publish
 

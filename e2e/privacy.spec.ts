@@ -6,9 +6,7 @@ for (const legacyDesign of ["lens", "command"])
     page,
   }) => {
     await page.goto("/");
-    await expect(
-      page.getByText("Offline ready", { exact: true }),
-    ).toBeVisible();
+    await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
     await page.evaluate(
       (design) =>
         localStorage.setItem(
@@ -89,7 +87,7 @@ test("invalid and oversized local shares return a paste fallback without storing
   page,
 }) => {
   await page.goto("/");
-  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
   const responses = await page.evaluate(async () => {
     const requests = [
       new URLSearchParams({ text: "" }),
@@ -124,7 +122,7 @@ test("expired and invalid temporary text is consumed and erased without restorin
   page,
 }) => {
   await page.goto("/");
-  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
   for (const invalid of ["expired", "future", "oversized", "malformed"]) {
     await page.evaluate((invalid) => {
       const entry = {
@@ -240,9 +238,7 @@ releaseTest(
       }),
     );
     await page.goto("/");
-    await expect(
-      page.getByText("Offline ready", { exact: true }),
-    ).toBeVisible();
+    await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
     const draft = "PRIVATE-UPDATE-TEST April 9, 2026 3pm UTC";
     await page.getByLabel("Message with a date or time").fill(draft);
     await publishRelease(context, page.url(), "second");
@@ -276,8 +272,6 @@ releaseTest(
     await expect(page.getByLabel("Message with a date or time")).toHaveValue(
       "",
     );
-    await expect(
-      page.getByText("Offline ready", { exact: true }),
-    ).toBeVisible();
+    await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
   },
 );
