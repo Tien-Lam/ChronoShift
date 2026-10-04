@@ -26,6 +26,7 @@ type Run = {
   updated_at: string;
 };
 const args = Bun.argv.slice(2);
+const consolidatedPreview = args.includes("--consolidated-preview");
 function argument(flag: string): string {
   const value = args[args.indexOf(flag) + 1];
   if (!args.includes(flag) || !value || value.startsWith("--"))
@@ -151,8 +152,38 @@ const events = (runs: typeof baseline.runs) =>
     .map((run) => `${run.workflow}:${run.event}`)
     .sort()
     .join(",");
-if (events(baseline.runs) !== events(candidate.runs))
-  throw new Error("Compare the same workflow/event mix in both samples");
+if (consolidatedPreview) {
+  // One publishing push and its PR now share a single verified pipeline.
+  // Accept only the explicit replacement topology, never arbitrary fewer runs.
+  const run = candidate.runs[0];
+  if (
+    events(baseline.runs) !== "GitHub Pages:push,Web:pull_request" ||
+    candidate.runs.length !== 1 ||
+    run.workflow !== "Web" ||
+    run.event !== "pull_request" ||
+    run.jobs
+      .map((job) => job.name)
+      .sort()
+      .join(",") !== "deploy-preview,web" ||
+    run.artifacts.length !== 1 ||
+    run.artifacts[0].name !== "github-pages"
+  )
+    throw new Error(
+      "Expected a full PR verification + preview publication pipeline",
+    );
+  const steps = run.jobs.find((job) => job.name === "web")!.steps;
+  for (const name of [
+    "Verify preview matches the publishing branch",
+    "Run bun run test:browser",
+    "Verify repository-subpath deployment",
+    "Upload the verified Pages build",
+  ])
+    if (!steps.some((step) => step.name === name))
+      throw new Error(`Consolidated pipeline did not execute ${name}`);
+} else if (events(baseline.runs) !== events(candidate.runs))
+  throw new Error(
+    "Compare the same workflow/event mix or use the explicit consolidated preview mode",
+  );
 function reduction(before: number, after: number): number {
   if (!before) throw new Error("A zero baseline cannot demonstrate savings");
   return Math.round((1 - after / before) * 10000) / 100;
@@ -173,8 +204,10 @@ const reductions = {
 };
 const report = {
   measuredAt: new Date().toISOString(),
-  scope:
-    "One successful push publication and its successful pull-request verification, before and after optimization",
+  scope: consolidatedPreview
+    ? "One publishing push plus its PR: duplicate workflows before, one tree-verified PR/publication pipeline after"
+    : "One successful push publication and its successful pull-request verification, before and after optimization",
+  consolidatedPreview,
   caveats: [
     "This public repository uses free standard hosted runners; runner usage is not a dollar billing statement.",
     "Rounded minutes are a per-job cost proxy, not an account billing export.",

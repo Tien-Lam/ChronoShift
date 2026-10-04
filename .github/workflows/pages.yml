@@ -1,8 +1,8 @@
 name: GitHub Pages
 on:
   push:
-    # Publish the migration preview now; remove this branch after web cutover.
-    branches: [main, codex/offline-web-migration]
+    # The migration preview publishes from its verified PR workflow.
+    branches: [main]
     paths-ignore:
       - "**/*.md"
       - "docs/design/**"
@@ -12,7 +12,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
-  pages: read
+  # The called workflow also defines a conditional preview deployment job.
+  pages: write
+  id-token: write
 jobs:
   verify:
     uses: ./.github/workflows/web.yml

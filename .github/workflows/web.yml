@@ -6,8 +6,8 @@ on:
         description: Upload the verified repository-path build for deployment
         type: boolean
         default: false
-  # Publishing branches are verified by pages.yml through workflow_call.
-  # A PR still tests GitHub's merge ref, independently of its preview branch.
+  # Main publication calls this gate. PR #16 also publishes its tested preview
+  # after proving the merge tree is identical to the migration branch.
   pull_request:
     branches: [main]
     paths-ignore:
@@ -20,6 +20,8 @@ permissions:
   contents: read
 jobs:
   web:
+    outputs:
+      preview: ${{ steps.preview.outputs.publish }}
     runs-on: ubuntu-latest
     container:
       # Playwright 1.63.0 / Ubuntu 24.04, pinned official multi-platform image.
@@ -33,6 +35,7 @@ jobs:
     env:
       PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
       PLAYWRIGHT_IMAGE_VERSION: "1.63.0"
+      PUBLISH_PAGES: ${{ inputs.publish-pages || (github.event_name == 'pull_request' && github.event.pull_request.number == 16 && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'codex/offline-web-migration') }}
     timeout-minutes: 20
     permissions:
       contents: read
@@ -46,6 +49,16 @@ jobs:
         run: cp -f docs/planning/corpus-audit.json "$RUNNER_TEMP/chronoshift-corpus-audit.json"
       - uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db # v3
       - run: bun install --frozen-lockfile
+      - name: Verify preview matches the publishing branch
+        id: preview
+        if: github.event_name == 'pull_request' && env.PUBLISH_PAGES == 'true'
+        env:
+          PREVIEW_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          git fetch --no-tags --depth=1 origin "$PREVIEW_HEAD_SHA"
+          bun scripts/verify-preview-tree.ts "$PREVIEW_HEAD_SHA"
+          git checkout --detach "$PREVIEW_HEAD_SHA"
+          echo "publish=true" >> "$GITHUB_OUTPUT"
       - name: Verify the pinned browser image matches the dependency
         run: >-
           bun -e 'const pkg = await Bun.file("node_modules/playwright/package.json").json();
@@ -66,16 +79,16 @@ jobs:
           diff -u "$RUNNER_TEMP/chronoshift-corpus-audit.json" docs/planning/corpus-audit.json
       - run: bun run test:browser
       - id: pages
-        if: inputs.publish-pages
+        if: env.PUBLISH_PAGES == 'true'
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - name: Verify repository-subpath deployment
         run: |
           bun run build
           bunx --bun playwright test --config=playwright.subpath.config.ts
         env:
-          BASE_PATH: ${{ inputs.publish-pages && format('{0}/', steps.pages.outputs.base_path) || '/ChronoShift/' }}
+          BASE_PATH: ${{ env.PUBLISH_PAGES == 'true' && format('{0}/', steps.pages.outputs.base_path) || '/ChronoShift/' }}
       - name: Upload the verified Pages build
-        if: inputs.publish-pages
+        if: env.PUBLISH_PAGES == 'true'
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         with:
           path: dist
@@ -90,3 +103,20 @@ jobs:
             playwright-report/
             test-results/
           retention-days: 3
+  deploy-preview:
+    if: github.event_name == 'pull_request' && needs.web.outputs.preview == 'true'
+    needs: web
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

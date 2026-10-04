@@ -1,6 +1,6 @@
 # ChronoShift acceptance status
 
-Implementation: [PR #16](https://github.com/Tien-Lam/ChronoShift/pull/16), update/privacy work at `63a2553`. Published preview: https://tien-lam.github.io/ChronoShift/.
+Implementation: [PR #16](https://github.com/Tien-Lam/ChronoShift/pull/16), update/privacy work at `63a2553` and immediate update activation at `946c303`. Published preview: https://tien-lam.github.io/ChronoShift/.
 
 ## Browser capability evidence
 
@@ -24,7 +24,7 @@ The WebKit offline method stops a dedicated origin and confirms an uncached netw
 - Foundations: exact conversion fixtures, standalone 353-input resilience corpus, typed parsing/timezone semantics, cancellation and input limit. All implementation tickets await review; optional learned detection remains TIE-302.
 - Experience: Liquid Lens and Glass Command, Dark/Light/System themes, concise conversion-first layout, progressive corrections, clipboard fallbacks, fluid/foldable layouts and automated accessibility.
 - Offline: complete cache/readiness, cache repair, local preference migration/reset/quota recovery, bounded single-use handoffs, distinct-release multi-tab compatibility and rollback cleanup.
-- Delivery: Bun/mise CI, GitHub Pages/subpath/HTTPS checks, retained rollback artifacts, local-only security/privacy coverage and browser performance harness. Native maintenance is retired.
+- Delivery: Bun/mise CI, GitHub Pages/subpath/HTTPS checks, retained rollback artifacts, local-only security/privacy coverage and browser performance harness. Native maintenance is retired. TIE-319 is ready for review; CI usage is re-measured whenever browser coverage changes.
 
 ## Remaining acceptance work
 
