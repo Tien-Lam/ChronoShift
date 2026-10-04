@@ -25,7 +25,7 @@ const server = Bun.serve({
       request.method === "POST"
     ) {
       const version = await request.text();
-      if (!fixtures?.releases.has(version))
+      if (!fixtures?.releases.has(version) && version !== "broken")
         return new Response("Unknown test release", { status: 400 });
       publishedVersion = version;
       return new Response(null, { status: 204 });
@@ -40,13 +40,7 @@ const server = Bun.serve({
     const path = resolve(root, relative);
     if (!path.startsWith(root + "/"))
       return new Response("Not found", { status: 404 });
-    const version =
-      publishedVersion ??
-      (testMode
-        ? request.headers
-            .get("cookie")
-            ?.match(/(?:^|; )test-version=([^;]+)/)?.[1]
-        : undefined);
+    const version = publishedVersion;
     const variant =
       fixtures?.immutable.get(relative) ??
       fixtures?.releases.get(version || "")?.get(relative);

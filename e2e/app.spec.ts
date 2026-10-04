@@ -1,6 +1,7 @@
-import { test, expect, disconnect } from "./fixtures";
+import { test, expect, disconnect, publishRelease } from "./fixtures";
 import AxeBuilder from "@axe-core/playwright";
 import type { Page } from "@playwright/test";
+const releaseTest = test.extend({ isolatedOrigin: true });
 test("worker failure recovers and a late response cannot resurrect cleared input", async ({
   page,
 }) => {
@@ -320,61 +321,63 @@ test("offline POST share is single-use and never places message in URL", async (
   ).toBeVisible();
   expect(requests.every((r) => !r.includes("April"))).toBe(true);
 });
-test("an update waits, preserves draft on opt-in, and survives a partial next update", async ({
-  page,
-  context,
-  origin,
-}) => {
-  await ready(page);
-  await page
-    .getByLabel("Message with a date or time")
-    .fill("Keep April 9, 2026 3pm EST");
-  await context.addCookies([
-    { name: "test-version", value: "second", url: new URL(page.url()).origin },
-  ]);
-  await page.evaluate(async () => {
-    await (await navigator.serviceWorker.getRegistration())!.update();
-  });
-  await expect(page.getByRole("button", { name: "Update now" })).toBeVisible();
-  await expect(page.getByLabel("Message with a date or time")).toHaveValue(
-    "Keep April 9, 2026 3pm EST",
-  );
-  await Promise.all([
-    page.waitForEvent("domcontentloaded"),
-    page.getByRole("button", { name: "Update now" }).click(),
-  ]);
-  await expect(page.getByLabel("Message with a date or time")).toHaveValue(
-    "Keep April 9, 2026 3pm EST",
-  );
-  await expect
-    .poll(() =>
-      page.evaluate(() => sessionStorage.getItem("chronoshift.update-draft")),
-    )
-    .toBe(null);
-  await expect(page.getByRole("button", { name: "Update now" })).toHaveCount(0);
-  await context.addCookies([
-    { name: "test-version", value: "broken", url: new URL(page.url()).origin },
-  ]);
-  await page.evaluate(async () => {
-    const r = (await navigator.serviceWorker.getRegistration())!;
-    const done = new Promise<void>((resolve) =>
-      r.addEventListener(
-        "updatefound",
-        () =>
-          r.installing!.addEventListener("statechange", () => {
-            if (r.installing?.state === "redundant" || !r.installing) resolve();
-          }),
-        { once: true },
-      ),
+releaseTest(
+  "an update waits, preserves draft on opt-in, and survives a partial next update",
+  async ({ page, context, origin }) => {
+    await ready(page);
+    await page
+      .getByLabel("Message with a date or time")
+      .fill("Keep April 9, 2026 3pm EST");
+    await publishRelease(context, page.url(), "second");
+    await page.evaluate(async () => {
+      await (await navigator.serviceWorker.getRegistration())!.update();
+    });
+    await expect(
+      page.getByRole("button", { name: "Update now" }),
+    ).toBeVisible();
+    await expect(page.getByLabel("Message with a date or time")).toHaveValue(
+      "Keep April 9, 2026 3pm EST",
     );
-    await r.update();
-    await done;
-  });
-  await expect(page.getByRole("button", { name: "Update now" })).toHaveCount(0);
-  await page.close();
-  await disconnect(context, origin);
-  const reopened = await context.newPage();
-  await reopened.goto("/");
-  await convert(reopened);
-  await expect(reopened.locator(".hero-time")).toHaveText(/6:00 am/i);
-});
+    await Promise.all([
+      page.waitForEvent("domcontentloaded"),
+      page.getByRole("button", { name: "Update now" }).click(),
+    ]);
+    await expect(page.getByLabel("Message with a date or time")).toHaveValue(
+      "Keep April 9, 2026 3pm EST",
+    );
+    await expect
+      .poll(() =>
+        page.evaluate(() => sessionStorage.getItem("chronoshift.update-draft")),
+      )
+      .toBe(null);
+    await expect(page.getByRole("button", { name: "Update now" })).toHaveCount(
+      0,
+    );
+    await publishRelease(context, page.url(), "broken");
+    await page.evaluate(async () => {
+      const r = (await navigator.serviceWorker.getRegistration())!;
+      const done = new Promise<void>((resolve) =>
+        r.addEventListener(
+          "updatefound",
+          () =>
+            r.installing!.addEventListener("statechange", () => {
+              if (r.installing?.state === "redundant" || !r.installing)
+                resolve();
+            }),
+          { once: true },
+        ),
+      );
+      await r.update();
+      await done;
+    });
+    await expect(page.getByRole("button", { name: "Update now" })).toHaveCount(
+      0,
+    );
+    await page.close();
+    await disconnect(context, origin);
+    const reopened = await context.newPage();
+    await reopened.goto("/");
+    await convert(reopened);
+    await expect(reopened.locator(".hero-time")).toHaveText(/6:00 am/i);
+  },
+);

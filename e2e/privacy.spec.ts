@@ -1,4 +1,5 @@
-import { test, expect } from "./fixtures";
+import { test, expect, publishRelease } from "./fixtures";
+const releaseTest = test.extend({ isolatedOrigin: true });
 
 test("legacy preferences migrate, reset removes them and quota failures keep conversion usable", async ({
   page,
@@ -212,52 +213,60 @@ test("expired and invalid temporary text is consumed and erased without restorin
   }
 });
 
-test("denied update storage keeps the draft active and requires clearing before reload", async ({
-  page,
-  context,
-}) => {
-  const leaks: string[] = [];
-  page.on("console", (message) => leaks.push(message.text()));
-  page.on("request", (request) =>
-    leaks.push(request.url() + (request.postData() || "")),
-  );
-  await page.addInitScript(() =>
-    Object.defineProperty(window, "sessionStorage", {
-      get() {
-        throw new Error("Storage denied");
-      },
-    }),
-  );
-  await page.goto("/");
-  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
-  const draft = "PRIVATE-UPDATE-TEST April 9, 2026 3pm UTC";
-  await page.getByLabel("Message with a date or time").fill(draft);
-  await context.addCookies([
-    { name: "test-version", value: "second", url: page.url() },
-  ]);
-  await page.evaluate(async () => {
-    await (await navigator.serviceWorker.getRegistration())!.update();
-  });
-  await expect(page.getByRole("button", { name: "Update now" })).toBeVisible();
-  await page.getByRole("button", { name: "Update now" }).click();
-  await expect(
-    page.getByText("This browser cannot preserve it", { exact: false }),
-  ).toBeVisible();
-  await expect(page.getByLabel("Message with a date or time")).toHaveValue(
-    draft,
-  );
-  await expect(page.getByRole("button", { name: "Update now" })).toBeVisible();
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
-  await expect(page.locator(".hero-time")).toHaveText(/1:00 am/i);
-  expect(
-    await page.evaluate(() => JSON.stringify({ ...localStorage })),
-  ).not.toContain(draft);
-  expect(leaks.join("\n")).not.toContain("PRIVATE-UPDATE-TEST");
-  await page.getByRole("button", { name: "Clear", exact: true }).click();
-  await Promise.all([
-    page.waitForEvent("domcontentloaded"),
-    page.getByRole("button", { name: "Update now" }).click(),
-  ]);
-  await expect(page.getByLabel("Message with a date or time")).toHaveValue("");
-  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
-});
+releaseTest(
+  "denied update storage keeps the draft active and requires clearing before reload",
+  async ({ page, context }) => {
+    const leaks: string[] = [];
+    page.on("console", (message) => leaks.push(message.text()));
+    page.on("request", (request) =>
+      leaks.push(request.url() + (request.postData() || "")),
+    );
+    await page.addInitScript(() =>
+      Object.defineProperty(window, "sessionStorage", {
+        get() {
+          throw new Error("Storage denied");
+        },
+      }),
+    );
+    await page.goto("/");
+    await expect(
+      page.getByText("Offline ready", { exact: true }),
+    ).toBeVisible();
+    const draft = "PRIVATE-UPDATE-TEST April 9, 2026 3pm UTC";
+    await page.getByLabel("Message with a date or time").fill(draft);
+    await publishRelease(context, page.url(), "second");
+    await page.evaluate(async () => {
+      await (await navigator.serviceWorker.getRegistration())!.update();
+    });
+    await expect(
+      page.getByRole("button", { name: "Update now" }),
+    ).toBeVisible();
+    await page.getByRole("button", { name: "Update now" }).click();
+    await expect(
+      page.getByText("This browser cannot preserve it", { exact: false }),
+    ).toBeVisible();
+    await expect(page.getByLabel("Message with a date or time")).toHaveValue(
+      draft,
+    );
+    await expect(
+      page.getByRole("button", { name: "Update now" }),
+    ).toBeVisible();
+    await page.getByRole("button", { name: "Convert", exact: true }).click();
+    await expect(page.locator(".hero-time")).toHaveText(/1:00 am/i);
+    expect(
+      await page.evaluate(() => JSON.stringify({ ...localStorage })),
+    ).not.toContain(draft);
+    expect(leaks.join("\n")).not.toContain("PRIVATE-UPDATE-TEST");
+    await page.getByRole("button", { name: "Clear", exact: true }).click();
+    await Promise.all([
+      page.waitForEvent("domcontentloaded"),
+      page.getByRole("button", { name: "Update now" }).click(),
+    ]);
+    await expect(page.getByLabel("Message with a date or time")).toHaveValue(
+      "",
+    );
+    await expect(
+      page.getByText("Offline ready", { exact: true }),
+    ).toBeVisible();
+  },
+);

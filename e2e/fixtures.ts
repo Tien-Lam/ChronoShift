@@ -64,4 +64,17 @@ export async function disconnect(
     ).rejects.toThrow();
   } else await context.setOffline(true);
 }
+export async function publishRelease(
+  context: BrowserContext,
+  url: string,
+  version: string,
+) {
+  expect(
+    (
+      await context.request.post(new URL("__test-release", url).href, {
+        data: version,
+      })
+    ).status(),
+  ).toBe(204);
+}
 export { expect };
