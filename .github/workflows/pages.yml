@@ -1,7 +1,6 @@
 name: GitHub Pages
 on:
   push:
-    # The migration preview publishes from its verified PR workflow.
     branches: [main]
     paths-ignore:
       - "**/*.md"
@@ -12,16 +11,53 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
-  # The called workflow also defines a conditional preview deployment job.
-  pages: write
-  id-token: write
+# Serialize preparation and deployment together so a slower older fallback
+# cannot publish after a newer reused artifact. Never cancel active deployment.
+concurrency:
+  group: pages-publication
+  cancel-in-progress: false
 jobs:
+  prepare:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: read
+      pages: read
+    outputs:
+      reused: ${{ steps.reuse.outputs.reused }}
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db # v3
+        with:
+          install_args: bun gh
+      - name: Reuse the exact verified PR artifact
+        id: reuse
+        if: github.event_name == 'push'
+        run: bun scripts/reuse-pages-artifact.ts
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+        if: steps.reuse.outputs.reused == 'true'
+      - name: Upload the verified Pages build
+        if: steps.reuse.outputs.reused == 'true'
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: dist
+          retention-days: 14
   verify:
+    needs: prepare
+    if: needs.prepare.outputs.reused != 'true'
+    permissions:
+      contents: read
+      pages: read
     uses: ./.github/workflows/web.yml
     with:
       publish-pages: true
   deploy:
-    needs: verify
+    needs: [prepare, verify]
+    if: always() && needs.prepare.result == 'success' && (needs.prepare.outputs.reused == 'true' || needs.verify.result == 'success')
     runs-on: ubuntu-latest
     timeout-minutes: 5
     concurrency:

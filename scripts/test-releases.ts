@@ -51,6 +51,27 @@ export async function testReleases(root: string) {
       release.set(target, content);
       if (target.startsWith("assets/")) immutable.set(target, content);
     }
+    const base = JSON.parse(release.get("release.json")!).base as string;
+    const sw = release.get("sw.js")!;
+    const integrity = JSON.parse(
+      sw.match(/const INTEGRITY = (.+);/)![1],
+    ) as Record<string, string>;
+    for (const path of Object.keys(integrity)) {
+      const relative = path.slice(base.length);
+      const bytes = release.has(relative)
+        ? new TextEncoder().encode(release.get(relative)!)
+        : await Bun.file(join(root, relative)).arrayBuffer();
+      integrity[path] = new Bun.CryptoHasher("sha256")
+        .update(bytes)
+        .digest("hex");
+    }
+    release.set(
+      "sw.js",
+      sw.replace(
+        /const INTEGRITY = .+;/,
+        `const INTEGRITY = ${JSON.stringify(integrity)};`,
+      ),
+    );
     releases.set(version, release);
   }
   return { releases, immutable };

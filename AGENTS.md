@@ -12,6 +12,13 @@ ChronoShift is a TypeScript offline web app hosted on GitHub Pages. Native app t
 - Preserve local-only conversion, explicit update activation and input/result state during resize. No runtime CDN or conversion backend.
 - The resilience corpus is a standalone JSON fixture. Maintain it directly; it has no native source/build dependency.
 
+## Review and Delivery
+
+- For substantial changes, use two independent agents with clean context: one adversarial reviewer and one code reviewer. Give each the intended behavior, current revision and scope; let them inspect the code independently.
+- Fix actionable findings, add meaningful regression coverage, and request another review of the changes. Continue until both report no blocking findings and required checks pass.
+- Record findings, fixes and verification in the PR. When the user authorizes merge, merge and complete Linear tickets whose acceptance criteria have evidence. Keep physical-device or human acceptance work open when it cannot be verified here.
+- GitHub Pages publishes only main. Reuse a successful trusted PR artifact only after digest and exact source-tree verification; otherwise run the complete gate. Serialize the entire publishing workflow to prevent an older fallback overtaking a newer deployment.
+
 ## Non-Interactive Shell Commands
 
 **ALWAYS use non-interactive flags** with file operations to avoid hanging on confirmation prompts.

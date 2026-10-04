@@ -1,6 +1,117 @@
-import { test, expect, disconnect } from "./fixtures";
+import { test, expect, disconnect, publishRelease } from "./fixtures";
 import type { BrowserContext, Page } from "@playwright/test";
 test.use({ isolatedOrigin: true });
+
+test("repair refuses another release and leaves the existing offline shell intact", async ({
+  page,
+  context,
+  baseURL,
+  origin,
+}) => {
+  await publishRelease(context, baseURL!, "first");
+  await page.goto("/");
+  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
+  await publishRelease(context, baseURL!, "second");
+  const ready = await page.evaluate(async () => {
+    const cache = await caches.open("chronoshift-test-first");
+    await cache.delete("/icon.svg");
+    return new Promise<boolean>((resolve) => {
+      const channel = new MessageChannel();
+      channel.port1.onmessage = (event) => {
+        channel.port1.close();
+        resolve(event.data.ready);
+      };
+      navigator.serviceWorker.controller!.postMessage(
+        { type: "CHECK_READY", repairIfMissing: true },
+        [channel.port2],
+      );
+    });
+  });
+  expect(ready).toBe(false);
+  expect(await revision(page)).toBe("test-first");
+  expect(
+    await page.evaluate(async () =>
+      (await (
+        await caches.open("chronoshift-test-first")
+      ).match("/index.html"))!.text(),
+    ),
+  ).toContain("test-first-");
+  await disconnect(context, origin);
+  await page.reload();
+  await convert(page, "first");
+});
+
+test("an interrupted rollback preserves a retained cache and its old tab worker", async ({
+  page,
+  context,
+  baseURL,
+  origin,
+}) => {
+  await publishRelease(context, baseURL!, "first");
+  await page.goto("/");
+  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
+  const next = await context.newPage();
+  await next.goto("/");
+  await publish(context, next, "second");
+  await activate(next);
+  // Require staging on rollback, then fail a later CSS download. All complete
+  // cached assets serving the first tab must survive that failed installation.
+  await page.evaluate(async () =>
+    (await caches.open("chronoshift-test-first")).delete("/icon.svg"),
+  );
+  await publishRelease(context, baseURL!, "first-interrupted");
+  await next.evaluate(async () => {
+    const registration = (await navigator.serviceWorker.getRegistration())!;
+    const settled = new Promise<void>((resolve) =>
+      registration.addEventListener(
+        "updatefound",
+        () => {
+          const worker = registration.installing!;
+          worker.addEventListener("statechange", () => {
+            if (worker.state === "redundant") resolve();
+          });
+        },
+        { once: true },
+      ),
+    );
+    await registration.update();
+    await settled;
+  });
+  expect(await page.evaluate(() => caches.keys())).toContain(
+    "chronoshift-test-first",
+  );
+  await disconnect(context, origin);
+  await convert(page, "first");
+  await convert(next, "second");
+});
+
+test("oversized drafts block an update until they can be safely preserved", async ({
+  page,
+  context,
+  baseURL,
+}) => {
+  await publishRelease(context, baseURL!, "first");
+  await page.goto("/");
+  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
+  const draft = "x".repeat(10001);
+  await page.getByLabel("Message with a date or time").fill(draft);
+  await publish(context, page, "second");
+  await page.getByRole("button", { name: "Update now" }).click();
+  await expect(
+    page.getByText("Copy your message somewhere safe", { exact: false }),
+  ).toBeVisible();
+  await expect(page.getByLabel("Message with a date or time")).toHaveValue(
+    draft,
+  );
+  expect(await revision(page)).toBe("test-first");
+  await page
+    .getByLabel("Message with a date or time")
+    .fill("April 9, 2026 3pm UTC");
+  await activate(page);
+  await expect(page.getByLabel("Message with a date or time")).toHaveValue(
+    "April 9, 2026 3pm UTC",
+  );
+});
 
 async function publish(context: BrowserContext, page: Page, version: string) {
   expect(

@@ -1,10 +1,84 @@
 import { en } from "chrono-node";
 import type { Chrono } from "chrono-node";
+import type { ParsingResult } from "chrono-node";
+import { Temporal } from "@js-temporal/polyfill";
 import { AMBIGUOUS, FIXED, REGIONAL } from "./zones";
 const abbreviations = Object.keys({ ...FIXED, ...AMBIGUOUS, ...REGIONAL }).join(
   "|",
 );
 function extend(parser: Chrono): Chrono {
+  // Chrono's range merger sorts endpoints by instant. Our contract preserves
+  // textual clock/zone identity, and treats a lower end clock as overnight.
+  // Locate the pinned English merger by its behavior, not a minified class name.
+  const range = parser.refiners.find((refiner) => {
+    const candidate = refiner as unknown as { patternBetween?: () => RegExp };
+    return (
+      candidate.patternBetween?.().test(" to ") &&
+      !candidate.patternBetween().test(" at ")
+    );
+  }) as unknown as {
+    mergeResults: (
+      between: string,
+      from: ParsingResult,
+      to: ParsingResult,
+    ) => ParsingResult;
+  };
+  if (!range?.mergeResults)
+    throw new Error(
+      "Chrono range adapter requires review after dependency upgrade",
+    );
+  const merge = range.mergeResults.bind(range);
+  range.mergeResults = (between, from, to) => {
+    if (!from.start.isCertain("hour") || !to.start.isCertain("hour"))
+      return merge(between, from, to);
+    const result = from.clone();
+    result.end = to.start.clone();
+    const clock = (c: typeof result.start) =>
+      ((c.get("hour") || 0) * 3600 +
+        (c.get("minute") || 0) * 60 +
+        (c.get("second") || 0)) *
+        1000 +
+      (c.get("millisecond") || 0);
+    const dateOf = (c: typeof result.start) =>
+      Temporal.PlainDate.from({
+        year: c.get("year")!,
+        month: c.get("month")!,
+        day: c.get("day")!,
+      });
+    const implyDate = (c: typeof result.start, date: Temporal.PlainDate) => {
+      c.imply("year", date.year);
+      c.imply("month", date.month);
+      c.imply("day", date.day);
+    };
+    if (!result.start.isCertain("day") && result.end.isCertain("day")) {
+      let date = dateOf(result.end);
+      if (clock(result.start) > clock(result.end))
+        date = date.subtract({ days: 1 });
+      implyDate(result.start, date);
+    } else if (
+      !result.start.isCertain("year") &&
+      result.end.isCertain("year")
+    ) {
+      result.start.imply("year", result.end.get("year")!);
+      if (
+        Temporal.PlainDate.compare(dateOf(result.start), dateOf(result.end)) > 0
+      )
+        result.start.imply("year", result.end.get("year")! - 1);
+    }
+    if (!result.end.isCertain("day")) {
+      let date = dateOf(result.start);
+      if (clock(result.end) < clock(result.start)) date = date.add({ days: 1 });
+      implyDate(result.end, date);
+    } else if (!result.end.isCertain("year")) {
+      result.end.imply("year", result.start.get("year")!);
+      if (
+        Temporal.PlainDate.compare(dateOf(result.end), dateOf(result.start)) < 0
+      )
+        result.end.imply("year", result.start.get("year")! + 1);
+    }
+    result.text = from.text + between + to.text;
+    return result;
+  };
   // Bounded extensions cover audited shorthand without treating room numbers
   // or prices as times. Native Chrono refiners still merge dates and zones.
   parser.parsers.unshift({

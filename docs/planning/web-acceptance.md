@@ -4,7 +4,7 @@ Implementation: [PR #16](https://github.com/Tien-Lam/ChronoShift/pull/16), updat
 
 ## Browser capability evidence
 
-“Automated pass” means a tested browser engine/profile, not a physical operating-system browser or installed app. The 98 scenarios include 64 independent exact expectations executed through the production worker in each of the five core profiles. Three additional cases exercise Chromium viewport segments/safe areas.
+“Automated pass” means a tested browser engine/profile, not a physical operating-system browser or installed app. The expanded 113 scenarios include 98 independent exact expectations executed through the production worker in each of the five core profiles. Three additional cases exercise Chromium viewport segments/safe areas.
 
 | Capability | Chromium desktop | Firefox desktop | WebKit desktop | Android emulation | iPhone emulation | Physical devices |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -21,10 +21,10 @@ The WebKit offline method stops a dedicated origin and confirms an uncached netw
 
 ## Completed engineering work
 
-- Foundations: exact conversion fixtures, standalone 353-input resilience corpus, typed parsing/timezone semantics, cancellation and input limit. All implementation tickets await review; optional learned detection remains TIE-302.
+- Foundations: exact conversion fixtures, standalone 353-input resilience corpus, typed parsing/timezone semantics, cancellation and input limit. The independent code/adversarial reviews passed after iterative fixes; optional learned detection remains TIE-302.
 - Experience: Liquid Lens and Glass Command, Dark/Light/System themes, concise conversion-first layout, progressive corrections, clipboard fallbacks, fluid/foldable layouts and automated accessibility.
 - Offline: complete cache/readiness, cache repair, local preference migration/reset/quota recovery, bounded single-use handoffs, distinct-release multi-tab compatibility and rollback cleanup.
-- Delivery: Bun/mise CI, GitHub Pages/subpath/HTTPS checks, retained rollback artifacts, local-only security/privacy coverage and browser performance harness. Native maintenance is retired. TIE-319 is ready for review; CI usage is re-measured whenever browser coverage changes.
+- Delivery: Bun/mise CI, GitHub Pages/subpath/HTTPS checks, retained rollback artifacts, local-only security/privacy coverage and browser performance harness. Native maintenance is retired. Independent privacy/security review passed; CI usage is re-measured at main cutover.
 
 ## Remaining acceptance work
 
@@ -33,9 +33,11 @@ The WebKit offline method stops a dedicated origin and confirms an uncached netw
 | Physical phone/foldable task | TIE-304, TIE-311, TIE-312, TIE-314, TIE-315, TIE-317 | Device/OS/browser version, installed offline restart, virtual keyboard, rotation/folding, clipboard, supported share menu |
 | Human accessibility/usability | TIE-309 | Keyboard and screen-reader task, actual 200% browser zoom, CST choice, target change, copy and offline reopen; record observed friction |
 | Representative-phone performance | TIE-318 | Named device/conditions, cold online/warm offline startup, typical and 10,000-character p95, editing/Clear responsiveness |
-| Release cutover | TIE-320 | Review/merge decision and remaining acceptance above; then publish only main and remove migration-branch deployment policy |
+| Release cutover | TIE-320 | User authorized independent reviews, iterative fixes and autonomous merge. Main-only publication replaces preview policies/job; measure the ≥20% CI quota/storage target for equivalent PR + main publication. Physical installed-mode acceptance above remains open. |
 | Optional ML discovery | TIE-302 | Actual model export/runtime feasibility, independently reviewed held-out conversion comparison and phone size/latency/memory; no model accuracy claim yet |
 
 Use [device-smoke-test.md](../developer/device-smoke-test.md). Record each physical test with: release SHA, date, device, OS, browser/version, design/theme, posture, network mode, task, observed result, pass/fail, and reproducible defect. Pending entries are not assumed passes. Use synthetic messages only in evidence.
 
 Browser performance reports identify their exact source release, asset breakdown, browser/platform and method. Development-machine samples do not close TIE-318. The benchmark remains outside routine CI so timing work does not consume recurring Actions quota.
+
+Independent review and regression evidence: [review-2026-10-04.md](review-2026-10-04.md). Both reviewers approved after fixes; merge authorization does not claim physical-device acceptance.

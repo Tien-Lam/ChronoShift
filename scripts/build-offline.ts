@@ -81,11 +81,22 @@ hash.update(base);
 const template = await Bun.file("web/sw-template.js").text();
 hash.update(template);
 const version = hash.digest("hex").slice(0, 16);
+const integrity = Object.fromEntries(
+  await Promise.all(
+    assets.map(async (p) => [
+      base + p.slice(5),
+      new Bun.CryptoHasher("sha256")
+        .update(await Bun.file(p).arrayBuffer())
+        .digest("hex"),
+    ]),
+  ),
+);
 await Bun.write(
   "dist/sw.js",
   template
     .replace("__VERSION__", version)
     .replace("__BASE__", JSON.stringify(base))
+    .replace("__INTEGRITY__", JSON.stringify(integrity))
     .replace(
       "__PRECACHE__",
       JSON.stringify(assets.map((p) => base + p.slice(5))),

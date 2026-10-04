@@ -338,5 +338,187 @@
     "text": "EOD EST",
     "instants": [],
     "warning": "does not specify a clock time"
+  },
+  {
+    "name": "city before target-zone sentence",
+    "text": "April 9, 2026 3pm in Tokyo. UTC is the target zone.",
+    "instants": ["2026-04-09T06:00:00Z"]
+  },
+  {
+    "name": "city before colleague timezone",
+    "text": "April 9, 2026 3pm in Tokyo with a CST colleague",
+    "instants": ["2026-04-09T06:00:00Z"]
+  },
+  {
+    "name": "city-qualified endpoint range",
+    "text": "April 9, 2026 3pm in Tokyo to 4pm in London",
+    "instants": ["2026-04-09T06:00:00Z", "2026-04-09T15:00:00Z"],
+    "assumption": "Date from message context"
+  },
+  {
+    "name": "numeric offset endpoint range",
+    "text": "April 9, 2026 3pm UTC+02:00 to 4pm UTC+03:00",
+    "instants": ["2026-04-09T13:00:00Z", "2026-04-09T13:00:00Z"]
+  },
+  {
+    "name": "repeated-zone overnight range",
+    "text": "April 9, 2026 11pm UTC to 1am UTC",
+    "instants": ["2026-04-09T23:00:00Z", "2026-04-10T01:00:00Z"]
+  },
+  {
+    "name": "distinct endpoint zone clocks",
+    "text": "April 9, 2026 3pm UTC to 5pm JST",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T08:00:00Z"]
+  },
+  {
+    "name": "regional repeated-zone overnight range",
+    "text": "April 9, 2026 11pm PT to 1am PT",
+    "instants": ["2026-04-10T06:00:00Z", "2026-04-10T08:00:00Z"]
+  },
+  {
+    "name": "malformed three-digit offset minutes",
+    "text": "July 15, 2026 3pm UTC+5:999",
+    "instants": [],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed one-digit offset minutes",
+    "text": "July 15, 2026 3pm UTC+5:9",
+    "instants": [],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "unsupported unicode offset minus",
+    "text": "July 15, 2026 3pm UTC−5",
+    "instants": [],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "IANA numeric suffix identity",
+    "text": "July 15, 2026 3pm Etc/GMT+5",
+    "instants": ["2026-07-15T20:00:00Z"]
+  },
+  {
+    "name": "lowercase fixed zone",
+    "text": "July 15, 2026 3pm est",
+    "instants": ["2026-07-15T20:00:00Z"]
+  },
+  {
+    "name": "mixed-case fixed zone",
+    "text": "July 15, 2026 3pm Est",
+    "instants": ["2026-07-15T20:00:00Z"]
+  },
+  {
+    "name": "lowercase numeric zone",
+    "text": "July 15, 2026 3pm utc+05:45",
+    "instants": ["2026-07-15T09:15:00Z"]
+  },
+  {
+    "name": "range before colleague zone prose",
+    "text": "April 9, 2026 3pm UTC to 4pm UTC with a CST colleague",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T16:00:00Z"]
+  },
+  {
+    "name": "range before format zone prose",
+    "text": "April 9, 2026 3pm UTC to 4pm JST please format EST",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"]
+  },
+  {
+    "name": "dotted meridiem overnight range",
+    "text": "April 9, 2026 11 p.m. UTC to 1 a.m. UTC",
+    "instants": ["2026-04-09T23:00:00Z", "2026-04-10T01:00:00Z"]
+  },
+  {
+    "name": "military endpoint zone range",
+    "text": "April 9, 2026 1500 UTC to 1700 JST",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T08:00:00Z"]
+  },
+  {
+    "name": "IANA qualified overnight range",
+    "text": "April 9, 2026 11pm America/New_York to 1am America/New_York",
+    "instants": ["2026-04-10T03:00:00Z", "2026-04-10T05:00:00Z"]
+  },
+  {
+    "name": "city qualified overnight range",
+    "text": "April 9, 2026 11pm in Tokyo to 1am in Tokyo",
+    "instants": ["2026-04-09T14:00:00Z", "2026-04-09T16:00:00Z"]
+  },
+  {
+    "name": "reject complete malformed offset UTC+05foo",
+    "text": "July 15, 2026 3pm UTC+05foo",
+    "instants": [],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "reject complete malformed offset UTC+05:30abc",
+    "text": "July 15, 2026 3pm UTC+05:30abc",
+    "instants": [],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "reject complete malformed offset UTC+5.5",
+    "text": "July 15, 2026 3pm UTC+5.5",
+    "instants": [],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "reject complete malformed offset GMT+2.5",
+    "text": "July 15, 2026 3pm GMT+2.5",
+    "instants": [],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "range propagates trailing explicit date",
+    "text": "3pm to April 9, 2026 4pm UTC",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T16:00:00Z"]
+  },
+  {
+    "name": "range infers trailing next year",
+    "text": "Dec 31, 2026 11pm UTC to Jan 1 1am UTC",
+    "instants": ["2026-12-31T23:00:00Z", "2027-01-01T01:00:00Z"]
+  },
+  {
+    "name": "range second precision rollover",
+    "text": "April 9, 2026 23:59:59 UTC to 23:59:58 UTC",
+    "instants": ["2026-04-09T23:59:59Z", "2026-04-10T23:59:58Z"]
+  },
+  {
+    "name": "cross-city civil overnight range",
+    "text": "April 9, 2026 11pm in Tokyo to 1am in London",
+    "instants": ["2026-04-09T14:00:00Z", "2026-04-10T00:00:00Z"]
+  },
+  {
+    "name": "bare city overnight range",
+    "text": "April 9, 2026 11pm Tokyo to 1am Tokyo",
+    "instants": ["2026-04-09T14:00:00Z", "2026-04-09T16:00:00Z"]
+  },
+  {
+    "name": "qualified until city range",
+    "text": "April 9, 2026 3pm in London until 4pm in London",
+    "instants": ["2026-04-09T14:00:00Z", "2026-04-09T15:00:00Z"]
+  },
+  {
+    "name": "reject repeated offset sign",
+    "text": "July 15, 2026 3pm UTC+05:30+02",
+    "instants": [],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "reject malformed sign UTC++5",
+    "text": "April 9, 2026 3pm UTC++5",
+    "instants": [],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "reject malformed sign UTC+-5",
+    "text": "April 9, 2026 3pm UTC+-5",
+    "instants": [],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "reject malformed sign UTC+",
+    "text": "April 9, 2026 3pm UTC+",
+    "instants": [],
+    "warning": "Invalid timezone offset"
   }
 ]

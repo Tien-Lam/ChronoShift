@@ -57,6 +57,7 @@ export async function clearAbandonedShares(): Promise<void> {
 }
 const UPDATE = "chronoshift.update-draft";
 export function preserveForUpdate(text: string): boolean {
+  if (text.length > 10_000) return false;
   try {
     sessionStorage.setItem(
       UPDATE,

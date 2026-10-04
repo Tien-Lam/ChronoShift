@@ -25,7 +25,11 @@ const server = Bun.serve({
       request.method === "POST"
     ) {
       const version = await request.text();
-      if (!fixtures?.releases.has(version) && version !== "broken")
+      if (
+        !fixtures?.releases.has(version) &&
+        version !== "broken" &&
+        version !== "first-interrupted"
+      )
         return new Response("Unknown test release", { status: 400 });
       publishedVersion = version;
       return new Response(null, { status: 204 });
@@ -43,11 +47,16 @@ const server = Bun.serve({
     const version = publishedVersion;
     const variant =
       fixtures?.immutable.get(relative) ??
-      fixtures?.releases.get(version || "")?.get(relative);
+      fixtures?.releases
+        .get(version === "first-interrupted" ? "first" : version || "")
+        ?.get(relative);
     const file = Bun.file(path);
     if (variant === undefined && !(await file.exists()))
       return new Response("Not found", { status: 404 });
-    if (version === "broken" && relative.endsWith(".css"))
+    if (
+      (version === "broken" || version === "first-interrupted") &&
+      relative.endsWith(".css")
+    )
       return new Response("Simulated partial update", { status: 503 });
     let body: BodyInit = variant ?? file;
     if (version && relative === "sw.js" && variant === undefined)

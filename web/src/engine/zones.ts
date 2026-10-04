@@ -194,13 +194,18 @@ export interface ZoneChoice {
   interpretation?: string;
   assumption?: string;
 }
+export const IANA_TOKEN = /\b(?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+\b/;
+export const OFFSET_TOKEN =
+  /\b(?:UTC|GMT)\s*[+\-−][A-Za-z0-9+\-−:]*(?:\.\d+)?[A-Za-z0-9+\-−:]*/gi;
 export function explicitZones(text: string): ZoneChoice[] | undefined {
-  const iana = text.match(/\b(?:[A-Z][A-Za-z_+-]*\/)+[A-Za-z_+-]+\b/);
+  const iana = text.match(IANA_TOKEN);
   if (iana && validZone(iana[0]))
     return [{ zone: iana[0], label: zoneName(iana[0]) }];
-  const numeric = text.match(
-    /\b(?:UTC|GMT)\s*([+-])(\d{1,2})(?::?(\d{2}))?\b/i,
+  const token = text.match(OFFSET_TOKEN)?.[0];
+  const numeric = token?.match(
+    /^(?:UTC|GMT)\s*([+-])(\d{1,2})(?::?(\d{2}))?$/i,
   );
+  if (token && !numeric) return [];
   if (numeric) {
     const minute = +(numeric[3] || 0),
       value = +numeric[2] * 60 + minute;

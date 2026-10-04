@@ -11,6 +11,8 @@ import {
   resolveCity,
   validZone,
   zoneName,
+  IANA_TOKEN,
+  OFFSET_TOKEN,
 } from "./zones";
 import type { ZoneChoice } from "./zones";
 import { civilInstants } from "./time";
@@ -43,30 +45,40 @@ function choicesFor(
   fallback: string,
   warnings: string[],
 ): ZoneChoice[] {
-  const combined = text + suffix;
-  const numeric = combined.match(/\b(?:UTC|GMT)\s*[+-]\d{1,2}(?::?\d{2})?\b/i);
+  // Only a zone directly following the timestamp belongs to it. Later prose
+  // may mention a target zone or another person's location.
+  const adjacent = suffix.split(
+    /\b(?:to|until|till|through|on|tomorrow|today|and|then|but|please|for|with|because)\b|[.!?]/i,
+  )[0];
+  const combined = text + adjacent;
+  const numeric = combined.match(OFFSET_TOKEN);
   if (numeric && !explicitZones(numeric[0])?.length) {
     warnings.push(
       `Invalid timezone offset ${numeric[0]}. Correct it and try again.`,
     );
     return [];
   }
-  const unknownIana = combined.match(
-    /\b(?:[A-Z][A-Za-z_+-]*\/)+[A-Za-z_+-]+\b/,
-  );
+  const unknownIana = combined.match(IANA_TOKEN);
   if (unknownIana && !validZone(unknownIana[0])) {
     warnings.push(
       `Unknown timezone ${unknownIana[0]}. Correct it and try again.`,
     );
     return [];
   }
-  const explicit = explicitZones(combined);
+  const explicit = explicitZones(text);
   if (explicit) return explicit;
-  const city = suffix.match(/^\s+(?:in|at)\s+([\p{L}][\p{L} .'-]{1,40})/iu);
+  const suffixZone = adjacent.match(
+    /^\s*(?:(?:in|at)\s+)?((?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+|(?:UTC|GMT)\s*[+\-−][\d:]+|(?:US\s+)?(?:Pacific|Eastern|Central|Mountain)(?:\s+Time)?|[A-Z]{2,5}\b)/i,
+  );
+  if (suffixZone) {
+    const choices = explicitZones(suffixZone[1]);
+    if (choices) return choices;
+  }
+  const city = adjacent.match(/^\s+(?:in|at)\s+([\p{L}][\p{L} .'-]{1,40})/iu);
   if (city) {
     const query = city[1]
       .replace(
-        /\s+(?:on|tomorrow|today|and|then|but|please|for|with|because)\b.*$/i,
+        /\s+(?:to|on|tomorrow|today|and|then|but|please|for|with|because)\b.*$/i,
         "",
       )
       .replace(/[.,]+$/, "")
@@ -88,7 +100,7 @@ function choicesFor(
         : {}),
     }));
   }
-  const bare = suffix.match(/^\s+([\p{L}][\p{L} .'-]{1,40})/u);
+  const bare = adjacent.match(/^\s+([\p{L}][\p{L} .'-]{1,40})/u);
   if (bare) {
     const words = bare[1]
       .replace(/[.,]+$/, "")
@@ -140,12 +152,18 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     instant: new Date(now),
     timezone: offsetMinutes(options.sourceZone, now),
   };
-  const parsed = parser.parse(text, ref, { timezones: timezoneHints });
+  // Chrono can parse the digits in UTC+03:00 as a second clock time, especially
+  // in ranges. Mask only those tokens without moving source indices; resolve
+  // their full original spelling below using deterministic zone semantics.
+  const parserText = text.replace(OFFSET_TOKEN, (token) =>
+    " ".repeat(token.length),
+  );
+  const parsed = parser.parse(parserText, ref, { timezones: timezoneHints });
   const warnings: string[] = [],
     results: TimeResult[] = [];
-  const invalidOffsets = [
-    ...text.matchAll(/\b(?:UTC|GMT)\s*[+-]\d{1,2}(?::?\d{2})?\b/gi),
-  ].filter((m) => !explicitZones(m[0])?.length);
+  const invalidOffsets = [...text.matchAll(OFFSET_TOKEN)].filter(
+    (m) => !explicitZones(m[0])?.length,
+  );
   invalidOffsets.forEach((m) =>
     warnings.push(`Invalid timezone offset ${m[0]}. Correct it and try again.`),
   );
@@ -172,11 +190,24 @@ export function convert(text: string, options: ConversionOptions): Conversion {
   for (let i = 0; i < parsed.length; i++) {
     const r = parsed[i],
       block = paragraph(text, r.index);
+    const matchedText = text.slice(r.index, r.index + r.text.length);
+    const prior = parsed[i - 1];
+    const qualifiedRange =
+      prior &&
+      /^\s+(?:(?:(?:in|at)\s+)?[\p{L} .'-]+?|(?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+)\s+(?:to|until|through|till|[-–])\s*$/iu.test(
+        text.slice(prior.index + prior.text.length, r.index),
+      );
+    const priorResults = qualifiedRange
+      ? results.filter(
+          (result) => result.sourceIndex === prior.index && result.instant,
+        )
+      : [];
     if (
       invalidOffsets.some(
         (m) =>
           r.index <= m.index! + m[0].length &&
-          r.index + r.text.length >= m.index!,
+          (r.index + r.text.length >= m.index! ||
+            !text.slice(r.index + r.text.length, m.index).trim()),
       )
     )
       continue;
@@ -226,26 +257,35 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     );
     const suffix = text
       .slice(r.index + r.text.length, suffixEnd)
-      .split(/\n|[;!?]|,(?!\s*\d)/)[0];
+      .split(/\n|[.;!?]|,(?!\s*\d)/)[0];
+    const zoneSuffix = suffix.split(
+      /\b(?:to|with|because|please|but|then|and)\b/i,
+    )[0];
+    const leadingZone = zoneSuffix
+      .trim()
+      .match(/^(?:UTC|GMT)\s*[+\-−][\d:]+|^[A-Z]{2,5}\b/i);
     const original = (
-      r.text +
-      (/^\s+(?:(?:in|at)\s+|(?:[A-Z][A-Za-z_+-]*\/))/.test(suffix)
-        ? suffix
+      matchedText +
+      (/^\s+(?:(?:in|at)\s+|(?:[A-Z][A-Za-z0-9_+-]*\/))/.test(zoneSuffix) ||
+      (leadingZone && explicitZones(leadingZone[0])?.length)
+        ? zoneSuffix
         : "")
     ).trim();
     const endpoints: [ParsedComponents, "start" | "end" | undefined][] = [
       [r.start, r.end ? "start" : undefined],
       ...(r.end ? [[r.end, "end"] as [ParsedComponents, "end"]] : []),
     ];
-    const zones = [...r.text.matchAll(/\b(?:[A-Z]{2,5})\b/g)].filter(
-      (m) => !!explicitZones(m[0]),
-    );
+    const zones = [
+      ...(matchedText + zoneSuffix).matchAll(
+        /\b(?:UTC|GMT)\s*[+\-−][\d:]+|\b(?:[A-Z]{2,5})\b/gi,
+      ),
+    ].filter((m) => !!explicitZones(m[0]));
     for (const [c, endpoint] of endpoints) {
       // If both endpoints carry a different abbreviation, resolve each independently.
       const zoneText =
         r.end && zones.length > 1
           ? zones[endpoint === "end" ? zones.length - 1 : 0][0]
-          : r.text;
+          : matchedText;
       const choices = choicesFor(
         zoneText,
         suffix,
@@ -288,10 +328,28 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           second: components.get("second") || 0,
           millisecond: components.get("millisecond") || 0,
         });
-        const resolved = civilInstants(dt, choice.zone);
+        let civil = dt;
+        if (priorResults.length === 1 && !explicitDate) {
+          const start = Temporal.Instant.from(priorResults[0].instant!)
+            .toZonedDateTimeISO(priorResults[0].sourceZone)
+            .toPlainDateTime();
+          civil = start.toPlainDate().toPlainDateTime(dt.toPlainTime());
+          if (
+            Temporal.PlainTime.compare(
+              civil.toPlainTime(),
+              start.toPlainTime(),
+            ) < 0
+          )
+            civil = civil.add({ days: 1 });
+        }
+        if (priorResults.length)
+          priorResults.forEach((result) => {
+            result.endpoint = "start";
+          });
+        const resolved = civilInstants(civil, choice.zone);
         if (resolved.nonexistent) {
           warnings.push(
-            `${dt.toString().replace("T", " ")} doesn't exist in ${choice.label} because the clocks move forward. Edit the time or choose a source timezone.`,
+            `${civil.toString().replace("T", " ")} doesn't exist in ${choice.label} because the clocks move forward. Edit the time or choose a source timezone.`,
           );
           continue;
         }
@@ -302,7 +360,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             group: `${r.index}-${endpoint || "time"}`,
             original,
             sourceIndex: r.index,
-            endpoint,
+            endpoint: priorResults.length ? "end" : endpoint,
             instant,
             sourceZone: choice.zone,
             sourceLabel: choice.label,

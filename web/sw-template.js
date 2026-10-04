@@ -2,14 +2,22 @@
 const VERSION = '__VERSION__';
 const BASE = __BASE__;
 const PRECACHE = __PRECACHE__;
+const INTEGRITY = __INTEGRITY__;
 const CACHE = `chronoshift-${VERSION}`;
 const assetPaths = new Set(PRECACHE);
+async function intact(path, response) {
+  if (!response) return false;
+  const digest = await crypto.subtle.digest('SHA-256', await response.clone().arrayBuffer());
+  const hex = Array.from(new Uint8Array(digest), byte=>byte.toString(16).padStart(2,'0')).join('');
+  return hex === INTEGRITY[path];
+}
 async function fill(cache) {
   for (const path of PRECACHE) {
     const response = await fetch(new Request(path,{cache:'reload',credentials:'same-origin'}));
     if (!response.ok || response.type === 'opaque') throw new Error('Incomplete offline assets');
     const type=response.headers.get('content-type')||'';
     if ((path.endsWith('.js')&&!/javascript/.test(type)) || (path.endsWith('.css')&&!/text\/css/.test(type)) || (path.endsWith('.html')&&!/text\/html/.test(type))) throw new Error('Unexpected offline asset type');
+    if (!await intact(path, response)) throw new Error('Offline asset belongs to another release');
     await cache.put(path,response);
   }
 }
@@ -29,9 +37,10 @@ function repair() {
 self.addEventListener('install', event => {
   event.waitUntil((async()=>{
     const cache = await caches.open(CACHE);
-    try {
-      await fill(cache);
-    } catch (error) { await caches.delete(CACHE); throw error; }
+    // A rollback may revisit a cache still serving an old tab. Never delete or
+    // overwrite that version if staging is interrupted.
+    if ((await Promise.all(PRECACHE.map(async path=>intact(path,await cache.match(path))))).every(Boolean)) return;
+    await repair();
   })());
 });
 self.addEventListener('activate',event=>{
