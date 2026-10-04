@@ -462,9 +462,7 @@ input::placeholder {
 }
 .conversion-controls {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 16px;
+  grid-template-columns: minmax(0, 1fr);
 }
 .target-field {
   margin: 0;
@@ -476,35 +474,6 @@ input::placeholder {
   line-height: 1.5;
   margin-top: 6px;
   overflow-wrap: anywhere;
-}
-.convert-button {
-  width: 132px;
-  min-height: 44px;
-  margin-top: 0;
-  padding: 10px 16px;
-  border: 1px solid var(--primary);
-  border-radius: 8px;
-  color: var(--primary-ink);
-  background: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  font-size: 14px;
-  font-weight: 550;
-  transition:
-    background 0.15s,
-    border-color 0.15s;
-}
-.convert-button:hover {
-  background: color-mix(in srgb, var(--primary) 90%, var(--primary-ink));
-  border-color: color-mix(in srgb, var(--primary) 90%, var(--primary-ink));
-}
-.convert-button:active {
-  background: color-mix(in srgb, var(--primary) 80%, var(--primary-ink));
-}
-.convert-button svg {
-  flex-shrink: 0;
 }
 .options {
   margin-top: 8px;
@@ -859,14 +828,6 @@ footer p {
   }
 }
 @media (max-width: 480px) {
-  .conversion-controls {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
-  }
-  .convert-button {
-    width: 100%;
-    margin-top: 0;
-  }
   footer {
     align-items: flex-start;
     flex-direction: column;
@@ -934,14 +895,6 @@ footer p {
       max(16px, env(safe-area-inset-right, 0px)) 16px
       max(16px, env(safe-area-inset-left, 0px));
   }
-  .conversion-controls {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
-  }
-  .convert-button {
-    width: 100%;
-    margin-top: 0;
-  }
 }
 @media (vertical-viewport-segments: 2) {
   #root {
@@ -960,8 +913,7 @@ footer p {
   .workspace,
   .input-panel,
   .result-panel,
-  .appearance summary,
-  .convert-button {
+  .appearance summary {
     border: 1px solid ButtonText;
   }
 }

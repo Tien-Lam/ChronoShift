@@ -81,9 +81,7 @@ try {
       page = await fresh.newPage();
     const start = performance.now();
     await page.goto(url, { waitUntil: "domcontentloaded" });
-    await expect(
-      page.getByRole("button", { name: "Convert", exact: true }),
-    ).toBeVisible();
+    await expect(page.getByLabel("Message with a date or time")).toBeVisible();
     cold.push(performance.now() - start);
     await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
     ready.push(performance.now() - start);
@@ -97,11 +95,13 @@ try {
     await context.request.get(url + "release.json")
   ).json();
   async function measure(page: Page, text: string) {
-    await page.getByLabel("Message with a date or time").fill(text);
+    // Measure automatic conversion from the input event, including its debounce.
+    // Clear first so repeated identical workloads still produce an edit.
+    await page.getByLabel("Message with a date or time").fill("");
     await page.evaluate(() => {
       (window as any).__benchmarkDone = new Promise((resolve, reject) => {
-        document.addEventListener(
-          "click",
+        document.querySelector("#message")!.addEventListener(
+          "input",
           () => {
             const start = performance.now(),
               region = document.querySelector(".result-panel")!;
@@ -138,11 +138,11 @@ try {
               subtree: true,
             });
           },
-          { capture: true, once: true },
+          { once: true },
         );
       });
     });
-    await page.getByRole("button", { name: "Convert", exact: true }).click();
+    await page.getByLabel("Message with a date or time").fill(text);
     const timing = (await page.evaluate(
       () => (window as any).__benchmarkDone,
     )) as { elapsed: number; maxFrameGap: number };
@@ -199,7 +199,7 @@ try {
       start = performance.now();
     await reopened.goto(url, { waitUntil: "domcontentloaded" });
     await expect(
-      reopened.getByRole("button", { name: "Convert", exact: true }),
+      reopened.getByLabel("Message with a date or time"),
     ).toBeVisible();
     offline.push(performance.now() - start);
     await measure(reopened, "April 10, 2026 10am UTC");

@@ -42,12 +42,13 @@ test("worker failure recovers and a late response cannot resurrect cleared input
   await page
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3pm EST");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.getByRole("alert")).toContainText("could not start");
   await page.evaluate(() => {
     (window as any).failWorker = false;
   });
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
+  await page
+    .getByLabel("Message with a date or time")
+    .fill("April 9, 2026 4pm EST");
   await expect
     .poll(() => page.evaluate(() => (window as any).queued))
     .toBe(true);
@@ -79,10 +80,8 @@ test("an intact offline app survives a failed registration check while changing 
   );
   await convert(page, "June 18, 2026 at 5:20pm in Tokyo");
   await enterZone(page, "UTC");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toHaveText(/8:20 am/i);
   await enterZone(page, "Europe/London");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toHaveText(/9:20 am/i);
   await expect(
     page.getByText("Offline setup is incomplete.", { exact: false }),
@@ -176,7 +175,6 @@ test("pasted HTML cannot execute or fetch its URL", async ({ page }) => {
 });
 async function convert(page: Page, text = "April 9, 2026 3pm EST") {
   await page.getByLabel("Message with a date or time").fill(text);
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".result")).toHaveCount(
     text.includes("CST") ? 2 : 1,
   );
@@ -270,8 +268,7 @@ test("input errors recover, edits invalidate results, keyboard keeps multiline i
   page,
 }) => {
   await ready(page);
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
-  await expect(page.getByRole("alert")).toContainText("Paste or type");
+  await expect(page.getByRole("alert")).toHaveCount(0);
   const input = page.getByLabel("Message with a date or time");
   await input.fill("hello");
   await input.press("Enter");
@@ -279,14 +276,11 @@ test("input errors recover, edits invalidate results, keyboard keeps multiline i
   await convert(page);
   await input.fill("not a time");
   await expect(page.locator(".result")).toHaveCount(0);
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.getByRole("alert")).toContainText("No timestamp");
   await input.fill("x".repeat(10001));
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.getByRole("alert")).toContainText("10,000");
   await expect(input).toHaveValue("x".repeat(10001));
   await input.fill("April 9, 2026 3pm UTC");
-  await input.press("ControlOrMeta+Enter");
   await expect(page.locator(".result")).toHaveCount(1);
 });
 test("readable at 320px, dark mode, with no serious accessibility violations", async ({

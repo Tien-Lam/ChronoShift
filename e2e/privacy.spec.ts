@@ -68,7 +68,6 @@ for (const legacyDesign of ["lens", "command"])
     await page
       .getByLabel("Message with a date or time")
       .fill("April 9, 2026 3pm UTC");
-    await page.getByRole("button", { name: "Convert", exact: true }).click();
     await expect(page.locator(".hero-time")).toHaveText(/12:00 am/i);
     expect(
       await page.evaluate(() =>
@@ -80,7 +79,6 @@ for (const legacyDesign of ["lens", "command"])
     await page
       .getByLabel("Message with a date or time")
       .fill("April 9, 2026 3pm UTC");
-    await page.getByRole("button", { name: "Convert", exact: true }).click();
     await expect(page.locator(".hero-time")).toHaveText(/1:00 am/i);
   });
 
@@ -112,7 +110,6 @@ test("invalid and oversized local shares return a paste fallback without storing
   await page
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3pm UTC");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toHaveText(/1:00 am/i);
   expect(
     await page.evaluate(() => JSON.stringify({ ...localStorage })),
@@ -259,7 +256,6 @@ releaseTest(
     await expect(
       page.getByRole("button", { name: "Update now" }),
     ).toBeVisible();
-    await page.getByRole("button", { name: "Convert", exact: true }).click();
     await expect(page.locator(".hero-time")).toHaveText(/1:00 am/i);
     expect(
       await page.evaluate(() => JSON.stringify({ ...localStorage })),

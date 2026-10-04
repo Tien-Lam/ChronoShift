@@ -34,13 +34,12 @@ test("detailed logs are opt-in, local, exclude message and selected zones, and s
   const draft = "PrivatePlanningSentinel July 4, 2027 at 3pm UTC";
   await page.getByLabel("Message with a date or time").fill(draft);
   await enterZone(page, "Pacific/Chatham");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toBeVisible();
   expect(logs).toEqual([]);
   await checkbox.check();
   await expect.poll(() => logs.join("\n")).toContain("offline.probe-result");
   await page.getByRole("combobox", { name: "Convert to", exact: true }).click();
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
+  await page.getByLabel("Message with a date or time").fill(draft + " ");
   await expect.poll(() => logs.join("\n")).toContain("conversion.complete");
   expect(logs.join("\n")).toContain("ui.zone-focus");
   const raw = logs.join("\n");
@@ -67,7 +66,6 @@ test("detailed logs are opt-in, local, exclude message and selected zones, and s
   await checkbox.uncheck();
   const stopped = logs.length;
   await page.getByRole("combobox", { name: "Convert to", exact: true }).click();
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toBeVisible();
   await page.waitForTimeout(100);
   expect(logs).toHaveLength(stopped);
@@ -168,7 +166,6 @@ cacheTest(
     await page
       .getByLabel("Message with a date or time")
       .fill("July 4, 2027 3pm UTC");
-    await page.getByRole("button", { name: "Convert", exact: true }).click();
     await expect(page.locator(".hero-time")).toBeVisible();
     await expect(page.locator(".message.warning")).toHaveCount(0);
   },

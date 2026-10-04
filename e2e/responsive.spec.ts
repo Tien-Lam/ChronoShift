@@ -8,7 +8,6 @@ test("reflows across cover screens, phones, tablets and desktops without losing 
   await enterZone(page, "Pacific/Chatham");
   const message = "April 9, 2026 3:15:30pm in Tokyo";
   await page.getByLabel("Message with a date or time").fill(message);
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toBeVisible();
   const result = await page.locator(".hero-time").innerText();
   await page.getByText("More options", { exact: true }).click();
@@ -89,11 +88,10 @@ test("touch-sized controls and keyboard navigation remain usable in a short view
   await page
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3pm UTC");
-  await page.getByLabel("Message with a date or time").press("Control+Enter");
   await expect(page.locator(".hero-time")).toBeVisible();
   for (const locator of [
     page.getByLabel("Convert to"),
-    page.getByRole("button", { name: "Convert", exact: true }),
+    page.getByLabel("Message with a date or time"),
     page.getByRole("button", { name: /^Copy / }),
   ]) {
     await locator.scrollIntoViewIfNeeded();

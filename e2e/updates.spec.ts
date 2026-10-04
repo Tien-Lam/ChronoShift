@@ -198,7 +198,6 @@ async function convert(page: Page, release: string) {
   await page
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3pm UTC");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   expect((await worker).url()).toContain(`/test-${release}-worker-`);
   await expect(page.locator(".hero-time")).toHaveText(/1:00 am/i);
   await expect(page.locator(".result-date")).toHaveText(/10 Apr 2026/);

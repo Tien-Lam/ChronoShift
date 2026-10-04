@@ -51,7 +51,11 @@ export default function App() {
   const [referenceDate, setReferenceDate] = useState("");
   const [referenceReset, setReferenceReset] = useState(0);
   const [detailedLogs, setDetailedLogsChecked] = useState(detailedLogsEnabled);
-  const referenceValid = useRef(true);
+  const [referenceValid, setReferenceValid] = useState(true);
+  const referenceValidity = useRef(true);
+  const [composing, setComposing] = useState(false);
+  const composition = useRef(false);
+  const [conversionRevision, setConversionRevision] = useState(0);
   const [conversion, setConversion] = useState<Conversion>({
     results: [],
     warnings: [],
@@ -73,9 +77,13 @@ export default function App() {
   const worker = useRef<Worker | null>(null),
     request = useRef(0);
   const importRequest = useRef(0);
+  // Imports conflict with user changes, not automatic conversion requests.
+  const interactionVersion = useRef(0);
   const copyRequest = useRef(0);
   const draft = useRef(text);
   draft.current = text;
+  const currentDevice = useRef(device);
+  currentDevice.current = device;
   const shareRead = useRef(false);
   const sourceZone = resolveZone(prefs.source, device),
     targetZone = resolveZone(prefs.target, device);
@@ -92,7 +100,11 @@ export default function App() {
     const controller = new AbortController();
     setupOffline(setOffline, controller.signal);
     const refresh = () => {
-      setDevice(deviceTimezone());
+      const nextDevice = deviceTimezone();
+      if (nextDevice !== currentDevice.current) {
+        invalidate();
+        setDevice(nextDevice);
+      }
     };
     window.addEventListener("online", refresh);
     window.addEventListener("offline", refresh);
@@ -104,7 +116,6 @@ export default function App() {
     window.addEventListener("beforeinstallprompt", prompt);
     return () => {
       controller.abort();
-      worker.current?.terminate();
       window.removeEventListener("online", refresh);
       window.removeEventListener("offline", refresh);
       window.removeEventListener("focus", refresh);
@@ -121,7 +132,7 @@ export default function App() {
     if (!key) clearAbandonedShares().catch(() => {});
     if (key) {
       const importId = ++importRequest.current,
-        version = request.current;
+        version = interactionVersion.current;
       history.replaceState(null, "", location.pathname);
       consumeShare(key)
         .then((message) => {
@@ -163,139 +174,174 @@ export default function App() {
   }, [prefs.theme]);
 
   function edit(value: string) {
-    copyRequest.current++;
-    request.current++;
-    worker.current?.terminate();
-    worker.current = null;
-    setBusy(false);
+    draft.current = value;
     setText(value);
-    setConversion({ results: [], warnings: [] });
-    setError("");
-    setManualCopy("");
+    invalidate();
   }
   function invalidate() {
+    interactionVersion.current++;
     copyRequest.current++;
     request.current++;
+    setConversionRevision((version) => version + 1);
     worker.current?.terminate();
     worker.current = null;
     setBusy(false);
     setConversion({ results: [], warnings: [] });
     setError("");
     setManualCopy("");
+    setNotice("");
   }
   const referenceValidityChanged = useCallback((valid: boolean) => {
-    referenceValid.current = valid;
-    if (!valid) invalidate();
+    if (referenceValidity.current === valid) return;
+    referenceValidity.current = valid;
+    setReferenceValid(valid);
+    invalidate();
   }, []);
-  function run() {
-    copyRequest.current++;
-    setNotice("");
-    setManualCopy("");
-    if (!text.trim()) {
-      setError("Paste or type a message with a time to get started.");
-      input.current?.focus();
-      return;
-    }
-    if (text.length > MAX_INPUT) {
-      setError(
-        "Keep the message under 10,000 characters. Shorten it and try again.",
-      );
-      return;
-    }
-    if (!targetZone || !sourceZone) {
-      setError(
-        "Choose a timezone from the list, or enter a city with one known timezone.",
-      );
-      return;
-    }
-    if (!referenceValid.current) {
-      setError("Complete or clear the reference date before converting.");
-      return;
-    }
-    request.current++;
-    const id = request.current;
-    const started = performance.now();
-    diagnostic("conversion.start", { requestId: id, characters: text.length });
-    worker.current?.terminate();
-    setBusy(true);
-    setError("");
-    setConversion({ results: [], warnings: [] });
-    try {
-      const current = new Worker(
-        new URL("./engine/worker.ts", import.meta.url),
-        { type: "module" },
-      );
-      worker.current = current;
-      current.onmessage = (event) => {
-        if (event.data.id !== request.current) return;
-        diagnostic("conversion.complete", {
-          requestId: id,
-          elapsedMs: performance.now() - started,
-          reason: event.data.error ? "engine-error" : "success",
-          results: event.data.conversion?.results.length,
-          warnings: event.data.conversion?.warnings.length,
+
+  useEffect(() => {
+    const id = ++request.current;
+    let current: Worker | null = null;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const ownsRequest = () =>
+      id === request.current &&
+      !composition.current &&
+      (!current || worker.current === current);
+    const cleanup = () => {
+      clearTimeout(timer);
+      current?.terminate();
+      if (worker.current === current) worker.current = null;
+      if (id === request.current) request.current++;
+    };
+
+    if (!text.trim() || composing) return cleanup;
+    timer = setTimeout(() => {
+      if (!ownsRequest()) return;
+      if (text.length > MAX_INPUT) {
+        setError(
+          "Keep the message under 10,000 characters. Shorten it to continue.",
+        );
+        return;
+      }
+      if (!targetZone || !sourceZone) {
+        setError(
+          "Choose a timezone from the list, or enter a city with one known timezone.",
+        );
+        return;
+      }
+      if (!referenceValid) {
+        setError("Complete or clear the reference date to continue.");
+        return;
+      }
+      const started = performance.now();
+      diagnostic("conversion.start", {
+        requestId: id,
+        characters: text.length,
+      });
+      setBusy(true);
+      setError("");
+      setConversion({ results: [], warnings: [] });
+      try {
+        current = new Worker(new URL("./engine/worker.ts", import.meta.url), {
+          type: "module",
         });
-        setBusy(false);
-        if (event.data.error) setError(event.data.error);
-        else {
-          setConversion(event.data.conversion);
-          if (
-            !event.data.conversion.results.length &&
-            !event.data.conversion.warnings.length
-          )
-            setError(
-              "No timestamp found. Try a date and time, such as “April 9 at 3pm PT”.",
-            );
-        }
-        current.terminate();
-        worker.current = null;
-      };
-      current.onerror = () => {
-        if (id !== request.current) return;
+        worker.current = current;
+        const finish = () => {
+          current?.terminate();
+          if (worker.current === current) worker.current = null;
+        };
+        current.onmessage = (event) => {
+          if (!ownsRequest() || event.data.id !== id) return;
+          diagnostic("conversion.complete", {
+            requestId: id,
+            elapsedMs: performance.now() - started,
+            reason: event.data.error ? "engine-error" : "success",
+            results: event.data.conversion?.results.length,
+            warnings: event.data.conversion?.warnings.length,
+          });
+          setBusy(false);
+          if (event.data.error) setError(event.data.error);
+          else {
+            setConversion(event.data.conversion);
+            if (
+              !event.data.conversion.results.length &&
+              !event.data.conversion.warnings.length
+            )
+              setError(
+                "No timestamp found. Try a date and time, such as “April 9 at 3pm PT”.",
+              );
+          }
+          finish();
+        };
+        current.onerror = () => {
+          if (!ownsRequest()) return;
+          diagnostic("conversion.failed", {
+            requestId: id,
+            elapsedMs: performance.now() - started,
+            reason: "worker-error",
+          });
+          setBusy(false);
+          setError("Could not convert this message. Edit it to try again.");
+          finish();
+        };
+        current.postMessage({
+          id,
+          text,
+          options: {
+            sourceZone,
+            targetZone,
+            hourCycle: prefs.hourCycle,
+            dateOrder: prefs.dateOrder,
+            referenceDate: referenceDate || undefined,
+            locale: navigator.language || "en-AU",
+            now: new Date().toISOString(),
+          },
+        });
+      } catch {
         diagnostic("conversion.failed", {
           requestId: id,
           elapsedMs: performance.now() - started,
-          reason: "worker-error",
+          reason: "worker-start-failed",
         });
+        current?.terminate();
+        if (worker.current === current) worker.current = null;
         setBusy(false);
-        setError("Could not start conversion. Choose Convert to try again.");
-        current.terminate();
-        worker.current = null;
-      };
-      current.postMessage({
-        id,
-        text,
-        options: { ...displayOptions, now: new Date().toISOString() },
-      });
-    } catch {
-      diagnostic("conversion.failed", {
-        requestId: id,
-        elapsedMs: performance.now() - started,
-        reason: "worker-start-failed",
-      });
-      setBusy(false);
-      setError(
-        "This browser could not start conversion. Reload and try again.",
-      );
-    }
-  }
+        setError(
+          "This browser could not start conversion. Edit the message to try again.",
+        );
+      }
+    }, 250);
+    return cleanup;
+  }, [
+    text,
+    prefs.source,
+    prefs.target,
+    prefs.hourCycle,
+    prefs.dateOrder,
+    sourceZone,
+    targetZone,
+    device,
+    referenceDate,
+    referenceValid,
+    composing,
+    conversionRevision,
+  ]);
   function receiveImport(
     value: string,
     source: "Shared" | "Clipboard",
     version: number,
     preserveDraft = false,
   ) {
-    if (preserveDraft || version !== request.current) {
+    if (preserveDraft || version !== interactionVersion.current) {
       setPendingImport({ text: value, source });
       return;
     }
     edit(value);
-    if (source === "Shared") setNotice("Shared text is ready. Choose Convert.");
+    if (source === "Shared") setNotice("Shared text received.");
     else input.current?.focus();
   }
   async function paste() {
     const importId = ++importRequest.current,
-      version = request.current;
+      version = interactionVersion.current;
     setPendingImport(undefined);
     try {
       const value = await navigator.clipboard.readText();
@@ -434,11 +480,15 @@ export default function App() {
               value={text}
               placeholder="e.g. Let's meet tomorrow at 3pm PT"
               onChange={(e) => edit(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
-                  e.preventDefault();
-                  run();
-                }
+              onCompositionStart={() => {
+                composition.current = true;
+                setComposing(true);
+                invalidate();
+              }}
+              onCompositionEnd={(event) => {
+                composition.current = false;
+                setComposing(false);
+                edit(event.currentTarget.value);
               }}
               spellCheck={false}
               aria-describedby="input-help"
@@ -467,7 +517,7 @@ export default function App() {
               >
                 {text.length > 8000
                   ? `${text.length.toLocaleString()} / 10,000`
-                  : "Ctrl / ⌘ + Enter"}
+                  : "Converts as you type"}
               </span>
             </div>
             <div className="target-field">
@@ -478,36 +528,14 @@ export default function App() {
                   label="Convert to"
                   value={prefs.target}
                   onChange={(target) => {
-                    copyRequest.current++;
                     setPrefs({ ...prefs, target });
-                    setError("");
-                    setManualCopy("");
-                    setNotice("");
+                    invalidate();
                   }}
                   invalid={!targetZone}
                   describedBy="target-zone-help"
                   placeholder={`Your timezone · ${zoneName(device)}`}
                   triggerLabel="Show target timezones"
                 />
-                <button
-                  type="button"
-                  className="convert-button"
-                  onClick={run}
-                  aria-busy={busy}
-                >
-                  {busy ? "Converting…" : "Convert"}
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    aria-hidden="true"
-                  >
-                    <path d="M5 12h14m-5-5 5 5-5 5" />
-                  </svg>
-                </button>
               </div>
               <span className="field-note" id="target-zone-help">
                 {targetZone
@@ -570,13 +598,11 @@ export default function App() {
                   label="Time display"
                   value={prefs.hourCycle}
                   onChange={(hourCycle) => {
-                    copyRequest.current++;
-                    setManualCopy("");
-                    setNotice("");
                     setPrefs({
                       ...prefs,
                       hourCycle: hourCycle as "auto" | "12" | "24",
                     });
+                    invalidate();
                   }}
                   options={[
                     { id: "auto", label: "Use my device format" },
@@ -608,7 +634,8 @@ export default function App() {
                     resetPreferences();
                     setPrefs({ ...DEFAULTS });
                     setReferenceDate("");
-                    referenceValid.current = true;
+                    referenceValidity.current = true;
+                    setReferenceValid(true);
                     setReferenceReset((version) => version + 1);
                     invalidate();
                     setNotice("Preferences reset.");
@@ -772,7 +799,7 @@ export default function App() {
                 onClick={() => {
                   edit(pendingImport.text);
                   setPendingImport(undefined);
-                  setNotice("Imported text is ready. Choose Convert.");
+                  setNotice("Imported text received.");
                   input.current?.focus();
                 }}
               >

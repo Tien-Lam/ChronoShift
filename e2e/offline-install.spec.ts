@@ -25,7 +25,6 @@ async function convert(page: import("@playwright/test").Page) {
     .getByLabel("Message with a date or time")
     .fill("June 18, 2026 at 5:20pm Tokyo");
   await enterZone(page, "Europe/London");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toHaveText(/9:20 am/i);
 }
 

@@ -100,9 +100,6 @@ for (const source of ["clipboard", "share"] as const) {
       else if (action !== "untouched") await input.fill(newer);
       await enterZone(page, "UTC");
       if (action === "convert") {
-        await page
-          .getByRole("button", { name: "Convert", exact: true })
-          .click();
         await expect(page.locator(".hero-time")).toContainText(/9:00/);
       } else if (action === "clear") {
         await page.getByRole("button", { name: "Clear", exact: true }).click();
@@ -136,9 +133,6 @@ for (const source of ["clipboard", "share"] as const) {
           .getByRole("button", { name: "Replace with imported text" })
           .click();
         await expect(input).toHaveValue(incoming);
-        await page
-          .getByRole("button", { name: "Convert", exact: true })
-          .click();
         await expect(page.locator(".hero-time")).toContainText(/3:00 pm/i);
       }
       expect(
@@ -195,7 +189,6 @@ test("an unresolved target hides copyable fallback results and correction restor
   await page
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3pm UTC");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toContainText(/3:00 pm/i);
   await page.getByRole("button", { name: "Copy UTC", exact: true }).click();
   await expect(page.getByLabel("Text to copy")).toBeVisible();
@@ -205,7 +198,6 @@ test("an unresolved target hides copyable fallback results and correction restor
     page.getByRole("button", { name: "Copy UTC", exact: true }),
   ).toHaveCount(0);
   await expect(page.getByLabel("Text to copy")).toHaveCount(0);
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.getByRole("alert")).toContainText("Choose a timezone");
   await expect(page.locator(".result")).toHaveCount(0);
   await enterZone(page, "Asia/Tokyo");
