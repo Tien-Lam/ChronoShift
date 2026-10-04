@@ -1,0 +1,19 @@
+# TIE-369 code review — delivery completion delta
+
+Reviewed 2026-10-04T19:35–19:36Z (2026-10-05 Australia/Sydney), macOS arm64. Retains the original `/tmp/chronoshift-result-code-publication.md` and prior runtime/delta approvals. Runtime remains reviewed head `150875f7906093ed20b94d76533e0f523f4a9430`, published tested source `0c73dd5c48b2b248fbdd15de7c8de5e951f7d5d0`, main `f5860328667226e11330a1d194c731b83964913e`, common tree `bfe2dee06cccde15488b22bf21db05dd0a83d220`, worker `8e7297b6b4c78795`. This review covers completion evidence/documentation only; no runtime edits, builds or repeated gates.
+
+## Completion evidence
+
+Read the final QA README Published delivery section, ci-followup.md and preserved failure excerpt, published-side-panel.json, hosted-gate.txt and unchanged hosted test/config. All reviewed relative completion-document targets exist. Independently viewed `docs/qa/result-hierarchy-2026-10-05/published-side-panel.png` through view_image. It visibly matches its actual 606px record: 9:20 dominates; destination date and London zone follow; readable muted source and original appear last; Copy remains beside the leading output. JSON records final runtime `index-CwpXboF5.js`, readiness true and no warning. The draft in the screenshot matches the synthetic draft preserved during root's recorded explicit Update now journey. This reviewer inspected the final state; root performed the update transition.
+
+Retained hosted stdout/command in `hosted-gate.txt` records exact expected source `0c73dd5`, four checks passing in 24.3 seconds and exit 0. Independent `.last-run.json` inspection also records passed/no failed tests. The hosted test source substantiates the 21-second readiness/warning observation and fresh offline conversion after close/reopen, plus scoped manifest/release/CSP checks. This reviewer read the retained results and test scope; root executed these journeys. Earlier independent artifact digests/full-file comparison and public asset-record corroboration remain valid and preserved separately.
+
+Final README accurately describes the bounded published acceptance and 220 first-attempt passes/two retry successes/six skipped cases. A wording issue was identified in review: “Chromium-only/specific skips” could imply that Chromium skipped them. Root corrected both documents to “six skips for Chromium-only CDP cases in non-Chromium profiles,” matching the actual skip guard and CI profiles. No remaining factual/reference findings.
+
+ci-followup.md preserves the unexplained old-active-worker 10-second readiness failure, the WebKit console-helper navigation rejection and retry-diagnostic retention gap, with raw excerpts. TIE-370 is recorded as Todo for that separate follow-up; no retry is represented as cause resolution. Physical devices, screen readers, actual zoom, human usability and the nine other acceptance tickets remain explicitly open. Their statuses are root-managed; no unrelated closure is approved by this report.
+
+## Verdicts
+
+Implementation/documentation: **approved within the previously reviewed result hierarchy and this completion evidence delta; no blockers**. Retain the earlier independent source-tree/digest/publication corroboration and unresolved CI follow-up qualifications.
+
+Original user-request acceptance: **bounded published hierarchy/readability acceptance verified** through the independent adversarial 12 published journeys, matching artifact identity and this reviewer's actual final side-panel image inspection. Root's retained four hosted checks and explicit-update/final draft evidence complete the previously pending obtainable delivery checks. This supports TIE-369 completion only. It does not resolve TIE-370 or imply physical-device, screen-reader, actual-zoom, subjective-human or general offline/lifecycle certification.

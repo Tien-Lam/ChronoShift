@@ -1,0 +1,26 @@
+# Independent adversarial published acceptance — TIE-369
+
+Implementation verdict: approved within the rendered result scope. Original-request acceptance: the exact public release now demonstrates converted output before readable source/original context on desktop and the 280px boundary. The local 280px precision-digit blocker remains resolved on the public deployment. No remaining blocker in the exercised conditions.
+
+Public source: `0c73dd5c48b2b248fbdd15de7c8de5e951f7d5d0`, base `/ChronoShift/`. Worker: `8e7297b6b4c78795`. Exact source and worker checked separately in each fresh browser context before accepting any result. Observed document script `assets/index-CwpXboF5.js`, stylesheet `assets/index-ju3z0prv.css`, controller and active worker `https://tien-lam.github.io/ChronoShift/sw.js`. Every context reached `main[data-offline-ready=true]` with the expected public worker. Root supplied the trusted CI artifact provenance and main merge `f5860328667226e11330a1d194c731b83964913e`; this reviewer verified public identity and rendered behavior, not the GitHub artifact archive/digest or exact-main-tree gate.
+
+Checked 2026-10-05 approximately 06:31–06:32 Australia/Sydney; capture batch completed `2026-10-04T19:32:05.628Z`. Installed Google Chrome `154.0.8037.93`, launched via Playwright channel `chrome` in headless mode, macOS arm64. Fresh ephemeral profiles, locale `en-AU`, timezone `Australia/Sydney`. No regular user profile was modified. Narrow conditions use an actual desktop Chrome browser with a 280×740 viewport; they are distinct from the earlier Pixel/iPhone emulation and do not establish physical-device behavior.
+
+## Journeys and evidence
+
+12 captures and measured journeys: desktop 1440×900 and narrow 280×740, each light/dark, with three inputs:
+- `June 18, 2026 at 5:20pm Tokyo` → `6:20 pm`, 18 June 2026, UTC+10:00 Sydney.
+- `2026-04-09T15:59:59.123+02:00` → `11:59:59.123 pm`, 9 April 2026, UTC+10:00 Sydney.
+- `September 30, 2026` → `Wednesday, 30 September 2026`, explicitly Date only, with the non-shifting explanation retained.
+
+Actual captures inspected: desktop light ordinary, desktop dark date-only and precision, narrow light precision, narrow dark date-only. Converted time is the first and most prominent content in each result. Dates and destination zones follow the result, source labels follow output/Copy, and the retained quoted original appears last. At desktop, hero time is 56px / weight550, date 15px /500, target 13px; source and original are 12px muted. Date-only hero is 24px and remains substantially more prominent than source/original context. At 280px, hero is 32px and uses the full 214px output width, while Copy follows on a separate row. The precise numeric portion `11:59:59.123` stays intact; only `pm` wraps to a second line. Date-only output uses two readable lines, retaining its explanation and original.
+
+All 12 journeys have zero document overflow and every measured Copy control is 44px high. No clipping or overlap observed. No normal-use console/page errors; all recorded page requests stayed within `https://tien-lam.github.io/ChronoShift/`. No fault injection. This focused publication run did not click Copy, switch target zones, exercise offline reopen/update/history, or repeat the full gate. Earlier independent local review retains range/ambiguity, copy payload association, multiple engines/themes, long source/context and resize coverage; root owns publication lifecycle/hosted acceptance and metadata.
+
+Commands: `mise exec -- bun /tmp/chronoshift-result-adversarial-publication.ts`. First checked the public `release.json` with a cache-busting query using a read-only Bun fetch, then the browser script verified source, controller/active worker, worker version and asset URLs for every context. Script requires exact expected source and worker before captures; no build or runtime edits performed. An attempted local `git show` of the trusted artifact source found that object absent in the local checkout; no inference about deployed identity was drawn from local Git. Browser/public metadata established the stated identity.
+
+Raw measurements, identity, requests/errors and PNGs: `/tmp/chronoshift-result-adversarial-publication-captures/measurements.json` and neighboring `chrome-{1440,280}-{light,dark}-{ordinary,precision,dateonly}.png`. Script preserved at `/tmp/chronoshift-result-adversarial-publication.ts`. Earlier local reports remain `/tmp/chronoshift-result-adversarial-initial.md`, `...-first.md`, and `...-final.md`; original finding and bounded delta acceptance are retained separately.
+
+## Scope limits
+
+The original report lacks browser/version/input/history, so this is matching engineering evidence for its stated hierarchy/readability symptom, not reconstruction of an unidentified historical session. Exact published ordinary and precision/date-only conditions now match the verified local fix. Physical phone use, real zoom, screen readers, OS menus, browser-side-panel rendering and subjective human acceptance remain unexercised by this reviewer. Root's separate side-panel and hosted/offline/update checks complete those available publishing requirements; no general device or lifecycle certification is implied here.

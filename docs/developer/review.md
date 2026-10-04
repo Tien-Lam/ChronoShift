@@ -26,6 +26,10 @@ and the surface should fit its contents. Trace CSS import order and specificity
 when shared control rules can override component styles. Viewport containment
 alone does not catch an oversized calendar or other empty popup space. Separate
 normal-use console/CSP violations from stylesheet injection by screenshot tools.
+For result layouts, inspect supported long time formats (seconds, milliseconds
+and clock suffixes) at the smallest supported width. Page containment does not
+establish readable numeric wrapping or clear associations between each result,
+its source context and its Copy action.
 
 ## Record verdicts
 

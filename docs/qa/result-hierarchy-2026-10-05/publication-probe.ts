@@ -1,0 +1,21 @@
+import {createHash} from 'node:crypto';
+const base='https://tien-lam.github.io';
+const root='/tmp/chronoshift-result-ci-artifact';
+const sha=(v:Uint8Array)=>createHash('sha256').update(v).digest('hex');
+const res=await fetch(base+'/ChronoShift/sw.js',{cache:'no-store'});
+if(!res.ok)throw new Error('Worker status '+res.status);
+const bytes=new Uint8Array(await res.arrayBuffer());
+const local=new Uint8Array(await Bun.file(root+'/sw.js').arrayBuffer());
+if(sha(bytes)!==sha(local))throw new Error('Public worker differs from CI artifact');
+const sw=new TextDecoder().decode(bytes);
+const integrity=JSON.parse(sw.match(/const INTEGRITY = (.*);/)![1]);
+const assets=await Promise.all(Object.entries(integrity).map(async([path,expected])=>{
+ const response=await fetch(base+path,{cache:'no-store'});
+ const body=new Uint8Array(await response.arrayBuffer());
+ if(!response.ok||sha(body)!==expected)throw new Error('Asset mismatch '+path);
+ return {path,sha256:sha(body),bytes:body.length};
+}));
+const artifact=(v:any)=>{const a=v.artifacts.find((a:any)=>a.name==='github-pages');return{id:a.id,zipSha256:a.digest.replace('sha256:','')};};
+const data={at:new Date().toISOString(),merge:'f5860328667226e11330a1d194c731b83964913e',reviewedHead:'150875f7906093ed20b94d76533e0f523f4a9430',testedSource:'0c73dd5c48b2b248fbdd15de7c8de5e951f7d5d0',tree:'bfe2dee06cccde15488b22bf21db05dd0a83d220',ci:37228236311,pages:37228574420,ciArtifact:artifact(await Bun.file('/tmp/chronoshift-result-ci-artifacts.json').json()),pagesArtifact:artifact(await Bun.file('/tmp/chronoshift-result-pages-artifacts.json').json()),version:sw.match(/const VERSION = '([^']+)'/)![1],workerSha256:sha(bytes),assets};
+await Bun.write('docs/qa/result-hierarchy-2026-10-05/publication.json',JSON.stringify(data,null,2)+'\n');
+console.log(JSON.stringify({...data,assets:assets.length}));

@@ -1,0 +1,83 @@
+web	Run bun run test:browser	2026-10-04T19:29:58.7833435Z   ✓  230 [iphone-emulation] › e2e/updates.spec.ts:269:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (4.2s)
+web	Run bun run test:browser	2026-10-04T19:29:59.0333877Z   ✓  229 [iphone-emulation] › e2e/updates.spec.ts:208:0 › old and new tabs retain their own workers across successive releases and offline restart (5.0s)
+web	Run bun run test:browser	2026-10-04T19:29:59.1361247Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1365089Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1372180Z   1) [chromium] › e2e/uncontrolled.spec.ts:77:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update 
+web	Run bun run test:browser	2026-10-04T19:29:59.1372733Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1373382Z     Error: expect(locator).toHaveAttribute(expected) failed
+web	Run bun run test:browser	2026-10-04T19:29:59.1373603Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1373688Z     Locator:  locator('main')
+web	Run bun run test:browser	2026-10-04T19:29:59.1373903Z     Expected: "true"
+web	Run bun run test:browser	2026-10-04T19:29:59.1374086Z     Received: "false"
+web	Run bun run test:browser	2026-10-04T19:29:59.1374265Z     Timeout:  10000ms
+web	Run bun run test:browser	2026-10-04T19:29:59.1374593Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1374658Z     Call log:
+web	Run bun run test:browser	2026-10-04T19:29:59.1374887Z       - Expect "toHaveAttribute" locator('main') with timeout 10000ms
+web	Run bun run test:browser	2026-10-04T19:29:59.1375223Z       - waiting for locator('main')
+web	Run bun run test:browser	2026-10-04T19:29:59.1375659Z         24 × locator resolved to <main data-offline-ready="false">…</main>
+web	Run bun run test:browser	2026-10-04T19:29:59.1375976Z            - unexpected value "false"
+web	Run bun run test:browser	2026-10-04T19:29:59.1376128Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1376132Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1376221Z       118 |       "June 18, 2026 at 5:20pm Tokyo",
+web	Run bun run test:browser	2026-10-04T19:29:59.1376458Z       119 |     );
+web	Run bun run test:browser	2026-10-04T19:29:59.1376689Z     > 120 |     await expect(page.locator("main")).toHaveAttribute(
+web	Run bun run test:browser	2026-10-04T19:29:59.1376980Z           |                                       ^
+web	Run bun run test:browser	2026-10-04T19:29:59.1377221Z       121 |       "data-offline-ready",
+web	Run bun run test:browser	2026-10-04T19:29:59.1377446Z       122 |       "true",
+web	Run bun run test:browser	2026-10-04T19:29:59.1377622Z       123 |     );
+web	Run bun run test:browser	2026-10-04T19:29:59.1377866Z         at /__w/ChronoShift/ChronoShift/e2e/uncontrolled.spec.ts:120:39
+web	Run bun run test:browser	2026-10-04T19:29:59.1378093Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1378428Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+web	Run bun run test:browser	2026-10-04T19:29:59.1378978Z     test-results/uncontrolled-an-older-acti-ff4ac-activate-its-waiting-update-chromium/test-failed-1.png
+web	Run bun run test:browser	2026-10-04T19:29:59.1379584Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+web	Run bun run test:browser	2026-10-04T19:29:59.1379829Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1380332Z     attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+web	Run bun run test:browser	2026-10-04T19:29:59.1380924Z     test-results/uncontrolled-an-older-acti-ff4ac-activate-its-waiting-update-chromium/test-failed-2.png
+web	Run bun run test:browser	2026-10-04T19:29:59.1381600Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+web	Run bun run test:browser	2026-10-04T19:29:59.1381848Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1382200Z     Error Context: test-results/uncontrolled-an-older-acti-ff4ac-activate-its-waiting-update-chromium/error-context.md
+web	Run bun run test:browser	2026-10-04T19:29:59.1382646Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1383037Z   2) [webkit] › e2e/diagnostics.spec.ts:81:0 › detailed logging survives a tab reload and reset preferences disables it 
+web	Run bun run test:browser	2026-10-04T19:29:59.1383408Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1383619Z     Error: jsonValue: Execution context was destroyed, most likely because of a navigation
+web	Run bun run test:browser	2026-10-04T19:29:59.1383918Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1384001Z        9 |     records.push(
+web	Run bun run test:browser	2026-10-04T19:29:59.1384212Z       10 |       JSON.stringify(
+web	Run bun run test:browser	2026-10-04T19:29:59.1384516Z     > 11 |         await Promise.all(message.args().map((arg) => arg.jsonValue())),
+web	Run bun run test:browser	2026-10-04T19:29:59.1384841Z          |                                         ^
+web	Run bun run test:browser	2026-10-04T19:29:59.1385074Z       12 |       ),
+web	Run bun run test:browser	2026-10-04T19:29:59.1385241Z       13 |     );
+web	Run bun run test:browser	2026-10-04T19:29:59.1385401Z       14 |   });
+web	Run bun run test:browser	2026-10-04T19:29:59.1385647Z         at /__w/ChronoShift/ChronoShift/e2e/diagnostics.spec.ts:11:41
+web	Run bun run test:browser	2026-10-04T19:29:59.1385864Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1385941Z     Error: click: Test ended.
+web	Run bun run test:browser	2026-10-04T19:29:59.1386347Z     Call log:
+web	Run bun run test:browser	2026-10-04T19:29:59.1386569Z       - waiting for getByText('More options', { exact: true })
+web	Run bun run test:browser	2026-10-04T19:29:59.1386926Z         - locator resolved to <summary>More options</summary>
+web	Run bun run test:browser	2026-10-04T19:29:59.1387216Z       - attempting click action
+web	Run bun run test:browser	2026-10-04T19:29:59.1387476Z         - waiting for element to be visible, enabled and stable
+web	Run bun run test:browser	2026-10-04T19:29:59.1387679Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1387682Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1387751Z       16 | }
+web	Run bun run test:browser	2026-10-04T19:29:59.1387943Z       17 | async function toggle(page: Page) {
+web	Run bun run test:browser	2026-10-04T19:29:59.1388262Z     > 18 |   await page.getByText("More options", { exact: true }).click();
+web	Run bun run test:browser	2026-10-04T19:29:59.1388580Z          |                                                        ^
+web	Run bun run test:browser	2026-10-04T19:29:59.1389086Z       19 |   return page.getByRole("checkbox", { name: "Enable detailed logs" });
+web	Run bun run test:browser	2026-10-04T19:29:59.1389402Z       20 | }
+web	Run bun run test:browser	2026-10-04T19:29:59.1389558Z       21 |
+web	Run bun run test:browser	2026-10-04T19:29:59.1389810Z         at toggle (/__w/ChronoShift/ChronoShift/e2e/diagnostics.spec.ts:18:56)
+web	Run bun run test:browser	2026-10-04T19:29:59.1392283Z         at /__w/ChronoShift/ChronoShift/e2e/diagnostics.spec.ts:88:25
+web	Run bun run test:browser	2026-10-04T19:29:59.1392531Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1392878Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+web	Run bun run test:browser	2026-10-04T19:29:59.1393471Z     test-results/diagnostics-detailed-loggi-1b3a5-set-preferences-disables-it-webkit/test-failed-1.png
+web	Run bun run test:browser	2026-10-04T19:29:59.1394107Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+web	Run bun run test:browser	2026-10-04T19:29:59.1394358Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1394687Z     Error Context: test-results/diagnostics-detailed-loggi-1b3a5-set-preferences-disables-it-webkit/error-context.md
+web	Run bun run test:browser	2026-10-04T19:29:59.1395106Z 
+web	Run bun run test:browser	2026-10-04T19:29:59.1395171Z   2 flaky
+web	Run bun run test:browser	2026-10-04T19:29:59.1395674Z     [chromium] › e2e/uncontrolled.spec.ts:77:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update 
+web	Run bun run test:browser	2026-10-04T19:29:59.1396458Z     [webkit] › e2e/diagnostics.spec.ts:81:0 › detailed logging survives a tab reload and reset preferences disables it 
+web	Run bun run test:browser	2026-10-04T19:29:59.1396891Z   6 skipped
+web	Run bun run test:browser	2026-10-04T19:29:59.1397061Z   220 passed (3.2m)
+web	Verify repository-subpath deployment	﻿2026-10-04T19:29:59.3184932Z ##[group]Run bun run build
+web	Verify repository-subpath deployment	2026-10-04T19:29:59.3185131Z ^[[36;1mbun run build^[[0m

@@ -1,17 +1,19 @@
 {
   "stateSnapshot": {
     "date": "2026-10-05",
-    "implementationRevision": "54cc09e1c8a14dceddf36083893436a57f78bae5",
-    "testedArtifactRevision": "4a771b9d102dbcaf3a807f096fb26861bbfa8e5f",
+    "implementationRevision": "f5860328667226e11330a1d194c731b83964913e",
+    "testedArtifactRevision": "0c73dd5c48b2b248fbdd15de7c8de5e951f7d5d0",
     "counts": {
-      "Done": 28,
+      "Done": 29,
       "In Progress": 9,
+      "Todo": 1,
       "Canceled": 1
     },
-    "note": "All four project issue lists read on 2026-10-05; Offline PWA rechecked after matching TIE-324 closure. Actual hosted Chrome hard refresh and subsequent same-tab target/conversion beyond 17 seconds recover actual control without warning; offline reopen passes. Nine physical/installed/human acceptance gaps remain open. Project/milestone metadata retains prior snapshot, not live state. Evidence path: docs/qa/uncontrolled-client-2026-10-05.",
-    "reviewWorkflowRevision": "54cc09e1c8a14dceddf36083893436a57f78bae5",
-    "previousEvidenceRevision": "36c1f03a8b4d3643b685614c8017f760749db745",
-    "evidencePath": "docs/qa/uncontrolled-client-2026-10-05"
+    "note": "All four project issue lists reread after TIE-369 completion and TIE-370 creation. Result-first layout is published and independently verified in desktop/narrow light/dark Chrome and the browser side panel. Nine physical/installed/human acceptance gaps remain In Progress; TIE-370 remains Todo for two CI retry observations and diagnostic retention. Project/milestone metadata retains prior snapshot, not live state. Evidence path: docs/qa/result-hierarchy-2026-10-05.",
+    "reviewWorkflowRevision": "ab1ad4e1d8c1c249e9e7941a20043fb7627f477c",
+    "previousEvidenceRevision": "ab1ad4e1d8c1c249e9e7941a20043fb7627f477c",
+    "evidencePath": "docs/qa/result-hierarchy-2026-10-05",
+    "reviewWorkflowNote": "Baseline workflow revision; this documentation update adds smallest-width long-time/digit-wrapping guidance and final evidence."
   },
   "initiative": {
     "id": "I-4",
@@ -330,6 +332,18 @@
       "uuid": "11cc084a-5352-41fd-be6f-67a55fb6333c",
       "url": "https://linear.app/tienlam/issue/TIE-356/add-opt-in-detailed-local-console-diagnostics",
       "state": "Done"
+    },
+    "U13": {
+      "id": "TIE-369",
+      "uuid": "00a34f85-e1e9-43e8-b474-ba4d089fd410",
+      "url": "https://linear.app/tienlam/issue/TIE-369/prioritize-converted-results-over-original-text-in-result-cards",
+      "state": "Done"
+    },
+    "D9": {
+      "id": "TIE-370",
+      "uuid": "b96ff52a-1ddf-42ea-9065-2aff29cc49d8",
+      "url": "https://linear.app/tienlam/issue/TIE-370/diagnose-offline-update-ci-flake-and-retain-retry-diagnostics",
+      "state": "Todo"
     }
   }
 }

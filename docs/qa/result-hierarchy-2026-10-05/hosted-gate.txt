@@ -1,0 +1,12 @@
+Original stdout captured from exec session 31180; process exit code 0.
+Command:
+HOSTED_EXPECTED_COMMIT=0c73dd5c48b2b248fbdd15de7c8de5e951f7d5d0 PLAYWRIGHT_CHROMIUM_CHANNEL=chrome PLAYWRIGHT_HTML_OUTPUT_DIR=/tmp/chronoshift-result-hosted-report mise exec -- bun run test:hosted --output=/tmp/chronoshift-result-hosted-results
+
+Running 4 tests using 2 workers
+
+  ✓  2 [hosted-phone] › e2e/hosted.spec.ts:4:0 › public Pages deployment converts fresh input after offline close and reopen (22.9s)
+  ✓  1 [hosted-desktop] › e2e/hosted.spec.ts:4:0 › public Pages deployment converts fresh input after offline close and reopen (23.0s)
+  ✓  4 [hosted-desktop] › e2e/hosted.spec.ts:71:0 › Pages serves scoped manifest, identifiable release and effective static CSP (870ms)
+  ✓  3 [hosted-phone] › e2e/hosted.spec.ts:71:0 › Pages serves scoped manifest, identifiable release and effective static CSP (1.1s)
+
+  4 passed (24.3s)
