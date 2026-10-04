@@ -1,4 +1,5 @@
 import { test, expect, publishRelease } from "./fixtures";
+import { enterZone } from "./choices";
 const releaseTest = test.extend({ isolatedOrigin: true });
 
 for (const legacyDesign of ["lens", "command"])
@@ -60,7 +61,7 @@ for (const legacyDesign of ["lens", "command"])
       };
     });
     await page.reload();
-    await page.getByLabel("Convert to").fill("Asia/Tokyo");
+    await enterZone(page, "Asia/Tokyo");
     await expect(
       page.getByText("Preferences cannot be saved", { exact: false }),
     ).toBeVisible();

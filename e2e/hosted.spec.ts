@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { enterZone } from "./choices";
 
 test("public Pages deployment converts fresh input after offline close and reopen", async ({
   page,
@@ -21,7 +22,7 @@ test("public Pages deployment converts fresh input after offline close and reope
     ["Europe/London", /9:20 am/i],
     ["America/Los_Angeles", /1:20 am/i],
   ] as const) {
-    await page.getByLabel("Convert to").fill(zone);
+    await enterZone(page, zone);
     await page.getByRole("button", { name: "Convert", exact: true }).click();
     await expect(page.locator(".hero-time")).toHaveText(expected);
     await expect(page.locator("main")).toHaveAttribute(
@@ -39,14 +40,14 @@ test("public Pages deployment converts fresh input after offline close and reope
     "true",
   );
   await expect(page.locator(".message.warning")).toHaveCount(0);
-  await page.getByLabel("Convert to").fill("Europe/London");
+  await enterZone(page, "Europe/London");
   await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toHaveText(/9:20 am/i);
   await page.close();
   await context.setOffline(true);
   const reopened = await context.newPage();
   await reopened.goto("/ChronoShift/");
-  await reopened.getByLabel("Convert to").fill("UTC");
+  await enterZone(reopened, "UTC");
   await reopened
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3:15:30pm in Tokyo");
@@ -111,4 +112,22 @@ test("Pages serves scoped manifest, identifiable release and effective static CS
   expect(await page.evaluate(() => "__chronoshiftInlineProbe" in window)).toBe(
     false,
   );
+  const inlineStyle = await page.evaluate(
+    () =>
+      new Promise<{ directive: string; hasSheet: boolean }>((resolve) => {
+        const style = document.createElement("style");
+        style.textContent = "body { outline: 99px solid magenta !important; }";
+        const onViolation = (event: SecurityPolicyViolationEvent) => {
+          if (event.effectiveDirective !== "style-src-elem") return;
+          document.removeEventListener("securitypolicyviolation", onViolation);
+          resolve({
+            directive: event.effectiveDirective,
+            hasSheet: style.sheet !== null,
+          });
+        };
+        document.addEventListener("securitypolicyviolation", onViolation);
+        document.head.append(style);
+      }),
+  );
+  expect(inlineStyle).toEqual({ directive: "style-src-elem", hasSheet: false });
 });

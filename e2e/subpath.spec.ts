@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { enterZone } from "./choices";
 test("subpath scope, manifest and worker survive offline restart", async ({
   page,
   context,
@@ -20,7 +21,7 @@ test("subpath scope, manifest and worker survive offline restart", async ({
   await context.setOffline(true);
   const reopened = await context.newPage();
   await reopened.goto("/ChronoShift/");
-  await reopened.getByLabel("Convert to").fill("UTC");
+  await enterZone(reopened, "UTC");
   await reopened
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3pm in Tokyo");

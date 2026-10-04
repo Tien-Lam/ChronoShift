@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { choose, enterZone } from "./choices";
 
 test("input and results avoid a vertical hinge and survive folding", async ({
   page,
@@ -27,7 +28,7 @@ test("input and results avoid a vertical hinge and survive folding", async ({
   await page
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3pm in Tokyo");
-  await page.getByLabel("Convert to").fill("UTC");
+  await enterZone(page, "UTC");
   await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toHaveText(/6:00 am/i);
   const input = await page.locator(".input-panel").boundingBox();
@@ -36,7 +37,7 @@ test("input and results avoid a vertical hinge and survive folding", async ({
   expect(result!.x).toBeGreaterThanOrEqual(424);
   expect(result!.x + result!.width).toBeLessThanOrEqual(824);
   await page.getByLabel("Appearance", { exact: true }).click();
-  await page.getByLabel("Theme", { exact: true }).selectOption("light");
+  await choose(page, "Theme", "light");
   await page.getByLabel("Appearance", { exact: true }).click();
   expect(
     (await page.locator(".input-panel").boundingBox())!.x +
