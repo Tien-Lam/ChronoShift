@@ -2,6 +2,7 @@ import { test, expect } from "./fixtures";
 
 test("native choices share alignment in both themes and retain editing and keyboard behavior", async ({
   page,
+  browserName,
 }) => {
   await page.goto("/");
   const draft = "April 9, 2026 3pm UTC";
@@ -74,6 +75,71 @@ test("native choices share alignment in both themes and retain editing and keybo
           () => document.documentElement.scrollWidth <= innerWidth,
         ),
       ).toBe(true);
+    }
+  }
+  // Native datalist buttons live in the browser's UA shadow tree. Checking
+  // their real bounds catches a decorative arrow detached from its hit target.
+  if (browserName === "chromium") {
+    const session = await page.context().newCDPSession(page);
+    type NativeNode = {
+      nodeId: number;
+      attributes?: string[];
+      children?: NativeNode[];
+      shadowRoots?: NativeNode[];
+    };
+    const find = (
+      node: NativeNode,
+      attribute: string,
+    ): NativeNode | undefined => {
+      if (
+        node.attributes?.some(
+          (value, index) =>
+            index % 2 === 0 &&
+            value === "id" &&
+            node.attributes?.[index + 1] === attribute,
+        )
+      )
+        return node;
+      for (const child of [
+        ...(node.children ?? []),
+        ...(node.shadowRoots ?? []),
+      ]) {
+        const match = find(child, attribute);
+        if (match) return match;
+      }
+    };
+    try {
+      for (const width of [320, 1280]) {
+        await page.setViewportSize({ width, height: 960 });
+        for (const id of ["target-zone", "source-zone"]) {
+          const field = page.locator(`#${id}`);
+          await field.hover();
+          const bounds = (await field.boundingBox())!;
+          const { root } = await session.send("DOM.getDocument", {
+            depth: -1,
+            pierce: true,
+          });
+          const input = find(root, id)!;
+          const picker = find(input, "picker")!;
+          expect(picker, id).toBeTruthy();
+          const { model } = await session.send("DOM.getBoxModel", {
+            nodeId: picker.nodeId,
+          });
+          const xs = model.border.filter((_, index) => index % 2 === 0);
+          const ys = model.border.filter((_, index) => index % 2 === 1);
+          const arrowX = bounds.x + bounds.width - 20;
+          const arrowY = bounds.y + bounds.height / 2;
+          expect(
+            arrowX,
+            `${id} visible chevron must hit the native picker`,
+          ).toBeGreaterThanOrEqual(Math.min(...xs));
+          expect(arrowX, id).toBeLessThanOrEqual(Math.max(...xs));
+          expect(arrowY, id).toBeGreaterThanOrEqual(Math.min(...ys));
+          expect(arrowY, id).toBeLessThanOrEqual(Math.max(...ys));
+        }
+      }
+    } finally {
+      await session.detach();
     }
   }
   await page.getByLabel("Theme", { exact: true }).press("Escape");

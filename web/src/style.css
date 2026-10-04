@@ -285,8 +285,18 @@ select {
   transform: translateY(-70%) rotate(45deg);
   pointer-events: none;
 }
-/* Keep the browser's datalist hit target; only replace its visual indicator. */
+/* Place the native datalist hit target under the shared visual indicator. */
+.choice-control input {
+  position: relative;
+}
 .choice-control input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  inset-inline-end: 12px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  transform: translateY(-50%);
   opacity: 0;
 }
 textarea:hover,
