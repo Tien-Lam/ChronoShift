@@ -101,8 +101,8 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.calendar-popover {
-  width: max-content;
+.choice-popover.calendar-popover {
+  width: min(302px, var(--trigger-width, 302px));
   min-width: 0;
   max-width: calc(100vw - 24px);
 }
