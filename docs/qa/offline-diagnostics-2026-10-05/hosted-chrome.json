@@ -1,0 +1,98 @@
+{
+  "startedAt": "2026-10-04T18:02:48.781Z",
+  "browser": "154.0.8037.93",
+  "profile": "disposable installed Chrome, macOS; actual HTTPS retained client",
+  "injection": "none; no caches deleted or readiness responses altered",
+  "before": {
+    "release": {
+      "sourceCommit": "1ef1aa07b3e3a2d7cf657150fc6083aa8987699b",
+      "base": "/ChronoShift/"
+    },
+    "script": "/ChronoShift/assets/index-FdxLUOhD.js"
+  },
+  "baselineWaitingAt": "2026-10-04T18:02:52.498Z",
+  "after": {
+    "release": {
+      "sourceCommit": "b766d5b53063fd6872f55e7d0a052f8e84d802ec",
+      "base": "/ChronoShift/"
+    },
+    "ready": "true",
+    "script": "/ChronoShift/assets/index-BjtJ2w8M.js",
+    "caches": [
+      "chronoshift-fedcd4a1116faa6d",
+      "chronoshift-01ee9fa94a59f910"
+    ],
+    "session": {
+      "chronoshift-detailed-logs": "true"
+    }
+  },
+  "elapsedAfterFieldFocusMs": 21100,
+  "logs": [
+    [
+      "[ChronoShift] diagnostics.enabled",
+      {
+        "at": "2026-10-04T18:08:22.848Z"
+      }
+    ],
+    [
+      "[ChronoShift] offline.probe-start",
+      {
+        "at": "2026-10-04T18:08:22.849Z",
+        "online": true,
+        "controlled": true,
+        "reason": "detailed-logs-enabled"
+      }
+    ],
+    [
+      "[ChronoShift] offline.probe-result",
+      {
+        "at": "2026-10-04T18:08:22.863Z",
+        "ready": true,
+        "elapsedMs": 14,
+        "version": "01ee9fa94a59f910",
+        "assets": []
+      }
+    ],
+    [
+      "[ChronoShift] offline.state",
+      {
+        "at": "2026-10-04T18:08:22.863Z",
+        "ready": true,
+        "updateAvailable": false,
+        "reason": "probe-result"
+      }
+    ],
+    [
+      "[ChronoShift] ui.zone-focus",
+      {
+        "at": "2026-10-04T18:08:22.965Z",
+        "field": "target-zone"
+      }
+    ],
+    [
+      "[ChronoShift] conversion.start",
+      {
+        "at": "2026-10-04T18:08:44.015Z",
+        "requestId": 1,
+        "characters": 51
+      }
+    ],
+    [
+      "[ChronoShift] conversion.complete",
+      {
+        "at": "2026-10-04T18:08:44.044Z",
+        "elapsedMs": 29,
+        "requestId": 1,
+        "results": 1,
+        "warnings": 0,
+        "reason": "success"
+      }
+    ]
+  ],
+  "disabledStopsLogs": true,
+  "offlineReopenFreshConversion": true,
+  "errors": [],
+  "originalReport": "unverified; healthy retained client with explicit upgrade, no affected-profile reconstruction",
+  "status": "passed",
+  "completedAt": "2026-10-04T18:08:44.691Z"
+}
