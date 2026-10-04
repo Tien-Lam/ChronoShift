@@ -137,6 +137,7 @@ cacheTest(
     const result = await page.evaluate(async () => {
       const cache = await caches.open("chronoshift-test-first");
       await cache.delete("/fonts/README.txt");
+      await cache.delete("/index.html");
       return new Promise<any>((resolve) => {
         const channel = new MessageChannel();
         channel.port1.onmessage = (event) => {
@@ -150,7 +151,10 @@ cacheTest(
       });
     });
     expect(result.ready).toBe(true);
-    expect(result.diagnostics.unavailable).toEqual(["/fonts/README.txt"]);
+    expect(result.diagnostics.unavailable).toEqual([
+      "/fonts/README.txt",
+      "/index.html",
+    ]);
     expect(result.diagnostics.repair.fetched).toBe(1);
     expect(result.diagnostics.repair.reused).toBeGreaterThan(1);
     // Check production-like retirement really exists rather than silently retaining every fixture.
@@ -236,7 +240,9 @@ cacheTest(
     ).toBeVisible();
     await publishRelease(context, baseURL!, "second-stalled");
     await page.evaluate(async () => {
-      await (await caches.open("chronoshift-test-first")).delete("/index.html");
+      await (
+        await caches.open("chronoshift-test-first")
+      ).delete("/release.json");
       window.dispatchEvent(new PageTransitionEvent("pageshow"));
     });
     await page

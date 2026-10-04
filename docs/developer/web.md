@@ -79,3 +79,9 @@ bun scripts/benchmark-web.ts
 CI runs formatting, type checks, real-engine tests, the frozen production build and all browser scenarios. Chromium/Firefox use network-offline emulation. WebKit uses a stopped dedicated origin plus a negative uncached-network check because of [Playwright issue 42775](https://github.com/microsoft/playwright/issues/42775); it does not skip offline tests.
 
 Physical acceptance remains separate from the user-authorized engineering merge. Record real Android Chrome/iOS Safari and desktop Chrome/Edge/Firefox/Safari versions; offline reopen with fresh input; installed share where supported; actual screen-reader/task checks; phone startup and p95 conversions; host headers and N→N+1→rollback. Emulation and desktop benchmarks cannot close those gates. Dependency maintenance targets Bun and GitHub Actions. Bun's text lockfile is supported by [Dependabot's Bun ecosystem](https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference).
+
+Offline navigation uses the final CSP-bearing HTML embedded in the generated
+worker. Installation and repair verify that shell against the same release's
+SHA-256 before caching it as `index.html`. They do not fetch mutable HTML:
+network content filters can inject scripts or change CSP, and Pages may already
+serve a newer document. All other runtime assets still require exact integrity.

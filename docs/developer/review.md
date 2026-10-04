@@ -47,3 +47,9 @@ Before closing a hosted bug, record the exact published artifact and a journey m
 Use existing full gates for runtime changes. Prefer targeted failure cases with real workers/caches and accelerated application deadlines in CI, plus a real-time boundary test when the report implicates timing. Reuse successful checks of unchanged code; rerun when a change, failure or unresolved concern justifies it. Documentation-only changes need formatting, link/reference checks and appropriate review, not another runtime suite or deployment.
 
 Keep physical installation, OS share menus, screen readers, actual zoom and phone performance open unless those capabilities were exercised. Save durable review/fix/publication evidence in the PR and linked repository record; ephemeral agent messages alone are insufficient for a later audit.
+
+For navigation-shell changes, test response-level HTML rewriting with intact
+runtime assets in a fresh profile without a controller. DOM-only extension
+mutation is a distinct control and does not change bytes fetched by the worker.
+Verify the final build-owned CSP shell, strict rejection of corrupted runtime
+assets, missing-shell recovery after deployment replacement and offline reopen.
