@@ -185,7 +185,7 @@ export default function App() {
     setConversionRevision((version) => version + 1);
     worker.current?.terminate();
     worker.current = null;
-    setBusy(false);
+    setBusy(!!draft.current.trim() && !composition.current);
     setConversion({ results: [], warnings: [] });
     setError("");
     setManualCopy("");
@@ -213,22 +213,30 @@ export default function App() {
       if (id === request.current) request.current++;
     };
 
-    if (!text.trim() || composing) return cleanup;
+    if (!text.trim() || composing) {
+      setBusy(false);
+      return cleanup;
+    }
+    // Pending includes the debounce, so every edit has immediate feedback.
+    setBusy(true);
     timer = setTimeout(() => {
       if (!ownsRequest()) return;
       if (text.length > MAX_INPUT) {
+        setBusy(false);
         setError(
           "Keep the message under 10,000 characters. Shorten it to continue.",
         );
         return;
       }
       if (!targetZone || !sourceZone) {
+        setBusy(false);
         setError(
           "Choose a timezone from the list, or enter a city with one known timezone.",
         );
         return;
       }
       if (!referenceValid) {
+        setBusy(false);
         setError("Complete or clear the reference date to continue.");
         return;
       }
@@ -399,6 +407,15 @@ export default function App() {
   const groups = targetZone
     ? [...new Set(conversion.results.map((r) => r.group))]
     : [];
+  const liveState = composing
+    ? "paused"
+    : busy
+      ? "pending"
+      : error
+        ? "error"
+        : conversion.results.length || conversion.warnings.length
+          ? "ready"
+          : "idle";
   return (
     <>
       <header className="topbar">
@@ -669,15 +686,31 @@ export default function App() {
             aria-labelledby="result-title"
             aria-busy={busy}
           >
-            <div className="panel-heading">
+            <div className="panel-heading result-heading">
               <h2 id="result-title">Converted time</h2>
+              <span className="live-indicator" data-state={liveState}>
+                <span className="live-dots" aria-hidden="true">
+                  <span />
+                  <span />
+                  <span />
+                </span>
+                {liveState === "pending"
+                  ? "Updating"
+                  : liveState === "paused"
+                    ? "Paused"
+                    : liveState === "error"
+                      ? "Check input"
+                      : "Live"}
+              </span>
             </div>
             <div role="status" className="sr-only">
               {busy
-                ? "Converting message"
-                : targetZone && conversion.results.length
-                  ? `${conversion.results.length} time interpretations found`
-                  : ""}
+                ? "Updating conversion"
+                : composing
+                  ? "Finish typing to convert"
+                  : targetZone && conversion.results.length
+                    ? `${conversion.results.length} time interpretations found`
+                    : ""}
             </div>
             {error && (
               <div className="message error" role="alert">
@@ -699,7 +732,13 @@ export default function App() {
               !conversion.warnings.length && (
                 <div className="result-placeholder">
                   <span className="large-clock" aria-hidden="true" />
-                  <h3>{busy ? "Finding your time…" : "Ready to convert"}</h3>
+                  <h3>
+                    {busy
+                      ? "Finding your time…"
+                      : composing
+                        ? "Finish typing to convert"
+                        : "Ready to convert"}
+                  </h3>
                   <p>Date, time and timezone appear here.</p>
                 </div>
               )}

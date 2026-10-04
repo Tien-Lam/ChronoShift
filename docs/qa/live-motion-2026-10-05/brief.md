@@ -1,0 +1,13 @@
+# Live conversion motion brief
+
+Original request: “have animations, movement on the components and page. One of the things is the live conversion might not be obvious, search online for modern simplistic clean examples of reflecting movement, reactivity, liveliness and implement them”.
+
+Base/head before implementation: 12b9a7f9bf924472c89c9d33aa28ca14fb482365. Candidate revisions recorded in individual reports. Source web/src/App.tsx, style.css and component styles; relevant surrounding owners include debounced worker conversion, invalidation, IME composition, preferences, date validity, import/update restoration, stale-copy guards and React Aria popovers.
+
+Research: Geist loading dots https://vercel.com/geist/loading-dots ; Carbon productive motion https://www.carbondesignsystem.com/building-blocks/foundations/motion/overview ; reduced motion https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion . Use compact background-work indication, small purposeful transforms/opacity, roughly 140–240ms transitions; avoid constant idle animation or decorative large movement.
+
+Intended: make live conversion obvious during debounce and processing as well as after completion, with gentle result reveal and component/popover/control motion. Keep status compact and source context secondary. No runtime CDN, added animation library, storage of drafts or unrelated layout redesign. Do not retain stale copyable results. No waits for animation completion. Motion reduction must preserve understandable static status and remove nonessential movement including pseudo-elements.
+
+Review independently derive failure paths before reading implementation tests. Code reviewer trace lifecycle/cancellation/IME/errors/imports/reduced-motion/styles. Adversarial reviewer use normal live-edit/zone-change/clear/error/recovery journeys and rendered dark/light at desktop/mobile/280px; examine motion phases, text/copy association and popup contents, not just bounds. Verify real durations/pending and idle state, reduced-motion. Feature original-report verdict is N/A; record implementation verdict, commands, browser/environment/timings/revision and gaps separately. Do not share verdicts before original reports. Physical IME/device/screen-reader and human preference acceptance remain unverified.
+
+Root preview 4250, code reviewer 4252, adversarial reviewer 4254; independent outputs under docs/qa/live-motion-2026-10-05/{code,adversarial}. Build/check/format and full required CI/browser/subpath gates. Existing 250ms debounce and disposable-worker ownership must remain correct. Record exact final artifact/published identity and hosted browser proof.
