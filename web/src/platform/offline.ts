@@ -30,6 +30,12 @@ export async function setupOffline(
     ]).finally(() => clearTimeout(readyTimer));
     if (signal.aborted) return;
     let confirmed = false;
+    let installedUpdate: ServiceWorker | undefined;
+    const hasUpdate = () =>
+      registration.waiting ||
+      (installedUpdate?.state === "installed" &&
+        navigator.serviceWorker.controller &&
+        installedUpdate !== navigator.serviceWorker.controller);
     const inspect = () => {
       if (signal.aborted) return;
       const controller = navigator.serviceWorker.controller;
@@ -37,7 +43,10 @@ export async function setupOffline(
         const channel = new MessageChannel();
         const timeout = setTimeout(() => {
           channel.port1.close();
-          if (!signal.aborted)
+          if (
+            !signal.aborted &&
+            navigator.serviceWorker.controller === controller
+          )
             report({
               ready: false,
               error:
@@ -46,11 +55,14 @@ export async function setupOffline(
         }, 15000);
         channel.port1.onmessage = (event) => {
           clearTimeout(timeout);
-          confirmed = event.data.ready === true;
-          if (!signal.aborted)
+          if (
+            !signal.aborted &&
+            navigator.serviceWorker.controller === controller
+          ) {
+            confirmed = event.data.ready === true;
             report({
               ready: confirmed,
-              ...(registration.waiting ? { update: registration } : {}),
+              ...(hasUpdate() ? { update: registration } : {}),
               ...(!confirmed
                 ? {
                     error:
@@ -58,6 +70,7 @@ export async function setupOffline(
                   }
                 : {}),
             });
+          }
           channel.port1.close();
         };
         controller.postMessage(
@@ -72,15 +85,23 @@ export async function setupOffline(
     });
     window.addEventListener("online", inspect, { signal });
     window.addEventListener("pageshow", inspect, { signal });
-    registration.addEventListener(
-      "updatefound",
-      () => {
-        registration.installing?.addEventListener("statechange", inspect, {
-          signal,
-        });
-      },
-      { signal },
-    );
+    const watchInstall = () => {
+      const installing = registration.installing;
+      if (!installing) {
+        inspect();
+        return;
+      }
+      const changed = () => {
+        // Some engines deliver installed before exposing registration.waiting.
+        // Retain the worker identity until activation instead of losing the notice.
+        if (installing.state === "installed") installedUpdate = installing;
+        inspect();
+      };
+      installing.addEventListener("statechange", changed, { signal });
+      changed();
+    };
+    registration.addEventListener("updatefound", watchInstall, { signal });
+    watchInstall();
     if (registration.waiting)
       report({ ready: confirmed, update: registration });
   } catch {

@@ -13,7 +13,25 @@ async function publish(context: BrowserContext, page: Page, version: string) {
   await page.evaluate(async () => {
     await (await navigator.serviceWorker.getRegistration())!.update();
   });
-  await expect(page.getByRole("button", { name: "Update now" })).toBeVisible();
+  try {
+    await expect(
+      page.getByRole("button", { name: "Update now" }),
+    ).toBeVisible();
+  } catch (error) {
+    console.log(
+      "Update registration diagnostics",
+      await page.evaluate(async () => {
+        const registration = await navigator.serviceWorker.getRegistration();
+        return {
+          active: registration?.active?.state,
+          installing: registration?.installing?.state,
+          waiting: registration?.waiting?.state,
+          caches: await caches.keys(),
+        };
+      }),
+    );
+    throw error;
+  }
 }
 async function activate(page: Page) {
   await Promise.all([
@@ -140,6 +158,22 @@ test("rollback preserves draft and preferences and removes obsolete caches with 
   baseURL,
   origin,
 }) => {
+  await page.addInitScript(() => {
+    const register = navigator.serviceWorker.register.bind(
+      navigator.serviceWorker,
+    );
+    navigator.serviceWorker.register = async (...args) => {
+      const registration = await register(...args);
+      return new Proxy(registration, {
+        get(target, property) {
+          if (property === "waiting" && (window as any).__hideWaiting)
+            return null;
+          const value = Reflect.get(target, property, target);
+          return typeof value === "function" ? value.bind(target) : value;
+        },
+      });
+    };
+  });
   expect(
     (
       await context.request.post(new URL("__test-release", baseURL!).href, {
@@ -157,7 +191,14 @@ test("rollback preserves draft and preferences and removes obsolete caches with 
     await page
       .getByLabel("Message with a date or time")
       .fill(`Keep this draft through ${version}`);
+    await page.evaluate(() => {
+      (window as any).__hideWaiting = true;
+    });
     await publish(context, page, version);
+    // Installed state must announce the update even before waiting is exposed.
+    await page.evaluate(() => {
+      (window as any).__hideWaiting = false;
+    });
     await activate(page);
     expect(await revision(page)).toBe(`test-${version}`);
     await expect(page.getByLabel("Message with a date or time")).toHaveValue(
