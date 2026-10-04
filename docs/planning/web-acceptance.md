@@ -48,7 +48,7 @@ Each ticket below remains **In Progress** because its original acceptance criter
 
 The available browser side panel has no native-app control, OS installation/share-menu control, screen-reader control, actual browser-zoom control or physical-phone access. Its CSS viewport emulation cannot supply those missing results. The existing [production browser report](../qa/browser-2026-10-04/README.md) remains supplementary evidence.
 
-Optional ML discovery is tracked separately as TIE-302 (**Backlog**); its experiment and disposition do not close any of these nine acceptance gates.
+Optional ML discovery is tracked separately as TIE-302 (**In Progress**, measured feasibility/deferral approved; merge pending); its experiment and disposition do not close any of these nine acceptance gates.
 
 Use [device-smoke-test.md](../developer/device-smoke-test.md). Record each physical test with: release SHA, date, device, OS, browser/version, design/theme, posture, network mode, task, observed result, pass/fail, and reproducible defect. Pending entries are not assumed passes. Use synthetic messages only in evidence.
 
@@ -56,6 +56,6 @@ Browser performance reports identify their exact source release, asset breakdown
 
 Independent review and regression evidence: [review-2026-10-04.md](review-2026-10-04.md). Both reviewers approved after fixes; merge authorization does not claim physical-device acceptance.
 
-Merged main `9e7c1cb` passes the final GitHub gate (108 units, 113 browser scenarios and subpath), exact-artifact main publication and four live HTTPS checks. The 4 October 2026 state snapshot records twenty tickets Done, including TIE-315 after the direct browser evidence review; nine In Progress, optional ML Backlog and native failure maintenance Canceled. [offline-web-linear-map.json](offline-web-linear-map.json) records this snapshot, not live Linear state. Partial acceptance checkboxes and observations are recorded in Linear. No installed-mode, screen-reader, actual zoom or phone p95 result is inferred from screenshots.
+Merged main `9e7c1cb` passes the final GitHub gate (108 units, 113 browser scenarios and subpath), exact-artifact main publication and four live HTTPS checks. The 4 October 2026 state snapshot records twenty tickets Done, including TIE-315 after the direct browser evidence review; nine In Progress, optional ML now In Progress for its measured experiment, TIE-323 In Progress for the requested redesign, and native failure maintenance Canceled. [offline-web-linear-map.json](offline-web-linear-map.json) records this snapshot, not live Linear state. Partial acceptance checkboxes and observations are recorded in Linear. No installed-mode, screen-reader, actual zoom or phone p95 result is inferred from screenshots.
 
 TIE-323 records the new user-requested single Glass Command redesign, retaining Dark/Light/System themes. Its [side-panel evidence](../qa/glass-command-2026-10-04/README.md) and final reviews/gates are recorded separately from the previously published two-design evidence.
