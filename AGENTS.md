@@ -1,44 +1,19 @@
 # Agent Instructions
 
-## Web Application
+ChronoShift is an offline, local-only TypeScript web app hosted on GitHub Pages. Source is in `web/`; native tooling has been removed.
 
-ChronoShift is a TypeScript offline web app hosted on GitHub Pages. Native app tooling has been removed.
+## Development
 
-- Manage runtimes and developer tools with `mise`; prefer `bun` for package management and scripts.
-- Use `gh` for GitHub operations.
-- Source is in `web/`; build with `bun run build` and verify with `bun run check` and `bun run format:check`.
-- Run appropriate Playwright checks for changes affecting browsers, offline behavior or deployment. See `docs/developer/testing.md`.
-- The Pages base path is `/ChronoShift/`; the manifest, service worker and all runtime assets must share it.
-- Preserve local-only conversion, explicit update activation and input/result state during resize. No runtime CDN or conversion backend.
-- The resilience corpus is a standalone JSON fixture. Maintain it directly; it has no native source/build dependency.
+- Manage runtimes and CLI tools with `mise`; prefer Bun. Install dependencies with `bun install --frozen-lockfile`. Use `gh` for GitHub operations.
+- Build with `bun run build`; verify with `bun run check` and `bun run format:check`. Run appropriate Playwright checks for browser, offline or deployment changes. See [testing](docs/developer/testing.md) and [publishing](docs/developer/web.md).
+- Keep the manifest, service worker and runtime assets under the Pages base path `/ChronoShift/`. No runtime CDN or conversion backend.
+- Show ambiguity rather than guessing. Keep source and target zones independent, date/range context bounded, and fixed offsets distinct from regional DST.
+- Keep input text out of network requests and permanent storage. Preserve input/results during resize; activate updates only on user action.
+- Maintain independent exact expectations in `tests/fixtures/temporal.json` and the standalone `tests/fixtures/resilience-corpus.json` directly.
+- Use noninteractive file operations: `cp -f`, `cp -rf`, `mv -f`, `rm -f` and `rm -rf`.
 
 ## Review and Delivery
 
-- For substantial changes, use two independent agents with clean context: one adversarial reviewer and one code reviewer. Give each the intended behavior, current revision and scope; let them inspect the code independently.
-- Fix actionable findings, add meaningful regression coverage, and request another review of the changes. Continue until both report no blocking findings and required checks pass.
-- Record findings, fixes and verification in the PR. When the user authorizes merge, merge and complete Linear tickets whose acceptance criteria have evidence. Keep physical-device or human acceptance work open when it cannot be verified here.
-- GitHub Pages publishes only main. Reuse a successful trusted PR artifact only after digest and exact source-tree verification; otherwise run the complete gate. Serialize the entire publishing workflow to prevent an older fallback overtaking a newer deployment.
-
-## Non-Interactive Shell Commands
-
-**ALWAYS use non-interactive flags** with file operations to avoid hanging on confirmation prompts.
-
-Shell commands like `cp`, `mv`, and `rm` may be aliased to include `-i` (interactive) mode on some systems, causing the agent to hang indefinitely waiting for y/n input.
-
-**Use these forms instead:**
-```bash
-# Force overwrite without prompting
-cp -f source dest           # NOT: cp source dest
-mv -f source dest           # NOT: mv source dest
-rm -f file                  # NOT: rm file
-
-# For recursive operations
-rm -rf directory            # NOT: rm -r directory
-cp -rf source dest          # NOT: cp -r source dest
-```
-
-**Other commands that may prompt:**
-- `scp` - use `-o BatchMode=yes` for non-interactive
-- `ssh` - use `-o BatchMode=yes` to fail instead of prompting
-- `apt-get` - use `-y` flag
-- `brew` - use `HOMEBREW_NO_AUTO_UPDATE=1` env var
+- For substantial changes, use two independent agents with clean context: an adversarial reviewer and a code reviewer. Provide intended behavior, revision and scope. Fix actionable findings, add meaningful regression coverage and repeat review until both report no blockers and required checks pass.
+- Record findings, fixes and verification in the PR. When authorized, merge and complete only Linear tickets whose acceptance criteria have evidence. Keep unverified physical-device or human acceptance work open.
+- Publish only `main`. Reuse successful trusted PR artifacts only after digest and exact source-tree verification; otherwise run the complete gate. Serialize the entire publishing workflow so older deployments cannot overtake newer ones.

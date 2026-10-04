@@ -20,3 +20,13 @@ PLAYWRIGHT_CHROMIUM_CHANNEL=chrome PLAYWRIGHT_PORT=4197 bun run test:browser --p
 ```
 
 Publication and live verification are recorded in the PR. The nine pre-existing capability-specific acceptance tickets remain separate.
+
+## Published verification
+
+[PR #24](https://github.com/Tien-Lam/ChronoShift/pull/24) merged as `ec1167cdf0b5c9d37ea9dc285e9b2ec3a6133c2c`. [Web CI](https://github.com/Tien-Lam/ChronoShift/actions/runs/37200206642) and [Pages publication](https://github.com/Tien-Lam/ChronoShift/actions/runs/37200408401) succeeded. Pages reused that trusted CI artifact after digest and exact-tree verification: source `4e305cda1b6e670cfed69cf6a97a731ce12c90ce`, tree `664d4b07a8ef37359a98a2ca024630d342c2df63`.
+
+[Final hosted log](hosted-after.log): all four desktop/phone-profile cases pass (5.3s). [Installed Chrome hosted log](hosted-chrome-after.log): both desktop cases pass (3.0s). They cover normal UTC → London → Los Angeles reconversion without the warning, actual ready confirmation, offline close/reopen with fresh input, scoped manifest, expected release and effective CSP. Command: `HOSTED_EXPECTED_COMMIT=4e305cda1b6e670cfed69cf6a97a731ce12c90ce bun run test:hosted`; repeat with `PLAYWRIGHT_CHROMIUM_CHANNEL=chrome` and `--project=hosted-desktop` for installed Chrome.
+
+Final source captures show the controlled [registration case](chrome-registration-after.png) and [stale probe case](chrome-stale-probe-after.png) after the fix. Both pass in installed Chrome; the earlier three-case log also includes genuine cache failure/repair.
+
+The browser side panel independently accepted the waiting live update, preserving the synthetic Tokyo draft, then converted to UTC and changed target to London (9:20am). DOM evidence: `data-offline-ready="true"`, warning absent, script `assets/index-BgHl7uJ4.js`. [Published result screenshot](published-conversion.jpg). TIE-324 is Done; all four criteria have evidence, with the natural-timing limitation above retained.

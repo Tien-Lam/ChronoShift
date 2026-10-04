@@ -1,0 +1,10 @@
+$ bunx --bun playwright test --config=playwright.hosted.config.ts "--project=hosted-desktop"
+
+Running 2 tests using 1 worker
+
+(node:76614) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  1 [hosted-desktop] › e2e/hosted.spec.ts:3:0 › public Pages deployment converts fresh input after offline close and reopen (2.0s)
+  ✓  2 [hosted-desktop] › e2e/hosted.spec.ts:60:0 › Pages serves scoped manifest, identifiable release and effective static CSP (417ms)
+
+  2 passed (3.0s)
