@@ -71,7 +71,6 @@ test("themed choices align and their opened menus fit every breakpoint without l
   const draft = "April 9, 2026 3pm UTC";
   await page.getByLabel("Message with a date or time").fill(draft);
   await enterZone(page, "Pacific/Chatham");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toBeVisible();
   const result = await page.locator(".hero-time").innerText();
   await page.getByText("More options", { exact: true }).click();
@@ -131,14 +130,6 @@ test("themed choices align and their opened menus fit every breakpoint without l
         expect(panel.y - appearance.y - appearance.height).toBeCloseTo(8, 1);
         expect(panel.x).toBeGreaterThanOrEqual(0);
         expect(panel.x + panel.width).toBeLessThanOrEqual(width);
-        if (width > 480) {
-          const zone = (await page.locator("#target-zone").boundingBox())!;
-          const convert = (await page
-            .getByRole("button", { name: "Convert", exact: true })
-            .boundingBox())!;
-          expect(zone.y).toBeCloseTo(convert.y, 1);
-          expect(zone.height).toBeCloseTo(convert.height, 1);
-        }
         for (const label of ["Theme", "Numeric dates", "Time display"]) {
           const trigger = choiceTrigger(page, label);
           await trigger.click();
@@ -281,30 +272,24 @@ test("choice menus support keyboard selection, nested Escape and pointer dismiss
   await page
     .getByLabel("Message with a date or time")
     .fill("04/09/2026 3pm UTC");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".result-date")).toHaveText(
     /4 Sep(?:t(?:ember)?)? 2026/,
   );
   await expect(page.locator(".hero-time")).toHaveText("15:00");
   await choose(page, "Numeric dates", "mdy");
-  await expect(page.locator(".result")).toHaveCount(0);
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".result-date")).toHaveText(/9 Apr(?:il)? 2026/);
   await enterReferenceDate(page, "2026-04-09");
-  await expect(page.locator(".result")).toHaveCount(0);
   await page
     .getByLabel("Message with a date or time")
     .fill("Tomorrow at 3pm UTC");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".result-date")).toHaveText(/10 Apr(?:il)? 2026/);
   const day = page.locator('#reference-date [data-type="day"]');
   await day.click();
   await day.press("Backspace");
   await expect(day).toHaveAttribute("data-placeholder", "true");
   await expect(page.locator(".result")).toHaveCount(0);
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.getByRole("alert")).toHaveText(
-    "Complete or clear the reference date before converting.",
+    "Complete or clear the reference date to continue.",
   );
   await expect(page.locator(".result")).toHaveCount(0);
   await enterReferenceDate(page, "2026-04-09");
@@ -317,7 +302,7 @@ test("choice menus support keyboard selection, nested Escape and pointer dismiss
   await expect(
     page.locator('#reference-date [data-type="day"]'),
   ).toHaveAttribute("aria-valuenow", "10");
-  await expect(page.locator(".result")).toHaveCount(0);
+  await expect(page.locator(".result-date")).toHaveText(/11 Apr(?:il)? 2026/);
   await page.getByRole("button", { name: /^Choose reference date/ }).click();
   await page
     .locator(".calendar-popover")
@@ -333,9 +318,8 @@ test("choice menus support keyboard selection, nested Escape and pointer dismiss
   await year.click();
   for (const digit of "2027") await year.press(digit);
   await year.press("Tab");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.getByRole("alert")).toHaveText(
-    "Complete or clear the reference date before converting.",
+    "Complete or clear the reference date to continue.",
   );
   await page
     .getByRole("button", { name: "Reset preferences", exact: true })
@@ -348,7 +332,6 @@ test("choice menus support keyboard selection, nested Escape and pointer dismiss
   await page
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3pm UTC");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toBeVisible();
   await expect(page.getByRole("alert")).toHaveCount(0);
 });
@@ -374,13 +357,11 @@ test("timezone search preserves freeform offsets and recovers from empty and inv
   await page
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3pm UTC");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toHaveText(/12:00 am/i);
   await target.fill("UTC");
   await expect(page.getByRole("listbox")).toBeVisible();
-  // Suggestions keep the input in the accessibility tree while open. The
-  // adjacent visible Convert button still accepts the user's first click.
-  await page.locator(".convert-button").click();
+  // Valid freeform zones convert automatically; dismiss suggestions separately.
+  await target.press("Escape");
   await expect(page.getByRole("listbox")).toHaveCount(0);
   await expect(page.locator(".hero-time")).toHaveText(/3:00 pm/i);
 
@@ -393,14 +374,12 @@ test("timezone search preserves freeform offsets and recovers from empty and inv
   await expect(target).toHaveValue("Definitely/Not-A-Timezone");
   await expect(target).toHaveAttribute("aria-invalid", "true");
   await expect(page.locator(".result")).toHaveCount(0);
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.getByRole("alert")).toContainText(/timezone/i);
 
   await target.fill("+05:45");
   await target.press("Escape");
   await expect(target).toHaveValue("+05:45");
   await expect(target).not.toHaveAttribute("aria-invalid", "true");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toHaveText(/8:45 pm/i);
   await expect(source).toHaveValue("UTC");
 
@@ -422,5 +401,5 @@ test("timezone search preserves freeform offsets and recovers from empty and inv
   await page.getByRole("option", { name: /New York/ }).click();
   await expect(source).toHaveValue("America/New_York");
   await expect(target).toHaveValue("Asia/Tokyo");
-  await expect(page.locator(".result")).toHaveCount(0);
+  await expect(page.locator(".hero-time")).toHaveText(/12:00 am/i);
 });

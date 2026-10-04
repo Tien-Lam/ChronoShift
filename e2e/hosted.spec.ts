@@ -23,7 +23,6 @@ test("public Pages deployment converts fresh input after offline close and reope
     ["America/Los_Angeles", /1:20 am/i],
   ] as const) {
     await enterZone(page, zone);
-    await page.getByRole("button", { name: "Convert", exact: true }).click();
     await expect(page.locator(".hero-time")).toHaveText(expected);
     await expect(page.locator("main")).toHaveAttribute(
       "data-offline-ready",
@@ -41,7 +40,6 @@ test("public Pages deployment converts fresh input after offline close and reope
   );
   await expect(page.locator(".message.warning")).toHaveCount(0);
   await enterZone(page, "Europe/London");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toHaveText(/9:20 am/i);
   await page.close();
   await context.setOffline(true);
@@ -51,7 +49,6 @@ test("public Pages deployment converts fresh input after offline close and reope
   await reopened
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3:15:30pm in Tokyo");
-  await reopened.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(reopened.locator(".hero-time")).toHaveText(/6:15:30 am/i);
   expect(
     requests.every((url) =>

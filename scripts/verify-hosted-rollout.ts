@@ -78,7 +78,9 @@ try {
       page.locator('main[data-offline-ready="true"], .connection.ready'),
     ).toBeVisible();
     expect(await cachedCommit()).toBe(expected);
-    await page.getByRole("button", { name: "Convert", exact: true }).click();
+    // Retained pre-live releases require manual conversion during rollback.
+    const manual = page.getByRole("button", { name: "Convert", exact: true });
+    if (await manual.count()) await manual.click();
     await expect(page.locator(".hero-time")).toHaveText(/6:00 am/i);
     await page.close();
     await context.setOffline(true);
@@ -87,7 +89,11 @@ try {
     await page
       .getByLabel("Message with a date or time")
       .fill("July 15, 2026 9am in Tokyo");
-    await page.getByRole("button", { name: "Convert", exact: true }).click();
+    const offlineManual = page.getByRole("button", {
+      name: "Convert",
+      exact: true,
+    });
+    if (await offlineManual.count()) await offlineManual.click();
     await expect(page.locator(".hero-time")).toHaveText(/12:00 am/i);
     expect(await cachedCommit()).toBe(expected);
     report.stages.push({

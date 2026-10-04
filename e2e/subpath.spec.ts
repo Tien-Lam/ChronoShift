@@ -25,7 +25,6 @@ test("subpath scope, manifest and worker survive offline restart", async ({
   await reopened
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3pm in Tokyo");
-  await reopened.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(reopened.locator(".hero-time")).toHaveText(/6:00 am/i);
   await reopened.evaluate(() => {
     const form = document.createElement("form");

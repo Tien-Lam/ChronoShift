@@ -29,7 +29,6 @@ test("input and results avoid a vertical hinge and survive folding", async ({
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3pm in Tokyo");
   await enterZone(page, "UTC");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   await expect(page.locator(".hero-time")).toHaveText(/6:00 am/i);
   const input = await page.locator(".input-panel").boundingBox();
   const result = await page.locator(".result-panel").boundingBox();
@@ -94,7 +93,6 @@ test("tabletop posture confines the scrollable task to the upper screen", async 
   await page
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3pm UTC");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
   const copy = page.getByRole("button", { name: /^Copy / });
   await copy.scrollIntoViewIfNeeded();
   await expect(copy).toBeVisible();

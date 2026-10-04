@@ -48,7 +48,7 @@ For a reproducible existing-client proof, run `bun scripts/verify-hosted-rollout
 - `engine/parser.ts`: pinned Chrono English parsers with bounded military/shorthand/range extensions. No model download is required.
 - `engine/convert.ts`: injected reference clock, context, source zones, DST disambiguation, Unix seconds and deduplication. Target changes only reformat results.
 - `engine/time.ts`: bundled Temporal compatibility path plus browser Intl zone data; fixed offsets retain offset labels. Seconds and milliseconds are retained when present.
-- `engine/worker.ts`: a disposable worker per conversion with request IDs. Editing, clearing and source/date changes invalidate pending work.
+- `engine/worker.ts`: a disposable worker per conversion with request IDs. Draft and conversion-setting edits invalidate pending work synchronously; conversion starts automatically after a 250ms debounce, waits for IME composition to finish and recovers on the next edit. Import conflicts use a separate user-interaction version.
 - `App.tsx`: responsive accessible form/results, target/city lookup, clipboard and recovery paths.
 - `platform/`: versioned preference-only storage, service-worker readiness and short-lived share/update handoffs.
 - `sw-template.js` + `scripts/build-offline.ts`: atomic precache, cache-only supported navigation, explicit update activation and offline POST share interception.
