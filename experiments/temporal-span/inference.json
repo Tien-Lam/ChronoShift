@@ -1,0 +1,869 @@
+{
+  "measuredAt": "2026-10-04T08:26:30Z",
+  "holdoutSha256": "a1ed4d32553b09cabe6cef7df1575f8054ebdd71e81dcfb7f9d87596d1a232b3",
+  "environment": "Darwin/arm64, Python 3.13.16",
+  "packages": {
+    "gliner": "0.2.29",
+    "torch": "2.14.1",
+    "transformers": "4.57.6",
+    "onnx": "1.23.1",
+    "onnxruntime": "1.30.0",
+    "onnxscript": "0.7.2"
+  },
+  "method": "20 evaluation-only owned synthetic messages frozen and independently reviewed before inference; no training/dev split, threshold tuning or claim of representative/unseen-pretraining accuracy. Atomic explicit clock/date/timezone/city spans scored as sets. Spoken-clock desired extensions scored separately from supported launch cases. Native CPU FP32 inference is not browser/WASM or phone evidence.",
+  "labels": [
+    "date",
+    "time",
+    "timezone",
+    "city"
+  ],
+  "threshold": 0.3,
+  "predictions": [
+    {
+      "name": "explicit UTC invitation",
+      "family": "invite",
+      "nativeInferenceMs": 9.886291998554952,
+      "entities": [
+        {
+          "start": 14,
+          "end": 26,
+          "text": "18 June 2026",
+          "label": "date",
+          "score": 0.703788161277771,
+          "pythonStart": 14,
+          "pythonEnd": 26
+        },
+        {
+          "start": 30,
+          "end": 35,
+          "text": "09:45",
+          "label": "time",
+          "score": 0.4803326427936554,
+          "pythonStart": 30,
+          "pythonEnd": 35
+        },
+        {
+          "start": 36,
+          "end": 39,
+          "text": "UTC",
+          "label": "timezone",
+          "score": 0.8217960596084595,
+          "pythonStart": 36,
+          "pythonEnd": 39
+        }
+      ]
+    },
+    {
+      "name": "Tokyo design review",
+      "family": "city",
+      "nativeInferenceMs": 7.383457996184006,
+      "entities": [
+        {
+          "start": 15,
+          "end": 28,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.6803476214408875,
+          "pythonStart": 15,
+          "pythonEnd": 28
+        },
+        {
+          "start": 32,
+          "end": 38,
+          "text": "5:20pm",
+          "label": "time",
+          "score": 0.7287130951881409,
+          "pythonStart": 32,
+          "pythonEnd": 38
+        },
+        {
+          "start": 42,
+          "end": 47,
+          "text": "Tokyo",
+          "label": "city",
+          "score": 0.6431345343589783,
+          "pythonStart": 42,
+          "pythonEnd": 47
+        }
+      ]
+    },
+    {
+      "name": "regional Pacific summer",
+      "family": "regional",
+      "nativeInferenceMs": 6.998374999966472,
+      "entities": [
+        {
+          "start": 22,
+          "end": 35,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.6829099655151367,
+          "pythonStart": 22,
+          "pythonEnd": 35
+        },
+        {
+          "start": 36,
+          "end": 39,
+          "text": "2pm",
+          "label": "time",
+          "score": 0.5685941576957703,
+          "pythonStart": 36,
+          "pythonEnd": 39
+        },
+        {
+          "start": 40,
+          "end": 42,
+          "text": "PT",
+          "label": "timezone",
+          "score": 0.8448042273521423,
+          "pythonStart": 40,
+          "pythonEnd": 42
+        }
+      ]
+    },
+    {
+      "name": "quarter-hour offset invitation",
+      "family": "offset",
+      "nativeInferenceMs": 6.999082994298078,
+      "entities": [
+        {
+          "start": 0,
+          "end": 7,
+          "text": "Standup",
+          "label": "timezone",
+          "score": 0.3501204252243042,
+          "pythonStart": 0,
+          "pythonEnd": 7
+        },
+        {
+          "start": 8,
+          "end": 21,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.657551109790802,
+          "pythonStart": 8,
+          "pythonEnd": 21
+        },
+        {
+          "start": 22,
+          "end": 29,
+          "text": "10:15am",
+          "label": "time",
+          "score": 0.7191316485404968,
+          "pythonStart": 22,
+          "pythonEnd": 29
+        },
+        {
+          "start": 30,
+          "end": 33,
+          "text": "UTC",
+          "label": "timezone",
+          "score": 0.8676823377609253,
+          "pythonStart": 30,
+          "pythonEnd": 33
+        },
+        {
+          "start": 34,
+          "end": 36,
+          "text": "05",
+          "label": "time",
+          "score": 0.3609713912010193,
+          "pythonStart": 34,
+          "pythonEnd": 36
+        },
+        {
+          "start": 37,
+          "end": 39,
+          "text": "45",
+          "label": "time",
+          "score": 0.45467430353164673,
+          "pythonStart": 37,
+          "pythonEnd": 39
+        }
+      ]
+    },
+    {
+      "name": "two explicit slots",
+      "family": "multi-event",
+      "nativeInferenceMs": 7.133750012144446,
+      "entities": [
+        {
+          "start": 11,
+          "end": 24,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.6567347049713135,
+          "pythonStart": 11,
+          "pythonEnd": 24
+        },
+        {
+          "start": 28,
+          "end": 31,
+          "text": "9am",
+          "label": "time",
+          "score": 0.34441593289375305,
+          "pythonStart": 28,
+          "pythonEnd": 31
+        },
+        {
+          "start": 32,
+          "end": 35,
+          "text": "UTC",
+          "label": "timezone",
+          "score": 0.7965105175971985,
+          "pythonStart": 32,
+          "pythonEnd": 35
+        },
+        {
+          "start": 40,
+          "end": 44,
+          "text": "11am",
+          "label": "time",
+          "score": 0.4699232280254364,
+          "pythonStart": 40,
+          "pythonEnd": 44
+        },
+        {
+          "start": 45,
+          "end": 48,
+          "text": "UTC",
+          "label": "timezone",
+          "score": 0.8268389105796814,
+          "pythonStart": 45,
+          "pythonEnd": 48
+        }
+      ]
+    },
+    {
+      "name": "overnight coverage range",
+      "family": "range",
+      "nativeInferenceMs": 6.777125003281981,
+      "entities": [
+        {
+          "start": 17,
+          "end": 30,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.6493799686431885,
+          "pythonStart": 17,
+          "pythonEnd": 30
+        },
+        {
+          "start": 31,
+          "end": 36,
+          "text": "22:00",
+          "label": "time",
+          "score": 0.5581686496734619,
+          "pythonStart": 31,
+          "pythonEnd": 36
+        },
+        {
+          "start": 40,
+          "end": 45,
+          "text": "02:00",
+          "label": "time",
+          "score": 0.5336004495620728,
+          "pythonStart": 40,
+          "pythonEnd": 45
+        },
+        {
+          "start": 46,
+          "end": 49,
+          "text": "UTC",
+          "label": "timezone",
+          "score": 0.8612163662910461,
+          "pythonStart": 46,
+          "pythonEnd": 49
+        }
+      ]
+    },
+    {
+      "name": "CST alternatives",
+      "family": "ambiguity",
+      "nativeInferenceMs": 6.7659169872058555,
+      "entities": [
+        {
+          "start": 16,
+          "end": 29,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.5429672002792358,
+          "pythonStart": 16,
+          "pythonEnd": 29
+        },
+        {
+          "start": 30,
+          "end": 33,
+          "text": "7pm",
+          "label": "time",
+          "score": 0.49588921666145325,
+          "pythonStart": 30,
+          "pythonEnd": 33
+        },
+        {
+          "start": 34,
+          "end": 37,
+          "text": "CST",
+          "label": "timezone",
+          "score": 0.7810757160186768,
+          "pythonStart": 34,
+          "pythonEnd": 37
+        }
+      ]
+    },
+    {
+      "name": "relative invitation",
+      "family": "relative",
+      "nativeInferenceMs": 6.481749995145947,
+      "entities": [
+        {
+          "start": 5,
+          "end": 13,
+          "text": "tomorrow",
+          "label": "time",
+          "score": 0.5514941215515137,
+          "pythonStart": 5,
+          "pythonEnd": 13
+        },
+        {
+          "start": 17,
+          "end": 22,
+          "text": "07:10",
+          "label": "time",
+          "score": 0.5388485193252563,
+          "pythonStart": 17,
+          "pythonEnd": 22
+        },
+        {
+          "start": 23,
+          "end": 26,
+          "text": "UTC",
+          "label": "timezone",
+          "score": 0.8731367588043213,
+          "pythonStart": 23,
+          "pythonEnd": 26
+        }
+      ]
+    },
+    {
+      "name": "date-only release",
+      "family": "date-only",
+      "nativeInferenceMs": 6.750667002052069,
+      "entities": [
+        {
+          "start": 20,
+          "end": 33,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.6370900869369507,
+          "pythonStart": 20,
+          "pythonEnd": 33
+        }
+      ]
+    },
+    {
+      "name": "ISO log instant",
+      "family": "iso",
+      "nativeInferenceMs": 7.235874989419244,
+      "entities": [
+        {
+          "start": 19,
+          "end": 32,
+          "text": "2026-06-18T16",
+          "label": "date",
+          "score": 0.44923046231269836,
+          "pythonStart": 19,
+          "pythonEnd": 32
+        },
+        {
+          "start": 33,
+          "end": 38,
+          "text": "20:45",
+          "label": "time",
+          "score": 0.30519187450408936,
+          "pythonStart": 33,
+          "pythonEnd": 38
+        },
+        {
+          "start": 39,
+          "end": 44,
+          "text": "02:00",
+          "label": "time",
+          "score": 0.46868032217025757,
+          "pythonStart": 39,
+          "pythonEnd": 44
+        }
+      ]
+    },
+    {
+      "name": "version price ID negative",
+      "family": "negative",
+      "nativeInferenceMs": 7.058667004457675,
+      "entities": []
+    },
+    {
+      "name": "timezone word negative",
+      "family": "negative",
+      "nativeInferenceMs": 7.167749994550832,
+      "entities": [
+        {
+          "start": 7,
+          "end": 10,
+          "text": "CST",
+          "label": "timezone",
+          "score": 0.4022587835788727,
+          "pythonStart": 7,
+          "pythonEnd": 10
+        }
+      ]
+    },
+    {
+      "name": "vague deadline",
+      "family": "vague",
+      "nativeInferenceMs": 6.575666993740015,
+      "entities": [
+        {
+          "start": 0,
+          "end": 3,
+          "text": "EOD",
+          "label": "timezone",
+          "score": 0.3116476833820343,
+          "pythonStart": 0,
+          "pythonEnd": 3
+        }
+      ]
+    },
+    {
+      "name": "invalid offset",
+      "family": "invalid",
+      "nativeInferenceMs": 6.993167000473477,
+      "entities": [
+        {
+          "start": 0,
+          "end": 13,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.5947501063346863,
+          "pythonStart": 0,
+          "pythonEnd": 13
+        },
+        {
+          "start": 14,
+          "end": 17,
+          "text": "4pm",
+          "label": "time",
+          "score": 0.644626259803772,
+          "pythonStart": 14,
+          "pythonEnd": 17
+        },
+        {
+          "start": 18,
+          "end": 21,
+          "text": "UTC",
+          "label": "timezone",
+          "score": 0.8521324396133423,
+          "pythonStart": 18,
+          "pythonEnd": 21
+        },
+        {
+          "start": 22,
+          "end": 24,
+          "text": "08",
+          "label": "time",
+          "score": 0.38218361139297485,
+          "pythonStart": 22,
+          "pythonEnd": 24
+        },
+        {
+          "start": 25,
+          "end": 27,
+          "text": "79",
+          "label": "time",
+          "score": 0.43655404448509216,
+          "pythonStart": 25,
+          "pythonEnd": 27
+        }
+      ]
+    },
+    {
+      "name": "New York fold",
+      "family": "dst",
+      "nativeInferenceMs": 6.887291005114093,
+      "entities": [
+        {
+          "start": 0,
+          "end": 16,
+          "text": "November 1, 2026",
+          "label": "date",
+          "score": 0.6543272137641907,
+          "pythonStart": 0,
+          "pythonEnd": 16
+        },
+        {
+          "start": 20,
+          "end": 26,
+          "text": "1:20am",
+          "label": "time",
+          "score": 0.728963315486908,
+          "pythonStart": 20,
+          "pythonEnd": 26
+        },
+        {
+          "start": 35,
+          "end": 43,
+          "text": "New_York",
+          "label": "city",
+          "score": 0.4754982590675354,
+          "pythonStart": 35,
+          "pythonEnd": 43
+        }
+      ]
+    },
+    {
+      "name": "Berlin gap",
+      "family": "dst",
+      "nativeInferenceMs": 6.988833993091248,
+      "entities": [
+        {
+          "start": 0,
+          "end": 14,
+          "text": "March 29, 2026",
+          "label": "date",
+          "score": 0.6778371930122375,
+          "pythonStart": 0,
+          "pythonEnd": 14
+        },
+        {
+          "start": 18,
+          "end": 24,
+          "text": "2:15am",
+          "label": "time",
+          "score": 0.802596926689148,
+          "pythonStart": 18,
+          "pythonEnd": 24
+        },
+        {
+          "start": 28,
+          "end": 34,
+          "text": "Berlin",
+          "label": "city",
+          "score": 0.6908138394355774,
+          "pythonStart": 28,
+          "pythonEnd": 34
+        }
+      ]
+    },
+    {
+      "name": "unknown city",
+      "family": "invalid",
+      "nativeInferenceMs": 6.705916995997541,
+      "entities": [
+        {
+          "start": 0,
+          "end": 13,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.6012502312660217,
+          "pythonStart": 0,
+          "pythonEnd": 13
+        },
+        {
+          "start": 14,
+          "end": 17,
+          "text": "4pm",
+          "label": "time",
+          "score": 0.7064579129219055,
+          "pythonStart": 14,
+          "pythonEnd": 17
+        },
+        {
+          "start": 21,
+          "end": 29,
+          "text": "Atlantis",
+          "label": "city",
+          "score": 0.34374672174453735,
+          "pythonStart": 21,
+          "pythonEnd": 29
+        }
+      ]
+    },
+    {
+      "name": "cross-zone range",
+      "family": "range",
+      "nativeInferenceMs": 6.926290996489115,
+      "entities": [
+        {
+          "start": 0,
+          "end": 13,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.5789809823036194,
+          "pythonStart": 0,
+          "pythonEnd": 13
+        },
+        {
+          "start": 14,
+          "end": 17,
+          "text": "9am",
+          "label": "time",
+          "score": 0.8002485036849976,
+          "pythonStart": 14,
+          "pythonEnd": 17
+        },
+        {
+          "start": 21,
+          "end": 26,
+          "text": "Tokyo",
+          "label": "city",
+          "score": 0.7101295590400696,
+          "pythonStart": 21,
+          "pythonEnd": 26
+        },
+        {
+          "start": 30,
+          "end": 33,
+          "text": "9am",
+          "label": "time",
+          "score": 0.8001364469528198,
+          "pythonStart": 30,
+          "pythonEnd": 33
+        },
+        {
+          "start": 37,
+          "end": 43,
+          "text": "London",
+          "label": "city",
+          "score": 0.7253599762916565,
+          "pythonStart": 37,
+          "pythonEnd": 43
+        }
+      ]
+    },
+    {
+      "name": "spoken explicit PM clock",
+      "family": "spoken",
+      "nativeInferenceMs": 6.995666000875644,
+      "entities": [
+        {
+          "start": 15,
+          "end": 28,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.6962931156158447,
+          "pythonStart": 15,
+          "pythonEnd": 28
+        },
+        {
+          "start": 32,
+          "end": 49,
+          "text": "half past four pm",
+          "label": "time",
+          "score": 0.5662010908126831,
+          "pythonStart": 32,
+          "pythonEnd": 49
+        },
+        {
+          "start": 53,
+          "end": 58,
+          "text": "Tokyo",
+          "label": "city",
+          "score": 0.739160418510437,
+          "pythonStart": 53,
+          "pythonEnd": 58
+        }
+      ]
+    },
+    {
+      "name": "midday prose clock",
+      "family": "spoken",
+      "nativeInferenceMs": 6.79283300996758,
+      "entities": [
+        {
+          "start": 12,
+          "end": 25,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.6442967057228088,
+          "pythonStart": 12,
+          "pythonEnd": 25
+        },
+        {
+          "start": 29,
+          "end": 44,
+          "text": "quarter to noon",
+          "label": "time",
+          "score": 0.46507325768470764,
+          "pythonStart": 29,
+          "pythonEnd": 44
+        },
+        {
+          "start": 45,
+          "end": 48,
+          "text": "UTC",
+          "label": "timezone",
+          "score": 0.8667604327201843,
+          "pythonStart": 45,
+          "pythonEnd": 48
+        }
+      ]
+    }
+  ],
+  "exports": [
+    {
+      "mode": "fixed-label",
+      "fromLabelsEmbeddings": true,
+      "status": "failed",
+      "error": "TypeError: BaseGLiNER._build_dummy_batch() got an unexpected keyword argument 'from_labels_embeddings'",
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/tien/Developer/ChronoShift/experiments/temporal-span/infer.py\", line 86, in <module>\n    output = model.export_to_onnx(save_dir=str(target), labels=labels, quantize=True, **export_kwargs)\n  File \"/tmp/chronoshift-ml-env/lib/python3.13/site-packages/gliner/model.py\", line 2196, in export_to_onnx\n    wrapper, all_inputs, spec = self._prepare_export_graph(**export_kwargs)\n                                ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File \"/tmp/chronoshift-ml-env/lib/python3.13/site-packages/gliner/model.py\", line 2161, in _prepare_export_graph\n    batch = self._build_dummy_batch(**batch_kwargs)\nTypeError: BaseGLiNER._build_dummy_batch() got an unexpected keyword argument 'from_labels_embeddings'\n",
+      "elapsedMs": 0.44216700189281255
+    },
+    {
+      "mode": "full-label-encoder",
+      "fromLabelsEmbeddings": false,
+      "output": {
+        "onnx_path": "/tmp/chronoshift-ml-export/full-label-encoder/model.onnx",
+        "quantized_path": "/tmp/chronoshift-ml-export/full-label-encoder/model_quantized.onnx"
+      },
+      "files": [
+        {
+          "name": "gliner_config.json",
+          "bytes": 6615,
+          "sha256": "6821a49a1faf79fe28f1f1d6bdb4a1753d65d43d75499951b5341ca5444b5f89"
+        },
+        {
+          "name": "model.onnx",
+          "bytes": 239632030,
+          "sha256": "cf8054f959ed9ce0230dd366e8fc803c33bf3ef47f3f4e8e2a755ef1ad93aedb"
+        },
+        {
+          "name": "model_quantized.onnx",
+          "bytes": 60833113,
+          "sha256": "c25895f45307911c6bb25e79adf19798fc23bf9d0cd549f6635acc01197a9d2e"
+        },
+        {
+          "name": "special_tokens_map.json",
+          "bytes": 694,
+          "sha256": "ea97ecdbcc73713039d8d64dbb05e3689495c96657fbd9a18f5bed381be81049"
+        },
+        {
+          "name": "tokenizer.json",
+          "bytes": 3584034,
+          "sha256": "2315a8bea85452f3c4e8ce980f7853cac013820238e7776a4e48159037a5f164"
+        },
+        {
+          "name": "tokenizer_config.json",
+          "bytes": 21387,
+          "sha256": "10ad59000a06e8dc2d1837d6dc168cf64b506987cc4dc56764817581febcccf4"
+        }
+      ],
+      "status": "exported-not-browser-validated",
+      "elapsedMs": 1021.3579160044901
+    }
+  ],
+  "browserInference": "Not exercised: only a verified compatible graph could be tested in WASM.",
+  "model": {
+    "id": "knowledgator/gliner-bi-edge-v2.0",
+    "revision": "3a401e4902d93df04971c795fb1f42f37801aced",
+    "publishedFiles": [
+      {
+        "name": ".gitattributes",
+        "size": 1519,
+        "lfs": null
+      },
+      {
+        "name": "README.md",
+        "size": 12127,
+        "lfs": null
+      },
+      {
+        "name": "gliner_config.json",
+        "size": 6411,
+        "lfs": null
+      },
+      {
+        "name": "pytorch_model.bin",
+        "size": 243267415,
+        "lfs": {
+          "sha256": "185e0841b73fc671e2da60ce6f9be857abba9771d6424a1267b7908988be48b9",
+          "size": 243267415,
+          "pointerSize": 134
+        }
+      },
+      {
+        "name": "special_tokens_map.json",
+        "size": 694,
+        "lfs": null
+      },
+      {
+        "name": "tokenizer.json",
+        "size": 3583227,
+        "lfs": null
+      },
+      {
+        "name": "tokenizer_config.json",
+        "size": 20868,
+        "lfs": null
+      }
+    ]
+  },
+  "nativeModelLoadMs": 2733.162791002542,
+  "modelClass": "BiEncoderSpanGLiNER",
+  "parameters": 60800256,
+  "downloadedArtifacts": [
+    {
+      "snapshotPath": "models--knowledgator--gliner-bi-edge-v2.0/snapshots/3a401e4902d93df04971c795fb1f42f37801aced/.gitattributes",
+      "bytes": 1519,
+      "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361"
+    },
+    {
+      "snapshotPath": "models--knowledgator--gliner-bi-edge-v2.0/snapshots/3a401e4902d93df04971c795fb1f42f37801aced/README.md",
+      "bytes": 12127,
+      "sha256": "e07c865fda623a9a6892e4d153a18737681cb4fc20776e70ed0e1dfb1cb3b6be"
+    },
+    {
+      "snapshotPath": "models--knowledgator--gliner-bi-edge-v2.0/snapshots/3a401e4902d93df04971c795fb1f42f37801aced/gliner_config.json",
+      "bytes": 6411,
+      "sha256": "96437817871747d6301e6aede29d04a745b53992dfa554e06b2fb6de09540cf8"
+    },
+    {
+      "snapshotPath": "models--knowledgator--gliner-bi-edge-v2.0/snapshots/3a401e4902d93df04971c795fb1f42f37801aced/pytorch_model.bin",
+      "bytes": 243267415,
+      "sha256": "185e0841b73fc671e2da60ce6f9be857abba9771d6424a1267b7908988be48b9"
+    },
+    {
+      "snapshotPath": "models--knowledgator--gliner-bi-edge-v2.0/snapshots/3a401e4902d93df04971c795fb1f42f37801aced/special_tokens_map.json",
+      "bytes": 694,
+      "sha256": "ea97ecdbcc73713039d8d64dbb05e3689495c96657fbd9a18f5bed381be81049"
+    },
+    {
+      "snapshotPath": "models--knowledgator--gliner-bi-edge-v2.0/snapshots/3a401e4902d93df04971c795fb1f42f37801aced/tokenizer.json",
+      "bytes": 3583227,
+      "sha256": "bc2788d5ddc9e2ced5d7a6aa695b30bb0c56751e60fd65ac595b16b9f0784812"
+    },
+    {
+      "snapshotPath": "models--knowledgator--gliner-bi-edge-v2.0/snapshots/3a401e4902d93df04971c795fb1f42f37801aced/tokenizer_config.json",
+      "bytes": 20868,
+      "sha256": "9461a659e1103fb18ddc5fd0696137b0ff9891b15c8e9c79ef069d294846c278"
+    },
+    {
+      "snapshotPath": "models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/special_tokens_map.json",
+      "bytes": 112,
+      "sha256": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3"
+    },
+    {
+      "snapshotPath": "models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer.json",
+      "bytes": 466247,
+      "sha256": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"
+    },
+    {
+      "snapshotPath": "models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json",
+      "bytes": 350,
+      "sha256": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b"
+    },
+    {
+      "snapshotPath": "models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/vocab.txt",
+      "bytes": 231508,
+      "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+    }
+  ]
+}

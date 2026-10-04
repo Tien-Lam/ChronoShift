@@ -295,7 +295,6 @@ test("rollback preserves draft and preferences and removes obsolete caches with 
   await page.goto("/");
   await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
   await page.getByLabel("Appearance", { exact: true }).click();
-  await page.getByLabel("Design", { exact: true }).selectOption("command");
   await page.getByLabel("Theme", { exact: true }).selectOption("light");
   await page.getByLabel("Appearance", { exact: true }).click();
   for (const version of ["second", "third", "first"]) {

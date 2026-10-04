@@ -36,7 +36,7 @@ test("input and results avoid a vertical hinge and survive folding", async ({
   expect(result!.x).toBeGreaterThanOrEqual(424);
   expect(result!.x + result!.width).toBeLessThanOrEqual(824);
   await page.getByLabel("Appearance", { exact: true }).click();
-  await page.getByLabel("Design", { exact: true }).selectOption("command");
+  await page.getByLabel("Theme", { exact: true }).selectOption("light");
   await page.getByLabel("Appearance", { exact: true }).click();
   expect(
     (await page.locator(".input-panel").boundingBox())!.x +

@@ -1,0 +1,2734 @@
+{
+  "measuredAt": "2026-10-04T08:44:23.670Z",
+  "holdoutSha256": "a1ed4d32553b09cabe6cef7df1575f8054ebdd71e81dcfb7f9d87596d1a232b3",
+  "engineRevision": "d9109d0a14c0bb2d2c5d2d818c5179c884f56b98",
+  "method": "Production full-text deterministic conversion versus the same converter with two generic explicit spoken-clock normalization rules, versus those identical rules gated by real frozen-threshold native GLiNER TIME spans. Baseline full text remains available; no candidate is shipped. Rule scope was motivated by desired-extension gold, so control/hybrid results are exploratory and not an independent normalizer accuracy estimate. No training or model threshold tuning. Ordered instants/date-only/range endpoints and warning obligations are checked exactly; original indices are mapped across rewrites.",
+  "spanMetrics": {
+    "gold": 55,
+    "predicted": 61,
+    "truePositive": 48,
+    "precision": 0.7868852459016393,
+    "recall": 0.8727272727272727,
+    "f1": 0.8275862068965517
+  },
+  "launchStyle": {
+    "baseline": {
+      "messages": 18,
+      "exactMessages": 18,
+      "unexpectedInstantCount": 0,
+      "missingInstantCount": 0
+    },
+    "deterministicControl": {
+      "messages": 18,
+      "exactMessages": 18,
+      "unexpectedInstantCount": 0,
+      "missingInstantCount": 0
+    },
+    "mlGatedHybrid": {
+      "messages": 18,
+      "exactMessages": 18,
+      "unexpectedInstantCount": 0,
+      "missingInstantCount": 0
+    }
+  },
+  "desiredSpokenExtension": {
+    "baseline": {
+      "messages": 2,
+      "exactMessages": 0,
+      "unexpectedInstantCount": 0,
+      "missingInstantCount": 2
+    },
+    "deterministicControl": {
+      "messages": 2,
+      "exactMessages": 2,
+      "unexpectedInstantCount": 0,
+      "missingInstantCount": 0
+    },
+    "mlGatedHybrid": {
+      "messages": 2,
+      "exactMessages": 2,
+      "unexpectedInstantCount": 0,
+      "missingInstantCount": 0
+    }
+  },
+  "cases": [
+    {
+      "name": "explicit UTC invitation",
+      "family": "invite",
+      "text": "Launch sync — 18 June 2026 at 09:45 UTC.",
+      "gold": {
+        "instants": [
+          "2026-06-18T09:45:00Z"
+        ],
+        "dates": [],
+        "endpoints": null,
+        "warning": null,
+        "spans": [
+          {
+            "text": "18 June 2026",
+            "label": "date",
+            "start": 14,
+            "end": 26
+          },
+          {
+            "text": "09:45",
+            "label": "time",
+            "start": 30,
+            "end": 35
+          },
+          {
+            "text": "UTC",
+            "label": "timezone",
+            "start": 36,
+            "end": 39
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 14,
+          "end": 26,
+          "text": "18 June 2026",
+          "label": "date",
+          "score": 0.703788161277771,
+          "pythonStart": 14,
+          "pythonEnd": 26
+        },
+        {
+          "start": 30,
+          "end": 35,
+          "text": "09:45",
+          "label": "time",
+          "score": 0.4803326427936554,
+          "pythonStart": 30,
+          "pythonEnd": 35
+        },
+        {
+          "start": 36,
+          "end": 39,
+          "text": "UTC",
+          "label": "timezone",
+          "score": 0.8217960596084595,
+          "pythonStart": 36,
+          "pythonEnd": 39
+        }
+      ],
+      "nativeInferenceMs": 9.886291998554952,
+      "baseline": {
+        "results": [
+          {
+            "instant": "2026-06-18T09:45:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 14,
+            "original": "18 June 2026 at 09:45 UTC"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [
+          {
+            "instant": "2026-06-18T09:45:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 14,
+            "original": "18 June 2026 at 09:45 UTC"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [
+          {
+            "instant": "2026-06-18T09:45:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 14,
+            "original": "18 June 2026 at 09:45 UTC"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "Tokyo design review",
+      "family": "city",
+      "text": "Design review: June 18, 2026 at 5:20pm in Tokyo.",
+      "gold": {
+        "instants": [
+          "2026-06-18T08:20:00Z"
+        ],
+        "dates": [],
+        "endpoints": null,
+        "warning": null,
+        "spans": [
+          {
+            "text": "June 18, 2026",
+            "label": "date",
+            "start": 15,
+            "end": 28
+          },
+          {
+            "text": "5:20pm",
+            "label": "time",
+            "start": 32,
+            "end": 38
+          },
+          {
+            "text": "Tokyo",
+            "label": "city",
+            "start": 42,
+            "end": 47
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 15,
+          "end": 28,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.6803476214408875,
+          "pythonStart": 15,
+          "pythonEnd": 28
+        },
+        {
+          "start": 32,
+          "end": 38,
+          "text": "5:20pm",
+          "label": "time",
+          "score": 0.7287130951881409,
+          "pythonStart": 32,
+          "pythonEnd": 38
+        },
+        {
+          "start": 42,
+          "end": 47,
+          "text": "Tokyo",
+          "label": "city",
+          "score": 0.6431345343589783,
+          "pythonStart": 42,
+          "pythonEnd": 47
+        }
+      ],
+      "nativeInferenceMs": 7.383457996184006,
+      "baseline": {
+        "results": [
+          {
+            "instant": "2026-06-18T08:20:00Z",
+            "dateOnly": null,
+            "sourceZone": "Asia/Tokyo",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 15,
+            "original": "June 18, 2026 at 5:20pm in Tokyo"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [
+          {
+            "instant": "2026-06-18T08:20:00Z",
+            "dateOnly": null,
+            "sourceZone": "Asia/Tokyo",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 15,
+            "original": "June 18, 2026 at 5:20pm in Tokyo"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [
+          {
+            "instant": "2026-06-18T08:20:00Z",
+            "dateOnly": null,
+            "sourceZone": "Asia/Tokyo",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 15,
+            "original": "June 18, 2026 at 5:20pm in Tokyo"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "regional Pacific summer",
+      "family": "regional",
+      "text": "Office-hours reminder\nJune 18, 2026 2pm PT.",
+      "gold": {
+        "instants": [
+          "2026-06-18T21:00:00Z"
+        ],
+        "dates": [],
+        "endpoints": null,
+        "warning": null,
+        "spans": [
+          {
+            "text": "June 18, 2026",
+            "label": "date",
+            "start": 22,
+            "end": 35
+          },
+          {
+            "text": "2pm",
+            "label": "time",
+            "start": 36,
+            "end": 39
+          },
+          {
+            "text": "PT",
+            "label": "timezone",
+            "start": 40,
+            "end": 42
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 22,
+          "end": 35,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.6829099655151367,
+          "pythonStart": 22,
+          "pythonEnd": 35
+        },
+        {
+          "start": 36,
+          "end": 39,
+          "text": "2pm",
+          "label": "time",
+          "score": 0.5685941576957703,
+          "pythonStart": 36,
+          "pythonEnd": 39
+        },
+        {
+          "start": 40,
+          "end": 42,
+          "text": "PT",
+          "label": "timezone",
+          "score": 0.8448042273521423,
+          "pythonStart": 40,
+          "pythonEnd": 42
+        }
+      ],
+      "nativeInferenceMs": 6.998374999966472,
+      "baseline": {
+        "results": [
+          {
+            "instant": "2026-06-18T21:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "America/Los_Angeles",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 22,
+            "original": "June 18, 2026 2pm PT"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [
+          {
+            "instant": "2026-06-18T21:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "America/Los_Angeles",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 22,
+            "original": "June 18, 2026 2pm PT"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [
+          {
+            "instant": "2026-06-18T21:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "America/Los_Angeles",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 22,
+            "original": "June 18, 2026 2pm PT"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "quarter-hour offset invitation",
+      "family": "offset",
+      "text": "Standup June 18, 2026 10:15am UTC+05:45.",
+      "gold": {
+        "instants": [
+          "2026-06-18T04:30:00Z"
+        ],
+        "dates": [],
+        "endpoints": null,
+        "warning": null,
+        "spans": [
+          {
+            "text": "June 18, 2026",
+            "label": "date",
+            "start": 8,
+            "end": 21
+          },
+          {
+            "text": "10:15am",
+            "label": "time",
+            "start": 22,
+            "end": 29
+          },
+          {
+            "text": "UTC+05:45",
+            "label": "timezone",
+            "start": 30,
+            "end": 39
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 0,
+          "end": 7,
+          "text": "Standup",
+          "label": "timezone",
+          "score": 0.3501204252243042,
+          "pythonStart": 0,
+          "pythonEnd": 7
+        },
+        {
+          "start": 8,
+          "end": 21,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.657551109790802,
+          "pythonStart": 8,
+          "pythonEnd": 21
+        },
+        {
+          "start": 22,
+          "end": 29,
+          "text": "10:15am",
+          "label": "time",
+          "score": 0.7191316485404968,
+          "pythonStart": 22,
+          "pythonEnd": 29
+        },
+        {
+          "start": 30,
+          "end": 33,
+          "text": "UTC",
+          "label": "timezone",
+          "score": 0.8676823377609253,
+          "pythonStart": 30,
+          "pythonEnd": 33
+        },
+        {
+          "start": 34,
+          "end": 36,
+          "text": "05",
+          "label": "time",
+          "score": 0.3609713912010193,
+          "pythonStart": 34,
+          "pythonEnd": 36
+        },
+        {
+          "start": 37,
+          "end": 39,
+          "text": "45",
+          "label": "time",
+          "score": 0.45467430353164673,
+          "pythonStart": 37,
+          "pythonEnd": 39
+        }
+      ],
+      "nativeInferenceMs": 6.999082994298078,
+      "baseline": {
+        "results": [
+          {
+            "instant": "2026-06-18T04:30:00Z",
+            "dateOnly": null,
+            "sourceZone": "+05:45",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 8,
+            "original": "June 18, 2026 10:15am UTC+05:45"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [
+          {
+            "instant": "2026-06-18T04:30:00Z",
+            "dateOnly": null,
+            "sourceZone": "+05:45",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 8,
+            "original": "June 18, 2026 10:15am UTC+05:45"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [
+          {
+            "instant": "2026-06-18T04:30:00Z",
+            "dateOnly": null,
+            "sourceZone": "+05:45",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 8,
+            "original": "June 18, 2026 10:15am UTC+05:45"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "two explicit slots",
+      "family": "multi-event",
+      "text": "Two slots: June 18, 2026 at 9am UTC and 11am UTC.",
+      "gold": {
+        "instants": [
+          "2026-06-18T09:00:00Z",
+          "2026-06-18T11:00:00Z"
+        ],
+        "dates": [],
+        "endpoints": null,
+        "warning": null,
+        "spans": [
+          {
+            "text": "June 18, 2026",
+            "label": "date",
+            "start": 11,
+            "end": 24
+          },
+          {
+            "text": "9am",
+            "label": "time",
+            "start": 28,
+            "end": 31
+          },
+          {
+            "text": "11am",
+            "label": "time",
+            "start": 40,
+            "end": 44
+          },
+          {
+            "text": "UTC",
+            "label": "timezone",
+            "start": 32,
+            "end": 35
+          },
+          {
+            "text": "UTC",
+            "label": "timezone",
+            "start": 45,
+            "end": 48
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 11,
+          "end": 24,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.6567347049713135,
+          "pythonStart": 11,
+          "pythonEnd": 24
+        },
+        {
+          "start": 28,
+          "end": 31,
+          "text": "9am",
+          "label": "time",
+          "score": 0.34441593289375305,
+          "pythonStart": 28,
+          "pythonEnd": 31
+        },
+        {
+          "start": 32,
+          "end": 35,
+          "text": "UTC",
+          "label": "timezone",
+          "score": 0.7965105175971985,
+          "pythonStart": 32,
+          "pythonEnd": 35
+        },
+        {
+          "start": 40,
+          "end": 44,
+          "text": "11am",
+          "label": "time",
+          "score": 0.4699232280254364,
+          "pythonStart": 40,
+          "pythonEnd": 44
+        },
+        {
+          "start": 45,
+          "end": 48,
+          "text": "UTC",
+          "label": "timezone",
+          "score": 0.8268389105796814,
+          "pythonStart": 45,
+          "pythonEnd": 48
+        }
+      ],
+      "nativeInferenceMs": 7.133750012144446,
+      "baseline": {
+        "results": [
+          {
+            "instant": "2026-06-18T09:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 11,
+            "original": "June 18, 2026 at 9am UTC"
+          },
+          {
+            "instant": "2026-06-18T11:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 40,
+            "original": "11am UTC"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [
+          {
+            "instant": "2026-06-18T09:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 11,
+            "original": "June 18, 2026 at 9am UTC"
+          },
+          {
+            "instant": "2026-06-18T11:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 40,
+            "original": "11am UTC"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [
+          {
+            "instant": "2026-06-18T09:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 11,
+            "original": "June 18, 2026 at 9am UTC"
+          },
+          {
+            "instant": "2026-06-18T11:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 40,
+            "original": "11am UTC"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "overnight coverage range",
+      "family": "range",
+      "text": "Coverage window: June 18, 2026 22:00 to 02:00 UTC.",
+      "gold": {
+        "instants": [
+          "2026-06-18T22:00:00Z",
+          "2026-06-19T02:00:00Z"
+        ],
+        "dates": [],
+        "endpoints": [
+          "start",
+          "end"
+        ],
+        "warning": null,
+        "spans": [
+          {
+            "text": "June 18, 2026",
+            "label": "date",
+            "start": 17,
+            "end": 30
+          },
+          {
+            "text": "22:00",
+            "label": "time",
+            "start": 31,
+            "end": 36
+          },
+          {
+            "text": "02:00",
+            "label": "time",
+            "start": 40,
+            "end": 45
+          },
+          {
+            "text": "UTC",
+            "label": "timezone",
+            "start": 46,
+            "end": 49
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 17,
+          "end": 30,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.6493799686431885,
+          "pythonStart": 17,
+          "pythonEnd": 30
+        },
+        {
+          "start": 31,
+          "end": 36,
+          "text": "22:00",
+          "label": "time",
+          "score": 0.5581686496734619,
+          "pythonStart": 31,
+          "pythonEnd": 36
+        },
+        {
+          "start": 40,
+          "end": 45,
+          "text": "02:00",
+          "label": "time",
+          "score": 0.5336004495620728,
+          "pythonStart": 40,
+          "pythonEnd": 45
+        },
+        {
+          "start": 46,
+          "end": 49,
+          "text": "UTC",
+          "label": "timezone",
+          "score": 0.8612163662910461,
+          "pythonStart": 46,
+          "pythonEnd": 49
+        }
+      ],
+      "nativeInferenceMs": 6.777125003281981,
+      "baseline": {
+        "results": [
+          {
+            "instant": "2026-06-18T22:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": "start",
+            "sourceIndex": 17,
+            "original": "June 18, 2026 22:00 to 02:00 UTC"
+          },
+          {
+            "instant": "2026-06-19T02:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": "end",
+            "sourceIndex": 17,
+            "original": "June 18, 2026 22:00 to 02:00 UTC"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": true,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [
+          {
+            "instant": "2026-06-18T22:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": "start",
+            "sourceIndex": 17,
+            "original": "June 18, 2026 22:00 to 02:00 UTC"
+          },
+          {
+            "instant": "2026-06-19T02:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": "end",
+            "sourceIndex": 17,
+            "original": "June 18, 2026 22:00 to 02:00 UTC"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": true,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [
+          {
+            "instant": "2026-06-18T22:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": "start",
+            "sourceIndex": 17,
+            "original": "June 18, 2026 22:00 to 02:00 UTC"
+          },
+          {
+            "instant": "2026-06-19T02:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": "end",
+            "sourceIndex": 17,
+            "original": "June 18, 2026 22:00 to 02:00 UTC"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": true,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "CST alternatives",
+      "family": "ambiguity",
+      "text": "Pick a reading: June 18, 2026 7pm CST.",
+      "gold": {
+        "instants": [
+          "2026-06-19T01:00:00Z",
+          "2026-06-18T11:00:00Z"
+        ],
+        "dates": [],
+        "endpoints": null,
+        "warning": null,
+        "spans": [
+          {
+            "text": "June 18, 2026",
+            "label": "date",
+            "start": 16,
+            "end": 29
+          },
+          {
+            "text": "7pm",
+            "label": "time",
+            "start": 30,
+            "end": 33
+          },
+          {
+            "text": "CST",
+            "label": "timezone",
+            "start": 34,
+            "end": 37
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 16,
+          "end": 29,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.5429672002792358,
+          "pythonStart": 16,
+          "pythonEnd": 29
+        },
+        {
+          "start": 30,
+          "end": 33,
+          "text": "7pm",
+          "label": "time",
+          "score": 0.49588921666145325,
+          "pythonStart": 30,
+          "pythonEnd": 33
+        },
+        {
+          "start": 34,
+          "end": 37,
+          "text": "CST",
+          "label": "timezone",
+          "score": 0.7810757160186768,
+          "pythonStart": 34,
+          "pythonEnd": 37
+        }
+      ],
+      "nativeInferenceMs": 6.7659169872058555,
+      "baseline": {
+        "results": [
+          {
+            "instant": "2026-06-19T01:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "-06:00",
+            "interpretation": "US Central Standard",
+            "endpoint": null,
+            "sourceIndex": 16,
+            "original": "June 18, 2026 7pm CST"
+          },
+          {
+            "instant": "2026-06-18T11:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "+08:00",
+            "interpretation": "China Standard",
+            "endpoint": null,
+            "sourceIndex": 16,
+            "original": "June 18, 2026 7pm CST"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [
+          {
+            "instant": "2026-06-19T01:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "-06:00",
+            "interpretation": "US Central Standard",
+            "endpoint": null,
+            "sourceIndex": 16,
+            "original": "June 18, 2026 7pm CST"
+          },
+          {
+            "instant": "2026-06-18T11:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "+08:00",
+            "interpretation": "China Standard",
+            "endpoint": null,
+            "sourceIndex": 16,
+            "original": "June 18, 2026 7pm CST"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [
+          {
+            "instant": "2026-06-19T01:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "-06:00",
+            "interpretation": "US Central Standard",
+            "endpoint": null,
+            "sourceIndex": 16,
+            "original": "June 18, 2026 7pm CST"
+          },
+          {
+            "instant": "2026-06-18T11:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "+08:00",
+            "interpretation": "China Standard",
+            "endpoint": null,
+            "sourceIndex": 16,
+            "original": "June 18, 2026 7pm CST"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "relative invitation",
+      "family": "relative",
+      "text": "Join tomorrow at 07:10 UTC.",
+      "gold": {
+        "instants": [
+          "2026-06-16T07:10:00Z"
+        ],
+        "dates": [],
+        "endpoints": null,
+        "warning": null,
+        "spans": [
+          {
+            "text": "tomorrow",
+            "label": "date",
+            "start": 5,
+            "end": 13
+          },
+          {
+            "text": "07:10",
+            "label": "time",
+            "start": 17,
+            "end": 22
+          },
+          {
+            "text": "UTC",
+            "label": "timezone",
+            "start": 23,
+            "end": 26
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 5,
+          "end": 13,
+          "text": "tomorrow",
+          "label": "time",
+          "score": 0.5514941215515137,
+          "pythonStart": 5,
+          "pythonEnd": 13
+        },
+        {
+          "start": 17,
+          "end": 22,
+          "text": "07:10",
+          "label": "time",
+          "score": 0.5388485193252563,
+          "pythonStart": 17,
+          "pythonEnd": 22
+        },
+        {
+          "start": 23,
+          "end": 26,
+          "text": "UTC",
+          "label": "timezone",
+          "score": 0.8731367588043213,
+          "pythonStart": 23,
+          "pythonEnd": 26
+        }
+      ],
+      "nativeInferenceMs": 6.481749995145947,
+      "baseline": {
+        "results": [
+          {
+            "instant": "2026-06-16T07:10:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 5,
+            "original": "tomorrow at 07:10 UTC"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [
+          {
+            "instant": "2026-06-16T07:10:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 5,
+            "original": "tomorrow at 07:10 UTC"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [
+          {
+            "instant": "2026-06-16T07:10:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 5,
+            "original": "tomorrow at 07:10 UTC"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "date-only release",
+      "family": "date-only",
+      "text": "The release date is June 18, 2026.",
+      "gold": {
+        "instants": [],
+        "dates": [
+          "2026-06-18"
+        ],
+        "endpoints": null,
+        "warning": null,
+        "spans": [
+          {
+            "text": "June 18, 2026",
+            "label": "date",
+            "start": 20,
+            "end": 33
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 20,
+          "end": 33,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.6370900869369507,
+          "pythonStart": 20,
+          "pythonEnd": 33
+        }
+      ],
+      "nativeInferenceMs": 6.750667002052069,
+      "baseline": {
+        "results": [
+          {
+            "instant": null,
+            "dateOnly": "2026-06-18",
+            "sourceZone": "UTC",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 20,
+            "original": "June 18, 2026"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [
+          {
+            "instant": null,
+            "dateOnly": "2026-06-18",
+            "sourceZone": "UTC",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 20,
+            "original": "June 18, 2026"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [
+          {
+            "instant": null,
+            "dateOnly": "2026-06-18",
+            "sourceZone": "UTC",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 20,
+            "original": "June 18, 2026"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "ISO log instant",
+      "family": "iso",
+      "text": "Logging stopped at 2026-06-18T16:20:45+02:00.",
+      "gold": {
+        "instants": [
+          "2026-06-18T14:20:45Z"
+        ],
+        "dates": [],
+        "endpoints": null,
+        "warning": null,
+        "spans": [
+          {
+            "text": "2026-06-18",
+            "label": "date",
+            "start": 19,
+            "end": 29
+          },
+          {
+            "text": "16:20:45",
+            "label": "time",
+            "start": 30,
+            "end": 38
+          },
+          {
+            "text": "+02:00",
+            "label": "timezone",
+            "start": 38,
+            "end": 44
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 19,
+          "end": 32,
+          "text": "2026-06-18T16",
+          "label": "date",
+          "score": 0.44923046231269836,
+          "pythonStart": 19,
+          "pythonEnd": 32
+        },
+        {
+          "start": 33,
+          "end": 38,
+          "text": "20:45",
+          "label": "time",
+          "score": 0.30519187450408936,
+          "pythonStart": 33,
+          "pythonEnd": 38
+        },
+        {
+          "start": 39,
+          "end": 44,
+          "text": "02:00",
+          "label": "time",
+          "score": 0.46868032217025757,
+          "pythonStart": 39,
+          "pythonEnd": 44
+        }
+      ],
+      "nativeInferenceMs": 7.235874989419244,
+      "baseline": {
+        "results": [
+          {
+            "instant": "2026-06-18T14:20:45Z",
+            "dateOnly": null,
+            "sourceZone": "+02:00",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 19,
+            "original": "2026-06-18T16:20:45+02:00"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [
+          {
+            "instant": "2026-06-18T14:20:45Z",
+            "dateOnly": null,
+            "sourceZone": "+02:00",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 19,
+            "original": "2026-06-18T16:20:45+02:00"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [
+          {
+            "instant": "2026-06-18T14:20:45Z",
+            "dateOnly": null,
+            "sourceZone": "+02:00",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 19,
+            "original": "2026-06-18T16:20:45+02:00"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "version price ID negative",
+      "family": "negative",
+      "text": "Release v2.14.6 costs $35.00; ticket ID 77881233.",
+      "gold": {
+        "instants": [],
+        "dates": [],
+        "endpoints": null,
+        "warning": null,
+        "spans": []
+      },
+      "realModelSpans": [],
+      "nativeInferenceMs": 7.058667004457675,
+      "baseline": {
+        "results": [],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "timezone word negative",
+      "family": "negative",
+      "text": "We use CST as a column heading; no meeting is scheduled.",
+      "gold": {
+        "instants": [],
+        "dates": [],
+        "endpoints": null,
+        "warning": null,
+        "spans": [
+          {
+            "text": "CST",
+            "label": "timezone",
+            "start": 7,
+            "end": 10
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 7,
+          "end": 10,
+          "text": "CST",
+          "label": "timezone",
+          "score": 0.4022587835788727,
+          "pythonStart": 7,
+          "pythonEnd": 10
+        }
+      ],
+      "nativeInferenceMs": 7.167749994550832,
+      "baseline": {
+        "results": [],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "vague deadline",
+      "family": "vague",
+      "text": "EOD for the patch.",
+      "gold": {
+        "instants": [],
+        "dates": [],
+        "endpoints": null,
+        "warning": "does not specify a clock time",
+        "spans": []
+      },
+      "realModelSpans": [
+        {
+          "start": 0,
+          "end": 3,
+          "text": "EOD",
+          "label": "timezone",
+          "score": 0.3116476833820343,
+          "pythonStart": 0,
+          "pythonEnd": 3
+        }
+      ],
+      "nativeInferenceMs": 6.575666993740015,
+      "baseline": {
+        "results": [],
+        "warnings": [
+          "EOD/COB does not specify a clock time. Replace it with the intended time."
+        ],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": true,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [],
+        "warnings": [
+          "EOD/COB does not specify a clock time. Replace it with the intended time."
+        ],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": true,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [],
+        "warnings": [
+          "EOD/COB does not specify a clock time. Replace it with the intended time."
+        ],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": true,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "invalid offset",
+      "family": "invalid",
+      "text": "June 18, 2026 4pm UTC+08:79.",
+      "gold": {
+        "instants": [],
+        "dates": [],
+        "endpoints": null,
+        "warning": "Invalid timezone offset",
+        "spans": [
+          {
+            "text": "June 18, 2026",
+            "label": "date",
+            "start": 0,
+            "end": 13
+          },
+          {
+            "text": "4pm",
+            "label": "time",
+            "start": 14,
+            "end": 17
+          },
+          {
+            "text": "UTC+08:79",
+            "label": "timezone",
+            "start": 18,
+            "end": 27
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 0,
+          "end": 13,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.5947501063346863,
+          "pythonStart": 0,
+          "pythonEnd": 13
+        },
+        {
+          "start": 14,
+          "end": 17,
+          "text": "4pm",
+          "label": "time",
+          "score": 0.644626259803772,
+          "pythonStart": 14,
+          "pythonEnd": 17
+        },
+        {
+          "start": 18,
+          "end": 21,
+          "text": "UTC",
+          "label": "timezone",
+          "score": 0.8521324396133423,
+          "pythonStart": 18,
+          "pythonEnd": 21
+        },
+        {
+          "start": 22,
+          "end": 24,
+          "text": "08",
+          "label": "time",
+          "score": 0.38218361139297485,
+          "pythonStart": 22,
+          "pythonEnd": 24
+        },
+        {
+          "start": 25,
+          "end": 27,
+          "text": "79",
+          "label": "time",
+          "score": 0.43655404448509216,
+          "pythonStart": 25,
+          "pythonEnd": 27
+        }
+      ],
+      "nativeInferenceMs": 6.993167000473477,
+      "baseline": {
+        "results": [],
+        "warnings": [
+          "Invalid timezone offset UTC+08:79. Correct it and try again."
+        ],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": true,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [],
+        "warnings": [
+          "Invalid timezone offset UTC+08:79. Correct it and try again."
+        ],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": true,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [],
+        "warnings": [
+          "Invalid timezone offset UTC+08:79. Correct it and try again."
+        ],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": true,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "New York fold",
+      "family": "dst",
+      "text": "November 1, 2026 at 1:20am America/New_York.",
+      "gold": {
+        "instants": [
+          "2026-11-01T05:20:00Z",
+          "2026-11-01T06:20:00Z"
+        ],
+        "dates": [],
+        "endpoints": null,
+        "warning": null,
+        "spans": [
+          {
+            "text": "November 1, 2026",
+            "label": "date",
+            "start": 0,
+            "end": 16
+          },
+          {
+            "text": "1:20am",
+            "label": "time",
+            "start": 20,
+            "end": 26
+          },
+          {
+            "text": "America/New_York",
+            "label": "timezone",
+            "start": 27,
+            "end": 43
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 0,
+          "end": 16,
+          "text": "November 1, 2026",
+          "label": "date",
+          "score": 0.6543272137641907,
+          "pythonStart": 0,
+          "pythonEnd": 16
+        },
+        {
+          "start": 20,
+          "end": 26,
+          "text": "1:20am",
+          "label": "time",
+          "score": 0.728963315486908,
+          "pythonStart": 20,
+          "pythonEnd": 26
+        },
+        {
+          "start": 35,
+          "end": 43,
+          "text": "New_York",
+          "label": "city",
+          "score": 0.4754982590675354,
+          "pythonStart": 35,
+          "pythonEnd": 43
+        }
+      ],
+      "nativeInferenceMs": 6.887291005114093,
+      "baseline": {
+        "results": [
+          {
+            "instant": "2026-11-01T05:20:00Z",
+            "dateOnly": null,
+            "sourceZone": "America/New_York",
+            "interpretation": "First occurrence (clocks move back)",
+            "endpoint": null,
+            "sourceIndex": 0,
+            "original": "November 1, 2026 at 1:20am America/New_York"
+          },
+          {
+            "instant": "2026-11-01T06:20:00Z",
+            "dateOnly": null,
+            "sourceZone": "America/New_York",
+            "interpretation": "Second occurrence (clocks move back)",
+            "endpoint": null,
+            "sourceIndex": 0,
+            "original": "November 1, 2026 at 1:20am America/New_York"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [
+          {
+            "instant": "2026-11-01T05:20:00Z",
+            "dateOnly": null,
+            "sourceZone": "America/New_York",
+            "interpretation": "First occurrence (clocks move back)",
+            "endpoint": null,
+            "sourceIndex": 0,
+            "original": "November 1, 2026 at 1:20am America/New_York"
+          },
+          {
+            "instant": "2026-11-01T06:20:00Z",
+            "dateOnly": null,
+            "sourceZone": "America/New_York",
+            "interpretation": "Second occurrence (clocks move back)",
+            "endpoint": null,
+            "sourceIndex": 0,
+            "original": "November 1, 2026 at 1:20am America/New_York"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [
+          {
+            "instant": "2026-11-01T05:20:00Z",
+            "dateOnly": null,
+            "sourceZone": "America/New_York",
+            "interpretation": "First occurrence (clocks move back)",
+            "endpoint": null,
+            "sourceIndex": 0,
+            "original": "November 1, 2026 at 1:20am America/New_York"
+          },
+          {
+            "instant": "2026-11-01T06:20:00Z",
+            "dateOnly": null,
+            "sourceZone": "America/New_York",
+            "interpretation": "Second occurrence (clocks move back)",
+            "endpoint": null,
+            "sourceIndex": 0,
+            "original": "November 1, 2026 at 1:20am America/New_York"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "Berlin gap",
+      "family": "dst",
+      "text": "March 29, 2026 at 2:15am in Berlin.",
+      "gold": {
+        "instants": [],
+        "dates": [],
+        "endpoints": null,
+        "warning": "doesn't exist",
+        "spans": [
+          {
+            "text": "March 29, 2026",
+            "label": "date",
+            "start": 0,
+            "end": 14
+          },
+          {
+            "text": "2:15am",
+            "label": "time",
+            "start": 18,
+            "end": 24
+          },
+          {
+            "text": "Berlin",
+            "label": "city",
+            "start": 28,
+            "end": 34
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 0,
+          "end": 14,
+          "text": "March 29, 2026",
+          "label": "date",
+          "score": 0.6778371930122375,
+          "pythonStart": 0,
+          "pythonEnd": 14
+        },
+        {
+          "start": 18,
+          "end": 24,
+          "text": "2:15am",
+          "label": "time",
+          "score": 0.802596926689148,
+          "pythonStart": 18,
+          "pythonEnd": 24
+        },
+        {
+          "start": 28,
+          "end": 34,
+          "text": "Berlin",
+          "label": "city",
+          "score": 0.6908138394355774,
+          "pythonStart": 28,
+          "pythonEnd": 34
+        }
+      ],
+      "nativeInferenceMs": 6.988833993091248,
+      "baseline": {
+        "results": [],
+        "warnings": [
+          "2026-03-29 02:15:00 doesn't exist in Berlin because the clocks move forward. Edit the time or choose a source timezone."
+        ],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": true,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [],
+        "warnings": [
+          "2026-03-29 02:15:00 doesn't exist in Berlin because the clocks move forward. Edit the time or choose a source timezone."
+        ],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": true,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [],
+        "warnings": [
+          "2026-03-29 02:15:00 doesn't exist in Berlin because the clocks move forward. Edit the time or choose a source timezone."
+        ],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": true,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "unknown city",
+      "family": "invalid",
+      "text": "June 18, 2026 4pm in Atlantis.",
+      "gold": {
+        "instants": [],
+        "dates": [],
+        "endpoints": null,
+        "warning": "Couldn't identify the city",
+        "spans": [
+          {
+            "text": "June 18, 2026",
+            "label": "date",
+            "start": 0,
+            "end": 13
+          },
+          {
+            "text": "4pm",
+            "label": "time",
+            "start": 14,
+            "end": 17
+          },
+          {
+            "text": "Atlantis",
+            "label": "city",
+            "start": 21,
+            "end": 29
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 0,
+          "end": 13,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.6012502312660217,
+          "pythonStart": 0,
+          "pythonEnd": 13
+        },
+        {
+          "start": 14,
+          "end": 17,
+          "text": "4pm",
+          "label": "time",
+          "score": 0.7064579129219055,
+          "pythonStart": 14,
+          "pythonEnd": 17
+        },
+        {
+          "start": 21,
+          "end": 29,
+          "text": "Atlantis",
+          "label": "city",
+          "score": 0.34374672174453735,
+          "pythonStart": 21,
+          "pythonEnd": 29
+        }
+      ],
+      "nativeInferenceMs": 6.705916995997541,
+      "baseline": {
+        "results": [],
+        "warnings": [
+          "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+        ],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": true,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [],
+        "warnings": [
+          "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+        ],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": true,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [],
+        "warnings": [
+          "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+        ],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": true,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "cross-zone range",
+      "family": "range",
+      "text": "June 18, 2026 9am in Tokyo to 9am in London.",
+      "gold": {
+        "instants": [
+          "2026-06-18T00:00:00Z",
+          "2026-06-18T08:00:00Z"
+        ],
+        "dates": [],
+        "endpoints": [
+          "start",
+          "end"
+        ],
+        "warning": null,
+        "spans": [
+          {
+            "text": "June 18, 2026",
+            "label": "date",
+            "start": 0,
+            "end": 13
+          },
+          {
+            "text": "9am",
+            "label": "time",
+            "start": 14,
+            "end": 17
+          },
+          {
+            "text": "9am",
+            "label": "time",
+            "start": 30,
+            "end": 33
+          },
+          {
+            "text": "Tokyo",
+            "label": "city",
+            "start": 21,
+            "end": 26
+          },
+          {
+            "text": "London",
+            "label": "city",
+            "start": 37,
+            "end": 43
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 0,
+          "end": 13,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.5789809823036194,
+          "pythonStart": 0,
+          "pythonEnd": 13
+        },
+        {
+          "start": 14,
+          "end": 17,
+          "text": "9am",
+          "label": "time",
+          "score": 0.8002485036849976,
+          "pythonStart": 14,
+          "pythonEnd": 17
+        },
+        {
+          "start": 21,
+          "end": 26,
+          "text": "Tokyo",
+          "label": "city",
+          "score": 0.7101295590400696,
+          "pythonStart": 21,
+          "pythonEnd": 26
+        },
+        {
+          "start": 30,
+          "end": 33,
+          "text": "9am",
+          "label": "time",
+          "score": 0.8001364469528198,
+          "pythonStart": 30,
+          "pythonEnd": 33
+        },
+        {
+          "start": 37,
+          "end": 43,
+          "text": "London",
+          "label": "city",
+          "score": 0.7253599762916565,
+          "pythonStart": 37,
+          "pythonEnd": 43
+        }
+      ],
+      "nativeInferenceMs": 6.926290996489115,
+      "baseline": {
+        "results": [
+          {
+            "instant": "2026-06-18T00:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "Asia/Tokyo",
+            "interpretation": null,
+            "endpoint": "start",
+            "sourceIndex": 0,
+            "original": "June 18, 2026 9am in Tokyo"
+          },
+          {
+            "instant": "2026-06-18T08:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "Europe/London",
+            "interpretation": null,
+            "endpoint": "end",
+            "sourceIndex": 30,
+            "original": "9am in London"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": true,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "deterministicControl": {
+        "results": [
+          {
+            "instant": "2026-06-18T00:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "Asia/Tokyo",
+            "interpretation": null,
+            "endpoint": "start",
+            "sourceIndex": 0,
+            "original": "June 18, 2026 9am in Tokyo"
+          },
+          {
+            "instant": "2026-06-18T08:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "Europe/London",
+            "interpretation": null,
+            "endpoint": "end",
+            "sourceIndex": 30,
+            "original": "9am in London"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": true,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [
+          {
+            "instant": "2026-06-18T00:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "Asia/Tokyo",
+            "interpretation": null,
+            "endpoint": "start",
+            "sourceIndex": 0,
+            "original": "June 18, 2026 9am in Tokyo"
+          },
+          {
+            "instant": "2026-06-18T08:00:00Z",
+            "dateOnly": null,
+            "sourceZone": "Europe/London",
+            "interpretation": null,
+            "endpoint": "end",
+            "sourceIndex": 30,
+            "original": "9am in London"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": true,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "spoken explicit PM clock",
+      "family": "spoken",
+      "text": "Please join on June 18, 2026 at half past four pm in Tokyo.",
+      "gold": {
+        "instants": [
+          "2026-06-18T07:30:00Z"
+        ],
+        "dates": [],
+        "endpoints": null,
+        "warning": null,
+        "spans": [
+          {
+            "text": "June 18, 2026",
+            "label": "date",
+            "start": 15,
+            "end": 28
+          },
+          {
+            "text": "half past four pm",
+            "label": "time",
+            "start": 32,
+            "end": 49
+          },
+          {
+            "text": "Tokyo",
+            "label": "city",
+            "start": 53,
+            "end": 58
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 15,
+          "end": 28,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.6962931156158447,
+          "pythonStart": 15,
+          "pythonEnd": 28
+        },
+        {
+          "start": 32,
+          "end": 49,
+          "text": "half past four pm",
+          "label": "time",
+          "score": 0.5662010908126831,
+          "pythonStart": 32,
+          "pythonEnd": 49
+        },
+        {
+          "start": 53,
+          "end": 58,
+          "text": "Tokyo",
+          "label": "city",
+          "score": 0.739160418510437,
+          "pythonStart": 53,
+          "pythonEnd": 58
+        }
+      ],
+      "nativeInferenceMs": 6.995666000875644,
+      "baseline": {
+        "results": [
+          {
+            "instant": null,
+            "dateOnly": "2026-06-18",
+            "sourceZone": "UTC",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 15,
+            "original": "June 18, 2026"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [],
+        "score": {
+          "exact": false,
+          "instantOrderMatches": false,
+          "dateOnlyMatches": false,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": [
+            "2026-06-18T07:30:00Z"
+          ]
+        }
+      },
+      "deterministicControl": {
+        "results": [
+          {
+            "instant": "2026-06-18T07:30:00Z",
+            "dateOnly": null,
+            "sourceZone": "Asia/Tokyo",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 15,
+            "original": "June 18, 2026 at half past four pm in Tokyo"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [
+          {
+            "start": 32,
+            "end": 49,
+            "replacement": "4:30pm",
+            "rule": "explicit AM/PM half-past clock"
+          }
+        ],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [
+          {
+            "instant": "2026-06-18T07:30:00Z",
+            "dateOnly": null,
+            "sourceZone": "Asia/Tokyo",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 15,
+            "original": "June 18, 2026 at half past four pm in Tokyo"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [
+          {
+            "start": 32,
+            "end": 49,
+            "replacement": "4:30pm",
+            "rule": "explicit AM/PM half-past clock"
+          }
+        ],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    },
+    {
+      "name": "midday prose clock",
+      "family": "spoken",
+      "text": "Walkthrough June 18, 2026 at quarter to noon UTC.",
+      "gold": {
+        "instants": [
+          "2026-06-18T11:45:00Z"
+        ],
+        "dates": [],
+        "endpoints": null,
+        "warning": null,
+        "spans": [
+          {
+            "text": "June 18, 2026",
+            "label": "date",
+            "start": 12,
+            "end": 25
+          },
+          {
+            "text": "quarter to noon",
+            "label": "time",
+            "start": 29,
+            "end": 44
+          },
+          {
+            "text": "UTC",
+            "label": "timezone",
+            "start": 45,
+            "end": 48
+          }
+        ]
+      },
+      "realModelSpans": [
+        {
+          "start": 12,
+          "end": 25,
+          "text": "June 18, 2026",
+          "label": "date",
+          "score": 0.6442967057228088,
+          "pythonStart": 12,
+          "pythonEnd": 25
+        },
+        {
+          "start": 29,
+          "end": 44,
+          "text": "quarter to noon",
+          "label": "time",
+          "score": 0.46507325768470764,
+          "pythonStart": 29,
+          "pythonEnd": 44
+        },
+        {
+          "start": 45,
+          "end": 48,
+          "text": "UTC",
+          "label": "timezone",
+          "score": 0.8667604327201843,
+          "pythonStart": 45,
+          "pythonEnd": 48
+        }
+      ],
+      "nativeInferenceMs": 6.79283300996758,
+      "baseline": {
+        "results": [],
+        "warnings": [
+          "“quarter to noon” needs a clear clock time. Replace it with a time such as 3:30pm."
+        ],
+        "clockRewrites": [],
+        "score": {
+          "exact": false,
+          "instantOrderMatches": false,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": [
+            "2026-06-18T11:45:00Z"
+          ]
+        }
+      },
+      "deterministicControl": {
+        "results": [
+          {
+            "instant": "2026-06-18T11:45:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 12,
+            "original": "June 18, 2026 at quarter to noon UTC"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [
+          {
+            "start": 29,
+            "end": 44,
+            "replacement": "11:45am",
+            "rule": "quarter before noon"
+          }
+        ],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      },
+      "mlGatedHybrid": {
+        "results": [
+          {
+            "instant": "2026-06-18T11:45:00Z",
+            "dateOnly": null,
+            "sourceZone": "+00:00",
+            "interpretation": null,
+            "endpoint": null,
+            "sourceIndex": 12,
+            "original": "June 18, 2026 at quarter to noon UTC"
+          }
+        ],
+        "warnings": [],
+        "clockRewrites": [
+          {
+            "start": 29,
+            "end": 44,
+            "replacement": "11:45am",
+            "rule": "quarter before noon"
+          }
+        ],
+        "score": {
+          "exact": true,
+          "instantOrderMatches": true,
+          "dateOnlyMatches": true,
+          "endpointsMatch": null,
+          "warningMatches": null,
+          "unexpectedInstants": [],
+          "missingInstants": []
+        }
+      }
+    }
+  ]
+}

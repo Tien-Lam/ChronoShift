@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" /><title>ChronoShift ML feasibility</title>
+  <style>
+    body {
+      background: #11151d;
+      color: #eef;
+      font: 16px system-ui;
+      padding: 2rem;
+    }
+    button {
+      padding: 1rem;
+    }
+    pre {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+  </style>
+  <h1>GLiNER WASM compatibility</h1>
+  <p>
+    Local worker, single thread, quantized graph. Three pretokenized tensor
+    cases. This does not test a browser tokenizer or a phone.
+  </p>
+  <button id="run">Run compatibility test</button>
+  <p role="status" id="status">Ready</p>
+  <pre id="report"></pre>
+  <script type="module">
+    const button = document.querySelector("#run");
+    button.onclick = () => {
+      button.disabled = true;
+      document.querySelector("#status").textContent =
+        "Loading local model and WASM";
+      const worker = new Worker("/worker.js", { type: "module" });
+      worker.onmessage = ({ data }) => {
+        document.querySelector("#report").textContent = JSON.stringify(
+          data,
+          null,
+          2,
+        );
+        document.querySelector("#status").textContent = data.status;
+        worker.terminate();
+      };
+      worker.onerror = (event) => {
+        document.querySelector("#report").textContent = JSON.stringify({
+          status: "failed",
+          error: event.message,
+        });
+        document.querySelector("#status").textContent = "failed";
+        worker.terminate();
+      };
+      worker.postMessage("run");
+    };
+  </script>
+</html>

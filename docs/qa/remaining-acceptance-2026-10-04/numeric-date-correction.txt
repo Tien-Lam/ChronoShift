@@ -1,0 +1,62 @@
+Browser tab: 10, Title: "ChronoShift — Time zone converter", URL: "https://tien-lam.github.io/ChronoShift/".
+0 AXWebArea ChronoShift — Time zone converter, URL: tien-lam.github.io/ChronoShift/
+	1 container root
+		2 container
+			3 link Description: ChronoShift home, Value: tien-lam.github.io/ChronoShift/
+			4 text Offline ready
+			5 button (collapsed) Description: Appearance, Secondary Actions: Expand
+				6 text Appearance
+		7 container
+			8 heading Time zone converter, Value: 1
+				9 text Time zone converter
+			10 container Time zone converter
+				11 heading Time zone converter, Value: 2, ID: input-title
+					12 text Time zone converter
+				13 text Message with a date or time
+				14 text entry area (settable) Message with a date or time, Value: 04/09/2026 at 3pm, ID: message
+				15 container
+					16 button Paste
+					17 button Clear
+				18 text Ctrl / ⌘ + Enter
+				19 text Convert to
+				20 combo box (settable) Convert to, Value: UTC, ID: target-zone
+				21 text UTC · UTC
+				22 button Convert
+				35 container
+					36 button (expanded) More options, Secondary Actions: Collapse
+						37 text More options
+					38 text Source timezone when none is given
+					39 combo box (settable) Source timezone when none is given, Value: Tokyo, ID: source-zone
+					40 text Reference date for this message
+					41 date field (settable) Reference date for this message, Value: 2026-10-06, ID: reference-date
+						42 container
+							128 stepper
+							129 stepper
+							130 stepper
+						46 pop up button Show date picker Show date picker
+					47 text Leave empty to use today. Useful for an older message. Numeric dates
+					48 pop up button (collapsed, settable) Numeric dates, Value: Day / month (04/09 = 4 September), ID: date-order, Secondary Actions: Expand
+						49 menu
+							50 Month / day (04/09 = April 9)
+							51 (selected) Day / month (04/09 = 4 September)
+					52 text Time display
+					53 pop up button (collapsed, settable) Time display, Value: Use my device format, ID: time-format, Secondary Actions: Expand
+						54 menu
+							55 (selected) Use my device format
+							56 12-hour (3:00 PM)
+							57 24-hour (15:00)
+					58 button Reset preferences
+			25 container Converted time
+				26 heading Converted time, Value: 2, ID: result-title
+					27 text Converted time
+				131 text 1 time interpretations found
+				132 container
+					133 text “ 04/09/2026 at 3pm ” Tokyo
+					134 button Copy Tokyo
+					135 text 6:00 Fri, 4 Sept 2026 UTC Source timezone assumed: Tokyo
+			126 text A new version is ready. Your message will be kept when you update.
+			127 button Update now
+			33 text  Your text stays on this device.
+			34 button Keep ChronoShift handy ↗
+
+The focused UI element is 14 text entry area (settable) Message with a date or time, Value: 04/09/2026 at 3pm, ID: message

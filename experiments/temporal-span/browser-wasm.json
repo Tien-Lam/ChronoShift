@@ -1,0 +1,50 @@
+{
+  "runtime": "onnxruntime-web 1.30.0",
+  "executionProvider": "wasm",
+  "numThreads": 1,
+  "method": "Local module worker; pretokenized numeric tensors compared with native INT8 ONNX logits. No JS tokenizer/span adapter or phone claim.",
+  "cases": [
+    {
+      "name": "explicit UTC invitation",
+      "dims": [
+        1,
+        12,
+        12,
+        4
+      ],
+      "inferenceMs": 52,
+      "shapeMatches": true,
+      "maxAbsDelta": 0.00000667572021484375,
+      "passed": true
+    },
+    {
+      "name": "cross-zone range",
+      "dims": [
+        1,
+        12,
+        12,
+        4
+      ],
+      "inferenceMs": 29.900000005960464,
+      "shapeMatches": true,
+      "maxAbsDelta": 0.000003814697265625,
+      "passed": true
+    },
+    {
+      "name": "spoken explicit PM clock",
+      "dims": [
+        1,
+        15,
+        12,
+        4
+      ],
+      "inferenceMs": 31.599999994039536,
+      "shapeMatches": true,
+      "maxAbsDelta": 0.000003814697265625,
+      "passed": true
+    }
+  ],
+  "holdoutSha256": "a1ed4d32553b09cabe6cef7df1575f8054ebdd71e81dcfb7f9d87596d1a232b3",
+  "sessionLoadMs": 396.40000000596046,
+  "status": "passed"
+}

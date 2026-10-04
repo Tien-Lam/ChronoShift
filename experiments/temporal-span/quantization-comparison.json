@@ -1,0 +1,22 @@
+[
+  {
+    "file": "model.onnx",
+    "predicted": 61,
+    "truePositive": 48,
+    "gold": 55,
+    "precision": 0.7868852459016393,
+    "recall": 0.8727272727272727,
+    "f1": 0.8275862068965517,
+    "messagesWithDifferentEntitySetFromTorchFP32": 0
+  },
+  {
+    "file": "model_quantized.onnx",
+    "predicted": 67,
+    "truePositive": 40,
+    "gold": 55,
+    "precision": 0.5970149253731343,
+    "recall": 0.7272727272727273,
+    "f1": 0.6557377049180327,
+    "messagesWithDifferentEntitySetFromTorchFP32": 9
+  }
+]

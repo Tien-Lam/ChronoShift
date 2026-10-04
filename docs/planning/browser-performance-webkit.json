@@ -1,121 +1,142 @@
 {
-  "measuredAt": "2026-10-04T02:31:52.180Z",
+  "measuredAt": "2026-10-04T10:56:51.299Z",
   "release": {
-    "sourceCommit": "63a25539749e3ddc81172e57b08de2656cfa288b",
+    "sourceCommit": "944001ddb2515d13406a38027bb43872549fface",
     "base": "/"
   },
   "environment": "darwin/arm64, webkit 26.6, Bun 1.4.0",
   "device": "Development computer, 390×844 CSS-pixel viewport. No mobile hardware, CPU or network emulation.",
-  "method": "Ten fresh browser contexts for cold local HTTP navigation, ten offline cached reopenings; Playwright wall-clock navigation-to-visible-form/complete-cache includes automation overhead. Five warmups + thirty timed conversions per design/workload use the production disposable worker and real result DOM; click capture to DOM completion includes worker startup, parsing and rendering. Frame gaps are diagnostic, not an input responsiveness certification. Local gzip estimates exclude HTTP headers. Fixed synthetic workloads are not worst-case proof.",
+  "method": "Ten fresh browser contexts for cold local HTTP navigation, ten offline cached reopenings; Playwright wall-clock navigation-to-visible-form/complete-cache includes automation overhead. Five warmups + thirty timed conversions per Glass Command workload use the production disposable worker and real result DOM; click capture to DOM completion includes worker startup, parsing and rendering. Frame gaps are diagnostic, not an input responsiveness certification. Local gzip estimates exclude HTTP headers. assets/totalGzipBytes cover only top-level dist/assets JS/CSS; offlineAssets/totalOfflineGzipBytes cover every final dist file including HTML, manifests, icons, notices, release metadata and the service worker. Fixed synthetic workloads are not worst-case proof.",
   "assets": [
     {
-      "name": "worker-Dcv-t75w.js",
-      "bytes": 218704,
-      "gzipBytes": 63777
+      "name": "index-1RMADgKl.css",
+      "bytes": 11855,
+      "gzipBytes": 3134
     },
     {
-      "name": "index-BbxSBDlz.js",
-      "bytes": 400679,
-      "gzipBytes": 121051
+      "name": "index-N51Wp9CL.js",
+      "bytes": 400788,
+      "gzipBytes": 121171
     },
     {
-      "name": "index-wpxFTbJy.css",
-      "bytes": 14187,
-      "gzipBytes": 3590
+      "name": "worker-C690IjaR.js",
+      "bytes": 221144,
+      "gzipBytes": 64577
     }
   ],
-  "totalGzipBytes": 188418,
+  "totalGzipBytes": 188882,
+  "offlineAssets": [
+    {
+      "name": ".DS_Store",
+      "bytes": 6148,
+      "gzipBytes": 314
+    },
+    {
+      "name": "assets/geist-latin-variable-Dm3htQBi.woff2",
+      "bytes": 28400,
+      "gzipBytes": 28428
+    },
+    {
+      "name": "assets/index-1RMADgKl.css",
+      "bytes": 11855,
+      "gzipBytes": 3134
+    },
+    {
+      "name": "assets/index-N51Wp9CL.js",
+      "bytes": 400788,
+      "gzipBytes": 121171
+    },
+    {
+      "name": "assets/worker-C690IjaR.js",
+      "bytes": 221144,
+      "gzipBytes": 64577
+    },
+    {
+      "name": "fonts/README.txt",
+      "bytes": 483,
+      "gzipBytes": 319
+    },
+    {
+      "name": "fonts/geist-OFL.txt",
+      "bytes": 4386,
+      "gzipBytes": 1980
+    },
+    {
+      "name": "icon-192.png",
+      "bytes": 7136,
+      "gzipBytes": 7159
+    },
+    {
+      "name": "icon-512.png",
+      "bytes": 19658,
+      "gzipBytes": 19437
+    },
+    {
+      "name": "icon.svg",
+      "bytes": 355,
+      "gzipBytes": 228
+    },
+    {
+      "name": "index.html",
+      "bytes": 1092,
+      "gzipBytes": 558
+    },
+    {
+      "name": "manifest.webmanifest",
+      "bytes": 838,
+      "gzipBytes": 359
+    },
+    {
+      "name": "release.json",
+      "bytes": 79,
+      "gzipBytes": 95
+    },
+    {
+      "name": "sw.js",
+      "bytes": 7421,
+      "gzipBytes": 3114
+    },
+    {
+      "name": "third-party-notices.txt",
+      "bytes": 15988,
+      "gzipBytes": 4585
+    }
+  ],
+  "totalOfflineGzipBytes": 255458,
   "coldOnlineNavigationToForm": {
     "runs": 10,
-    "p50Ms": 56.54,
-    "p95Ms": 64.99,
-    "maxMs": 64.99
+    "p50Ms": 55.22,
+    "p95Ms": 67.37,
+    "maxMs": 67.37
   },
   "coldOnlineNavigationToOfflineReady": {
     "runs": 10,
-    "p50Ms": 88.36,
-    "p95Ms": 96.45,
-    "maxMs": 96.45
+    "p50Ms": 85.72,
+    "p95Ms": 152.92,
+    "maxMs": 152.92
   },
   "warmOfflineNavigationToForm": {
     "runs": 10,
-    "p50Ms": 54.09,
-    "p95Ms": 54.71,
-    "maxMs": 54.71
+    "p50Ms": 56.54,
+    "p95Ms": 1076.27,
+    "maxMs": 1076.27
   },
   "conversions": [
     {
-      "design": "lens",
+      "design": "command",
       "workload": "meeting-2000",
       "characters": 2000,
-      "conversion": {
-        "runs": 30,
-        "p50Ms": 37,
-        "p95Ms": 39,
-        "maxMs": 39
-      },
-      "maxFrameGap": {
-        "runs": 30,
-        "p50Ms": 17,
-        "p95Ms": 18,
-        "maxMs": 19
-      },
-      "provisionalBudgetMs": 250,
-      "meetsBudgetOnThisMachine": true
-    },
-    {
-      "design": "lens",
-      "workload": "meeting-10000",
-      "characters": 10000,
-      "conversion": {
-        "runs": 30,
-        "p50Ms": 84,
-        "p95Ms": 87,
-        "maxMs": 87
-      },
-      "maxFrameGap": {
-        "runs": 30,
-        "p50Ms": 17,
-        "p95Ms": 18,
-        "maxMs": 19
-      },
-      "provisionalBudgetMs": 1000,
-      "meetsBudgetOnThisMachine": true
-    },
-    {
-      "design": "lens",
-      "workload": "noisy-10000",
-      "characters": 10000,
       "conversion": {
         "runs": 30,
         "p50Ms": 31,
-        "p95Ms": 32,
-        "maxMs": 32
+        "p95Ms": 33,
+        "maxMs": 33
       },
       "maxFrameGap": {
         "runs": 30,
         "p50Ms": 17,
         "p95Ms": 18,
-        "maxMs": 18
-      },
-      "provisionalBudgetMs": 1000,
-      "meetsBudgetOnThisMachine": true
-    },
-    {
-      "design": "command",
-      "workload": "meeting-2000",
-      "characters": 2000,
-      "conversion": {
-        "runs": 30,
-        "p50Ms": 37,
-        "p95Ms": 38,
-        "maxMs": 39
-      },
-      "maxFrameGap": {
-        "runs": 30,
-        "p50Ms": 17,
-        "p95Ms": 17,
-        "maxMs": 17
+        "maxMs": 19
       },
       "provisionalBudgetMs": 250,
       "meetsBudgetOnThisMachine": true
@@ -126,9 +147,9 @@
       "characters": 10000,
       "conversion": {
         "runs": 30,
-        "p50Ms": 85,
-        "p95Ms": 86,
-        "maxMs": 86
+        "p50Ms": 59,
+        "p95Ms": 61,
+        "maxMs": 62
       },
       "maxFrameGap": {
         "runs": 30,
@@ -145,15 +166,15 @@
       "characters": 10000,
       "conversion": {
         "runs": 30,
-        "p50Ms": 30,
-        "p95Ms": 32,
-        "maxMs": 32
+        "p50Ms": 33,
+        "p95Ms": 35,
+        "maxMs": 36
       },
       "maxFrameGap": {
         "runs": 30,
-        "p50Ms": 16,
-        "p95Ms": 17,
-        "maxMs": 17
+        "p50Ms": 17,
+        "p95Ms": 18,
+        "maxMs": 18
       },
       "provisionalBudgetMs": 1000,
       "meetsBudgetOnThisMachine": true

@@ -1,0 +1,1246 @@
+{
+  "holdoutSha256": "a1ed4d32553b09cabe6cef7df1575f8054ebdd71e81dcfb7f9d87596d1a232b3",
+  "method": "Native CPU ONNX execution with real GLiNER preprocessing; exact entity-set comparison to native FP32 and frozen gold. Browser inputs are pretokenized numeric tensors, not a completed JS tokenizer/span adapter.",
+  "variants": [
+    {
+      "file": "model.onnx",
+      "inputs": [
+        {
+          "name": "input_ids",
+          "type": "tensor(int64)",
+          "shape": [
+            "batch_size",
+            "sequence_length"
+          ]
+        },
+        {
+          "name": "attention_mask",
+          "type": "tensor(int64)",
+          "shape": [
+            "batch_size",
+            "sequence_length"
+          ]
+        },
+        {
+          "name": "words_mask",
+          "type": "tensor(int64)",
+          "shape": [
+            "batch_size",
+            "sequence_length"
+          ]
+        },
+        {
+          "name": "text_lengths",
+          "type": "tensor(int64)",
+          "shape": [
+            "batch_size",
+            "value"
+          ]
+        },
+        {
+          "name": "span_idx",
+          "type": "tensor(int64)",
+          "shape": [
+            "batch_size",
+            "num_spans",
+            "idx"
+          ]
+        },
+        {
+          "name": "span_mask",
+          "type": "tensor(bool)",
+          "shape": [
+            "batch_size",
+            "num_spans"
+          ]
+        },
+        {
+          "name": "labels_input_ids",
+          "type": "tensor(int64)",
+          "shape": [
+            "num_labels",
+            "label_seq_length"
+          ]
+        },
+        {
+          "name": "labels_attention_mask",
+          "type": "tensor(int64)",
+          "shape": [
+            "num_labels",
+            "label_seq_length"
+          ]
+        }
+      ],
+      "predictions": [
+        {
+          "name": "explicit UTC invitation",
+          "entities": [
+            {
+              "start": 14,
+              "end": 26,
+              "text": "18 June 2026",
+              "label": "date",
+              "score": 0.7037879824638367
+            },
+            {
+              "start": 30,
+              "end": 35,
+              "text": "09:45",
+              "label": "time",
+              "score": 0.4803332984447479
+            },
+            {
+              "start": 36,
+              "end": 39,
+              "text": "UTC",
+              "label": "timezone",
+              "score": 0.821796178817749
+            }
+          ]
+        },
+        {
+          "name": "Tokyo design review",
+          "entities": [
+            {
+              "start": 15,
+              "end": 28,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.6803478002548218
+            },
+            {
+              "start": 32,
+              "end": 38,
+              "text": "5:20pm",
+              "label": "time",
+              "score": 0.7287129163742065
+            },
+            {
+              "start": 42,
+              "end": 47,
+              "text": "Tokyo",
+              "label": "city",
+              "score": 0.6431348919868469
+            }
+          ]
+        },
+        {
+          "name": "regional Pacific summer",
+          "entities": [
+            {
+              "start": 22,
+              "end": 35,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.6829098463058472
+            },
+            {
+              "start": 36,
+              "end": 39,
+              "text": "2pm",
+              "label": "time",
+              "score": 0.5685943365097046
+            },
+            {
+              "start": 40,
+              "end": 42,
+              "text": "PT",
+              "label": "timezone",
+              "score": 0.8448041677474976
+            }
+          ]
+        },
+        {
+          "name": "quarter-hour offset invitation",
+          "entities": [
+            {
+              "start": 0,
+              "end": 7,
+              "text": "Standup",
+              "label": "timezone",
+              "score": 0.3501204252243042
+            },
+            {
+              "start": 8,
+              "end": 21,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.657551109790802
+            },
+            {
+              "start": 22,
+              "end": 29,
+              "text": "10:15am",
+              "label": "time",
+              "score": 0.7191315293312073
+            },
+            {
+              "start": 30,
+              "end": 33,
+              "text": "UTC",
+              "label": "timezone",
+              "score": 0.8676822781562805
+            },
+            {
+              "start": 34,
+              "end": 36,
+              "text": "05",
+              "label": "time",
+              "score": 0.36097100377082825
+            },
+            {
+              "start": 37,
+              "end": 39,
+              "text": "45",
+              "label": "time",
+              "score": 0.45467430353164673
+            }
+          ]
+        },
+        {
+          "name": "two explicit slots",
+          "entities": [
+            {
+              "start": 11,
+              "end": 24,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.6567345261573792
+            },
+            {
+              "start": 28,
+              "end": 31,
+              "text": "9am",
+              "label": "time",
+              "score": 0.34441500902175903
+            },
+            {
+              "start": 32,
+              "end": 35,
+              "text": "UTC",
+              "label": "timezone",
+              "score": 0.7965105175971985
+            },
+            {
+              "start": 40,
+              "end": 44,
+              "text": "11am",
+              "label": "time",
+              "score": 0.4699220061302185
+            },
+            {
+              "start": 45,
+              "end": 48,
+              "text": "UTC",
+              "label": "timezone",
+              "score": 0.8268387913703918
+            }
+          ]
+        },
+        {
+          "name": "overnight coverage range",
+          "entities": [
+            {
+              "start": 17,
+              "end": 30,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.6493801474571228
+            },
+            {
+              "start": 31,
+              "end": 36,
+              "text": "22:00",
+              "label": "time",
+              "score": 0.5581693053245544
+            },
+            {
+              "start": 40,
+              "end": 45,
+              "text": "02:00",
+              "label": "time",
+              "score": 0.533600389957428
+            },
+            {
+              "start": 46,
+              "end": 49,
+              "text": "UTC",
+              "label": "timezone",
+              "score": 0.8612164258956909
+            }
+          ]
+        },
+        {
+          "name": "CST alternatives",
+          "entities": [
+            {
+              "start": 16,
+              "end": 29,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.5429669618606567
+            },
+            {
+              "start": 30,
+              "end": 33,
+              "text": "7pm",
+              "label": "time",
+              "score": 0.4958888292312622
+            },
+            {
+              "start": 34,
+              "end": 37,
+              "text": "CST",
+              "label": "timezone",
+              "score": 0.7810758948326111
+            }
+          ]
+        },
+        {
+          "name": "relative invitation",
+          "entities": [
+            {
+              "start": 5,
+              "end": 13,
+              "text": "tomorrow",
+              "label": "time",
+              "score": 0.5514939427375793
+            },
+            {
+              "start": 17,
+              "end": 22,
+              "text": "07:10",
+              "label": "time",
+              "score": 0.5388484001159668
+            },
+            {
+              "start": 23,
+              "end": 26,
+              "text": "UTC",
+              "label": "timezone",
+              "score": 0.8731367588043213
+            }
+          ]
+        },
+        {
+          "name": "date-only release",
+          "entities": [
+            {
+              "start": 20,
+              "end": 33,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.6370900273323059
+            }
+          ]
+        },
+        {
+          "name": "ISO log instant",
+          "entities": [
+            {
+              "start": 19,
+              "end": 32,
+              "text": "2026-06-18T16",
+              "label": "date",
+              "score": 0.44923076033592224
+            },
+            {
+              "start": 33,
+              "end": 38,
+              "text": "20:45",
+              "label": "time",
+              "score": 0.30519264936447144
+            },
+            {
+              "start": 39,
+              "end": 44,
+              "text": "02:00",
+              "label": "time",
+              "score": 0.4686807692050934
+            }
+          ]
+        },
+        {
+          "name": "version price ID negative",
+          "entities": []
+        },
+        {
+          "name": "timezone word negative",
+          "entities": [
+            {
+              "start": 7,
+              "end": 10,
+              "text": "CST",
+              "label": "timezone",
+              "score": 0.4022587239742279
+            }
+          ]
+        },
+        {
+          "name": "vague deadline",
+          "entities": [
+            {
+              "start": 0,
+              "end": 3,
+              "text": "EOD",
+              "label": "timezone",
+              "score": 0.31164783239364624
+            }
+          ]
+        },
+        {
+          "name": "invalid offset",
+          "entities": [
+            {
+              "start": 0,
+              "end": 13,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.5947507619857788
+            },
+            {
+              "start": 14,
+              "end": 17,
+              "text": "4pm",
+              "label": "time",
+              "score": 0.6446258425712585
+            },
+            {
+              "start": 18,
+              "end": 21,
+              "text": "UTC",
+              "label": "timezone",
+              "score": 0.852132260799408
+            },
+            {
+              "start": 22,
+              "end": 24,
+              "text": "08",
+              "label": "time",
+              "score": 0.3821831941604614
+            },
+            {
+              "start": 25,
+              "end": 27,
+              "text": "79",
+              "label": "time",
+              "score": 0.43655356764793396
+            }
+          ]
+        },
+        {
+          "name": "New York fold",
+          "entities": [
+            {
+              "start": 0,
+              "end": 16,
+              "text": "November 1, 2026",
+              "label": "date",
+              "score": 0.6543272137641907
+            },
+            {
+              "start": 20,
+              "end": 26,
+              "text": "1:20am",
+              "label": "time",
+              "score": 0.7289631366729736
+            },
+            {
+              "start": 35,
+              "end": 43,
+              "text": "New_York",
+              "label": "city",
+              "score": 0.4754977226257324
+            }
+          ]
+        },
+        {
+          "name": "Berlin gap",
+          "entities": [
+            {
+              "start": 0,
+              "end": 14,
+              "text": "March 29, 2026",
+              "label": "date",
+              "score": 0.6778374910354614
+            },
+            {
+              "start": 18,
+              "end": 24,
+              "text": "2:15am",
+              "label": "time",
+              "score": 0.8025966882705688
+            },
+            {
+              "start": 28,
+              "end": 34,
+              "text": "Berlin",
+              "label": "city",
+              "score": 0.6908136010169983
+            }
+          ]
+        },
+        {
+          "name": "unknown city",
+          "entities": [
+            {
+              "start": 0,
+              "end": 13,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.6012502312660217
+            },
+            {
+              "start": 14,
+              "end": 17,
+              "text": "4pm",
+              "label": "time",
+              "score": 0.7064579129219055
+            },
+            {
+              "start": 21,
+              "end": 29,
+              "text": "Atlantis",
+              "label": "city",
+              "score": 0.34374675154685974
+            }
+          ]
+        },
+        {
+          "name": "cross-zone range",
+          "entities": [
+            {
+              "start": 0,
+              "end": 13,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.5789815783500671
+            },
+            {
+              "start": 14,
+              "end": 17,
+              "text": "9am",
+              "label": "time",
+              "score": 0.8002483248710632
+            },
+            {
+              "start": 21,
+              "end": 26,
+              "text": "Tokyo",
+              "label": "city",
+              "score": 0.7101297378540039
+            },
+            {
+              "start": 30,
+              "end": 33,
+              "text": "9am",
+              "label": "time",
+              "score": 0.800136148929596
+            },
+            {
+              "start": 37,
+              "end": 43,
+              "text": "London",
+              "label": "city",
+              "score": 0.7253595590591431
+            }
+          ]
+        },
+        {
+          "name": "spoken explicit PM clock",
+          "entities": [
+            {
+              "start": 15,
+              "end": 28,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.6962929964065552
+            },
+            {
+              "start": 32,
+              "end": 49,
+              "text": "half past four pm",
+              "label": "time",
+              "score": 0.5662012100219727
+            },
+            {
+              "start": 53,
+              "end": 58,
+              "text": "Tokyo",
+              "label": "city",
+              "score": 0.7391599416732788
+            }
+          ]
+        },
+        {
+          "name": "midday prose clock",
+          "entities": [
+            {
+              "start": 12,
+              "end": 25,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.644296407699585
+            },
+            {
+              "start": 29,
+              "end": 44,
+              "text": "quarter to noon",
+              "label": "time",
+              "score": 0.4650734066963196
+            },
+            {
+              "start": 45,
+              "end": 48,
+              "text": "UTC",
+              "label": "timezone",
+              "score": 0.8667603135108948
+            }
+          ]
+        }
+      ],
+      "status": "executed"
+    },
+    {
+      "file": "model_quantized.onnx",
+      "inputs": [
+        {
+          "name": "input_ids",
+          "type": "tensor(int64)",
+          "shape": [
+            "batch_size",
+            "sequence_length"
+          ]
+        },
+        {
+          "name": "attention_mask",
+          "type": "tensor(int64)",
+          "shape": [
+            "batch_size",
+            "sequence_length"
+          ]
+        },
+        {
+          "name": "words_mask",
+          "type": "tensor(int64)",
+          "shape": [
+            "batch_size",
+            "sequence_length"
+          ]
+        },
+        {
+          "name": "text_lengths",
+          "type": "tensor(int64)",
+          "shape": [
+            "batch_size",
+            "value"
+          ]
+        },
+        {
+          "name": "span_idx",
+          "type": "tensor(int64)",
+          "shape": [
+            "batch_size",
+            "num_spans",
+            "idx"
+          ]
+        },
+        {
+          "name": "span_mask",
+          "type": "tensor(bool)",
+          "shape": [
+            "batch_size",
+            "num_spans"
+          ]
+        },
+        {
+          "name": "labels_input_ids",
+          "type": "tensor(int64)",
+          "shape": [
+            "num_labels",
+            "label_seq_length"
+          ]
+        },
+        {
+          "name": "labels_attention_mask",
+          "type": "tensor(int64)",
+          "shape": [
+            "num_labels",
+            "label_seq_length"
+          ]
+        }
+      ],
+      "predictions": [
+        {
+          "name": "explicit UTC invitation",
+          "entities": [
+            {
+              "start": 14,
+              "end": 26,
+              "text": "18 June 2026",
+              "label": "date",
+              "score": 0.6106454133987427
+            },
+            {
+              "start": 30,
+              "end": 32,
+              "text": "09",
+              "label": "time",
+              "score": 0.4230571389198303
+            },
+            {
+              "start": 36,
+              "end": 39,
+              "text": "UTC",
+              "label": "timezone",
+              "score": 0.7532093524932861
+            }
+          ]
+        },
+        {
+          "name": "Tokyo design review",
+          "entities": [
+            {
+              "start": 15,
+              "end": 28,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.5281198024749756
+            },
+            {
+              "start": 32,
+              "end": 38,
+              "text": "5:20pm",
+              "label": "time",
+              "score": 0.6647883653640747
+            },
+            {
+              "start": 42,
+              "end": 47,
+              "text": "Tokyo",
+              "label": "city",
+              "score": 0.5669543147087097
+            }
+          ]
+        },
+        {
+          "name": "regional Pacific summer",
+          "entities": [
+            {
+              "start": 0,
+              "end": 12,
+              "text": "Office-hours",
+              "label": "timezone",
+              "score": 0.36388686299324036
+            },
+            {
+              "start": 22,
+              "end": 35,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.5344524383544922
+            },
+            {
+              "start": 36,
+              "end": 39,
+              "text": "2pm",
+              "label": "time",
+              "score": 0.5105279684066772
+            },
+            {
+              "start": 40,
+              "end": 42,
+              "text": "PT",
+              "label": "timezone",
+              "score": 0.7287836074829102
+            }
+          ]
+        },
+        {
+          "name": "quarter-hour offset invitation",
+          "entities": [
+            {
+              "start": 0,
+              "end": 7,
+              "text": "Standup",
+              "label": "timezone",
+              "score": 0.44193193316459656
+            },
+            {
+              "start": 8,
+              "end": 21,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.5487100481987
+            },
+            {
+              "start": 22,
+              "end": 29,
+              "text": "10:15am",
+              "label": "time",
+              "score": 0.6699199676513672
+            },
+            {
+              "start": 30,
+              "end": 33,
+              "text": "UTC",
+              "label": "timezone",
+              "score": 0.8051325678825378
+            },
+            {
+              "start": 34,
+              "end": 36,
+              "text": "05",
+              "label": "time",
+              "score": 0.4675544798374176
+            },
+            {
+              "start": 37,
+              "end": 39,
+              "text": "45",
+              "label": "time",
+              "score": 0.4900452196598053
+            }
+          ]
+        },
+        {
+          "name": "two explicit slots",
+          "entities": [
+            {
+              "start": 11,
+              "end": 24,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.5948180556297302
+            },
+            {
+              "start": 28,
+              "end": 35,
+              "text": "9am UTC",
+              "label": "time",
+              "score": 0.6648929119110107
+            },
+            {
+              "start": 40,
+              "end": 44,
+              "text": "11am",
+              "label": "time",
+              "score": 0.5705905556678772
+            },
+            {
+              "start": 45,
+              "end": 48,
+              "text": "UTC",
+              "label": "timezone",
+              "score": 0.7193484902381897
+            }
+          ]
+        },
+        {
+          "name": "overnight coverage range",
+          "entities": [
+            {
+              "start": 17,
+              "end": 30,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.5323526859283447
+            },
+            {
+              "start": 31,
+              "end": 36,
+              "text": "22:00",
+              "label": "time",
+              "score": 0.4804334342479706
+            },
+            {
+              "start": 40,
+              "end": 45,
+              "text": "02:00",
+              "label": "time",
+              "score": 0.43885284662246704
+            },
+            {
+              "start": 46,
+              "end": 49,
+              "text": "UTC",
+              "label": "timezone",
+              "score": 0.8061211705207825
+            }
+          ]
+        },
+        {
+          "name": "CST alternatives",
+          "entities": [
+            {
+              "start": 16,
+              "end": 29,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.49460944533348083
+            },
+            {
+              "start": 30,
+              "end": 33,
+              "text": "7pm",
+              "label": "time",
+              "score": 0.46953946352005005
+            },
+            {
+              "start": 34,
+              "end": 37,
+              "text": "CST",
+              "label": "timezone",
+              "score": 0.699612557888031
+            }
+          ]
+        },
+        {
+          "name": "relative invitation",
+          "entities": [
+            {
+              "start": 5,
+              "end": 13,
+              "text": "tomorrow",
+              "label": "time",
+              "score": 0.5200607776641846
+            },
+            {
+              "start": 17,
+              "end": 19,
+              "text": "07",
+              "label": "time",
+              "score": 0.5299824476242065
+            },
+            {
+              "start": 20,
+              "end": 22,
+              "text": "10",
+              "label": "time",
+              "score": 0.3865013122558594
+            },
+            {
+              "start": 23,
+              "end": 26,
+              "text": "UTC",
+              "label": "timezone",
+              "score": 0.8400688171386719
+            }
+          ]
+        },
+        {
+          "name": "date-only release",
+          "entities": [
+            {
+              "start": 20,
+              "end": 33,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.566216766834259
+            }
+          ]
+        },
+        {
+          "name": "ISO log instant",
+          "entities": [
+            {
+              "start": 19,
+              "end": 32,
+              "text": "2026-06-18T16",
+              "label": "time",
+              "score": 0.5297951102256775
+            },
+            {
+              "start": 33,
+              "end": 38,
+              "text": "20:45",
+              "label": "time",
+              "score": 0.5202712416648865
+            },
+            {
+              "start": 39,
+              "end": 44,
+              "text": "02:00",
+              "label": "time",
+              "score": 0.4262663424015045
+            }
+          ]
+        },
+        {
+          "name": "version price ID negative",
+          "entities": []
+        },
+        {
+          "name": "timezone word negative",
+          "entities": [
+            {
+              "start": 7,
+              "end": 10,
+              "text": "CST",
+              "label": "timezone",
+              "score": 0.38780713081359863
+            }
+          ]
+        },
+        {
+          "name": "vague deadline",
+          "entities": [
+            {
+              "start": 0,
+              "end": 3,
+              "text": "EOD",
+              "label": "timezone",
+              "score": 0.36776483058929443
+            }
+          ]
+        },
+        {
+          "name": "invalid offset",
+          "entities": [
+            {
+              "start": 0,
+              "end": 13,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.6061803698539734
+            },
+            {
+              "start": 14,
+              "end": 17,
+              "text": "4pm",
+              "label": "time",
+              "score": 0.5726842284202576
+            },
+            {
+              "start": 18,
+              "end": 21,
+              "text": "UTC",
+              "label": "timezone",
+              "score": 0.7680204510688782
+            },
+            {
+              "start": 21,
+              "end": 22,
+              "text": "+",
+              "label": "timezone",
+              "score": 0.4592653810977936
+            },
+            {
+              "start": 22,
+              "end": 24,
+              "text": "08",
+              "label": "time",
+              "score": 0.5300717949867249
+            },
+            {
+              "start": 25,
+              "end": 27,
+              "text": "79",
+              "label": "time",
+              "score": 0.47077205777168274
+            }
+          ]
+        },
+        {
+          "name": "New York fold",
+          "entities": [
+            {
+              "start": 0,
+              "end": 16,
+              "text": "November 1, 2026",
+              "label": "date",
+              "score": 0.6164864897727966
+            },
+            {
+              "start": 20,
+              "end": 26,
+              "text": "1:20am",
+              "label": "time",
+              "score": 0.6377111673355103
+            },
+            {
+              "start": 35,
+              "end": 43,
+              "text": "New_York",
+              "label": "city",
+              "score": 0.43542349338531494
+            }
+          ]
+        },
+        {
+          "name": "Berlin gap",
+          "entities": [
+            {
+              "start": 0,
+              "end": 8,
+              "text": "March 29",
+              "label": "date",
+              "score": 0.5644093751907349
+            },
+            {
+              "start": 10,
+              "end": 14,
+              "text": "2026",
+              "label": "date",
+              "score": 0.4370656907558441
+            },
+            {
+              "start": 18,
+              "end": 24,
+              "text": "2:15am",
+              "label": "time",
+              "score": 0.6621661186218262
+            },
+            {
+              "start": 28,
+              "end": 34,
+              "text": "Berlin",
+              "label": "city",
+              "score": 0.6272462606430054
+            }
+          ]
+        },
+        {
+          "name": "unknown city",
+          "entities": [
+            {
+              "start": 0,
+              "end": 7,
+              "text": "June 18",
+              "label": "date",
+              "score": 0.5694476366043091
+            },
+            {
+              "start": 9,
+              "end": 13,
+              "text": "2026",
+              "label": "date",
+              "score": 0.43829625844955444
+            },
+            {
+              "start": 14,
+              "end": 17,
+              "text": "4pm",
+              "label": "time",
+              "score": 0.6678963303565979
+            },
+            {
+              "start": 21,
+              "end": 29,
+              "text": "Atlantis",
+              "label": "city",
+              "score": 0.3287928104400635
+            }
+          ]
+        },
+        {
+          "name": "cross-zone range",
+          "entities": [
+            {
+              "start": 0,
+              "end": 13,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.5771775841712952
+            },
+            {
+              "start": 14,
+              "end": 17,
+              "text": "9am",
+              "label": "time",
+              "score": 0.6622636914253235
+            },
+            {
+              "start": 21,
+              "end": 26,
+              "text": "Tokyo",
+              "label": "city",
+              "score": 0.6600404977798462
+            },
+            {
+              "start": 30,
+              "end": 33,
+              "text": "9am",
+              "label": "time",
+              "score": 0.6950579285621643
+            },
+            {
+              "start": 37,
+              "end": 43,
+              "text": "London",
+              "label": "city",
+              "score": 0.6682647466659546
+            }
+          ]
+        },
+        {
+          "name": "spoken explicit PM clock",
+          "entities": [
+            {
+              "start": 15,
+              "end": 28,
+              "text": "June 18, 2026",
+              "label": "date",
+              "score": 0.5709314346313477
+            },
+            {
+              "start": 32,
+              "end": 49,
+              "text": "half past four pm",
+              "label": "time",
+              "score": 0.5034423470497131
+            },
+            {
+              "start": 53,
+              "end": 58,
+              "text": "Tokyo",
+              "label": "city",
+              "score": 0.6600661873817444
+            }
+          ]
+        },
+        {
+          "name": "midday prose clock",
+          "entities": [
+            {
+              "start": 12,
+              "end": 19,
+              "text": "June 18",
+              "label": "date",
+              "score": 0.5773112773895264
+            },
+            {
+              "start": 21,
+              "end": 25,
+              "text": "2026",
+              "label": "date",
+              "score": 0.40083229541778564
+            },
+            {
+              "start": 29,
+              "end": 36,
+              "text": "quarter",
+              "label": "time",
+              "score": 0.3639456629753113
+            },
+            {
+              "start": 40,
+              "end": 44,
+              "text": "noon",
+              "label": "time",
+              "score": 0.5131183862686157
+            },
+            {
+              "start": 45,
+              "end": 48,
+              "text": "UTC",
+              "label": "timezone",
+              "score": 0.7685320377349854
+            }
+          ]
+        }
+      ],
+      "status": "executed"
+    }
+  ]
+}

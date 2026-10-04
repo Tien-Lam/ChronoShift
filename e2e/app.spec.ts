@@ -155,7 +155,6 @@ test("close and reopen offline, then convert previously unseen input", async ({
 }) => {
   await ready(page);
   await page.getByLabel("Appearance", { exact: true }).click();
-  await page.getByLabel("Design", { exact: true }).selectOption("command");
   await page.getByLabel("Theme", { exact: true }).selectOption("light");
   await page.close();
   await disconnect(context, origin);
@@ -183,7 +182,6 @@ test("preferences persist, input does not; denied storage still converts", async
   await convert(page);
   const result = await page.locator(".hero-time").innerText();
   await page.getByLabel("Appearance", { exact: true }).click();
-  await page.getByLabel("Design", { exact: true }).selectOption("command");
   await page.getByLabel("Theme", { exact: true }).selectOption("light");
   await expect(page.locator(".hero-time")).toHaveText(result);
   await page.reload();
@@ -252,9 +250,7 @@ test("readable at 320px, dark mode, with no serious accessibility violations", a
   });
   await page.emulateMedia({ colorScheme: "light" });
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
-  await page.getByLabel("Appearance", { exact: true }).click();
-  await page.getByLabel("Design", { exact: true }).selectOption("command");
-  await page.getByLabel("Appearance", { exact: true }).click();
+
   expect(
     (
       await new AxeBuilder({ page })
@@ -272,7 +268,7 @@ test("readable at 320px, dark mode, with no serious accessibility violations", a
       ).violations,
     ).toEqual([]);
     await page.getByLabel("Appearance", { exact: true }).click();
-    await page.getByLabel("Design", { exact: true }).selectOption("lens");
+
     await page.emulateMedia({ colorScheme: "light" });
     expect(
       (
