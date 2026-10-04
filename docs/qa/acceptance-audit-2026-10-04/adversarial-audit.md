@@ -41,7 +41,7 @@ scripts/benchmark-browser.ts launches a fresh local desktop browser, uses a 390x
 - `PORT=4192 mise exec -- bun run --cwd /tmp/chronoshift-acceptance-adversarial/source scripts/serve-web.ts`: dedicated preview, sandbox escalation required for local binding and approved.
 - `mise exec -- bun /tmp/chronoshift-acceptance-adversarial/source/review-probe.ts`: focused disposable-profile probe, sandbox escalation required for Chromium launch and approved; first run ~0.54s, diagnostics repeat ~0.48s tool-reported wall time.
 - Environment: macOS arm64; mise-managed Bun 1.4.0; bundled headless Chromium 153.0.8010.12; en-AU / Australia/Sydney; synthetic texts only; online healthy controlling cache. Deliberate fault injection holds page IDB completion until the draft conversion completes, with no fixed deadline claim. No OS installation/share menu, physical phone, screen reader, native zoom or actual installed restart was exercised. No undirected suite rerun.
-- Evidence: `source/review-probe.ts`, `result.json` in this directory. The latest result includes no observed page/console errors. Worker console diagnostics were not separately attached.
+- Evidence: [original probe](adversarial-probe.ts.txt) and [observations](adversarial-before.json) in this directory; the raw probe retains its original temporary output path. The latest result includes no observed page/console errors. Worker console diagnostics were not separately attached.
 - Sandbox-only initial attempts failed to bind/launch; these are environment failures, not app defects. Direct mise invocation from new temp cwd also failed trying to trust the copied config; running mise from existing trusted repository cwd resolved it without changing tool configuration.
 
 ## Separate verdicts

@@ -1,0 +1,39 @@
+import { chromium, expect } from '/Users/tien/Developer/ChronoShift/node_modules/@playwright/test/index.mjs';
+const browser = await chromium.launch();
+const context = await browser.newContext({ locale: 'en-AU', timezoneId: 'Australia/Sydney' });
+const page = await context.newPage();
+await page.addInitScript(() => {
+  Object.defineProperty(navigator, 'clipboard', { value: {
+    readText: () => new Promise(resolve => { (window as any).deliverPaste = resolve; }),
+    writeText: (value: string) => { (window as any).copied = value; return Promise.resolve(); },
+  }});
+});
+const evidence: any = { revision: 'b432db067ad8176e7f040c74997e2021b629a07c', engine: 'Chromium ' + browser.version(), profile: 'desktop en-AU Australia/Sydney', cases: [] };
+try {
+  await page.goto('http://127.0.0.1:4191/');
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
+  await page.getByLabel('Message with a date or time').fill('Original April 9, 2026 3pm UTC');
+  await page.getByRole('button', { name: 'Paste', exact: true }).click();
+  await page.getByLabel('Message with a date or time').fill('Newer April 10, 2026 5pm UTC');
+  await page.getByRole('button', { name: 'Convert', exact: true }).click();
+  await expect(page.locator('.result')).toHaveCount(1);
+  await page.evaluate(() => (window as any).deliverPaste('Older clipboard April 8, 2026 9am UTC'));
+  await expect(page.getByLabel('Message with a date or time')).toHaveValue('Older clipboard April 8, 2026 9am UTC');
+  await expect(page.locator('.result')).toHaveCount(0);
+  evidence.cases.push({ name: 'pending paste overwrites newer converted draft', input: await page.getByLabel('Message with a date or time').inputValue(), resultCount: await page.locator('.result').count() });
+  await page.getByLabel('Convert to').fill('UTC');
+  await page.getByLabel('Message with a date or time').fill('April 9, 2026 3pm UTC');
+  await page.getByRole('button', { name: 'Convert', exact: true }).click();
+  await expect(page.locator('.hero-time')).toHaveText(/3:00 pm/i);
+  await page.getByLabel('Convert to').fill('CST');
+  await expect(page.locator('.field-note').first()).toHaveText('Choose a timezone or city from the list');
+  await expect(page.locator('.hero-time')).toHaveText(/1:00 am/i);
+  await page.getByRole('button', { name: /^Copy / }).click();
+  evidence.cases.push({ name: 'invalid CST target silently formats and copies device target', target: await page.getByLabel('Convert to').inputValue(), shown: await page.locator('.hero-time').innerText(), zone: await page.locator('.result-zone').innerText(), copied: await page.evaluate(() => (window as any).copied) });
+  await page.getByRole('button', { name: 'Convert', exact: true }).click();
+  await expect(page.getByRole('alert')).toContainText('Choose a timezone');
+  await expect(page.getByRole('button', { name: /^Copy / })).toHaveCount(1);
+  evidence.cases.push({ name: 'copy remains available even after invalid target Convert rejects', alert: await page.getByRole('alert').innerText(), resultCount: await page.locator('.result').count() });
+  await Bun.write('/tmp/chronoshift-acceptance-code/evidence.json', JSON.stringify(evidence, null, 2));
+  console.log(JSON.stringify(evidence, null, 2));
+} finally { await browser.close(); }

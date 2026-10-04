@@ -4,7 +4,7 @@ The user requested completion of the remaining ChronoShift projects. The [saved 
 
 ## Reproduced blockers
 
-- Code reviewer: delayed clipboard delivery overwrites a newer typed/converted draft and clears its results. Unresolved target `CST` silently displays and copies Sydney instead of a chosen zone, even after Convert shows an invalid-zone error. [Code observations](code-before.json), Chromium 153 desktop, en-AU/Australia/Sydney. Fresh Vite assets matched the tested production build.
+- Code reviewer: delayed clipboard delivery overwrites a newer typed/converted draft and clears its results. Unresolved target `CST` silently displays and copies Sydney instead of a chosen zone, even after Convert shows an invalid-zone error. [Code observations](code-before.json) and [original probe](code-probe.ts.txt), Chromium 153 desktop, en-AU/Australia/Sydney. Fresh Vite assets matched the tested production build.
 - Adversarial reviewer: delayed IndexedDB share delivery overwrites a newer typed/converted draft while leaving the previous conversion and Copy enabled. [Observations](adversarial-before.json) and [audit](adversarial-audit.md), exact source production build. This was reproduced twice with a dedicated preview and no user-browser mutation.
 - Implementer independently reproduced the share race in installed Chrome 154.0.8037.93 ordinary test-browser mode with a 1.2-second IDB success delay: incoming April 9, 2026 3pm UTC replaced June 18, 2026 9am UTC while results still showed June 18. This is a controlled delay, not actual OS share evidence.
 

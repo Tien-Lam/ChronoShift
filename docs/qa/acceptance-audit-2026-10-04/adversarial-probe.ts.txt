@@ -1,0 +1,67 @@
+import { chromium, expect } from '@playwright/test';
+const browser = await chromium.launch();
+const context = await browser.newContext({ locale: 'en-AU', timezoneId: 'Australia/Sydney' });
+const seed = await context.newPage();
+await seed.goto('http://127.0.0.1:4192/');
+await expect(seed.locator('main[data-offline-ready="true"]')).toBeVisible();
+await seed.evaluate(async () => {
+  await new Promise<void>((resolve, reject) => {
+    const r = indexedDB.open('chronoshift-handoff', 1);
+    r.onupgradeneeded = () => r.result.createObjectStore('messages');
+    r.onerror = () => reject(r.error);
+    r.onsuccess = () => {
+      const db = r.result, tx = db.transaction('messages', 'readwrite');
+      tx.objectStore('messages').put({ text: 'April 10, 2026 8pm UTC', created: Date.now() }, 'slow-share');
+      tx.oncomplete = () => { db.close(); resolve(); };
+    };
+  });
+});
+const page = await context.newPage();
+const diagnostics: string[] = [];
+page.on("pageerror", e => diagnostics.push("pageerror: " + e.message));
+page.on("console", m => { if(m.type() === "error") diagnostics.push("console: " + m.text()); });
+await page.addInitScript(() => {
+  const original = indexedDB.open.bind(indexedDB);
+  indexedDB.open = ((...args: Parameters<typeof indexedDB.open>) => {
+    const r = original(...args);
+    if (args[0] !== 'chronoshift-handoff') return r;
+    return new Proxy(r, {
+      get(target, key) { return Reflect.get(target, key, target); },
+      set(target, key, fn) {
+        if (key === 'onsuccess') {
+          target.onsuccess = (event) => { (window as any).__releaseShare = () => fn.call(target, event); };
+          return true;
+        }
+        return Reflect.set(target, key, fn, target);
+      }
+    });
+  }) as typeof indexedDB.open;
+  Object.defineProperty(navigator, 'clipboard', { value: { writeText: async () => {} } });
+});
+await page.goto('http://127.0.0.1:4192/?share=slow-share');
+await page.waitForFunction(() => typeof (window as any).__releaseShare === 'function');
+await page.getByLabel('Message with a date or time').fill('April 9, 2026 3pm UTC');
+await page.getByRole('button', { name: 'Convert', exact: true }).click();
+await expect(page.locator('.result').first()).toBeVisible();
+const before = await page.evaluate(() => ({ text: (document.querySelector('#message') as HTMLTextAreaElement).value, result: document.querySelector('.result-source')?.textContent, rendered: document.querySelector('.result')?.textContent }));
+await page.evaluate(() => (window as any).__releaseShare());
+await expect(page.getByLabel('Message with a date or time')).toHaveValue('April 10, 2026 8pm UTC');
+const after = await page.evaluate(() => ({ text: (document.querySelector('#message') as HTMLTextAreaElement).value, result: document.querySelector('.result-source')?.textContent, rendered: document.querySelector('.result')?.textContent, notice: document.querySelector('.notice')?.textContent }));
+console.log(JSON.stringify({ case: 'delayed-share-after-user-convert', diagnostics, before, after, browser: browser.version() }, null, 2));
+await page.evaluate(() => {
+  (window as any).__statusMutations = [];
+  document.querySelectorAll('[role=status]').forEach(region => new MutationObserver(() => (window as any).__statusMutations.push(region.textContent)).observe(region, { subtree: true, childList: true, characterData: true }));
+});
+await page.getByRole('button', { name: /^Copy/ }).first().click();
+await expect(page.locator('.notice')).toHaveText('Copied with the date and timezone.');
+const firstCopy = await page.evaluate(() => (window as any).__statusMutations.splice(0));
+await page.getByRole('button', { name: /^Copy/ }).first().click();
+const secondCopy = await page.evaluate(() => (window as any).__statusMutations.splice(0));
+const oldTarget = await page.locator('.hero-time').textContent();
+await page.getByLabel('Convert to', { exact: true }).fill('Tokyo');
+await expect(page.locator('.result-zone')).toContainText('Tokyo');
+const newTarget = await page.locator('.hero-time').textContent();
+const target = await page.evaluate(() => ({ statusMutations: (window as any).__statusMutations.splice(0), status: [...document.querySelectorAll('[role=status]')].map(n => n.textContent), targetDescribedBy: document.querySelector('#target-zone')?.getAttribute('aria-describedby') }));
+console.log(JSON.stringify({ case: 'repeated-copy-and-target-live-status', firstCopy, secondCopy, oldTarget, newTarget, target }, null, 2));
+await Bun.write('/tmp/chronoshift-acceptance-adversarial/result.json', JSON.stringify({ diagnostics, before, after, firstCopy, secondCopy, oldTarget, newTarget, target, browser: browser.version() }, null, 2));
+await browser.close();
