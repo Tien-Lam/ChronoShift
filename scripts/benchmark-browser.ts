@@ -85,16 +85,14 @@ try {
       page.getByRole("button", { name: "Convert", exact: true }),
     ).toBeVisible();
     cold.push(performance.now() - start);
-    await expect(
-      page.getByText("Offline ready", { exact: true }),
-    ).toBeVisible();
+    await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
     ready.push(performance.now() - start);
     await fresh.close();
   }
   const context = await browser.newContext(options),
     page = await context.newPage();
   await page.goto(url);
-  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
   const release = await (
     await context.request.get(url + "release.json")
   ).json();

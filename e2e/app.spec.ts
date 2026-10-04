@@ -60,7 +60,7 @@ test("worker failure recovers and a late response cannot resurrect cleared input
 });
 async function ready(page: Page) {
   await page.goto("/");
-  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
 }
 test("missing cache reports incomplete and reconnect repairs the complete offline app", async ({
   page,
@@ -76,7 +76,7 @@ test("missing cache reports incomplete and reconnect repairs the complete offlin
     await Promise.all((await caches.keys()).map((key) => caches.delete(key)));
     window.dispatchEvent(new Event("pageshow"));
   });
-  await expect(page.getByText("Offline ready", { exact: true })).toHaveCount(0);
+  await expect(page.locator('main[data-offline-ready="true"]')).toHaveCount(0);
   await expect(
     page.getByText("Offline setup is incomplete.", { exact: false }),
   ).toBeVisible();
@@ -87,7 +87,7 @@ test("missing cache reports incomplete and reconnect repairs the complete offlin
     });
     window.dispatchEvent(new Event("online"));
   });
-  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
   await page.close();
   await disconnect(context, origin);
   const reopened = await context.newPage();
@@ -166,9 +166,7 @@ test("close and reopen offline, then convert previously unseen input", async ({
   );
   await expect(reopened.locator("html")).toHaveAttribute("data-theme", "light");
   await expect(
-    reopened.getByText(origin ? "Offline ready" : "Working offline", {
-      exact: true,
-    }),
+    reopened.locator('main[data-offline-ready="true"]'),
   ).toBeVisible();
   await convert(reopened, "July 15, 2026 3pm in Tokyo");
   await expect(reopened.locator(".hero-time")).toHaveText(/4:00 pm/i);
