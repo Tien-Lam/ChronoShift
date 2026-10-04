@@ -11,6 +11,7 @@ import {
 import { ComboBox, Input } from "react-aria-components/ComboBox";
 import { Group } from "react-aria-components/Group";
 import { cityAliases, resolveCity, zoneIds, zoneName } from "../engine/zones";
+import { diagnostic } from "../platform/diagnostics";
 
 type Option = { id: string; label: string; description?: string };
 type ChoiceProps = {
@@ -196,8 +197,21 @@ export function ZoneChoice({
           placeholder={placeholder}
           aria-describedby={describedBy}
           autoComplete="off"
+          onFocus={() =>
+            diagnostic("ui.zone-focus", {
+              field: id === "target-zone" ? "target-zone" : "source-zone",
+            })
+          }
         />
-        <Button className="choice-toggle" aria-label={triggerLabel}>
+        <Button
+          className="choice-toggle"
+          aria-label={triggerLabel}
+          onPress={() =>
+            diagnostic("ui.zone-open", {
+              field: id === "target-zone" ? "target-zone" : "source-zone",
+            })
+          }
+        >
           <Chevron />
         </Button>
       </Group>

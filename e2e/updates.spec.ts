@@ -15,7 +15,8 @@ test("repair refuses another release and leaves the existing offline shell intac
   await publishRelease(context, baseURL!, "second");
   const ready = await page.evaluate(async () => {
     const cache = await caches.open("chronoshift-test-first");
-    await cache.delete("/icon.svg");
+    // A missing mutable document cannot be recovered from another release.
+    await cache.delete("/release.json");
     return new Promise<boolean>((resolve) => {
       const channel = new MessageChannel();
       channel.port1.onmessage = (event) => {
@@ -29,7 +30,6 @@ test("repair refuses another release and leaves the existing offline shell intac
     });
   });
   expect(ready).toBe(false);
-  expect(await revision(page)).toBe("test-first");
   expect(
     await page.evaluate(async () =>
       (await (
@@ -55,11 +55,15 @@ test("an interrupted rollback preserves a retained cache and its old tab worker"
   await next.goto("/");
   await publish(context, next, "second");
   await activate(next);
-  // Require staging on rollback, then fail a later CSS download. All complete
+  // Require staging on rollback, then fail a missing CSS download. All complete
   // cached assets serving the first tab must survive that failed installation.
-  await page.evaluate(async () =>
-    (await caches.open("chronoshift-test-first")).delete("/icon.svg"),
-  );
+  await page.evaluate(async () => {
+    const cache = await caches.open("chronoshift-test-first");
+    const css = (await cache.keys()).find((request) =>
+      request.url.endsWith(".css"),
+    )!;
+    await cache.delete(css);
+  });
   await publishRelease(context, baseURL!, "first-interrupted");
   await next.evaluate(async () => {
     const registration = (await navigator.serviceWorker.getRegistration())!;

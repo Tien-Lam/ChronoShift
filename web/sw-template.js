@@ -11,21 +11,36 @@ async function intact(path, response) {
   const hex = Array.from(new Uint8Array(digest), byte=>byte.toString(16).padStart(2,'0')).join('');
   return hex === INTEGRITY[path];
 }
-async function fill(cache) {
+function failure(code) {
+  const error = new Error(`Offline preparation failed: ${code}`);
+  error.code = code;
+  return error;
+}
+async function fill(cache, existing, stats) {
   for (const path of PRECACHE) {
-    let response = await fetch(new Request(path,{cache:'reload',credentials:'same-origin'}));
+    const retained = await existing.match(path);
+    if (await intact(path, retained)) {
+      await cache.put(path, retained);
+      stats.reused++;
+      continue;
+    }
+    let response;
+    try { response = await fetch(new Request(path,{cache:'reload',credentials:'same-origin'})); }
+    catch { throw failure('fetch-failed'); }
     if (!response.ok || response.type === 'opaque' || !await intact(path, response)) {
       // A CDN/browser may serve a stale mutable file during a Pages rollout.
       // Fetch a fresh cache key, but still require this release's exact bytes.
       const fresh = new URL(path, self.location.origin);
       fresh.searchParams.set('chronoshift-release', VERSION);
-      response = await fetch(new Request(fresh,{cache:'no-store',credentials:'same-origin'}));
+      try { response = await fetch(new Request(fresh,{cache:'no-store',credentials:'same-origin'})); }
+      catch { throw failure('fetch-failed'); }
     }
-    if (!response.ok || response.type === 'opaque') throw new Error('Incomplete offline assets');
+    if (!response.ok || response.type === 'opaque') throw failure('http-error');
     const type=response.headers.get('content-type')||'';
-    if ((path.endsWith('.js')&&!/javascript/.test(type)) || (path.endsWith('.css')&&!/text\/css/.test(type)) || (path.endsWith('.html')&&!/text\/html/.test(type))) throw new Error('Unexpected offline asset type');
-    if (!await intact(path, response)) throw new Error(`Offline asset belongs to another release: ${path} (expected ${VERSION})`);
+    if ((path.endsWith('.js')&&!/javascript/.test(type)) || (path.endsWith('.css')&&!/text\/css/.test(type)) || (path.endsWith('.html')&&!/text\/html/.test(type))) throw failure('unexpected-type');
+    if (!await intact(path, response)) throw failure('release-mismatch');
     await cache.put(path,response);
+    stats.fetched++;
   }
 }
 let repairing;
@@ -33,10 +48,15 @@ function repair() {
   if (repairing) return repairing;
   repairing=(async()=>{
     const stage=`chronoshift-staging-${VERSION}`;
+    const stats={reused:0,fetched:0};
     try {
-      const temporary=await caches.open(stage);await fill(temporary);
       const active=await caches.open(CACHE);
+      const temporary=await caches.open(stage);await fill(temporary,active,stats);
       for (const path of PRECACHE) await active.put(path,await temporary.match(path));
+      return stats;
+    } catch(error) {
+      error.repair={...stats,failure:error.code||'storage-error'};
+      throw error;
     } finally {await caches.delete(stage);}
   })().finally(()=>{repairing=undefined;});
   return repairing;
@@ -66,10 +86,23 @@ self.addEventListener('activate',event=>{
 self.addEventListener('message',event=>{
   if (event.data?.type === 'ACTIVATE_UPDATE') event.waitUntil(self.skipWaiting());
   if (event.data?.type === 'CHECK_READY') event.waitUntil((async()=>{
-    const cache = await caches.open(CACHE);
-    let ready = (await Promise.all(PRECACHE.map(path=>cache.match(path)))).every(Boolean);
-    if(!ready&&event.data.repairIfMissing){try{await repair();}catch{}ready=(await Promise.all(PRECACHE.map(path=>cache.match(path)))).every(Boolean);}
-    event.ports[0]?.postMessage({ready,version:VERSION});
+    const diagnostics={unavailable:[],repair:undefined};
+    let ready=false;
+    try {
+      const cache = await caches.open(CACHE);
+      const unavailable=async()=>{
+        const checked=await Promise.all(PRECACHE.map(async path=>await intact(path,await cache.match(path))?null:path));
+        return checked.filter(Boolean);
+      };
+      diagnostics.unavailable=await unavailable();
+      ready=diagnostics.unavailable.length===0;
+      if(diagnostics.unavailable.length&&event.data.repairIfMissing){
+        try{diagnostics.repair=await repair();}
+        catch(error){diagnostics.repair=error.repair||{failure:'storage-error'};}
+        ready=(await unavailable()).length===0;
+      }
+    } catch { diagnostics.repair={failure:'storage-error'}; }
+    event.ports[0]?.postMessage({ready,version:VERSION,...(event.data.detailedLogs===true?{diagnostics}:{})});
   })());
 });
 async function handoff(request) {

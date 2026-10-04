@@ -36,6 +36,8 @@ const server = Bun.serve({
           "offline-corrupt",
           "offline-delayed",
           "offline-interrupted",
+          "second-retired",
+          "second-stalled",
         ].includes(version)
       )
         return new Response("Unknown test release", { status: 400 });
@@ -53,10 +55,19 @@ const server = Bun.serve({
     if (!path.startsWith(root + "/"))
       return new Response("Not found", { status: 404 });
     const version = publishedVersion;
+    const releaseVersion = version?.startsWith("second-") ? "second" : version;
+    // Pages replaces the deployment tree: previously published hashed assets
+    // need not remain fetchable even though old controlling caches retain them.
+    if (
+      version === "second-retired" &&
+      relative.startsWith("assets/test-") &&
+      !relative.startsWith("assets/test-second-")
+    )
+      return new Response("Retired asset", { status: 404 });
     const variant =
       fixtures?.immutable.get(relative) ??
       fixtures?.releases
-        .get(version === "first-interrupted" ? "first" : version || "")
+        .get(version === "first-interrupted" ? "first" : releaseVersion || "")
         ?.get(relative);
     const file = Bun.file(path);
     if (variant === undefined && !(await file.exists()))
@@ -68,6 +79,8 @@ const server = Bun.serve({
       return new Response("Simulated partial update", { status: 503 });
     if (version === "offline-delayed" && relative === "icon.svg")
       await Bun.sleep(600);
+    if (version === "second-stalled" && relative === "index.html")
+      await Bun.sleep(1000);
     if (relative === "index.html" && url.pathname.endsWith("index.html")) {
       if (
         version === "offline-corrupt" ||

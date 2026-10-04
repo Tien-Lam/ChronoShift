@@ -1,0 +1,97 @@
+[
+  {
+    "condition": "installed first",
+    "state": {
+      "ready": "true",
+      "warnings": [],
+      "update": false,
+      "controller": "activated",
+      "caches": [
+        "chronoshift-test-first"
+      ]
+    }
+  },
+  {
+    "elapsedMs": 1003,
+    "state": {
+      "ready": "true",
+      "warnings": [],
+      "update": false,
+      "controller": "activated",
+      "waiting": "installed",
+      "caches": [
+        "chronoshift-test-first",
+        "chronoshift-test-second",
+        "chronoshift-staging-test-first"
+      ]
+    }
+  },
+  {
+    "elapsedMs": 16001,
+    "state": {
+      "ready": "false",
+      "warnings": [
+        "Offline assets could not be confirmed. Reconnect and reload to try again."
+      ],
+      "update": false,
+      "controller": "activated",
+      "waiting": "installed",
+      "caches": [
+        "chronoshift-test-first",
+        "chronoshift-test-second",
+        "chronoshift-staging-test-first"
+      ]
+    }
+  },
+  {
+    "elapsedMs": 24001,
+    "state": {
+      "ready": "false",
+      "warnings": [
+        "Offline assets could not be confirmed. Reconnect and reload to try again."
+      ],
+      "update": false,
+      "controller": "activated",
+      "waiting": "installed",
+      "caches": [
+        "chronoshift-test-first",
+        "chronoshift-test-second"
+      ]
+    }
+  },
+  {
+    "browser": "154.0.8037.93",
+    "condition": "22-second old-release cache-bust fetch; current release install not delayed; click Convert to after waiting install"
+  },
+  {
+    "condition": "unblocked repair; re-probe manually triggered by pageshow",
+    "state": {
+      "ready": "false",
+      "warnings": [
+        "Offline setup is incomplete. Reconnect and reload to try again."
+      ],
+      "update": true,
+      "controller": "activated",
+      "waiting": "installed",
+      "caches": [
+        "chronoshift-test-first",
+        "chronoshift-test-second"
+      ]
+    },
+    "conversion": "1:00 am"
+  },
+  {
+    "condition": "explicit update activation recovery",
+    "state": {
+      "ready": "true",
+      "warnings": [],
+      "update": false,
+      "controller": "activated",
+      "caches": [
+        "chronoshift-test-first",
+        "chronoshift-test-second"
+      ]
+    },
+    "draftPreserved": true
+  }
+]
