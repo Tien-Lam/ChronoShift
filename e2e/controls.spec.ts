@@ -54,6 +54,7 @@ async function dismissMenu(page: Page) {
 
 test("themed choices align and their opened menus fit every breakpoint without losing work", async ({
   page,
+  browserName,
 }, info) => {
   test.setTimeout(90_000);
   await page.addInitScript(() => {
@@ -144,9 +145,13 @@ test("themed choices align and their opened menus fit every breakpoint without l
           const background = await expectPopup(page, trigger, width);
           if (label === "Theme") {
             backgrounds.set(theme, background);
-            await page.screenshot({
-              path: info.outputPath(`menu-${theme}-${width}.png`),
-            });
+            // WebKit screenshots inject Playwright's temporary `body {}`
+            // stylesheet. Keep that deliberate CSP rejection out of this
+            // application's normal-interaction diagnostic journey.
+            if (browserName !== "webkit")
+              await page.screenshot({
+                path: info.outputPath(`menu-${theme}-${width}.png`),
+              });
           }
           expect(background).toBe(backgrounds.get(theme));
           await expect(page.getByRole("listbox")).toBeVisible();
