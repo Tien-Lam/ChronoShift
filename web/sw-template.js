@@ -11,8 +11,10 @@ async function intact(path, response) {
   const hex = Array.from(new Uint8Array(digest), byte=>byte.toString(16).padStart(2,'0')).join('');
   return hex === INTEGRITY[path];
 }
-function failure(code) {
-  const error = new Error(`Offline preparation failed: ${code}`);
+function failure(code, path) {
+  // Only bundled paths and this build's version enter installation errors.
+  // Preserve these even before a controller exists to answer CHECK_READY.
+  const error = new Error(`Offline preparation failed: ${code}, ${path} (expected ${VERSION})`);
   error.code = code;
   return error;
 }
@@ -26,19 +28,19 @@ async function fill(cache, existing, stats) {
     }
     let response;
     try { response = await fetch(new Request(path,{cache:'reload',credentials:'same-origin'})); }
-    catch { throw failure('fetch-failed'); }
+    catch { throw failure('fetch-failed',path); }
     if (!response.ok || response.type === 'opaque' || !await intact(path, response)) {
       // A CDN/browser may serve a stale mutable file during a Pages rollout.
       // Fetch a fresh cache key, but still require this release's exact bytes.
       const fresh = new URL(path, self.location.origin);
       fresh.searchParams.set('chronoshift-release', VERSION);
       try { response = await fetch(new Request(fresh,{cache:'no-store',credentials:'same-origin'})); }
-      catch { throw failure('fetch-failed'); }
+      catch { throw failure('fetch-failed',path); }
     }
-    if (!response.ok || response.type === 'opaque') throw failure('http-error');
+    if (!response.ok || response.type === 'opaque') throw failure('http-error',path);
     const type=response.headers.get('content-type')||'';
-    if ((path.endsWith('.js')&&!/javascript/.test(type)) || (path.endsWith('.css')&&!/text\/css/.test(type)) || (path.endsWith('.html')&&!/text\/html/.test(type))) throw failure('unexpected-type');
-    if (!await intact(path, response)) throw failure('release-mismatch');
+    if ((path.endsWith('.js')&&!/javascript/.test(type)) || (path.endsWith('.css')&&!/text\/css/.test(type)) || (path.endsWith('.html')&&!/text\/html/.test(type))) throw failure('unexpected-type',path);
+    if (!await intact(path, response)) throw failure('release-mismatch',path);
     await cache.put(path,response);
     stats.fetched++;
   }
