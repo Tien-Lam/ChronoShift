@@ -47,8 +47,7 @@ Phone sketch:
 
 ```text
 ChronoShift                      Offline ready
-Make time local.
-Paste a message. Find your time.
+Time zone converter
 [ multiline message                         ]
 [Paste] [Clear]                    [Convert]
 Convert to: [Your timezone / searchable zone]
@@ -61,7 +60,7 @@ China Standard                     [Copy]
 5:00 PM · Thu 9 Apr · UTC+10 Sydney
 ```
 
-Desktop uses a readable centered workspace, with input/results side by side when space allows; phone stacks them. No horizontal scroll at 320 CSS pixels or 200% zoom. Keyboard Enter remains a textarea newline; Ctrl/Cmd+Enter converts. Result/error announcements and labels support a screen reader. Copy/paste are user actions with manual fallbacks.
+Appearance offers Liquid Lens (separate input/result glass panels) and Glass Command (one stacked command window), with Dark, Light and System themes. The design/theme preferences persist; switching preserves the draft and conversion results. Keep the first screen focused on conversion: no large motto, marketing hero or confusing “their time” wording. Liquid Lens places input/results side by side when space allows; Glass Command keeps them in one centered stacked window. Phone layouts stack controls. No horizontal scroll at 320 CSS pixels or 200% zoom. Keyboard Enter remains a textarea newline; Ctrl/Cmd+Enter converts. Result/error announcements and labels support a screen reader. Copy/paste are user actions with manual fallbacks.
 
 Adapt dynamically when a window resizes or a device folds/rotates, preserving draft input, results and preferences. Cover screens down to 280 CSS pixels, tablets, unfolded screens and short landscape windows must reflow without horizontal page scrolling. Respect display safe areas and offer controls at least 44 pixels high on touch screens. When supported, CSS viewport segments place input/results on separate sides of a vertical hinge; tabletop posture keeps the scrollable task within the upper segment. Other browsers use the fluid single/two-column layout. Actual folding and virtual-keyboard behavior require physical-device acceptance.
 

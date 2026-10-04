@@ -36,7 +36,13 @@ export function loadPreferences(): Preferences {
 }
 export function savePreferences(value: Preferences): boolean {
   try {
-    localStorage.setItem(KEY, JSON.stringify(value));
+    if (
+      (Object.keys(DEFAULTS) as (keyof Preferences)[]).every(
+        (key) => value[key] === DEFAULTS[key],
+      )
+    )
+      localStorage.removeItem(KEY);
+    else localStorage.setItem(KEY, JSON.stringify(value));
     return true;
   } catch {
     return false;

@@ -1,8 +1,10 @@
 import { resolve, extname } from "node:path";
+import { testReleases } from "./test-releases";
 // Same-origin static preview. Test versions exist only when explicitly enabled.
 const root = resolve("dist"),
   base = process.env.BASE_PATH || "/",
   testMode = process.env.CHRONOSHIFT_TEST_SERVER === "1";
+const fixtures = testMode ? await testReleases(root) : undefined;
 const mime: Record<string, string> = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
@@ -26,18 +28,21 @@ const server = Bun.serve({
     const path = resolve(root, relative);
     if (!path.startsWith(root + "/"))
       return new Response("Not found", { status: 404 });
-    const file = Bun.file(path);
-    if (!(await file.exists()))
-      return new Response("Not found", { status: 404 });
     const version = testMode
       ? request.headers
           .get("cookie")
           ?.match(/(?:^|; )test-version=([^;]+)/)?.[1]
       : undefined;
+    const variant =
+      fixtures?.immutable.get(relative) ??
+      fixtures?.releases.get(version || "")?.get(relative);
+    const file = Bun.file(path);
+    if (variant === undefined && !(await file.exists()))
+      return new Response("Not found", { status: 404 });
     if (version === "broken" && relative.endsWith(".css"))
       return new Response("Simulated partial update", { status: 503 });
-    let body: BodyInit = file;
-    if (version && relative === "sw.js")
+    let body: BodyInit = variant ?? file;
+    if (version && relative === "sw.js" && variant === undefined)
       body = (await file.text()).replace(
         /const VERSION = '[^']+';/,
         `const VERSION = 'test-${version}';`,

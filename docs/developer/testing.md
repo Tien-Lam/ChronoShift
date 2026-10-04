@@ -17,7 +17,7 @@ bunx --bun playwright install chromium firefox webkit
 bun run test:browser
 ```
 
-The 68 scenarios exercise the production worker on Chromium, Firefox, WebKit, Android Chrome emulation and iPhone WebKit emulation, plus a dedicated Chromium foldable profile. They cover cached close/reopen/new input, clipboard/storage failures, canceled work, HTML/URL injection, updates, cache repair, POST shares, theme/accessibility, ten viewport sizes, real viewport-segment emulation and display safe areas.
+The 98 scenarios exercise the production worker on Chromium, Firefox, WebKit, Android Chrome emulation and iPhone WebKit emulation, plus a dedicated Chromium foldable profile. They cover cached close/reopen/new input, clipboard/storage failures, canceled work, HTML/URL injection, updates, cache repair, POST shares, theme/accessibility, ten viewport sizes, real viewport-segment emulation and display safe areas. Update fixtures have distinct immutable assets and incompatible worker protocols; they prove old/new tabs retain their own lazy workers through two successive activations, offline use and rollback. Privacy cases cover handoff expiry/invalid data, blocked update storage, legacy preference migration/reset/quota, and invalid/oversized POST shares.
 
 If a preview is already on port 4173, use `PLAYWRIGHT_PORT=4175 bun run test:browser`. The runner starts its own production server. WebKit stops a dedicated origin and proves uncached requests fail because [Playwright's offline emulation also rejects service-worker responses](https://github.com/microsoft/playwright/issues/42775).
 
@@ -38,9 +38,12 @@ The subpath scenario checks manifest/scope, fresh offline input and offline POST
 ```bash
 bun run corpus:audit
 bun scripts/benchmark-web.ts
+bun scripts/benchmark-browser.ts chromium
 ```
 
 The deterministic audit writes `docs/planning/corpus-audit.json`; CI regenerates it and checks for drift. Update that report when an intentional parser/fixture change affects it. Exact correctness expectations belong in `temporal.json`.
+
+The browser benchmark runs a dedicated production preview and writes `docs/planning/browser-performance-baseline.json`. Choose `firefox` or `webkit` instead, and optionally pass a report path as the next argument. It measures ten fresh-context starts, ten stopped-origin offline reopenings, and thirty measured conversions after five warmups for each design and workload. Conversion timing includes disposable-worker startup, parsing and result DOM updates. The 390×844 viewport is a desktop browser measurement; it does not emulate phone CPU/network or certify physical-phone performance. Run benchmarks separately from other browser jobs to avoid contention. These measurements are deliberately outside CI timing gates.
 
 ## Published acceptance
 
