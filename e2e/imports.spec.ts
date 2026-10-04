@@ -113,6 +113,7 @@ for (const source of ["clipboard", "share"] as const) {
         await expect(
           page.getByRole("button", { name: "Replace with imported text" }),
         ).toHaveCount(0);
+        await expect(page.locator(".hero-time")).toContainText(/3:00 pm/i);
         continue;
       }
       await expect(
@@ -120,9 +121,10 @@ for (const source of ["clipboard", "share"] as const) {
       ).toBeVisible();
       await expect(input).toHaveValue(action === "clear" ? "" : newer);
       await expect(page.locator(".result")).toHaveCount(
-        action === "convert" ? 1 : 0,
+        action === "clear" ? 0 : 1,
       );
-      if (action === "convert") {
+      if (action !== "clear") {
+        await expect(page.locator(".hero-time")).toContainText(/9:00/);
         await expect(page.locator(".result-date")).toContainText(/18 Jun/);
         await page
           .getByRole("button", { name: "Dismiss imported text" })
