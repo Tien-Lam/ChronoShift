@@ -1,6 +1,6 @@
 # Lightweight browser ML for ChronoShift
 
-Research date: 3 October 2026. Recommendation based on primary model cards, papers and runtime documentation, plus the current Android implementation. No model was downloaded, trained or benchmarked; sizes marked as estimates are not measured deployment artifacts.
+Research date: 3 October 2026. Recommendation based on primary model cards, papers and runtime documentation, plus the current Android implementation. The original research below predates the measured experiment. On 4 October the pretrained model was downloaded, exported and evaluated; see the decision and evidence below. No model was trained. Sizes marked as estimates remain estimates.
 
 ## Recommendation
 
@@ -19,7 +19,7 @@ Sizes use decimal MB. Download size, in-memory size and full app size are differ
 | Candidate | Published artifact or estimate | Fit and limitation |
 | --- | --- | --- |
 | Task-trained BERT-tiny | About 4.4M parameters from its architecture; approximately 17.6 MB raw FP32 weights or 4.4 MB if all weights could be INT8. A practical model/tokenizer target is **under 20 MB**, subject to export measurement. Runtime is extra. | Best proposed small-download path; requires annotation, training and independent accuracy evaluation. |
-| GLiNER-bi-edge-v2.0 | Upstream PyTorch weights **243 MB**. INT8 of all roughly 60M weights would have a raw lower-order budget around 60 MB; removing the label encoder may reduce that. Actual ONNX size is unverified. | Best first pretrained candidate: configurable labels, fixed-label caching. Requires export, tokenizer/span adapter and real WASM testing. |
+| GLiNER-bi-edge-v2.0 | Upstream PyTorch weights **243 MB**. INT8 of all roughly 60M weights would have a raw lower-order budget around 60 MB; removing the label encoder may reduce that. Measured later: 239.63 MB FP32 ONNX, 60.83 MB quantized ONNX (see experiment). | Best first pretrained candidate: configurable labels, fixed-label caching. Requires export, tokenizer/span adapter and real WASM testing. |
 | GLiNER small v2.1 ONNX | Published quantized ONNX graph **183 MB**, plus tokenizer/runtime. | Existing ONNX export for a useful comparison; too large for the preferred lightweight default. |
 | GLiNER2.5 small | Author reports **74M parameters and ~296 MB FP32 weights**. | Can extract records and relations, potentially useful for linking several dates/times/zones. Current inspected instructions are Python; no verified browser export found. More capability and export work than the first span-only prototype needs. |
 | BERT temporal tagger | Model card reports approximately **0.1B parameters** with DATE/TIME/DURATION/SET labels. | Direct temporal specialization makes it an accuracy reference/possible training teacher. No timezone label and substantially larger than tiny encoders. |
@@ -76,6 +76,8 @@ Refine F11 from generic browser LLM discovery to a lightweight temporal-span ben
 
 The subsequent user instruction authorized Linear publication and execution. This research informs [TIE-302](https://linear.app/tienlam/issue/TIE-302), the optional temporal-span benchmark; deterministic launch work proceeds independently.
 
-## Availability recheck — 4 October 2026
+## Measured feasibility decision — 4 October 2026
 
-The [upstream GLiNER-bi-edge file listing](https://huggingface.co/knowledgator/gliner-bi-edge-v2.0/tree/main) still lists a 243 MB PyTorch checkpoint plus a 3.58 MB tokenizer, with no ONNX graph in that repository. Its [model card](https://huggingface.co/knowledgator/gliner-bi-edge-v2.0) documents Python usage and H100 throughput; neither supplies browser inference evidence. The [BERT-tiny card](https://huggingface.co/prajjwal1/bert-tiny) still requires downstream training. This is an artifact-availability check, not a failed export attempt or an accuracy benchmark. TIE-302 remains optional and unfinished: a real export/tokenizer/span adapter and independently reviewed held-out comparison are still needed before bundling a model. The new production-browser performance harness measures the deterministic baseline; no model bytes or runtime dependencies were added to the app or CI.
+**Defer bundling ML and defer BERT-tiny training.** [The isolated experiment](../../experiments/temporal-span/README.md) records actual pinned GLiNER inference, FP32/quantized exports, native ONNX decoding, browser single-thread WASM tensor compatibility, artifact hashes and an independently frozen 20-message comparison. The 60.83 MB quantized graph alone exceeds the provisional 20 MB model/tokenizer target. On this small synthetic sample, ML gated normalization adds no conversions over the same cheap parsing-rule control; quantization changes detections on 9/20 messages and reduces span F1. This bounded result does not establish population accuracy.
+
+WASM compatibility passed on three pretokenized inputs in the actual browser side panel; a JS tokenizer/span adapter, caching, long-message windows and phone/memory evidence remain unimplemented. There is no proposed production ML deployment. The deterministic launch remains local/offline and requires no model download; optional feasibility work stays outside CI and all launch gates.

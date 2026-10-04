@@ -135,15 +135,15 @@ export default function App() {
             : "light"
           : prefs.theme;
       document.documentElement.dataset.theme = theme;
-      document.documentElement.dataset.design = prefs.design;
+      document.documentElement.dataset.design = "command";
       document
         .querySelector('meta[name="theme-color"]')
-        ?.setAttribute("content", theme === "dark" ? "#090c16" : "#e9edf6");
+        ?.setAttribute("content", theme === "dark" ? "#0a0a0b" : "#fafafa");
     };
     apply();
     media.addEventListener("change", apply);
     return () => media.removeEventListener("change", apply);
-  }, [prefs.theme, prefs.design]);
+  }, [prefs.theme]);
 
   function edit(value: string) {
     request.current++;
@@ -309,24 +309,25 @@ export default function App() {
             }}
           >
             <summary aria-label="Appearance">
-              <span aria-hidden="true">◐</span>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="8" />
+                <path
+                  d="M12 4a8 8 0 0 0 0 16Z"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
               <span className="appearance-label">Appearance</span>
             </summary>
             <div className="appearance-fields">
-              <label htmlFor="design">Design</label>
-              <select
-                id="design"
-                value={prefs.design}
-                onChange={(e) =>
-                  setPrefs({
-                    ...prefs,
-                    design: e.target.value as "lens" | "command",
-                  })
-                }
-              >
-                <option value="lens">Liquid Lens</option>
-                <option value="command">Glass Command</option>
-              </select>
               <label htmlFor="theme">Theme</label>
               <select
                 id="theme"
@@ -354,9 +355,6 @@ export default function App() {
           <section className="input-panel" aria-labelledby="input-title">
             <div className="panel-heading">
               <h2 id="input-title">Time zone converter</h2>
-              <span className="step" aria-hidden="true">
-                01 / INPUT
-              </span>
             </div>
             <label htmlFor="message">Message with a date or time</label>
             <textarea
@@ -439,7 +437,17 @@ export default function App() {
                 aria-busy={busy}
               >
                 {busy ? "Converting…" : "Convert"}
-                <span aria-hidden="true">↗</span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14m-5-5 5 5-5 5" />
+                </svg>
               </button>
             </div>
             <details className="options">
@@ -545,9 +553,6 @@ export default function App() {
           >
             <div className="panel-heading">
               <h2 id="result-title">Converted time</h2>
-              <span className="step" aria-hidden="true">
-                02 / RESULT
-              </span>
             </div>
             <div role="status" className="sr-only">
               {busy
@@ -677,9 +682,7 @@ export default function App() {
           </div>
         )}
         <footer>
-          <p>
-            <span aria-hidden="true">◈</span> Your text stays on this device.
-          </p>
+          <p>Your text stays on this device.</p>
           <button
             type="button"
             className="text-button"
@@ -690,7 +693,7 @@ export default function App() {
               } else setInstallHelp(!installHelp);
             }}
           >
-            Keep ChronoShift handy ↗
+            Keep ChronoShift handy
           </button>
         </footer>
         {installHelp && (

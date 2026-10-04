@@ -1,78 +1,89 @@
 import { test, expect, publishRelease } from "./fixtures";
 const releaseTest = test.extend({ isolatedOrigin: true });
 
-test("legacy preferences migrate, reset removes them and quota failures keep conversion usable", async ({
-  page,
-}) => {
-  await page.goto("/");
-  await expect(page.getByText("Offline ready", { exact: true })).toBeVisible();
-  await page.evaluate(() =>
-    localStorage.setItem(
-      "chronoshift.preferences.v1",
-      JSON.stringify({
+for (const legacyDesign of ["lens", "command"])
+  test(`legacy ${legacyDesign} preferences migrate, reset removes them and quota failures keep conversion usable`, async ({
+    page,
+  }) => {
+    await page.goto("/");
+    await expect(
+      page.getByText("Offline ready", { exact: true }),
+    ).toBeVisible();
+    await page.evaluate(
+      (design) =>
+        localStorage.setItem(
+          "chronoshift.preferences.v1",
+          JSON.stringify({
+            target: "Asia/Tokyo",
+            source: "UTC",
+            hourCycle: "24",
+            dateOrder: "dmy",
+            design,
+            text: "DROP-LEGACY-TEXT",
+          }),
+        ),
+      legacyDesign,
+    );
+    await page.reload();
+    await expect(page.getByLabel("Convert to")).toHaveValue("Asia/Tokyo");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+    await expect(page.locator("html")).toHaveAttribute(
+      "data-design",
+      "command",
+    );
+    await expect(page.getByLabel("Design", { exact: true })).toHaveCount(0);
+    await expect(page.getByLabel("Message with a date or time")).toHaveValue(
+      "",
+    );
+    await expect
+      .poll(() =>
+        page.evaluate(() =>
+          JSON.parse(localStorage.getItem("chronoshift.preferences.v1")!),
+        ),
+      )
+      .toEqual({
         target: "Asia/Tokyo",
         source: "UTC",
         hourCycle: "24",
         dateOrder: "dmy",
-        text: "DROP-LEGACY-TEXT",
-      }),
-    ),
-  );
-  await page.reload();
-  await expect(page.getByLabel("Convert to")).toHaveValue("Asia/Tokyo");
-  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-  await expect(page.locator("html")).toHaveAttribute("data-design", "lens");
-  await expect(page.getByLabel("Message with a date or time")).toHaveValue("");
-  await expect
-    .poll(() =>
-      page.evaluate(() =>
-        JSON.parse(localStorage.getItem("chronoshift.preferences.v1")!),
-      ),
-    )
-    .toEqual({
-      target: "Asia/Tokyo",
-      source: "UTC",
-      hourCycle: "24",
-      dateOrder: "dmy",
-      design: "lens",
-      theme: "dark",
+        theme: "dark",
+      });
+    await page.getByText("More options", { exact: true }).click();
+    await page.getByRole("button", { name: "Reset preferences" }).click();
+    await expect(page.getByLabel("Convert to")).toHaveValue("");
+    await expect
+      .poll(() =>
+        page.evaluate(() => localStorage.getItem("chronoshift.preferences.v1")),
+      )
+      .toBeNull();
+    await page.addInitScript(() => {
+      Storage.prototype.setItem = () => {
+        throw new DOMException("Quota full", "QuotaExceededError");
+      };
     });
-  await page.getByText("More options", { exact: true }).click();
-  await page.getByRole("button", { name: "Reset preferences" }).click();
-  await expect(page.getByLabel("Convert to")).toHaveValue("");
-  await expect
-    .poll(() =>
-      page.evaluate(() => localStorage.getItem("chronoshift.preferences.v1")),
-    )
-    .toBeNull();
-  await page.addInitScript(() => {
-    Storage.prototype.setItem = () => {
-      throw new DOMException("Quota full", "QuotaExceededError");
-    };
+    await page.reload();
+    await page.getByLabel("Convert to").fill("Asia/Tokyo");
+    await expect(
+      page.getByText("Preferences cannot be saved", { exact: false }),
+    ).toBeVisible();
+    await page
+      .getByLabel("Message with a date or time")
+      .fill("April 9, 2026 3pm UTC");
+    await page.getByRole("button", { name: "Convert", exact: true }).click();
+    await expect(page.locator(".hero-time")).toHaveText(/12:00 am/i);
+    expect(
+      await page.evaluate(() =>
+        localStorage.getItem("chronoshift.preferences.v1"),
+      ),
+    ).toBeNull();
+    await page.reload();
+    await expect(page.getByLabel("Convert to")).toHaveValue("");
+    await page
+      .getByLabel("Message with a date or time")
+      .fill("April 9, 2026 3pm UTC");
+    await page.getByRole("button", { name: "Convert", exact: true }).click();
+    await expect(page.locator(".hero-time")).toHaveText(/1:00 am/i);
   });
-  await page.reload();
-  await page.getByLabel("Convert to").fill("Asia/Tokyo");
-  await expect(
-    page.getByText("Preferences cannot be saved", { exact: false }),
-  ).toBeVisible();
-  await page
-    .getByLabel("Message with a date or time")
-    .fill("April 9, 2026 3pm UTC");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
-  await expect(page.locator(".hero-time")).toHaveText(/12:00 am/i);
-  expect(
-    await page.evaluate(() =>
-      localStorage.getItem("chronoshift.preferences.v1"),
-    ),
-  ).toBeNull();
-  await page.reload();
-  await expect(page.getByLabel("Convert to")).toHaveValue("");
-  await page
-    .getByLabel("Message with a date or time")
-    .fill("April 9, 2026 3pm UTC");
-  await page.getByRole("button", { name: "Convert", exact: true }).click();
-  await expect(page.locator(".hero-time")).toHaveText(/1:00 am/i);
-});
 
 test("invalid and oversized local shares return a paste fallback without storing text", async ({
   page,

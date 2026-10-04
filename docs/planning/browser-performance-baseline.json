@@ -1,47 +1,105 @@
 {
-  "measuredAt": "2026-10-04T02:31:29.522Z",
+  "measuredAt": "2026-10-04T08:39:31.321Z",
   "release": {
-    "sourceCommit": "63a25539749e3ddc81172e57b08de2656cfa288b",
+    "sourceCommit": "d9109d0a14c0bb2d2c5d2d818c5179c884f56b98",
     "base": "/"
   },
   "environment": "darwin/arm64, chromium 153.0.8010.12, Bun 1.4.0",
   "device": "Development computer, 390×844 CSS-pixel viewport. No mobile hardware, CPU or network emulation.",
-  "method": "Ten fresh browser contexts for cold local HTTP navigation, ten offline cached reopenings; Playwright wall-clock navigation-to-visible-form/complete-cache includes automation overhead. Five warmups + thirty timed conversions per design/workload use the production disposable worker and real result DOM; click capture to DOM completion includes worker startup, parsing and rendering. Frame gaps are diagnostic, not an input responsiveness certification. Local gzip estimates exclude HTTP headers. Fixed synthetic workloads are not worst-case proof.",
+  "method": "Ten fresh browser contexts for cold local HTTP navigation, ten offline cached reopenings; Playwright wall-clock navigation-to-visible-form/complete-cache includes automation overhead. Five warmups + thirty timed conversions per design/workload use the production disposable worker and real result DOM; click capture to DOM completion includes worker startup, parsing and rendering. Frame gaps are diagnostic, not an input responsiveness certification. Local gzip estimates exclude HTTP headers. assets/totalGzipBytes cover only top-level dist/assets JS/CSS; offlineAssets/totalOfflineGzipBytes cover every final dist file including HTML, manifests, icons, notices, release metadata and the service worker. Fixed synthetic workloads are not worst-case proof.",
   "assets": [
     {
-      "name": "worker-Dcv-t75w.js",
-      "bytes": 218704,
-      "gzipBytes": 63777
-    },
-    {
-      "name": "index-BbxSBDlz.js",
-      "bytes": 400679,
-      "gzipBytes": 121051
+      "name": "index-m09ZhzMH.js",
+      "bytes": 401019,
+      "gzipBytes": 121146
     },
     {
       "name": "index-wpxFTbJy.css",
       "bytes": 14187,
       "gzipBytes": 3590
+    },
+    {
+      "name": "worker-C690IjaR.js",
+      "bytes": 221144,
+      "gzipBytes": 64577
     }
   ],
-  "totalGzipBytes": 188418,
+  "totalGzipBytes": 189313,
+  "offlineAssets": [
+    {
+      "name": "assets/index-m09ZhzMH.js",
+      "bytes": 401019,
+      "gzipBytes": 121146
+    },
+    {
+      "name": "assets/index-wpxFTbJy.css",
+      "bytes": 14187,
+      "gzipBytes": 3590
+    },
+    {
+      "name": "assets/worker-C690IjaR.js",
+      "bytes": 221144,
+      "gzipBytes": 64577
+    },
+    {
+      "name": "icon-192.png",
+      "bytes": 7136,
+      "gzipBytes": 7159
+    },
+    {
+      "name": "icon-512.png",
+      "bytes": 19658,
+      "gzipBytes": 19437
+    },
+    {
+      "name": "icon.svg",
+      "bytes": 355,
+      "gzipBytes": 228
+    },
+    {
+      "name": "index.html",
+      "bytes": 1092,
+      "gzipBytes": 557
+    },
+    {
+      "name": "manifest.webmanifest",
+      "bytes": 838,
+      "gzipBytes": 360
+    },
+    {
+      "name": "release.json",
+      "bytes": 79,
+      "gzipBytes": 95
+    },
+    {
+      "name": "sw.js",
+      "bytes": 7042,
+      "gzipBytes": 2925
+    },
+    {
+      "name": "third-party-notices.txt",
+      "bytes": 15988,
+      "gzipBytes": 4585
+    }
+  ],
+  "totalOfflineGzipBytes": 224659,
   "coldOnlineNavigationToForm": {
     "runs": 10,
-    "p50Ms": 52,
-    "p95Ms": 54.86,
-    "maxMs": 54.86
+    "p50Ms": 52.19,
+    "p95Ms": 54.53,
+    "maxMs": 54.53
   },
   "coldOnlineNavigationToOfflineReady": {
     "runs": 10,
-    "p50Ms": 82.97,
-    "p95Ms": 87.17,
-    "maxMs": 87.17
+    "p50Ms": 83.63,
+    "p95Ms": 86.8,
+    "maxMs": 86.8
   },
   "warmOfflineNavigationToForm": {
     "runs": 10,
-    "p50Ms": 49.15,
-    "p95Ms": 50.8,
-    "maxMs": 50.8
+    "p50Ms": 48.81,
+    "p95Ms": 50.54,
+    "maxMs": 50.54
   },
   "conversions": [
     {
@@ -50,15 +108,15 @@
       "characters": 2000,
       "conversion": {
         "runs": 30,
-        "p50Ms": 54.7,
-        "p95Ms": 55.1,
-        "maxMs": 56.1
+        "p50Ms": 47.7,
+        "p95Ms": 48.4,
+        "maxMs": 48.5
       },
       "maxFrameGap": {
         "runs": 30,
-        "p50Ms": 16.7,
-        "p95Ms": 16.8,
-        "maxMs": 16.8
+        "p50Ms": 17.8,
+        "p95Ms": 18.6,
+        "maxMs": 18.8
       },
       "provisionalBudgetMs": 250,
       "meetsBudgetOnThisMachine": true
@@ -69,9 +127,9 @@
       "characters": 10000,
       "conversion": {
         "runs": 30,
-        "p50Ms": 106.1,
-        "p95Ms": 107,
-        "maxMs": 107.2
+        "p50Ms": 72.3,
+        "p95Ms": 74,
+        "maxMs": 75
       },
       "maxFrameGap": {
         "runs": 30,
@@ -88,15 +146,15 @@
       "characters": 10000,
       "conversion": {
         "runs": 30,
-        "p50Ms": 31.5,
-        "p95Ms": 32.1,
-        "maxMs": 32.2
+        "p50Ms": 31.2,
+        "p95Ms": 31.6,
+        "maxMs": 31.8
       },
       "maxFrameGap": {
         "runs": 30,
-        "p50Ms": 18.4,
-        "p95Ms": 18.7,
-        "maxMs": 18.7
+        "p50Ms": 18.1,
+        "p95Ms": 18.43,
+        "maxMs": 18.5
       },
       "provisionalBudgetMs": 1000,
       "meetsBudgetOnThisMachine": true
@@ -107,15 +165,15 @@
       "characters": 2000,
       "conversion": {
         "runs": 30,
-        "p50Ms": 54.5,
-        "p95Ms": 54.9,
-        "maxMs": 56.3
+        "p50Ms": 47.8,
+        "p95Ms": 48.8,
+        "maxMs": 49.2
       },
       "maxFrameGap": {
         "runs": 30,
-        "p50Ms": 16.7,
-        "p95Ms": 16.73,
-        "maxMs": 16.8
+        "p50Ms": 17.8,
+        "p95Ms": 18.7,
+        "maxMs": 18.7
       },
       "provisionalBudgetMs": 250,
       "meetsBudgetOnThisMachine": true
@@ -126,15 +184,15 @@
       "characters": 10000,
       "conversion": {
         "runs": 30,
-        "p50Ms": 105.4,
-        "p95Ms": 106.4,
-        "maxMs": 109.5
+        "p50Ms": 72.1,
+        "p95Ms": 74.7,
+        "maxMs": 75.2
       },
       "maxFrameGap": {
         "runs": 30,
         "p50Ms": 16.7,
-        "p95Ms": 16.8,
-        "maxMs": 16.8
+        "p95Ms": 16.7,
+        "maxMs": 16.73
       },
       "provisionalBudgetMs": 1000,
       "meetsBudgetOnThisMachine": true
@@ -146,14 +204,14 @@
       "conversion": {
         "runs": 30,
         "p50Ms": 31.7,
-        "p95Ms": 32.9,
-        "maxMs": 32.9
+        "p95Ms": 33.2,
+        "maxMs": 33.4
       },
       "maxFrameGap": {
         "runs": 30,
         "p50Ms": 18.4,
-        "p95Ms": 18.7,
-        "maxMs": 18.83
+        "p95Ms": 18.8,
+        "maxMs": 18.9
       },
       "provisionalBudgetMs": 1000,
       "meetsBudgetOnThisMachine": true

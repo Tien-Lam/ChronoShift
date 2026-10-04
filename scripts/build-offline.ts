@@ -48,8 +48,8 @@ const manifest = {
   start_url: base,
   scope: base,
   display: "standalone",
-  background_color: "#090c16",
-  theme_color: "#090c16",
+  background_color: "#0a0a0b",
+  theme_color: "#0a0a0b",
   icons: [
     {
       src: `${base}icon.svg`,

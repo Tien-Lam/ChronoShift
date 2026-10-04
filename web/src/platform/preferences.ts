@@ -3,7 +3,6 @@ export interface Preferences {
   source: string;
   hourCycle: "auto" | "12" | "24";
   dateOrder: "mdy" | "dmy";
-  design: "lens" | "command";
   theme: "dark" | "light" | "system";
 }
 export const DEFAULTS: Preferences = {
@@ -11,7 +10,6 @@ export const DEFAULTS: Preferences = {
   source: "",
   hourCycle: "auto",
   dateOrder: "mdy",
-  design: "lens",
   theme: "dark",
 };
 const KEY = "chronoshift.preferences.v1";
@@ -25,7 +23,6 @@ export function loadPreferences(): Preferences {
         ? raw.hourCycle
         : "auto",
       dateOrder: raw.dateOrder === "dmy" ? "dmy" : "mdy",
-      design: raw.design === "command" ? "command" : "lens",
       theme: ["dark", "light", "system"].includes(raw.theme)
         ? raw.theme
         : "dark",

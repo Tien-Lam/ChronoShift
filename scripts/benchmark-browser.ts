@@ -2,6 +2,7 @@ import { chromium, firefox, webkit, expect } from "@playwright/test";
 import type { Browser, Page } from "@playwright/test";
 import { spawn } from "node:child_process";
 import { readdir } from "node:fs/promises";
+import { join, relative } from "node:path";
 
 // Deliberately separate from CI: timing on a named device is evidence, not a
 // shared-runner correctness gate. Uses the production page and disposable worker.
@@ -11,6 +12,16 @@ if (!(requested in engines))
   throw new Error("Choose chromium, firefox or webkit");
 const engine = engines[requested as keyof typeof engines];
 const output = Bun.argv[3] || "docs/planning/browser-performance-baseline.json";
+async function inventory(dir: string): Promise<string[]> {
+  const entries = await readdir(dir, { withFileTypes: true });
+  const nested = await Promise.all(
+    entries.map((entry) => {
+      const path = join(dir, entry.name);
+      return entry.isDirectory() ? inventory(path) : Promise.resolve([path]);
+    }),
+  );
+  return nested.flat();
+}
 function summary(samples: number[]) {
   const sorted = [...samples].sort((a, b) => a - b);
   return {
@@ -155,10 +166,7 @@ try {
     budget: 1000,
   });
   const conversions = [];
-  for (const design of ["lens", "command"]) {
-    await page.getByLabel("Appearance", { exact: true }).click();
-    await page.getByLabel("Design", { exact: true }).selectOption(design);
-    await page.getByLabel("Appearance", { exact: true }).click();
+  for (const design of ["command"]) {
     for (const workload of workloads) {
       const samples = [],
         gaps = [];
@@ -199,18 +207,20 @@ try {
     await measure(reopened, "April 10, 2026 10am UTC");
     await reopened.close();
   }
-  const assets = await Promise.all(
-    (await readdir("dist/assets"))
-      .filter((name) => /\.(js|css)$/.test(name))
-      .map(async (name) => {
-        const bytes = await Bun.file(`dist/assets/${name}`).bytes();
-        return {
-          name,
-          bytes: bytes.length,
-          gzipBytes: Bun.gzipSync(bytes).length,
-        };
-      }),
+  const offlineAssets = await Promise.all(
+    (await inventory("dist")).sort().map(async (path) => {
+      const bytes = await Bun.file(path).bytes();
+      return {
+        name: relative("dist", path).replaceAll("\\", "/"),
+        bytes: bytes.length,
+        gzipBytes: Bun.gzipSync(bytes).length,
+      };
+    }),
   );
+  // Preserve the original JS/CSS-only fields for comparison with older reports.
+  const assets = offlineAssets
+    .filter((asset) => /^assets\/[^/]+\.(js|css)$/.test(asset.name))
+    .map((asset) => ({ ...asset, name: asset.name.slice("assets/".length) }));
   const report = {
     measuredAt: new Date().toISOString(),
     release,
@@ -218,9 +228,14 @@ try {
     device:
       "Development computer, 390×844 CSS-pixel viewport. No mobile hardware, CPU or network emulation.",
     method:
-      "Ten fresh browser contexts for cold local HTTP navigation, ten offline cached reopenings; Playwright wall-clock navigation-to-visible-form/complete-cache includes automation overhead. Five warmups + thirty timed conversions per design/workload use the production disposable worker and real result DOM; click capture to DOM completion includes worker startup, parsing and rendering. Frame gaps are diagnostic, not an input responsiveness certification. Local gzip estimates exclude HTTP headers. Fixed synthetic workloads are not worst-case proof.",
+      "Ten fresh browser contexts for cold local HTTP navigation, ten offline cached reopenings; Playwright wall-clock navigation-to-visible-form/complete-cache includes automation overhead. Five warmups + thirty timed conversions per Glass Command workload use the production disposable worker and real result DOM; click capture to DOM completion includes worker startup, parsing and rendering. Frame gaps are diagnostic, not an input responsiveness certification. Local gzip estimates exclude HTTP headers. assets/totalGzipBytes cover only top-level dist/assets JS/CSS; offlineAssets/totalOfflineGzipBytes cover every final dist file including HTML, manifests, icons, notices, release metadata and the service worker. Fixed synthetic workloads are not worst-case proof.",
     assets,
     totalGzipBytes: assets.reduce((sum, asset) => sum + asset.gzipBytes, 0),
+    offlineAssets,
+    totalOfflineGzipBytes: offlineAssets.reduce(
+      (sum, asset) => sum + asset.gzipBytes,
+      0,
+    ),
     coldOnlineNavigationToForm: summary(cold),
     coldOnlineNavigationToOfflineReady: summary(ready),
     warmOfflineNavigationToForm: summary(offline),
