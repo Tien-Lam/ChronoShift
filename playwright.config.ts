@@ -4,6 +4,11 @@ const port = process.env.PLAYWRIGHT_PORT || "4173";
 // output. Keep the native profile density locally; CI uses 1x mobile pixels
 // to avoid software-rendering millions of extra pixels for every interaction.
 const mobileRaster = process.env.CI ? { deviceScaleFactor: 1 } : {};
+// Routine desktop interactions need a desktop layout, not a large framebuffer.
+// The responsive suite independently exercises widths through 1920px.
+const desktopWindow = process.env.CI
+  ? { viewport: { width: 900, height: 640 } }
+  : {};
 export default defineConfig({
   testDir: "./e2e",
   testIgnore: [
@@ -32,9 +37,18 @@ export default defineConfig({
       testIgnore: [],
       use: { ...devices["Desktop Chrome"] },
     },
-    { name: "chromium", use: { ...devices["Desktop Chrome"] } },
-    { name: "firefox", use: { ...devices["Desktop Firefox"] } },
-    { name: "webkit", use: { ...devices["Desktop Safari"] } },
+    {
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"], ...desktopWindow },
+    },
+    {
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"], ...desktopWindow },
+    },
+    {
+      name: "webkit",
+      use: { ...devices["Desktop Safari"], ...desktopWindow },
+    },
     {
       name: "android-emulation",
       use: { ...devices["Pixel 7"], ...mobileRaster },
