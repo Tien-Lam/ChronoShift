@@ -1,0 +1,24 @@
+{
+  "revision": "b432db067ad8176e7f040c74997e2021b629a07c",
+  "engine": "Chromium 153.0.8010.12",
+  "profile": "desktop en-AU Australia/Sydney",
+  "cases": [
+    {
+      "name": "pending paste overwrites newer converted draft",
+      "input": "Older clipboard April 8, 2026 9am UTC",
+      "resultCount": 0
+    },
+    {
+      "name": "invalid CST target silently formats and copies device target",
+      "target": "CST",
+      "shown": "1:00 am",
+      "zone": "UTC+10:00 Sydney\n+1 day",
+      "copied": "1:00 am · Fri, 10 Apr 2026 · UTC+10:00 Sydney\nApril 9, 2026 3pm UTC — UTC"
+    },
+    {
+      "name": "copy remains available even after invalid target Convert rejects",
+      "alert": "Choose a timezone from the list, or enter a city with one known timezone.",
+      "resultCount": 1
+    }
+  ]
+}
