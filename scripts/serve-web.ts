@@ -36,6 +36,7 @@ const server = Bun.serve({
           "offline-corrupt",
           "offline-delayed",
           "offline-interrupted",
+          "offline-filtered",
           "second-retired",
           "second-stalled",
         ].includes(version)
@@ -79,16 +80,16 @@ const server = Bun.serve({
       return new Response("Simulated partial update", { status: 503 });
     if (version === "offline-delayed" && relative === "icon.svg")
       await Bun.sleep(600);
-    if (version === "second-stalled" && relative === "index.html")
+    if (version === "second-stalled" && relative === "release.json")
       await Bun.sleep(1000);
-    if (relative === "index.html" && url.pathname.endsWith("index.html")) {
+    if (relative === "release.json") {
       if (
         version === "offline-corrupt" ||
         (version === "offline-stale" &&
           !url.searchParams.has("chronoshift-release"))
       )
-        return new Response("<html>Stale release</html>", {
-          headers: { "Content-Type": "text/html" },
+        return new Response('{"sourceCommit":"stale"}', {
+          headers: { "Content-Type": "application/json" },
         });
       if (version === "offline-interrupted") {
         if (++interruptedRequests >= 2) publishedVersion = undefined;
@@ -96,6 +97,13 @@ const server = Bun.serve({
       }
     }
     let body: BodyInit = variant ?? file;
+    // A network content filter can change HTML while every runtime file stays
+    // intact. Exercise the real worker fetch, not just a DOM-only mutation.
+    if (version === "offline-filtered" && relative === "index.html")
+      body = (variant ?? (await file.text())).replace(
+        "<head>",
+        "<head><!-- content-filter-injected -->",
+      );
     if (
       version &&
       !version.startsWith("offline-") &&

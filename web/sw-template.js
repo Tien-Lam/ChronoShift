@@ -3,6 +3,9 @@ const VERSION = '__VERSION__';
 const BASE = __BASE__;
 const PRECACHE = __PRECACHE__;
 const INTEGRITY = __INTEGRITY__;
+// Build-owned navigation HTML. Content filters may rewrite network HTML, and
+// mutable Pages documents may already belong to a newer deployment.
+const SHELL = __SHELL__;
 const CACHE = `chronoshift-${VERSION}`;
 const assetPaths = new Set(PRECACHE);
 async function intact(path, response) {
@@ -27,6 +30,13 @@ async function fill(cache, existing, stats) {
       continue;
     }
     let response;
+    if (path === `${BASE}index.html`) {
+      response = new Response(SHELL, {headers:{'content-type':'text/html; charset=utf-8'}});
+      if (!await intact(path,response)) throw failure('release-mismatch',path);
+      await cache.put(path,response);
+      stats.reused++;
+      continue;
+    }
     try { response = await fetch(new Request(path,{cache:'reload',credentials:'same-origin'})); }
     catch { throw failure('fetch-failed',path); }
     if (!response.ok || response.type === 'opaque' || !await intact(path, response)) {

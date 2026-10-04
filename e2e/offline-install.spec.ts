@@ -81,7 +81,7 @@ installTest(
 );
 
 installTest(
-  "a stale mutable asset is refetched and checked before offline readiness",
+  "a stale mutable release marker is refetched and checked before offline readiness",
   async ({ page, context, baseURL }) => {
     await publishRelease(context, baseURL!, "offline-stale");
     await page.goto("/");
@@ -150,5 +150,46 @@ installTest(
         (await caches.keys()).filter((key) => key.includes("staging")),
       ),
     ).toEqual([]);
+  },
+);
+
+installTest(
+  "HTML response rewriting cannot break first installation or offline navigation",
+  async ({ page, context, origin, baseURL }) => {
+    await publishRelease(context, baseURL!, "offline-filtered");
+    expect(
+      await (
+        await context.request.get(new URL("index.html", baseURL!).href)
+      ).text(),
+    ).toContain("content-filter-injected");
+    await page.goto("/");
+    await expect(page.locator("main")).toHaveAttribute(
+      "data-offline-ready",
+      "true",
+    );
+    await convert(page);
+    // Cross the accelerated startup deadline and inspect the canonical cache.
+    await page.waitForTimeout(400);
+    await expect(page.locator(".message.warning")).toHaveCount(0);
+    const cached = await page.evaluate(async () => {
+      const response = await caches.match("/index.html");
+      return {
+        html: await response!.text(),
+        type: response!.headers.get("content-type"),
+      };
+    });
+    expect(cached.html).not.toContain("content-filter-injected");
+    expect(cached.html).toContain('http-equiv="Content-Security-Policy"');
+    expect(cached.type).toContain("text/html");
+    await page.close();
+    await disconnect(context, origin);
+    const reopened = await context.newPage();
+    await reopened.goto("/");
+    await convert(reopened);
+    await expect(reopened.locator("main")).toHaveAttribute(
+      "data-offline-ready",
+      "true",
+    );
+    await expect(reopened.locator(".message.warning")).toHaveCount(0);
   },
 );

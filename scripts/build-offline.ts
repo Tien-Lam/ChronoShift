@@ -14,13 +14,11 @@ if (!/^\/(?:[A-Za-z0-9_-]+\/)*$/.test(base))
 // Pages cannot set custom response headers. Enforce the static policy in HTML.
 // Inject at build time so the development server can still use Vite's HMR.
 const html = await Bun.file("dist/index.html").text();
-await Bun.write(
-  "dist/index.html",
-  html.replace(
-    "<head>",
-    `<head>\n    <meta http-equiv="Content-Security-Policy" content="${WEB_CSP}">\n    <meta name="referrer" content="no-referrer">`,
-  ),
+const canonicalShell = html.replace(
+  "<head>",
+  `<head>\n    <meta http-equiv="Content-Security-Policy" content="${WEB_CSP}">\n    <meta name="referrer" content="no-referrer">`,
 );
+await Bun.write("dist/index.html", canonicalShell);
 async function files(dir: string): Promise<string[]> {
   const entries = await readdir(dir, { withFileTypes: true });
   const nested = await Promise.all(
@@ -96,6 +94,7 @@ await Bun.write(
     .replace("__VERSION__", version)
     .replace("__BASE__", JSON.stringify(base))
     .replace("__INTEGRITY__", JSON.stringify(integrity))
+    .replace("__SHELL__", () => JSON.stringify(canonicalShell))
     .replace(
       "__PRECACHE__",
       JSON.stringify(assets.map((p) => base + p.slice(5))),

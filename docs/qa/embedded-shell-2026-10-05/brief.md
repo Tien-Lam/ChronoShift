@@ -1,0 +1,13 @@
+# Original report and independent investigation
+
+Base: 00ddf8c (main). Runtime base: a6a6083; published tested artifact source b766d5b53063fd6872f55e7d0a052f8e84d802ec. Published worker 01ee9fa94a59f910 and app index-BjtJ2w8M.js. User reports regular Chrome; version and response bytes unknown. Exact original console is original-console.txt. No controller exists; installation rejects index.html three times and startup deadline shows the warning after 15 seconds. Focusing Convert to is temporally associated, not proven causal. AdGuard CSP metadata indicates response filtering may be present, not proof of altered service-worker fetch bytes.
+
+Code dispatch (clean context): independently investigate build/worker/delivery integrity, compare artifact/root/index/cachebuster hashes, trace lifecycle/CDN possibilities; do not edit app; retain separate implementation and original-report verdicts. Read AGENTS.md and developer review instructions. Report /tmp/chronoshift-html-code.md. Port 4241.
+
+Adversarial dispatch (clean context): independently investigate transformations/extensions versus stale release; reproduce fresh-install failure in actual Chrome with legitimate HTML response modification while JS/CSS unchanged; explore integrity/offline navigation/update/privacy invariants; do not edit app; distinguish simulation from user's environment. Report /tmp/chronoshift-html-adversarial.md. Port 4242.
+
+Record limitation: this durable brief was written after dispatch; both received the original console attachment and exact lifecycle information before forming initial hypotheses. Initial investigator messages are retained in the task conversation; this file summarizes those messages rather than claiming a pre-dispatch verbatim record.
+
+Candidate: embed final build-owned, CSP-bearing HTML in the worker. Regenerate missing/corrupt navigation cache entry from those exact bytes, verify SHA256 before staging. Preserve current navigation key and strict integrity of all other assets, transactional staging, user-triggered updates and draft preservation. No inputs in requests/permanent storage. No extra dependency.
+
+Review surrounding install, CHECK_READY repair, cancellation/timeouts, old-cache retention, explicit updates, build serialization and test-release transformations. Commands: mise exec -- bun run check; bun run format:check; bun run test:browser; Pages subpath tests. Real workers/caches and real-time Chrome boundary evidence supplement accelerated CI cases. Public checks and installed Chrome isolated profiles do not establish the exact bytes of the user's filtered HTML. Do not modify the user's Chrome profile.
