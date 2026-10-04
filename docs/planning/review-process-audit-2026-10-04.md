@@ -33,3 +33,9 @@ The user's console establishes an installation integrity rejection, not which hi
 [AGENTS.md](../../AGENTS.md) requires the [review workflow](../developer/review.md). PRs retain the actual reviewer brief and exact revisions; bug reports capture elapsed time, console errors and known cache/update history. Reviewers state implementation approval separately from report resolution, choose independent relevant failure paths, and preserve unexercised capability gaps. The implementer owns final ticket closure.
 
 This change adds no recurring CI job, runtime dependency or broad browser rerun. PR #25 already expanded the suite to 153 scenarios, including accelerated worker/cache installation regressions, and added targeted 21-second hosted observation. We improve review coverage selection and evidence interpretation rather than relying on more agents or a larger undirected test count. TIE-330 tracks this audit and workflow update.
+
+## Review and delivery evidence
+
+[PR #26](https://github.com/Tien-Lam/ChronoShift/pull/26) merged as `7a8aaeafeb8ac6c90c7ca470cee34fbcdd471a7f`. Its saved brief identifies base `f59f6f8`, initial approved workflow revision `c28d2f7`, and final factual delta `f18cb874`. Both clean-context auditors independently approved the final revision with no blockers and retained approval of the unchanged workflow scope. Each marked original-report resolution not applicable for this documentation task; neither asserts an identified historical asset or comparative model result.
+
+All six changed Markdown files pass formatting and diff checks; all 12 local link targets resolve, with independent reviewer link checks also passing. Existing documentation-only path exclusions required no runtime CI or publication rerun. TIE-330 is Done. The published application remains PR #25’s verified artifact, and nine physical/installed/human acceptance tickets remain open.
