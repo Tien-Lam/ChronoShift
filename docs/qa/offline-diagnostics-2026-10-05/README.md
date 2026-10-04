@@ -2,7 +2,7 @@
 
 Base: `d924853274fe795423640d347a8375705cd35ee2`. Runtime candidate: `bf4177192f95d9688b1d8f6db7035b6e9053bd0c`; final runtime delta: `b18150b2a98f4c376f245ffe2eb0e9cabf689318`. User correction: the recurring warning appears a few seconds after clicking **Convert to**, not immediately. Regular Chrome was identified; affected browser version, cache/controller release, failed asset and historical update/network conditions remain unknown.
 
-TIE-356 adds **More options → Enable detailed logs**, off by default, session opt-in, console only. No message, parsed values, selected zones, clipboard/share content, URL queries, raw error bodies or diagnostic history is persisted/transmitted. TIE-324 remains open: independent checks demonstrate adjacent recovery defects and their prevention, not the natural user's historical cause.
+TIE-356 adds **More options → Enable detailed logs**, off by default, session opt-in, console only. Diagnostics exclude message text, parsed values, selected zones, clipboard/share content, URL queries and raw error bodies. Only the opt-in flag is stored; no diagnostic history or telemetry is retained or transmitted. Ordinary app preference storage is separate. TIE-324 remains open: independent checks demonstrate adjacent recovery defects and their prevention, not the natural user's historical cause.
 
 ## Independent review
 
