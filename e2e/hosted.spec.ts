@@ -13,6 +13,25 @@ test("public Pages deployment converts fresh input after offline close and reope
       async () => (await navigator.serviceWorker.getRegistration())!.scope,
     ),
   ).toBe("https://tien-lam.github.io/ChronoShift/");
+  await page
+    .getByLabel("Message with a date or time")
+    .fill("June 18, 2026 at 5:20pm in Tokyo");
+  for (const [zone, expected] of [
+    ["UTC", /8:20 am/i],
+    ["Europe/London", /9:20 am/i],
+    ["America/Los_Angeles", /1:20 am/i],
+  ] as const) {
+    await page.getByLabel("Convert to").fill(zone);
+    await page.getByRole("button", { name: "Convert", exact: true }).click();
+    await expect(page.locator(".hero-time")).toHaveText(expected);
+    await expect(page.locator("main")).toHaveAttribute(
+      "data-offline-ready",
+      "true",
+    );
+    await expect(
+      page.getByText("Offline setup is incomplete.", { exact: false }),
+    ).toHaveCount(0);
+  }
   await page.close();
   await context.setOffline(true);
   const reopened = await context.newPage();

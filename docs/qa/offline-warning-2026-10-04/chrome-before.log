@@ -1,0 +1,98 @@
+$ bunx --bun playwright test "--project=chromium" --grep "registration check|delayed failed readiness|missing cache"
+
+Running 3 tests using 3 workers
+
+(node:69586) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:69584) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:69585) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (2.0s)
+  ✘  2 [chromium] › e2e/app.spec.ts:65:0 › an intact offline app survives a failed registration check while changing target zones (10.7s)
+  ✘  3 [chromium] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (12.0s)
+
+
+  1) [chromium] › e2e/app.spec.ts:65:0 › an intact offline app survives a failed registration check while changing target zones 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('main')
+    Expected: "true"
+    Received: "false"
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('main') with timeout 10000ms
+      - waiting for locator('main')
+        24 × locator resolved to <main data-offline-ready="false">…</main>
+           - unexpected value "false"
+
+
+      73 |   });
+      74 |   await page.reload();
+    > 75 |   await expect(page.locator("main")).toHaveAttribute(
+         |                                     ^
+      76 |     "data-offline-ready",
+      77 |     "true",
+      78 |   );
+        at /private/tmp/chronoshift-readiness-baseline.fn6aln/e2e/app.spec.ts:75:37
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/app-an-intact-offline-app--dc141-while-changing-target-zones-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/app-an-intact-offline-app--dc141-while-changing-target-zones-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/app-an-intact-offline-app--dc141-while-changing-target-zones-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/app-an-intact-offline-app--dc141-while-changing-target-zones-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('main')
+    Expected: "true"
+    Received: "false"
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('main') with timeout 10000ms
+      - waiting for locator('main')
+        24 × locator resolved to <main data-offline-ready="false">…</main>
+           - unexpected value "false"
+
+
+      120 |     .poll(() => page.evaluate(() => (window as any).oldProbeDelivered))
+      121 |     .toBe(true);
+    > 122 |   await expect(page.locator("main")).toHaveAttribute(
+          |                                     ^
+      123 |     "data-offline-ready",
+      124 |     "true",
+      125 |   );
+        at /private/tmp/chronoshift-readiness-baseline.fn6aln/e2e/app.spec.ts:122:37
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/app-a-delayed-failed-readi-d222c-te-a-newer-successful-check-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/app-a-delayed-failed-readi-d222c-te-a-newer-successful-check-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/app-a-delayed-failed-readi-d222c-te-a-newer-successful-check-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/app-a-delayed-failed-readi-d222c-te-a-newer-successful-check-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [chromium] › e2e/app.spec.ts:65:0 › an intact offline app survives a failed registration check while changing target zones 
+    [chromium] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check 
+  1 passed (12.8s)
+error: script "test:browser" exited with code 1
