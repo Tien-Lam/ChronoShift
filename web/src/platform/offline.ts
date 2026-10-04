@@ -30,23 +30,65 @@ export async function setupOffline(
       registration = existing;
     }
     if (signal.aborted) return;
-    let readyTimer: ReturnType<typeof setTimeout>;
-    const ready = await Promise.race([
-      navigator.serviceWorker.controller?.scriptURL === script
-        ? Promise.resolve(registration)
-        : navigator.serviceWorker.ready,
-      new Promise<never>((_, reject) => {
-        readyTimer = setTimeout(
-          () => reject(new Error("Offline setup timeout")),
-          15000,
-        );
-      }),
-    ]).finally(() => clearTimeout(readyTimer));
-    if (signal.aborted) return;
     let confirmed = false;
+    let startupExpired = false;
     let installedUpdate: ServiceWorker | undefined;
     let cancelInspection = () => {};
-    signal.addEventListener("abort", () => cancelInspection(), { once: true });
+    let retryTimer: ReturnType<typeof setTimeout> | undefined;
+    let retries = 0;
+    // A slow or rejected first installation must not stop lifecycle observers.
+    const readyTimer = setTimeout(() => {
+      if (!signal.aborted && !confirmed) {
+        startupExpired = true;
+        report({
+          ready: false,
+          error:
+            "Offline setup is incomplete. Reconnect and reload to try again.",
+        });
+      }
+    }, 15000);
+    signal.addEventListener(
+      "abort",
+      () => {
+        cancelInspection();
+        clearTimeout(readyTimer);
+        clearTimeout(retryTimer);
+      },
+      { once: true },
+    );
+    const retryInstall = () => {
+      if (
+        signal.aborted ||
+        navigator.serviceWorker.controller ||
+        !navigator.onLine ||
+        retryTimer ||
+        retries >= 2
+      )
+        return;
+      retryTimer = setTimeout(
+        async () => {
+          retryTimer = undefined;
+          if (signal.aborted || navigator.serviceWorker.controller) return;
+          retries++;
+          try {
+            // A rejected first install can unregister itself; update() then
+            // rejects forever. Register again to recover that initial failure.
+            registration = await navigator.serviceWorker.register(script, {
+              scope,
+              updateViaCache: "none",
+            });
+            if (signal.aborted) return;
+            registration.addEventListener("updatefound", watchInstall, {
+              signal,
+            });
+            watchInstall();
+          } catch {
+            retryInstall();
+          }
+        },
+        retries === 0 ? 1000 : 3000,
+      );
+    };
     const pendingUpdate = () =>
       registration.waiting ||
       (installedUpdate?.state === "installed" &&
@@ -87,6 +129,7 @@ export async function setupOffline(
         channel.port1.onmessage = (event) => {
           if (current()) {
             confirmed = event.data.ready === true;
+            if (confirmed) clearTimeout(readyTimer);
             const update = pendingUpdate();
             report({
               ready: confirmed,
@@ -120,25 +163,46 @@ export async function setupOffline(
         }
       } else {
         confirmed = false;
-        report({ ready: false });
+        report({
+          ready: false,
+          ...(startupExpired
+            ? {
+                error:
+                  "Offline setup is incomplete. Reconnect and reload to try again.",
+              }
+            : {}),
+        });
       }
     };
-    if (ready.active) inspect();
+    inspect();
     navigator.serviceWorker.addEventListener("controllerchange", inspect, {
       signal,
     });
-    window.addEventListener("online", inspect, { signal });
+    window.addEventListener(
+      "online",
+      () => {
+        retries = 0;
+        inspect();
+        retryInstall();
+      },
+      { signal },
+    );
     window.addEventListener("pageshow", inspect, { signal });
+    const watched = new WeakSet<ServiceWorker>();
     const watchInstall = () => {
       const installing = registration.installing;
       if (!installing) {
         inspect();
+        retryInstall();
         return;
       }
+      if (watched.has(installing)) return;
+      watched.add(installing);
       const changed = () => {
         // Some engines deliver installed before exposing registration.waiting.
         // Retain the worker identity until activation instead of losing the notice.
         if (installing.state === "installed") installedUpdate = installing;
+        if (installing.state === "redundant") retryInstall();
         inspect();
       };
       installing.addEventListener("statechange", changed, { signal });
