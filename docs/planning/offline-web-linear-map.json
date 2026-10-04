@@ -1,16 +1,16 @@
 {
   "stateSnapshot": {
     "date": "2026-10-05",
-    "implementationRevision": "6676e56d52224b8758a9a5cf6b11b448f5d7f1f6",
-    "testedArtifactRevision": "1ef1aa07b3e3a2d7cf657150fc6083aa8987699b",
+    "implementationRevision": "a6a60831fb51c517719bfce142324828f72a870a",
+    "testedArtifactRevision": "b766d5b53063fd6872f55e7d0a052f8e84d802ec",
     "counts": {
       "Done": 27,
-      "In Progress": 9,
+      "In Progress": 10,
       "Canceled": 1
     },
-    "note": "All four ChronoShift project issue lists refreshed on 2026-10-05 after verified publication and TIE-343 closure. Shared themed opened menus and compact calendar match the clarified report; nine unchanged physical/installed/screen-reader/actual-zoom/phone-performance acceptance gaps remain open. Exact CI, artifact, retained-client update/offline and hosted visual evidence is in docs/qa/unified-menus-2026-10-05/. Project/milestone metadata retains the prior snapshot, not live state.",
-    "reviewWorkflowRevision": "6676e56d52224b8758a9a5cf6b11b448f5d7f1f6",
-    "evidenceRevision": "74b14350f40c13379a0d4da0c7b18c171fd94382"
+    "note": "All four project issue lists were read on 2026-10-05; Offline PWA was rechecked after TIE-356 closure. Detailed logs are published and accepted. TIE-324 remains In Progress: natural delayed field warning is unverified despite bounded cache/update mitigations. Nine prior physical/installed/human acceptance gaps remain open. Project/milestone metadata retains the prior snapshot, not live state.",
+    "reviewWorkflowRevision": "a6a60831fb51c517719bfce142324828f72a870a",
+    "evidenceRevision": "67c52daee9f60c34c0dee347f71b9175d37e43f7"
   },
   "initiative": {
     "id": "I-4",
@@ -298,7 +298,7 @@
       "id": "TIE-324",
       "uuid": "6bd54b89-2d22-4ba5-abec-c25043837eb6",
       "url": "https://linear.app/tienlam/issue/TIE-324/fix-intermittent-offline-setup-warning-during-normal-timezone",
-      "state": "Done"
+      "state": "In Progress"
     },
     "D8": {
       "id": "TIE-330",
@@ -322,6 +322,12 @@
       "id": "TIE-343",
       "uuid": "923491f4-81bd-40a3-875f-602e2d6e0796",
       "url": "https://linear.app/tienlam/issue/TIE-343/align-dropdowns-and-standardize-form-control-styling",
+      "state": "Done"
+    },
+    "P8": {
+      "id": "TIE-356",
+      "uuid": "11cc084a-5352-41fd-be6f-67a55fb6333c",
+      "url": "https://linear.app/tienlam/issue/TIE-356/add-opt-in-detailed-local-console-diagnostics",
       "state": "Done"
     }
   }
