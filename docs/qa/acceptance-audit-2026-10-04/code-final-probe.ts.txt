@@ -1,0 +1,80 @@
+import { chromium, expect } from '/Users/tien/Developer/ChronoShift/node_modules/@playwright/test/index.mjs';
+const browser = await chromium.launch();
+const context = await browser.newContext({ locale: 'en-AU', timezoneId: 'Australia/Sydney' });
+const page = await context.newPage();
+const errors: string[] = [];
+page.on('pageerror', e => errors.push(e.message));
+const evidence: any = { revision: '49207b81cc013c3c411a52de2a710f6af7b3705c', base: 'b432db067ad8176e7f040c74997e2021b629a07c', browser: browser.version(), profile: 'isolated Chromium desktop, en-AU, Australia/Sydney', cases: [] };
+await page.addInitScript(() => {
+  (window as any).workerDeliveries = [];
+  const descriptor = Object.getOwnPropertyDescriptor(Worker.prototype, 'onmessage')!;
+  Object.defineProperty(Worker.prototype, 'onmessage', {
+    configurable: true,
+    get: descriptor.get,
+    set(callback) { descriptor.set!.call(this, (event: MessageEvent) => (window as any).workerDeliveries.push(() => callback.call(this, event))); }
+  });
+  (window as any).pastes = []; (window as any).copies = [];
+  Object.defineProperty(navigator, 'clipboard', { value: {
+    readText: () => new Promise((resolve, reject) => (window as any).pastes.push({resolve, reject})),
+    writeText: (value: string) => new Promise((resolve, reject) => (window as any).copies.push({resolve, reject, value})),
+  }});
+});
+const input = page.getByLabel('Message with a date or time');
+const convert = page.getByRole('button', {name:'Convert', exact:true});
+const paste = page.getByRole('button', {name:'Paste', exact:true});
+const held = async () => expect.poll(() => page.evaluate(() => (window as any).workerDeliveries.length)).toBe(1);
+const deliverWorker = async () => page.evaluate(() => (window as any).workerDeliveries.shift()());
+try {
+  await page.goto('http://127.0.0.1:4191/');
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
+  await page.getByLabel('Convert to').fill('UTC');
+  await input.fill('June 18, 2026 9am UTC');
+  await paste.click();
+  await convert.click(); await held();
+  await page.evaluate(() => (window as any).pastes.shift().resolve('April 9, 2026 3pm UTC'));
+  await expect(input).toHaveValue('June 18, 2026 9am UTC');
+  await page.getByRole('button', {name:'Replace with imported text'}).click();
+  await expect(input).toHaveValue('April 9, 2026 3pm UTC');
+  await deliverWorker();
+  await expect(page.locator('.result')).toHaveCount(0);
+  await expect(convert).toHaveAttribute('aria-busy', 'false');
+  await convert.click(); await held(); await deliverWorker();
+  await expect(page.locator('.result-date')).toContainText('9 Apr 2026');
+  await expect(page.locator('.hero-time')).toContainText(/3:00 pm/i);
+  evidence.cases.push({name:'replacement cancels already completed but held conversion; later conversion recovers', passed:true});
+
+  await input.fill('April 9, 2026 3pm UTC'); await convert.click(); await held();
+  await page.getByLabel('Convert to').fill('CST'); await deliverWorker();
+  await expect(page.locator('.result')).toHaveCount(0);
+  await expect(page.getByRole('alert')).toContainText('Choose a timezone');
+  await page.getByLabel('Convert to').fill('Asia/Tokyo');
+  await expect(page.locator('.hero-time')).toContainText(/12:00 am/i);
+  await expect(page.locator('.result-date')).toContainText('10 Apr 2026');
+  await expect(page.locator('.source-label')).toHaveText('UTC');
+  expect(await page.evaluate(() => (window as any).workerDeliveries.length)).toBe(0);
+  evidence.cases.push({name:'in-flight conversion completes while target invalid; correction restores independently expected Tokyo instant without parse', passed:true});
+
+  await page.getByRole('button', {name:'Copy UTC', exact:true}).click();
+  await input.fill('July 15, 2026 6pm UTC');
+  await page.evaluate(() => (window as any).copies.shift().resolve());
+  await expect(page.locator('.notice')).not.toContainText('Copied');
+  await expect(page.getByLabel('Text to copy')).toHaveCount(0);
+  evidence.cases.push({name:'obsolete successful copy completion after editing cannot restore feedback', passed:true});
+
+  await paste.click(); await paste.click();
+  await page.evaluate(() => (window as any).pastes[1].resolve('December 18, 2026 1pm UTC'));
+  await expect(input).toHaveValue('December 18, 2026 1pm UTC');
+  await page.evaluate(() => (window as any).pastes[0].reject(new Error('Injected older clipboard failure')));
+  await expect(page.locator('.notice')).not.toContainText('Paste directly');
+  await expect(page.getByRole('button', {name:'Replace with imported text'})).toHaveCount(0);
+  await page.evaluate(() => (window as any).pastes = []);
+  await paste.click();
+  await page.evaluate(() => (window as any).pastes.shift().reject(new Error('Injected latest clipboard failure')));
+  await expect(input).toHaveValue('December 18, 2026 1pm UTC');
+  await expect(page.locator('.notice')).toContainText('Paste directly');
+  evidence.cases.push({name:'older clipboard rejection is suppressed; latest rejection keeps draft and offers direct paste recovery', passed:true});
+  evidence.pageErrors = errors; expect(errors).toEqual([]);
+} finally {
+  await Bun.write('/tmp/chronoshift-acceptance-code-final/evidence.json', JSON.stringify(evidence, null, 2));
+  console.log(JSON.stringify(evidence, null, 2)); await browser.close();
+}

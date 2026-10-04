@@ -1,0 +1,125 @@
+import { chromium, expect } from '@playwright/test';
+const out='/tmp/chronoshift-acceptance-adversarial-final';
+const url='http://127.0.0.1:4192/';
+const browser=await chromium.launch();
+const context=await browser.newContext({locale:'en-AU',timezoneId:'Australia/Sydney'});
+const observations:any[]=[];
+const diagnostics:string[]=[];
+const seed=await context.newPage();
+await seed.goto(url);
+await expect(seed.locator('main[data-offline-ready="true"]')).toBeVisible();
+async function seedShare(key:string) {
+  await seed.evaluate(async key=>{
+    await new Promise<void>((resolve,reject)=>{
+      const r=indexedDB.open('chronoshift-handoff',1);
+      r.onupgradeneeded=()=>r.result.createObjectStore('messages');
+      r.onerror=()=>reject(r.error);
+      r.onsuccess=()=>{const db=r.result,tx=db.transaction('messages','readwrite');
+        tx.objectStore('messages').put({text:'April 10, 2026 8pm UTC',created:Date.now()},key);
+        tx.oncomplete=()=>{db.close();resolve();};
+      };
+    });
+  },key);
+}
+const page=await context.newPage();
+page.on('pageerror',e=>diagnostics.push('pageerror: '+e.message));
+page.on('console',m=>{if(m.type()==='error')diagnostics.push('console: '+m.text());});
+page.on('worker',w=>w.on('console',m=>{if(m.type()==='error')diagnostics.push('worker: '+m.text());}));
+await page.addInitScript(()=>{
+  const open=indexedDB.open.bind(indexedDB);
+  indexedDB.open=((...args:Parameters<typeof indexedDB.open>)=>{
+    const r=open(...args);if(args[0]!=='chronoshift-handoff')return r;
+    return new Proxy(r,{get:(t,k)=>Reflect.get(t,k,t),set(t,k,fn){
+      if(k==='onsuccess'){t.onsuccess=e=>{(window as any).releaseShare=()=>fn.call(t,e);};return true;}
+      return Reflect.set(t,k,fn,t);
+    }});
+  }) as typeof indexedDB.open;
+  const NativeWorker=Worker;
+  (window as any).Worker=class extends NativeWorker {
+    set onmessage(fn:any) {super.onmessage=(event:MessageEvent)=>{
+      if((window as any).holdWorker)(window as any).releaseWorker=()=>fn(event);else fn(event);
+    };}
+  };
+  Object.defineProperty(navigator,'clipboard',{value:{
+    readText:()=>new Promise<string>((resolve,reject)=>{(window as any).deliverPaste=resolve;(window as any).rejectPaste=reject;}),
+    writeText:(value:string)=>{(window as any).copied=value;return (window as any).delayCopy?new Promise<void>(resolve=>{(window as any).finishCopy=resolve;}):Promise.resolve();}
+  }});
+});
+await seedShare('inflight');
+await page.goto(url+'?share=inflight');
+await page.waitForFunction(()=>typeof (window as any).releaseShare==='function');
+await page.locator('#target-zone').fill('UTC');
+await page.locator('#message').fill('June 18, 2026 9am UTC');
+await page.evaluate(()=>{(window as any).holdWorker=true;});
+await page.getByRole('button',{name:'Convert',exact:true}).click();
+await page.waitForFunction(()=>typeof (window as any).releaseWorker==='function');
+await page.evaluate(()=>(window as any).releaseShare());
+await expect(page.locator('#message')).toHaveValue('June 18, 2026 9am UTC');
+await expect(page.getByRole('button',{name:'Converting…',exact:true})).toBeVisible();
+await page.getByRole('button',{name:'Replace with imported text'}).click();
+await page.evaluate(()=>{(window as any).releaseWorker();(window as any).holdWorker=false;});
+await expect(page.locator('#message')).toHaveValue('April 10, 2026 8pm UTC');
+await expect(page.locator('.result')).toHaveCount(0);
+await page.getByRole('button',{name:'Convert',exact:true}).click();
+await expect(page.locator('.hero-time')).toContainText('8:00 pm');
+observations.push({case:'import-acceptance-cancels-inflight-real-worker',text:await page.locator('#message').inputValue(),result:await page.locator('.result').textContent()});
+await page.evaluate(()=>{(window as any).delayCopy=true;});
+await page.getByRole('button',{name:'Copy UTC',exact:true}).click();
+await page.getByRole('button',{name:'Paste',exact:true}).click();
+await page.locator('#message').fill('July 4, 2026 10am UTC');
+await page.evaluate(()=>(window as any).deliverPaste('August 1, 2026 2pm UTC'));
+await page.getByRole('button',{name:'Replace with imported text'}).click();
+await page.evaluate(()=>(window as any).finishCopy());
+await expect(page.locator('.notice')).toHaveText('Imported text is ready. Choose Convert.');
+await expect(page.locator('.result')).toHaveCount(0);
+observations.push({case:'obsolete-copy-success-after-import-acceptance',notice:await page.locator('.notice').textContent()});
+await seedShare('superseded');
+await page.goto(url+'?share=superseded');
+await page.waitForFunction(()=>typeof (window as any).releaseShare==='function');
+await page.getByRole('button',{name:'Paste',exact:true}).click();
+await page.evaluate(()=>(window as any).deliverPaste('September 1, 2026 2pm UTC'));
+await expect(page.locator('#message')).toHaveValue('September 1, 2026 2pm UTC');
+await page.evaluate(()=>(window as any).releaseShare());
+await expect(page.locator('.import-choice')).toHaveCount(0);
+await expect(page.locator('#message')).toHaveValue('September 1, 2026 2pm UTC');
+observations.push({case:'newer-paste-supersedes-delayed-share',text:await page.locator('#message').inputValue()});
+await page.evaluate(()=>{(window as any).holdWorker=true;});
+await page.getByRole('button',{name:'Convert',exact:true}).click();
+await page.waitForFunction(()=>typeof (window as any).releaseWorker==='function');
+await page.locator('#target-zone').fill('CST');
+await page.evaluate(()=>(window as any).releaseWorker());
+await expect(page.locator('.result')).toHaveCount(0);
+await expect(page.getByRole('alert')).toContainText('Choose a timezone');
+await page.locator('#target-zone').fill('Tokyo');
+await expect(page.locator('.result-zone')).toContainText('Tokyo');
+await expect(page.locator('.hero-time')).toContainText('11:00 pm');
+await page.getByRole('button',{name:'Copy UTC',exact:true}).click();
+await expect(page.locator('.notice')).toHaveText('Copied with the date and timezone.');
+observations.push({case:'target-invalidated-during-real-worker-then-corrected',result:await page.locator('.result').textContent(),copied:await page.evaluate(()=>(window as any).copied)});
+await page.getByRole('button',{name:'Paste',exact:true}).click();
+await page.locator('#message').fill('October 5, 2026 3pm UTC');
+await page.evaluate(()=>{(window as any).holdWorker=false;});
+await page.getByRole('button',{name:'Convert',exact:true}).click();
+await expect(page.locator('.result-date')).toContainText('6 Oct');
+await page.evaluate(()=>(window as any).deliverPaste('December 25, 2026 noon UTC'));
+await expect(page.locator('.import-choice')).toBeVisible();
+for(const width of [320,390,768,1440])for(const theme of ['dark','light']) {
+  await page.setViewportSize({width,height:844});
+  await page.locator('.appearance summary').click();
+  await page.locator('#theme').selectOption(theme);
+  await page.locator('.appearance summary').click();
+  const measurements=await page.evaluate(()=>{
+    const box=(selector:string)=>{const r=document.querySelector(selector)!.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height};};
+    return {theme:document.documentElement.dataset.theme,viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,choice:box('.import-choice'),buttons:[...document.querySelectorAll('.import-choice button')].map(n=>{const r=n.getBoundingClientRect();return{text:n.textContent,x:r.x,y:r.y,width:r.width,height:r.height};}),styles:[...document.querySelectorAll('link[rel=stylesheet]')].map(n=>(n as HTMLLinkElement).href)};
+  });
+  expect(measurements.documentWidth).toBeLessThanOrEqual(width);
+  await page.screenshot({path:`${out}/conflict-${width}-${theme}.png`,fullPage:true});
+  observations.push({case:'rendered-conflict',...measurements});
+}
+await page.getByRole('button',{name:'Dismiss imported text'}).click();
+await expect(page.locator('#message')).toHaveValue('October 5, 2026 3pm UTC');
+await expect(page.locator('.result-date')).toContainText('6 Oct');
+const result={revision:'49207b81cc013c3c411a52de2a710f6af7b3705c',browser:browser.version(),release:await(await context.request.get(url+'release.json')).json(),diagnostics,observations};
+await Bun.write(out+'/result.json',JSON.stringify(result,null,2));
+console.log(JSON.stringify(result,null,2));
+await browser.close();

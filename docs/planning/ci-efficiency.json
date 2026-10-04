@@ -1,5 +1,5 @@
 {
-  "measuredAt": "2026-10-04T05:59:32.254Z",
+  "measuredAt": "2026-10-04T13:06:22.532Z",
   "scope": "One successful push publication and its successful pull-request verification, before and after optimization",
   "consolidatedPreview": false,
   "caveats": [
@@ -221,33 +221,28 @@
             "name": "chronoshift-web-c31b8656bc4ef0fce84d5767b0d9c39f89a00f0f",
             "bytes": 530892,
             "retentionHours": 336
-          },
-          {
-            "name": "github-pages",
-            "bytes": 220772,
-            "retentionHours": 336
           }
         ]
       }
     ],
     "runnerSeconds": 307,
     "roundedRunnerMinutes": 8,
-    "artifactBytes": 1313005,
-    "projectedArtifactByteHours": 441169524.0719445
+    "artifactBytes": 1092233,
+    "projectedArtifactByteHours": 366990132.0719445
   },
   "candidate": {
     "runs": [
       {
-        "id": 37181181002,
+        "id": 37204065697,
         "workflow": "Web",
-        "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37181181002",
-        "sourceCommit": "47dd6a8d5c7ec2b52a1485643d6f5e0673a092e5",
+        "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37204065697",
+        "sourceCommit": "49207b81cc013c3c411a52de2a710f6af7b3705c",
         "event": "pull_request",
-        "elapsedSeconds": 212,
+        "elapsedSeconds": 207,
         "jobs": [
           {
             "name": "web",
-            "runnerSeconds": 209,
+            "runnerSeconds": 204,
             "steps": [
               {
                 "name": "Set up job",
@@ -255,7 +250,7 @@
               },
               {
                 "name": "Initialize containers",
-                "seconds": 26
+                "seconds": 27
               },
               {
                 "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
@@ -267,7 +262,7 @@
               },
               {
                 "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
-                "seconds": 25
+                "seconds": 6
               },
               {
                 "name": "Run bun install --frozen-lockfile",
@@ -291,7 +286,7 @@
               },
               {
                 "name": "Run bun run test:browser",
-                "seconds": 144
+                "seconds": 155
               },
               {
                 "name": "Verify repository-subpath deployment",
@@ -299,7 +294,7 @@
               },
               {
                 "name": "Upload the verified Pages build",
-                "seconds": 1
+                "seconds": 2
               },
               {
                 "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
@@ -316,43 +311,43 @@
             ]
           }
         ],
-        "runnerSeconds": 209,
+        "runnerSeconds": 204,
         "roundedRunnerMinutes": 4,
         "artifacts": [
           {
             "name": "github-pages",
-            "bytes": 223788,
+            "bytes": 256620,
             "retentionHours": 24
           }
         ]
       },
       {
-        "id": 37181395700,
+        "id": 37204343768,
         "workflow": "GitHub Pages",
-        "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37181395700",
-        "sourceCommit": "9e7c1cbadfa3d213ca819c1bc1e813e39a8aae44",
+        "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37204343768",
+        "sourceCommit": "978b59b2a81b65d5e6e2dc9b2128ebee814f1bd5",
         "event": "push",
-        "elapsedSeconds": 35,
+        "elapsedSeconds": 28,
         "jobs": [
           {
             "name": "prepare",
-            "runnerSeconds": 19,
+            "runnerSeconds": 11,
             "steps": [
               {
                 "name": "Set up job",
-                "seconds": 2
+                "seconds": 1
               },
               {
                 "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
-                "seconds": 0
+                "seconds": 1
               },
               {
                 "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
-                "seconds": 7
+                "seconds": 2
               },
               {
                 "name": "Reuse the exact verified PR artifact",
-                "seconds": 5
+                "seconds": 4
               },
               {
                 "name": "Run actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b",
@@ -364,7 +359,7 @@
               },
               {
                 "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
-                "seconds": 1
+                "seconds": 0
               },
               {
                 "name": "Complete job",
@@ -374,7 +369,7 @@
           },
           {
             "name": "deploy",
-            "runnerSeconds": 9,
+            "runnerSeconds": 10,
             "steps": [
               {
                 "name": "Set up job",
@@ -391,26 +386,26 @@
             ]
           }
         ],
-        "runnerSeconds": 28,
+        "runnerSeconds": 21,
         "roundedRunnerMinutes": 2,
         "artifacts": [
           {
             "name": "github-pages",
-            "bytes": 223784,
+            "bytes": 256615,
             "retentionHours": 335.9997222222222
           }
         ]
       }
     ],
-    "runnerSeconds": 237,
+    "runnerSeconds": 225,
     "roundedRunnerMinutes": 6,
-    "artifactBytes": 447572,
-    "projectedArtifactByteHours": 80562273.83777778
+    "artifactBytes": 513235,
+    "projectedArtifactByteHours": 92381448.71805555
   },
   "reductions": {
-    "runnerSecondsPercent": 22.8,
+    "runnerSecondsPercent": 26.71,
     "roundedRunnerMinutesPercent": 25,
-    "projectedArtifactByteHoursPercent": 81.74
+    "projectedArtifactByteHoursPercent": 74.83
   },
   "meetsTwentyPercentTarget": true,
   "meetsTwentyPercentQuotaAndStorageTarget": true,

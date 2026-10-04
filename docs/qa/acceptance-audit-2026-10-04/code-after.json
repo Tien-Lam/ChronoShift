@@ -1,0 +1,25 @@
+{
+  "revision": "49207b81cc013c3c411a52de2a710f6af7b3705c",
+  "base": "b432db067ad8176e7f040c74997e2021b629a07c",
+  "browser": "153.0.8010.12",
+  "profile": "isolated Chromium desktop, en-AU, Australia/Sydney",
+  "cases": [
+    {
+      "name": "replacement cancels already completed but held conversion; later conversion recovers",
+      "passed": true
+    },
+    {
+      "name": "in-flight conversion completes while target invalid; correction restores independently expected Tokyo instant without parse",
+      "passed": true
+    },
+    {
+      "name": "obsolete successful copy completion after editing cannot restore feedback",
+      "passed": true
+    },
+    {
+      "name": "older clipboard rejection is suppressed; latest rejection keeps draft and offers direct paste recovery",
+      "passed": true
+    }
+  ],
+  "pageErrors": []
+}
