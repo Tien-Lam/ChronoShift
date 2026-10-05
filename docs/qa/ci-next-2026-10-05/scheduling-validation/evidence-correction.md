@@ -1,0 +1,11 @@
+# Additive raw-evidence correction
+
+The first validator execution ran **2026-10-05T10:50:53.074Z–10:50:53.093Z**, with 33 event rows, nine Pages rows and zero failures. Root independently read its `run.log`/`results.json` before the subsequent rerun. I then formatted the evidence helper/matrix and changed one static assertion label from `deferred-job-is-not-separate-noop-full-step-list` to `browser-step-present`, keeping its asserted value and the evaluator/expectations unchanged.
+
+I reran the base matrix at **10:51:31.503Z–10:51:31.519Z**, again 33/nine rows and zero failures, and mistakenly wrote to the same `run.log`/`results.json` paths. **The first run's full local raw log/result JSON and exact preformat helper bytes were not retained separately.** Its original tool stdout and root's earlier inspection remain in conversation history, but the missing local originals are not reconstructed or presented as preserved files here. The complete original structured first-run JSON is a local evidence gap.
+
+Current `run.log`/`results.json` are the **base-matrix rerun**, not the first execution. `validate-initial.ts` means the helper preserved immediately before adding configurable edge-matrix/output paths; it is the formatted base helper, not the exact helper bytes used at10:50:53. The matrix's expected scenario values and workflow source blobs remained unchanged during that local helper clarification/rerun; root-owned workflow files were not edited by this task.
+
+The additive edge run at **10:52:15.179Z–10:52:15.194Z** writes separate `edge-run.log`/`edge-results.json` and leaves the base-matrix rerun intact. It evaluates all20 independently expected uppercase/substring/space rows with zero failures. Both retained result files bind the actual candidate workflow blobs `fb5b017a40bfb2c189aae4563a05988b29b3be7a` and `d92bca178f4596f578bb4e915924ba3d7fb83082`.
+
+Earlier phrases such as "original run/results" referred ambiguously to the base matrix versus the edge matrix. Use the explicit **first execution (local raw gap), base-matrix rerun (retained), additive edge run (retained)** distinction. Nothing in this correction establishes hosted scheduling, runner allocation, concurrency or publication behavior. No browser/full CI run occurred.

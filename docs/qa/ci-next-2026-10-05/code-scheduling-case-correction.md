@@ -1,0 +1,9 @@
+# Additive correction — expression label equality
+
+The original `code-scheduling-review.md` is preserved unchanged. Its sentence **“Case-sensitive names are intentional” is incorrect**. GitHub Actions string equality ignores case, so whole-label casing variants such as `CI-RUN` and `Ci-Timing` match the canonical `ci-run`/`ci-timing` comparisons.
+
+Actual independent verification interval: **2026-10-05 10:51:47–10:51:56 UTC**. Read GitHub's primary [expression reference](https://docs.github.com/en/actions/reference/workflows-and-actions/expressions#operators), which explicitly documents case-insensitive string comparison. Independently inspected the pipeline agent's already installed official `@actions/expressions` **0.3.61** package at `/tmp/chronoshift-scheduling.uTUGnc/node_modules/@actions/expressions/`; package metadata identifies repository `actions/languageservices`, gitHead `b71ac284fc6a7382c22ecbf3e0009a6ae216823b`. `dist/evaluator.js` routes equality to `equals`; `dist/result.js` compares the complete strings after its case normalization. This was source inspection, not execution of the agent's matrix or a hosted check. No package installation or workflow change was made.
+
+The comparison still requires the **entire label**, rather than a substring: `ci-run-extra` does not qualify. A casing variant of ci-timing enables both admission and timing, because both expressions use the same equality semantics. Canonical documented label names remain suitable. Dynamic job-name outputs stay the fixed lowercase `web`/`web-deferred`, so the unchanged verifier's exact JavaScript job-name check is unaffected.
+
+**Implementation verdict:** no blocker or workflow fix required; previous bounded source approval stands with this wording correction. Web/Pages hashes independently remained `fb5b017a40bfb2c189aae4563a05988b29b3be7a` / `d92bca178f4596f578bb4e915924ba3d7fb83082`. **Hosted/CI-goal verdict:** unverified/open, unchanged.
