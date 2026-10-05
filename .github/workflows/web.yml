@@ -71,7 +71,13 @@ jobs:
         run: |
           bun run corpus:audit
           diff -u "$RUNNER_TEMP/chronoshift-corpus-audit.json" docs/planning/corpus-audit.json
-      - run: bun run test:browser
+      - name: Run bun run test:browser
+        run: |
+          bun scripts/ci-environment.ts before
+          bun run test:browser
+      - name: Record browser resource usage
+        if: ${{ !cancelled() }}
+        run: bun scripts/ci-environment.ts after
       - name: Retain bounded browser timing metadata
         if: ${{ !cancelled() && env.CHRONOSHIFT_CI_TIMING == '1' && hashFiles('test-results/ci-timing.json') != '' }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

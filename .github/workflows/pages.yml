@@ -21,7 +21,8 @@ concurrency:
 jobs:
   prepare:
     if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    # Static artifact validation/publication needs no browser or Docker host.
+    runs-on: ubuntu-slim
     timeout-minutes: 5
     permissions:
       contents: read

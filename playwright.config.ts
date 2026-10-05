@@ -19,9 +19,9 @@ export default defineConfig({
   timeout: 30000,
   expect: { timeout: 10000 },
   fullyParallel: true,
-  // The expanded-suite six-worker experiment increased whole-job duration.
-  // Keep four workers on the same measured Linux runner.
-  workers: process.env.CI ? 4 : 3,
+  // Measure lower contention after the six-worker experiment was slower.
+  // This changes concurrency within one job, retaining every browser case.
+  workers: process.env.CI ? 2 : 3,
   retries: process.env.CI ? 1 : 0,
   reporter: [
     ["list"],
