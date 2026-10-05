@@ -1,0 +1,406 @@
+{
+  "capturedAt": "2026-10-05T09:56:39.960Z",
+  "inputSha256": "6bfbce7727f09ae3971e53a72a1e87a0e88e507dee7e19321350ff470d54f4fb",
+  "began": "2026-10-05T09:55:51.646Z",
+  "ended": "2026-10-05T09:55:54.069Z",
+  "identity": {
+    "release": {
+      "sourceCommit": "35e11bac657a0c379fda48af9b454e674d2ea854",
+      "base": "/"
+    },
+    "workerPath": "assets/worker-C690IjaR.js",
+    "workerSha256": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+    "appPath": "assets/index-B3d9YDa-.js",
+    "appSha256": "764439adde23302a0e40ff2c221e8fe13055671a6285ac16d528344cf06befc9",
+    "fixtureSha256": "3a3e9fffbe98156e39ff8dc29ed527745df5583624077908e207c0faeb71a9a9",
+    "scriptSha256": "238c5bba52e492a437a5b7ded49ed849b43a60fb9da20c119e88cbf7799872d7"
+  },
+  "origin": "http://127.0.0.1:59311/",
+  "environment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "bun": "1.4.0",
+    "playwright": "1.63.0"
+  },
+  "engines": [
+    {
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "began": "2026-10-05T09:55:51.658Z",
+      "ended": "2026-10-05T09:55:52.040Z",
+      "environment": {
+        "at": "2026-10-05T09:55:51.768Z",
+        "origin": "http://127.0.0.1:59311",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+        "locale": "en-AU",
+        "timezone": "Australia/Sydney",
+        "reducedMotion": false,
+        "raster": 1,
+        "performanceTimeOrigin": 1791194151756.2
+      },
+      "bootstrapMs": 21.200000017881393,
+      "idlePrimeMs": 18.69999998807907,
+      "fresh": {
+        "count": 12,
+        "meanMs": 17.891666663189728,
+        "medianMs": 17.900000005960464,
+        "minMs": 17.599999994039536,
+        "maxMs": 18.099999994039536
+      },
+      "idle": {
+        "count": 12,
+        "meanMs": 0.5166666706403097,
+        "medianMs": 0.45000000298023224,
+        "minMs": 0.29999998211860657,
+        "maxMs": 1
+      },
+      "pairedDifference": {
+        "count": 12,
+        "meanMs": 17.37499999254942,
+        "medianMs": 17.349999994039536,
+        "minMs": 16.799999982118607,
+        "maxMs": 17.700000017881393
+      },
+      "reductionPercent": 97.11224962790472,
+      "pairs": [
+        {
+          "index": 0,
+          "fixture": "fixed EST in spring",
+          "freshMs": 18.099999994039536,
+          "idleMs": 0.7000000178813934,
+          "differenceMs": 17.399999976158142
+        },
+        {
+          "index": 1,
+          "fixture": "regional PT summer",
+          "freshMs": 17.900000005960464,
+          "idleMs": 0.5999999940395355,
+          "differenceMs": 17.30000001192093
+        },
+        {
+          "index": 2,
+          "fixture": "quarter hour offset",
+          "freshMs": 17.799999982118607,
+          "idleMs": 1,
+          "differenceMs": 16.799999982118607
+        },
+        {
+          "index": 3,
+          "fixture": "relative in Tokyo",
+          "freshMs": 18,
+          "idleMs": 0.7000000178813934,
+          "differenceMs": 17.299999982118607
+        },
+        {
+          "index": 4,
+          "fixture": "fixed EST in spring",
+          "freshMs": 18,
+          "idleMs": 0.5,
+          "differenceMs": 17.5
+        },
+        {
+          "index": 5,
+          "fixture": "regional PT summer",
+          "freshMs": 17.900000005960464,
+          "idleMs": 0.4000000059604645,
+          "differenceMs": 17.5
+        },
+        {
+          "index": 6,
+          "fixture": "quarter hour offset",
+          "freshMs": 18.099999994039536,
+          "idleMs": 0.4000000059604645,
+          "differenceMs": 17.69999998807907
+        },
+        {
+          "index": 7,
+          "fixture": "relative in Tokyo",
+          "freshMs": 17.799999982118607,
+          "idleMs": 0.5,
+          "differenceMs": 17.299999982118607
+        },
+        {
+          "index": 8,
+          "fixture": "fixed EST in spring",
+          "freshMs": 17.599999994039536,
+          "idleMs": 0.4000000059604645,
+          "differenceMs": 17.19999998807907
+        },
+        {
+          "index": 9,
+          "fixture": "regional PT summer",
+          "freshMs": 17.900000005960464,
+          "idleMs": 0.30000001192092896,
+          "differenceMs": 17.599999994039536
+        },
+        {
+          "index": 10,
+          "fixture": "quarter hour offset",
+          "freshMs": 17.599999994039536,
+          "idleMs": 0.4000000059604645,
+          "differenceMs": 17.19999998807907
+        },
+        {
+          "index": 11,
+          "fixture": "relative in Tokyo",
+          "freshMs": 18,
+          "idleMs": 0.29999998211860657,
+          "differenceMs": 17.700000017881393
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "began": "2026-10-05T09:55:52.054Z",
+      "ended": "2026-10-05T09:55:53.315Z",
+      "environment": {
+        "at": "2026-10-05T09:55:52.828Z",
+        "origin": "http://127.0.0.1:59311",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:155.0) Gecko/20100101 Firefox/155.0",
+        "locale": "en-AU",
+        "timezone": "Australia/Sydney",
+        "reducedMotion": false,
+        "raster": 1,
+        "performanceTimeOrigin": 1791194152759
+      },
+      "bootstrapMs": 77,
+      "idlePrimeMs": 34,
+      "fresh": {
+        "count": 12,
+        "meanMs": 28.166666666666668,
+        "medianMs": 28,
+        "minMs": 27,
+        "maxMs": 31
+      },
+      "idle": {
+        "count": 12,
+        "meanMs": 1.9166666666666667,
+        "medianMs": 1,
+        "minMs": 0,
+        "maxMs": 10
+      },
+      "pairedDifference": {
+        "count": 12,
+        "meanMs": 26.25,
+        "medianMs": 27,
+        "minMs": 17,
+        "maxMs": 29
+      },
+      "reductionPercent": 93.19526627218934,
+      "pairs": [
+        {
+          "index": 0,
+          "fixture": "fixed EST in spring",
+          "freshMs": 31,
+          "idleMs": 2,
+          "differenceMs": 29
+        },
+        {
+          "index": 1,
+          "fixture": "regional PT summer",
+          "freshMs": 31,
+          "idleMs": 2,
+          "differenceMs": 29
+        },
+        {
+          "index": 2,
+          "fixture": "quarter hour offset",
+          "freshMs": 29,
+          "idleMs": 2,
+          "differenceMs": 27
+        },
+        {
+          "index": 3,
+          "fixture": "relative in Tokyo",
+          "freshMs": 28,
+          "idleMs": 1,
+          "differenceMs": 27
+        },
+        {
+          "index": 4,
+          "fixture": "fixed EST in spring",
+          "freshMs": 27,
+          "idleMs": 10,
+          "differenceMs": 17
+        },
+        {
+          "index": 5,
+          "fixture": "regional PT summer",
+          "freshMs": 27,
+          "idleMs": 0,
+          "differenceMs": 27
+        },
+        {
+          "index": 6,
+          "fixture": "quarter hour offset",
+          "freshMs": 28,
+          "idleMs": 1,
+          "differenceMs": 27
+        },
+        {
+          "index": 7,
+          "fixture": "relative in Tokyo",
+          "freshMs": 27,
+          "idleMs": 1,
+          "differenceMs": 26
+        },
+        {
+          "index": 8,
+          "fixture": "fixed EST in spring",
+          "freshMs": 28,
+          "idleMs": 1,
+          "differenceMs": 27
+        },
+        {
+          "index": 9,
+          "fixture": "regional PT summer",
+          "freshMs": 28,
+          "idleMs": 1,
+          "differenceMs": 27
+        },
+        {
+          "index": 10,
+          "fixture": "quarter hour offset",
+          "freshMs": 27,
+          "idleMs": 1,
+          "differenceMs": 26
+        },
+        {
+          "index": 11,
+          "fixture": "relative in Tokyo",
+          "freshMs": 27,
+          "idleMs": 1,
+          "differenceMs": 26
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "began": "2026-10-05T09:55:53.484Z",
+      "ended": "2026-10-05T09:55:54.053Z",
+      "environment": {
+        "at": "2026-10-05T09:55:53.801Z",
+        "origin": "http://127.0.0.1:59311",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6 Safari/605.1.15",
+        "locale": "en-AU",
+        "timezone": "Australia/Sydney",
+        "reducedMotion": false,
+        "raster": 1,
+        "performanceTimeOrigin": 1791194153796
+      },
+      "bootstrapMs": 22,
+      "idlePrimeMs": 19,
+      "fresh": {
+        "count": 12,
+        "meanMs": 16.333333333333332,
+        "medianMs": 16,
+        "minMs": 15,
+        "maxMs": 19
+      },
+      "idle": {
+        "count": 12,
+        "meanMs": 0.8333333333333334,
+        "medianMs": 1,
+        "minMs": 0,
+        "maxMs": 1
+      },
+      "pairedDifference": {
+        "count": 12,
+        "meanMs": 15.5,
+        "medianMs": 15.5,
+        "minMs": 14,
+        "maxMs": 18
+      },
+      "reductionPercent": 94.89795918367346,
+      "pairs": [
+        {
+          "index": 0,
+          "fixture": "fixed EST in spring",
+          "freshMs": 18,
+          "idleMs": 1,
+          "differenceMs": 17
+        },
+        {
+          "index": 1,
+          "fixture": "regional PT summer",
+          "freshMs": 19,
+          "idleMs": 1,
+          "differenceMs": 18
+        },
+        {
+          "index": 2,
+          "fixture": "quarter hour offset",
+          "freshMs": 17,
+          "idleMs": 1,
+          "differenceMs": 16
+        },
+        {
+          "index": 3,
+          "fixture": "relative in Tokyo",
+          "freshMs": 16,
+          "idleMs": 1,
+          "differenceMs": 15
+        },
+        {
+          "index": 4,
+          "fixture": "fixed EST in spring",
+          "freshMs": 15,
+          "idleMs": 1,
+          "differenceMs": 14
+        },
+        {
+          "index": 5,
+          "fixture": "regional PT summer",
+          "freshMs": 15,
+          "idleMs": 1,
+          "differenceMs": 14
+        },
+        {
+          "index": 6,
+          "fixture": "quarter hour offset",
+          "freshMs": 15,
+          "idleMs": 1,
+          "differenceMs": 14
+        },
+        {
+          "index": 7,
+          "fixture": "relative in Tokyo",
+          "freshMs": 15,
+          "idleMs": 1,
+          "differenceMs": 14
+        },
+        {
+          "index": 8,
+          "fixture": "fixed EST in spring",
+          "freshMs": 16,
+          "idleMs": 1,
+          "differenceMs": 15
+        },
+        {
+          "index": 9,
+          "fixture": "regional PT summer",
+          "freshMs": 16,
+          "idleMs": 0,
+          "differenceMs": 16
+        },
+        {
+          "index": 10,
+          "fixture": "quarter hour offset",
+          "freshMs": 17,
+          "idleMs": 1,
+          "differenceMs": 16
+        },
+        {
+          "index": 11,
+          "fixture": "relative in Tokyo",
+          "freshMs": 17,
+          "idleMs": 0,
+          "differenceMs": 17
+        }
+      ]
+    }
+  ],
+  "verdict": "A local fresh-worker versus completed-idle-worker effect is measured; attribution combines startup/network/module/JIT/cache effects. No App implementation, active cancellation, UI latency or CI saving is proved."
+}

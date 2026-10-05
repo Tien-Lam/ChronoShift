@@ -1,0 +1,697 @@
+{
+  "observedAt": "2026-10-05T10:07:15.023Z",
+  "run": {
+    "id": 37293668474,
+    "attempt": 1,
+    "head": "a868e4b956caf5d227edc430fc7dca97c0dc2eb6",
+    "event": "workflow_dispatch",
+    "status": "completed",
+    "conclusion": "success",
+    "createdAt": "2026-10-05T09:59:45Z",
+    "updatedAt": "2026-10-05T10:06:15Z",
+    "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37293668474"
+  },
+  "jobs": [
+    {
+      "id": 111709774614,
+      "name": "prepare",
+      "conclusion": "success",
+      "startedAt": "2026-10-05T09:59:51Z",
+      "completedAt": "2026-10-05T10:00:06Z",
+      "seconds": 15,
+      "roundedMinutes": 1,
+      "beforeFirstStepSeconds": 1,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:59:52Z",
+          "completedAt": "2026-10-05T09:59:54Z",
+          "seconds": 2
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:59:54Z",
+          "completedAt": "2026-10-05T10:00:00Z",
+          "seconds": 6
+        },
+        {
+          "name": "Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:00:00Z",
+          "completedAt": "2026-10-05T10:00:04Z",
+          "seconds": 4
+        },
+        {
+          "name": "Reuse the exact verified PR artifact",
+          "conclusion": "skipped",
+          "startedAt": "2026-10-05T10:00:04Z",
+          "completedAt": "2026-10-05T10:00:04Z",
+          "seconds": null
+        },
+        {
+          "name": "Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+          "conclusion": "skipped",
+          "startedAt": "2026-10-05T10:00:04Z",
+          "completedAt": "2026-10-05T10:00:04Z",
+          "seconds": null
+        },
+        {
+          "name": "Upload the verified Pages build",
+          "conclusion": "skipped",
+          "startedAt": "2026-10-05T10:00:04Z",
+          "completedAt": "2026-10-05T10:00:04Z",
+          "seconds": null
+        },
+        {
+          "name": "Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346",
+          "conclusion": "skipped",
+          "startedAt": "2026-10-05T10:00:04Z",
+          "completedAt": "2026-10-05T10:00:04Z",
+          "seconds": null
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:00:04Z",
+          "completedAt": "2026-10-05T10:00:04Z",
+          "seconds": 0
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:00:04Z",
+          "completedAt": "2026-10-05T10:00:04Z",
+          "seconds": 0
+        }
+      ]
+    },
+    {
+      "id": 111709882887,
+      "name": "verify / web",
+      "conclusion": "success",
+      "startedAt": "2026-10-05T10:00:09Z",
+      "completedAt": "2026-10-05T10:05:57Z",
+      "seconds": 348,
+      "roundedMinutes": 6,
+      "beforeFirstStepSeconds": 1,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:00:10Z",
+          "completedAt": "2026-10-05T10:00:12Z",
+          "seconds": 2
+        },
+        {
+          "name": "Initialize containers",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:00:12Z",
+          "completedAt": "2026-10-05T10:00:47Z",
+          "seconds": 35
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:00:47Z",
+          "completedAt": "2026-10-05T10:00:51Z",
+          "seconds": 4
+        },
+        {
+          "name": "Capture the checked-in corpus audit",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:00:51Z",
+          "completedAt": "2026-10-05T10:00:51Z",
+          "seconds": 0
+        },
+        {
+          "name": "Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:00:51Z",
+          "completedAt": "2026-10-05T10:01:12Z",
+          "seconds": 21
+        },
+        {
+          "name": "Run bun install --frozen-lockfile",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:01:12Z",
+          "completedAt": "2026-10-05T10:01:13Z",
+          "seconds": 1
+        },
+        {
+          "name": "Verify the pinned browser image matches the dependency",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:01:13Z",
+          "completedAt": "2026-10-05T10:01:14Z",
+          "seconds": 1
+        },
+        {
+          "name": "Run bun run format:check",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:01:14Z",
+          "completedAt": "2026-10-05T10:01:15Z",
+          "seconds": 1
+        },
+        {
+          "name": "Unit tests and production build",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:01:15Z",
+          "completedAt": "2026-10-05T10:01:16Z",
+          "seconds": 1
+        },
+        {
+          "name": "Verify the standalone conversion corpus audit",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:01:16Z",
+          "completedAt": "2026-10-05T10:01:17Z",
+          "seconds": 1
+        },
+        {
+          "name": "Run bun run test:browser",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:01:17Z",
+          "completedAt": "2026-10-05T10:05:50Z",
+          "seconds": 273
+        },
+        {
+          "name": "Record browser resource usage",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:05:50Z",
+          "completedAt": "2026-10-05T10:05:50Z",
+          "seconds": 0
+        },
+        {
+          "name": "Retain bounded browser timing metadata",
+          "conclusion": "skipped",
+          "startedAt": "2026-10-05T10:05:50Z",
+          "completedAt": "2026-10-05T10:05:50Z",
+          "seconds": null
+        },
+        {
+          "name": "Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:05:50Z",
+          "completedAt": "2026-10-05T10:05:50Z",
+          "seconds": 0
+        },
+        {
+          "name": "Verify repository-subpath deployment",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:05:50Z",
+          "completedAt": "2026-10-05T10:05:53Z",
+          "seconds": 3
+        },
+        {
+          "name": "Upload the verified Pages build",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:05:53Z",
+          "completedAt": "2026-10-05T10:05:54Z",
+          "seconds": 1
+        },
+        {
+          "name": "Publish failed-attempt diagnostics",
+          "conclusion": "skipped",
+          "startedAt": "2026-10-05T10:05:54Z",
+          "completedAt": "2026-10-05T10:05:54Z",
+          "seconds": null
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:05:54Z",
+          "completedAt": "2026-10-05T10:05:54Z",
+          "seconds": 0
+        },
+        {
+          "name": "Stop containers",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:05:54Z",
+          "completedAt": "2026-10-05T10:05:54Z",
+          "seconds": 0
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:05:54Z",
+          "completedAt": "2026-10-05T10:05:54Z",
+          "seconds": 0
+        }
+      ]
+    },
+    {
+      "id": 111711968806,
+      "name": "deploy",
+      "conclusion": "success",
+      "startedAt": "2026-10-05T10:06:02Z",
+      "completedAt": "2026-10-05T10:06:14Z",
+      "seconds": 12,
+      "roundedMinutes": 1,
+      "beforeFirstStepSeconds": 1,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:06:03Z",
+          "completedAt": "2026-10-05T10:06:04Z",
+          "seconds": 1
+        },
+        {
+          "name": "Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:06:04Z",
+          "completedAt": "2026-10-05T10:06:12Z",
+          "seconds": 8
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T10:06:12Z",
+          "completedAt": "2026-10-05T10:06:12Z",
+          "seconds": 0
+        }
+      ]
+    }
+  ],
+  "totalJobSeconds": 375,
+  "totalRoundedMinutes": 8,
+  "allActiveJobsSuccessful": true,
+  "manualBranches": {
+    "prepareSteps": [
+      {
+        "name": "Set up job",
+        "conclusion": "success",
+        "startedAt": "2026-10-05T09:59:52Z",
+        "completedAt": "2026-10-05T09:59:54Z",
+        "seconds": 2
+      },
+      {
+        "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "conclusion": "success",
+        "startedAt": "2026-10-05T09:59:54Z",
+        "completedAt": "2026-10-05T10:00:00Z",
+        "seconds": 6
+      },
+      {
+        "name": "Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492",
+        "conclusion": "success",
+        "startedAt": "2026-10-05T10:00:00Z",
+        "completedAt": "2026-10-05T10:00:04Z",
+        "seconds": 4
+      },
+      {
+        "name": "Reuse the exact verified PR artifact",
+        "conclusion": "skipped",
+        "startedAt": "2026-10-05T10:00:04Z",
+        "completedAt": "2026-10-05T10:00:04Z",
+        "seconds": null
+      },
+      {
+        "name": "Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+        "conclusion": "skipped",
+        "startedAt": "2026-10-05T10:00:04Z",
+        "completedAt": "2026-10-05T10:00:04Z",
+        "seconds": null
+      },
+      {
+        "name": "Upload the verified Pages build",
+        "conclusion": "skipped",
+        "startedAt": "2026-10-05T10:00:04Z",
+        "completedAt": "2026-10-05T10:00:04Z",
+        "seconds": null
+      },
+      {
+        "name": "Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346",
+        "conclusion": "skipped",
+        "startedAt": "2026-10-05T10:00:04Z",
+        "completedAt": "2026-10-05T10:00:04Z",
+        "seconds": null
+      },
+      {
+        "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "conclusion": "success",
+        "startedAt": "2026-10-05T10:00:04Z",
+        "completedAt": "2026-10-05T10:00:04Z",
+        "seconds": 0
+      },
+      {
+        "name": "Complete job",
+        "conclusion": "success",
+        "startedAt": "2026-10-05T10:00:04Z",
+        "completedAt": "2026-10-05T10:00:04Z",
+        "seconds": 0
+      }
+    ],
+    "deploySteps": [
+      {
+        "name": "Set up job",
+        "conclusion": "success",
+        "startedAt": "2026-10-05T10:06:03Z",
+        "completedAt": "2026-10-05T10:06:04Z",
+        "seconds": 1
+      },
+      {
+        "name": "Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346",
+        "conclusion": "success",
+        "startedAt": "2026-10-05T10:06:04Z",
+        "completedAt": "2026-10-05T10:06:12Z",
+        "seconds": 8
+      },
+      {
+        "name": "Complete job",
+        "conclusion": "success",
+        "startedAt": "2026-10-05T10:06:12Z",
+        "completedAt": "2026-10-05T10:06:12Z",
+        "seconds": 0
+      }
+    ]
+  },
+  "gates": [
+    {
+      "name": "Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "conclusion": "success"
+    },
+    {
+      "name": "Capture the checked-in corpus audit",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run bun install --frozen-lockfile",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify the pinned browser image matches the dependency",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run bun run format:check",
+      "conclusion": "success"
+    },
+    {
+      "name": "Unit tests and production build",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify the standalone conversion corpus audit",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run bun run test:browser",
+      "conclusion": "success"
+    },
+    {
+      "name": "Record browser resource usage",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify repository-subpath deployment",
+      "conclusion": "success"
+    },
+    {
+      "name": "Upload the verified Pages build",
+      "conclusion": "success"
+    }
+  ],
+  "allRequiredGatesSuccessful": true,
+  "browser": {
+    "attempts": 273,
+    "distinctCases": 273,
+    "firstPasses": 264,
+    "skipped": 9,
+    "failed": 0,
+    "retries": 0,
+    "byProject": {
+      "foldable": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0,
+        "retries": 0
+      },
+      "chromium": {
+        "passed": 54,
+        "skipped": 0,
+        "failed": 0,
+        "retries": 0
+      },
+      "firefox": {
+        "passed": 51,
+        "skipped": 3,
+        "failed": 0,
+        "retries": 0
+      },
+      "webkit": {
+        "passed": 51,
+        "skipped": 3,
+        "failed": 0,
+        "retries": 0
+      },
+      "android-emulation": {
+        "passed": 54,
+        "skipped": 0,
+        "failed": 0,
+        "retries": 0
+      },
+      "iphone-emulation": {
+        "passed": 51,
+        "skipped": 3,
+        "failed": 0,
+        "retries": 0
+      }
+    },
+    "expectedCases": 273,
+    "originalCaseCount": 258,
+    "addedCases": 15,
+    "titles": [
+      "a deferred manual-copy focus frame cannot steal a new target keyboard edit",
+      "an unchanged copy owner still receives selected manual fallback text",
+      "same-owner keyboard intent keeps the newer owner"
+    ],
+    "missingCases": [],
+    "extraCases": [],
+    "sameSkipIdentities": true,
+    "sameInventoryAsFinalCI": true
+  },
+  "unitEvidence": [
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:01:16.1124294Z  116 pass",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:01:16.1124402Z  0 fail",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:01:16.1124643Z Ran 116 tests across 6 files. [320.00ms]"
+  ],
+  "browserSummaryEvidence": [
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:01:17.7912586Z Running 273 tests using 4 workers",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:05:49.8312784Z   9 skipped",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:05:49.8313008Z   264 passed (4.5m)"
+  ],
+  "subpathEvidence": [
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:05:53.2025381Z   1 passed (1.5s)"
+  ],
+  "timingFlagEvidence": [
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:00:47.5231393Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:00:51.5260483Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:00:51.5905613Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:01:12.7344492Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:01:13.8012989Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:01:14.2771589Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:01:15.7463573Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:01:16.9156860Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:01:17.1550992Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:05:50.0855986Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:05:50.1394722Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:05:50.5312739Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:05:53.2201255Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:05:53.2275660Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:05:53.2727644Z   CHRONOSHIFT_CI_TIMING: 0"
+  ],
+  "timingDisabled": true,
+  "containerUserEvidence": [
+    "verify / web\tUNKNOWN STEP\t2026-10-05T10:00:47.3010228Z ##[command]/usr/bin/docker create --name a58ea19556f14063a32695145017062d_mcrmicrosoftcomplaywrightsha256eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27_b55d78 --label 03827d --workdir /__w/ChronoShift/ChronoShift --network github_network_1928d61bd3784bdfaa372c5289711177 --user 1001:1001 --ipc=host --init -e \"HOME=/github/home\" -e GITHUB_ACTIONS=true -e CI=true -v \"/var/run/docker.sock\":\"/var/run/docker.sock\" -v \"/home/runner/work\":\"/__w\" -v \"/home/runner/actions-runner/cached/2.337.0/externals\":\"/__e\":ro -v \"/home/runner/work/_temp\":\"/__w/_temp\" -v \"/home/runner/work/_actions\":\"/__w/_actions\" -v \"/opt/hostedtoolcache\":\"/__t\" -v \"/home/runner/work/_temp/_github_home\":\"/github/home\" -v \"/home/runner/work/_temp/_github_workflow\":\"/github/workflow\" --entrypoint \"tail\" mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27 \"-f\" \"/dev/null\""
+  ],
+  "timingArtifactStep": {
+    "name": "Retain bounded browser timing metadata",
+    "conclusion": "skipped",
+    "startedAt": "2026-10-05T10:05:50Z",
+    "completedAt": "2026-10-05T10:05:50Z",
+    "seconds": null
+  },
+  "failureDiagnosticStep": {
+    "name": "Publish failed-attempt diagnostics",
+    "conclusion": "skipped",
+    "startedAt": "2026-10-05T10:05:54Z",
+    "completedAt": "2026-10-05T10:05:54Z",
+    "seconds": null
+  },
+  "totalArtifactCount": 1,
+  "artifacts": [
+    {
+      "id": 11337716881,
+      "node_id": "MDg6QXJ0aWZhY3QxMTMzNzcxNjg4MQ==",
+      "name": "github-pages",
+      "size_in_bytes": 374906,
+      "url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11337716881",
+      "archive_download_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11337716881/zip",
+      "expired": false,
+      "digest": "sha256:16bcf40589de7dbd3dbd72b72983c819ab14c28339907b5abea162a404a582bf",
+      "created_at": "2026-10-05T10:05:54Z",
+      "updated_at": "2026-10-05T10:05:54Z",
+      "expires_at": "2026-10-19T10:05:53Z",
+      "workflow_run": {
+        "id": 37293668474,
+        "repository_id": 1206473449,
+        "head_repository_id": 1206473449,
+        "head_branch": "main",
+        "head_sha": "a868e4b956caf5d227edc430fc7dca97c0dc2eb6"
+      },
+      "nominalRetentionHours": 336,
+      "nominalProjectedByteHours": 125968416
+    }
+  ],
+  "source": {
+    "head": "a868e4b956caf5d227edc430fc7dca97c0dc2eb6",
+    "expectedTree": "44a2096e710983603a85193c2cd33c05461145cb",
+    "headTree": "44a2096e710983603a85193c2cd33c05461145cb",
+    "testedCommit": "a868e4b956caf5d227edc430fc7dca97c0dc2eb6",
+    "testedTree": "44a2096e710983603a85193c2cd33c05461145cb",
+    "testedShaInCheckoutLog": true,
+    "identities": [
+      {
+        "path": "web",
+        "previous": "78dbdbf65b5328416f0b169cc52d3ed9541d02f9",
+        "head": "e8a7963096c8dcb09de5a259a966cf1b7aa595d9"
+      },
+      {
+        "path": "e2e",
+        "previous": "295d14434adb5ad70b272aa80b012efc90f572ff",
+        "head": "a65df7f50cf7d504debf32a4a45562c0d0b5ae1a"
+      },
+      {
+        "path": "tests",
+        "previous": "39aaa930e5002536108aabce7b2d445d0a9bd429",
+        "head": "39aaa930e5002536108aabce7b2d445d0a9bd429"
+      },
+      {
+        "path": "scripts",
+        "previous": "213342d4e83321aabf46bd2a280fae54ca6b4299",
+        "head": "213342d4e83321aabf46bd2a280fae54ca6b4299"
+      },
+      {
+        "path": "playwright.config.ts",
+        "previous": "7a1c28db0dc15faaff76e2b02d72dc65962c9268",
+        "head": "7a1c28db0dc15faaff76e2b02d72dc65962c9268"
+      },
+      {
+        "path": "playwright.subpath.config.ts",
+        "previous": "38acbcbda958e58264b5b71b70dc4fce3f0793aa",
+        "head": "38acbcbda958e58264b5b71b70dc4fce3f0793aa"
+      },
+      {
+        "path": "package.json",
+        "previous": "5627cebee4d2062dadbf7536572981e5b9337fc4",
+        "head": "5627cebee4d2062dadbf7536572981e5b9337fc4"
+      },
+      {
+        "path": "bun.lock",
+        "previous": "e418e7c65172b9b563f34a7c9f898bb3f0e988da",
+        "head": "e418e7c65172b9b563f34a7c9f898bb3f0e988da"
+      },
+      {
+        "path": ".github/dependabot.yml",
+        "previous": "4cf4ca1242df077d8a625f55ffc6213a6bdd33b5",
+        "head": "4cf4ca1242df077d8a625f55ffc6213a6bdd33b5"
+      },
+      {
+        "path": ".github/workflows/web.yml",
+        "previous": "4a2d098605337417b84965f2227d1cda67a981d7",
+        "head": "4a2d098605337417b84965f2227d1cda67a981d7"
+      },
+      {
+        "path": ".github/workflows/pages.yml",
+        "previous": "403f2d3a603847520efc76033141f272e3094fdb",
+        "head": "403f2d3a603847520efc76033141f272e3094fdb"
+      }
+    ],
+    "approvedApp": "35e11bac657a0c379fda48af9b454e674d2ea854",
+    "approvedAppWebTree": "e8a7963096c8dcb09de5a259a966cf1b7aa595d9",
+    "finalWebTree": "e8a7963096c8dcb09de5a259a966cf1b7aa595d9",
+    "workflowBytesUnchanged": true,
+    "nonDocsDelta": [
+      "e2e/copy-focus.spec.ts",
+      "web/src/App.tsx"
+    ],
+    "finalTestSha256": "6467c3acb6f5da55573678ac9e64b846fd3f8eba1cdb04b4df6ea59c0bfb429e"
+  },
+  "resource": {
+    "records": [
+      {
+        "at": "2026-10-05T10:01:17.199Z",
+        "phase": "before",
+        "platform": "linux",
+        "architecture": "x64",
+        "osRelease": "6.17.0-1022-azure",
+        "availableParallelism": 4,
+        "logicalCpus": 4,
+        "cpuModel": "AMD EPYC 9V45 96-Core Processor",
+        "totalMemoryBytes": 16766414848,
+        "cgroup": {
+          "cpu.max": "max 100000",
+          "cpu.stat": "usage_usec 29513385\nuser_usec 24592976\nsystem_usec 4920409\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+          "memory.max": "max",
+          "memory.peak": "1637855232",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+        }
+      },
+      {
+        "at": "2026-10-05T10:05:50.130Z",
+        "phase": "after",
+        "platform": "linux",
+        "architecture": "x64",
+        "osRelease": "6.17.0-1022-azure",
+        "availableParallelism": 4,
+        "logicalCpus": 4,
+        "cpuModel": "AMD EPYC 9V45 96-Core Processor",
+        "totalMemoryBytes": 16766414848,
+        "cgroup": {
+          "cpu.max": "max 100000",
+          "cpu.stat": "usage_usec 942245146\nuser_usec 799854279\nsystem_usec 142390866\nnice_usec 49731000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+          "memory.max": "max",
+          "memory.peak": "7525699584",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+        }
+      }
+    ],
+    "bracketSeconds": 272.931,
+    "cpuDelta": {
+      "usage_usec": 912731761,
+      "user_usec": 775261303,
+      "system_usec": 137470457,
+      "nice_usec": 49731000,
+      "core_sched.force_idle_usec": 0,
+      "nr_periods": 0,
+      "nr_throttled": 0,
+      "throttled_usec": 0,
+      "nr_bursts": 0,
+      "burst_usec": 0
+    },
+    "memoryEventsDelta": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0
+    }
+  },
+  "limitations": [
+    "Job spans and rounded minutes are proxies, not account billing or complete paired publication.",
+    "Nominal artifact byte-hours do not establish actual storage billing or expiration.",
+    "Root owns artifact extraction/public verification; no publication claimed here.",
+    "Ordinary mode intentionally has no structured timing artifact or green marker file. Full raw attempt inventory and skipped diagnostic branch supply bounded retry/marker evidence.",
+    "No causal performance or TIE375 acceptance claim; workload grew by fifteen regression cases."
+  ]
+}

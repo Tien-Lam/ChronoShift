@@ -1,5 +1,10 @@
 # Actions migration and copy focus ownership
 
+Delivery is verified on automatic and full manual publishing paths. The
+[final delivery record](delivery.md) contains exact revisions, both clean gates,
+artifact/public-byte audits, hosted checks and actual draft-preserving updates.
+The initial and held-gate review progression below retains its original scope.
+
 TIE-376 tracks grouped PR #40's six official SHA-pinned Actions upgrades.
 Base main: `0fb0b915a1e1f2ab19613ad1f8ac9dae0eec43cc`. Initial Dependabot head:
 `79c114bbe6823f70456a53f2a10e5428fc6263b6`. Independently reviewed implementation:
@@ -32,18 +37,18 @@ their upgraded runtime operation. This initial run is additional investigation
 usage, separate from a final publication pair.
 
 The held gate below exercised both direct timing and flaky-success diagnostic
-uploads with these exact workflow bytes. The new final exact-head gate runs in
+uploads with these exact workflow bytes. The final exact-head gate passed in
 ordinary mode, without timing instrumentation. Trusted Slim reuse,
-artifact/public bytes, hosted offline use and an explicit draft-preserving update
-remain pending. One complete manual fallback will exercise upgraded
+artifact/public bytes, hosted offline use and explicit draft-preserving updates
+are verified. One complete manual fallback exercised upgraded
 configuration/upload in the container and deployment on the separate runner.
 Deployment timeout/cancellation
 and historical rollback conditions remain unexercised and qualified.
 
 Grouped PR creation is observed: PR #40 combines six updates after five individual
 PRs were superseded. This establishes service adoption, not an account-wide
-monthly savings figure. TIE-375's 20% complete-pair target stays open. The latest
-accepted PR #39 pair uses 356 runner seconds/seven rounded minutes versus the
+monthly savings figure. TIE-375's 20% complete-pair target stays open. The
+previously accepted PR #39 pair uses 356 runner seconds/seven rounded minutes versus the
 307/eight baseline, with 63.15% lower API-based projected artifact byte-hours;
 raw time is higher and the full target remains unmet. See [PR #39 delivery](../ci-maintenance-grouping-2026-10-05/README.md).
 
@@ -67,9 +72,11 @@ keyboard control reproduced focus theft; the candidate prevents it and retains
 normal fallback selection. Independent code and adversarial reviewers approved
 the bounded implementation, while keeping the historical untraced fill sequence
 unknown. See the [copy-focus record](../copy-focus-2026-10-05/README.md).
-PR40 remains draft and unpublished pending its new exact-head gate and both
-publishing paths. The old green conclusion is not first-attempt-clean acceptance.
+PR40 merged after its new clean exact-head gate, and both publishing paths are
+verified in the final record. The old green conclusion is not
+first-attempt-clean acceptance.
 
 The [timing analysis](adversarial-timing-analysis.md) found no justified new cost
 optimization: batching menu reads cannot address the dominant click durations.
-Investigation usage remains separate from the latest accepted ordinary PR39 pair.
+Investigation usage remains separate from ordinary pairs; the latest PR40 pair is
+recorded in the final delivery record.

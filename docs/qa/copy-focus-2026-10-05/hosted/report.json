@@ -1,0 +1,342 @@
+{
+  "config": {
+    "argv": [
+      "/Users/tien/.local/share/mise/installs/bun/1.4.0/bin/bun",
+      "/Users/tien/Developer/ChronoShift/node_modules/.bin/playwright",
+      "test",
+      "--config=docs/qa/copy-focus-2026-10-05/hosted/config.ts"
+    ],
+    "configFile": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/hosted/config.ts",
+    "rootDir": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/hosted",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/hosted/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "hosted-chromium",
+        "name": "hosted-chromium",
+        "testDir": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/hosted",
+        "testIgnore": [],
+        "testMatch": [
+          "copy-focus.spec.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/hosted/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "hosted-webkit",
+        "name": "hosted-webkit",
+        "testDir": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/hosted",
+        "testIgnore": [],
+        "testMatch": [
+          "copy-focus.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/qa/copy-focus-2026-10-05/hosted/report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "copy-focus.spec.ts",
+      "file": "copy-focus.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "a deferred manual-copy focus frame cannot steal a new target keyboard edit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "hosted-chromium",
+              "projectName": "hosted-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4987,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:58:39.459Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "copy-focus-observation",
+                      "contentType": "application/json",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/hosted/results/copy-focus-a-deferred-manu-2b629--a-new-target-keyboard-edit-hosted-chromium/attachments/copy-focus-observation-ed321b889a2d88e7b854658376d3883aacd1bd8d.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d01f68896de861556ef9-18d31f0361ff014fba1b",
+          "file": "copy-focus.spec.ts",
+          "line": 262,
+          "column": 0
+        },
+        {
+          "title": "an unchanged copy owner still receives selected manual fallback text",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "hosted-chromium",
+              "projectName": "hosted-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2011,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:58:44.549Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "copy-focus-observation",
+                      "contentType": "application/json",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/hosted/results/copy-focus-an-unchanged-co-39118-lected-manual-fallback-text-hosted-chromium/attachments/copy-focus-observation-bfb5de026d53ee7efb4c02d4170abe754a4149dc.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d01f68896de861556ef9-33a31313c4d4cee6b23b",
+          "file": "copy-focus.spec.ts",
+          "line": 296,
+          "column": 0
+        },
+        {
+          "title": "same-owner keyboard intent keeps the newer owner",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "hosted-chromium",
+              "projectName": "hosted-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2089,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:58:46.563Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "copy-focus-observation",
+                      "contentType": "application/json",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/hosted/results/copy-focus-same-owner-keyboard-intent-keeps-the-newer-owner-hosted-chromium/attachments/copy-focus-observation-ce4d1cb2cbb304c865fe74857eefca5a8f5f2cf0.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d01f68896de861556ef9-cbe43d0073273d4f310b",
+          "file": "copy-focus.spec.ts",
+          "line": 317,
+          "column": 0
+        },
+        {
+          "title": "a deferred manual-copy focus frame cannot steal a new target keyboard edit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "hosted-webkit",
+              "projectName": "hosted-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4690,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:58:39.459Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "copy-focus-observation",
+                      "contentType": "application/json",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/hosted/results/copy-focus-a-deferred-manu-2b629--a-new-target-keyboard-edit-hosted-webkit/attachments/copy-focus-observation-45bc492bc1a0629c144f5ecfaad4d8f178eb7586.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d01f68896de861556ef9-917de5beb563ec568252",
+          "file": "copy-focus.spec.ts",
+          "line": 262,
+          "column": 0
+        },
+        {
+          "title": "an unchanged copy owner still receives selected manual fallback text",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "hosted-webkit",
+              "projectName": "hosted-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2084,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:58:44.354Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "copy-focus-observation",
+                      "contentType": "application/json",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/hosted/results/copy-focus-an-unchanged-co-39118-lected-manual-fallback-text-hosted-webkit/attachments/copy-focus-observation-a678a05a088c97f72b0689e434f8538dccc4092d.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d01f68896de861556ef9-ce96f200851c7fcca981",
+          "file": "copy-focus.spec.ts",
+          "line": 296,
+          "column": 0
+        },
+        {
+          "title": "same-owner keyboard intent keeps the newer owner",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "hosted-webkit",
+              "projectName": "hosted-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2243,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:58:46.440Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "copy-focus-observation",
+                      "contentType": "application/json",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/hosted/results/copy-focus-same-owner-keyboard-intent-keeps-the-newer-owner-hosted-webkit/attachments/copy-focus-observation-c06fc90ba3a633a1b568c68741a9b6a59db8edfe.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d01f68896de861556ef9-159e0a6740014153b70d",
+          "file": "copy-focus.spec.ts",
+          "line": 317,
+          "column": 0
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-05T09:58:39.308Z",
+    "duration": 9405.132000000001,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

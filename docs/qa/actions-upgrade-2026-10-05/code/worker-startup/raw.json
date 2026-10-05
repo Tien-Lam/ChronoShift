@@ -1,0 +1,1590 @@
+{
+  "began": "2026-10-05T09:55:51.646Z",
+  "identity": {
+    "release": {
+      "sourceCommit": "35e11bac657a0c379fda48af9b454e674d2ea854",
+      "base": "/"
+    },
+    "workerPath": "assets/worker-C690IjaR.js",
+    "workerSha256": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+    "appPath": "assets/index-B3d9YDa-.js",
+    "appSha256": "764439adde23302a0e40ff2c221e8fe13055671a6285ac16d528344cf06befc9",
+    "fixtureSha256": "3a3e9fffbe98156e39ff8dc29ed527745df5583624077908e207c0faeb71a9a9",
+    "scriptSha256": "238c5bba52e492a437a5b7ded49ed849b43a60fb9da20c119e88cbf7799872d7"
+  },
+  "fixtures": [
+    {
+      "name": "fixed EST in spring",
+      "text": "April 9, 2026 at 3pm EST",
+      "options": {
+        "now": "2026-04-06T12:00:00Z",
+        "sourceZone": "UTC",
+        "targetZone": "Australia/Sydney",
+        "locale": "en-AU",
+        "hourCycle": "24",
+        "dateOrder": "mdy"
+      },
+      "expected": {
+        "instants": [
+          "2026-04-09T20:00:00Z"
+        ],
+        "dates": [],
+        "warnings": []
+      }
+    },
+    {
+      "name": "regional PT summer",
+      "text": "July 15, 2026 at 3pm PT",
+      "options": {
+        "now": "2026-04-06T12:00:00Z",
+        "sourceZone": "UTC",
+        "targetZone": "Australia/Sydney",
+        "locale": "en-AU",
+        "hourCycle": "24",
+        "dateOrder": "mdy"
+      },
+      "expected": {
+        "instants": [
+          "2026-07-15T22:00:00Z"
+        ],
+        "dates": [],
+        "warnings": []
+      }
+    },
+    {
+      "name": "quarter hour offset",
+      "text": "2026-04-09 15:00 UTC+05:45",
+      "options": {
+        "now": "2026-04-06T12:00:00Z",
+        "sourceZone": "UTC",
+        "targetZone": "Australia/Sydney",
+        "locale": "en-AU",
+        "hourCycle": "24",
+        "dateOrder": "mdy"
+      },
+      "expected": {
+        "instants": [
+          "2026-04-09T09:15:00Z"
+        ],
+        "dates": [],
+        "warnings": []
+      }
+    },
+    {
+      "name": "relative in Tokyo",
+      "text": "Tomorrow at 9am in Tokyo",
+      "options": {
+        "now": "2026-04-06T12:00:00Z",
+        "sourceZone": "UTC",
+        "targetZone": "Australia/Sydney",
+        "locale": "en-AU",
+        "hourCycle": "24",
+        "dateOrder": "mdy"
+      },
+      "expected": {
+        "instants": [
+          "2026-04-07T00:00:00Z"
+        ],
+        "dates": [],
+        "warnings": []
+      }
+    }
+  ],
+  "environment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "bun": "1.4.0",
+    "playwright": "1.63.0"
+  },
+  "conditions": {
+    "samplesPerCondition": 12,
+    "enginesSerial": true,
+    "requestsSerial": true,
+    "motion": "no-preference",
+    "serviceWorkers": "block",
+    "viewport": {
+      "width": 900,
+      "height": 640
+    },
+    "raster": 1,
+    "requestTimeoutMs": 5000,
+    "warmup": "one initial fresh request, then one prime of the reused worker; both exact-checked and separately retained",
+    "timing": "same-page performance.now; fresh includes constructor-to-message, idle includes postMessage-to-message; worker/module/network/JIT costs are combined, not separately CPU-attributed",
+    "ordering": "matched fixture per pair, alternating fresh-first and idle-first"
+  },
+  "engines": [
+    {
+      "engine": "chromium",
+      "began": "2026-10-05T09:55:51.658Z",
+      "ended": "2026-10-05T09:55:52.040Z",
+      "browserVersion": "153.0.8010.12",
+      "workerUrl": "http://127.0.0.1:59311/assets/worker-C690IjaR.js",
+      "servedWorkerSha256": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+      "environment": {
+        "at": "2026-10-05T09:55:51.768Z",
+        "origin": "http://127.0.0.1:59311",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+        "locale": "en-AU",
+        "timezone": "Australia/Sydney",
+        "reducedMotion": false,
+        "raster": 1,
+        "performanceTimeOrigin": 1791194151756.2
+      },
+      "measurements": {
+        "bootstrap": {
+          "kind": "fresh-bootstrap",
+          "fixture": "fixed EST in spring",
+          "requestId": 1,
+          "startedMs": 18,
+          "constructorMs": 0.09999999403953552,
+          "responseMs": 21.100000023841858,
+          "elapsedMs": 21.200000017881393,
+          "actual": {
+            "instants": [
+              "2026-04-09T20:00:00Z"
+            ],
+            "dates": [],
+            "warnings": []
+          },
+          "exactPassed": true
+        },
+        "prime": {
+          "kind": "idle-prime",
+          "fixture": "fixed EST in spring",
+          "requestId": 2,
+          "startedMs": 39.30000001192093,
+          "constructorMs": 0,
+          "responseMs": 18.69999998807907,
+          "elapsedMs": 18.69999998807907,
+          "actual": {
+            "instants": [
+              "2026-04-09T20:00:00Z"
+            ],
+            "dates": [],
+            "warnings": []
+          },
+          "exactPassed": true
+        },
+        "samples": [
+          {
+            "kind": "fresh",
+            "index": 0,
+            "fixture": "fixed EST in spring",
+            "requestId": 3,
+            "startedMs": 58,
+            "constructorMs": 0.09999999403953552,
+            "responseMs": 18,
+            "elapsedMs": 18.099999994039536,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 0,
+            "fixture": "fixed EST in spring",
+            "requestId": 4,
+            "startedMs": 76.09999999403954,
+            "constructorMs": 0,
+            "responseMs": 0.7000000178813934,
+            "elapsedMs": 0.7000000178813934,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 1,
+            "fixture": "regional PT summer",
+            "requestId": 5,
+            "startedMs": 76.80000001192093,
+            "constructorMs": 0,
+            "responseMs": 0.5999999940395355,
+            "elapsedMs": 0.5999999940395355,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 1,
+            "fixture": "regional PT summer",
+            "requestId": 6,
+            "startedMs": 77.40000000596046,
+            "constructorMs": 0,
+            "responseMs": 17.900000005960464,
+            "elapsedMs": 17.900000005960464,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 2,
+            "fixture": "quarter hour offset",
+            "requestId": 7,
+            "startedMs": 95.30000001192093,
+            "constructorMs": 0,
+            "responseMs": 17.799999982118607,
+            "elapsedMs": 17.799999982118607,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 2,
+            "fixture": "quarter hour offset",
+            "requestId": 8,
+            "startedMs": 113.09999999403954,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 3,
+            "fixture": "relative in Tokyo",
+            "requestId": 9,
+            "startedMs": 114.09999999403954,
+            "constructorMs": 0,
+            "responseMs": 0.7000000178813934,
+            "elapsedMs": 0.7000000178813934,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 3,
+            "fixture": "relative in Tokyo",
+            "requestId": 10,
+            "startedMs": 114.90000000596046,
+            "constructorMs": 0,
+            "responseMs": 18,
+            "elapsedMs": 18,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 4,
+            "fixture": "fixed EST in spring",
+            "requestId": 11,
+            "startedMs": 132.90000000596046,
+            "constructorMs": 0.09999999403953552,
+            "responseMs": 17.900000005960464,
+            "elapsedMs": 18,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 4,
+            "fixture": "fixed EST in spring",
+            "requestId": 12,
+            "startedMs": 150.90000000596046,
+            "constructorMs": 0,
+            "responseMs": 0.5,
+            "elapsedMs": 0.5,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 5,
+            "fixture": "regional PT summer",
+            "requestId": 13,
+            "startedMs": 151.40000000596046,
+            "constructorMs": 0,
+            "responseMs": 0.4000000059604645,
+            "elapsedMs": 0.4000000059604645,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 5,
+            "fixture": "regional PT summer",
+            "requestId": 14,
+            "startedMs": 151.80000001192093,
+            "constructorMs": 0,
+            "responseMs": 17.900000005960464,
+            "elapsedMs": 17.900000005960464,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 6,
+            "fixture": "quarter hour offset",
+            "requestId": 15,
+            "startedMs": 169.7000000178814,
+            "constructorMs": 0,
+            "responseMs": 18.099999994039536,
+            "elapsedMs": 18.099999994039536,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 6,
+            "fixture": "quarter hour offset",
+            "requestId": 16,
+            "startedMs": 187.80000001192093,
+            "constructorMs": 0,
+            "responseMs": 0.4000000059604645,
+            "elapsedMs": 0.4000000059604645,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 7,
+            "fixture": "relative in Tokyo",
+            "requestId": 17,
+            "startedMs": 188.2000000178814,
+            "constructorMs": 0,
+            "responseMs": 0.5,
+            "elapsedMs": 0.5,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 7,
+            "fixture": "relative in Tokyo",
+            "requestId": 18,
+            "startedMs": 188.7000000178814,
+            "constructorMs": 0,
+            "responseMs": 17.799999982118607,
+            "elapsedMs": 17.799999982118607,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 8,
+            "fixture": "fixed EST in spring",
+            "requestId": 19,
+            "startedMs": 206.5,
+            "constructorMs": 0,
+            "responseMs": 17.599999994039536,
+            "elapsedMs": 17.599999994039536,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 8,
+            "fixture": "fixed EST in spring",
+            "requestId": 20,
+            "startedMs": 224.09999999403954,
+            "constructorMs": 0,
+            "responseMs": 0.4000000059604645,
+            "elapsedMs": 0.4000000059604645,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 9,
+            "fixture": "regional PT summer",
+            "requestId": 21,
+            "startedMs": 224.5,
+            "constructorMs": 0,
+            "responseMs": 0.30000001192092896,
+            "elapsedMs": 0.30000001192092896,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 9,
+            "fixture": "regional PT summer",
+            "requestId": 22,
+            "startedMs": 224.80000001192093,
+            "constructorMs": 0,
+            "responseMs": 17.900000005960464,
+            "elapsedMs": 17.900000005960464,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 10,
+            "fixture": "quarter hour offset",
+            "requestId": 23,
+            "startedMs": 242.7000000178814,
+            "constructorMs": 0,
+            "responseMs": 17.599999994039536,
+            "elapsedMs": 17.599999994039536,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 10,
+            "fixture": "quarter hour offset",
+            "requestId": 24,
+            "startedMs": 260.30000001192093,
+            "constructorMs": 0,
+            "responseMs": 0.4000000059604645,
+            "elapsedMs": 0.4000000059604645,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 11,
+            "fixture": "relative in Tokyo",
+            "requestId": 25,
+            "startedMs": 260.7000000178814,
+            "constructorMs": 0,
+            "responseMs": 0.29999998211860657,
+            "elapsedMs": 0.29999998211860657,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 11,
+            "fixture": "relative in Tokyo",
+            "requestId": 26,
+            "startedMs": 261.09999999403954,
+            "constructorMs": 0,
+            "responseMs": 18,
+            "elapsedMs": 18,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          }
+        ],
+        "endedAt": "2026-10-05T09:55:52.035Z",
+        "endedMs": 279.09999999403954
+      }
+    },
+    {
+      "engine": "firefox",
+      "began": "2026-10-05T09:55:52.054Z",
+      "ended": "2026-10-05T09:55:53.315Z",
+      "browserVersion": "155.0",
+      "workerUrl": "http://127.0.0.1:59311/assets/worker-C690IjaR.js",
+      "servedWorkerSha256": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+      "environment": {
+        "at": "2026-10-05T09:55:52.828Z",
+        "origin": "http://127.0.0.1:59311",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:155.0) Gecko/20100101 Firefox/155.0",
+        "locale": "en-AU",
+        "timezone": "Australia/Sydney",
+        "reducedMotion": false,
+        "raster": 1,
+        "performanceTimeOrigin": 1791194152759
+      },
+      "measurements": {
+        "bootstrap": {
+          "kind": "fresh-bootstrap",
+          "fixture": "fixed EST in spring",
+          "requestId": 1,
+          "startedMs": 78,
+          "constructorMs": 0,
+          "responseMs": 77,
+          "elapsedMs": 77,
+          "actual": {
+            "instants": [
+              "2026-04-09T20:00:00Z"
+            ],
+            "dates": [],
+            "warnings": []
+          },
+          "exactPassed": true
+        },
+        "prime": {
+          "kind": "idle-prime",
+          "fixture": "fixed EST in spring",
+          "requestId": 2,
+          "startedMs": 156,
+          "constructorMs": 0,
+          "responseMs": 34,
+          "elapsedMs": 34,
+          "actual": {
+            "instants": [
+              "2026-04-09T20:00:00Z"
+            ],
+            "dates": [],
+            "warnings": []
+          },
+          "exactPassed": true
+        },
+        "samples": [
+          {
+            "kind": "fresh",
+            "index": 0,
+            "fixture": "fixed EST in spring",
+            "requestId": 3,
+            "startedMs": 190,
+            "constructorMs": 0,
+            "responseMs": 31,
+            "elapsedMs": 31,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 0,
+            "fixture": "fixed EST in spring",
+            "requestId": 4,
+            "startedMs": 221,
+            "constructorMs": 0,
+            "responseMs": 2,
+            "elapsedMs": 2,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 1,
+            "fixture": "regional PT summer",
+            "requestId": 5,
+            "startedMs": 223,
+            "constructorMs": 0,
+            "responseMs": 2,
+            "elapsedMs": 2,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 1,
+            "fixture": "regional PT summer",
+            "requestId": 6,
+            "startedMs": 225,
+            "constructorMs": 0,
+            "responseMs": 31,
+            "elapsedMs": 31,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 2,
+            "fixture": "quarter hour offset",
+            "requestId": 7,
+            "startedMs": 256,
+            "constructorMs": 0,
+            "responseMs": 29,
+            "elapsedMs": 29,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 2,
+            "fixture": "quarter hour offset",
+            "requestId": 8,
+            "startedMs": 285,
+            "constructorMs": 0,
+            "responseMs": 2,
+            "elapsedMs": 2,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 3,
+            "fixture": "relative in Tokyo",
+            "requestId": 9,
+            "startedMs": 287,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 3,
+            "fixture": "relative in Tokyo",
+            "requestId": 10,
+            "startedMs": 289,
+            "constructorMs": 0,
+            "responseMs": 28,
+            "elapsedMs": 28,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 4,
+            "fixture": "fixed EST in spring",
+            "requestId": 11,
+            "startedMs": 317,
+            "constructorMs": 0,
+            "responseMs": 27,
+            "elapsedMs": 27,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 4,
+            "fixture": "fixed EST in spring",
+            "requestId": 12,
+            "startedMs": 344,
+            "constructorMs": 0,
+            "responseMs": 10,
+            "elapsedMs": 10,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 5,
+            "fixture": "regional PT summer",
+            "requestId": 13,
+            "startedMs": 354,
+            "constructorMs": 0,
+            "responseMs": 0,
+            "elapsedMs": 0,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 5,
+            "fixture": "regional PT summer",
+            "requestId": 14,
+            "startedMs": 354,
+            "constructorMs": 1,
+            "responseMs": 26,
+            "elapsedMs": 27,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 6,
+            "fixture": "quarter hour offset",
+            "requestId": 15,
+            "startedMs": 381,
+            "constructorMs": 0,
+            "responseMs": 28,
+            "elapsedMs": 28,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 6,
+            "fixture": "quarter hour offset",
+            "requestId": 16,
+            "startedMs": 409,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 7,
+            "fixture": "relative in Tokyo",
+            "requestId": 17,
+            "startedMs": 410,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 7,
+            "fixture": "relative in Tokyo",
+            "requestId": 18,
+            "startedMs": 411,
+            "constructorMs": 0,
+            "responseMs": 27,
+            "elapsedMs": 27,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 8,
+            "fixture": "fixed EST in spring",
+            "requestId": 19,
+            "startedMs": 438,
+            "constructorMs": 0,
+            "responseMs": 28,
+            "elapsedMs": 28,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 8,
+            "fixture": "fixed EST in spring",
+            "requestId": 20,
+            "startedMs": 466,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 9,
+            "fixture": "regional PT summer",
+            "requestId": 21,
+            "startedMs": 467,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 9,
+            "fixture": "regional PT summer",
+            "requestId": 22,
+            "startedMs": 468,
+            "constructorMs": 0,
+            "responseMs": 28,
+            "elapsedMs": 28,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 10,
+            "fixture": "quarter hour offset",
+            "requestId": 23,
+            "startedMs": 496,
+            "constructorMs": 0,
+            "responseMs": 27,
+            "elapsedMs": 27,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 10,
+            "fixture": "quarter hour offset",
+            "requestId": 24,
+            "startedMs": 523,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 11,
+            "fixture": "relative in Tokyo",
+            "requestId": 25,
+            "startedMs": 524,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 11,
+            "fixture": "relative in Tokyo",
+            "requestId": 26,
+            "startedMs": 525,
+            "constructorMs": 0,
+            "responseMs": 27,
+            "elapsedMs": 27,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          }
+        ],
+        "endedAt": "2026-10-05T09:55:53.312Z",
+        "endedMs": 552
+      }
+    },
+    {
+      "engine": "webkit",
+      "began": "2026-10-05T09:55:53.484Z",
+      "ended": "2026-10-05T09:55:54.053Z",
+      "browserVersion": "26.6",
+      "workerUrl": "http://127.0.0.1:59311/assets/worker-C690IjaR.js",
+      "servedWorkerSha256": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+      "environment": {
+        "at": "2026-10-05T09:55:53.801Z",
+        "origin": "http://127.0.0.1:59311",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6 Safari/605.1.15",
+        "locale": "en-AU",
+        "timezone": "Australia/Sydney",
+        "reducedMotion": false,
+        "raster": 1,
+        "performanceTimeOrigin": 1791194153796
+      },
+      "measurements": {
+        "bootstrap": {
+          "kind": "fresh-bootstrap",
+          "fixture": "fixed EST in spring",
+          "requestId": 1,
+          "startedMs": 8,
+          "constructorMs": 0,
+          "responseMs": 22,
+          "elapsedMs": 22,
+          "actual": {
+            "instants": [
+              "2026-04-09T20:00:00Z"
+            ],
+            "dates": [],
+            "warnings": []
+          },
+          "exactPassed": true
+        },
+        "prime": {
+          "kind": "idle-prime",
+          "fixture": "fixed EST in spring",
+          "requestId": 2,
+          "startedMs": 30,
+          "constructorMs": 0,
+          "responseMs": 19,
+          "elapsedMs": 19,
+          "actual": {
+            "instants": [
+              "2026-04-09T20:00:00Z"
+            ],
+            "dates": [],
+            "warnings": []
+          },
+          "exactPassed": true
+        },
+        "samples": [
+          {
+            "kind": "fresh",
+            "index": 0,
+            "fixture": "fixed EST in spring",
+            "requestId": 3,
+            "startedMs": 49,
+            "constructorMs": 0,
+            "responseMs": 18,
+            "elapsedMs": 18,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 0,
+            "fixture": "fixed EST in spring",
+            "requestId": 4,
+            "startedMs": 67,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 1,
+            "fixture": "regional PT summer",
+            "requestId": 5,
+            "startedMs": 68,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 1,
+            "fixture": "regional PT summer",
+            "requestId": 6,
+            "startedMs": 69,
+            "constructorMs": 0,
+            "responseMs": 19,
+            "elapsedMs": 19,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 2,
+            "fixture": "quarter hour offset",
+            "requestId": 7,
+            "startedMs": 88,
+            "constructorMs": 0,
+            "responseMs": 17,
+            "elapsedMs": 17,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 2,
+            "fixture": "quarter hour offset",
+            "requestId": 8,
+            "startedMs": 105,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 3,
+            "fixture": "relative in Tokyo",
+            "requestId": 9,
+            "startedMs": 106,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 3,
+            "fixture": "relative in Tokyo",
+            "requestId": 10,
+            "startedMs": 107,
+            "constructorMs": 0,
+            "responseMs": 16,
+            "elapsedMs": 16,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 4,
+            "fixture": "fixed EST in spring",
+            "requestId": 11,
+            "startedMs": 123,
+            "constructorMs": 0,
+            "responseMs": 15,
+            "elapsedMs": 15,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 4,
+            "fixture": "fixed EST in spring",
+            "requestId": 12,
+            "startedMs": 138,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 5,
+            "fixture": "regional PT summer",
+            "requestId": 13,
+            "startedMs": 139,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 5,
+            "fixture": "regional PT summer",
+            "requestId": 14,
+            "startedMs": 140,
+            "constructorMs": 0,
+            "responseMs": 15,
+            "elapsedMs": 15,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 6,
+            "fixture": "quarter hour offset",
+            "requestId": 15,
+            "startedMs": 155,
+            "constructorMs": 0,
+            "responseMs": 15,
+            "elapsedMs": 15,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 6,
+            "fixture": "quarter hour offset",
+            "requestId": 16,
+            "startedMs": 170,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 7,
+            "fixture": "relative in Tokyo",
+            "requestId": 17,
+            "startedMs": 171,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 7,
+            "fixture": "relative in Tokyo",
+            "requestId": 18,
+            "startedMs": 172,
+            "constructorMs": 0,
+            "responseMs": 15,
+            "elapsedMs": 15,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 8,
+            "fixture": "fixed EST in spring",
+            "requestId": 19,
+            "startedMs": 187,
+            "constructorMs": 1,
+            "responseMs": 15,
+            "elapsedMs": 16,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 8,
+            "fixture": "fixed EST in spring",
+            "requestId": 20,
+            "startedMs": 203,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-04-09T20:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 9,
+            "fixture": "regional PT summer",
+            "requestId": 21,
+            "startedMs": 204,
+            "constructorMs": 0,
+            "responseMs": 0,
+            "elapsedMs": 0,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 9,
+            "fixture": "regional PT summer",
+            "requestId": 22,
+            "startedMs": 204,
+            "constructorMs": 1,
+            "responseMs": 15,
+            "elapsedMs": 16,
+            "actual": {
+              "instants": [
+                "2026-07-15T22:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 10,
+            "fixture": "quarter hour offset",
+            "requestId": 23,
+            "startedMs": 220,
+            "constructorMs": 0,
+            "responseMs": 17,
+            "elapsedMs": 17,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 10,
+            "fixture": "quarter hour offset",
+            "requestId": 24,
+            "startedMs": 237,
+            "constructorMs": 0,
+            "responseMs": 1,
+            "elapsedMs": 1,
+            "actual": {
+              "instants": [
+                "2026-04-09T09:15:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "idle",
+            "index": 11,
+            "fixture": "relative in Tokyo",
+            "requestId": 25,
+            "startedMs": 238,
+            "constructorMs": 0,
+            "responseMs": 0,
+            "elapsedMs": 0,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          },
+          {
+            "kind": "fresh",
+            "index": 11,
+            "fixture": "relative in Tokyo",
+            "requestId": 26,
+            "startedMs": 238,
+            "constructorMs": 0,
+            "responseMs": 17,
+            "elapsedMs": 17,
+            "actual": {
+              "instants": [
+                "2026-04-07T00:00:00Z"
+              ],
+              "dates": [],
+              "warnings": []
+            },
+            "exactPassed": true
+          }
+        ],
+        "endedAt": "2026-10-05T09:55:54.051Z",
+        "endedMs": 255
+      }
+    }
+  ],
+  "origin": "http://127.0.0.1:59311/",
+  "verdict": "isolated matched samples completed with exact independent results; no App lifecycle or CI target acceptance",
+  "ended": "2026-10-05T09:55:54.069Z"
+}

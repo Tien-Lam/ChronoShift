@@ -1,0 +1,377 @@
+{
+  "began": "2026-10-05T10:08:46.598Z",
+  "helperSha256": "ae9ceed75511afa87b8864e64b92cbf97119f3cfb64257d35f1e8e99f7d1d6af",
+  "mode": "fallback",
+  "environment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "bun": "1.4.0"
+  },
+  "inputs": {
+    "ciPath": "docs/qa/actions-upgrade-2026-10-05/root/publication-fallback-audit.json",
+    "pagesPath": "docs/qa/actions-upgrade-2026-10-05/root/publication-fallback-audit.json",
+    "ciJobs": {
+      "path": "/Users/tien/Developer/ChronoShift/docs/qa/actions-upgrade-2026-10-05/root/publication-fallback-audit.json",
+      "sha256": "9e03230355c4d0096444a2e17aceab4cb67a7bad5628639ce6f94de38dc5e2fb"
+    },
+    "pagesJobs": {
+      "path": "/Users/tien/Developer/ChronoShift/docs/qa/actions-upgrade-2026-10-05/root/publication-fallback-audit.json",
+      "sha256": "9e03230355c4d0096444a2e17aceab4cb67a7bad5628639ce6f94de38dc5e2fb"
+    }
+  },
+  "expectedPins": {
+    "checkout": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+    "mise": "7a4e45a543138629540c9a1616d08632b893e492",
+    "configure": "45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+    "pagesUpload": "fc324d3547104276b827a68afc52ff2a11cc49c9",
+    "deploy": "368f82528645a54fb793d4d04e342629a3f51346",
+    "upload": "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
+  },
+  "workflowHashes": {
+    "web": "67132c1065583edff041336b3731951989fa36cbf66fdccb237018c58a091854",
+    "pages": "3123f5b0bba0f6d0928f8f76747605babb31d6d5ace90fb473fe71cc08aa0e6f"
+  },
+  "checks": [
+    {
+      "name": "web exact approved workflow bytes",
+      "passed": true,
+      "detail": {
+        "actual": "67132c1065583edff041336b3731951989fa36cbf66fdccb237018c58a091854",
+        "expected": "67132c1065583edff041336b3731951989fa36cbf66fdccb237018c58a091854"
+      }
+    },
+    {
+      "name": "pages exact approved workflow bytes",
+      "passed": true,
+      "detail": {
+        "actual": "3123f5b0bba0f6d0928f8f76747605babb31d6d5ace90fb473fe71cc08aa0e6f",
+        "expected": "3123f5b0bba0f6d0928f8f76747605babb31d6d5ace90fb473fe71cc08aa0e6f"
+      }
+    },
+    {
+      "name": "ciJobs complete inventory",
+      "passed": true
+    },
+    {
+      "name": "ciJobs unique job IDs",
+      "passed": true
+    },
+    {
+      "name": "pagesJobs complete inventory",
+      "passed": true
+    },
+    {
+      "name": "pagesJobs unique job IDs",
+      "passed": true
+    },
+    {
+      "name": "final gate expected run/head/attempt",
+      "passed": true,
+      "detail": {
+        "run": 37292552858,
+        "head": "7631906bdd654fd696596f74b733cf87d415cebf",
+        "attempt": 1
+      }
+    },
+    {
+      "name": "Pages expected run/head/attempt",
+      "passed": true,
+      "detail": {
+        "run": 37293668474,
+        "head": "a868e4b956caf5d227edc430fc7dca97c0dc2eb6",
+        "attempt": 1
+      }
+    },
+    {
+      "name": "final gate exactly one job",
+      "passed": true
+    },
+    {
+      "name": "final gate exactly one web job",
+      "passed": true
+    },
+    {
+      "name": "final gate web job succeeded",
+      "passed": true
+    },
+    {
+      "name": "final gate checkout actually succeeded",
+      "passed": true
+    },
+    {
+      "name": "final gate mise actually succeeded",
+      "passed": true
+    },
+    {
+      "name": "final gate pagesUpload actually succeeded",
+      "passed": true
+    },
+    {
+      "name": "ordinary final gate direct timing upload skipped",
+      "passed": true
+    },
+    {
+      "name": "Pages exactly one prepare job",
+      "passed": true
+    },
+    {
+      "name": "Pages prepare job succeeded",
+      "passed": true
+    },
+    {
+      "name": "preparation used Slim runner",
+      "passed": true
+    },
+    {
+      "name": "Slim preparation checkout actually succeeded",
+      "passed": true
+    },
+    {
+      "name": "Slim preparation mise actually succeeded",
+      "passed": true
+    },
+    {
+      "name": "exactly one successful v5 deployment step",
+      "passed": true
+    },
+    {
+      "name": "fallback exactly three executed jobs",
+      "passed": true
+    },
+    {
+      "name": "fallback Slim Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d skipped",
+      "passed": true
+    },
+    {
+      "name": "fallback Slim Upload the verified Pages build skipped",
+      "passed": true
+    },
+    {
+      "name": "fallback Slim Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 skipped",
+      "passed": true
+    },
+    {
+      "name": "fallback exactly one verify / web job",
+      "passed": true
+    },
+    {
+      "name": "fallback verify / web job succeeded",
+      "passed": true
+    },
+    {
+      "name": "UID1001 configured fallback checkout actually succeeded",
+      "passed": true
+    },
+    {
+      "name": "UID1001 configured fallback mise actually succeeded",
+      "passed": true
+    },
+    {
+      "name": "UID1001 configured fallback configure actually succeeded",
+      "passed": true
+    },
+    {
+      "name": "UID1001 configured fallback pagesUpload actually succeeded",
+      "passed": true
+    },
+    {
+      "name": "fallback exactly one deploy job",
+      "passed": true
+    },
+    {
+      "name": "fallback deploy job succeeded",
+      "passed": true
+    },
+    {
+      "name": "separate fallback deployment deploy actually succeeded",
+      "passed": true
+    }
+  ],
+  "executions": [
+    {
+      "stage": "final gate",
+      "action": "checkout",
+      "pin": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "job": "web",
+      "jobId": 111706138750,
+      "stepName": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "matches": 1,
+      "conclusion": "success",
+      "started": "2026-10-05T09:49:56Z",
+      "ended": "2026-10-05T09:50:00Z",
+      "passed": true
+    },
+    {
+      "stage": "final gate",
+      "action": "mise",
+      "pin": "7a4e45a543138629540c9a1616d08632b893e492",
+      "job": "web",
+      "jobId": 111706138750,
+      "stepName": "Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492",
+      "matches": 1,
+      "conclusion": "success",
+      "started": "2026-10-05T09:50:01Z",
+      "ended": "2026-10-05T09:50:06Z",
+      "passed": true
+    },
+    {
+      "stage": "final gate",
+      "action": "pagesUpload",
+      "pin": "fc324d3547104276b827a68afc52ff2a11cc49c9",
+      "job": "web",
+      "jobId": 111706138750,
+      "stepName": "Upload the verified Pages build",
+      "matches": 1,
+      "conclusion": "success",
+      "started": "2026-10-05T09:54:59Z",
+      "ended": "2026-10-05T09:55:00Z",
+      "passed": true
+    },
+    {
+      "stage": "Slim preparation",
+      "action": "checkout",
+      "pin": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "job": "prepare",
+      "jobId": 111709774614,
+      "stepName": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "matches": 1,
+      "conclusion": "success",
+      "started": "2026-10-05T09:59:54Z",
+      "ended": "2026-10-05T10:00:00Z",
+      "passed": true
+    },
+    {
+      "stage": "Slim preparation",
+      "action": "mise",
+      "pin": "7a4e45a543138629540c9a1616d08632b893e492",
+      "job": "prepare",
+      "jobId": 111709774614,
+      "stepName": "Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492",
+      "matches": 1,
+      "conclusion": "success",
+      "started": "2026-10-05T10:00:00Z",
+      "ended": "2026-10-05T10:00:04Z",
+      "passed": true
+    },
+    {
+      "stage": "UID1001 configured fallback",
+      "action": "checkout",
+      "pin": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "job": "verify / web",
+      "jobId": 111709882887,
+      "stepName": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "matches": 1,
+      "conclusion": "success",
+      "started": "2026-10-05T10:00:47Z",
+      "ended": "2026-10-05T10:00:51Z",
+      "passed": true
+    },
+    {
+      "stage": "UID1001 configured fallback",
+      "action": "mise",
+      "pin": "7a4e45a543138629540c9a1616d08632b893e492",
+      "job": "verify / web",
+      "jobId": 111709882887,
+      "stepName": "Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492",
+      "matches": 1,
+      "conclusion": "success",
+      "started": "2026-10-05T10:00:51Z",
+      "ended": "2026-10-05T10:01:12Z",
+      "passed": true
+    },
+    {
+      "stage": "UID1001 configured fallback",
+      "action": "configure",
+      "pin": "45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+      "job": "verify / web",
+      "jobId": 111709882887,
+      "stepName": "Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+      "matches": 1,
+      "conclusion": "success",
+      "started": "2026-10-05T10:05:50Z",
+      "ended": "2026-10-05T10:05:50Z",
+      "passed": true
+    },
+    {
+      "stage": "UID1001 configured fallback",
+      "action": "pagesUpload",
+      "pin": "fc324d3547104276b827a68afc52ff2a11cc49c9",
+      "job": "verify / web",
+      "jobId": 111709882887,
+      "stepName": "Upload the verified Pages build",
+      "matches": 1,
+      "conclusion": "success",
+      "started": "2026-10-05T10:05:53Z",
+      "ended": "2026-10-05T10:05:54Z",
+      "passed": true
+    },
+    {
+      "stage": "separate fallback deployment",
+      "action": "deploy",
+      "pin": "368f82528645a54fb793d4d04e342629a3f51346",
+      "job": "deploy",
+      "jobId": 111711968806,
+      "stepName": "Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346",
+      "matches": 1,
+      "conclusion": "success",
+      "started": "2026-10-05T10:06:04Z",
+      "ended": "2026-10-05T10:06:12Z",
+      "passed": true
+    }
+  ],
+  "conditionalObservations": [
+    {
+      "stage": "final gate",
+      "action": "upload",
+      "pin": "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a",
+      "stepName": "Retain bounded browser timing metadata",
+      "expected": "skipped",
+      "matches": 1,
+      "conclusion": "skipped",
+      "passed": true,
+      "actualExecution": false
+    }
+  ],
+  "diagnosticObservations": [
+    {
+      "stage": "final gate",
+      "matches": 1,
+      "conclusion": "skipped",
+      "acceptance": "Not asserted: inspect full logs/markers and artifact contents separately."
+    },
+    {
+      "stage": "fallback",
+      "matches": 1,
+      "conclusion": "skipped",
+      "acceptance": "Not asserted: inspect full logs/markers and artifact contents separately."
+    }
+  ],
+  "previousDirectUploadEvidence": {
+    "sourceHead": "eef0d51ea3ca835dfe27d7e157c6bfad1610a7b3",
+    "ciRun": 37288000068,
+    "ciAttempt": 1,
+    "timingArtifact": 11336030084,
+    "failedAttemptArtifact": 11335666301,
+    "evidence": "docs/qa/actions-upgrade-2026-10-05/final-ci/run.log",
+    "acceptance": "Separate retained eef timing and real flaky-success diagnostic uploads used the identical approved workflows. This invocation does not re-audit those logs/artifacts or treat them as current-head execution."
+  },
+  "gaps": [
+    "Job evidence plus exact workflow hashes attributes named steps to pins; named steps do not independently expose an action SHA in the jobs API.",
+    "The reviewed Web workflow configures UID/GID 1001 and the pinned container; actual container UID, mount ownership and checkout credential cleanup require runner logs.",
+    "Timing upload success does not establish artifact contents, the failed-attempt diagnostics journey, zero retries, deployment timeout/cancellation or rollback.",
+    "Source-tree/artifact digest/public bytes, complete gate attempts and hosted offline/explicit-update acceptance remain separate publication evidence.",
+    "Ordinary final gate deliberately skips direct upload-artifact v7 timing execution. The separate retained eef upload proof is historical evidence, not actual execution on this head."
+  ],
+  "expected": {
+    "head": "7631906bdd654fd696596f74b733cf87d415cebf",
+    "main": "a868e4b956caf5d227edc430fc7dca97c0dc2eb6",
+    "ciRun": 37292552858,
+    "pagesRun": 37293668474,
+    "ciAttempt": 1,
+    "pagesAttempt": 1,
+    "ciTiming": false
+  },
+  "timingMode": "ordinary",
+  "verdict": "approved: required upgraded action steps executed successfully in the selected paths",
+  "ended": "2026-10-05T10:08:46.599Z"
+}

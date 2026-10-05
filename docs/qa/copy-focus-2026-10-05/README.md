@@ -70,7 +70,11 @@ supports capture provenance. No pre-capture warnings or pageerrors occurred in
 those probes. These records are not described as zero-warning runs.
 
 The bounded equivalent failure is reproduced and prevented; the historical
-Linux fill sequence remains untraced. Final exact-head CI, artifact identity,
-hosted matching interaction and publication are pending. TIE-377 and dependent
-TIE-376 remain open until those checks complete. TIE-370's unidentified historical
-offline cause, physical acceptance and TIE-375's unmet cost target are separate.
+Linux fill sequence remains untraced. [Final exact-head CI](final-ci/review.md)
+passes all 273 configured cases (264 first passes/nine existing skips),116 units
+and subpath without failures/retries. Six hosted focus checks pass normal motion
+with matching public JS/CSS; the independent raw audit supports bounded TIE-377
+closure. Both publishing paths, four hosted offline checks per path and actual
+draft-preserving updates are [verified](../actions-upgrade-2026-10-05/delivery.md).
+TIE-377 is Done. TIE-370's unidentified historical offline cause, physical
+acceptance and TIE-375's unmet cost target remain separate open gaps.

@@ -40,9 +40,7 @@ const began = new Date().toISOString();
 const report: Record<string, any> = {
   began,
   helperSha256: new Bun.CryptoHasher("sha256")
-    .update(
-      new Uint8Array(await Bun.file(new URL(import.meta.url)).arrayBuffer()),
-    )
+    .update(new Uint8Array(await Bun.file(new URL(import.meta.url)).arrayBuffer()))
     .digest("hex"),
   mode,
   environment: {
