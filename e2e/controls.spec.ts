@@ -425,7 +425,7 @@ test("hovering timezone suggestions preserves typed values while explicit select
     const otherValue = await other.inputValue();
     await enterZone(page, "CST", label);
     await input.fill("Asia/Tokyo");
-    const alias = page.locator('[role="option"][data-value="osaka"]');
+    const alias = page.getByRole("option", { name: "Osaka", exact: true });
     // Leave any prior pointer position so this exercises a fresh hover event.
     await page.mouse.move(0, 0);
     await alias.hover();
@@ -446,7 +446,7 @@ test("hovering timezone suggestions preserves typed values while explicit select
     await expect(input).toHaveValue("osaka");
     await expect(page.getByRole("listbox")).toHaveCount(0);
     await input.fill("Tokyo");
-    await page.locator('[role="option"][data-value="Asia/Tokyo"]').click();
+    await page.getByRole("option", { name: "Tokyo", exact: true }).click();
     await expect(input).toHaveValue("Asia/Tokyo");
     await expect(other).toHaveValue(otherValue);
   }
