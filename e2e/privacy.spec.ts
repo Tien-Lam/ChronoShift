@@ -1,5 +1,6 @@
 import { test, expect, publishRelease } from "./fixtures";
 import { enterZone } from "./choices";
+import { fillSuccessfulConversion } from "./conversion";
 const releaseTest = test.extend({ isolatedOrigin: true });
 
 for (const legacyDesign of ["lens", "command"])
@@ -65,10 +66,11 @@ for (const legacyDesign of ["lens", "command"])
     await expect(
       page.getByText("Preferences cannot be saved", { exact: false }),
     ).toBeVisible();
-    await page
-      .getByLabel("Message with a date or time")
-      .fill("April 9, 2026 3pm UTC");
-    await expect(page.locator(".hero-time")).toHaveText(/12:00 am/i);
+    await fillSuccessfulConversion(page, "April 9, 2026 3pm UTC", (timeout) =>
+      expect(page.locator(".hero-time")).toHaveText(/12:00 am/i, {
+        timeout: timeout(),
+      }),
+    );
     expect(
       await page.evaluate(() =>
         localStorage.getItem("chronoshift.preferences.v1"),
@@ -76,10 +78,11 @@ for (const legacyDesign of ["lens", "command"])
     ).toBeNull();
     await page.reload();
     await expect(page.getByLabel("Convert to")).toHaveValue("");
-    await page
-      .getByLabel("Message with a date or time")
-      .fill("April 9, 2026 3pm UTC");
-    await expect(page.locator(".hero-time")).toHaveText(/1:00 am/i);
+    await fillSuccessfulConversion(page, "April 9, 2026 3pm UTC", (timeout) =>
+      expect(page.locator(".hero-time")).toHaveText(/1:00 am/i, {
+        timeout: timeout(),
+      }),
+    );
   });
 
 test("invalid and oversized local shares return a paste fallback without storing text", async ({
@@ -107,10 +110,11 @@ test("invalid and oversized local shares return a paste fallback without storing
   expect(
     responses.every((response) => /paste|shorter/i.test(response.text)),
   ).toBe(true);
-  await page
-    .getByLabel("Message with a date or time")
-    .fill("April 9, 2026 3pm UTC");
-  await expect(page.locator(".hero-time")).toHaveText(/1:00 am/i);
+  await fillSuccessfulConversion(page, "April 9, 2026 3pm UTC", (timeout) =>
+    expect(page.locator(".hero-time")).toHaveText(/1:00 am/i, {
+      timeout: timeout(),
+    }),
+  );
   expect(
     await page.evaluate(() => JSON.stringify({ ...localStorage })),
   ).not.toContain("April");

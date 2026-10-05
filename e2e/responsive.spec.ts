@@ -1,5 +1,6 @@
 import { test, expect } from "./fixtures";
 import { choose, enterZone } from "./choices";
+import { fillSuccessfulConversion } from "./conversion";
 
 test("reflows across cover screens, phones, tablets and desktops without losing work", async ({
   page,
@@ -7,8 +8,9 @@ test("reflows across cover screens, phones, tablets and desktops without losing 
   await page.goto("/");
   await enterZone(page, "Pacific/Chatham");
   const message = "April 9, 2026 3:15:30pm in Tokyo";
-  await page.getByLabel("Message with a date or time").fill(message);
-  await expect(page.locator(".hero-time")).toBeVisible();
+  await fillSuccessfulConversion(page, message, (timeout) =>
+    expect(page.locator(".hero-time")).toBeVisible({ timeout: timeout() }),
+  );
   const result = await page.locator(".hero-time").innerText();
   await page.getByText("More options", { exact: true }).click();
   for (const [width, height] of [
@@ -85,10 +87,9 @@ test("touch-sized controls and keyboard navigation remain usable in a short view
 }) => {
   await page.setViewportSize({ width: 320, height: 360 });
   await page.goto("/");
-  await page
-    .getByLabel("Message with a date or time")
-    .fill("April 9, 2026 3pm UTC");
-  await expect(page.locator(".hero-time")).toBeVisible();
+  await fillSuccessfulConversion(page, "April 9, 2026 3pm UTC", (timeout) =>
+    expect(page.locator(".hero-time")).toBeVisible({ timeout: timeout() }),
+  );
   for (const locator of [
     page.getByLabel("Convert to"),
     page.getByLabel("Message with a date or time"),

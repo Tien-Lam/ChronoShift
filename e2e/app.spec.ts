@@ -2,6 +2,7 @@ import { test, expect, disconnect, publishRelease } from "./fixtures";
 import { choose, enterZone } from "./choices";
 import AxeBuilder from "@axe-core/playwright";
 import type { Page } from "@playwright/test";
+import { fillSuccessfulConversion } from "./conversion";
 const releaseTest = test.extend({ isolatedOrigin: true });
 test("worker failure recovers and a late response cannot resurrect cleared input", async ({
   page,
@@ -168,16 +169,26 @@ test("pasted HTML cannot execute or fetch its URL", async ({ page }) => {
   await convert(
     page,
     '<img src="https://example.invalid/secret" onerror="window.__xss=true"> April 9, 2026 3pm UTC',
+    true,
   );
   expect(await page.evaluate(() => (window as any).__xss)).toBeUndefined();
   await expect(page.locator("img")).toHaveCount(0);
   expect(external).toEqual([]);
 });
-async function convert(page: Page, text = "April 9, 2026 3pm EST") {
-  await page.getByLabel("Message with a date or time").fill(text);
-  await expect(page.locator(".result")).toHaveCount(
-    text.includes("CST") ? 2 : 1,
-  );
+async function convert(
+  page: Page,
+  text = "April 9, 2026 3pm EST",
+  observe = false,
+) {
+  const assertResult = (remainingTimeout: () => number) =>
+    expect(page.locator(".result")).toHaveCount(text.includes("CST") ? 2 : 1, {
+      timeout: remainingTimeout(),
+    });
+  if (observe) await fillSuccessfulConversion(page, text, assertResult);
+  else {
+    await page.getByLabel("Message with a date or time").fill(text);
+    await assertResult(() => 10_000);
+  }
 }
 test("convert, inspect ambiguity, copy manually and protect privacy", async ({
   page,
@@ -196,7 +207,7 @@ test("convert, inspect ambiguity, copy manually and protect privacy", async ({
     }),
   );
   await ready(page);
-  await convert(page, "July 15, 2026 3pm CST");
+  await convert(page, "July 15, 2026 3pm CST", true);
   await expect(page.getByText("2 possible interpretations")).toBeVisible();
   await page.getByRole("button", { name: "Copy US Central Standard" }).click();
   await expect(page.getByLabel("Text to copy")).toHaveValue(
@@ -232,7 +243,7 @@ test("close and reopen offline, then convert previously unseen input", async ({
   await expect(
     reopened.locator('main[data-offline-ready="true"]'),
   ).toBeVisible();
-  await convert(reopened, "July 15, 2026 3pm in Tokyo");
+  await convert(reopened, "July 15, 2026 3pm in Tokyo", true);
   await expect(reopened.locator(".hero-time")).toHaveText(/4:00 pm/i);
   await expect(reopened.locator(".result-date")).toHaveText(/15 July? 2026/);
 });
@@ -241,7 +252,7 @@ test("preferences persist, input does not; denied storage still converts", async
 }) => {
   await ready(page);
   await enterZone(page, "Asia/Tokyo");
-  await convert(page);
+  await convert(page, undefined, true);
   const result = await page.locator(".hero-time").innerText();
   await page.getByLabel("Appearance", { exact: true }).click();
   await choose(page, "Theme", "light");
@@ -259,7 +270,7 @@ test("preferences persist, input does not; denied storage still converts", async
     });
   });
   await page.reload();
-  await convert(page);
+  await convert(page, undefined, true);
   await expect(
     page.getByText("Preferences cannot be saved", { exact: false }),
   ).toBeVisible();
@@ -287,7 +298,7 @@ test("readable at 320px, dark mode, with no serious accessibility violations", a
   page,
 }, info) => {
   await ready(page);
-  await convert(page, "July 15, 2026 3pm CST");
+  await convert(page, "July 15, 2026 3pm CST", true);
   await page.setViewportSize({ width: 320, height: 740 });
   await page.emulateMedia({ colorScheme: "dark", reducedMotion: "reduce" });
   await page.getByLabel("Appearance", { exact: true }).click();

@@ -6,6 +6,7 @@ import {
   enterZone,
 } from "./choices";
 import type { Locator, Page } from "@playwright/test";
+import { fillSuccessfulConversion } from "./conversion";
 
 async function expectPopup(
   page: Page,
@@ -269,11 +270,11 @@ test("choice menus support keyboard selection, nested Escape and pointer dismiss
 
   await choose(page, "Numeric dates", "dmy");
   await enterZone(page, "UTC");
-  await page
-    .getByLabel("Message with a date or time")
-    .fill("04/09/2026 3pm UTC");
-  await expect(page.locator(".result-date")).toHaveText(
-    /4 Sep(?:t(?:ember)?)? 2026/,
+  await fillSuccessfulConversion(page, "04/09/2026 3pm UTC", (timeout) =>
+    expect(page.locator(".result-date")).toHaveText(
+      /4 Sep(?:t(?:ember)?)? 2026/,
+      { timeout: timeout() },
+    ),
   );
   await expect(page.locator(".hero-time")).toHaveText("15:00");
   await choose(page, "Numeric dates", "mdy");
@@ -354,10 +355,11 @@ test("timezone search preserves freeform offsets and recovers from empty and inv
   await expect(target).toHaveValue("Asia/Tokyo");
   await expect(source).toHaveValue("UTC");
   await expect(page.getByRole("listbox")).toHaveCount(0);
-  await page
-    .getByLabel("Message with a date or time")
-    .fill("April 9, 2026 3pm UTC");
-  await expect(page.locator(".hero-time")).toHaveText(/12:00 am/i);
+  await fillSuccessfulConversion(page, "April 9, 2026 3pm UTC", (timeout) =>
+    expect(page.locator(".hero-time")).toHaveText(/12:00 am/i, {
+      timeout: timeout(),
+    }),
+  );
   await target.fill("UTC");
   await expect(page.getByRole("listbox")).toBeVisible();
   // Valid freeform zones convert automatically; dismiss suggestions separately.
