@@ -12,48 +12,51 @@ export function openHandoff(): Promise<IDBDatabase> {
 export async function consumeShare(key: string): Promise<string | undefined> {
   if (!/^[a-zA-Z0-9-]{1,80}$/.test(key)) return;
   const db = await openHandoff();
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction("messages", "readwrite"),
-      store = tx.objectStore("messages");
-    const r = store.get(key);
-    let value: string | undefined;
-    r.onsuccess = () => {
-      const entry = r.result;
-      if (
-        entry &&
-        typeof entry.created === "number" &&
-        Date.now() - entry.created >= 0 &&
-        Date.now() - entry.created < 300_000 &&
-        typeof entry.text === "string" &&
-        entry.text.length <= 10_000
-      )
-        value = entry.text;
-      store.clear(); // Single-use handoff; remove any abandoned entries too.
-    };
-    tx.oncomplete = () => {
-      db.close();
-      resolve(value);
-    };
-    tx.onerror = () => {
-      db.close();
-      reject(tx.error);
-    };
-  });
+  try {
+    return await new Promise((resolve, reject) => {
+      const tx = db.transaction("messages", "readwrite"),
+        store = tx.objectStore("messages");
+      const r = store.get(key);
+      let value: string | undefined;
+      r.onsuccess = () => {
+        const entry = r.result;
+        if (
+          entry &&
+          typeof entry.created === "number" &&
+          Date.now() - entry.created >= 0 &&
+          Date.now() - entry.created < 300_000 &&
+          typeof entry.text === "string" &&
+          entry.text.length <= 10_000
+        )
+          value = entry.text;
+        store.clear(); // Single-use handoff; remove any abandoned entries too.
+      };
+      tx.oncomplete = () => resolve(value);
+      // A commit failure can abort after every request has succeeded.
+      tx.onabort = () =>
+        reject(
+          tx.error || new DOMException("Share storage aborted", "AbortError"),
+        );
+    });
+  } finally {
+    db.close();
+  }
 }
 export async function clearAbandonedShares(): Promise<void> {
   const db = await openHandoff();
-  await new Promise<void>((resolve, reject) => {
-    const tx = db.transaction("messages", "readwrite");
-    tx.objectStore("messages").clear();
-    tx.oncomplete = () => {
-      db.close();
-      resolve();
-    };
-    tx.onerror = () => {
-      db.close();
-      reject(tx.error);
-    };
-  });
+  try {
+    await new Promise<void>((resolve, reject) => {
+      const tx = db.transaction("messages", "readwrite");
+      tx.objectStore("messages").clear();
+      tx.oncomplete = () => resolve();
+      tx.onabort = () =>
+        reject(
+          tx.error || new DOMException("Share storage aborted", "AbortError"),
+        );
+    });
+  } finally {
+    db.close();
+  }
 }
 const UPDATE = "chronoshift.update-draft";
 export function preserveForUpdate(text: string): boolean {

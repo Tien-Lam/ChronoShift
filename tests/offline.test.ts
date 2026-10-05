@@ -1,6 +1,125 @@
 import { expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 
+for (const failure of [
+  "none",
+  "commit",
+  "request",
+  "explicit",
+  "transaction-setup",
+  "put-setup",
+] as const) {
+  test(`POST share ${failure} storage outcome settles with one database close`, async () => {
+    let fetch!: (event: {
+      request: Request;
+      respondWith: (response: Promise<Response>) => void;
+    }) => void;
+    let created!: () => void;
+    const transactionCreated = new Promise<void>(
+      (resolve) => (created = resolve),
+    );
+    const operations: string[] = [];
+    let closes = 0,
+      aborts = 0;
+    const error = new DOMException("Storage write failed", "UnknownError");
+    const tx: any = {
+      error: null,
+      abort() {
+        aborts++;
+        queueMicrotask(() => tx.onabort?.());
+      },
+      objectStore: () => ({
+        clear: () => operations.push("clear-request-success"),
+        put(value: { text: string }, key: string) {
+          expect(value.text).toBe("April 9, 2026 3pm UTC");
+          expect(key).toMatch(/^[a-zA-Z0-9-]+$/);
+          if (failure === "put-setup") throw error;
+          operations.push("put-request-success");
+        },
+      }),
+    };
+    const db = {
+      transaction() {
+        if (failure === "transaction-setup") throw error;
+        created();
+        return tx;
+      },
+      close: () => closes++,
+    };
+    const template = readFileSync("web/sw-template.js", "utf8")
+      .replace("__VERSION__", "share-release")
+      .replace("__BASE__", '"/ChronoShift/"')
+      .replace("__PRECACHE__", "[]")
+      .replace("__INTEGRITY__", "{}")
+      .replace("__SHELL__", '"unused"');
+    new Function("self", "indexedDB", template)(
+      {
+        location: { origin: "https://example.test" },
+        addEventListener(name: string, handler: typeof fetch) {
+          if (name === "fetch") fetch = handler;
+        },
+      },
+      {
+        open() {
+          const request: any = { result: db };
+          queueMicrotask(() => request.onsuccess());
+          return request;
+        },
+      },
+    );
+    let pending!: Promise<Response>;
+    fetch({
+      request: new Request("https://example.test/ChronoShift/share", {
+        method: "POST",
+        body: new URLSearchParams({ text: "April 9, 2026 3pm UTC" }),
+      }),
+      respondWith: (response) => (pending = response),
+    });
+    if (failure !== "transaction-setup" && failure !== "put-setup") {
+      await transactionCreated;
+      expect(operations).toEqual([
+        "clear-request-success",
+        "put-request-success",
+      ]);
+      expect(closes).toBe(0);
+      if (failure === "none") tx.oncomplete();
+      else {
+        // Commit failures need not fire any request error. A request error,
+        // when present, bubbles before the terminal abort event instead.
+        if (failure === "request") {
+          tx.onerror?.();
+          expect(closes).toBe(0);
+        }
+        tx.error = failure === "explicit" ? null : error;
+        tx.onabort?.();
+      }
+    }
+    const response = await Promise.race([
+      pending,
+      new Promise<Response>((_resolve, reject) => {
+        setTimeout(() => reject(new Error("POST share did not settle")), 100);
+      }),
+    ]);
+    if (failure === "none") {
+      expect(response.status).toBe(303);
+      expect(response.headers.get("Location")).toMatch(
+        /^https:\/\/example\.test\/ChronoShift\/\?share=[a-zA-Z0-9-]+$/,
+      );
+      expect(response.headers.get("Location")).not.toContain("April");
+    } else {
+      expect(response.status).toBe(503);
+      expect(await response.text()).toBe(
+        "This browser cannot receive shared text. Open ChronoShift and paste it.",
+      );
+    }
+    // A setup failure can later dispatch an abort event too. A stale callback
+    // must not close or settle the response a second time.
+    await Promise.resolve();
+    expect(closes).toBe(1);
+    expect(aborts).toBe(failure === "put-setup" ? 1 : 0);
+  });
+}
+
 test("first installation reports safe asset/release identity before a controller exists", async () => {
   const handlers = new Map<
     string,
