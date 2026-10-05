@@ -90,6 +90,15 @@ Use existing full gates for runtime changes. Prefer targeted failure cases with 
 
 Keep physical installation, OS share menus, screen readers, actual zoom and phone performance open unless those capabilities were exercised. Save durable review/fix/publication evidence in the PR and linked repository record; ephemeral agent messages alone are insufficient for a later audit.
 
+Batch source review reports and fixes before the final hosted gate. An evidence-only
+commit on an open runtime PR can still trigger a complete gate because GitHub
+uses the PR's cumulative changed files; it also changes the full source tree used
+for artifact verification. After the exact final gate, save additive delivery
+evidence in the PR and a separate documentation-only follow-up rather than
+changing that tested head solely to annotate its result. Source changes or
+unresolved review findings still require their appropriate checks and exact-tree
+verification.
+
 For navigation-shell changes, test response-level HTML rewriting with intact
 runtime assets in a fresh profile without a controller. DOM-only extension
 mutation is a distinct control and does not change bytes fetched by the worker.
