@@ -27,8 +27,14 @@ clientTest.beforeEach(async ({ page, browserName }) => {
   });
 });
 clientTest.afterEach(async ({ page }, testInfo) => {
-  if (testInfo.status === testInfo.expectedStatus) return;
   const logs = evidence.get(page);
+  let captureError: unknown;
+  try {
+    await logs?.flush();
+  } catch (error) {
+    captureError = error;
+  }
+  if (testInfo.status === testInfo.expectedStatus && !captureError) return;
   let snapshot: unknown;
   try {
     snapshot = await page.evaluate(async () => {
@@ -64,14 +70,15 @@ clientTest.afterEach(async ({ page }, testInfo) => {
   }
   // A genuine serialization error still fails teardown; navigation loss is
   // retained by the console helper as explicitly unavailable metadata.
-  try {
-    await logs?.flush();
-  } finally {
-    await testInfo.attach("offline-lifecycle", {
-      body: JSON.stringify({ snapshot, logs: logs?.slice(-200) }, null, 2),
-      contentType: "application/json",
-    });
-  }
+  await testInfo.attach("offline-lifecycle", {
+    body: JSON.stringify(
+      { snapshot, logs: logs?.slice(-200), captureFailed: !!captureError },
+      null,
+      2,
+    ),
+    contentType: "application/json",
+  });
+  if (captureError) throw captureError;
 });
 async function hardReload(
   page: import("@playwright/test").Page,
