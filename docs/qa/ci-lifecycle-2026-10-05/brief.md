@@ -1,0 +1,15 @@
+# TIE-370 original report and parallel review brief
+
+Base/head before changes: `9373729` on `codex/ci-lifecycle-diagnostics`. Current production build is root-base local, worker `41d334b0440a0edc`; reviewer ports4262/4264 and separate output folders. Root owns4260 and the final build/full gate/delivery.
+
+Original report is CI37228236311 on reviewed150875f: Chromium existing older-worker explicit Update now restored its draft but main data-offline-ready stayed false for the ten-second assertion; retry passed. Active/controller/cache state was not retained, so cause is unknown. WebKit detailed-log reload failed with `jsonValue: Execution context was destroyed, most likely because of a navigation`; later click reported Test ended. The successful retry run skipped the failure-only diagnostic upload. Exact preserved logs: ../result-hierarchy-2026-10-05/ci-failure-excerpt.txt and ci-followup.md. This is separate from the already resolved user's hard-refresh warning report.
+
+Acceptance: retain failed first-attempt diagnostics despite successful retry at bounded storage cost; console capture tolerates only expected navigation loss and surfaces genuine errors; reproduce/diagnose legacy explicit-update failure with actual controller/registration/cache states; fix proved causes without weakening integrity/readiness assertions or auto-activating updates. Original Chromium cause cannot be labeled resolved by clean reruns alone. Record separate implementation and original-report verdicts; original reports immutable.
+
+Existing console helper/unit regression was improved in TIE-371; assess that evidence rather than redo unchanged work. Current CI uses retry-only traces, failure screenshots, failure-only three-day artifact upload. Existing e2e/uncontrolled.spec.ts matches the Chromium journey. No cause is asserted yet.
+
+Code reviewer: independently trace offline setup/probe/claim/controller-change/reload and update ownership, fixture semantics and diagnostic retention. Derive relevant competing races, run a bounded actual lifecycle probe/repetitions if justified, review candidate independently and save original reports in code*.md. Own4262/outputcode/. Do not alter production/source/build files.
+
+Adversarial reviewer: independently run/challenge original legacy-worker hard refresh -> warning -> explicit update -> preserved draft/readiness journey, retain actual worker states/cache identity/logs, challenge false explanations and diagnostics-on-successful-retry policy. Own4264/outputadversarial/. Inspect candidate beyond relevant deadlines if needed. Save original reports in adversarial*.md. Do not alter production/source/build files.
+
+Both use mise/Bun/gh, independent clean context, no other verdict before first report. Root may change candidate later; record exact revision/assets for each probe. Do not run the full suite or repeatedly rerun without a hypothesis. Do not claim physical phones/installed modes/screensreaders from headless emulation. Work on runtime invariants and test/CI infrastructure, not extra cosmetic changes.
