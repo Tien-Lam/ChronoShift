@@ -1,0 +1,63 @@
+{
+  "at": "2026-10-05T06:56:54.876Z",
+  "reads": {
+    "caches": {
+      "args": [
+        "api",
+        "repos/Tien-Lam/ChronoShift/actions/caches?per_page=100"
+      ],
+      "start": "2026-10-05T06:56:54.360Z",
+      "end": "2026-10-05T06:56:54.795Z",
+      "stdout": "{\"total_count\":7,\"actions_caches\":[{\"id\":8474019546,\"ref\":\"refs/heads/main\",\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"version\":\"287514729533c13edabb38e7b9db708d41e749ebdfa28c351e8bdf77dd2101bb\",\"last_accessed_at\":\"2026-10-05T06:53:56.531934Z\",\"created_at\":\"2026-10-04T06:29:29.033027Z\",\"size_in_bytes\":166328943},{\"id\":8473558592,\"ref\":\"refs/pull/20/merge\",\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"version\":\"287514729533c13edabb38e7b9db708d41e749ebdfa28c351e8bdf77dd2101bb\",\"last_accessed_at\":\"2026-10-05T05:40:22.337466Z\",\"created_at\":\"2026-10-04T05:59:58.372717Z\",\"size_in_bytes\":166323229},{\"id\":8473533124,\"ref\":\"refs/heads/main\",\"key\":\"mise-v1-linux-x64-2305be90c13f881679c43eb7a3161dbe861cfa851aeeb7d15526c7f0cad4f5b1-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"version\":\"7a8f38effbb692ecc590f129f1a759a935e12173263c55e06b5c8ec7ae304837\",\"last_accessed_at\":\"2026-10-05T05:37:53.947277Z\",\"created_at\":\"2026-10-04T05:58:15.167095Z\",\"size_in_bytes\":98700884},{\"id\":8473567273,\"ref\":\"refs/pull/19/merge\",\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"version\":\"287514729533c13edabb38e7b9db708d41e749ebdfa28c351e8bdf77dd2101bb\",\"last_accessed_at\":\"2026-10-04T06:00:29.818994Z\",\"created_at\":\"2026-10-04T06:00:29.818994Z\",\"size_in_bytes\":166328574},{\"id\":8473561527,\"ref\":\"refs/pull/21/merge\",\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"version\":\"287514729533c13edabb38e7b9db708d41e749ebdfa28c351e8bdf77dd2101bb\",\"last_accessed_at\":\"2026-10-04T06:00:09.044421Z\",\"created_at\":\"2026-10-04T06:00:09.044421Z\",\"size_in_bytes\":166330287},{\"id\":8473558818,\"ref\":\"refs/pull/18/merge\",\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"version\":\"287514729533c13edabb38e7b9db708d41e749ebdfa28c351e8bdf77dd2101bb\",\"last_accessed_at\":\"2026-10-04T05:59:59.328843Z\",\"created_at\":\"2026-10-04T05:59:59.328843Z\",\"size_in_bytes\":166325784},{\"id\":8473557158,\"ref\":\"refs/pull/17/merge\",\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"version\":\"287514729533c13edabb38e7b9db708d41e749ebdfa28c351e8bdf77dd2101bb\",\"last_accessed_at\":\"2026-10-04T05:59:51.443030Z\",\"created_at\":\"2026-10-04T05:59:51.443030Z\",\"size_in_bytes\":166329465}]}",
+      "stderr": "",
+      "code": 0
+    },
+    "prs": {
+      "args": [
+        "pr",
+        "list",
+        "--repo",
+        "Tien-Lam/ChronoShift",
+        "--state",
+        "open",
+        "--limit",
+        "100",
+        "--json",
+        "number,state"
+      ],
+      "start": "2026-10-05T06:56:54.360Z",
+      "end": "2026-10-05T06:56:54.875Z",
+      "stdout": "[{\"number\":37,\"state\":\"OPEN\"},{\"number\":21,\"state\":\"OPEN\"},{\"number\":20,\"state\":\"OPEN\"},{\"number\":19,\"state\":\"OPEN\"},{\"number\":18,\"state\":\"OPEN\"},{\"number\":17,\"state\":\"OPEN\"}]\n",
+      "stderr": "",
+      "code": 0
+    }
+  },
+  "recomputed": {
+    "before": 1730963608,
+    "after": 1096667166,
+    "deleted": 634296442,
+    "percent": 36.64412348523505
+  },
+  "deletedIds": [
+    8504267365,
+    8473474762,
+    8459549294,
+    8459547249
+  ],
+  "retainedExact": true,
+  "currentComplete": true,
+  "currentIds": [
+    8474019546,
+    8473558592,
+    8473533124,
+    8473567273,
+    8473561527,
+    8473558818,
+    8473557158
+  ],
+  "currentBytes": 1096667166,
+  "currentMatchesRootAfter": true,
+  "deletedAbsent": true,
+  "dependabot17to21StillOpen": true,
+  "scope": "read-only; root driver inspected but never executed; cache snapshot is separate from paired minute/artifact-byte-hour acceptance"
+}

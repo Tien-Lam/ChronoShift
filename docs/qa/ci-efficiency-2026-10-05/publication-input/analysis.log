@@ -1,0 +1,145 @@
+{
+  "analyzedAt": "2026-10-05T07:13:05.226Z",
+  "strictExitCode": 1,
+  "baselineSurvivingAPI": {
+    "runnerSeconds": 307,
+    "roundedMinutes": 8,
+    "projectedByteHours": 366990132.0719445
+  },
+  "candidateSuccessfulPair": {
+    "runnerSeconds": 442,
+    "roundedMinutes": 8,
+    "projectedByteHours": 135775734.37166667,
+    "reductions": {
+      "runnerSecondsPercent": -43.97,
+      "roundedRunnerMinutesPercent": 0,
+      "projectedArtifactByteHoursPercent": 63
+    }
+  },
+  "missingOriginalArtifact": {
+    "id": 11276513957,
+    "name": "github-pages",
+    "bytes": 220772,
+    "configuredRetentionHours": 336,
+    "projectedByteHours": 74179392,
+    "source": "Original Pages build upload log, absent from surviving artifacts API"
+  },
+  "originalFullArtifactProjection": {
+    "baselineProjectedByteHours": 441169524.0719445,
+    "candidateProjectedByteHours": 135775734.37166667,
+    "reductionPercent": 69.22368228918623,
+    "note": "Adds only the log-proven missing Pages artifact. Surviving artifacts retain actual API expiration-hour fractions. Original nominal 14-day all-artifact baseline separately equals 441169680 byte-hours."
+  },
+  "experimentsExcludedFromSuccessfulPair": [
+    {
+      "id": 37269816926,
+      "head": "2d94136249cf67b7ab37efe44401180a976692ad",
+      "event": "pull_request",
+      "conclusion": "success",
+      "runnerSeconds": 356,
+      "roundedMinutes": 6,
+      "artifactProjectedByteHours": 10099983.915555555,
+      "artifacts": [
+        {
+          "id": 11327622734,
+          "name": "chronoshift-ci-timing-37269816926-1",
+          "bytes": 46133
+        },
+        {
+          "id": 11327398654,
+          "name": "github-pages",
+          "bytes": 374704
+        }
+      ]
+    },
+    {
+      "id": 37270362546,
+      "head": "77fbf61b33d0b2752a3f90b20a261f30f0842b0f",
+      "event": "pull_request",
+      "conclusion": "success",
+      "runnerSeconds": 419,
+      "roundedMinutes": 7,
+      "artifactProjectedByteHours": 515158163.64555556,
+      "artifacts": [
+        {
+          "id": 11328287818,
+          "name": "chronoshift-ci-timing-37270362546-1",
+          "bytes": 48959
+        },
+        {
+          "id": 11328282899,
+          "name": "chronoshift-web-failure-37270362546-1",
+          "bytes": 7013787
+        },
+        {
+          "id": 11328282893,
+          "name": "github-pages",
+          "bytes": 374689
+        }
+      ]
+    },
+    {
+      "id": 37272392986,
+      "head": "8a4ebec0881f8363ffd19f833bbf29a44e77885a",
+      "event": "pull_request",
+      "conclusion": "success",
+      "runnerSeconds": 431,
+      "roundedMinutes": 8,
+      "artifactProjectedByteHours": 9214608,
+      "artifacts": [
+        {
+          "id": 11329810141,
+          "name": "github-pages",
+          "bytes": 383942
+        }
+      ]
+    },
+    {
+      "id": 37273144333,
+      "head": "e632d2f5bb8ff3cfc8c447ab87ae081078ca04c2",
+      "event": "pull_request",
+      "conclusion": "success",
+      "runnerSeconds": 464,
+      "roundedMinutes": 8,
+      "artifactProjectedByteHours": 8992368,
+      "artifacts": [
+        {
+          "id": 11329377867,
+          "name": "github-pages",
+          "bytes": 374682
+        }
+      ]
+    },
+    {
+      "id": 37274080414,
+      "head": "52e8d9c3bc2ba50f6ba2990dde5a128a37849172",
+      "event": "pull_request",
+      "conclusion": "success",
+      "runnerSeconds": 362,
+      "roundedMinutes": 7,
+      "artifactProjectedByteHours": 9031455.468055556,
+      "artifacts": [
+        {
+          "id": 11328734137,
+          "name": "github-pages",
+          "bytes": 376315
+        }
+      ]
+    }
+  ],
+  "additionalExperimentTotals": {
+    "runnerSeconds": 2032,
+    "roundedMinutes": 36,
+    "artifactProjectedByteHours": 552496579.0291667
+  },
+  "pairPlusTheseExperiments": {
+    "runnerSeconds": 2474,
+    "roundedMinutes": 44
+  },
+  "limits": [
+    "Pair is one successful PR/main sample. Baseline browser inventory was 68 plus subpath; current is 258 configured plus subpath. Expansion is explicit, no monthly/account-wide inference.",
+    "Five earlier same-branch PR37 experiment runs add real cost and are excluded from the successful-pair acceptance metric, not erased. Every observed artifact including diagnostics is counted.",
+    "Manual complete fallback validation has not yet been supplied; its cost will be a separate appended record.",
+    "This is not a complete account investigation cost total: older reports, other PRs, canceled jobs, local reviews and future runs are not enumerated here."
+  ]
+}

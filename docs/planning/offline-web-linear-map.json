@@ -1,19 +1,26 @@
 {
   "stateSnapshot": {
     "date": "2026-10-05",
-    "implementationRevision": "67be6094afd71dc512e001df632cb8157bc71d45",
-    "testedArtifactRevision": "59a182b393e339234f8bfbd1f803b512e8a3c2d8",
+    "implementationRevision": "28059a91ec9984dea4d079b3f684b3a27af669f0",
+    "testedArtifactRevision": "28059a91ec9984dea4d079b3f684b3a27af669f0",
     "counts": {
       "Done": 32,
       "In Progress": 11,
       "Todo": 0,
       "Canceled": 1
     },
-    "note": "Prior four-project snapshot plus TIE-370 In Progress, TIE-374 created/Done and TIE-375 created/In Progress. PR36 published: 249 first-attempt passes, nine skips, four hosted checks, published Chrome selection/side-panel update and 63-check artifact audit. Historical Chromium cause, nine physical/installed/human gaps and expanded CI usage target remain open. Current pair: 326 seconds/eight rounded minutes; storage 63.25% lower. Project/milestone metadata retains prior snapshot.",
-    "reviewWorkflowRevision": "12b9a7f9bf924472c89c9d33aa28ca14fb482365",
-    "previousEvidenceRevision": "12b9a7f9bf924472c89c9d33aa28ca14fb482365",
-    "evidencePath": "docs/qa/ci-lifecycle-2026-10-05",
-    "reviewWorkflowNote": "Baseline retained; this documentation adds actual timing provenance and typed/selected/focused ownership with Tab/blur/explicit-selection coverage."
+    "note": "PR37 merged/published with a single trusted reuse publication job, opt-in bounded CI timing and resource metadata, and complete browser/lifecycle coverage. Exact source/tree/archive/public-byte proof, clean-context review and hosted evidence are recorded. Current normal pair: 442 seconds/eight rounded minutes; the 20% runner-usage target remains unmet. 44 tickets: 32 Done, one Canceled, 11 In Progress; nine physical/installed/human gaps, unknown historical readiness cause and expanded CI efficiency remain open. Manual full fallback evidence is recorded separately.",
+    "reviewWorkflowRevision": "28059a91ec9984dea4d079b3f684b3a27af669f0",
+    "previousEvidenceRevision": "7059da3125ada61123f91d1267bbee9a6f4792ef",
+    "evidencePath": "docs/qa/ci-efficiency-2026-10-05",
+    "reviewWorkflowNote": "Adds full attempt reconciliation, actual fixture-origin/runtime identity and matched normal-motion viewport/focus-scroll conditions before causal or retry-free claims.",
+    "previousImplementationRevision": "67be6094afd71dc512e001df632cb8157bc71d45",
+    "sourceTree": "c08c0f507faf6f82fac5ce790eb2e1f89fa59cdf",
+    "linearCapturedAt": "2026-10-05T07:06:49.455Z",
+    "automaticArtifactRevision": "997f3f2367bef1c877c207a4d89872992382d006",
+    "automaticPublicationRun": 37276181716,
+    "manualPublicationRun": 37276826095,
+    "manualVerificationNote": "Full fallback passed 116 units, 258 configured browser cases (249 initial passes, nine unchanged skips), zero failed attempts/retries and one subpath check; 375 seconds/eight rounded minutes of additional validation. The 68-check artifact/source/public-byte audit, four hosted checks and actual explicit Update now draft-preservation smoke pass. The current usage target and physical/historical acceptance gaps remain open."
   },
   "initiative": {
     "id": "I-4",
@@ -25,25 +32,33 @@
       "id": "P-TIE-14",
       "uuid": "1b014dbc-997d-43eb-8348-8e3423366fe9",
       "url": "https://linear.app/tienlam/project/chronoshift-web-conversion-foundations-39a0ab099497",
-      "state": "Completed"
+      "state": "Completed",
+      "startDate": "2026-10-03",
+      "targetDate": null
     },
     "experience": {
       "id": "P-TIE-15",
       "uuid": "45f37141-2933-4c97-b807-4cd34e5a8532",
       "url": "https://linear.app/tienlam/project/chronoshift-simple-web-experience-a5ef2bb5c20c",
-      "state": "In Progress"
+      "state": "In Progress",
+      "startDate": "2026-10-03",
+      "targetDate": null
     },
     "offline": {
       "id": "P-TIE-16",
       "uuid": "dd88bc63-3bf3-416e-b819-e7092d8014e5",
       "url": "https://linear.app/tienlam/project/chronoshift-offline-pwa-dca3345bd8d8",
-      "state": "In Progress"
+      "state": "In Progress",
+      "startDate": "2026-10-03",
+      "targetDate": null
     },
     "delivery": {
       "id": "P-TIE-17",
       "uuid": "302fdd5f-a683-490b-9c4b-71073e0dd834",
       "url": "https://linear.app/tienlam/project/chronoshift-web-delivery-dab90fb49a74",
-      "state": "In Progress"
+      "state": "In Progress",
+      "startDate": "2026-10-03",
+      "targetDate": null
     }
   },
   "milestones": {
@@ -52,56 +67,64 @@
       "name": "Contract & browser baseline",
       "description": "Conversion/UX contract recorded, reproducible web scaffold builds, portable exact fixtures exist, and the timezone adapter works on the target browser matrix.",
       "progress": 100,
-      "sortOrder": 65
+      "sortOrder": 65,
+      "targetDate": null
     },
     "foundation/parity": {
       "id": "4a977be3-d961-4b27-b91c-045d0e34d1c1",
       "name": "Conversion parity",
       "description": "Real browser parser passes the approved fixture set: date context/ranges/order, fixed offsets vs IANA DST, supported cities and Unix seconds, ambiguity and deduplication. Cancellation and input limits are verified.",
       "progress": 100,
-      "sortOrder": 1162
+      "sortOrder": 1162,
+      "targetDate": null
     },
     "experience/usable": {
       "id": "015e5e0e-88d6-40ee-a77a-481b10521575",
       "name": "Usable conversion flow",
       "description": "The responsive core page converts real input, shows original text and local date/time/zone, makes ambiguous options clear, and provides a searchable timezone override.",
-      "progress": 63,
-      "sortOrder": -57
+      "progress": 78.57,
+      "sortOrder": -57,
+      "targetDate": null
     },
     "experience/polish": {
       "id": "0569b268-af61-4fd2-8309-ec07ae448c40",
       "name": "Accessible, low-friction experience",
       "description": "Copy/paste fallbacks, errors and correction, empty/large-input states, keyboard/screen reader support and a small task-based usability check all pass.",
-      "progress": 75,
-      "sortOrder": 861
+      "progress": 81.25,
+      "sortOrder": 861,
+      "targetDate": null
     },
     "offline/ready": {
       "id": "022a0291-2b00-406e-9ac8-955c84e8639c",
       "name": "Offline-ready PWA",
       "description": "App shell/parser/data are cached, readiness is accurate, the app reopens and converts fresh input without networking, preferences survive normal restarts, and installation works where supported.",
       "progress": 50,
-      "sortOrder": 14
+      "sortOrder": 14,
+      "targetDate": null
     },
     "offline/resilient": {
       "id": "5ce0ae4b-2370-45b9-b87b-3ef5c6977d04",
       "name": "Safe updates & offline entry points",
       "description": "Version updates cannot mix incompatible assets or erase active input; supported installed share targets work offline through POST, and offline/storage/upgrade regressions are covered.",
       "progress": 75,
-      "sortOrder": 915
+      "sortOrder": 915,
+      "targetDate": null
     },
     "delivery/candidate": {
       "id": "dd4052cc-9fd3-4bc9-8366-d9921b9f7f19",
       "name": "Web release candidate",
       "description": "Web CI, exact browser acceptance, offline checks, accessibility evidence, performance budgets and privacy audit pass with no unresolved conversion correctness defects.",
-      "progress": 63,
-      "sortOrder": -1
+      "progress": 50,
+      "sortOrder": -1,
+      "targetDate": null
     },
     "delivery/cutover": {
       "id": "897e485b-5c7b-4ee1-8769-df0af789a3aa",
       "name": "Web-only delivery",
       "description": "Web-only source, build, publishing, dependencies and documentation; native maintenance retired with historical provenance preserved.",
-      "progress": 63,
-      "sortOrder": 1032
+      "progress": 62.5,
+      "sortOrder": 1032,
+      "targetDate": null
     }
   },
   "tickets": {

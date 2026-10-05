@@ -1,0 +1,1718 @@
+{
+  "startedAt": "2026-10-05T07:24:02.395Z",
+  "endedAt": "2026-10-05T07:24:02.396Z",
+  "startLine": 726,
+  "endLine": 988,
+  "rows": [
+    {
+      "status": "✓",
+      "id": 3,
+      "project": "foldable",
+      "test": "e2e/foldable.spec.ts:112:0 › notch and home-indicator safe areas inset the task (1.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 1,
+      "project": "foldable",
+      "test": "e2e/foldable.spec.ts:70:0 › tabletop posture confines the scrollable task to the upper screen (2.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 2,
+      "project": "foldable",
+      "test": "e2e/foldable.spec.ts:4:0 › input and results avoid a vertical hinge and survive folding (2.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 4,
+      "project": "chromium",
+      "test": "e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (3.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 8,
+      "project": "chromium",
+      "test": "e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (1.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 5,
+      "project": "chromium",
+      "test": "e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (3.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 6,
+      "project": "chromium",
+      "test": "e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (2.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 7,
+      "project": "chromium",
+      "test": "e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (2.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 9,
+      "project": "chromium",
+      "test": "e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (1.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 10,
+      "project": "chromium",
+      "test": "e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (2.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 14,
+      "project": "chromium",
+      "test": "e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (1.0s)"
+    },
+    {
+      "status": "✓",
+      "id": 11,
+      "project": "chromium",
+      "test": "e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (3.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 12,
+      "project": "chromium",
+      "test": "e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (3.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 13,
+      "project": "chromium",
+      "test": "e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (4.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 15,
+      "project": "chromium",
+      "test": "e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (4.0s)"
+    },
+    {
+      "status": "✓",
+      "id": 18,
+      "project": "chromium",
+      "test": "e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (4.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 19,
+      "project": "chromium",
+      "test": "e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (2.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 17,
+      "project": "chromium",
+      "test": "e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (6.4s)"
+    },
+    {
+      "status": "✓",
+      "id": 21,
+      "project": "chromium",
+      "test": "e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (1.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 22,
+      "project": "chromium",
+      "test": "e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (1.4s)"
+    },
+    {
+      "status": "✓",
+      "id": 20,
+      "project": "chromium",
+      "test": "e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (3.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 23,
+      "project": "chromium",
+      "test": "e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (1.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 24,
+      "project": "chromium",
+      "test": "e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (1.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 26,
+      "project": "chromium",
+      "test": "e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (1.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 16,
+      "project": "chromium",
+      "test": "e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (13.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 27,
+      "project": "chromium",
+      "test": "e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (4.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 25,
+      "project": "chromium",
+      "test": "e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (5.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 28,
+      "project": "chromium",
+      "test": "e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (4.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 29,
+      "project": "chromium",
+      "test": "e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (2.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 33,
+      "project": "chromium",
+      "test": "e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (842ms)"
+    },
+    {
+      "status": "✓",
+      "id": 30,
+      "project": "chromium",
+      "test": "e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (3.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 34,
+      "project": "chromium",
+      "test": "e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (2.0s)"
+    },
+    {
+      "status": "✓",
+      "id": 31,
+      "project": "chromium",
+      "test": "e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (4.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 35,
+      "project": "chromium",
+      "test": "e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (1.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 36,
+      "project": "chromium",
+      "test": "e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (1.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 32,
+      "project": "chromium",
+      "test": "e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (5.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 37,
+      "project": "chromium",
+      "test": "e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (2.0s)"
+    },
+    {
+      "status": "✓",
+      "id": 39,
+      "project": "chromium",
+      "test": "e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (2.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 41,
+      "project": "chromium",
+      "test": "e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (2.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 40,
+      "project": "chromium",
+      "test": "e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (2.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 42,
+      "project": "chromium",
+      "test": "e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (1.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 43,
+      "project": "chromium",
+      "test": "e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (2.0s)"
+    },
+    {
+      "status": "✓",
+      "id": 38,
+      "project": "chromium",
+      "test": "e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (6.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 46,
+      "project": "chromium",
+      "test": "e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (983ms)"
+    },
+    {
+      "status": "✓",
+      "id": 44,
+      "project": "chromium",
+      "test": "e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (3.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 45,
+      "project": "chromium",
+      "test": "e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (3.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 47,
+      "project": "chromium",
+      "test": "e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft (2.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 50,
+      "project": "chromium",
+      "test": "e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (2.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 51,
+      "project": "chromium",
+      "test": "e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (3.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 49,
+      "project": "chromium",
+      "test": "e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update (5.4s)"
+    },
+    {
+      "status": "✓",
+      "id": 48,
+      "project": "chromium",
+      "test": "e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload (6.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 52,
+      "project": "chromium",
+      "test": "e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (3.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 55,
+      "project": "firefox",
+      "test": "e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (4.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 56,
+      "project": "firefox",
+      "test": "e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (4.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 57,
+      "project": "firefox",
+      "test": "e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (2.4s)"
+    },
+    {
+      "status": "✓",
+      "id": 58,
+      "project": "firefox",
+      "test": "e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (2.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 53,
+      "project": "chromium",
+      "test": "e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (9.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 54,
+      "project": "chromium",
+      "test": "e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (10.0s)"
+    },
+    {
+      "status": "✓",
+      "id": 59,
+      "project": "firefox",
+      "test": "e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (2.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 60,
+      "project": "firefox",
+      "test": "e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (2.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 63,
+      "project": "firefox",
+      "test": "e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (4.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 61,
+      "project": "firefox",
+      "test": "e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (5.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 62,
+      "project": "firefox",
+      "test": "e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (6.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 64,
+      "project": "firefox",
+      "test": "e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (5.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 65,
+      "project": "firefox",
+      "test": "e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (2.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 66,
+      "project": "firefox",
+      "test": "e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (6.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 69,
+      "project": "firefox",
+      "test": "e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (7.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 70,
+      "project": "firefox",
+      "test": "e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (4.4s)"
+    },
+    {
+      "status": "✓",
+      "id": 68,
+      "project": "firefox",
+      "test": "e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (10.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 72,
+      "project": "firefox",
+      "test": "e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (2.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 73,
+      "project": "firefox",
+      "test": "e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (2.0s)"
+    },
+    {
+      "status": "✓",
+      "id": 71,
+      "project": "firefox",
+      "test": "e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (4.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 74,
+      "project": "firefox",
+      "test": "e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (2.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 75,
+      "project": "firefox",
+      "test": "e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (2.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 77,
+      "project": "firefox",
+      "test": "e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (1.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 76,
+      "project": "firefox",
+      "test": "e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (5.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 78,
+      "project": "firefox",
+      "test": "e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (6.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 67,
+      "project": "firefox",
+      "test": "e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (22.4s)"
+    },
+    {
+      "status": "✓",
+      "id": 80,
+      "project": "firefox",
+      "test": "e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (4.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 79,
+      "project": "firefox",
+      "test": "e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (8.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 84,
+      "project": "firefox",
+      "test": "e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (1.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 81,
+      "project": "firefox",
+      "test": "e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (5.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 82,
+      "project": "firefox",
+      "test": "e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (5.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 85,
+      "project": "firefox",
+      "test": "e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (2.4s)"
+    },
+    {
+      "status": "✓",
+      "id": 83,
+      "project": "firefox",
+      "test": "e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (7.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 87,
+      "project": "firefox",
+      "test": "e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (2.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 86,
+      "project": "firefox",
+      "test": "e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (4.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 88,
+      "project": "firefox",
+      "test": "e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (4.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 90,
+      "project": "firefox",
+      "test": "e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (4.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 92,
+      "project": "firefox",
+      "test": "e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (3.4s)"
+    },
+    {
+      "status": "✓",
+      "id": 91,
+      "project": "firefox",
+      "test": "e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (4.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 93,
+      "project": "firefox",
+      "test": "e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (1.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 89,
+      "project": "firefox",
+      "test": "e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (7.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 97,
+      "project": "firefox",
+      "test": "e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (2.3s)"
+    },
+    {
+      "status": "-",
+      "id": 98,
+      "project": "firefox",
+      "test": "e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft"
+    },
+    {
+      "status": "-",
+      "id": 99,
+      "project": "firefox",
+      "test": "e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload"
+    },
+    {
+      "status": "✓",
+      "id": 95,
+      "project": "firefox",
+      "test": "e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (4.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 94,
+      "project": "firefox",
+      "test": "e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (4.9s)"
+    },
+    {
+      "status": "-",
+      "id": 100,
+      "project": "firefox",
+      "test": "e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update"
+    },
+    {
+      "status": "✓",
+      "id": 96,
+      "project": "firefox",
+      "test": "e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (5.4s)"
+    },
+    {
+      "status": "✓",
+      "id": 101,
+      "project": "firefox",
+      "test": "e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (2.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 103,
+      "project": "firefox",
+      "test": "e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (4.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 102,
+      "project": "firefox",
+      "test": "e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (6.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 106,
+      "project": "webkit",
+      "test": "e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (4.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 107,
+      "project": "webkit",
+      "test": "e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (4.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 105,
+      "project": "firefox",
+      "test": "e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (11.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 104,
+      "project": "firefox",
+      "test": "e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (13.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 108,
+      "project": "webkit",
+      "test": "e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (3.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 109,
+      "project": "webkit",
+      "test": "e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (4.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 111,
+      "project": "webkit",
+      "test": "e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (2.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 110,
+      "project": "webkit",
+      "test": "e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (4.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 112,
+      "project": "webkit",
+      "test": "e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (3.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 116,
+      "project": "webkit",
+      "test": "e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (3.4s)"
+    },
+    {
+      "status": "✓",
+      "id": 113,
+      "project": "webkit",
+      "test": "e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (5.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 114,
+      "project": "webkit",
+      "test": "e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (4.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 115,
+      "project": "webkit",
+      "test": "e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (7.4s)"
+    },
+    {
+      "status": "✓",
+      "id": 117,
+      "project": "webkit",
+      "test": "e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (6.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 120,
+      "project": "webkit",
+      "test": "e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (10.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 119,
+      "project": "webkit",
+      "test": "e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (14.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 121,
+      "project": "webkit",
+      "test": "e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (8.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 124,
+      "project": "webkit",
+      "test": "e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (3.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 123,
+      "project": "webkit",
+      "test": "e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (4.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 122,
+      "project": "webkit",
+      "test": "e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (6.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 126,
+      "project": "webkit",
+      "test": "e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (2.4s)"
+    },
+    {
+      "status": "✓",
+      "id": 125,
+      "project": "webkit",
+      "test": "e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (3.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 128,
+      "project": "webkit",
+      "test": "e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (2.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 127,
+      "project": "webkit",
+      "test": "e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (5.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 129,
+      "project": "webkit",
+      "test": "e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (8.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 131,
+      "project": "webkit",
+      "test": "e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (5.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 130,
+      "project": "webkit",
+      "test": "e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (11.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 133,
+      "project": "webkit",
+      "test": "e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (6.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 132,
+      "project": "webkit",
+      "test": "e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (7.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 118,
+      "project": "webkit",
+      "test": "e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (38.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 135,
+      "project": "webkit",
+      "test": "e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (2.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 136,
+      "project": "webkit",
+      "test": "e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (3.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 137,
+      "project": "webkit",
+      "test": "e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (3.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 134,
+      "project": "webkit",
+      "test": "e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (6.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 138,
+      "project": "webkit",
+      "test": "e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (2.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 139,
+      "project": "webkit",
+      "test": "e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (3.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 142,
+      "project": "webkit",
+      "test": "e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (4.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 141,
+      "project": "webkit",
+      "test": "e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (5.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 140,
+      "project": "webkit",
+      "test": "e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (7.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 144,
+      "project": "webkit",
+      "test": "e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (2.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 143,
+      "project": "webkit",
+      "test": "e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (4.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 148,
+      "project": "webkit",
+      "test": "e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (3.0s)"
+    },
+    {
+      "status": "✓",
+      "id": 145,
+      "project": "webkit",
+      "test": "e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (5.9s)"
+    },
+    {
+      "status": "-",
+      "id": 149,
+      "project": "webkit",
+      "test": "e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft"
+    },
+    {
+      "status": "-",
+      "id": 150,
+      "project": "webkit",
+      "test": "e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload"
+    },
+    {
+      "status": "-",
+      "id": 151,
+      "project": "webkit",
+      "test": "e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update"
+    },
+    {
+      "status": "✓",
+      "id": 146,
+      "project": "webkit",
+      "test": "e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (5.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 147,
+      "project": "webkit",
+      "test": "e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (8.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 152,
+      "project": "webkit",
+      "test": "e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (4.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 154,
+      "project": "webkit",
+      "test": "e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (5.4s)"
+    },
+    {
+      "status": "✓",
+      "id": 153,
+      "project": "webkit",
+      "test": "e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (5.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 157,
+      "project": "android-emulation",
+      "test": "e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (4.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 158,
+      "project": "android-emulation",
+      "test": "e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (4.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 159,
+      "project": "android-emulation",
+      "test": "e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (2.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 156,
+      "project": "webkit",
+      "test": "e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (10.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 160,
+      "project": "android-emulation",
+      "test": "e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (3.0s)"
+    },
+    {
+      "status": "✓",
+      "id": 155,
+      "project": "webkit",
+      "test": "e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (11.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 161,
+      "project": "android-emulation",
+      "test": "e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (2.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 163,
+      "project": "android-emulation",
+      "test": "e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (1.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 162,
+      "project": "android-emulation",
+      "test": "e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (2.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 167,
+      "project": "android-emulation",
+      "test": "e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (863ms)"
+    },
+    {
+      "status": "✓",
+      "id": 164,
+      "project": "android-emulation",
+      "test": "e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (3.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 165,
+      "project": "android-emulation",
+      "test": "e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (3.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 166,
+      "project": "android-emulation",
+      "test": "e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (3.0s)"
+    },
+    {
+      "status": "✓",
+      "id": 168,
+      "project": "android-emulation",
+      "test": "e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (3.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 172,
+      "project": "android-emulation",
+      "test": "e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (2.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 171,
+      "project": "android-emulation",
+      "test": "e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (5.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 170,
+      "project": "android-emulation",
+      "test": "e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (6.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 174,
+      "project": "android-emulation",
+      "test": "e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (1.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 175,
+      "project": "android-emulation",
+      "test": "e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (2.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 176,
+      "project": "android-emulation",
+      "test": "e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (1.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 173,
+      "project": "android-emulation",
+      "test": "e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (4.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 177,
+      "project": "android-emulation",
+      "test": "e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (1.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 179,
+      "project": "android-emulation",
+      "test": "e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (1.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 169,
+      "project": "android-emulation",
+      "test": "e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (13.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 180,
+      "project": "android-emulation",
+      "test": "e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (4.0s)"
+    },
+    {
+      "status": "✓",
+      "id": 178,
+      "project": "android-emulation",
+      "test": "e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (5.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 181,
+      "project": "android-emulation",
+      "test": "e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (4.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 182,
+      "project": "android-emulation",
+      "test": "e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (2.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 186,
+      "project": "android-emulation",
+      "test": "e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (1.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 183,
+      "project": "android-emulation",
+      "test": "e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (3.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 184,
+      "project": "android-emulation",
+      "test": "e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (4.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 188,
+      "project": "android-emulation",
+      "test": "e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (1.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 187,
+      "project": "android-emulation",
+      "test": "e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (2.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 189,
+      "project": "android-emulation",
+      "test": "e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (1.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 185,
+      "project": "android-emulation",
+      "test": "e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (5.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 190,
+      "project": "android-emulation",
+      "test": "e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (1.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 192,
+      "project": "android-emulation",
+      "test": "e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (2.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 193,
+      "project": "android-emulation",
+      "test": "e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (2.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 195,
+      "project": "android-emulation",
+      "test": "e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (1.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 194,
+      "project": "android-emulation",
+      "test": "e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (2.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 196,
+      "project": "android-emulation",
+      "test": "e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (1.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 191,
+      "project": "android-emulation",
+      "test": "e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (6.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 197,
+      "project": "android-emulation",
+      "test": "e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (2.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 199,
+      "project": "android-emulation",
+      "test": "e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (1.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 198,
+      "project": "android-emulation",
+      "test": "e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (3.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 200,
+      "project": "android-emulation",
+      "test": "e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft (2.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 203,
+      "project": "android-emulation",
+      "test": "e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (2.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 205,
+      "project": "android-emulation",
+      "test": "e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (2.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 202,
+      "project": "android-emulation",
+      "test": "e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update (5.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 204,
+      "project": "android-emulation",
+      "test": "e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (4.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 201,
+      "project": "android-emulation",
+      "test": "e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload (6.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 208,
+      "project": "iphone-emulation",
+      "test": "e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (3.0s)"
+    },
+    {
+      "status": "✓",
+      "id": 209,
+      "project": "iphone-emulation",
+      "test": "e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (3.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 210,
+      "project": "iphone-emulation",
+      "test": "e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (2.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 211,
+      "project": "iphone-emulation",
+      "test": "e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (2.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 212,
+      "project": "iphone-emulation",
+      "test": "e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (1.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 213,
+      "project": "iphone-emulation",
+      "test": "e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (1.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 207,
+      "project": "android-emulation",
+      "test": "e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (10.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 206,
+      "project": "android-emulation",
+      "test": "e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (10.4s)"
+    },
+    {
+      "status": "✓",
+      "id": 214,
+      "project": "iphone-emulation",
+      "test": "e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (3.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 218,
+      "project": "iphone-emulation",
+      "test": "e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (2.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 215,
+      "project": "iphone-emulation",
+      "test": "e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (4.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 216,
+      "project": "iphone-emulation",
+      "test": "e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (4.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 217,
+      "project": "iphone-emulation",
+      "test": "e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (4.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 219,
+      "project": "iphone-emulation",
+      "test": "e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (4.0s)"
+    },
+    {
+      "status": "✓",
+      "id": 223,
+      "project": "iphone-emulation",
+      "test": "e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (4.0s)"
+    },
+    {
+      "status": "✓",
+      "id": 222,
+      "project": "iphone-emulation",
+      "test": "e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (7.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 221,
+      "project": "iphone-emulation",
+      "test": "e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (9.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 225,
+      "project": "iphone-emulation",
+      "test": "e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (2.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 224,
+      "project": "iphone-emulation",
+      "test": "e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (3.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 226,
+      "project": "iphone-emulation",
+      "test": "e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (2.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 228,
+      "project": "iphone-emulation",
+      "test": "e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (1.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 227,
+      "project": "iphone-emulation",
+      "test": "e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (2.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 230,
+      "project": "iphone-emulation",
+      "test": "e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (1.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 229,
+      "project": "iphone-emulation",
+      "test": "e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (4.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 231,
+      "project": "iphone-emulation",
+      "test": "e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (5.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 220,
+      "project": "iphone-emulation",
+      "test": "e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (20.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 233,
+      "project": "iphone-emulation",
+      "test": "e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (3.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 232,
+      "project": "iphone-emulation",
+      "test": "e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (6.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 237,
+      "project": "iphone-emulation",
+      "test": "e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (1.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 234,
+      "project": "iphone-emulation",
+      "test": "e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (4.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 238,
+      "project": "iphone-emulation",
+      "test": "e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (1.9s)"
+    },
+    {
+      "status": "✓",
+      "id": 235,
+      "project": "iphone-emulation",
+      "test": "e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (5.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 239,
+      "project": "iphone-emulation",
+      "test": "e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (2.3s)"
+    },
+    {
+      "status": "✓",
+      "id": 240,
+      "project": "iphone-emulation",
+      "test": "e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (1.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 236,
+      "project": "iphone-emulation",
+      "test": "e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (6.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 241,
+      "project": "iphone-emulation",
+      "test": "e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (2.5s)"
+    },
+    {
+      "status": "✓",
+      "id": 243,
+      "project": "iphone-emulation",
+      "test": "e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (3.2s)"
+    },
+    {
+      "status": "✓",
+      "id": 244,
+      "project": "iphone-emulation",
+      "test": "e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (3.0s)"
+    },
+    {
+      "status": "✓",
+      "id": 245,
+      "project": "iphone-emulation",
+      "test": "e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (3.1s)"
+    },
+    {
+      "status": "✓",
+      "id": 246,
+      "project": "iphone-emulation",
+      "test": "e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (1.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 242,
+      "project": "iphone-emulation",
+      "test": "e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (6.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 248,
+      "project": "iphone-emulation",
+      "test": "e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (2.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 247,
+      "project": "iphone-emulation",
+      "test": "e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (4.0s)"
+    },
+    {
+      "status": "-",
+      "id": 251,
+      "project": "iphone-emulation",
+      "test": "e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft"
+    },
+    {
+      "status": "-",
+      "id": 252,
+      "project": "iphone-emulation",
+      "test": "e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload"
+    },
+    {
+      "status": "-",
+      "id": 253,
+      "project": "iphone-emulation",
+      "test": "e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update"
+    },
+    {
+      "status": "✓",
+      "id": 250,
+      "project": "iphone-emulation",
+      "test": "e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (2.4s)"
+    },
+    {
+      "status": "✓",
+      "id": 249,
+      "project": "iphone-emulation",
+      "test": "e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (4.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 254,
+      "project": "iphone-emulation",
+      "test": "e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (2.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 256,
+      "project": "iphone-emulation",
+      "test": "e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (3.8s)"
+    },
+    {
+      "status": "✓",
+      "id": 255,
+      "project": "iphone-emulation",
+      "test": "e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (4.6s)"
+    },
+    {
+      "status": "✓",
+      "id": 258,
+      "project": "iphone-emulation",
+      "test": "e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (5.7s)"
+    },
+    {
+      "status": "✓",
+      "id": 257,
+      "project": "iphone-emulation",
+      "test": "e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (7.4s)"
+    }
+  ],
+  "total": 258,
+  "uniqueIds": 258,
+  "pass": 249,
+  "skips": [
+    {
+      "status": "-",
+      "id": 98,
+      "project": "firefox",
+      "test": "e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft"
+    },
+    {
+      "status": "-",
+      "id": 99,
+      "project": "firefox",
+      "test": "e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload"
+    },
+    {
+      "status": "-",
+      "id": 100,
+      "project": "firefox",
+      "test": "e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update"
+    },
+    {
+      "status": "-",
+      "id": 149,
+      "project": "webkit",
+      "test": "e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft"
+    },
+    {
+      "status": "-",
+      "id": 150,
+      "project": "webkit",
+      "test": "e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload"
+    },
+    {
+      "status": "-",
+      "id": 151,
+      "project": "webkit",
+      "test": "e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update"
+    },
+    {
+      "status": "-",
+      "id": 251,
+      "project": "iphone-emulation",
+      "test": "e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft"
+    },
+    {
+      "status": "-",
+      "id": 252,
+      "project": "iphone-emulation",
+      "test": "e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload"
+    },
+    {
+      "status": "-",
+      "id": 253,
+      "project": "iphone-emulation",
+      "test": "e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update"
+    }
+  ],
+  "failures": [],
+  "retryRows": [],
+  "structuredAttemptsAvailable": false,
+  "diagnosticUpload": {
+    "name": "Publish failed-attempt diagnostics",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 17,
+    "started_at": "2026-10-05T07:22:40Z",
+    "completed_at": "2026-10-05T07:22:40Z"
+  },
+  "timingUpload": {
+    "name": "Retain bounded browser timing metadata",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 13,
+    "started_at": "2026-10-05T07:22:35Z",
+    "completed_at": "2026-10-05T07:22:35Z"
+  },
+  "artifactNames": [
+    "github-pages"
+  ],
+  "requiredSteps": [
+    {
+      "name": "Run bun run format:check",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 8,
+      "started_at": "2026-10-05T07:17:41Z",
+      "completed_at": "2026-10-05T07:17:43Z"
+    },
+    {
+      "name": "Unit tests and production build",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 9,
+      "started_at": "2026-10-05T07:17:43Z",
+      "completed_at": "2026-10-05T07:17:44Z"
+    },
+    {
+      "name": "Verify the standalone conversion corpus audit",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 10,
+      "started_at": "2026-10-05T07:17:44Z",
+      "completed_at": "2026-10-05T07:17:44Z"
+    },
+    {
+      "name": "Run bun run test:browser",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 11,
+      "started_at": "2026-10-05T07:17:44Z",
+      "completed_at": "2026-10-05T07:22:35Z"
+    },
+    {
+      "name": "Verify repository-subpath deployment",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 15,
+      "started_at": "2026-10-05T07:22:35Z",
+      "completed_at": "2026-10-05T07:22:39Z"
+    },
+    {
+      "name": "Upload the verified Pages build",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 16,
+      "started_at": "2026-10-05T07:22:39Z",
+      "completed_at": "2026-10-05T07:22:40Z"
+    }
+  ],
+  "manualBranches": {
+    "reuse": {
+      "name": "Reuse the exact verified PR artifact",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 4,
+      "started_at": "2026-10-05T07:16:51Z",
+      "completed_at": "2026-10-05T07:16:51Z"
+    },
+    "prepareDeploy": {
+      "name": "Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 7,
+      "started_at": "2026-10-05T07:16:51Z",
+      "completed_at": "2026-10-05T07:16:51Z"
+    },
+    "fallbackDeploy": {
+      "name": "Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 2,
+      "started_at": "2026-10-05T07:22:50Z",
+      "completed_at": "2026-10-05T07:22:56Z"
+    }
+  },
+  "reuseLog": [],
+  "unitPassLine": "verify / web\tUNKNOWN STEP\t2026-10-05T07:17:43.4512360Z  116 pass",
+  "subpathPassLines": [
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:22:39.0244714Z   1 passed (1.8s)"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "measuredAt": "2026-10-05T07:01:24.516Z",
+  "records": [
+    {
+      "at": "2026-10-05T06:54:07.474Z",
+      "phase": "before",
+      "platform": "linux",
+      "architecture": "x64",
+      "osRelease": "6.17.0-1022-azure",
+      "availableParallelism": 4,
+      "logicalCpus": 4,
+      "cpuModel": "AMD EPYC 9V74 80-Core Processor",
+      "totalMemoryBytes": 16766414848,
+      "cgroup": {
+        "cpu.max": "max 100000",
+        "cpu.stat": "usage_usec 18774467\nuser_usec 14501121\nsystem_usec 4273345\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+        "memory.max": "max",
+        "memory.peak": "1518452736",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+      }
+    },
+    {
+      "at": "2026-10-05T06:59:54.984Z",
+      "phase": "after",
+      "platform": "linux",
+      "architecture": "x64",
+      "osRelease": "6.17.0-1022-azure",
+      "availableParallelism": 4,
+      "logicalCpus": 4,
+      "cpuModel": "AMD EPYC 9V74 80-Core Processor",
+      "totalMemoryBytes": 16766414848,
+      "cgroup": {
+        "cpu.max": "max 100000",
+        "cpu.stat": "usage_usec 1221216380\nuser_usec 1024577956\nsystem_usec 196638424\nnice_usec 66378000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+        "memory.max": "max",
+        "memory.peak": "6822293504",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+      }
+    }
+  ],
+  "observedIntervalSeconds": 347.51,
+  "observedCgroupMeanCpuCores": 3.4601649247503667,
+  "cpuStatDelta": {
+    "usage_usec": 1202441913,
+    "user_usec": 1010076835,
+    "system_usec": 192365079,
+    "nice_usec": 66378000,
+    "core_sched.force_idle_usec": 0,
+    "nr_periods": 0,
+    "nr_throttled": 0,
+    "throttled_usec": 0,
+    "nr_bursts": 0,
+    "burst_usec": 0
+  },
+  "memoryEventsDelta": {
+    "low": 0,
+    "high": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0,
+    "oom_group_kill": 0
+  },
+  "unavailableFields": [],
+  "qualifications": [
+    "memory.peak is the recorded cgroup lifetime peak, including descendants and earlier setup; not an isolated browser or test peak.",
+    "cpu.stat delta covers activity in the observed cgroup interval; membership/ancestor quota mapping was not independently captured.",
+    "os.totalmem describes visible system memory and is distinct from memory.max; availableParallelism/logical CPU count are distinct from cpu.max bandwidth.",
+    "cpu.max=max does not establish unlimited host resources or absence of contention/ancestor caps. Missing files are unavailable, not zero.",
+    "No direct per-browser CPU, process RSS, affinity mask or test-step duration measurement is supplied by these two snapshots."
+  ]
+}

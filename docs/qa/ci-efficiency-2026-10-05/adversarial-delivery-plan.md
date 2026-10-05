@@ -1,0 +1,45 @@
+# Independent remaining-delivery evidence audit
+
+Scope: read-only final planning while root owns candidate CI/publication. Repository head observed `e632d2f5bb8ff3cfc8c447ab87ae081078ca04c2`, tree `dde4284961b04ba81fc7533abc97c0b14efbb39e`. Observed review clocks 2026-10-05T06:39:31Z–06:42:42Z; the report was first saved before the 06:42:31Z clock and completed after the final source lookup. Context is reused; no peer candidate report was read and no second implementation verdict is inferred from the institutional evidence index. No issue/project edits, builds, browser reruns, CI dispatches or publication changes.
+
+Planning verdict: remaining-ticket separation is accurate; **no additional closure is established**. TIE-370 stays open for unknown historical cause; TIE-375 stays open pending the current root-owned gates. Nine physical/installed/human acceptance tickets remain open. No mandatory approval or unavailable-device question is needed to finish the obtainable software work.
+
+I independently fetched all eleven remaining issues at 06:39:53.067Z–06:39:54.856Z and all four projects/milestones plus complete issue inventories at 06:40:05.372Z–06:40:06.926Z. Raw connector results are saved in [delivery-issues.json](adversarial/delivery-issues.json) and [delivery-projects.json](adversarial/delivery-projects.json). All project lists report `hasNextPage=false`. Forty-four tickets recompute to **32 Done, 11 In Progress, 1 Canceled**; states match `offline-web-linear-map.json`. Foundation remains Completed and the other three projects In Progress.
+
+| Remaining issue(s) | Actual missing acceptance |
+| --- | --- |
+| TIE-304 | Real phone paste/type flow, physical keyboard/foldable behavior, actual 200% browser zoom with long input |
+| TIE-306 | Offline selector/aliases through an actual screen reader |
+| TIE-309 | Screen-reader tasks and single announcements, actual zoom and human task findings |
+| TIE-311 | Actual installed offline launch on supported Android/iOS/desktop platforms |
+| TIE-312 | Preferences across actual installed restarts, supplementing browser/storage regressions |
+| TIE-314 | Real supported installed OS share while offline |
+| TIE-317 | Real mobile cached restart, timezone selection and copying |
+| TIE-318 | Representative-phone bundle/p95/budget evidence without losing exactness/readiness |
+| TIE-320 | Installed production HTTPS launch/offline new-input conversion; earlier cutover/rollback evidence is retained |
+| TIE-370 | Historical Chromium explicit-update readiness cause from actual missing controller/cache/timing states |
+| TIE-375 | Independently reviewed current full-suite optimization and matching successful PR/main usage/storage target |
+
+Current automated browser/accessibility/software metrics do not satisfy the first nine capability-specific gaps. The available in-app/headless tooling does not establish a human screen-reader task, OS share menu, physical folding/keyboard, installed phone restart or representative-phone performance. Native computer APIs are disabled in the available computer-use tool. These limitations need explicit handoff evidence, not reclassification as completed tickets.
+
+The mapping deliberately labels project/milestone metadata as its prior snapshot. Current Simple Web Experience milestones are 79%/81%, versus the mapping's older 63%/75%; refresh them with a new observation date if presenting a current project summary. This is snapshot aging, not incorrect issue state. Keep implementation/tested-artifact revisions describing the currently published release until the exact new publication audit succeeds.
+
+## Obtainable TIE-370 evidence
+
+Actual read-only `gh api` at 06:40:50.603Z–06:40:51.159Z confirms original run **37228236311** completed successfully at reviewed head `150875f7906093ed20b94d76533e0f523f4a9430`. It has exactly one returned artifact, `github-pages` **11313091969**, unexpired, 373,806 bytes, expiring **2026-10-05T19:30:01Z**. No failed-attempt bundle is present in that inventory. [Raw run/artifact response](adversarial/delivery-history.json). This cannot recover missing first-attempt controller/cache state.
+
+I preserved the available original build before expiration with read-only `gh api`, using mise-managed gh/Bun and writing only this QA directory. Download ran **06:41:16.514Z–06:41:21.532Z**, ZIP SHA-256 **cd51c7d53a9091313ff05f707c6269f68167a7688d0ec8f0448ee26c1fb6ced5**, exactly matching the API artifact digest. [Download provenance](adversarial/delivery-history-archive.json), [driver](adversarial/delivery-history-archive.ts), [original ZIP](adversarial/tie-370-original-pages.zip), [original tar](adversarial/tie-370-original-pages.tar). ZIP has sole member `artifact.tar`; tar was listed and `release.json` read without filesystem extraction. Release source is `0c73dd5c48b2b248fbdd15de7c8de5e951f7d5d0`, base `/ChronoShift/`, with original app `assets/index-CwpXboF5.js`. The CI reviewed head and tested release commit are distinct identities; do not label them interchangeable without tree verification.
+
+Concrete next software evidence, when justified by recurrence or a focused investigation, is a faithful original-artifact legacy-worker → explicit Update now journey with actual controller/active/installing/waiting identities, cache entries/release identity, opt-in probe timings and first-attempt warning/readiness/draft state retained through the ten-second symptom and beyond the native 15-second deadline. Compare unchanged original and current implementation on the same served-origin/asset, motion, viewport and timeout conditions; include recovery and usable conversion. The preserved artifact makes the old served bytes obtainable. Such a new reproduction can establish an equivalent mechanism; it cannot retroactively recreate the lost original browser state. The existing delayed healthy-controller reply and native-deadline probes already establish a bounded mitigation and should not be duplicated merely to increase pass counts.
+
+Follow-up exact-source check: local `git rev-parse` resolved reviewed head tree `bfe2dee06cccde15488b22bf21db05dd0a83d220`, but the original tested merge object is absent locally (the combined command returned 128). Read-only `gh api` at **06:42:42.229Z–06:42:42.797Z** resolves the tested release commit to that same tree. [Raw source lookup](adversarial/delivery-history-tree.json). This establishes original reviewed/tested source-tree equality without a fetch or checkout; it still provides no historical failed-attempt lifecycle state.
+
+Live TIE-370 now explicitly records actual green retry-success CI **37270362546** retaining bundle **11328282899** with first-failed iPhone rollback evidence and passing retry trace. That closes the previously listed hosted retry-upload evidence gap, but this different timeout waiting for Update now does not diagnose historical Chromium readiness. The earlier `ci-lifecycle` README remains an original publication record with its old upload-gap wording; the final new evidence index should explicitly supersede that gap with the live issue/new raw evidence rather than rewrite the original record.
+
+## Handoff corrections and review lessons
+
+Live TIE-375's latest progress paragraph still describes restored four workers and a virtualization experiment. Final handoff should add the exact e632d2f scope: runtime restored to base, virtualization rejected, two-worker CI experiment and slim static publishing; attach actual final CI/publication/cost verdicts when available. Do not claim acceptance from the older green 431-second diagnostic run, local batching, modeled job-count rounding or a slim runner specification. Record actual retry-success cost and all rejected experiments separately from the matching acceptance pair.
+
+`docs/developer/review.md` already captures the important escaped-review lessons: immutable original reports plus clock corrections; reconcile complete runner logs/attempts/markers/artifacts before zero-retry claims; served origin/asset identity including fixture overrides; motion/viewport/focus-scroll matching; typed/selected/focused popup ownership; no causal attribution from competing failures; separate bounded implementation versus original-report closure; actual deployed tree replacement, explicit-update/draft preservation and capability gaps. Existing AGENTS links that workflow and retains independent review, exact-tree artifact trust and serialized main-only publication. **No further AGENTS rule is necessary for this bounded delivery.** A concise final README linking rejected originals, provenance corrections, final candidate and publication/cost evidence is more useful than duplicating those rules.
+
+No runtime follow-up bug is established by programmatic `fill()` immediately after Shift+Tab: the independent real ControlOrMeta+A/typed-Tokyo journey passed both frozen builds. Preserve that negative finding and the existing baseline native-height focus/scroll limitation without labeling it a newly introduced keyboard defect. A future real user/native journey can provide the missing acceptance evidence.

@@ -1,0 +1,85 @@
+{
+  "platform": "darwin",
+  "bun": "1.4.0",
+  "base": "7059da3125ada61123f91d1267bbee9a6f4792ef",
+  "head": "e632d2f5bb8ff3cfc8c447ab87ae081078ca04c2",
+  "results": [
+    {
+      "args": [
+        "git",
+        "diff",
+        "--exit-code",
+        "7059da3125ada61123f91d1267bbee9a6f4792ef",
+        "e632d2f5bb8ff3cfc8c447ab87ae081078ca04c2",
+        "--",
+        "web",
+        "bun.lock",
+        "mise.toml",
+        "tests/fixtures",
+        "scripts/reuse-pages-artifact.ts",
+        "e2e/fixtures.ts",
+        "e2e/attempt-reporter.ts",
+        "playwright.subpath.config.ts"
+      ],
+      "start": "2026-10-05T06:36:49.009Z",
+      "end": "2026-10-05T06:36:49.017Z",
+      "stdout": "",
+      "stderr": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "git",
+        "diff",
+        "--name-only",
+        "7059da3125ada61123f91d1267bbee9a6f4792ef",
+        "e632d2f5bb8ff3cfc8c447ab87ae081078ca04c2",
+        "--",
+        ".",
+        ":!docs"
+      ],
+      "start": "2026-10-05T06:36:49.010Z",
+      "end": "2026-10-05T06:36:49.017Z",
+      "stdout": ".github/workflows/pages.yml\n.github/workflows/web.yml\ne2e/controls.spec.ts\ne2e/timing-reporter.ts\nplaywright.config.ts\nscripts/ci-environment.ts\n",
+      "stderr": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "git",
+        "rev-parse",
+        "HEAD",
+        "HEAD^{tree}"
+      ],
+      "start": "2026-10-05T06:36:49.010Z",
+      "end": "2026-10-05T06:36:49.017Z",
+      "stdout": "e632d2f5bb8ff3cfc8c447ab87ae081078ca04c2\ndde4284961b04ba81fc7533abc97c0b14efbb39e\n",
+      "stderr": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "/Users/tien/.local/share/mise/installs/bun/1.4.0/bin/bun",
+        "scripts/ci-environment.ts",
+        "before"
+      ],
+      "start": "2026-10-05T06:36:49.010Z",
+      "end": "2026-10-05T06:36:49.019Z",
+      "stdout": "[ci-environment] {\"at\":\"2026-10-05T06:36:49.018Z\",\"phase\":\"before\",\"platform\":\"darwin\",\"architecture\":\"arm64\",\"osRelease\":\"27.0.0\",\"availableParallelism\":14,\"logicalCpus\":14,\"cpuModel\":\"Apple M4 Pro\",\"totalMemoryBytes\":51539607552,\"cgroup\":{\"cpu.max\":null,\"cpu.stat\":null,\"memory.max\":null,\"memory.peak\":null,\"memory.events\":null}}\n",
+      "stderr": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "/Users/tien/.local/share/mise/installs/bun/1.4.0/bin/bun",
+        "scripts/ci-environment.ts",
+        "after"
+      ],
+      "start": "2026-10-05T06:36:49.010Z",
+      "end": "2026-10-05T06:36:49.019Z",
+      "stdout": "[ci-environment] {\"at\":\"2026-10-05T06:36:49.018Z\",\"phase\":\"after\",\"platform\":\"darwin\",\"architecture\":\"arm64\",\"osRelease\":\"27.0.0\",\"availableParallelism\":14,\"logicalCpus\":14,\"cpuModel\":\"Apple M4 Pro\",\"totalMemoryBytes\":51539607552,\"cgroup\":{\"cpu.max\":null,\"cpu.stat\":null,\"memory.max\":null,\"memory.peak\":null,\"memory.events\":null}}\n",
+      "stderr": "",
+      "code": 0
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+[ci-timing] 1000 attempts recorded; 2 omitted by the 1000-attempt limit
+{
+  "capturedAt": "2026-10-05T07:07:27.285Z",
+  "summaries": {
+    "baseline-pr": {
+      "jobs": [
+        {
+          "name": "web",
+          "status": "success",
+          "start": "2026-10-03T15:01:24Z",
+          "end": "2026-10-03T15:04:00Z",
+          "seconds": 156,
+          "roundedMinutes": 3,
+          "steps": [
+            {
+              "name": "Run bun run test:browser",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-10-03T15:02:28Z",
+              "completed_at": "2026-10-03T15:03:52Z"
+            }
+          ]
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "chronoshift-web-21a38eec3876f58e16adc0c7bc4c1ecfb9d90dd8",
+          "size": 561341,
+          "digest": "sha256:58fcae2101180a13643b8503a1956255a2bfb2e7eb8bb1ef10acba70e1f1f945",
+          "actualRetentionHours": 335.9997222222222
+        }
+      ],
+      "attemptsFromCompleteListLog": {
+        "count": 68,
+        "distinctOrdinals": 68,
+        "maxOrdinal": 68,
+        "retryRows": 0,
+        "perProject": {
+          "foldable": {
+            "passed": 3,
+            "skipped": 0,
+            "failed": 0
+          },
+          "chromium": {
+            "passed": 13,
+            "skipped": 0,
+            "failed": 0
+          },
+          "firefox": {
+            "passed": 13,
+            "skipped": 0,
+            "failed": 0
+          },
+          "webkit": {
+            "passed": 13,
+            "skipped": 0,
+            "failed": 0
+          },
+          "android-emulation": {
+            "passed": 13,
+            "skipped": 0,
+            "failed": 0
+          },
+          "iphone-emulation": {
+            "passed": 13,
+            "skipped": 0,
+            "failed": 0
+          }
+        }
+      },
+      "unitSummary": [
+        "2026-10-03T15:01:34.4897663Z  72 pass",
+        "2026-10-03T15:01:34.4897953Z  0 fail",
+        "2026-10-03T15:01:34.4898650Z Ran 72 tests across 2 files. [353.00ms]"
+      ]
+    },
+    "baseline-pages": {
+      "jobs": [
+        {
+          "name": "verify / web",
+          "status": "success",
+          "start": "2026-10-03T15:03:26Z",
+          "end": "2026-10-03T15:05:38Z",
+          "seconds": 132,
+          "roundedMinutes": 3,
+          "steps": [
+            {
+              "name": "Run bun run test:browser",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-10-03T15:04:18Z",
+              "completed_at": "2026-10-03T15:05:32Z"
+            }
+          ]
+        },
+        {
+          "name": "build",
+          "status": "success",
+          "start": "2026-10-03T15:05:40Z",
+          "end": "2026-10-03T15:05:48Z",
+          "seconds": 8,
+          "roundedMinutes": 1,
+          "steps": []
+        },
+        {
+          "name": "deploy",
+          "status": "success",
+          "start": "2026-10-03T15:05:52Z",
+          "end": "2026-10-03T15:06:03Z",
+          "seconds": 11,
+          "roundedMinutes": 1,
+          "steps": []
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "chronoshift-web-c31b8656bc4ef0fce84d5767b0d9c39f89a00f0f",
+          "size": 530892,
+          "digest": "sha256:ba1ca49f2bd9889158cb01cb181ec6661183f876be19f711e44a30f1a4b8949c",
+          "actualRetentionHours": 336
+        }
+      ],
+      "attemptsFromCompleteListLog": {
+        "count": 68,
+        "distinctOrdinals": 68,
+        "maxOrdinal": 68,
+        "retryRows": 0,
+        "perProject": {
+          "foldable": {
+            "passed": 3,
+            "skipped": 0,
+            "failed": 0
+          },
+          "chromium": {
+            "passed": 13,
+            "skipped": 0,
+            "failed": 0
+          },
+          "firefox": {
+            "passed": 13,
+            "skipped": 0,
+            "failed": 0
+          },
+          "webkit": {
+            "passed": 13,
+            "skipped": 0,
+            "failed": 0
+          },
+          "android-emulation": {
+            "passed": 13,
+            "skipped": 0,
+            "failed": 0
+          },
+          "iphone-emulation": {
+            "passed": 13,
+            "skipped": 0,
+            "failed": 0
+          }
+        }
+      },
+      "unitSummary": [
+        "2026-10-03T15:03:33.4652020Z  72 pass",
+        "2026-10-03T15:03:33.4652444Z  0 fail",
+        "2026-10-03T15:03:33.4653229Z Ran 72 tests across 2 files. [295.00ms]"
+      ]
+    },
+    "candidate": {
+      "jobs": [
+        {
+          "name": "web",
+          "status": "success",
+          "start": "2026-10-05T06:53:22Z",
+          "end": "2026-10-05T07:00:02Z",
+          "seconds": 400,
+          "roundedMinutes": 7,
+          "steps": [
+            {
+              "name": "Run bun run test:browser",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11,
+              "started_at": "2026-10-05T06:54:07Z",
+              "completed_at": "2026-10-05T06:59:54Z"
+            },
+            {
+              "name": "Retain bounded browser timing metadata",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 13,
+              "started_at": "2026-10-05T06:59:54Z",
+              "completed_at": "2026-10-05T06:59:54Z"
+            },
+            {
+              "name": "Publish failed-attempt diagnostics",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 17,
+              "started_at": "2026-10-05T06:59:59Z",
+              "completed_at": "2026-10-05T07:00:00Z"
+            }
+          ]
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "github-pages",
+          "size": 374697,
+          "digest": "sha256:87d46fb4d220e5e7951a72b31779d4fb197012a01cfa6915d5646cef75141181",
+          "actualRetentionHours": 24
+        }
+      ],
+      "attemptsFromCompleteListLog": {
+        "count": 258,
+        "distinctOrdinals": 258,
+        "maxOrdinal": 258,
+        "retryRows": 0,
+        "perProject": {
+          "foldable": {
+            "passed": 3,
+            "skipped": 0,
+            "failed": 0
+          },
+          "chromium": {
+            "passed": 51,
+            "skipped": 0,
+            "failed": 0
+          },
+          "firefox": {
+            "passed": 48,
+            "skipped": 3,
+            "failed": 0
+          },
+          "webkit": {
+            "passed": 48,
+            "skipped": 3,
+            "failed": 0
+          },
+          "android-emulation": {
+            "passed": 51,
+            "skipped": 0,
+            "failed": 0
+          },
+          "iphone-emulation": {
+            "passed": 48,
+            "skipped": 3,
+            "failed": 0
+          }
+        }
+      },
+      "unitSummary": [
+        "2026-10-05T06:54:05.9093993Z  116 pass",
+        "2026-10-05T06:54:05.9094262Z  0 fail",
+        "2026-10-05T06:54:05.9094856Z Ran 116 tests across 6 files. [458.00ms]"
+      ]
+    }
+  },
+  "artifact": {
+    "bytes": 374697,
+    "digest": "sha256:87d46fb4d220e5e7951a72b31779d4fb197012a01cfa6915d5646cef75141181",
+    "matched": true
+  },
+  "syntheticTiming": {
+    "attempts": 1000,
+    "dropped": 2,
+    "sentinelAbsent": true,
+    "classification": {
+      "category": "pw:api",
+      "operation": "fill"
+    }
+  }
+}

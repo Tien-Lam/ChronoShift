@@ -1,0 +1,133 @@
+{
+  "head": "8a4ebec0881f8363ffd19f833bbf29a44e77885a",
+  "began": "2026-10-05T06:26:49.832Z",
+  "cases": [
+    {
+      "profile": "iphone",
+      "candidate": false,
+      "began": "2026-10-05T06:26:50.149Z",
+      "browser": "26.6",
+      "fields": [
+        {
+          "id": "target-zone",
+          "ancestorScrollY": 26,
+          "recovered": "Asia/Tokyo",
+          "otherUnchanged": "UTC"
+        },
+        {
+          "id": "source-zone",
+          "ancestorScrollY": 187,
+          "recovered": "Asia/Tokyo",
+          "otherUnchanged": "Asia/Tokyo"
+        }
+      ],
+      "served": {
+        "url": "http://127.0.0.1:4276/",
+        "scripts": [
+          "http://127.0.0.1:4276/assets/index-DHi9pTHJ.js"
+        ],
+        "release": {
+          "sourceCommit": "local",
+          "base": "/"
+        },
+        "worker": {
+          "sha": "2eb418e824f28221",
+          "hash": null,
+          "textPrefix": "/* Generated at build time. No conversion text is sent to the network. */\nconst VERSION = '2eb418e824f28221';\nconst BASE = \"/\";\nconst PRECACHE = [\"/assets/geist-latin-variable-Dm3htQBi.woff2\",\"/assets/index-Bst_xchV.css\",\"/assets/index-DHi9"
+        }
+      },
+      "csp": [],
+      "passed": true,
+      "ended": "2026-10-05T06:26:53.775Z"
+    },
+    {
+      "profile": "iphone",
+      "candidate": true,
+      "began": "2026-10-05T06:26:53.919Z",
+      "browser": "26.6",
+      "fields": [
+        {
+          "id": "target-zone",
+          "ancestorScrollY": 26,
+          "recovered": "Asia/Tokyo",
+          "otherUnchanged": "UTC"
+        },
+        {
+          "id": "source-zone",
+          "ancestorScrollY": 187,
+          "recovered": "Asia/Tokyo",
+          "otherUnchanged": "Asia/Tokyo"
+        }
+      ],
+      "served": {
+        "url": "http://127.0.0.1:4278/",
+        "scripts": [
+          "http://127.0.0.1:4278/assets/index-DbVCZBhP.js"
+        ],
+        "release": {
+          "sourceCommit": "local",
+          "base": "/"
+        },
+        "worker": {
+          "sha": "18545a2d408b19e8",
+          "hash": null,
+          "textPrefix": "/* Generated at build time. No conversion text is sent to the network. */\nconst VERSION = '18545a2d408b19e8';\nconst BASE = \"/\";\nconst PRECACHE = [\"/assets/geist-latin-variable-Dm3htQBi.woff2\",\"/assets/index-CK-q34-T.css\",\"/assets/index-DbVC"
+        }
+      },
+      "csp": [],
+      "passed": true,
+      "ended": "2026-10-05T06:26:57.029Z"
+    },
+    {
+      "profile": "firefox",
+      "candidate": false,
+      "began": "2026-10-05T06:26:57.810Z",
+      "browser": "155.0",
+      "fields": [],
+      "served": {
+        "url": "http://127.0.0.1:4276/",
+        "scripts": [
+          "http://127.0.0.1:4276/assets/index-DHi9pTHJ.js"
+        ],
+        "release": {
+          "sourceCommit": "local",
+          "base": "/"
+        },
+        "worker": {
+          "sha": "2eb418e824f28221",
+          "hash": null,
+          "textPrefix": "/* Generated at build time. No conversion text is sent to the network. */\nconst VERSION = '2eb418e824f28221';\nconst BASE = \"/\";\nconst PRECACHE = [\"/assets/geist-latin-variable-Dm3htQBi.woff2\",\"/assets/index-Bst_xchV.css\",\"/assets/index-DHi9"
+        }
+      },
+      "passed": false,
+      "error": "TimeoutError: click: Timeout 3000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Choose target timezone', exact: true })\u001b[22m\n",
+      "ended": "2026-10-05T06:27:01.572Z"
+    },
+    {
+      "profile": "firefox",
+      "candidate": true,
+      "began": "2026-10-05T06:27:01.702Z",
+      "browser": "155.0",
+      "fields": [],
+      "served": {
+        "url": "http://127.0.0.1:4278/",
+        "scripts": [
+          "http://127.0.0.1:4278/assets/index-DbVCZBhP.js"
+        ],
+        "release": {
+          "sourceCommit": "local",
+          "base": "/"
+        },
+        "worker": {
+          "sha": "18545a2d408b19e8",
+          "hash": null,
+          "textPrefix": "/* Generated at build time. No conversion text is sent to the network. */\nconst VERSION = '18545a2d408b19e8';\nconst BASE = \"/\";\nconst PRECACHE = [\"/assets/geist-latin-variable-Dm3htQBi.woff2\",\"/assets/index-CK-q34-T.css\",\"/assets/index-DbVC"
+        }
+      },
+      "passed": false,
+      "error": "TimeoutError: click: Timeout 3000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Choose target timezone', exact: true })\u001b[22m\n",
+      "ended": "2026-10-05T06:27:05.368Z"
+    }
+  ],
+  "ended": "2026-10-05T06:27:05.543Z"
+}

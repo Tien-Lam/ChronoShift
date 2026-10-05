@@ -1,0 +1,246 @@
+{
+  "captured": "2026-10-05T07:06:49.455Z",
+  "total": 44,
+  "done": 32,
+  "canceled": 1,
+  "inProgress": 11,
+  "projects": [
+    {
+      "id": "P-TIE-14",
+      "name": "ChronoShift — Web Conversion Foundations",
+      "url": "https://linear.app/tienlam/project/chronoshift-web-conversion-foundations-39a0ab099497",
+      "status": "Completed",
+      "startDate": "2026-10-03",
+      "targetDate": null,
+      "counts": {
+        "Done": 11
+      },
+      "milestones": [
+        {
+          "id": "563034f1-6adb-4c03-8656-cba38ec9b8df",
+          "name": "Contract & browser baseline",
+          "displayProgress": "100%",
+          "numericProgress": 100,
+          "targetDate": null
+        },
+        {
+          "id": "4a977be3-d961-4b27-b91c-045d0e34d1c1",
+          "name": "Conversion parity",
+          "displayProgress": "100%",
+          "numericProgress": 100,
+          "targetDate": null
+        }
+      ]
+    },
+    {
+      "id": "P-TIE-15",
+      "name": "ChronoShift — Simple Web Experience",
+      "url": "https://linear.app/tienlam/project/chronoshift-simple-web-experience-a5ef2bb5c20c",
+      "status": "In Progress",
+      "startDate": "2026-10-03",
+      "targetDate": null,
+      "counts": {
+        "Done": 12,
+        "In Progress": 3
+      },
+      "milestones": [
+        {
+          "id": "015e5e0e-88d6-40ee-a77a-481b10521575",
+          "name": "Usable conversion flow",
+          "displayProgress": "79%",
+          "numericProgress": 78.57,
+          "targetDate": null
+        },
+        {
+          "id": "0569b268-af61-4fd2-8309-ec07ae448c40",
+          "name": "Accessible, low-friction experience",
+          "displayProgress": "81%",
+          "numericProgress": 81.25,
+          "targetDate": null
+        }
+      ]
+    },
+    {
+      "id": "P-TIE-16",
+      "name": "ChronoShift — Offline PWA",
+      "url": "https://linear.app/tienlam/project/chronoshift-offline-pwa-dca3345bd8d8",
+      "status": "In Progress",
+      "startDate": "2026-10-03",
+      "targetDate": null,
+      "counts": {
+        "Done": 5,
+        "In Progress": 3
+      },
+      "milestones": [
+        {
+          "id": "022a0291-2b00-406e-9ac8-955c84e8639c",
+          "name": "Offline-ready PWA",
+          "displayProgress": "50%",
+          "numericProgress": 50,
+          "targetDate": null
+        },
+        {
+          "id": "5ce0ae4b-2370-45b9-b87b-3ef5c6977d04",
+          "name": "Safe updates & offline entry points",
+          "displayProgress": "75%",
+          "numericProgress": 75,
+          "targetDate": null
+        }
+      ]
+    },
+    {
+      "id": "P-TIE-17",
+      "name": "ChronoShift — Web Delivery",
+      "url": "https://linear.app/tienlam/project/chronoshift-web-delivery-dab90fb49a74",
+      "status": "In Progress",
+      "startDate": "2026-10-03",
+      "targetDate": null,
+      "counts": {
+        "In Progress": 5,
+        "Done": 4,
+        "Canceled": 1
+      },
+      "milestones": [
+        {
+          "id": "dd4052cc-9fd3-4bc9-8366-d9921b9f7f19",
+          "name": "Web release candidate",
+          "displayProgress": "50%",
+          "numericProgress": 50,
+          "targetDate": null
+        },
+        {
+          "id": "897e485b-5c7b-4ee1-8769-df0af789a3aa",
+          "name": "Web-only delivery",
+          "displayProgress": "63%",
+          "numericProgress": 62.5,
+          "targetDate": null
+        }
+      ]
+    }
+  ],
+  "remaining": [
+    {
+      "id": "TIE-304",
+      "title": "Build the adaptive conversion page for desktop, mobile and foldables",
+      "url": "https://linear.app/tienlam/issue/TIE-304/build-the-adaptive-conversion-page-for-desktop-mobile-and-foldables",
+      "status": "In Progress",
+      "unchecked": [
+        "- [ ] Paste/type → Convert renders real engine results on phone and desktop.",
+        "- [ ] Layout works at 320 CSS pixels and 200% zoom with long input."
+      ],
+      "category": "physical/human acceptance"
+    },
+    {
+      "id": "TIE-306",
+      "title": "Add device timezone default and a searchable target timezone override",
+      "url": "https://linear.app/tienlam/issue/TIE-306/add-device-timezone-default-and-a-searchable-target-timezone-override",
+      "status": "In Progress",
+      "unchecked": [
+        "- [ ] Selector works offline with keyboard/screen reader and includes supported city aliases."
+      ],
+      "category": "physical/human acceptance"
+    },
+    {
+      "id": "TIE-309",
+      "title": "Verify accessibility and first-time task completion",
+      "url": "https://linear.app/tienlam/issue/TIE-309/verify-accessibility-and-first-time-task-completion",
+      "status": "In Progress",
+      "unchecked": [
+        "- [ ] All core tasks work with keyboard alone and a screen reader; results/errors are announced once appropriately.",
+        "- [ ] 320px, 200% zoom, long text and reduced-motion states remain usable.",
+        "- [ ] Task-check findings and resolved issues are recorded; no critical accessibility or discoverability defect remains."
+      ],
+      "category": "physical/human acceptance"
+    },
+    {
+      "id": "TIE-311",
+      "title": "Add a PWA manifest and unobtrusive install guidance",
+      "url": "https://linear.app/tienlam/issue/TIE-311/add-a-pwa-manifest-and-unobtrusive-install-guidance",
+      "status": "In Progress",
+      "unchecked": [
+        "- [ ] Manifest/start URL/icon validation passes and installed launch reaches the converter offline."
+      ],
+      "category": "physical/human acceptance"
+    },
+    {
+      "id": "TIE-314",
+      "title": "Receive shared text in supported installed browsers with an offline fallback",
+      "url": "https://linear.app/tienlam/issue/TIE-314/receive-shared-text-in-supported-installed-browsers-with-an-offline",
+      "status": "In Progress",
+      "unchecked": [
+        "- [ ] Installed supported browser shares text while offline and opens a usable input/result flow."
+      ],
+      "category": "physical/human acceptance"
+    },
+    {
+      "id": "TIE-312",
+      "title": "Persist minimal preferences and recover from unavailable browser storage",
+      "url": "https://linear.app/tienlam/issue/TIE-312/persist-minimal-preferences-and-recover-from-unavailable-browser",
+      "status": "In Progress",
+      "unchecked": [
+        "- [ ] Preferences survive normal browser/installed restarts and migration from an old schema."
+      ],
+      "category": "physical/human acceptance"
+    },
+    {
+      "id": "TIE-375",
+      "title": "Restore the CI usage target for the expanded browser suite",
+      "url": "https://linear.app/tienlam/issue/TIE-375/restore-the-ci-usage-target-for-the-expanded-browser-suite",
+      "status": "In Progress",
+      "unchecked": [
+        "- [ ] Identify measured bottlenecks and implement independently reviewed changes.",
+        "- [ ] A current equivalent successful PR/main pair reaches at least 20% lower rounded minutes and artifact byte-hours, with raw runner time improved.",
+        "- [ ] Preserve browser/lifecycle/normal-motion coverage, independent exact expectations, integrity, main-only exact-artifact publishing and bounded diagnostics. Do not skip assertions, mask retries or multiply jobs at higher quota cost."
+      ],
+      "category": "unmet expanded-suite efficiency"
+    },
+    {
+      "id": "TIE-370",
+      "title": "Diagnose offline update CI flake and retain retry diagnostics",
+      "url": "https://linear.app/tienlam/issue/TIE-370/diagnose-offline-update-ci-flake-and-retain-retry-diagnostics",
+      "status": "In Progress",
+      "unchecked": [
+        "- [ ] Diagnose the historical explicit-update readiness failure from actual controller/cache states; fix its cause without weakening integrity checks or automatically activating updates."
+      ],
+      "category": "unknown historical cause"
+    },
+    {
+      "id": "TIE-317",
+      "title": "Verify exact conversion behavior across desktop and mobile browsers",
+      "url": "https://linear.app/tienlam/issue/TIE-317/verify-exact-conversion-behavior-across-desktop-and-mobile-browsers",
+      "status": "In Progress",
+      "unchecked": [
+        "- [ ] Real mobile cached offline restart, timezone selection and copying are verified."
+      ],
+      "category": "physical/human acceptance"
+    },
+    {
+      "id": "TIE-318",
+      "title": "Measure startup and conversion performance on a representative phone",
+      "url": "https://linear.app/tienlam/issue/TIE-318/measure-startup-and-conversion-performance-on-a-representative-phone",
+      "status": "In Progress",
+      "unchecked": [
+        "- [ ] Benchmark report includes bundle breakdown and reproducible p95 measurements.",
+        "- [ ] Typical flow meets the agreed budgets and worst-case input does not freeze editing/clear controls.",
+        "- [ ] Performance optimization preserves exact fixtures and offline readiness."
+      ],
+      "category": "physical/human acceptance"
+    },
+    {
+      "id": "TIE-320",
+      "title": "Release the static web app over HTTPS with an exercised rollback",
+      "url": "https://linear.app/tienlam/issue/TIE-320/release-the-static-web-app-over-https-with-an-exercised-rollback",
+      "status": "In Progress",
+      "unchecked": [
+        "- [ ] Production HTTPS URL works in browser and installed modes; new input converts after offline restart."
+      ],
+      "category": "physical/human acceptance"
+    }
+  ],
+  "limitations": [
+    "44 inventory is the four ChronoShift web projects, including archived items; all four pages report hasNextPage=false; it is not an entire workspace issue count.",
+    "Milestone progress is reported directly by Linear, not inferred from binary ticket completion.",
+    "No ticket/project updates, tests, CI dispatch or source edits.",
+    "Main documentation head is distinct from last published runtime source and PR37 candidate."
+  ]
+}

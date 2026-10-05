@@ -1,0 +1,62 @@
+{
+  "capturedAt": "2026-10-05T06:47:24.694Z",
+  "observer": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "bun": "1.4.0"
+  },
+  "head": "52e8d9c3bc2ba50f6ba2990dde5a128a37849172",
+  "tree": "99a2f2a9a9661b11cb41dc40fb2620d40b2f5428",
+  "comparedTo": "7059da3125ada61123f91d1267bbee9a6f4792ef",
+  "unchangedPaths": [
+    "web",
+    "package.json",
+    "bun.lock",
+    "mise.toml",
+    "scripts/reuse-pages-artifact.ts",
+    "e2e/attempt-reporter.ts",
+    "playwright.subpath.config.ts"
+  ],
+  "diffExitCode": 0,
+  "diff": "",
+  "sourceFiles": [
+    {
+      "path": "playwright.config.ts",
+      "sha256": "b4c3f14e27b6d5bf8ae9a0c4413f443a525dd5e9632d138fd913c3ef10580e72"
+    },
+    {
+      "path": ".github/workflows/web.yml",
+      "sha256": "4b76ddbbd239d90bdca821438b1e0bfca02bb6504aea76c86865dff5aa856d36"
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "sha256": "ff7ec8b1dd51086de24611fd7f23671efb149f5db4d3d1ea4727a0aea0892a44"
+    },
+    {
+      "path": "e2e/attempt-reporter.ts",
+      "sha256": "f6782d5a8009a278f6f9e684d35cbf08cc74ea371efb03b8f83ca823945ffe01"
+    },
+    {
+      "path": "scripts/ci-environment.ts",
+      "sha256": "b5b090c66095131081ec8171625e8855ae7ce53c1f7023e615bb7e6e9ca6b0f9"
+    },
+    {
+      "path": "scripts/reuse-pages-artifact.ts",
+      "sha256": "a2ab1a1b5ba2e240dab974b7a725a096a63adf01e1255e75fe70ea8716ac5af1"
+    }
+  ],
+  "rootRegistryEvidence": {
+    "at": "2026-10-05T06:45:15.722Z",
+    "indexDigest": "sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27",
+    "armManifest": {
+      "mediaType": "application/vnd.oci.image.manifest.v1+json",
+      "size": 1644,
+      "digest": "sha256:a0f4498920a5dbac63196d9140ed738ef00470f27e2e74029abd8850b7bd5717",
+      "platform": {
+        "architecture": "arm64",
+        "os": "linux"
+      }
+    }
+  },
+  "limits": "Observer is not CI environment. Root registry evidence read, not independently refetched here. Read-only committed source check; no build/browser/CI dispatch."
+}

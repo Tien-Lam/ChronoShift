@@ -1,0 +1,334 @@
+{
+  "startedAt": "2026-10-05T07:06:11.876Z",
+  "endedAt": "2026-10-05T07:06:13.025Z",
+  "sha": "b288920d072d6ebb6ca56d1ea83f7c95ea7bed02",
+  "tree": "c08c0f507faf6f82fac5ce790eb2e1f89fa59cdf",
+  "unit": [
+    {
+      "name": "trusted positive control",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "fork",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "wrongWorkflow",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "wrongPath",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "push",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "incomplete",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "failed",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "malformedSHA",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "partial gate failure",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "partial gate skipped",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "partial gate cancelled",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "archive positive",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "unsafe path \"/tmp/escape\"",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "unsafe path \"./../escape\"",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "unsafe path \"./x/../../escape\"",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "unsafe path \"./x\\\\escape\"",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "unsafe path \"./x\\nescape\"",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "unsafe entry lrwxrwxrwx owner x",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "unsafe entry hrw-r--r-- owner x",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "unsafe entry prw-r--r-- owner x",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "unsafe entry crw-r--r-- owner x",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "release positive",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "release tree mismatch",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "release base mismatch",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "fixed timing operation labels only",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ],
+  "classification": [
+    {
+      "title": "Fill April 9 private input",
+      "classified": {
+        "category": "pw:api",
+        "operation": "fill"
+      }
+    },
+    {
+      "title": "Navigate https://example.org/?private=secret",
+      "classified": {
+        "category": "pw:api",
+        "operation": "navigate"
+      }
+    },
+    {
+      "title": "malicious private value",
+      "classified": {
+        "category": "pw:api",
+        "operation": "other-api"
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "no-artifact",
+      "startedAt": "2026-10-05T07:06:11.890Z",
+      "endedAt": "2026-10-05T07:06:12.279Z",
+      "code": 0,
+      "stdout": "No reusable verified artifact; complete verification is required.\n",
+      "stderr": "",
+      "output": "reused=false\n",
+      "passed": true
+    },
+    {
+      "name": "expired-artifact",
+      "startedAt": "2026-10-05T07:06:12.289Z",
+      "endedAt": "2026-10-05T07:06:12.337Z",
+      "code": 0,
+      "stdout": "No reusable verified artifact; complete verification is required.\n",
+      "stderr": "",
+      "output": "reused=false\n",
+      "passed": true
+    },
+    {
+      "name": "malformed-digest",
+      "startedAt": "2026-10-05T07:06:12.346Z",
+      "endedAt": "2026-10-05T07:06:12.392Z",
+      "code": 0,
+      "stdout": "No reusable verified artifact; complete verification is required.\n",
+      "stderr": "",
+      "output": "reused=false\n",
+      "passed": true
+    },
+    {
+      "name": "oversize-artifact",
+      "startedAt": "2026-10-05T07:06:12.399Z",
+      "endedAt": "2026-10-05T07:06:12.442Z",
+      "code": 0,
+      "stdout": "No reusable verified artifact; complete verification is required.\n",
+      "stderr": "",
+      "output": "reused=false\n",
+      "passed": true
+    },
+    {
+      "name": "wrong-head-tree",
+      "startedAt": "2026-10-05T07:06:12.449Z",
+      "endedAt": "2026-10-05T07:06:12.482Z",
+      "code": 0,
+      "stdout": "No reusable verified artifact; complete verification is required.\n",
+      "stderr": "",
+      "output": "reused=false\n",
+      "passed": true
+    },
+    {
+      "name": "wrong-workflow",
+      "startedAt": "2026-10-05T07:06:12.489Z",
+      "endedAt": "2026-10-05T07:06:12.528Z",
+      "code": 0,
+      "stdout": "No reusable verified artifact; complete verification is required.\n",
+      "stderr": "",
+      "output": "reused=false\n",
+      "passed": true
+    },
+    {
+      "name": "fork",
+      "startedAt": "2026-10-05T07:06:12.534Z",
+      "endedAt": "2026-10-05T07:06:12.561Z",
+      "code": 0,
+      "stdout": "No reusable verified artifact; complete verification is required.\n",
+      "stderr": "",
+      "output": "reused=false\n",
+      "passed": true
+    },
+    {
+      "name": "missing-gate",
+      "startedAt": "2026-10-05T07:06:12.567Z",
+      "endedAt": "2026-10-05T07:06:12.607Z",
+      "code": 0,
+      "stdout": "No reusable verified artifact; complete verification is required.\n",
+      "stderr": "",
+      "output": "reused=false\n",
+      "passed": true
+    },
+    {
+      "name": "pagination-gap",
+      "startedAt": "2026-10-05T07:06:12.614Z",
+      "endedAt": "2026-10-05T07:06:12.653Z",
+      "code": 0,
+      "stdout": "No reusable verified artifact; complete verification is required.\n",
+      "stderr": "",
+      "output": "reused=false\n",
+      "passed": true
+    },
+    {
+      "name": "api-failure",
+      "startedAt": "2026-10-05T07:06:12.660Z",
+      "endedAt": "2026-10-05T07:06:12.675Z",
+      "code": 0,
+      "stdout": "",
+      "stderr": "Artifact reuse unavailable: gh failed: injected API failure\n. Complete verification will run.\n",
+      "output": "reused=false\n",
+      "passed": true
+    },
+    {
+      "name": "digest-mismatch",
+      "startedAt": "2026-10-05T07:06:12.682Z",
+      "endedAt": "2026-10-05T07:06:12.732Z",
+      "code": 0,
+      "stdout": "",
+      "stderr": "Artifact reuse unavailable: Artifact digest mismatch. Complete verification will run.\n",
+      "output": "reused=false\n",
+      "passed": true
+    },
+    {
+      "name": "wrong-zip-member",
+      "startedAt": "2026-10-05T07:06:12.739Z",
+      "endedAt": "2026-10-05T07:06:12.797Z",
+      "code": 0,
+      "stdout": "",
+      "stderr": "Artifact reuse unavailable: Unexpected artifact archive. Complete verification will run.\n",
+      "output": "reused=false\n",
+      "passed": true
+    },
+    {
+      "name": "unsafe-tar",
+      "startedAt": "2026-10-05T07:06:12.806Z",
+      "endedAt": "2026-10-05T07:06:12.868Z",
+      "code": 0,
+      "stdout": "",
+      "stderr": "Artifact reuse unavailable: Unsafe artifact paths or links. Complete verification will run.\n",
+      "output": "reused=false\n",
+      "passed": true
+    },
+    {
+      "name": "wrong-release-base",
+      "startedAt": "2026-10-05T07:06:12.874Z",
+      "endedAt": "2026-10-05T07:06:12.942Z",
+      "code": 0,
+      "stdout": "",
+      "stderr": "Artifact reuse unavailable: Tested artifact tree differs from main. Complete verification will run.\n",
+      "output": "reused=false\n",
+      "passed": true
+    },
+    {
+      "name": "wrong-release-tree",
+      "startedAt": "2026-10-05T07:06:12.953Z",
+      "endedAt": "2026-10-05T07:06:13.025Z",
+      "code": 0,
+      "stdout": "",
+      "stderr": "Artifact reuse unavailable: Tested artifact tree differs from main. Complete verification will run.\n",
+      "output": "reused=false\n",
+      "passed": true
+    }
+  ],
+  "allPassed": true
+}

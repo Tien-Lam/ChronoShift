@@ -1,0 +1,78 @@
+{
+  "name": "unexpected-zip-member",
+  "expectedReused": false,
+  "passed": true,
+  "start": "2026-10-05T06:32:44.593Z",
+  "end": "2026-10-05T06:32:44.722Z",
+  "stdout": "",
+  "stderr": "Artifact reuse unavailable: Unexpected artifact archive. Complete verification will run.\n",
+  "code": 0,
+  "output": "prior=value\nreused=false\n",
+  "outputSha256": "b63e8e3a74135994dfa9dd9c238a1cb9806bdf77ad9e09bfc41ab24b5c20d44f",
+  "zipSha256": "db5d860ed56dcddbda2613f2c6c671430c7e5343e0ff45890241b876db81f3da",
+  "zipBytes": 1128,
+  "beforeInventory": {
+    "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+  },
+  "afterInventory": {
+    "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+  },
+  "requests": [
+    {
+      "at": "2026-10-05T06:32:44.658Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:32:44.658Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:32:44.658Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/actions/workflows/web.yml"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:32:44.676Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/actions/workflows/11/runs?event=pull_request&status=success&per_page=30"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:32:44.689Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/commits/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:32:44.704Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/actions/runs/21/jobs?per_page=100"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:32:44.704Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/actions/runs/21/artifacts?per_page=100"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:32:44.716Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/actions/artifacts/31/zip"
+      ]
+    }
+  ]
+}

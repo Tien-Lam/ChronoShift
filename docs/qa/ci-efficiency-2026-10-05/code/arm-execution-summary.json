@@ -1,0 +1,249 @@
+{
+  "at": "2026-10-05T06:55:44.753Z",
+  "run": 37274080414,
+  "head": "52e8d9c3bc2ba50f6ba2990dde5a128a37849172",
+  "attempt": 1,
+  "job": {
+    "id": 111647128698,
+    "start": "2026-10-05T06:46:00Z",
+    "end": "2026-10-05T06:52:02Z",
+    "seconds": 362,
+    "roundedMinutes": 7,
+    "labels": [
+      "ubuntu-24.04-arm"
+    ]
+  },
+  "browserStep": {
+    "start": "2026-10-05T06:46:54Z",
+    "end": "2026-10-05T06:51:54Z",
+    "seconds": 300
+  },
+  "counts": {
+    "initial": 258,
+    "unique": 258,
+    "passed": 249,
+    "skipped": 9,
+    "retries": 0,
+    "failures": 0
+  },
+  "sameIdentitySetAsInstrumentedControl": true,
+  "identityHash": "557a77fab6c4ab63fb7fed56eecc319be89e117a2ebab9d47a0fc2f6c297869b",
+  "projects": {
+    "foldable": {
+      "initial": 3,
+      "passed": 3,
+      "skipped": 0
+    },
+    "chromium": {
+      "initial": 51,
+      "passed": 51,
+      "skipped": 0
+    },
+    "firefox": {
+      "initial": 51,
+      "passed": 48,
+      "skipped": 3
+    },
+    "webkit": {
+      "initial": 51,
+      "passed": 48,
+      "skipped": 3
+    },
+    "android-emulation": {
+      "initial": 51,
+      "passed": 51,
+      "skipped": 0
+    },
+    "iphone-emulation": {
+      "initial": 51,
+      "passed": 48,
+      "skipped": 3
+    }
+  },
+  "cdpCases": [
+    {
+      "time": "2026-10-05T06:46:57.8089250Z",
+      "status": "passed",
+      "number": 2,
+      "project": "foldable",
+      "location": "e2e/foldable.spec.ts:112:0",
+      "title": "notch and home-indicator safe areas inset the task",
+      "retry": 0,
+      "duration": "1.2s",
+      "key": "foldable|e2e/foldable.spec.ts:112:0|notch and home-indicator safe areas inset the task"
+    },
+    {
+      "time": "2026-10-05T06:46:58.4510405Z",
+      "status": "passed",
+      "number": 1,
+      "project": "foldable",
+      "location": "e2e/foldable.spec.ts:70:0",
+      "title": "tabletop posture confines the scrollable task to the upper screen",
+      "retry": 0,
+      "duration": "1.8s",
+      "key": "foldable|e2e/foldable.spec.ts:70:0|tabletop posture confines the scrollable task to the upper screen"
+    },
+    {
+      "time": "2026-10-05T06:46:58.9196468Z",
+      "status": "passed",
+      "number": 3,
+      "project": "foldable",
+      "location": "e2e/foldable.spec.ts:4:0",
+      "title": "input and results avoid a vertical hinge and survive folding",
+      "retry": 0,
+      "duration": "2.3s",
+      "key": "foldable|e2e/foldable.spec.ts:4:0|input and results avoid a vertical hinge and survive folding"
+    },
+    {
+      "time": "2026-10-05T06:47:35.6282867Z",
+      "status": "passed",
+      "number": 47,
+      "project": "chromium",
+      "location": "e2e/uncontrolled.spec.ts:102:0",
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "retry": 0,
+      "duration": "2.9s",
+      "key": "chromium|e2e/uncontrolled.spec.ts:102:0|an activated worker reclaims a hard-refreshed tab without reloading its draft"
+    },
+    {
+      "time": "2026-10-05T06:47:38.7815752Z",
+      "status": "passed",
+      "number": 49,
+      "project": "chromium",
+      "location": "e2e/uncontrolled.spec.ts:227:0",
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "retry": 0,
+      "duration": "5.0s",
+      "key": "chromium|e2e/uncontrolled.spec.ts:227:0|an older active worker cannot mark an uncontrolled tab ready or activate its waiting update"
+    },
+    {
+      "time": "2026-10-05T06:47:40.4865474Z",
+      "status": "passed",
+      "number": 48,
+      "project": "chromium",
+      "location": "e2e/uncontrolled.spec.ts:135:0",
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "retry": 0,
+      "duration": "6.8s",
+      "key": "chromium|e2e/uncontrolled.spec.ts:135:0|an explicit update recovers a timed-out readiness probe without another reload"
+    },
+    {
+      "time": "2026-10-05T06:50:48.7322400Z",
+      "status": "passed",
+      "number": 200,
+      "project": "android-emulation",
+      "location": "e2e/uncontrolled.spec.ts:102:0",
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "retry": 0,
+      "duration": "3.1s",
+      "key": "android-emulation|e2e/uncontrolled.spec.ts:102:0|an activated worker reclaims a hard-refreshed tab without reloading its draft"
+    },
+    {
+      "time": "2026-10-05T06:50:52.4669988Z",
+      "status": "passed",
+      "number": 202,
+      "project": "android-emulation",
+      "location": "e2e/uncontrolled.spec.ts:227:0",
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "retry": 0,
+      "duration": "5.8s",
+      "key": "android-emulation|e2e/uncontrolled.spec.ts:227:0|an older active worker cannot mark an uncontrolled tab ready or activate its waiting update"
+    },
+    {
+      "time": "2026-10-05T06:50:53.2767383Z",
+      "status": "passed",
+      "number": 201,
+      "project": "android-emulation",
+      "location": "e2e/uncontrolled.spec.ts:135:0",
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "retry": 0,
+      "duration": "6.7s",
+      "key": "android-emulation|e2e/uncontrolled.spec.ts:135:0|an explicit update recovers a timed-out readiness probe without another reload"
+    }
+  ],
+  "resources": [
+    {
+      "at": "2026-10-05T06:46:54.812Z",
+      "phase": "before",
+      "platform": "linux",
+      "architecture": "arm64",
+      "osRelease": "6.17.0-1022-azure",
+      "availableParallelism": 4,
+      "logicalCpus": 4,
+      "cpuModel": "unknown",
+      "totalMemoryBytes": 16722046976,
+      "cgroup": {
+        "cpu.max": "max 100000",
+        "cpu.stat": "usage_usec 27416318\nuser_usec 23523587\nsystem_usec 3892730\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+        "memory.max": "max",
+        "memory.peak": "1510834176",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+      }
+    },
+    {
+      "at": "2026-10-05T06:51:54.781Z",
+      "phase": "after",
+      "platform": "linux",
+      "architecture": "arm64",
+      "osRelease": "6.17.0-1022-azure",
+      "availableParallelism": 4,
+      "logicalCpus": 4,
+      "cpuModel": "unknown",
+      "totalMemoryBytes": 16722046976,
+      "cgroup": {
+        "cpu.max": "max 100000",
+        "cpu.stat": "usage_usec 1054383900\nuser_usec 914156501\nsystem_usec 140227398\nnice_usec 46382000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+        "memory.max": "max",
+        "memory.peak": "5481730048",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+      }
+    }
+  ],
+  "cgroupCpuUsageDeltaUsec": 1026967582,
+  "cgroupCpuThrottledDeltaUsec": 0,
+  "cgroupSemantics": "all activity in observed cgroup interval; memory peak includes lifetime/descendants; no effective ancestor-pressure inference",
+  "artifact": {
+    "id": 11328734137,
+    "node_id": "MDg6QXJ0aWZhY3QxMTMyODczNDEzNw==",
+    "name": "github-pages",
+    "size_in_bytes": 376315,
+    "url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11328734137",
+    "archive_download_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11328734137/zip",
+    "expired": false,
+    "digest": "sha256:4c720cbd8f54e664b14dc4988b106e25267807c51b1e4ea563834e684c3bef3a",
+    "created_at": "2026-10-05T06:51:59Z",
+    "updated_at": "2026-10-05T06:51:59Z",
+    "expires_at": "2026-10-06T06:51:58Z",
+    "workflow_run": {
+      "id": 37274080414,
+      "repository_id": 1206473449,
+      "head_repository_id": 1206473449,
+      "head_branch": "codex/ci-efficiency-profiling",
+      "head_sha": "52e8d9c3bc2ba50f6ba2990dde5a128a37849172"
+    }
+  },
+  "requiredSteps": [
+    "Run bun run format:check",
+    "Unit tests and production build",
+    "Verify the standalone conversion corpus audit",
+    "Run bun run test:browser",
+    "Verify repository-subpath deployment",
+    "Upload the verified Pages build"
+  ],
+  "failedDiagnosticStep": {
+    "name": "Publish failed-attempt diagnostics",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 17,
+    "started_at": "2026-10-05T06:51:59Z",
+    "completed_at": "2026-10-05T06:51:59Z"
+  },
+  "timingStep": {
+    "name": "Retain bounded browser timing metadata",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 13,
+    "started_at": "2026-10-05T06:51:54Z",
+    "completed_at": "2026-10-05T06:51:54Z"
+  }
+}

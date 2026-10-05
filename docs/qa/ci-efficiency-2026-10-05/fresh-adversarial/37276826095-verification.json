@@ -1,0 +1,1123 @@
+{
+  "startedAt": "2026-10-05T07:23:37.301Z",
+  "endedAt": "2026-10-05T07:23:41.740Z",
+  "runId": "37276826095",
+  "mode": "fallback",
+  "commands": [
+    {
+      "args": [
+        "gh",
+        "api",
+        "repos/Tien-Lam/ChronoShift/actions/artifacts/11331175437/zip"
+      ],
+      "began": "2026-10-05T07:23:37.301Z",
+      "ended": "2026-10-05T07:23:39.970Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "unzip",
+        "-Z1",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.zip"
+      ],
+      "began": "2026-10-05T07:23:39.971Z",
+      "ended": "2026-10-05T07:23:39.973Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "unzip",
+        "-p",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.zip",
+        "artifact.tar"
+      ],
+      "began": "2026-10-05T07:23:39.973Z",
+      "ended": "2026-10-05T07:23:39.982Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-tf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.tar"
+      ],
+      "began": "2026-10-05T07:23:39.982Z",
+      "ended": "2026-10-05T07:23:39.985Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-tf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/candidate-pages.tar"
+      ],
+      "began": "2026-10-05T07:23:39.982Z",
+      "ended": "2026-10-05T07:23:39.986Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-tvf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.tar"
+      ],
+      "began": "2026-10-05T07:23:39.985Z",
+      "ended": "2026-10-05T07:23:39.987Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-tvf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/candidate-pages.tar"
+      ],
+      "began": "2026-10-05T07:23:39.986Z",
+      "ended": "2026-10-05T07:23:39.991Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.tar",
+        "./assets/geist-latin-variable-Dm3htQBi.woff2"
+      ],
+      "began": "2026-10-05T07:23:39.987Z",
+      "ended": "2026-10-05T07:23:39.995Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.tar",
+        "./fonts/README.txt"
+      ],
+      "began": "2026-10-05T07:23:39.988Z",
+      "ended": "2026-10-05T07:23:39.995Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.tar",
+        "./assets/worker-C690IjaR.js"
+      ],
+      "began": "2026-10-05T07:23:39.988Z",
+      "ended": "2026-10-05T07:23:39.995Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.tar",
+        "./assets/index-CQJea-JE.css"
+      ],
+      "began": "2026-10-05T07:23:39.987Z",
+      "ended": "2026-10-05T07:23:39.995Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.tar",
+        "./fonts/geist-OFL.txt"
+      ],
+      "began": "2026-10-05T07:23:39.988Z",
+      "ended": "2026-10-05T07:23:39.995Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.tar",
+        "./icon-192.png"
+      ],
+      "began": "2026-10-05T07:23:39.988Z",
+      "ended": "2026-10-05T07:23:39.995Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.tar",
+        "./icon-512.png"
+      ],
+      "began": "2026-10-05T07:23:39.989Z",
+      "ended": "2026-10-05T07:23:39.995Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.tar",
+        "./index.html"
+      ],
+      "began": "2026-10-05T07:23:39.990Z",
+      "ended": "2026-10-05T07:23:39.995Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.tar",
+        "./icon.svg"
+      ],
+      "began": "2026-10-05T07:23:39.989Z",
+      "ended": "2026-10-05T07:23:39.995Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.tar",
+        "./manifest.webmanifest"
+      ],
+      "began": "2026-10-05T07:23:39.990Z",
+      "ended": "2026-10-05T07:23:39.995Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.tar",
+        "./release.json"
+      ],
+      "began": "2026-10-05T07:23:39.990Z",
+      "ended": "2026-10-05T07:23:39.995Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.tar",
+        "./sw.js"
+      ],
+      "began": "2026-10-05T07:23:39.990Z",
+      "ended": "2026-10-05T07:23:39.995Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.tar",
+        "./third-party-notices.txt"
+      ],
+      "began": "2026-10-05T07:23:39.991Z",
+      "ended": "2026-10-05T07:23:39.995Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/candidate-pages.tar",
+        "./assets/geist-latin-variable-Dm3htQBi.woff2"
+      ],
+      "began": "2026-10-05T07:23:39.991Z",
+      "ended": "2026-10-05T07:23:39.996Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/candidate-pages.tar",
+        "./assets/index-CQJea-JE.css"
+      ],
+      "began": "2026-10-05T07:23:39.992Z",
+      "ended": "2026-10-05T07:23:39.996Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/candidate-pages.tar",
+        "./fonts/README.txt"
+      ],
+      "began": "2026-10-05T07:23:39.992Z",
+      "ended": "2026-10-05T07:23:39.996Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/candidate-pages.tar",
+        "./assets/worker-C690IjaR.js"
+      ],
+      "began": "2026-10-05T07:23:39.992Z",
+      "ended": "2026-10-05T07:23:39.996Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/candidate-pages.tar",
+        "./fonts/geist-OFL.txt"
+      ],
+      "began": "2026-10-05T07:23:39.992Z",
+      "ended": "2026-10-05T07:23:39.996Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/candidate-pages.tar",
+        "./icon-192.png"
+      ],
+      "began": "2026-10-05T07:23:39.993Z",
+      "ended": "2026-10-05T07:23:39.996Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/candidate-pages.tar",
+        "./icon-512.png"
+      ],
+      "began": "2026-10-05T07:23:39.993Z",
+      "ended": "2026-10-05T07:23:39.996Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/candidate-pages.tar",
+        "./icon.svg"
+      ],
+      "began": "2026-10-05T07:23:39.993Z",
+      "ended": "2026-10-05T07:23:39.996Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.tar",
+        "./assets/index-CzXW0WLz.js"
+      ],
+      "began": "2026-10-05T07:23:39.988Z",
+      "ended": "2026-10-05T07:23:39.996Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/candidate-pages.tar",
+        "./index.html"
+      ],
+      "began": "2026-10-05T07:23:39.993Z",
+      "ended": "2026-10-05T07:23:39.996Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/candidate-pages.tar",
+        "./release.json"
+      ],
+      "began": "2026-10-05T07:23:39.993Z",
+      "ended": "2026-10-05T07:23:39.996Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/candidate-pages.tar",
+        "./sw.js"
+      ],
+      "began": "2026-10-05T07:23:39.994Z",
+      "ended": "2026-10-05T07:23:39.996Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/candidate-pages.tar",
+        "./manifest.webmanifest"
+      ],
+      "began": "2026-10-05T07:23:39.993Z",
+      "ended": "2026-10-05T07:23:39.996Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/candidate-pages.tar",
+        "./third-party-notices.txt"
+      ],
+      "began": "2026-10-05T07:23:39.994Z",
+      "ended": "2026-10-05T07:23:39.996Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/candidate-pages.tar",
+        "./assets/index-CzXW0WLz.js"
+      ],
+      "began": "2026-10-05T07:23:39.992Z",
+      "ended": "2026-10-05T07:23:39.996Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-adversarial/37276826095-pages.tar",
+        "./release.json"
+      ],
+      "began": "2026-10-05T07:23:39.997Z",
+      "ended": "2026-10-05T07:23:39.999Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "gh",
+        "api",
+        "repos/Tien-Lam/ChronoShift/commits/28059a91ec9984dea4d079b3f684b3a27af669f0"
+      ],
+      "began": "2026-10-05T07:23:39.999Z",
+      "ended": "2026-10-05T07:23:40.901Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "gh",
+        "api",
+        "repos/Tien-Lam/ChronoShift/commits/main"
+      ],
+      "began": "2026-10-05T07:23:39.999Z",
+      "ended": "2026-10-05T07:23:41.160Z",
+      "error": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "gh",
+        "api",
+        "repos/Tien-Lam/ChronoShift/commits/28059a91ec9984dea4d079b3f684b3a27af669f0"
+      ],
+      "began": "2026-10-05T07:23:39.999Z",
+      "ended": "2026-10-05T07:23:41.349Z",
+      "error": "",
+      "code": 0
+    }
+  ],
+  "artifact": {
+    "metadata": {
+      "id": 11331175437,
+      "node_id": "MDg6QXJ0aWZhY3QxMTMzMTE3NTQzNw==",
+      "name": "github-pages",
+      "size_in_bytes": 374676,
+      "url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11331175437",
+      "archive_download_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11331175437/zip",
+      "expired": false,
+      "digest": "sha256:1028f12e73b87ebb12f0bb37b1cddac6803fd4ccfc7e562494b9f8069c39da95",
+      "created_at": "2026-10-05T07:22:40Z",
+      "updated_at": "2026-10-05T07:22:40Z",
+      "expires_at": "2026-10-19T07:22:39Z",
+      "workflow_run": {
+        "id": 37276826095,
+        "repository_id": 1206473449,
+        "head_repository_id": 1206473449,
+        "head_branch": "main",
+        "head_sha": "28059a91ec9984dea4d079b3f684b3a27af669f0"
+      }
+    },
+    "zipSha256": "1028f12e73b87ebb12f0bb37b1cddac6803fd4ccfc7e562494b9f8069c39da95",
+    "tarSha256": "b3adcc47cdc25666f399e6d00bdfaecd160929e31557b0e13a48ddd5260cd96d",
+    "zipBytes": 374676,
+    "tarBytes": 1218560,
+    "files": [
+      {
+        "path": "assets/geist-latin-variable-Dm3htQBi.woff2",
+        "bytes": 28400,
+        "sha256": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316"
+      },
+      {
+        "path": "assets/index-CQJea-JE.css",
+        "bytes": 20760,
+        "sha256": "d1862cc191ef6ba2e2883719e3b2a681a272643267624adb6ec95b3802887c4f"
+      },
+      {
+        "path": "assets/index-CzXW0WLz.js",
+        "bytes": 775127,
+        "sha256": "891b0555010bc9c56b712268b26254f64f43f045cf9ba55cfc9fa64f716eeb93"
+      },
+      {
+        "path": "assets/worker-C690IjaR.js",
+        "bytes": 221144,
+        "sha256": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704"
+      },
+      {
+        "path": "fonts/README.txt",
+        "bytes": 483,
+        "sha256": "542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d"
+      },
+      {
+        "path": "fonts/geist-OFL.txt",
+        "bytes": 4386,
+        "sha256": "cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952"
+      },
+      {
+        "path": "icon-192.png",
+        "bytes": 7136,
+        "sha256": "cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754"
+      },
+      {
+        "path": "icon-512.png",
+        "bytes": 19658,
+        "sha256": "b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7"
+      },
+      {
+        "path": "icon.svg",
+        "bytes": 355,
+        "sha256": "62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f"
+      },
+      {
+        "path": "index.html",
+        "bytes": 1248,
+        "sha256": "8f0180f575d0b47100674dbbb2ad8950058c88504ccfd22aeb9e454a366f2e30"
+      },
+      {
+        "path": "manifest.webmanifest",
+        "bytes": 922,
+        "sha256": "28d27d867912adc530496f0de3e80cc0f65cde9f9f9f55281a0a007eda0d8dde"
+      },
+      {
+        "path": "release.json",
+        "bytes": 91,
+        "sha256": "21b6daa91ef8b8dfe2b0ed487b085106cb626f43ae2f7d7bce5f3a1be524f66c"
+      },
+      {
+        "path": "sw.js",
+        "bytes": 11662,
+        "sha256": "4ba02abb442aab30ecfa834bbd64e31b2ecd5fe32bf01ad298a87814a67969c7"
+      },
+      {
+        "path": "third-party-notices.txt",
+        "bytes": 112585,
+        "sha256": "615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037"
+      }
+    ],
+    "release": {
+      "sourceCommit": "28059a91ec9984dea4d079b3f684b3a27af669f0",
+      "base": "/ChronoShift/"
+    }
+  },
+  "ciComparable": [
+    {
+      "path": "assets/geist-latin-variable-Dm3htQBi.woff2",
+      "bytes": 28400,
+      "sha256": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316"
+    },
+    {
+      "path": "assets/index-CQJea-JE.css",
+      "bytes": 20760,
+      "sha256": "d1862cc191ef6ba2e2883719e3b2a681a272643267624adb6ec95b3802887c4f"
+    },
+    {
+      "path": "assets/index-CzXW0WLz.js",
+      "bytes": 775127,
+      "sha256": "891b0555010bc9c56b712268b26254f64f43f045cf9ba55cfc9fa64f716eeb93"
+    },
+    {
+      "path": "assets/worker-C690IjaR.js",
+      "bytes": 221144,
+      "sha256": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704"
+    }
+  ],
+  "pagesComparable": [
+    {
+      "path": "assets/geist-latin-variable-Dm3htQBi.woff2",
+      "bytes": 28400,
+      "sha256": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316"
+    },
+    {
+      "path": "assets/index-CQJea-JE.css",
+      "bytes": 20760,
+      "sha256": "d1862cc191ef6ba2e2883719e3b2a681a272643267624adb6ec95b3802887c4f"
+    },
+    {
+      "path": "assets/index-CzXW0WLz.js",
+      "bytes": 775127,
+      "sha256": "891b0555010bc9c56b712268b26254f64f43f045cf9ba55cfc9fa64f716eeb93"
+    },
+    {
+      "path": "assets/worker-C690IjaR.js",
+      "bytes": 221144,
+      "sha256": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704"
+    }
+  ],
+  "inventoryMatches": true,
+  "trees": {
+    "publishing": "c08c0f507faf6f82fac5ce790eb2e1f89fa59cdf",
+    "tested": "c08c0f507faf6f82fac5ce790eb2e1f89fa59cdf",
+    "currentMain": "c08c0f507faf6f82fac5ce790eb2e1f89fa59cdf",
+    "currentMainSHA": "28059a91ec9984dea4d079b3f684b3a27af669f0"
+  },
+  "exactTree": true,
+  "run": {
+    "event": "workflow_dispatch",
+    "branch": "main",
+    "head": "28059a91ec9984dea4d079b3f684b3a27af669f0",
+    "conclusion": "success",
+    "attempt": 1
+  },
+  "jobs": {
+    "total": 3,
+    "executed": [
+      {
+        "name": "prepare",
+        "labels": [
+          "ubuntu-slim"
+        ],
+        "result": "success",
+        "started": "2026-10-05T07:16:37Z",
+        "ended": "2026-10-05T07:16:52Z",
+        "seconds": 15,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-05T07:16:38Z",
+            "completed_at": "2026-10-05T07:16:40Z"
+          },
+          {
+            "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-05T07:16:40Z",
+            "completed_at": "2026-10-05T07:16:46Z"
+          },
+          {
+            "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-05T07:16:46Z",
+            "completed_at": "2026-10-05T07:16:51Z"
+          },
+          {
+            "name": "Reuse the exact verified PR artifact",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 4,
+            "started_at": "2026-10-05T07:16:51Z",
+            "completed_at": "2026-10-05T07:16:51Z"
+          },
+          {
+            "name": "Run actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 5,
+            "started_at": "2026-10-05T07:16:51Z",
+            "completed_at": "2026-10-05T07:16:51Z"
+          },
+          {
+            "name": "Upload the verified Pages build",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 6,
+            "started_at": "2026-10-05T07:16:51Z",
+            "completed_at": "2026-10-05T07:16:51Z"
+          },
+          {
+            "name": "Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 7,
+            "started_at": "2026-10-05T07:16:51Z",
+            "completed_at": "2026-10-05T07:16:51Z"
+          },
+          {
+            "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14,
+            "started_at": "2026-10-05T07:16:51Z",
+            "completed_at": "2026-10-05T07:16:51Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15,
+            "started_at": "2026-10-05T07:16:51Z",
+            "completed_at": "2026-10-05T07:16:51Z"
+          }
+        ]
+      },
+      {
+        "name": "verify / web",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "result": "success",
+        "started": "2026-10-05T07:16:54Z",
+        "ended": "2026-10-05T07:22:44Z",
+        "seconds": 350,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-05T07:16:55Z",
+            "completed_at": "2026-10-05T07:16:57Z"
+          },
+          {
+            "name": "Initialize containers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-05T07:16:57Z",
+            "completed_at": "2026-10-05T07:17:31Z"
+          },
+          {
+            "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-05T07:17:31Z",
+            "completed_at": "2026-10-05T07:17:35Z"
+          },
+          {
+            "name": "Capture the checked-in corpus audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-05T07:17:35Z",
+            "completed_at": "2026-10-05T07:17:35Z"
+          },
+          {
+            "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-05T07:17:35Z",
+            "completed_at": "2026-10-05T07:17:40Z"
+          },
+          {
+            "name": "Run bun install --frozen-lockfile",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-05T07:17:40Z",
+            "completed_at": "2026-10-05T07:17:40Z"
+          },
+          {
+            "name": "Verify the pinned browser image matches the dependency",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-05T07:17:40Z",
+            "completed_at": "2026-10-05T07:17:41Z"
+          },
+          {
+            "name": "Run bun run format:check",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8,
+            "started_at": "2026-10-05T07:17:41Z",
+            "completed_at": "2026-10-05T07:17:43Z"
+          },
+          {
+            "name": "Unit tests and production build",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-10-05T07:17:43Z",
+            "completed_at": "2026-10-05T07:17:44Z"
+          },
+          {
+            "name": "Verify the standalone conversion corpus audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-10-05T07:17:44Z",
+            "completed_at": "2026-10-05T07:17:44Z"
+          },
+          {
+            "name": "Run bun run test:browser",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-10-05T07:17:44Z",
+            "completed_at": "2026-10-05T07:22:35Z"
+          },
+          {
+            "name": "Record browser resource usage",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-10-05T07:22:35Z",
+            "completed_at": "2026-10-05T07:22:35Z"
+          },
+          {
+            "name": "Retain bounded browser timing metadata",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 13,
+            "started_at": "2026-10-05T07:22:35Z",
+            "completed_at": "2026-10-05T07:22:35Z"
+          },
+          {
+            "name": "Run actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14,
+            "started_at": "2026-10-05T07:22:35Z",
+            "completed_at": "2026-10-05T07:22:35Z"
+          },
+          {
+            "name": "Verify repository-subpath deployment",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15,
+            "started_at": "2026-10-05T07:22:35Z",
+            "completed_at": "2026-10-05T07:22:39Z"
+          },
+          {
+            "name": "Upload the verified Pages build",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16,
+            "started_at": "2026-10-05T07:22:39Z",
+            "completed_at": "2026-10-05T07:22:40Z"
+          },
+          {
+            "name": "Publish failed-attempt diagnostics",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 17,
+            "started_at": "2026-10-05T07:22:40Z",
+            "completed_at": "2026-10-05T07:22:40Z"
+          },
+          {
+            "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 33,
+            "started_at": "2026-10-05T07:22:40Z",
+            "completed_at": "2026-10-05T07:22:40Z"
+          },
+          {
+            "name": "Stop containers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 34,
+            "started_at": "2026-10-05T07:22:40Z",
+            "completed_at": "2026-10-05T07:22:40Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 35,
+            "started_at": "2026-10-05T07:22:40Z",
+            "completed_at": "2026-10-05T07:22:40Z"
+          }
+        ]
+      },
+      {
+        "name": "deploy",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "result": "success",
+        "started": "2026-10-05T07:22:48Z",
+        "ended": "2026-10-05T07:22:58Z",
+        "seconds": 10,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-05T07:22:49Z",
+            "completed_at": "2026-10-05T07:22:50Z"
+          },
+          {
+            "name": "Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-05T07:22:50Z",
+            "completed_at": "2026-10-05T07:22:56Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-05T07:22:56Z",
+            "completed_at": "2026-10-05T07:22:56Z"
+          }
+        ]
+      }
+    ],
+    "skipped": []
+  },
+  "singleDeployment": true,
+  "publicFiles": [
+    {
+      "path": "assets/geist-latin-variable-Dm3htQBi.woff2",
+      "began": "2026-10-05T07:23:41.353Z",
+      "ended": "2026-10-05T07:23:41.474Z",
+      "status": 200,
+      "url": "https://tien-lam.github.io/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2?independent-audit=1791185021353",
+      "contentType": "font/woff2",
+      "expectedSha256": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316",
+      "actualSha256": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316",
+      "expectedBytes": 28400,
+      "actualBytes": 28400,
+      "matched": true
+    },
+    {
+      "path": "assets/index-CQJea-JE.css",
+      "began": "2026-10-05T07:23:41.353Z",
+      "ended": "2026-10-05T07:23:41.461Z",
+      "status": 200,
+      "url": "https://tien-lam.github.io/ChronoShift/assets/index-CQJea-JE.css?independent-audit=1791185021353",
+      "contentType": "text/css; charset=utf-8",
+      "expectedSha256": "d1862cc191ef6ba2e2883719e3b2a681a272643267624adb6ec95b3802887c4f",
+      "actualSha256": "d1862cc191ef6ba2e2883719e3b2a681a272643267624adb6ec95b3802887c4f",
+      "expectedBytes": 20760,
+      "actualBytes": 20760,
+      "matched": true
+    },
+    {
+      "path": "assets/index-CzXW0WLz.js",
+      "began": "2026-10-05T07:23:41.353Z",
+      "ended": "2026-10-05T07:23:41.538Z",
+      "status": 200,
+      "url": "https://tien-lam.github.io/ChronoShift/assets/index-CzXW0WLz.js?independent-audit=1791185021353",
+      "contentType": "application/javascript; charset=utf-8",
+      "expectedSha256": "891b0555010bc9c56b712268b26254f64f43f045cf9ba55cfc9fa64f716eeb93",
+      "actualSha256": "891b0555010bc9c56b712268b26254f64f43f045cf9ba55cfc9fa64f716eeb93",
+      "expectedBytes": 775127,
+      "actualBytes": 775127,
+      "matched": true
+    },
+    {
+      "path": "assets/worker-C690IjaR.js",
+      "began": "2026-10-05T07:23:41.353Z",
+      "ended": "2026-10-05T07:23:41.493Z",
+      "status": 200,
+      "url": "https://tien-lam.github.io/ChronoShift/assets/worker-C690IjaR.js?independent-audit=1791185021353",
+      "contentType": "application/javascript; charset=utf-8",
+      "expectedSha256": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+      "actualSha256": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+      "expectedBytes": 221144,
+      "actualBytes": 221144,
+      "matched": true
+    },
+    {
+      "path": "fonts/README.txt",
+      "began": "2026-10-05T07:23:41.353Z",
+      "ended": "2026-10-05T07:23:41.436Z",
+      "status": 200,
+      "url": "https://tien-lam.github.io/ChronoShift/fonts/README.txt?independent-audit=1791185021353",
+      "contentType": "text/plain; charset=utf-8",
+      "expectedSha256": "542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d",
+      "actualSha256": "542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d",
+      "expectedBytes": 483,
+      "actualBytes": 483,
+      "matched": true
+    },
+    {
+      "path": "fonts/geist-OFL.txt",
+      "began": "2026-10-05T07:23:41.353Z",
+      "ended": "2026-10-05T07:23:41.439Z",
+      "status": 200,
+      "url": "https://tien-lam.github.io/ChronoShift/fonts/geist-OFL.txt?independent-audit=1791185021353",
+      "contentType": "text/plain; charset=utf-8",
+      "expectedSha256": "cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952",
+      "actualSha256": "cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952",
+      "expectedBytes": 4386,
+      "actualBytes": 4386,
+      "matched": true
+    },
+    {
+      "path": "icon-192.png",
+      "began": "2026-10-05T07:23:41.353Z",
+      "ended": "2026-10-05T07:23:41.440Z",
+      "status": 200,
+      "url": "https://tien-lam.github.io/ChronoShift/icon-192.png?independent-audit=1791185021353",
+      "contentType": "image/png",
+      "expectedSha256": "cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754",
+      "actualSha256": "cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754",
+      "expectedBytes": 7136,
+      "actualBytes": 7136,
+      "matched": true
+    },
+    {
+      "path": "icon-512.png",
+      "began": "2026-10-05T07:23:41.353Z",
+      "ended": "2026-10-05T07:23:41.569Z",
+      "status": 200,
+      "url": "https://tien-lam.github.io/ChronoShift/icon-512.png?independent-audit=1791185021353",
+      "contentType": "image/png",
+      "expectedSha256": "b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7",
+      "actualSha256": "b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7",
+      "expectedBytes": 19658,
+      "actualBytes": 19658,
+      "matched": true
+    },
+    {
+      "path": "icon.svg",
+      "began": "2026-10-05T07:23:41.353Z",
+      "ended": "2026-10-05T07:23:41.655Z",
+      "status": 200,
+      "url": "https://tien-lam.github.io/ChronoShift/icon.svg?independent-audit=1791185021353",
+      "contentType": "image/svg+xml",
+      "expectedSha256": "62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f",
+      "actualSha256": "62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f",
+      "expectedBytes": 355,
+      "actualBytes": 355,
+      "matched": true
+    },
+    {
+      "path": "index.html",
+      "began": "2026-10-05T07:23:41.353Z",
+      "ended": "2026-10-05T07:23:41.652Z",
+      "status": 200,
+      "url": "https://tien-lam.github.io/ChronoShift/index.html?independent-audit=1791185021353",
+      "contentType": "text/html; charset=utf-8",
+      "expectedSha256": "8f0180f575d0b47100674dbbb2ad8950058c88504ccfd22aeb9e454a366f2e30",
+      "actualSha256": "8f0180f575d0b47100674dbbb2ad8950058c88504ccfd22aeb9e454a366f2e30",
+      "expectedBytes": 1248,
+      "actualBytes": 1248,
+      "matched": true
+    },
+    {
+      "path": "manifest.webmanifest",
+      "began": "2026-10-05T07:23:41.353Z",
+      "ended": "2026-10-05T07:23:41.642Z",
+      "status": 200,
+      "url": "https://tien-lam.github.io/ChronoShift/manifest.webmanifest?independent-audit=1791185021353",
+      "contentType": "application/manifest+json; charset=utf-8",
+      "expectedSha256": "28d27d867912adc530496f0de3e80cc0f65cde9f9f9f55281a0a007eda0d8dde",
+      "actualSha256": "28d27d867912adc530496f0de3e80cc0f65cde9f9f9f55281a0a007eda0d8dde",
+      "expectedBytes": 922,
+      "actualBytes": 922,
+      "matched": true
+    },
+    {
+      "path": "release.json",
+      "began": "2026-10-05T07:23:41.353Z",
+      "ended": "2026-10-05T07:23:41.658Z",
+      "status": 200,
+      "url": "https://tien-lam.github.io/ChronoShift/release.json?independent-audit=1791185021353",
+      "contentType": "application/json; charset=utf-8",
+      "expectedSha256": "21b6daa91ef8b8dfe2b0ed487b085106cb626f43ae2f7d7bce5f3a1be524f66c",
+      "actualSha256": "21b6daa91ef8b8dfe2b0ed487b085106cb626f43ae2f7d7bce5f3a1be524f66c",
+      "expectedBytes": 91,
+      "actualBytes": 91,
+      "matched": true
+    },
+    {
+      "path": "sw.js",
+      "began": "2026-10-05T07:23:41.353Z",
+      "ended": "2026-10-05T07:23:41.435Z",
+      "status": 200,
+      "url": "https://tien-lam.github.io/ChronoShift/sw.js?independent-audit=1791185021353",
+      "contentType": "application/javascript; charset=utf-8",
+      "expectedSha256": "4ba02abb442aab30ecfa834bbd64e31b2ecd5fe32bf01ad298a87814a67969c7",
+      "actualSha256": "4ba02abb442aab30ecfa834bbd64e31b2ecd5fe32bf01ad298a87814a67969c7",
+      "expectedBytes": 11662,
+      "actualBytes": 11662,
+      "matched": true
+    },
+    {
+      "path": "third-party-notices.txt",
+      "began": "2026-10-05T07:23:41.353Z",
+      "ended": "2026-10-05T07:23:41.716Z",
+      "status": 200,
+      "url": "https://tien-lam.github.io/ChronoShift/third-party-notices.txt?independent-audit=1791185021353",
+      "contentType": "text/plain; charset=utf-8",
+      "expectedSha256": "615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037",
+      "actualSha256": "615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037",
+      "expectedBytes": 112585,
+      "actualBytes": 112585,
+      "matched": true
+    }
+  ],
+  "publicRoot": {
+    "status": 200,
+    "url": "https://tien-lam.github.io/ChronoShift/?independent-audit=1791185021353",
+    "expectedSha256": "8f0180f575d0b47100674dbbb2ad8950058c88504ccfd22aeb9e454a366f2e30",
+    "actualSha256": "8f0180f575d0b47100674dbbb2ad8950058c88504ccfd22aeb9e454a366f2e30",
+    "bytes": 1248,
+    "matched": true
+  },
+  "coverageGaps": [
+    "No browser rerun, runtime usability or physical acceptance demonstrated by byte audit.",
+    "No real queued multiple-main publication or fault-injected cancellation/deployment failure run."
+  ]
+}

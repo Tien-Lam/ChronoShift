@@ -1,0 +1,2 @@
+#!/usr/bin/env bun
+const d=await Bun.file(process.env.MOCK_FILE).json(); const p=Bun.argv.at(-1); if(d.fail===p){console.error('injected API failure'); process.exit(1);} if(p.endsWith('/zip')){process.stdout.write(await Bun.file(d.zip).arrayBuffer());}else if(!(p in d.responses)){console.error('unexpected endpoint '+p);process.exit(2);}else{console.log(JSON.stringify(d.responses[p]));}

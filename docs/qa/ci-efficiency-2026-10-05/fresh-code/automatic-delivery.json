@@ -1,0 +1,1148 @@
+{
+  "began": "2026-10-05T07:12:03.292Z",
+  "ended": "2026-10-05T07:12:12.522Z",
+  "mode": "automatic",
+  "run": {
+    "id": 37276181716,
+    "name": "GitHub Pages",
+    "node_id": "WFR_kwLOR-lS6c8AAAAIrdVk1A",
+    "head_branch": "main",
+    "head_sha": "28059a91ec9984dea4d079b3f684b3a27af669f0",
+    "path": ".github/workflows/pages.yml",
+    "display_title": "Consolidate trusted Pages publishing and retain bounded CI diagnostic…",
+    "run_number": 41,
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "workflow_id": 373960372,
+    "check_suite_id": 100962345208,
+    "check_suite_node_id": "CS_kwDOR-lS6c8AAAAXgdMg-A",
+    "url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/runs/37276181716",
+    "html_url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37276181716",
+    "pull_requests": [],
+    "created_at": "2026-10-05T07:09:45Z",
+    "updated_at": "2026-10-05T07:10:33Z",
+    "actor": {
+      "login": "Tien-Lam",
+      "id": 25842958,
+      "node_id": "MDQ6VXNlcjI1ODQyOTU4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25842958?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Tien-Lam",
+      "html_url": "https://github.com/Tien-Lam",
+      "followers_url": "https://api.github.com/users/Tien-Lam/followers",
+      "following_url": "https://api.github.com/users/Tien-Lam/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Tien-Lam/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Tien-Lam/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Tien-Lam/subscriptions",
+      "organizations_url": "https://api.github.com/users/Tien-Lam/orgs",
+      "repos_url": "https://api.github.com/users/Tien-Lam/repos",
+      "events_url": "https://api.github.com/users/Tien-Lam/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Tien-Lam/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "run_attempt": 1,
+    "referenced_workflows": [
+      {
+        "path": "Tien-Lam/ChronoShift/.github/workflows/web.yml@28059a91ec9984dea4d079b3f684b3a27af669f0",
+        "sha": "28059a91ec9984dea4d079b3f684b3a27af669f0",
+        "ref": "refs/heads/main"
+      }
+    ],
+    "run_started_at": "2026-10-05T07:09:45Z",
+    "triggering_actor": {
+      "login": "Tien-Lam",
+      "id": 25842958,
+      "node_id": "MDQ6VXNlcjI1ODQyOTU4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25842958?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Tien-Lam",
+      "html_url": "https://github.com/Tien-Lam",
+      "followers_url": "https://api.github.com/users/Tien-Lam/followers",
+      "following_url": "https://api.github.com/users/Tien-Lam/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Tien-Lam/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Tien-Lam/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Tien-Lam/subscriptions",
+      "organizations_url": "https://api.github.com/users/Tien-Lam/orgs",
+      "repos_url": "https://api.github.com/users/Tien-Lam/repos",
+      "events_url": "https://api.github.com/users/Tien-Lam/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Tien-Lam/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "jobs_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/runs/37276181716/jobs",
+    "logs_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/runs/37276181716/logs",
+    "check_suite_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/check-suites/100962345208",
+    "artifacts_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/runs/37276181716/artifacts",
+    "cancel_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/runs/37276181716/cancel",
+    "rerun_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/runs/37276181716/rerun",
+    "previous_attempt_url": null,
+    "workflow_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/workflows/373960372",
+    "head_commit": {
+      "id": "28059a91ec9984dea4d079b3f684b3a27af669f0",
+      "tree_id": "c08c0f507faf6f82fac5ce790eb2e1f89fa59cdf",
+      "message": "Consolidate trusted Pages publishing and retain bounded CI diagnostics (#37)\n\n* Profile browser gate with bounded sanitized timing metadata\n\n* Measure same-job concurrency against expanded-suite control\n\n* Evaluate bounded timezone rendering and consolidated artifact publication\n\n* Prevent canceled fallback verification from starting deployment\n\n* Reject timezone rendering experiment and measure lower CI contention\n\n* Keep four workers and measure the pinned ARM browser image\n\n* Retain x64 verification after slower ARM experiment",
+      "timestamp": "2026-10-05T07:09:42Z",
+      "author": {
+        "name": "Tien Long Lam",
+        "email": "lamtienlong9@gmail.com"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com"
+      }
+    },
+    "repository": {
+      "id": 1206473449,
+      "node_id": "R_kgDOR-lS6Q",
+      "name": "ChronoShift",
+      "full_name": "Tien-Lam/ChronoShift",
+      "private": false,
+      "owner": {
+        "login": "Tien-Lam",
+        "id": 25842958,
+        "node_id": "MDQ6VXNlcjI1ODQyOTU4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/25842958?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Tien-Lam",
+        "html_url": "https://github.com/Tien-Lam",
+        "followers_url": "https://api.github.com/users/Tien-Lam/followers",
+        "following_url": "https://api.github.com/users/Tien-Lam/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Tien-Lam/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Tien-Lam/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Tien-Lam/subscriptions",
+        "organizations_url": "https://api.github.com/users/Tien-Lam/orgs",
+        "repos_url": "https://api.github.com/users/Tien-Lam/repos",
+        "events_url": "https://api.github.com/users/Tien-Lam/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Tien-Lam/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/Tien-Lam/ChronoShift",
+      "description": "NLP-powered timezone converter for Android. Select text anywhere → converts timestamps to local time.",
+      "fork": false,
+      "url": "https://api.github.com/repos/Tien-Lam/ChronoShift",
+      "forks_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/forks",
+      "keys_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/teams",
+      "hooks_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/hooks",
+      "issue_events_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/events",
+      "assignees_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/tags",
+      "blobs_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/languages",
+      "stargazers_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/stargazers",
+      "contributors_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/contributors",
+      "subscribers_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/subscribers",
+      "subscription_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/subscription",
+      "commits_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/merges",
+      "archive_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/downloads",
+      "issues_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/labels{/name}",
+      "releases_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/releases{/id}",
+      "deployments_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/deployments"
+    },
+    "head_repository": {
+      "id": 1206473449,
+      "node_id": "R_kgDOR-lS6Q",
+      "name": "ChronoShift",
+      "full_name": "Tien-Lam/ChronoShift",
+      "private": false,
+      "owner": {
+        "login": "Tien-Lam",
+        "id": 25842958,
+        "node_id": "MDQ6VXNlcjI1ODQyOTU4",
+        "avatar_url": "https://avatars.githubusercontent.com/u/25842958?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Tien-Lam",
+        "html_url": "https://github.com/Tien-Lam",
+        "followers_url": "https://api.github.com/users/Tien-Lam/followers",
+        "following_url": "https://api.github.com/users/Tien-Lam/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Tien-Lam/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Tien-Lam/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Tien-Lam/subscriptions",
+        "organizations_url": "https://api.github.com/users/Tien-Lam/orgs",
+        "repos_url": "https://api.github.com/users/Tien-Lam/repos",
+        "events_url": "https://api.github.com/users/Tien-Lam/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Tien-Lam/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/Tien-Lam/ChronoShift",
+      "description": "NLP-powered timezone converter for Android. Select text anywhere → converts timestamps to local time.",
+      "fork": false,
+      "url": "https://api.github.com/repos/Tien-Lam/ChronoShift",
+      "forks_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/forks",
+      "keys_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/teams",
+      "hooks_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/hooks",
+      "issue_events_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/events",
+      "assignees_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/tags",
+      "blobs_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/languages",
+      "stargazers_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/stargazers",
+      "contributors_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/contributors",
+      "subscribers_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/subscribers",
+      "subscription_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/subscription",
+      "commits_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/merges",
+      "archive_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/downloads",
+      "issues_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/labels{/name}",
+      "releases_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/releases{/id}",
+      "deployments_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/deployments"
+    }
+  },
+  "jobs": {
+    "total_count": 3,
+    "jobs": [
+      {
+        "id": 111653597081,
+        "run_id": 37276181716,
+        "workflow_name": "GitHub Pages",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/runs/37276181716",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOR-lS6c8AAAAZ_xKvmQ",
+        "head_sha": "28059a91ec9984dea4d079b3f684b3a27af669f0",
+        "url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/jobs/111653597081",
+        "html_url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37276181716/job/111653597081",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-05T07:09:46Z",
+        "started_at": "2026-10-05T07:09:50Z",
+        "completed_at": "2026-10-05T07:10:32Z",
+        "name": "prepare",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-05T07:09:52Z",
+            "completed_at": "2026-10-05T07:09:57Z"
+          },
+          {
+            "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-05T07:09:57Z",
+            "completed_at": "2026-10-05T07:10:07Z"
+          },
+          {
+            "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-05T07:10:07Z",
+            "completed_at": "2026-10-05T07:10:14Z"
+          },
+          {
+            "name": "Reuse the exact verified PR artifact",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-05T07:10:14Z",
+            "completed_at": "2026-10-05T07:10:20Z"
+          },
+          {
+            "name": "Run actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-05T07:10:20Z",
+            "completed_at": "2026-10-05T07:10:21Z"
+          },
+          {
+            "name": "Upload the verified Pages build",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-05T07:10:21Z",
+            "completed_at": "2026-10-05T07:10:23Z"
+          },
+          {
+            "name": "Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-05T07:10:23Z",
+            "completed_at": "2026-10-05T07:10:30Z"
+          },
+          {
+            "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14,
+            "started_at": "2026-10-05T07:10:30Z",
+            "completed_at": "2026-10-05T07:10:30Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15,
+            "started_at": "2026-10-05T07:10:30Z",
+            "completed_at": "2026-10-05T07:10:30Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/check-runs/111653597081",
+        "labels": [
+          "ubuntu-slim"
+        ],
+        "runner_id": 1000004072,
+        "runner_name": "GitHub Actions 1000004072",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      },
+      {
+        "id": 111653825005,
+        "run_id": 37276181716,
+        "workflow_name": "GitHub Pages",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/runs/37276181716",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOR-lS6c8AAAAZ_xYp7Q",
+        "head_sha": "28059a91ec9984dea4d079b3f684b3a27af669f0",
+        "url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/jobs/111653825005",
+        "html_url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37276181716/job/111653825005",
+        "status": "completed",
+        "conclusion": "skipped",
+        "created_at": "2026-10-05T07:10:33Z",
+        "started_at": "2026-10-05T07:10:33Z",
+        "completed_at": "2026-10-05T07:10:33Z",
+        "name": "deploy",
+        "steps": [],
+        "check_run_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/check-runs/111653825005",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runner_id": null,
+        "runner_name": null,
+        "runner_group_id": null,
+        "runner_group_name": null
+      },
+      {
+        "id": 111653825023,
+        "run_id": 37276181716,
+        "workflow_name": "GitHub Pages",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/runs/37276181716",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOR-lS6c8AAAAZ_xYp_w",
+        "head_sha": "28059a91ec9984dea4d079b3f684b3a27af669f0",
+        "url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/jobs/111653825023",
+        "html_url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37276181716/job/111653825023",
+        "status": "completed",
+        "conclusion": "skipped",
+        "created_at": "2026-10-05T07:10:33Z",
+        "started_at": "2026-10-05T07:10:33Z",
+        "completed_at": "2026-10-05T07:10:32Z",
+        "name": "verify",
+        "steps": [],
+        "check_run_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/check-runs/111653825023",
+        "labels": [],
+        "runner_id": null,
+        "runner_name": null,
+        "runner_group_id": null,
+        "runner_group_name": null
+      }
+    ]
+  },
+  "artifact": {
+    "id": 11330182609,
+    "node_id": "MDg6QXJ0aWZhY3QxMTMzMDE4MjYwOQ==",
+    "name": "github-pages",
+    "size_in_bytes": 377331,
+    "url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11330182609",
+    "archive_download_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11330182609/zip",
+    "expired": false,
+    "digest": "sha256:500f88e3af805cc8cf66a91915c1bac4ea3b079d91b06b8063d218fc04332318",
+    "created_at": "2026-10-05T07:10:23Z",
+    "updated_at": "2026-10-05T07:10:23Z",
+    "expires_at": "2026-10-19T07:10:21Z",
+    "workflow_run": {
+      "id": 37276181716,
+      "repository_id": 1206473449,
+      "head_repository_id": 1206473449,
+      "head_branch": "main",
+      "head_sha": "28059a91ec9984dea4d079b3f684b3a27af669f0"
+    }
+  },
+  "tree": "c08c0f507faf6f82fac5ce790eb2e1f89fa59cdf",
+  "release": {
+    "sourceCommit": "997f3f2367bef1c877c207a4d89872992382d006",
+    "base": "/ChronoShift/"
+  },
+  "paths": [
+    "./",
+    "./icon.svg",
+    "./release.json",
+    "./sw.js",
+    "./fonts/",
+    "./fonts/README.txt",
+    "./fonts/geist-OFL.txt",
+    "./icon-512.png",
+    "./manifest.webmanifest",
+    "./index.html",
+    "./third-party-notices.txt",
+    "./assets/",
+    "./assets/geist-latin-variable-Dm3htQBi.woff2",
+    "./assets/index-CzXW0WLz.js",
+    "./assets/worker-C690IjaR.js",
+    "./assets/index-CQJea-JE.css",
+    "./icon-192.png"
+  ],
+  "entries": [
+    "drwxr-xr-x  0 runner runner      0 Oct  5 17:59 ./",
+    "-rw-r--r--  0 runner runner    355 Oct  5 17:59 ./icon.svg",
+    "-rw-r--r--  0 runner runner     91 Oct  5 17:59 ./release.json",
+    "-rw-r--r--  0 runner runner  11662 Oct  5 17:59 ./sw.js",
+    "drwxr-xr-x  0 runner runner      0 Oct  5 17:59 ./fonts/",
+    "-rw-r--r--  0 runner runner    483 Oct  5 17:59 ./fonts/README.txt",
+    "-rw-r--r--  0 runner runner   4386 Oct  5 17:59 ./fonts/geist-OFL.txt",
+    "-rw-r--r--  0 runner runner  19658 Oct  5 17:59 ./icon-512.png",
+    "-rw-r--r--  0 runner runner    922 Oct  5 17:59 ./manifest.webmanifest",
+    "-rw-r--r--  0 runner runner   1248 Oct  5 17:59 ./index.html",
+    "-rw-r--r--  0 runner runner 112585 Oct  5 17:59 ./third-party-notices.txt",
+    "drwxr-xr-x  0 runner runner      0 Oct  5 17:59 ./assets/",
+    "-rw-r--r--  0 runner runner  28400 Oct  5 17:59 ./assets/geist-latin-variable-Dm3htQBi.woff2",
+    "-rw-r--r--  0 runner runner 775127 Oct  5 17:59 ./assets/index-CzXW0WLz.js",
+    "-rw-r--r--  0 runner runner 221144 Oct  5 17:59 ./assets/worker-C690IjaR.js",
+    "-rw-r--r--  0 runner runner  20760 Oct  5 17:59 ./assets/index-CQJea-JE.css",
+    "-rw-r--r--  0 runner runner   7136 Oct  5 17:59 ./icon-192.png"
+  ],
+  "commands": [
+    {
+      "args": [
+        "gh",
+        "api",
+        "repos/Tien-Lam/ChronoShift/commits/b288920d072d6ebb6ca56d1ea83f7c95ea7bed02"
+      ],
+      "start": "2026-10-05T07:12:03.294Z",
+      "end": "2026-10-05T07:12:03.717Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "gh",
+        "api",
+        "repos/Tien-Lam/ChronoShift/actions/runs/37276181716/artifacts?per_page=100"
+      ],
+      "start": "2026-10-05T07:12:03.293Z",
+      "end": "2026-10-05T07:12:03.772Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "gh",
+        "api",
+        "repos/Tien-Lam/ChronoShift/actions/runs/37276181716"
+      ],
+      "start": "2026-10-05T07:12:03.292Z",
+      "end": "2026-10-05T07:12:03.800Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "gh",
+        "api",
+        "repos/Tien-Lam/ChronoShift/actions/runs/37276181716/jobs?per_page=100"
+      ],
+      "start": "2026-10-05T07:12:03.293Z",
+      "end": "2026-10-05T07:12:03.864Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "gh",
+        "api",
+        "repos/Tien-Lam/ChronoShift/commits/997f3f2367bef1c877c207a4d89872992382d006"
+      ],
+      "start": "2026-10-05T07:12:03.294Z",
+      "end": "2026-10-05T07:12:04.434Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "gh",
+        "api",
+        "repos/Tien-Lam/ChronoShift/commits/28059a91ec9984dea4d079b3f684b3a27af669f0"
+      ],
+      "start": "2026-10-05T07:12:03.293Z",
+      "end": "2026-10-05T07:12:04.482Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "gh",
+        "api",
+        "repos/Tien-Lam/ChronoShift/actions/artifacts/11330182609/zip"
+      ],
+      "start": "2026-10-05T07:12:04.484Z",
+      "end": "2026-10-05T07:12:10.399Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "unzip",
+        "-Z1",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/automatic-pages.zip"
+      ],
+      "start": "2026-10-05T07:12:10.400Z",
+      "end": "2026-10-05T07:12:10.405Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "unzip",
+        "-p",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/automatic-pages.zip",
+        "artifact.tar"
+      ],
+      "start": "2026-10-05T07:12:10.405Z",
+      "end": "2026-10-05T07:12:10.420Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-tf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/automatic-pages.tar"
+      ],
+      "start": "2026-10-05T07:12:10.420Z",
+      "end": "2026-10-05T07:12:10.424Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-tvf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/automatic-pages.tar"
+      ],
+      "start": "2026-10-05T07:12:10.425Z",
+      "end": "2026-10-05T07:12:10.428Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-xf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/automatic-pages.tar",
+        "-C",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/automatic-site"
+      ],
+      "start": "2026-10-05T07:12:10.429Z",
+      "end": "2026-10-05T07:12:10.436Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "gh",
+        "run",
+        "view",
+        "37276181716",
+        "--log"
+      ],
+      "start": "2026-10-05T07:12:11.294Z",
+      "end": "2026-10-05T07:12:12.504Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-tf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/candidate-pages.tar"
+      ],
+      "start": "2026-10-05T07:12:12.505Z",
+      "end": "2026-10-05T07:12:12.512Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/candidate-pages.tar",
+        "./assets/index-CQJea-JE.css"
+      ],
+      "start": "2026-10-05T07:12:12.512Z",
+      "end": "2026-10-05T07:12:12.519Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/candidate-pages.tar",
+        "./assets/geist-latin-variable-Dm3htQBi.woff2"
+      ],
+      "start": "2026-10-05T07:12:12.512Z",
+      "end": "2026-10-05T07:12:12.519Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/candidate-pages.tar",
+        "./assets/worker-C690IjaR.js"
+      ],
+      "start": "2026-10-05T07:12:12.513Z",
+      "end": "2026-10-05T07:12:12.519Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/candidate-pages.tar",
+        "./fonts/README.txt"
+      ],
+      "start": "2026-10-05T07:12:12.514Z",
+      "end": "2026-10-05T07:12:12.520Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/candidate-pages.tar",
+        "./fonts/geist-OFL.txt"
+      ],
+      "start": "2026-10-05T07:12:12.513Z",
+      "end": "2026-10-05T07:12:12.520Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/candidate-pages.tar",
+        "./icon-192.png"
+      ],
+      "start": "2026-10-05T07:12:12.514Z",
+      "end": "2026-10-05T07:12:12.520Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/candidate-pages.tar",
+        "./icon-512.png"
+      ],
+      "start": "2026-10-05T07:12:12.515Z",
+      "end": "2026-10-05T07:12:12.521Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/candidate-pages.tar",
+        "./icon.svg"
+      ],
+      "start": "2026-10-05T07:12:12.516Z",
+      "end": "2026-10-05T07:12:12.521Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/candidate-pages.tar",
+        "./assets/index-CzXW0WLz.js"
+      ],
+      "start": "2026-10-05T07:12:12.513Z",
+      "end": "2026-10-05T07:12:12.521Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/candidate-pages.tar",
+        "./index.html"
+      ],
+      "start": "2026-10-05T07:12:12.516Z",
+      "end": "2026-10-05T07:12:12.522Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/candidate-pages.tar",
+        "./manifest.webmanifest"
+      ],
+      "start": "2026-10-05T07:12:12.517Z",
+      "end": "2026-10-05T07:12:12.522Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/candidate-pages.tar",
+        "./release.json"
+      ],
+      "start": "2026-10-05T07:12:12.518Z",
+      "end": "2026-10-05T07:12:12.522Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/candidate-pages.tar",
+        "./sw.js"
+      ],
+      "start": "2026-10-05T07:12:12.518Z",
+      "end": "2026-10-05T07:12:12.522Z",
+      "code": 0,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "tar",
+        "-xOf",
+        "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/fresh-code/candidate-pages.tar",
+        "./third-party-notices.txt"
+      ],
+      "start": "2026-10-05T07:12:12.518Z",
+      "end": "2026-10-05T07:12:12.522Z",
+      "code": 0,
+      "stderr": ""
+    }
+  ],
+  "files": [
+    {
+      "path": "assets/geist-latin-variable-Dm3htQBi.woff2",
+      "bytes": 28400,
+      "sha256": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316",
+      "observedAt": {
+        "start": "2026-10-05T07:12:10.776Z",
+        "end": "2026-10-05T07:12:10.799Z"
+      },
+      "public": {
+        "url": "https://tien-lam.github.io/ChronoShift/assets/geist-latin-variable-Dm3htQBi.woff2?fresh-code-review=1791184330776",
+        "status": 200,
+        "contentType": "font/woff2",
+        "bytes": 28400,
+        "sha256": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316"
+      },
+      "matched": true
+    },
+    {
+      "path": "assets/index-CQJea-JE.css",
+      "bytes": 20760,
+      "sha256": "d1862cc191ef6ba2e2883719e3b2a681a272643267624adb6ec95b3802887c4f",
+      "observedAt": {
+        "start": "2026-10-05T07:12:10.729Z",
+        "end": "2026-10-05T07:12:10.745Z"
+      },
+      "public": {
+        "url": "https://tien-lam.github.io/ChronoShift/assets/index-CQJea-JE.css?fresh-code-review=1791184330729",
+        "status": 200,
+        "contentType": "text/css; charset=utf-8",
+        "bytes": 20760,
+        "sha256": "d1862cc191ef6ba2e2883719e3b2a681a272643267624adb6ec95b3802887c4f"
+      },
+      "matched": true
+    },
+    {
+      "path": "assets/index-CzXW0WLz.js",
+      "bytes": 775127,
+      "sha256": "891b0555010bc9c56b712268b26254f64f43f045cf9ba55cfc9fa64f716eeb93",
+      "observedAt": {
+        "start": "2026-10-05T07:12:10.642Z",
+        "end": "2026-10-05T07:12:10.728Z"
+      },
+      "public": {
+        "url": "https://tien-lam.github.io/ChronoShift/assets/index-CzXW0WLz.js?fresh-code-review=1791184330642",
+        "status": 200,
+        "contentType": "application/javascript; charset=utf-8",
+        "bytes": 775127,
+        "sha256": "891b0555010bc9c56b712268b26254f64f43f045cf9ba55cfc9fa64f716eeb93"
+      },
+      "matched": true
+    },
+    {
+      "path": "assets/worker-C690IjaR.js",
+      "bytes": 221144,
+      "sha256": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+      "observedAt": {
+        "start": "2026-10-05T07:12:10.746Z",
+        "end": "2026-10-05T07:12:10.775Z"
+      },
+      "public": {
+        "url": "https://tien-lam.github.io/ChronoShift/assets/worker-C690IjaR.js?fresh-code-review=1791184330746",
+        "status": 200,
+        "contentType": "application/javascript; charset=utf-8",
+        "bytes": 221144,
+        "sha256": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704"
+      },
+      "matched": true
+    },
+    {
+      "path": "fonts/geist-OFL.txt",
+      "bytes": 4386,
+      "sha256": "cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952",
+      "observedAt": {
+        "start": "2026-10-05T07:12:10.623Z",
+        "end": "2026-10-05T07:12:10.639Z"
+      },
+      "public": {
+        "url": "https://tien-lam.github.io/ChronoShift/fonts/geist-OFL.txt?fresh-code-review=1791184330623",
+        "status": 200,
+        "contentType": "text/plain; charset=utf-8",
+        "bytes": 4386,
+        "sha256": "cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952"
+      },
+      "matched": true
+    },
+    {
+      "path": "fonts/README.txt",
+      "bytes": 483,
+      "sha256": "542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d",
+      "observedAt": {
+        "start": "2026-10-05T07:12:10.604Z",
+        "end": "2026-10-05T07:12:10.623Z"
+      },
+      "public": {
+        "url": "https://tien-lam.github.io/ChronoShift/fonts/README.txt?fresh-code-review=1791184330604",
+        "status": 200,
+        "contentType": "text/plain; charset=utf-8",
+        "bytes": 483,
+        "sha256": "542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d"
+      },
+      "matched": true
+    },
+    {
+      "path": "icon-192.png",
+      "bytes": 7136,
+      "sha256": "cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754",
+      "observedAt": {
+        "start": "2026-10-05T07:12:10.500Z",
+        "end": "2026-10-05T07:12:10.520Z"
+      },
+      "public": {
+        "url": "https://tien-lam.github.io/ChronoShift/icon-192.png?fresh-code-review=1791184330500",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 7136,
+        "sha256": "cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754"
+      },
+      "matched": true
+    },
+    {
+      "path": "icon-512.png",
+      "bytes": 19658,
+      "sha256": "b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7",
+      "observedAt": {
+        "start": "2026-10-05T07:12:10.823Z",
+        "end": "2026-10-05T07:12:11.062Z"
+      },
+      "public": {
+        "url": "https://tien-lam.github.io/ChronoShift/icon-512.png?fresh-code-review=1791184330823",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 19658,
+        "sha256": "b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7"
+      },
+      "matched": true
+    },
+    {
+      "path": "icon.svg",
+      "bytes": 355,
+      "sha256": "62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f",
+      "observedAt": {
+        "start": "2026-10-05T07:12:10.520Z",
+        "end": "2026-10-05T07:12:10.541Z"
+      },
+      "public": {
+        "url": "https://tien-lam.github.io/ChronoShift/icon.svg?fresh-code-review=1791184330520",
+        "status": 200,
+        "contentType": "image/svg+xml",
+        "bytes": 355,
+        "sha256": "62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f"
+      },
+      "matched": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 1248,
+      "sha256": "8f0180f575d0b47100674dbbb2ad8950058c88504ccfd22aeb9e454a366f2e30",
+      "observedAt": {
+        "start": "2026-10-05T07:12:10.436Z",
+        "end": "2026-10-05T07:12:10.499Z"
+      },
+      "public": {
+        "url": "https://tien-lam.github.io/ChronoShift/index.html?fresh-code-review=1791184330436",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 1248,
+        "sha256": "8f0180f575d0b47100674dbbb2ad8950058c88504ccfd22aeb9e454a366f2e30"
+      },
+      "matched": true
+    },
+    {
+      "path": "manifest.webmanifest",
+      "bytes": 922,
+      "sha256": "28d27d867912adc530496f0de3e80cc0f65cde9f9f9f55281a0a007eda0d8dde",
+      "observedAt": {
+        "start": "2026-10-05T07:12:10.581Z",
+        "end": "2026-10-05T07:12:10.603Z"
+      },
+      "public": {
+        "url": "https://tien-lam.github.io/ChronoShift/manifest.webmanifest?fresh-code-review=1791184330581",
+        "status": 200,
+        "contentType": "application/manifest+json; charset=utf-8",
+        "bytes": 922,
+        "sha256": "28d27d867912adc530496f0de3e80cc0f65cde9f9f9f55281a0a007eda0d8dde"
+      },
+      "matched": true
+    },
+    {
+      "path": "release.json",
+      "bytes": 91,
+      "sha256": "cbedbbf40da79614067d2e9020fe0360207d2cbb05a3eea2638af61d7d35d2a6",
+      "observedAt": {
+        "start": "2026-10-05T07:12:10.541Z",
+        "end": "2026-10-05T07:12:10.559Z"
+      },
+      "public": {
+        "url": "https://tien-lam.github.io/ChronoShift/release.json?fresh-code-review=1791184330541",
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "bytes": 91,
+        "sha256": "cbedbbf40da79614067d2e9020fe0360207d2cbb05a3eea2638af61d7d35d2a6"
+      },
+      "matched": true
+    },
+    {
+      "path": "sw.js",
+      "bytes": 11662,
+      "sha256": "e7bc9cd4abe354a2ed20edef6816d70841c03baaa6887279ebd5a3e116c281c3",
+      "observedAt": {
+        "start": "2026-10-05T07:12:10.799Z",
+        "end": "2026-10-05T07:12:10.823Z"
+      },
+      "public": {
+        "url": "https://tien-lam.github.io/ChronoShift/sw.js?fresh-code-review=1791184330799",
+        "status": 200,
+        "contentType": "application/javascript; charset=utf-8",
+        "bytes": 11662,
+        "sha256": "e7bc9cd4abe354a2ed20edef6816d70841c03baaa6887279ebd5a3e116c281c3"
+      },
+      "matched": true
+    },
+    {
+      "path": "third-party-notices.txt",
+      "bytes": 112585,
+      "sha256": "615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037",
+      "observedAt": {
+        "start": "2026-10-05T07:12:10.559Z",
+        "end": "2026-10-05T07:12:10.581Z"
+      },
+      "public": {
+        "url": "https://tien-lam.github.io/ChronoShift/third-party-notices.txt?fresh-code-review=1791184330559",
+        "status": 200,
+        "contentType": "text/plain; charset=utf-8",
+        "bytes": 112585,
+        "sha256": "615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037"
+      },
+      "matched": true
+    }
+  ],
+  "root": {
+    "status": 200,
+    "bytes": 1248,
+    "sha256": "8f0180f575d0b47100674dbbb2ad8950058c88504ccfd22aeb9e454a366f2e30",
+    "matched": true
+  },
+  "fileComparison": [
+    {
+      "path": "assets/geist-latin-variable-Dm3htQBi.woff2",
+      "priorBytes": 28400,
+      "priorSha256": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316",
+      "currentBytes": 28400,
+      "currentSha256": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316",
+      "matched": true
+    },
+    {
+      "path": "assets/index-CQJea-JE.css",
+      "priorBytes": 20760,
+      "priorSha256": "d1862cc191ef6ba2e2883719e3b2a681a272643267624adb6ec95b3802887c4f",
+      "currentBytes": 20760,
+      "currentSha256": "d1862cc191ef6ba2e2883719e3b2a681a272643267624adb6ec95b3802887c4f",
+      "matched": true
+    },
+    {
+      "path": "assets/index-CzXW0WLz.js",
+      "priorBytes": 775127,
+      "priorSha256": "891b0555010bc9c56b712268b26254f64f43f045cf9ba55cfc9fa64f716eeb93",
+      "currentBytes": 775127,
+      "currentSha256": "891b0555010bc9c56b712268b26254f64f43f045cf9ba55cfc9fa64f716eeb93",
+      "matched": true
+    },
+    {
+      "path": "assets/worker-C690IjaR.js",
+      "priorBytes": 221144,
+      "priorSha256": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+      "currentBytes": 221144,
+      "currentSha256": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+      "matched": true
+    },
+    {
+      "path": "fonts/geist-OFL.txt",
+      "priorBytes": 4386,
+      "priorSha256": "cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952",
+      "currentBytes": 4386,
+      "currentSha256": "cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952",
+      "matched": true
+    },
+    {
+      "path": "fonts/README.txt",
+      "priorBytes": 483,
+      "priorSha256": "542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d",
+      "currentBytes": 483,
+      "currentSha256": "542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d",
+      "matched": true
+    },
+    {
+      "path": "icon-192.png",
+      "priorBytes": 7136,
+      "priorSha256": "cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754",
+      "currentBytes": 7136,
+      "currentSha256": "cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754",
+      "matched": true
+    },
+    {
+      "path": "icon-512.png",
+      "priorBytes": 19658,
+      "priorSha256": "b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7",
+      "currentBytes": 19658,
+      "currentSha256": "b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7",
+      "matched": true
+    },
+    {
+      "path": "icon.svg",
+      "priorBytes": 355,
+      "priorSha256": "62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f",
+      "currentBytes": 355,
+      "currentSha256": "62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f",
+      "matched": true
+    },
+    {
+      "path": "index.html",
+      "priorBytes": 1248,
+      "priorSha256": "8f0180f575d0b47100674dbbb2ad8950058c88504ccfd22aeb9e454a366f2e30",
+      "currentBytes": 1248,
+      "currentSha256": "8f0180f575d0b47100674dbbb2ad8950058c88504ccfd22aeb9e454a366f2e30",
+      "matched": true
+    },
+    {
+      "path": "manifest.webmanifest",
+      "priorBytes": 922,
+      "priorSha256": "28d27d867912adc530496f0de3e80cc0f65cde9f9f9f55281a0a007eda0d8dde",
+      "currentBytes": 922,
+      "currentSha256": "28d27d867912adc530496f0de3e80cc0f65cde9f9f9f55281a0a007eda0d8dde",
+      "matched": true
+    },
+    {
+      "path": "release.json",
+      "priorBytes": 91,
+      "priorSha256": "cbedbbf40da79614067d2e9020fe0360207d2cbb05a3eea2638af61d7d35d2a6",
+      "currentBytes": 91,
+      "currentSha256": "cbedbbf40da79614067d2e9020fe0360207d2cbb05a3eea2638af61d7d35d2a6",
+      "matched": true
+    },
+    {
+      "path": "sw.js",
+      "priorBytes": 11662,
+      "priorSha256": "e7bc9cd4abe354a2ed20edef6816d70841c03baaa6887279ebd5a3e116c281c3",
+      "currentBytes": 11662,
+      "currentSha256": "e7bc9cd4abe354a2ed20edef6816d70841c03baaa6887279ebd5a3e116c281c3",
+      "matched": true
+    },
+    {
+      "path": "third-party-notices.txt",
+      "priorBytes": 112585,
+      "priorSha256": "615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037",
+      "currentBytes": 112585,
+      "currentSha256": "615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037",
+      "matched": true
+    }
+  ],
+  "filesMatchPR": true,
+  "tarMatchesPR": false,
+  "archiveSha256": "f557aca41ef0dc3dfe50489c3d9220b3bae2e26611d2cc29018c02d8c3c68213",
+  "allPublicMatches": true
+}

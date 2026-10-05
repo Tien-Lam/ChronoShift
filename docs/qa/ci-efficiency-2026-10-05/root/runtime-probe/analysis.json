@@ -1,0 +1,235 @@
+{
+  "capturedAt": "2026-10-05T07:23:28.795Z",
+  "scope": "Local matched CLI runtime hypothesis only. Same locked Playwright, five normal-motion profiles, four workers, the unchanged complete themed-choice journey at three widths and two themes, same fixed root-base local artifact. Does not establish hosted runner savings or monthly target.",
+  "artifactUnchanged": true,
+  "runs": [
+    {
+      "index": 1,
+      "runtime": "bun",
+      "args": [
+        "mise",
+        "exec",
+        "--",
+        "bun",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--config=.ci-runtime-probe.config.ts",
+        "e2e/controls.spec.ts",
+        "--grep=themed choices align"
+      ],
+      "output": "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/root/runtime-probe/1-bun",
+      "began": "2026-10-05T07:20:58.268Z",
+      "ended": "2026-10-05T07:21:20.385Z",
+      "elapsedMs": 22116.924875,
+      "exitCode": 0,
+      "status": "passed",
+      "attempts": [
+        {
+          "project": "chromium",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10264
+        },
+        {
+          "project": "android-emulation",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10280
+        },
+        {
+          "project": "webkit",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 11043
+        },
+        {
+          "project": "firefox",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 12445
+        },
+        {
+          "project": "iphone-emulation",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10915
+        }
+      ],
+      "reportDurationMs": 21894.98
+    },
+    {
+      "index": 2,
+      "runtime": "node",
+      "args": [
+        "mise",
+        "exec",
+        "--",
+        "node",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--config=.ci-runtime-probe.config.ts",
+        "e2e/controls.spec.ts",
+        "--grep=themed choices align"
+      ],
+      "output": "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/root/runtime-probe/2-node",
+      "began": "2026-10-05T07:21:20.386Z",
+      "ended": "2026-10-05T07:21:43.164Z",
+      "elapsedMs": 22777.973958,
+      "exitCode": 0,
+      "status": "passed",
+      "attempts": [
+        {
+          "project": "chromium",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10434
+        },
+        {
+          "project": "android-emulation",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10469
+        },
+        {
+          "project": "webkit",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10946
+        },
+        {
+          "project": "firefox",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 12465
+        },
+        {
+          "project": "iphone-emulation",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 11094
+        }
+      ],
+      "reportDurationMs": 22370.111
+    },
+    {
+      "index": 3,
+      "runtime": "node",
+      "args": [
+        "mise",
+        "exec",
+        "--",
+        "node",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--config=.ci-runtime-probe.config.ts",
+        "e2e/controls.spec.ts",
+        "--grep=themed choices align"
+      ],
+      "output": "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/root/runtime-probe/3-node",
+      "began": "2026-10-05T07:21:43.166Z",
+      "ended": "2026-10-05T07:22:06.054Z",
+      "elapsedMs": 22888.095167000007,
+      "exitCode": 0,
+      "status": "passed",
+      "attempts": [
+        {
+          "project": "chromium",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10702
+        },
+        {
+          "project": "android-emulation",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10718
+        },
+        {
+          "project": "webkit",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10921
+        },
+        {
+          "project": "firefox",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 12463
+        },
+        {
+          "project": "iphone-emulation",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 11110
+        }
+      ],
+      "reportDurationMs": 22639.286
+    },
+    {
+      "index": 4,
+      "runtime": "bun",
+      "args": [
+        "mise",
+        "exec",
+        "--",
+        "bun",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--config=.ci-runtime-probe.config.ts",
+        "e2e/controls.spec.ts",
+        "--grep=themed choices align"
+      ],
+      "output": "/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/root/runtime-probe/4-bun",
+      "began": "2026-10-05T07:22:06.055Z",
+      "ended": "2026-10-05T07:22:28.368Z",
+      "elapsedMs": 22313.106709,
+      "exitCode": 0,
+      "status": "passed",
+      "attempts": [
+        {
+          "project": "android-emulation",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10419
+        },
+        {
+          "project": "chromium",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10434
+        },
+        {
+          "project": "webkit",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10808
+        },
+        {
+          "project": "firefox",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 12078
+        },
+        {
+          "project": "iphone-emulation",
+          "status": "passed",
+          "retry": 0,
+          "durationMs": 10870
+        }
+      ],
+      "reportDurationMs": 22013.664
+    }
+  ],
+  "meanMs": {
+    "bun": 22215.015792,
+    "node": 22833.034562500005
+  },
+  "nodePercentSlower": 2.781986635915712,
+  "verdict": "Rejected: no useful improvement in this bounded local sample; no source/runtime switch, hosted savings or original target resolution established.",
+  "gaps": [
+    "Local macOS ARM is distinct from hosted Linux x64.",
+    "The full gate was not repeated for this hypothesis.",
+    "HTML reporter warned because its output folder was nested under the results folder; raw timing and list reconciliation are retained separately.",
+    "Build-owned local root-path assets differ from published repository-subpath assets; both runtimes used the same local files."
+  ]
+}

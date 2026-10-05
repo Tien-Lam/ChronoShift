@@ -1,0 +1,290 @@
+{
+  "began": "2026-10-05T06:55:45.567Z",
+  "commands": [
+    {
+      "args": [
+        "cache",
+        "list",
+        "--limit",
+        "100",
+        "--json",
+        "id,key,ref,sizeInBytes,lastAccessedAt,createdAt"
+      ],
+      "began": "2026-10-05T06:55:45.567Z",
+      "ended": "2026-10-05T06:55:46.112Z",
+      "stdout": "[{\"createdAt\":\"2026-10-04T06:29:29.033027Z\",\"id\":8474019546,\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"lastAccessedAt\":\"2026-10-05T06:53:56.531934Z\",\"ref\":\"refs/heads/main\",\"sizeInBytes\":166328943},{\"createdAt\":\"2026-10-05T06:46:50.120337Z\",\"id\":8504267365,\"key\":\"mise-v1-linux-arm64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"lastAccessedAt\":\"2026-10-05T06:46:50.120337Z\",\"ref\":\"refs/pull/37/merge\",\"sizeInBytes\":165283696},{\"createdAt\":\"2026-10-04T05:59:58.372717Z\",\"id\":8473558592,\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"lastAccessedAt\":\"2026-10-05T05:40:22.337466Z\",\"ref\":\"refs/pull/20/merge\",\"sizeInBytes\":166323229},{\"createdAt\":\"2026-10-04T05:58:15.167095Z\",\"id\":8473533124,\"key\":\"mise-v1-linux-x64-2305be90c13f881679c43eb7a3161dbe861cfa851aeeb7d15526c7f0cad4f5b1-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"lastAccessedAt\":\"2026-10-05T05:37:53.947277Z\",\"ref\":\"refs/heads/main\",\"sizeInBytes\":98700884},{\"createdAt\":\"2026-10-04T06:00:29.818994Z\",\"id\":8473567273,\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"lastAccessedAt\":\"2026-10-04T06:00:29.818994Z\",\"ref\":\"refs/pull/19/merge\",\"sizeInBytes\":166328574},{\"createdAt\":\"2026-10-04T06:00:09.044421Z\",\"id\":8473561527,\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"lastAccessedAt\":\"2026-10-04T06:00:09.044421Z\",\"ref\":\"refs/pull/21/merge\",\"sizeInBytes\":166330287},{\"createdAt\":\"2026-10-04T05:59:59.328843Z\",\"id\":8473558818,\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"lastAccessedAt\":\"2026-10-04T05:59:59.328843Z\",\"ref\":\"refs/pull/18/merge\",\"sizeInBytes\":166325784},{\"createdAt\":\"2026-10-04T05:59:51.44303Z\",\"id\":8473557158,\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"lastAccessedAt\":\"2026-10-04T05:59:51.44303Z\",\"ref\":\"refs/pull/17/merge\",\"sizeInBytes\":166329465},{\"createdAt\":\"2026-10-04T05:54:37.74001Z\",\"id\":8473474762,\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"lastAccessedAt\":\"2026-10-04T05:54:37.74001Z\",\"ref\":\"refs/pull/16/merge\",\"sizeInBytes\":166326684},{\"createdAt\":\"2026-10-03T16:39:06.263531Z\",\"id\":8459549294,\"key\":\"mise-v1-linux-x64-f04942c4f71d9197453373398ea1e69dd84e0477b6eb8b8c3470bb42c7e3612d\",\"lastAccessedAt\":\"2026-10-04T03:50:05.918183Z\",\"ref\":\"refs/pull/16/merge\",\"sizeInBytes\":151344009},{\"createdAt\":\"2026-10-03T16:39:01.035486Z\",\"id\":8459547249,\"key\":\"mise-v1-linux-x64-f04942c4f71d9197453373398ea1e69dd84e0477b6eb8b8c3470bb42c7e3612d\",\"lastAccessedAt\":\"2026-10-04T03:39:37.620462Z\",\"ref\":\"refs/heads/codex/offline-web-migration\",\"sizeInBytes\":151342053}]\n",
+      "stderr": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "pr",
+        "view",
+        "16",
+        "--json",
+        "state,mergedAt,headRefName"
+      ],
+      "began": "2026-10-05T06:55:46.112Z",
+      "ended": "2026-10-05T06:55:46.727Z",
+      "stdout": "{\"headRefName\":\"codex/offline-web-migration\",\"mergedAt\":\"2026-10-04T05:57:59Z\",\"state\":\"MERGED\"}\n",
+      "stderr": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "cache",
+        "delete",
+        "8504267365"
+      ],
+      "began": "2026-10-05T06:55:46.727Z",
+      "ended": "2026-10-05T06:55:47.323Z",
+      "stdout": "",
+      "stderr": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "cache",
+        "delete",
+        "8473474762"
+      ],
+      "began": "2026-10-05T06:55:47.323Z",
+      "ended": "2026-10-05T06:55:47.843Z",
+      "stdout": "",
+      "stderr": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "cache",
+        "delete",
+        "8459549294"
+      ],
+      "began": "2026-10-05T06:55:47.843Z",
+      "ended": "2026-10-05T06:55:48.398Z",
+      "stdout": "",
+      "stderr": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "cache",
+        "delete",
+        "8459547249"
+      ],
+      "began": "2026-10-05T06:55:48.398Z",
+      "ended": "2026-10-05T06:55:48.929Z",
+      "stdout": "",
+      "stderr": "",
+      "code": 0
+    },
+    {
+      "args": [
+        "cache",
+        "list",
+        "--limit",
+        "100",
+        "--json",
+        "id,key,ref,sizeInBytes,lastAccessedAt,createdAt"
+      ],
+      "began": "2026-10-05T06:55:48.929Z",
+      "ended": "2026-10-05T06:55:49.404Z",
+      "stdout": "[{\"createdAt\":\"2026-10-04T06:29:29.033027Z\",\"id\":8474019546,\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"lastAccessedAt\":\"2026-10-05T06:53:56.531934Z\",\"ref\":\"refs/heads/main\",\"sizeInBytes\":166328943},{\"createdAt\":\"2026-10-04T05:59:58.372717Z\",\"id\":8473558592,\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"lastAccessedAt\":\"2026-10-05T05:40:22.337466Z\",\"ref\":\"refs/pull/20/merge\",\"sizeInBytes\":166323229},{\"createdAt\":\"2026-10-04T05:58:15.167095Z\",\"id\":8473533124,\"key\":\"mise-v1-linux-x64-2305be90c13f881679c43eb7a3161dbe861cfa851aeeb7d15526c7f0cad4f5b1-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"lastAccessedAt\":\"2026-10-05T05:37:53.947277Z\",\"ref\":\"refs/heads/main\",\"sizeInBytes\":98700884},{\"createdAt\":\"2026-10-04T06:00:29.818994Z\",\"id\":8473567273,\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"lastAccessedAt\":\"2026-10-04T06:00:29.818994Z\",\"ref\":\"refs/pull/19/merge\",\"sizeInBytes\":166328574},{\"createdAt\":\"2026-10-04T06:00:09.044421Z\",\"id\":8473561527,\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"lastAccessedAt\":\"2026-10-04T06:00:09.044421Z\",\"ref\":\"refs/pull/21/merge\",\"sizeInBytes\":166330287},{\"createdAt\":\"2026-10-04T05:59:59.328843Z\",\"id\":8473558818,\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"lastAccessedAt\":\"2026-10-04T05:59:59.328843Z\",\"ref\":\"refs/pull/18/merge\",\"sizeInBytes\":166325784},{\"createdAt\":\"2026-10-04T05:59:51.44303Z\",\"id\":8473557158,\"key\":\"mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d\",\"lastAccessedAt\":\"2026-10-04T05:59:51.44303Z\",\"ref\":\"refs/pull/17/merge\",\"sizeInBytes\":166329465}]\n",
+      "stderr": "",
+      "code": 0
+    }
+  ],
+  "before": [
+    {
+      "createdAt": "2026-10-04T06:29:29.033027Z",
+      "id": 8474019546,
+      "key": "mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-05T06:53:56.531934Z",
+      "ref": "refs/heads/main",
+      "sizeInBytes": 166328943
+    },
+    {
+      "createdAt": "2026-10-05T06:46:50.120337Z",
+      "id": 8504267365,
+      "key": "mise-v1-linux-arm64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-05T06:46:50.120337Z",
+      "ref": "refs/pull/37/merge",
+      "sizeInBytes": 165283696
+    },
+    {
+      "createdAt": "2026-10-04T05:59:58.372717Z",
+      "id": 8473558592,
+      "key": "mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-05T05:40:22.337466Z",
+      "ref": "refs/pull/20/merge",
+      "sizeInBytes": 166323229
+    },
+    {
+      "createdAt": "2026-10-04T05:58:15.167095Z",
+      "id": 8473533124,
+      "key": "mise-v1-linux-x64-2305be90c13f881679c43eb7a3161dbe861cfa851aeeb7d15526c7f0cad4f5b1-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-05T05:37:53.947277Z",
+      "ref": "refs/heads/main",
+      "sizeInBytes": 98700884
+    },
+    {
+      "createdAt": "2026-10-04T06:00:29.818994Z",
+      "id": 8473567273,
+      "key": "mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-04T06:00:29.818994Z",
+      "ref": "refs/pull/19/merge",
+      "sizeInBytes": 166328574
+    },
+    {
+      "createdAt": "2026-10-04T06:00:09.044421Z",
+      "id": 8473561527,
+      "key": "mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-04T06:00:09.044421Z",
+      "ref": "refs/pull/21/merge",
+      "sizeInBytes": 166330287
+    },
+    {
+      "createdAt": "2026-10-04T05:59:59.328843Z",
+      "id": 8473558818,
+      "key": "mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-04T05:59:59.328843Z",
+      "ref": "refs/pull/18/merge",
+      "sizeInBytes": 166325784
+    },
+    {
+      "createdAt": "2026-10-04T05:59:51.44303Z",
+      "id": 8473557158,
+      "key": "mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-04T05:59:51.44303Z",
+      "ref": "refs/pull/17/merge",
+      "sizeInBytes": 166329465
+    },
+    {
+      "createdAt": "2026-10-04T05:54:37.74001Z",
+      "id": 8473474762,
+      "key": "mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-04T05:54:37.74001Z",
+      "ref": "refs/pull/16/merge",
+      "sizeInBytes": 166326684
+    },
+    {
+      "createdAt": "2026-10-03T16:39:06.263531Z",
+      "id": 8459549294,
+      "key": "mise-v1-linux-x64-f04942c4f71d9197453373398ea1e69dd84e0477b6eb8b8c3470bb42c7e3612d",
+      "lastAccessedAt": "2026-10-04T03:50:05.918183Z",
+      "ref": "refs/pull/16/merge",
+      "sizeInBytes": 151344009
+    },
+    {
+      "createdAt": "2026-10-03T16:39:01.035486Z",
+      "id": 8459547249,
+      "key": "mise-v1-linux-x64-f04942c4f71d9197453373398ea1e69dd84e0477b6eb8b8c3470bb42c7e3612d",
+      "lastAccessedAt": "2026-10-04T03:39:37.620462Z",
+      "ref": "refs/heads/codex/offline-web-migration",
+      "sizeInBytes": 151342053
+    }
+  ],
+  "pr16": {
+    "headRefName": "codex/offline-web-migration",
+    "mergedAt": "2026-10-04T05:57:59Z",
+    "state": "MERGED"
+  },
+  "deleted": [
+    {
+      "createdAt": "2026-10-05T06:46:50.120337Z",
+      "id": 8504267365,
+      "key": "mise-v1-linux-arm64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-05T06:46:50.120337Z",
+      "ref": "refs/pull/37/merge",
+      "sizeInBytes": 165283696
+    },
+    {
+      "createdAt": "2026-10-04T05:54:37.74001Z",
+      "id": 8473474762,
+      "key": "mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-04T05:54:37.74001Z",
+      "ref": "refs/pull/16/merge",
+      "sizeInBytes": 166326684
+    },
+    {
+      "createdAt": "2026-10-03T16:39:06.263531Z",
+      "id": 8459549294,
+      "key": "mise-v1-linux-x64-f04942c4f71d9197453373398ea1e69dd84e0477b6eb8b8c3470bb42c7e3612d",
+      "lastAccessedAt": "2026-10-04T03:50:05.918183Z",
+      "ref": "refs/pull/16/merge",
+      "sizeInBytes": 151344009
+    },
+    {
+      "createdAt": "2026-10-03T16:39:01.035486Z",
+      "id": 8459547249,
+      "key": "mise-v1-linux-x64-f04942c4f71d9197453373398ea1e69dd84e0477b6eb8b8c3470bb42c7e3612d",
+      "lastAccessedAt": "2026-10-04T03:39:37.620462Z",
+      "ref": "refs/heads/codex/offline-web-migration",
+      "sizeInBytes": 151342053
+    }
+  ],
+  "after": [
+    {
+      "createdAt": "2026-10-04T06:29:29.033027Z",
+      "id": 8474019546,
+      "key": "mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-05T06:53:56.531934Z",
+      "ref": "refs/heads/main",
+      "sizeInBytes": 166328943
+    },
+    {
+      "createdAt": "2026-10-04T05:59:58.372717Z",
+      "id": 8473558592,
+      "key": "mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-05T05:40:22.337466Z",
+      "ref": "refs/pull/20/merge",
+      "sizeInBytes": 166323229
+    },
+    {
+      "createdAt": "2026-10-04T05:58:15.167095Z",
+      "id": 8473533124,
+      "key": "mise-v1-linux-x64-2305be90c13f881679c43eb7a3161dbe861cfa851aeeb7d15526c7f0cad4f5b1-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-05T05:37:53.947277Z",
+      "ref": "refs/heads/main",
+      "sizeInBytes": 98700884
+    },
+    {
+      "createdAt": "2026-10-04T06:00:29.818994Z",
+      "id": 8473567273,
+      "key": "mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-04T06:00:29.818994Z",
+      "ref": "refs/pull/19/merge",
+      "sizeInBytes": 166328574
+    },
+    {
+      "createdAt": "2026-10-04T06:00:09.044421Z",
+      "id": 8473561527,
+      "key": "mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-04T06:00:09.044421Z",
+      "ref": "refs/pull/21/merge",
+      "sizeInBytes": 166330287
+    },
+    {
+      "createdAt": "2026-10-04T05:59:59.328843Z",
+      "id": 8473558818,
+      "key": "mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-04T05:59:59.328843Z",
+      "ref": "refs/pull/18/merge",
+      "sizeInBytes": 166325784
+    },
+    {
+      "createdAt": "2026-10-04T05:59:51.44303Z",
+      "id": 8473557158,
+      "key": "mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d",
+      "lastAccessedAt": "2026-10-04T05:59:51.44303Z",
+      "ref": "refs/pull/17/merge",
+      "sizeInBytes": 166329465
+    }
+  ],
+  "beforeBytes": 1730963608,
+  "afterBytes": 1096667166,
+  "reductionPercent": 36.64412348523505,
+  "note": "Remove only rejected ARM experiment and merged legacy PR16 tool caches. Preserve both main keys and all open Dependabot PR17–21 caches. Re-download through mise if needed. Storage snapshot, not paired runner-minute target or monthly billing.",
+  "success": true,
+  "ended": "2026-10-05T06:55:49.404Z"
+}

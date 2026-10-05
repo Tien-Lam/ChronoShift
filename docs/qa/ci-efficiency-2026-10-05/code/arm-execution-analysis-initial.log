@@ -1,0 +1,21 @@
+ 8 |     const m=text.match(/^(\S+Z)\s+([✓✘-])\s+(\d+) \[([^\]]+)\] › (e2e\/[^ ]+:\d+:\d+) › (.*) \(([^)]+)\)$/);if(!m)continue;
+ 9 |     const title=m[6].replace(/ \(retry #\d+\)$/,'');const retry=Number(m[6].match(/retry #(\d+)/)?.[1]||0);
+10 |     rows.push({time:m[1],status:m[2]==='✓'?'passed':m[2]==='-'?'skipped':'failed',number:Number(m[3]),project:m[4],location:m[5],title,retry,duration:m[7],key:m[4]+'|'+m[5]+'|'+title});
+11 |   }return rows;
+12 | }
+13 | const attempts=parse(log);assert.equal(attempts.length,258);assert.equal(new Set(attempts.map(x=>x.key)).size,258);assert.equal(attempts.filter(x=>x.status==='passed').length,249);assert.equal(attempts.filter(x=>x.status==='skipped').length,9);assert.equal(attempts.filter(x=>x.retry>0||x.status==='failed').length,0);
+                                      ^
+AssertionError: Expected values to be strictly equal:
+
+249 !== 258
+
+ generatedMessage: true,
+     actual: 249,
+   expected: 258,
+   operator: "strictEqual",
+       diff: "simple",
+       code: "ERR_ASSERTION"
+
+      at /Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/code/arm-execution-analyze.ts:13:34
+
+Bun v1.4.0 (macOS arm64)

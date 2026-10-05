@@ -1,0 +1,1248 @@
+prepare	Set up job	﻿2026-10-05T07:16:38.5533432Z Current runner version: '2.337.0'
+prepare	Set up job	2026-10-05T07:16:38.5694821Z ##[group]Runner Image Provisioner
+prepare	Set up job	2026-10-05T07:16:38.5695745Z Hosted Compute Agent
+prepare	Set up job	2026-10-05T07:16:38.5696362Z Version: 20260901.588
+prepare	Set up job	2026-10-05T07:16:38.5696958Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+prepare	Set up job	2026-10-05T07:16:38.5697638Z Build Date: 2026-09-01T19:56:44Z
+prepare	Set up job	2026-10-05T07:16:38.5708904Z Worker ID: {9ee9fcd9-79c3-4e54-a414-0997100522f6}
+prepare	Set up job	2026-10-05T07:16:38.5709676Z Azure Region: eastus
+prepare	Set up job	2026-10-05T07:16:38.5710332Z ##[endgroup]
+prepare	Set up job	2026-10-05T07:16:38.5712126Z ##[group]VM Image
+prepare	Set up job	2026-10-05T07:16:38.5712768Z - OS: Linux (x64)
+prepare	Set up job	2026-10-05T07:16:38.5713342Z - Source: Docker
+prepare	Set up job	2026-10-05T07:16:38.5713863Z - Name: ubuntu:24.04
+prepare	Set up job	2026-10-05T07:16:38.5714445Z - Version: 20260925.9.1
+prepare	Set up job	2026-10-05T07:16:38.5714989Z ##[endgroup]
+prepare	Set up job	2026-10-05T07:16:38.5716289Z ##[group]GITHUB_TOKEN Permissions
+prepare	Set up job	2026-10-05T07:16:38.5729000Z Actions: read
+prepare	Set up job	2026-10-05T07:16:38.5730572Z Contents: read
+prepare	Set up job	2026-10-05T07:16:38.5731137Z Metadata: read
+prepare	Set up job	2026-10-05T07:16:38.5736524Z Pages: write
+prepare	Set up job	2026-10-05T07:16:38.5749228Z ##[endgroup]
+prepare	Set up job	2026-10-05T07:16:38.5752866Z Secret source: Actions
+prepare	Set up job	2026-10-05T07:16:38.5754785Z Cache mode: write
+prepare	Set up job	2026-10-05T07:16:38.5755721Z Prepare workflow directory
+prepare	Set up job	2026-10-05T07:16:38.6785819Z Prepare all required actions
+prepare	Set up job	2026-10-05T07:16:38.6937450Z Getting action download info
+prepare	Set up job	2026-10-05T07:16:39.0505782Z Download action repository 'actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+prepare	Set up job	2026-10-05T07:16:39.3237100Z Download action repository 'jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db' (SHA:5228313ee0372e111a38da051671ca30fc5a96db)
+prepare	Set up job	2026-10-05T07:16:39.5988711Z Download action repository 'actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b' (SHA:983d7736d9b0ae728b81ab479565c72886d7745b)
+prepare	Set up job	2026-10-05T07:16:39.8640457Z Download action repository 'actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b' (SHA:7b1f4a764d45c48632c6b24a0339c27f5614fb0b)
+prepare	Set up job	2026-10-05T07:16:39.9675982Z Download action repository 'actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e' (SHA:d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e)
+prepare	Set up job	2026-10-05T07:16:40.4757240Z Getting action download info
+prepare	Set up job	2026-10-05T07:16:40.5701659Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+prepare	Set up job	2026-10-05T07:16:40.8366880Z Complete job name: prepare
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	﻿2026-10-05T07:16:41.0352908Z ##[group]Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:41.0354346Z with:
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:41.0354854Z   repository: Tien-Lam/ChronoShift
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:41.0359555Z   token: ***
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:41.0360174Z   ssh-strict: true
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:41.0360720Z   ssh-user: git
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:41.0361272Z   persist-credentials: true
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:41.0361808Z   clean: true
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:41.0362360Z   sparse-checkout-cone-mode: true
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:41.0362934Z   fetch-depth: 1
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:41.0363432Z   fetch-tags: false
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:41.0365443Z   show-progress: true
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:41.0366013Z   lfs: false
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:41.0366579Z   submodules: false
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:41.0367103Z   set-safe-directory: true
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:41.0368468Z ##[endgroup]
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9378614Z Syncing repository: Tien-Lam/ChronoShift
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9381600Z ##[group]Getting Git version info
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9383539Z Working directory is '/home/runner/work/ChronoShift/ChronoShift'
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9384939Z [command]/usr/bin/git version
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9385562Z git version 2.55.0
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9387401Z ##[endgroup]
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9392625Z Temporarily overriding HOME='/home/runner/work/_temp/6de5836c-9c83-4d0d-9bd0-3ac12b8750b0' before making global git config changes
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9394066Z Adding repository directory to the temporary git global config as a safe directory
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9395253Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChronoShift/ChronoShift
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9397329Z Deleting the contents of '/home/runner/work/ChronoShift/ChronoShift'
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9398901Z ##[group]Initializing the repository
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9399676Z [command]/usr/bin/git init /home/runner/work/ChronoShift/ChronoShift
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9400674Z hint: Using 'master' as the name for the initial branch. This default branch name
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9401670Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9402637Z hint: to use in all of your new repositories, which will suppress this warning,
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9403448Z hint: call:
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9416997Z hint:
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9566855Z hint: 	git config --global init.defaultBranch <name>
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9567747Z hint:
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9573451Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9574525Z hint: 'development'. The just-created branch can be renamed via this command:
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9575261Z hint:
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9575699Z hint: 	git branch -m <name>
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9576157Z hint:
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9576761Z hint: Disable this message with "git config set advice.defaultBranchName false"
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9577755Z Initialized empty Git repository in /home/runner/work/ChronoShift/ChronoShift/.git/
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9579600Z [command]/usr/bin/git remote add origin https://github.com/Tien-Lam/ChronoShift
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9581099Z ##[endgroup]
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9581823Z ##[group]Disabling automatic garbage collection
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9582452Z [command]/usr/bin/git config --local gc.auto 0
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9583766Z ##[endgroup]
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9584419Z ##[group]Setting up auth
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9585091Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9587142Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9589447Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9591781Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9593987Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9596002Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9681517Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9685721Z ##[endgroup]
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9686557Z ##[group]Fetching the repository
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:43.9688086Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +28059a91ec9984dea4d079b3f684b3a27af669f0:refs/remotes/origin/main
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:45.7757265Z From https://github.com/Tien-Lam/ChronoShift
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:45.7758903Z  * [new ref]         28059a91ec9984dea4d079b3f684b3a27af669f0 -> origin/main
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:45.7781972Z ##[endgroup]
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:45.7786545Z ##[group]Determining the checkout info
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:45.7794823Z ##[endgroup]
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:45.7806799Z [command]/usr/bin/git sparse-checkout disable
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:45.7977308Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:45.8115006Z ##[group]Checking out the ref
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:45.8146229Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:46.6858703Z Switched to a new branch 'main'
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:46.6875842Z branch 'main' set up to track 'origin/main'.
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:46.6880139Z ##[endgroup]
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:46.6942046Z [command]/usr/bin/git log -1 --format=%H
+prepare	Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:46.7017726Z 28059a91ec9984dea4d079b3f684b3a27af669f0
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	﻿2026-10-05T07:16:46.7863233Z ##[group]Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:46.7864859Z with:
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:46.7865670Z   install_args: bun gh
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:46.7866579Z   install: true
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:46.7867398Z   cache: true
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:46.7868503Z   cache_save: true
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:46.7869407Z   cache_key_prefix: mise-v1
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:46.7870397Z   experimental: false
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:46.7871306Z   log_level: info
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:46.7872148Z   reshim: false
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:46.7873029Z   add_shims_to_path: true
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:46.7889883Z   github_token: ***
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:46.7891688Z   fetch_from_github: true
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:46.7892660Z   env: true
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:46.7893452Z ##[endgroup]
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:47.1638918Z ##[group]Restoring mise cache
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:47.1701189Z [command]/usr/bin/ldd --version
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:47.2036332Z ldd (Ubuntu GLIBC 2.39-0ubuntu8.9) 2.39
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:47.2042772Z Copyright (C) 2024 Free Software Foundation, Inc.
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:47.2073126Z This is free software; see the source for copying conditions.  There is NO
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:47.2111553Z warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:47.2114708Z Written by Roland McGrath and Ulrich Drepper.
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:47.9142640Z Cache hit for: mise-v1-linux-x64-2305be90c13f881679c43eb7a3161dbe861cfa851aeeb7d15526c7f0cad4f5b1-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:48.9962149Z Received 98700884 of 98700884 (100.0%), 97.9 MBs/sec
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:48.9969360Z Cache Size: ~94 MB (98700884 B)
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:48.9996308Z [command]/usr/bin/tar -xf /home/runner/work/_temp/651eca26-1786-4ef1-a756-7ff44c010795/cache.tzst -P -C /home/runner/work/ChronoShift/ChronoShift --use-compress-program unzstd
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:50.0079189Z Cache restored successfully
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:50.0264684Z mise cache restored from key: mise-v1-linux-x64-2305be90c13f881679c43eb7a3161dbe861cfa851aeeb7d15526c7f0cad4f5b1-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:50.0277608Z ##[group]Setting env vars
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:50.0281579Z Setting MISE_LOG_LEVEL=info
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:50.0289305Z Setting MISE_GITHUB_TOKEN=***
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:50.0292246Z Setting MISE_TRUSTED_CONFIG_PATHS=/home/runner/work/ChronoShift/ChronoShift
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:50.0295749Z Setting MISE_YES=1
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:50.0298638Z Adding /home/runner/.local/share/mise/shims to PATH
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:50.0304450Z ##[group]Running mise --version
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:50.3685756Z [command]/home/runner/.local/share/mise/bin/mise --version
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:50.3749364Z 2026.10.1 linux-x64 (2026-10-03)
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:50.3780249Z ##[endgroup]
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:50.3781007Z ##[group]Running mise install bun gh
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:50.3790959Z [command]/home/runner/.local/share/mise/bin/mise install bun gh
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:50.5072329Z ^[[2mmise^[[0m ^[[2mby @jdx^[[0m – installing 2 tools
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:51.0570877Z ^[[2mmise^[[0m ^[[38;5;11m⇢^[[0m ^[[34mbun^[[0m@1.4.0   547ms · already installed
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:51.0632076Z ^[[2mmise^[[0m ^[[38;5;11m⇢^[[0m ^[[34mgh^[[0m@2.100.0  548ms · already installed
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:51.0634845Z ^[[2mmise^[[0m ^[[36m████████████████^[[0m^[[31m^[[0m^[[2m^[[0m 2/2 · installed 0 tools · 2 already installed in 551ms
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:51.0869642Z ##[endgroup]
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:51.0870909Z ##[group]Running mise ls
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:51.0881349Z [command]/home/runner/.local/share/mise/bin/mise ls
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:51.0971488Z bun   1.4.0             ~/work/ChronoShift/ChronoShift/mise.toml  1.4.0
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:51.0975148Z gh    2.100.0           ~/work/ChronoShift/ChronoShift/mise.toml  2.100.0
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:51.0979078Z node  26.8.1 (missing)  ~/work/ChronoShift/ChronoShift/mise.toml  26.8.1
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:51.0996892Z ##[endgroup]
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:51.0998490Z ##[group]Exporting mise environment variables
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:51.1179267Z [command]/home/runner/.local/share/mise/bin/mise env --json
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:51.1277163Z {
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:51.1279927Z   "PATH": "/home/runner/.local/share/mise/installs/bun/1.4.0/bin:/home/runner/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin:/home/runner/.local/share/mise/shims:/home/runner/.local/share/mise/bin:/home/runner/.local/bin:/opt/pipx_bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:51.1285250Z }
+prepare	Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db	2026-10-05T07:16:51.1299395Z ##[endgroup]
+prepare	Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	﻿2026-10-05T07:16:51.1953540Z Post job cleanup.
+prepare	Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:51.4760840Z [command]/usr/bin/git version
+prepare	Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:51.4821519Z git version 2.55.0
+prepare	Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:51.4869121Z Temporarily overriding HOME='/home/runner/work/_temp/24b9ed0d-e5b4-4199-8681-5e72ca949f5e' before making global git config changes
+prepare	Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:51.4871521Z Adding repository directory to the temporary git global config as a safe directory
+prepare	Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:51.4880235Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChronoShift/ChronoShift
+prepare	Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:51.4929093Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+prepare	Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:51.4968983Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+prepare	Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:51.5660361Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+prepare	Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:51.5690024Z http.https://github.com/.extraheader
+prepare	Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:51.5716327Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+prepare	Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:51.5770379Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+prepare	Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:51.5961995Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+prepare	Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5	2026-10-05T07:16:51.5991209Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+prepare	Complete job	﻿2026-10-05T07:16:51.6337345Z Evaluate and set job outputs
+prepare	Complete job	2026-10-05T07:16:51.6345082Z Evaluate and set environment url
+prepare	Complete job	2026-10-05T07:16:51.6348525Z Evaluated environment url: 
+prepare	Complete job	2026-10-05T07:16:51.6350154Z Cleaning up orphan processes
+prepare	Complete job	2026-10-05T07:16:51.6387183Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5, jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+verify / web	UNKNOWN STEP	﻿2026-10-05T07:16:55.4893266Z Current runner version: '2.337.0'
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4914665Z ##[group]Runner Image Provisioner
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4915540Z Hosted Compute Agent
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4916051Z Version: 20260901.588
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4916532Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4917138Z Build Date: 2026-09-01T19:56:44Z
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4917689Z Worker ID: {ad285f05-d60e-4a6b-8dcc-02a57b8cc5e5}
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4918537Z Azure Region: centralus
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4919114Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4920291Z ##[group]Operating System
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4920796Z Ubuntu
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4921209Z 24.04.5
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4921642Z LTS
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4922070Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4922499Z ##[group]Runner Image
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4923278Z Image: ubuntu-24.04
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4923729Z Version: 20260927.320.1
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4924784Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4926036Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4926789Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4927714Z ##[group]GITHUB_TOKEN Permissions
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4929941Z Contents: read
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4930400Z Metadata: read
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4930824Z Pages: read
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4931284Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4932925Z Secret source: Actions
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4933699Z Cache mode: write
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.4934433Z Prepare workflow directory
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.5449964Z Prepare all required actions
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.5506379Z Getting action download info
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.7790635Z Download action repository 'actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+verify / web	UNKNOWN STEP	2026-10-05T07:16:55.8682962Z Download action repository 'jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db' (SHA:5228313ee0372e111a38da051671ca30fc5a96db)
+verify / web	UNKNOWN STEP	2026-10-05T07:16:56.4311276Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+verify / web	UNKNOWN STEP	2026-10-05T07:16:56.5594801Z Download action repository 'actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b' (SHA:983d7736d9b0ae728b81ab479565c72886d7745b)
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.0150815Z Download action repository 'actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b' (SHA:7b1f4a764d45c48632c6b24a0339c27f5614fb0b)
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.2885060Z Getting action download info
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.4322420Z Uses: Tien-Lam/ChronoShift/.github/workflows/web.yml@refs/heads/main (28059a91ec9984dea4d079b3f684b3a27af669f0)
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.4327568Z ##[group] Inputs
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.4329046Z   publish-pages: true
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.4329866Z   ci-timing: false
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.4330698Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.4331483Z Complete job name: verify / web
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.4829251Z ##[group]Checking docker version
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.4842354Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.5970479Z '1.48'
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.5983220Z Docker daemon API version: '1.48'
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.5984489Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.6141385Z '1.48'
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.6149327Z Docker client API version: '1.48'
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.6155032Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.6157387Z ##[group]Clean up resources from previous jobs
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.6162691Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=0dc2f6"
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.6299390Z ##[command]/usr/bin/docker network prune --force --filter "label=0dc2f6"
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.6412911Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.6413739Z ##[group]Create local container network
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.6423217Z ##[command]/usr/bin/docker network create --label 0dc2f6 github_network_4ee33ffb99104c2a91124fee7c0cf980
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.6887174Z c3c33d8e6e06f0fab8bc27faf14a0b36d54ae805a278d7a539b89184c1a2049c
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.6896364Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.6920649Z ##[group]Starting job container
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.6942284Z ##[command]/usr/bin/docker pull mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.7901606Z mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27: Pulling from playwright
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.8243682Z 0926a8eb0e60: Pulling fs layer
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.8245374Z e2bfec3c8017: Pulling fs layer
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.8246653Z 74c72610aa2d: Pulling fs layer
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.8247725Z d8cf7dc1ff62: Pulling fs layer
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.8249892Z b4dfe9b5d621: Pulling fs layer
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.8251050Z a2ac83a9a562: Pulling fs layer
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.8252280Z 1b189482e65c: Pulling fs layer
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.8253349Z a2ac83a9a562: Waiting
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.8254352Z b4dfe9b5d621: Waiting
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.8255255Z 1b189482e65c: Waiting
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.8256035Z d8cf7dc1ff62: Waiting
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.8951899Z 74c72610aa2d: Verifying Checksum
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.8959629Z 74c72610aa2d: Download complete
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.9957858Z 0926a8eb0e60: Verifying Checksum
+verify / web	UNKNOWN STEP	2026-10-05T07:16:57.9960594Z 0926a8eb0e60: Download complete
+verify / web	UNKNOWN STEP	2026-10-05T07:16:58.3015714Z e2bfec3c8017: Verifying Checksum
+verify / web	UNKNOWN STEP	2026-10-05T07:16:58.3016675Z e2bfec3c8017: Download complete
+verify / web	UNKNOWN STEP	2026-10-05T07:16:58.8854721Z a2ac83a9a562: Verifying Checksum
+verify / web	UNKNOWN STEP	2026-10-05T07:16:58.8855421Z a2ac83a9a562: Download complete
+verify / web	UNKNOWN STEP	2026-10-05T07:16:59.2609018Z 0926a8eb0e60: Pull complete
+verify / web	UNKNOWN STEP	2026-10-05T07:16:59.3667586Z 1b189482e65c: Verifying Checksum
+verify / web	UNKNOWN STEP	2026-10-05T07:16:59.3668174Z 1b189482e65c: Download complete
+verify / web	UNKNOWN STEP	2026-10-05T07:16:59.3796054Z b4dfe9b5d621: Verifying Checksum
+verify / web	UNKNOWN STEP	2026-10-05T07:16:59.3796560Z b4dfe9b5d621: Download complete
+verify / web	UNKNOWN STEP	2026-10-05T07:16:59.4118965Z d8cf7dc1ff62: Verifying Checksum
+verify / web	UNKNOWN STEP	2026-10-05T07:17:09.1084375Z d8cf7dc1ff62: Download complete
+verify / web	UNKNOWN STEP	2026-10-05T07:17:09.1084770Z e2bfec3c8017: Pull complete
+verify / web	UNKNOWN STEP	2026-10-05T07:17:09.1672339Z 74c72610aa2d: Pull complete
+verify / web	UNKNOWN STEP	2026-10-05T07:17:18.8035327Z d8cf7dc1ff62: Pull complete
+verify / web	UNKNOWN STEP	2026-10-05T07:17:25.5503003Z b4dfe9b5d621: Pull complete
+verify / web	UNKNOWN STEP	2026-10-05T07:17:28.5737119Z a2ac83a9a562: Pull complete
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.4570504Z 1b189482e65c: Pull complete
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.4619448Z Digest: sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.4627131Z Status: Downloaded newer image for mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.4636492Z mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.4718938Z ##[command]/usr/bin/docker create --name 980205729d954cf1a74442ad50a65fb2_mcrmicrosoftcomplaywrightsha256eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27_f3fc15 --label 0dc2f6 --workdir /__w/ChronoShift/ChronoShift --network github_network_4ee33ffb99104c2a91124fee7c0cf980 --user 1001:1001 --ipc=host --init -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.337.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27 "-f" "/dev/null"
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.4996686Z 618970f180098afb88b42d6d84451fb91608085e81dbbde26c4bf8537a8bf7b2
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.5012165Z ##[command]/usr/bin/docker start 618970f180098afb88b42d6d84451fb91608085e81dbbde26c4bf8537a8bf7b2
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.6533250Z 618970f180098afb88b42d6d84451fb91608085e81dbbde26c4bf8537a8bf7b2
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.6546075Z ##[command]/usr/bin/docker ps --all --filter id=618970f180098afb88b42d6d84451fb91608085e81dbbde26c4bf8537a8bf7b2 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.6655125Z 618970f180098afb88b42d6d84451fb91608085e81dbbde26c4bf8537a8bf7b2 Up Less than a second
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.6667930Z ##[command]/usr/bin/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" 618970f180098afb88b42d6d84451fb91608085e81dbbde26c4bf8537a8bf7b2
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.6783201Z HOME=/github/home
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.6783661Z GITHUB_ACTIONS=true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.6788438Z CI=true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.6788946Z PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.6789350Z LANG=C.UTF-8
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.6789680Z LC_ALL=C.UTF-8
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.6789934Z PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.6797350Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.6805839Z ##[group]Waiting for all services to be ready
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.6807325Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7016893Z ##[group]Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7017569Z with:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7017844Z   repository: Tien-Lam/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7020162Z   token: ***
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7020514Z   ssh-strict: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7020773Z   ssh-user: git
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7021221Z   persist-credentials: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7021516Z   clean: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7021737Z   sparse-checkout-cone-mode: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7022045Z   fetch-depth: 1
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7022267Z   fetch-tags: false
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7022491Z   show-progress: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7022727Z   lfs: false
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7022946Z   submodules: false
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7023274Z   set-safe-directory: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7023638Z env:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7023877Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7024315Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7024623Z   CHRONOSHIFT_CI_TIMING: 0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7025013Z   PUBLISH_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7025267Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.7080929Z ##[command]/usr/bin/docker exec  618970f180098afb88b42d6d84451fb91608085e81dbbde26c4bf8537a8bf7b2 sh -c "cat /etc/*release | grep ^ID"
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8725801Z Syncing repository: Tien-Lam/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8727022Z ##[group]Getting Git version info
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8727370Z Working directory is '/__w/ChronoShift/ChronoShift'
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8727949Z [command]/usr/bin/git version
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8728437Z git version 2.43.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8729432Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8733822Z Temporarily overriding HOME='/__w/_temp/b91a8e2b-64c1-408f-a642-04f7ae6708fa' before making global git config changes
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8734437Z Adding repository directory to the temporary git global config as a safe directory
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8734913Z [command]/usr/bin/git config --global --add safe.directory /__w/ChronoShift/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8750486Z Deleting the contents of '/__w/ChronoShift/ChronoShift'
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8753408Z ##[group]Initializing the repository
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8756247Z [command]/usr/bin/git init /__w/ChronoShift/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8781254Z hint: Using 'master' as the name for the initial branch. This default branch name
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8781817Z hint: is subject to change. To configure the initial branch name to use in all
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8782223Z hint: of your new repositories, which will suppress this warning, call:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8782517Z hint: 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8782784Z hint: 	git config --global init.defaultBranch <name>
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8783032Z hint: 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8783287Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8783677Z hint: 'development'. The just-created branch can be renamed via this command:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8783991Z hint: 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8784173Z hint: 	git branch -m <name>
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8943569Z Initialized empty Git repository in /__w/ChronoShift/ChronoShift/.git/
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8954924Z [command]/usr/bin/git remote add origin https://github.com/Tien-Lam/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8982937Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8984187Z ##[group]Disabling automatic garbage collection
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.8985734Z [command]/usr/bin/git config --local gc.auto 0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.9009638Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.9010079Z ##[group]Setting up auth
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.9015205Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.9038733Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.9261504Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.9274205Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.9441376Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.9463975Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.9629300Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.9662980Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.9669286Z ##[group]Fetching the repository
+verify / web	UNKNOWN STEP	2026-10-05T07:17:31.9673319Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +28059a91ec9984dea4d079b3f684b3a27af669f0:refs/remotes/origin/main
+verify / web	UNKNOWN STEP	2026-10-05T07:17:34.7649625Z From https://github.com/Tien-Lam/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:17:34.7650125Z  * [new ref]         28059a91ec9984dea4d079b3f684b3a27af669f0 -> origin/main
+verify / web	UNKNOWN STEP	2026-10-05T07:17:34.7662915Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:34.7663498Z ##[group]Determining the checkout info
+verify / web	UNKNOWN STEP	2026-10-05T07:17:34.7664510Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:34.7670768Z [command]/usr/bin/git sparse-checkout disable
+verify / web	UNKNOWN STEP	2026-10-05T07:17:34.7707187Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+verify / web	UNKNOWN STEP	2026-10-05T07:17:34.7730644Z ##[group]Checking out the ref
+verify / web	UNKNOWN STEP	2026-10-05T07:17:34.7735025Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.0241868Z Switched to a new branch 'main'
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.0242224Z branch 'main' set up to track 'origin/main'.
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.0254518Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.0295274Z [command]/usr/bin/git log -1 --format=%H
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.0315706Z 28059a91ec9984dea4d079b3f684b3a27af669f0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.0501800Z ##[group]Run cp -f docs/planning/corpus-audit.json "$RUNNER_TEMP/chronoshift-corpus-audit.json"
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.0502384Z ^[[36;1mcp -f docs/planning/corpus-audit.json "$RUNNER_TEMP/chronoshift-corpus-audit.json"^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.0506631Z shell: bash --noprofile --norc -e -o pipefail {0}
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.0506910Z env:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.0507111Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.0507365Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.0507609Z   CHRONOSHIFT_CI_TIMING: 0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.0507809Z   PUBLISH_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.0507991Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1171467Z ##[group]Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1171820Z with:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1171989Z   install: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1172153Z   cache: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1172346Z   cache_save: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1172519Z   cache_key_prefix: mise-v1
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1172707Z   experimental: false
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1172876Z   log_level: info
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1173036Z   reshim: false
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1173201Z   add_shims_to_path: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1175375Z   github_token: ***
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1175689Z   fetch_from_github: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1175899Z   env: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1176163Z env:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1176340Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1176572Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1176780Z   CHRONOSHIFT_CI_TIMING: 0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1176963Z   PUBLISH_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1177143Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.1183433Z ##[command]/usr/bin/docker exec  618970f180098afb88b42d6d84451fb91608085e81dbbde26c4bf8537a8bf7b2 sh -c "cat /etc/*release | grep ^ID"
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.3139535Z ##[group]Restoring mise cache
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.3172915Z [command]/usr/bin/ldd --version
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.3218903Z ldd (Ubuntu GLIBC 2.39-0ubuntu8.8) 2.39
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.3219323Z Copyright (C) 2024 Free Software Foundation, Inc.
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.3219769Z This is free software; see the source for copying conditions.  There is NO
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.3220326Z warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.3220772Z Written by Roland McGrath and Ulrich Drepper.
+verify / web	UNKNOWN STEP	2026-10-05T07:17:35.6273878Z Cache hit for: mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d
+verify / web	UNKNOWN STEP	2026-10-05T07:17:36.7856401Z Received 109051904 of 166328943 (65.6%), 104.0 MBs/sec
+verify / web	UNKNOWN STEP	2026-10-05T07:17:37.1236137Z Received 166328943 of 166328943 (100.0%), 118.6 MBs/sec
+verify / web	UNKNOWN STEP	2026-10-05T07:17:37.1236512Z Cache Size: ~159 MB (166328943 B)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:37.1260035Z [command]/usr/bin/tar -xf /__w/_temp/2d8b1e71-9df2-4013-aef4-5586b00f8be2/cache.tgz -P -C /__w/ChronoShift/ChronoShift -z
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.1712751Z Cache restored successfully
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.1796411Z mise cache restored from key: mise-v1-linux-x64-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.1804325Z ##[group]Setting env vars
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.1804951Z Setting MISE_LOG_LEVEL=info
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.1810665Z Setting MISE_GITHUB_TOKEN=***
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.1811448Z Setting MISE_TRUSTED_CONFIG_PATHS=/__w/ChronoShift/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.1811865Z Setting MISE_YES=1
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.1812683Z Adding /github/home/.local/share/mise/shims to PATH
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.1813481Z ##[group]Running mise --version
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.1825275Z [command]/github/home/.local/share/mise/bin/mise --version
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.1893403Z 2026.10.1 linux-x64 (2026-10-03)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.1904518Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.1905469Z ##[group]Running mise install 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.1915224Z [command]/github/home/.local/share/mise/bin/mise install
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.1993804Z ^[[2mmise^[[0m ^[[2mby @jdx^[[0m – installing 3 tools
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.1997298Z ^[[2mmise^[[0m ^[[38;5;11m⇢^[[0m bun@1.4.0    0ms · already installed
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.1999076Z ^[[2mmise^[[0m ^[[38;5;11m⇢^[[0m node@26.8.1  0ms · already installed
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2006130Z ^[[2mmise^[[0m ^[[38;5;11m⇢^[[0m gh@2.100.0   0ms · already installed
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2006840Z ^[[2mmise^[[0m ^[[36m████████████████^[[0m^[[31m^[[0m^[[2m^[[0m 3/3 · installed 0 tools · 3 already installed in 1ms
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2007652Z ^[[2mmise^[[0m all tools are installed
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2052674Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2053081Z ##[group]Running mise ls
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2061483Z [command]/github/home/.local/share/mise/bin/mise ls
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2152477Z bun   1.4.0    /__w/ChronoShift/ChronoShift/mise.toml  1.4.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2153160Z gh    2.100.0  /__w/ChronoShift/ChronoShift/mise.toml  2.100.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2153508Z node  26.8.1   /__w/ChronoShift/ChronoShift/mise.toml  26.8.1
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2159768Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2163050Z ##[group]Exporting mise environment variables
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2278385Z [command]/github/home/.local/share/mise/bin/mise env --json
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2356399Z {
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2357408Z   "PATH": "/github/home/.local/share/mise/installs/bun/1.4.0/bin:/github/home/.local/share/mise/installs/node/26.8.1/bin:/github/home/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin:/github/home/.local/share/mise/shims:/github/home/.local/share/mise/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2359233Z }
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2365584Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2517008Z ##[group]Run bun install --frozen-lockfile
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2517314Z ^[[36;1mbun install --frozen-lockfile^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2517944Z shell: bash --noprofile --norc -e -o pipefail {0}
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2518743Z env:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2518943Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2519185Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2519408Z   CHRONOSHIFT_CI_TIMING: 0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2519603Z   PUBLISH_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2519791Z   MISE_LOG_LEVEL: info
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2521976Z   MISE_GITHUB_TOKEN: ***
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2522221Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2522476Z   MISE_YES: 1
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2523435Z   PATH: /github/home/.local/share/mise/installs/bun/1.4.0/bin:/github/home/.local/share/mise/installs/node/26.8.1/bin:/github/home/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin:/github/home/.local/share/mise/shims:/github/home/.local/share/mise/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.2524338Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.3057536Z bun install v1.4.0 (34cbb9a40)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9498415Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9499337Z + @axe-core/playwright@4.13.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9499785Z + @playwright/test@1.63.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9500141Z + @types/bun@1.4.2
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9500359Z + @types/react@19.3.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9500586Z + @types/react-dom@19.3.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9500821Z + prettier@3.9.9
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9501023Z + typescript@7.0.2
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9501221Z + vite@8.3.2
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9501427Z + @internationalized/date@3.12.4
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9501683Z + @js-temporal/polyfill@0.5.1
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9501923Z + chrono-node@2.10.2
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9502090Z + react@19.3.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9502260Z + react-aria-components@1.21.1
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9502450Z + react-dom@19.3.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9502583Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9502670Z 51 packages installed [645.00ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9579085Z ##[group]Run bun -e 'const pkg = await Bun.file("node_modules/playwright/package.json").json(); if (pkg.version !== process.env.PLAYWRIGHT_IMAGE_VERSION) throw new Error("Update the pinned Playwright image and version guard with the dependency"); const { chromium, firefox, webkit } = await import("@playwright/test"); for (const browser of [chromium, firefox, webkit]) if (!(await Bun.file(browser.executablePath()).exists())) throw new Error("The pinned image is missing " + browser.name());'
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9581552Z ^[[36;1mbun -e 'const pkg = await Bun.file("node_modules/playwright/package.json").json(); if (pkg.version !== process.env.PLAYWRIGHT_IMAGE_VERSION) throw new Error("Update the pinned Playwright image and version guard with the dependency"); const { chromium, firefox, webkit } = await import("@playwright/test"); for (const browser of [chromium, firefox, webkit]) if (!(await Bun.file(browser.executablePath()).exists())) throw new Error("The pinned image is missing " + browser.name());'^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9583023Z shell: bash --noprofile --norc -e -o pipefail {0}
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9583282Z env:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9583464Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9583689Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9583913Z   CHRONOSHIFT_CI_TIMING: 0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9584093Z   PUBLISH_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9584269Z   MISE_LOG_LEVEL: info
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9586427Z   MISE_GITHUB_TOKEN: ***
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9586657Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9586940Z   MISE_YES: 1
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9587779Z   PATH: /github/home/.local/share/mise/installs/bun/1.4.0/bin:/github/home/.local/share/mise/installs/node/26.8.1/bin:/github/home/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin:/github/home/.local/share/mise/shims:/github/home/.local/share/mise/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+verify / web	UNKNOWN STEP	2026-10-05T07:17:40.9588999Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:41.5016508Z ##[group]Run bun run format:check
+verify / web	UNKNOWN STEP	2026-10-05T07:17:41.5016904Z ^[[36;1mbun run format:check^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:17:41.5017691Z shell: bash --noprofile --norc -e -o pipefail {0}
+verify / web	UNKNOWN STEP	2026-10-05T07:17:41.5018222Z env:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:41.5018474Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+verify / web	UNKNOWN STEP	2026-10-05T07:17:41.5018770Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:41.5019058Z   CHRONOSHIFT_CI_TIMING: 0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:41.5019323Z   PUBLISH_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:41.5019567Z   MISE_LOG_LEVEL: info
+verify / web	UNKNOWN STEP	2026-10-05T07:17:41.5022923Z   MISE_GITHUB_TOKEN: ***
+verify / web	UNKNOWN STEP	2026-10-05T07:17:41.5023282Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:17:41.5023661Z   MISE_YES: 1
+verify / web	UNKNOWN STEP	2026-10-05T07:17:41.5024972Z   PATH: /github/home/.local/share/mise/installs/bun/1.4.0/bin:/github/home/.local/share/mise/installs/node/26.8.1/bin:/github/home/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin:/github/home/.local/share/mise/shims:/github/home/.local/share/mise/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+verify / web	UNKNOWN STEP	2026-10-05T07:17:41.5026297Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:41.5559308Z $ bunx --bun prettier --check web scripts/*.ts tests e2e *.ts
+verify / web	UNKNOWN STEP	2026-10-05T07:17:41.6384265Z Checking formatting...
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.0423583Z All matched files use Prettier code style!
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.0559966Z ##[group]Run bun run test
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.0560209Z ^[[36;1mbun run test^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.0560382Z ^[[36;1mbun run build^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.0560784Z shell: bash --noprofile --norc -e -o pipefail {0}
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.0561014Z env:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.0561192Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.0561415Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.0561633Z   CHRONOSHIFT_CI_TIMING: 0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.0561822Z   PUBLISH_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.0561987Z   MISE_LOG_LEVEL: info
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.0563939Z   MISE_GITHUB_TOKEN: ***
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.0564173Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.0564407Z   MISE_YES: 1
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.0565210Z   PATH: /github/home/.local/share/mise/installs/bun/1.4.0/bin:/github/home/.local/share/mise/installs/node/26.8.1/bin:/github/home/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin:/github/home/.local/share/mise/shims:/github/home/.local/share/mise/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.0566016Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1058702Z $ bun test tests
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1074475Z bun test v1.4.0 (34cbb9a40)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1184706Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1185535Z ##[group]tests/console-capture.test.ts:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1202991Z (pass) navigation-lost console payload retains a stable event and flush waits for full metadata [0.63ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1203677Z (pass) unexpected capture failure is surfaced by flush instead of being swallowed [0.15ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1219186Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1220118Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1220275Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1220573Z ##[group]tests/offline.test.ts:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1279149Z (pass) first installation reports safe asset/release identity before a controller exists [1.94ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1291781Z (pass) embedded navigation shell installs exact HTML without a network document [1.25ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1303277Z (pass) embedded navigation shell rejects inconsistent build bytes [1.10ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1312248Z (pass) claim requires a verified cache and scoped window: complete=true, inside=true [0.85ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1312831Z (pass) claim requires a verified cache and scoped window: complete=false, inside=true [0.11ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1314640Z (pass) claim requires a verified cache and scoped window: complete=true, inside=false [0.12ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1314942Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1315241Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1315342Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1315545Z ##[group]tests/publishing.test.ts:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1334029Z (pass) publication reuse requires a trusted complete PR verification and exact tree [0.33ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1334305Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1335245Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1335376Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.1335637Z ##[group]tests/corpus.test.ts:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3344939Z (pass) all resilience corpus inputs execute the browser engine without crashing [153.89ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3345761Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3347292Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3347760Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3348461Z ##[group]tests/conversion.test.ts:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3349166Z (pass) independently specified temporal fixtures > fixed EST in spring [0.74ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3350005Z (pass) independently specified temporal fixtures > fixed PST in summer [0.49ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3354137Z (pass) independently specified temporal fixtures > regional PT summer [0.41ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3356861Z (pass) independently specified temporal fixtures > regional PT winter [0.38ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3361172Z (pass) independently specified temporal fixtures > regional ET [0.38ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3366024Z (pass) independently specified temporal fixtures > CST ambiguity [0.41ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3369157Z (pass) independently specified temporal fixtures > IST ambiguity [0.36ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3373062Z (pass) independently specified temporal fixtures > BST ambiguity [0.38ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3376923Z (pass) independently specified temporal fixtures > AST ambiguity [0.34ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3392421Z (pass) independently specified temporal fixtures > quarter hour offset [1.45ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3398163Z (pass) independently specified temporal fixtures > negative half hour offset [0.59ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3401233Z (pass) independently specified temporal fixtures > invalid minutes [0.25ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3401873Z (pass) independently specified temporal fixtures > invalid offset bound [0.14ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3405360Z (pass) independently specified temporal fixtures > ISO offset [0.35ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3408853Z (pass) independently specified temporal fixtures > relative tomorrow [0.33ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3411996Z (pass) independently specified temporal fixtures > relative in Tokyo [0.38ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3418394Z (pass) independently specified temporal fixtures > source date across midnight [0.52ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3422151Z (pass) independently specified temporal fixtures > city Tokyo [0.41ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3424673Z (pass) independently specified temporal fixtures > city Mumbai [0.33ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3428363Z (pass) independently specified temporal fixtures > city Berlin summer [0.33ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3432228Z (pass) independently specified temporal fixtures > accented city [0.35ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3439433Z (pass) independently specified temporal fixtures > unique typo disclosure [0.65ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3444547Z (pass) independently specified temporal fixtures > unknown city [0.53ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3446371Z (pass) independently specified temporal fixtures > unknown abbreviation [0.22ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3451604Z (pass) independently specified temporal fixtures > IANA identity [0.46ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3458894Z (pass) independently specified temporal fixtures > spring gap [0.74ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3463197Z (pass) independently specified temporal fixtures > autumn fold [0.46ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3468574Z (pass) independently specified temporal fixtures > Sydney spring gap [0.46ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3472542Z (pass) independently specified temporal fixtures > Sydney autumn fold [0.40ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3473357Z (pass) independently specified temporal fixtures > date only [0.16ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3477587Z (pass) independently specified temporal fixtures > month day convention [0.32ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3482612Z (pass) independently specified temporal fixtures > day month convention [0.50ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3488226Z (pass) independently specified temporal fixtures > header date context [0.55ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3493830Z (pass) independently specified temporal fixtures > paragraph isolation [0.50ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3497470Z (pass) independently specified temporal fixtures > second explicit date [0.41ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3502651Z (pass) independently specified temporal fixtures > same date range [0.44ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3506816Z (pass) independently specified temporal fixtures > overnight range [0.47ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3513185Z (pass) independently specified temporal fixtures > Unix seconds [0.27ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3514251Z (pass) independently specified temporal fixtures > Unix text order [0.45ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3518887Z (pass) independently specified temporal fixtures > duplicate mentions [0.40ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3522555Z (pass) independently specified temporal fixtures > distinct dates retained [0.37ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3527080Z (pass) independently specified temporal fixtures > missing timezone source default [0.32ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3528515Z (pass) independently specified temporal fixtures > no matching time [0.06ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3529930Z (pass) independently specified temporal fixtures > HTML remains text [0.24ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3532408Z (pass) independently specified temporal fixtures > relative source date at UTC midnight [0.31ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3538342Z (pass) independently specified temporal fixtures > relative header in source zone [0.27ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3541565Z (pass) independently specified temporal fixtures > unrelated sentence date reset [0.46ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3544802Z (pass) independently specified temporal fixtures > military time with fixed zone [0.34ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3546600Z (pass) independently specified temporal fixtures > military Zulu [0.20ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3550201Z (pass) independently specified temporal fixtures > shorthand meridiem [0.37ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3557386Z (pass) independently specified temporal fixtures > between range [0.63ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3559863Z (pass) independently specified temporal fixtures > unknown IANA wins over adjacent UTC token [0.31ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3563719Z (pass) independently specified temporal fixtures > leap day retained [0.30ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3566682Z (pass) independently specified temporal fixtures > bare city summer rules [0.35ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3570501Z (pass) independently specified temporal fixtures > city before prose [0.32ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3573371Z (pass) independently specified temporal fixtures > NYC alias [0.30ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3577476Z (pass) independently specified temporal fixtures > Melbourne alias [0.43ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3578487Z (pass) independently specified temporal fixtures > 2015 Unix boundary [0.10ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3579188Z (pass) independently specified temporal fixtures > 2035 Unix boundary [0.09ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3584573Z (pass) independently specified temporal fixtures > explicit zone upgrades default duplicate [0.41ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3589530Z (pass) independently specified temporal fixtures > ISO fractional seconds [0.51ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3590383Z (pass) independently specified temporal fixtures > partial colloquial match must not convert wrong time [0.15ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3595254Z (pass) independently specified temporal fixtures > vague approximate hour [0.09ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3595934Z (pass) independently specified temporal fixtures > no invented end of business hour [0.05ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3596635Z (pass) independently specified temporal fixtures > city before target-zone sentence [0.31ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3599111Z (pass) independently specified temporal fixtures > city before colleague timezone [0.29ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3606632Z (pass) independently specified temporal fixtures > city-qualified endpoint range [0.73ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3610738Z (pass) independently specified temporal fixtures > numeric offset endpoint range [0.42ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3616878Z (pass) independently specified temporal fixtures > repeated-zone overnight range [0.59ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3621447Z (pass) independently specified temporal fixtures > distinct endpoint zone clocks [0.42ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3628580Z (pass) independently specified temporal fixtures > regional repeated-zone overnight range [0.70ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3629880Z (pass) independently specified temporal fixtures > malformed three-digit offset minutes [0.15ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3631390Z (pass) independently specified temporal fixtures > malformed one-digit offset minutes [0.14ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3633376Z (pass) independently specified temporal fixtures > unsupported unicode offset minus [0.11ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3638759Z (pass) independently specified temporal fixtures > IANA numeric suffix identity [0.52ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3674424Z (pass) independently specified temporal fixtures > lowercase fixed zone [3.54ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3680606Z (pass) independently specified temporal fixtures > mixed-case fixed zone [0.61ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3683600Z (pass) independently specified temporal fixtures > lowercase numeric zone [0.30ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3692745Z (pass) independently specified temporal fixtures > range before colleague zone prose [0.82ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3698924Z (pass) independently specified temporal fixtures > range before format zone prose [0.66ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3708777Z (pass) independently specified temporal fixtures > dotted meridiem overnight range [0.94ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3716813Z (pass) independently specified temporal fixtures > military endpoint zone range [0.74ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3731593Z (pass) independently specified temporal fixtures > IANA qualified overnight range [1.45ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3741082Z (pass) independently specified temporal fixtures > city qualified overnight range [0.96ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3742666Z (pass) independently specified temporal fixtures > reject complete malformed offset UTC+05foo [0.21ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3744436Z (pass) independently specified temporal fixtures > reject complete malformed offset UTC+05:30abc [0.15ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3746672Z (pass) independently specified temporal fixtures > reject complete malformed offset UTC+5.5 [0.16ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3747647Z (pass) independently specified temporal fixtures > reject complete malformed offset GMT+2.5 [0.13ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3754570Z (pass) independently specified temporal fixtures > range propagates trailing explicit date [0.65ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3764071Z (pass) independently specified temporal fixtures > range infers trailing next year [0.92ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3772962Z (pass) independently specified temporal fixtures > range second precision rollover [0.87ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3782439Z (pass) independently specified temporal fixtures > cross-city civil overnight range [0.91ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3791979Z (pass) independently specified temporal fixtures > bare city overnight range [0.90ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3800765Z (pass) independently specified temporal fixtures > qualified until city range [0.91ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3801980Z (pass) independently specified temporal fixtures > reject repeated offset sign [0.15ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3803494Z (pass) independently specified temporal fixtures > reject malformed sign UTC++5 [0.14ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3804730Z (pass) independently specified temporal fixtures > reject malformed sign UTC+-5 [0.10ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3806116Z (pass) independently specified temporal fixtures > reject malformed sign UTC+ [0.11ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3834465Z (pass) formatting rolls into next day and copy includes full context [2.78ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3846753Z (pass) negative fractional offset never invents a location [0.77ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3854908Z (pass) short fuzzy city and unknown guesses are rejected [1.22ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3870283Z (pass) valid input at limit converts; arbitrary numbers and milliseconds stay unparsed [1.49ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3875976Z (pass) range keeps textual identities and both endpoints [0.62ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3877230Z (pass) input limit and invalid target give actionable errors [0.12ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3889987Z (pass) reference date override leaves source zone independent of target [1.13ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3890512Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3891168Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3891456Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.3891954Z ##[group]tests/preview.test.ts:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.4510789Z (pass) preview publication accepts identical trees and rejects merged content differences [61.03ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.4511364Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.4511880Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.4512196Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.4512360Z  116 pass
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.4512627Z  0 fail
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.4512949Z  725 expect() calls
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.4513259Z Ran 116 tests across 6 files. [343.00ms]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.4630568Z $ bun run typecheck && bun scripts/third-party-notices.ts && bunx --bun vite build && bun scripts/build-offline.ts
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.4661333Z $ bunx --bun tsc --noEmit
+verify / web	UNKNOWN STEP	2026-10-05T07:17:43.8562432Z Included notices for 19 production packages.
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.0468338Z ^[[36mvite v8.3.2 ^[[32mbuilding client environment for production...^[[36m^[[39m
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.0540598Z transforming...
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.2369972Z ✓ 644 modules transformed.
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.2844094Z rendering chunks...
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.3739814Z computing gzip size...
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.3823034Z dist/index.html                                    0.80 kB │ gzip:   0.44 kB
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.3824132Z dist/assets/geist-latin-variable-Dm3htQBi.woff2   28.40 kB
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.3824557Z dist/assets/worker-C690IjaR.js                   221.14 kB
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.3825089Z dist/assets/index-Bst_xchV.css                    20.74 kB │ gzip:   4.83 kB
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.3825633Z dist/assets/index-DHi9pTHJ.js                    775.09 kB │ gzip: 235.19 kB
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.3825974Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.3826414Z ^[[32m✓ built in 335ms^[[39m
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.3832074Z ^[[33m[plugin builtin:vite-reporter] 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.3832612Z (!) Some chunks are larger than 500 kB after minification. Consider:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.3833091Z - Using dynamic import() to code-split the application
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.3833815Z - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.3834717Z - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.^[[39m
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.4099396Z Offline version b5d1df7366de0c5f: 13 local assets, /
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.4169320Z ##[group]Run bun run corpus:audit
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.4169617Z ^[[36;1mbun run corpus:audit^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.4170219Z ^[[36;1mdiff -u "$RUNNER_TEMP/chronoshift-corpus-audit.json" docs/planning/corpus-audit.json^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.4171023Z shell: bash --noprofile --norc -e -o pipefail {0}
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.4171317Z env:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.4171550Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.4171855Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.4172138Z   CHRONOSHIFT_CI_TIMING: 0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.4172376Z   PUBLISH_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.4172620Z   MISE_LOG_LEVEL: info
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.4174624Z   MISE_GITHUB_TOKEN: ***
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.4174896Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.4175235Z   MISE_YES: 1
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.4176189Z   PATH: /github/home/.local/share/mise/installs/bun/1.4.0/bin:/github/home/.local/share/mise/installs/node/26.8.1/bin:/github/home/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin:/github/home/.local/share/mise/shims:/github/home/.local/share/mise/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.4177051Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.4659696Z $ bun scripts/audit-corpus.ts
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.6837019Z 353 real inputs exercised; 0 crashes; 29 cases need review of legacy expectations or parser gaps.
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.6936030Z ##[group]Run bun scripts/ci-environment.ts before
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.6936470Z ^[[36;1mbun scripts/ci-environment.ts before^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.6936809Z ^[[36;1mbun run test:browser^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.6938977Z shell: bash --noprofile --norc -e -o pipefail {0}
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.6939397Z env:
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.6939673Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.6940062Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.6940356Z   CHRONOSHIFT_CI_TIMING: 0
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.6940638Z   PUBLISH_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.6940907Z   MISE_LOG_LEVEL: info
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.6943176Z   MISE_GITHUB_TOKEN: ***
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.6943545Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.6943879Z   MISE_YES: 1
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.6944924Z   PATH: /github/home/.local/share/mise/installs/bun/1.4.0/bin:/github/home/.local/share/mise/installs/node/26.8.1/bin:/github/home/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin:/github/home/.local/share/mise/shims:/github/home/.local/share/mise/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.6945882Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.7515679Z [ci-environment] {"at":"2026-10-05T07:17:44.750Z","phase":"before","platform":"linux","architecture":"x64","osRelease":"6.17.0-1022-azure","availableParallelism":4,"logicalCpus":4,"cpuModel":"Intel(R) Xeon(R) 6973P-C","totalMemoryBytes":16765374464,"cgroup":{"cpu.max":"max 100000","cpu.stat":"usage_usec 14773192\nuser_usec 12063060\nsystem_usec 2710132\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0","memory.max":"max","memory.peak":"1520762880","memory.events":"low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"}}
+verify / web	UNKNOWN STEP	2026-10-05T07:17:44.7612090Z $ bunx --bun playwright test
+verify / web	UNKNOWN STEP	2026-10-05T07:17:45.4405357Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:45.4406160Z Running 258 tests using 4 workers
+verify / web	UNKNOWN STEP	2026-10-05T07:17:45.4406546Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:17:47.4026280Z   ✓    3 [foldable] › e2e/foldable.spec.ts:112:0 › notch and home-indicator safe areas inset the task (1.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:48.4747791Z   ✓    1 [foldable] › e2e/foldable.spec.ts:70:0 › tabletop posture confines the scrollable task to the upper screen (2.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:48.8292586Z   ✓    2 [foldable] › e2e/foldable.spec.ts:4:0 › input and results avoid a vertical hinge and survive folding (2.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:50.0782331Z   ✓    4 [chromium] › e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (3.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:51.5670944Z   ✓    8 [chromium] › e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (1.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:51.6945013Z   ✓    5 [chromium] › e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (3.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:51.8852518Z   ✓    6 [chromium] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (2.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:52.4985797Z   ✓    7 [chromium] › e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (2.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:53.3814668Z   ✓    9 [chromium] › e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (1.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:54.1579285Z   ✓   10 [chromium] › e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (2.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:55.2217469Z   ✓   14 [chromium] › e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (1.0s)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:55.4324909Z   ✓   11 [chromium] › e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (3.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:56.2324611Z   ✓   12 [chromium] › e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (3.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:57.4476514Z   ✓   13 [chromium] › e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (4.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:17:59.2757065Z   ✓   15 [chromium] › e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (4.0s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:01.7372146Z   ✓   18 [chromium] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (4.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:01.8906059Z   ✓   19 [chromium] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (2.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:02.6859124Z   ✓   17 [chromium] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (6.4s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:03.4517431Z   ✓   21 [chromium] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (1.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:04.0860598Z   ✓   22 [chromium] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (1.4s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:04.8711476Z   ✓   20 [chromium] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (3.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:05.2350061Z   ✓   23 [chromium] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (1.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:05.4001060Z   ✓   24 [chromium] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (1.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:06.5652876Z   ✓   26 [chromium] › e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (1.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:09.1804801Z   ✓   16 [chromium] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (13.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:09.7239533Z   ✓   27 [chromium] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (4.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:10.3513761Z   ✓   25 [chromium] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (5.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:11.0780067Z   ✓   28 [chromium] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (4.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:11.6949961Z   ✓   29 [chromium] › e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (2.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:12.5470045Z   ✓   33 [chromium] › e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (842ms)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:13.4607395Z   ✓   30 [chromium] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (3.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:14.5732650Z   ✓   34 [chromium] › e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (2.0s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:15.0532160Z   ✓   31 [chromium] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (4.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:15.3580290Z   ✓   35 [chromium] › e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (1.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:15.8570383Z   ✓   36 [chromium] › e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (1.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:16.7375969Z   ✓   32 [chromium] › e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (5.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:17.0425679Z   ✓   37 [chromium] › e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (2.0s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:18.4809856Z   ✓   39 [chromium] › e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (2.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:19.1383300Z   ✓   41 [chromium] › e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (2.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:19.4249420Z   ✓   40 [chromium] › e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (2.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:20.0406757Z   ✓   42 [chromium] › e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (1.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:21.1415985Z   ✓   43 [chromium] › e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (2.0s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:21.5455728Z   ✓   38 [chromium] › e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (6.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:22.1384922Z   ✓   46 [chromium] › e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (983ms)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:22.6661298Z   ✓   44 [chromium] › e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (3.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:23.7102295Z   ✓   45 [chromium] › e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (3.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:24.4071611Z   ✓   47 [chromium] › e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft (2.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:25.7840960Z   ✓   50 [chromium] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (2.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:28.0438591Z   ✓   51 [chromium] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (3.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:28.1111126Z   ✓   49 [chromium] › e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update (5.4s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:28.5042482Z   ✓   48 [chromium] › e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload (6.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:28.9127416Z   ✓   52 [chromium] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (3.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:34.4699556Z   ✓   55 [firefox] › e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (4.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:34.8970223Z   ✓   56 [firefox] › e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (4.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:36.8877613Z   ✓   57 [firefox] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (2.4s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:37.6665373Z   ✓   58 [firefox] › e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (2.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:37.8156853Z   ✓   53 [chromium] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (9.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:38.1508858Z   ✓   54 [chromium] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (10.0s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:39.0690482Z   ✓   59 [firefox] › e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (2.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:40.2425788Z   ✓   60 [firefox] › e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (2.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:43.5845661Z   ✓   63 [firefox] › e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (4.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:44.3017880Z   ✓   61 [firefox] › e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (5.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:45.9213220Z   ✓   62 [firefox] › e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (6.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:46.1629786Z   ✓   64 [firefox] › e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (5.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:46.2038423Z   ✓   65 [firefox] › e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (2.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:51.1974999Z   ✓   66 [firefox] › e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (6.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:54.0307505Z   ✓   69 [firefox] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (7.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:55.6010102Z   ✓   70 [firefox] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (4.4s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:56.2668847Z   ✓   68 [firefox] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (10.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:58.2632277Z   ✓   72 [firefox] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (2.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:58.3097145Z   ✓   73 [firefox] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (2.0s)
+verify / web	UNKNOWN STEP	2026-10-05T07:18:58.8190749Z   ✓   71 [firefox] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (4.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:00.4763064Z   ✓   74 [firefox] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (2.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:01.0068235Z   ✓   75 [firefox] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (2.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:02.2920187Z   ✓   77 [firefox] › e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (1.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:04.4919605Z   ✓   76 [firefox] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (5.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:07.7119923Z   ✓   78 [firefox] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (6.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:08.3167305Z   ✓   67 [firefox] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (22.4s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:08.8526119Z   ✓   80 [firefox] › e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (4.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:10.9207093Z   ✓   79 [firefox] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (8.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:12.2056182Z   ✓   84 [firefox] › e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (1.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:13.3285699Z   ✓   81 [firefox] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (5.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:14.1472094Z   ✓   82 [firefox] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (5.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:14.6447444Z   ✓   85 [firefox] › e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (2.4s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:16.3489380Z   ✓   83 [firefox] › e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (7.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:16.7771365Z   ✓   87 [firefox] › e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (2.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:17.9256948Z   ✓   86 [firefox] › e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (4.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:18.8235545Z   ✓   88 [firefox] › e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (4.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:21.0215382Z   ✓   90 [firefox] › e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (4.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:22.2420655Z   ✓   92 [firefox] › e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (3.4s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:22.8509350Z   ✓   91 [firefox] › e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (4.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:22.9572051Z   ✓   93 [firefox] › e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (1.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:23.6236199Z   ✓   89 [firefox] › e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (7.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:25.9122454Z   ✓   97 [firefox] › e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (2.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:26.4751537Z   -   98 [firefox] › e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft
+verify / web	UNKNOWN STEP	2026-10-05T07:19:27.0549899Z   -   99 [firefox] › e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload
+verify / web	UNKNOWN STEP	2026-10-05T07:19:27.1185992Z   ✓   95 [firefox] › e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (4.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:27.1664815Z   ✓   94 [firefox] › e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (4.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:27.7042093Z   -  100 [firefox] › e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update
+verify / web	UNKNOWN STEP	2026-10-05T07:19:28.3393436Z   ✓   96 [firefox] › e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (5.4s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:29.8857968Z   ✓  101 [firefox] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (2.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:31.7901437Z   ✓  103 [firefox] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (4.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:33.9479109Z   ✓  102 [firefox] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (6.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:38.1753174Z   ✓  106 [webkit] › e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (4.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:40.0275408Z   ✓  107 [webkit] › e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (4.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:41.4720020Z   ✓  105 [firefox] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (11.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:41.6773796Z   ✓  104 [firefox] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (13.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:41.8409968Z   ✓  108 [webkit] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (3.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:44.9745991Z   ✓  109 [webkit] › e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (4.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:45.7888515Z   ✓  111 [webkit] › e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (2.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:46.5475355Z   ✓  110 [webkit] › e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (4.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:47.0331047Z   ✓  112 [webkit] › e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (3.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:50.4092873Z   ✓  116 [webkit] › e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (3.4s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:50.4626921Z   ✓  113 [webkit] › e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (5.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:50.5446685Z   ✓  114 [webkit] › e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (4.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:53.9601925Z   ✓  115 [webkit] › e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (7.4s)
+verify / web	UNKNOWN STEP	2026-10-05T07:19:57.1901644Z   ✓  117 [webkit] › e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (6.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:04.1834037Z   ✓  120 [webkit] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (10.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:05.1866534Z   ✓  119 [webkit] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (14.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:05.7642808Z   ✓  121 [webkit] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (8.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:09.2607666Z   ✓  124 [webkit] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (3.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:09.5254392Z   ✓  123 [webkit] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (4.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:10.5513479Z   ✓  122 [webkit] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (6.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:11.9591547Z   ✓  126 [webkit] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (2.4s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:12.5175647Z   ✓  125 [webkit] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (3.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:14.7150471Z   ✓  128 [webkit] › e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (2.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:16.3405876Z   ✓  127 [webkit] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (5.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:21.3865572Z   ✓  129 [webkit] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (8.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:22.1094336Z   ✓  131 [webkit] › e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (5.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:26.2827814Z   ✓  130 [webkit] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (11.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:28.2940805Z   ✓  133 [webkit] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (6.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:29.0003040Z   ✓  132 [webkit] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (7.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:29.0931288Z   ✓  118 [webkit] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (38.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:31.2458823Z   ✓  135 [webkit] › e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (2.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:32.6655313Z   ✓  136 [webkit] › e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (3.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:32.7895272Z   ✓  137 [webkit] › e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (3.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:33.1650232Z   ✓  134 [webkit] › e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (6.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:33.5422370Z   ✓  138 [webkit] › e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (2.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:36.2039780Z   ✓  139 [webkit] › e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (3.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:38.4253124Z   ✓  142 [webkit] › e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (4.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:38.7982827Z   ✓  141 [webkit] › e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (5.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:40.5725874Z   ✓  140 [webkit] › e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (7.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:40.9707022Z   ✓  144 [webkit] › e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (2.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:40.9834978Z   ✓  143 [webkit] › e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (4.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:44.0028526Z   ✓  148 [webkit] › e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (3.0s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:44.6917078Z   ✓  145 [webkit] › e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (5.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:44.9250321Z   -  149 [webkit] › e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft
+verify / web	UNKNOWN STEP	2026-10-05T07:20:45.5780132Z   -  150 [webkit] › e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload
+verify / web	UNKNOWN STEP	2026-10-05T07:20:45.6172091Z   -  151 [webkit] › e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update
+verify / web	UNKNOWN STEP	2026-10-05T07:20:45.6564480Z   ✓  146 [webkit] › e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (5.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:49.5667233Z   ✓  147 [webkit] › e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (8.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:49.7342599Z   ✓  152 [webkit] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (4.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:51.0842782Z   ✓  154 [webkit] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (5.4s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:51.3000247Z   ✓  153 [webkit] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (5.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:56.5846007Z   ✓  157 [android-emulation] › e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (4.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:57.1053077Z   ✓  158 [android-emulation] › e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (4.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:20:58.7102618Z   ✓  159 [android-emulation] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (2.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:00.0151895Z   ✓  156 [webkit] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (10.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:00.1233607Z   ✓  160 [android-emulation] › e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (3.0s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:00.7475941Z   ✓  155 [webkit] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (11.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:01.3583924Z   ✓  161 [android-emulation] › e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (2.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:02.6692205Z   ✓  163 [android-emulation] › e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (1.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:03.0275334Z   ✓  162 [android-emulation] › e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (2.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:03.9026521Z   ✓  167 [android-emulation] › e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (863ms)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:04.8788448Z   ✓  164 [android-emulation] › e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (3.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:05.0624718Z   ✓  165 [android-emulation] › e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (3.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:05.7113727Z   ✓  166 [android-emulation] › e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (3.0s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:07.8507776Z   ✓  168 [android-emulation] › e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (3.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:10.4911069Z   ✓  172 [android-emulation] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (2.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:10.8824688Z   ✓  171 [android-emulation] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (5.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:11.7581203Z   ✓  170 [android-emulation] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (6.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:12.6876178Z   ✓  174 [android-emulation] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (1.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:13.9271280Z   ✓  175 [android-emulation] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (2.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:14.4829437Z   ✓  176 [android-emulation] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (1.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:14.7500118Z   ✓  173 [android-emulation] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (4.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:15.4200510Z   ✓  177 [android-emulation] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (1.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:16.5883470Z   ✓  179 [android-emulation] › e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (1.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:18.7500820Z   ✓  169 [android-emulation] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (13.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:19.4503489Z   ✓  180 [android-emulation] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (4.0s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:20.3321673Z   ✓  178 [android-emulation] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (5.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:21.1693037Z   ✓  181 [android-emulation] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (4.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:21.6144600Z   ✓  182 [android-emulation] › e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (2.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:22.9528906Z   ✓  186 [android-emulation] › e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (1.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:23.2116339Z   ✓  183 [android-emulation] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (3.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:24.8310839Z   ✓  184 [android-emulation] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (4.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:24.9996110Z   ✓  188 [android-emulation] › e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (1.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:25.0460984Z   ✓  187 [android-emulation] › e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (2.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:26.0240656Z   ✓  189 [android-emulation] › e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (1.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:26.8410146Z   ✓  185 [android-emulation] › e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (5.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:26.9212081Z   ✓  190 [android-emulation] › e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (1.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:28.1340932Z   ✓  192 [android-emulation] › e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (2.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:29.1560574Z   ✓  193 [android-emulation] › e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (2.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:29.2310404Z   ✓  195 [android-emulation] › e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (1.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:29.7581199Z   ✓  194 [android-emulation] › e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (2.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:31.0152185Z   ✓  196 [android-emulation] › e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (1.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:31.2170462Z   ✓  191 [android-emulation] › e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (6.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:32.1862328Z   ✓  197 [android-emulation] › e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (2.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:32.3724620Z   ✓  199 [android-emulation] › e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (1.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:32.8849582Z   ✓  198 [android-emulation] › e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (3.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:33.9394777Z   ✓  200 [android-emulation] › e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft (2.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:35.0963807Z   ✓  203 [android-emulation] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (2.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:37.9308450Z   ✓  205 [android-emulation] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (2.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:38.0564412Z   ✓  202 [android-emulation] › e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update (5.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:38.1571263Z   ✓  204 [android-emulation] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (4.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:38.6920751Z   ✓  201 [android-emulation] › e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload (6.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:41.7923046Z   ✓  208 [iphone-emulation] › e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (3.0s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:42.5322254Z   ✓  209 [iphone-emulation] › e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (3.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:43.8771213Z   ✓  210 [iphone-emulation] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (2.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:45.1769888Z   ✓  211 [iphone-emulation] › e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (2.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:45.7419953Z   ✓  212 [iphone-emulation] › e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (1.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:46.8441562Z   ✓  213 [iphone-emulation] › e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (1.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:48.2644826Z   ✓  207 [android-emulation] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (10.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:48.3318795Z   ✓  206 [android-emulation] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (10.4s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:48.8579105Z   ✓  214 [iphone-emulation] › e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (3.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:51.0880942Z   ✓  218 [iphone-emulation] › e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (2.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:51.5394775Z   ✓  215 [iphone-emulation] › e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (4.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:53.0032886Z   ✓  216 [iphone-emulation] › e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (4.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:53.2424503Z   ✓  217 [iphone-emulation] › e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (4.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:55.1486987Z   ✓  219 [iphone-emulation] › e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (4.0s)
+verify / web	UNKNOWN STEP	2026-10-05T07:21:59.1180778Z   ✓  223 [iphone-emulation] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (4.0s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:00.7880290Z   ✓  222 [iphone-emulation] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (7.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:02.2254401Z   ✓  221 [iphone-emulation] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (9.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:02.9554758Z   ✓  225 [iphone-emulation] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (2.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:03.0076813Z   ✓  224 [iphone-emulation] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (3.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:04.3447479Z   ✓  226 [iphone-emulation] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (2.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:04.8122551Z   ✓  228 [iphone-emulation] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (1.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:05.1825379Z   ✓  227 [iphone-emulation] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (2.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:06.5533844Z   ✓  230 [iphone-emulation] › e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (1.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:08.8425635Z   ✓  229 [iphone-emulation] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (4.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:10.9649204Z   ✓  231 [iphone-emulation] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (5.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:12.0229506Z   ✓  220 [iphone-emulation] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (20.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:12.4584790Z   ✓  233 [iphone-emulation] › e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (3.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:13.2847612Z   ✓  232 [iphone-emulation] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (6.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:14.6661743Z   ✓  237 [iphone-emulation] › e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (1.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:15.5294262Z   ✓  234 [iphone-emulation] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (4.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:16.5814699Z   ✓  238 [iphone-emulation] › e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (1.9s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:17.3901948Z   ✓  235 [iphone-emulation] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (5.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:17.8717802Z   ✓  239 [iphone-emulation] › e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (2.3s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:18.0810275Z   ✓  240 [iphone-emulation] › e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (1.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:19.0809691Z   ✓  236 [iphone-emulation] › e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (6.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:19.9256740Z   ✓  241 [iphone-emulation] › e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (2.5s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:21.2591241Z   ✓  243 [iphone-emulation] › e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (3.2s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:22.0459667Z   ✓  244 [iphone-emulation] › e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (3.0s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:23.0235578Z   ✓  245 [iphone-emulation] › e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (3.1s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:23.0998598Z   ✓  246 [iphone-emulation] › e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (1.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:24.5138124Z   ✓  242 [iphone-emulation] › e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (6.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:25.7038785Z   ✓  248 [iphone-emulation] › e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (2.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:26.0340919Z   ✓  247 [iphone-emulation] › e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (4.0s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:26.2560585Z   -  251 [iphone-emulation] › e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft
+verify / web	UNKNOWN STEP	2026-10-05T07:22:26.5372567Z   -  252 [iphone-emulation] › e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload
+verify / web	UNKNOWN STEP	2026-10-05T07:22:26.6804314Z   -  253 [iphone-emulation] › e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update
+verify / web	UNKNOWN STEP	2026-10-05T07:22:26.8913758Z   ✓  250 [iphone-emulation] › e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (2.4s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:27.7229525Z   ✓  249 [iphone-emulation] › e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (4.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:29.2672105Z   ✓  254 [iphone-emulation] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (2.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:30.7352498Z   ✓  256 [iphone-emulation] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (3.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:31.2669445Z   ✓  255 [iphone-emulation] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (4.6s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:34.9512245Z   ✓  258 [iphone-emulation] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (5.7s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.0974710Z   ✓  257 [iphone-emulation] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (7.4s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.1891097Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.1895750Z   9 skipped
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.1896101Z   249 passed (4.8m)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4034597Z ##[group]Run bun scripts/ci-environment.ts after
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4034984Z ^[[36;1mbun scripts/ci-environment.ts after^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4035467Z shell: bash --noprofile --norc -e -o pipefail {0}
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4035751Z env:
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4035999Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4036286Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4036589Z   CHRONOSHIFT_CI_TIMING: 0
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4036844Z   PUBLISH_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4037087Z   MISE_LOG_LEVEL: info
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4039466Z   MISE_GITHUB_TOKEN: ***
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4039746Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4040071Z   MISE_YES: 1
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4041093Z   PATH: /github/home/.local/share/mise/installs/bun/1.4.0/bin:/github/home/.local/share/mise/installs/node/26.8.1/bin:/github/home/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin:/github/home/.local/share/mise/shims:/github/home/.local/share/mise/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4041962Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4582397Z [ci-environment] {"at":"2026-10-05T07:22:35.457Z","phase":"after","platform":"linux","architecture":"x64","osRelease":"6.17.0-1022-azure","availableParallelism":4,"logicalCpus":4,"cpuModel":"Intel(R) Xeon(R) 6973P-C","totalMemoryBytes":16765374464,"cgroup":{"cpu.max":"max 100000","cpu.stat":"usage_usec 996413805\nuser_usec 866940467\nsystem_usec 129473337\nnice_usec 54773000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0","memory.max":"max","memory.peak":"7147012096","memory.events":"low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"}}
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4673240Z ##[group]Run actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4673642Z with:
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4675655Z   token: ***
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4675930Z   enablement: false
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4676187Z env:
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4676436Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4676745Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4677077Z   CHRONOSHIFT_CI_TIMING: 0
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4677346Z   PUBLISH_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4677625Z   MISE_LOG_LEVEL: info
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4679919Z   MISE_GITHUB_TOKEN: ***
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4680245Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4680563Z   MISE_YES: 1
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4681570Z   PATH: /github/home/.local/share/mise/installs/bun/1.4.0/bin:/github/home/.local/share/mise/installs/node/26.8.1/bin:/github/home/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin:/github/home/.local/share/mise/shims:/github/home/.local/share/mise/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4682521Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.4687804Z ##[command]/usr/bin/docker exec  618970f180098afb88b42d6d84451fb91608085e81dbbde26c4bf8537a8bf7b2 sh -c "cat /etc/*release | grep ^ID"
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8847796Z ##[group]Run bun run build
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8848527Z ^[[36;1mbun run build^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8848846Z ^[[36;1m# Keep browser first-attempt evidence when the separate subpath^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8849223Z ^[[36;1m# runner clears its own output before starting.^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8849680Z ^[[36;1mbunx --bun playwright test --config=playwright.subpath.config.ts --output=test-results/subpath^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8850249Z shell: bash --noprofile --norc -e -o pipefail {0}
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8850572Z env:
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8850813Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8851093Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8851403Z   CHRONOSHIFT_CI_TIMING: 0
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8851633Z   PUBLISH_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8851903Z   MISE_LOG_LEVEL: info
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8853908Z   MISE_GITHUB_TOKEN: ***
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8854197Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8854565Z   MISE_YES: 1
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8855436Z   PATH: /github/home/.local/share/mise/installs/bun/1.4.0/bin:/github/home/.local/share/mise/installs/node/26.8.1/bin:/github/home/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin:/github/home/.local/share/mise/shims:/github/home/.local/share/mise/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8856360Z   GITHUB_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8856595Z   BASE_PATH: /ChronoShift/
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.8856845Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.9351787Z $ bun run typecheck && bun scripts/third-party-notices.ts && bunx --bun vite build && bun scripts/build-offline.ts
+verify / web	UNKNOWN STEP	2026-10-05T07:22:35.9373233Z $ bunx --bun tsc --noEmit
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.3050632Z Included notices for 19 production packages.
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.4365395Z ^[[36mvite v8.3.2 ^[[32mbuilding client environment for production...^[[36m^[[39m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.4441241Z transforming...
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.6193781Z ✓ 644 modules transformed.
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.7576070Z rendering chunks...
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.8393902Z computing gzip size...
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.8490339Z dist/index.html                                    0.84 kB │ gzip:   0.45 kB
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.8491066Z dist/assets/geist-latin-variable-Dm3htQBi.woff2   28.40 kB
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.8491653Z dist/assets/worker-C690IjaR.js                   221.14 kB
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.8492310Z dist/assets/index-CQJea-JE.css                    20.76 kB │ gzip:   4.84 kB
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.8492923Z dist/assets/index-CzXW0WLz.js                    775.12 kB │ gzip: 235.20 kB
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.8493247Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.8493481Z ^[[32m✓ built in 413ms^[[39m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.8498746Z ^[[33m[plugin builtin:vite-reporter] 
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.8499233Z (!) Some chunks are larger than 500 kB after minification. Consider:
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.8499812Z - Using dynamic import() to code-split the application
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.8500579Z - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.8501378Z - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.^[[39m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:36.8747825Z Offline version a26d07c47d9449f5: 13 local assets, /ChronoShift/
+verify / web	UNKNOWN STEP	2026-10-05T07:22:37.3465970Z 
+verify / web	UNKNOWN STEP	2026-10-05T07:22:37.3466697Z Running 1 test using 1 worker
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0242988Z ·
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0244714Z   1 passed (1.8s)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0417405Z ##[group]Run actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0417813Z with:
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0418477Z   path: dist
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0418733Z   retention-days: 14
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0418996Z   name: github-pages
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0419253Z env:
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0419537Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0419854Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0420143Z   CHRONOSHIFT_CI_TIMING: 0
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0420415Z   PUBLISH_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0420707Z   MISE_LOG_LEVEL: info
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0422773Z   MISE_GITHUB_TOKEN: ***
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0423115Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0423583Z   MISE_YES: 1
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0424596Z   PATH: /github/home/.local/share/mise/installs/bun/1.4.0/bin:/github/home/.local/share/mise/installs/node/26.8.1/bin:/github/home/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin:/github/home/.local/share/mise/shims:/github/home/.local/share/mise/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0425501Z   GITHUB_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0425799Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0477526Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run]
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0500765Z ##[group]Run echo ::group::Archive artifact
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0501130Z ^[[36;1mecho ::group::Archive artifact^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0501397Z ^[[36;1mtar \^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0501697Z ^[[36;1m  --dereference --hard-dereference \^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0502020Z ^[[36;1m  --directory "$INPUT_PATH" \^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0502328Z ^[[36;1m  -cvf "$RUNNER_TEMP/artifact.tar" \^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0502601Z ^[[36;1m  --exclude=.git \^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0502857Z ^[[36;1m  --exclude=.github \^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0503168Z ^[[36;1m  --exclude=".[^/]*" \^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0503410Z ^[[36;1m  .^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0503656Z ^[[36;1mecho ::endgroup::^[[0m
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0503975Z shell: sh -e {0}
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0504239Z env:
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0504488Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0504766Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0505033Z   CHRONOSHIFT_CI_TIMING: 0
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0505318Z   PUBLISH_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0505547Z   MISE_LOG_LEVEL: info
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0507515Z   MISE_GITHUB_TOKEN: ***
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0507784Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0508215Z   MISE_YES: 1
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0509059Z   PATH: /github/home/.local/share/mise/installs/bun/1.4.0/bin:/github/home/.local/share/mise/installs/node/26.8.1/bin:/github/home/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin:/github/home/.local/share/mise/shims:/github/home/.local/share/mise/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0509951Z   GITHUB_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0510184Z   INPUT_PATH: dist
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0510392Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0887510Z ##[group]Archive artifact
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0898408Z ./
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0898963Z ./third-party-notices.txt
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0899703Z ./manifest.webmanifest
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0900053Z ./assets/
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0900335Z ./assets/worker-C690IjaR.js
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0901140Z ./assets/index-CQJea-JE.css
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0901639Z ./assets/index-CzXW0WLz.js
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0906064Z ./assets/geist-latin-variable-Dm3htQBi.woff2
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0906838Z ./index.html
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0907180Z ./release.json
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0907433Z ./sw.js
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0907850Z ./icon.svg
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0908261Z ./icon-512.png
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0908569Z ./icon-192.png
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0908829Z ./fonts/
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0909218Z ./fonts/geist-OFL.txt
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0909522Z ./fonts/README.txt
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0910383Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0943817Z ##[end-action id=__actions_upload-pages-artifact.__run;outcome=success;conclusion=success;duration_ms=46]
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0947386Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run_2]
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0952966Z ##[end-action id=__actions_upload-pages-artifact.__run_2;outcome=skipped;conclusion=skipped;duration_ms=0]
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0955186Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run_3]
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0958899Z ##[end-action id=__actions_upload-pages-artifact.__run_3;outcome=skipped;conclusion=skipped;duration_ms=0]
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.0960735Z ##[start-action display=Upload artifact;id=__actions_upload-pages-artifact.upload-artifact]
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1008534Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1008941Z with:
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1009183Z   name: github-pages
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1009446Z   path: /home/runner/work/_temp/artifact.tar
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1009828Z   retention-days: 14
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1010143Z   if-no-files-found: error
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1010425Z   compression-level: 6
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1010668Z   overwrite: false
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1010963Z   include-hidden-files: false
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1011236Z env:
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1011483Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1011793Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1012099Z   CHRONOSHIFT_CI_TIMING: 0
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1012379Z   PUBLISH_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1012633Z   MISE_LOG_LEVEL: info
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1014682Z   MISE_GITHUB_TOKEN: ***
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1014988Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1015280Z   MISE_YES: 1
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1016173Z   PATH: /github/home/.local/share/mise/installs/bun/1.4.0/bin:/github/home/.local/share/mise/installs/node/26.8.1/bin:/github/home/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin:/github/home/.local/share/mise/shims:/github/home/.local/share/mise/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1017012Z   GITHUB_PAGES: true
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1017241Z ##[endgroup]
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.1021308Z ##[command]/usr/bin/docker exec  618970f180098afb88b42d6d84451fb91608085e81dbbde26c4bf8537a8bf7b2 sh -c "cat /etc/*release | grep ^ID"
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.3180235Z (node:17101) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.3181647Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.3221881Z With the provided path, there will be 1 file uploaded
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.3233461Z Artifact name is valid!
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.3236142Z Root directory input is valid!
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.5857757Z Beginning upload of artifact content to blob storage
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.6270814Z (node:17101) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.9042782Z Uploaded bytes 374676
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.9466896Z Finished uploading artifact content to blob storage!
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.9469608Z SHA256 digest of uploaded artifact zip is 1028f12e73b87ebb12f0bb37b1cddac6803fd4ccfc7e562494b9f8069c39da95
+verify / web	UNKNOWN STEP	2026-10-05T07:22:39.9470271Z Finalizing artifact upload
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.1919697Z Artifact github-pages.zip successfully finalized. Artifact ID 11331175437
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.1920331Z Artifact github-pages has been successfully uploaded! Final size is 374676 bytes. Artifact ID is 11331175437
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.1924199Z Artifact download URL: https://github.com/Tien-Lam/ChronoShift/actions/runs/37276826095/artifacts/11331175437
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.2026924Z ##[end-action id=__actions_upload-pages-artifact.upload-artifact;outcome=success;conclusion=success;duration_ms=1106]
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.2515383Z Post job cleanup.
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.2523417Z ##[command]/usr/bin/docker exec  618970f180098afb88b42d6d84451fb91608085e81dbbde26c4bf8537a8bf7b2 sh -c "cat /etc/*release | grep ^ID"
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.3926941Z [command]/usr/bin/git version
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.3964163Z git version 2.43.0
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.3995652Z Temporarily overriding HOME='/__w/_temp/f1f29482-a394-4da3-b747-599f88508722' before making global git config changes
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.3996844Z Adding repository directory to the temporary git global config as a safe directory
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.4001511Z [command]/usr/bin/git config --global --add safe.directory /__w/ChronoShift/ChronoShift
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.4030026Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.4059097Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.4239101Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.4269295Z http.https://github.com/.extraheader
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.4278357Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.4305448Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.4475932Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.4498947Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.4815581Z Stop and remove container: 980205729d954cf1a74442ad50a65fb2_mcrmicrosoftcomplaywrightsha256eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27_f3fc15
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.4820097Z ##[command]/usr/bin/docker rm --force 618970f180098afb88b42d6d84451fb91608085e81dbbde26c4bf8537a8bf7b2
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.5879687Z 618970f180098afb88b42d6d84451fb91608085e81dbbde26c4bf8537a8bf7b2
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.5901484Z Remove container network: github_network_4ee33ffb99104c2a91124fee7c0cf980
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.5905537Z ##[command]/usr/bin/docker network rm github_network_4ee33ffb99104c2a91124fee7c0cf980
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.6669645Z github_network_4ee33ffb99104c2a91124fee7c0cf980
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.6735776Z Cleaning up orphan processes
+verify / web	UNKNOWN STEP	2026-10-05T07:22:40.7150199Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5, actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02, jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+deploy	Set up job	﻿2026-10-05T07:22:49.0961479Z Current runner version: '2.337.0'
+deploy	Set up job	2026-10-05T07:22:49.0980756Z ##[group]Runner Image Provisioner
+deploy	Set up job	2026-10-05T07:22:49.0981494Z Hosted Compute Agent
+deploy	Set up job	2026-10-05T07:22:49.0981836Z Version: 20260901.588
+deploy	Set up job	2026-10-05T07:22:49.0982270Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+deploy	Set up job	2026-10-05T07:22:49.0982712Z Build Date: 2026-09-01T19:56:44Z
+deploy	Set up job	2026-10-05T07:22:49.0983177Z Worker ID: {4c468034-5fc1-48bd-b54d-97265e526409}
+deploy	Set up job	2026-10-05T07:22:49.0983611Z Azure Region: centralus
+deploy	Set up job	2026-10-05T07:22:49.0983966Z ##[endgroup]
+deploy	Set up job	2026-10-05T07:22:49.0984970Z ##[group]Operating System
+deploy	Set up job	2026-10-05T07:22:49.0985336Z Ubuntu
+deploy	Set up job	2026-10-05T07:22:49.0985794Z 24.04.5
+deploy	Set up job	2026-10-05T07:22:49.0986117Z LTS
+deploy	Set up job	2026-10-05T07:22:49.0986434Z ##[endgroup]
+deploy	Set up job	2026-10-05T07:22:49.0986802Z ##[group]Runner Image
+deploy	Set up job	2026-10-05T07:22:49.0987166Z Image: ubuntu-24.04
+deploy	Set up job	2026-10-05T07:22:49.0987581Z Version: 20260927.320.1
+deploy	Set up job	2026-10-05T07:22:49.0988360Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+deploy	Set up job	2026-10-05T07:22:49.0989425Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+deploy	Set up job	2026-10-05T07:22:49.0989991Z ##[endgroup]
+deploy	Set up job	2026-10-05T07:22:49.0990716Z ##[group]GITHUB_TOKEN Permissions
+deploy	Set up job	2026-10-05T07:22:49.0992062Z Metadata: read
+deploy	Set up job	2026-10-05T07:22:49.0992410Z Pages: write
+deploy	Set up job	2026-10-05T07:22:49.0992807Z ##[endgroup]
+deploy	Set up job	2026-10-05T07:22:49.0994191Z Secret source: Actions
+deploy	Set up job	2026-10-05T07:22:49.0994818Z Cache mode: write
+deploy	Set up job	2026-10-05T07:22:49.0995450Z Prepare workflow directory
+deploy	Set up job	2026-10-05T07:22:49.1248322Z Prepare all required actions
+deploy	Set up job	2026-10-05T07:22:49.1280805Z Getting action download info
+deploy	Set up job	2026-10-05T07:22:49.3494612Z Download action repository 'actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e' (SHA:d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e)
+deploy	Set up job	2026-10-05T07:22:50.1067781Z Complete job name: deploy
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	﻿2026-10-05T07:22:50.2840645Z ##[group]Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.2841235Z with:
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.2843496Z   token: ***
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.2843754Z   timeout: 600000
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.2844006Z   error_count: 10
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.2844259Z   reporting_interval: 5000
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.2844542Z   artifact_name: github-pages
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.2844829Z   preview: false
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.2845140Z ##[endgroup]
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.4107204Z (node:1959) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.4108782Z (Use `node --trace-deprecation ...` to show where the warning was created)
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.5590986Z Fetching artifact metadata for "github-pages" in this workflow run
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.7377842Z Found 1 artifact(s)
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.7387438Z Creating Pages deployment with payload:
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.7388311Z {
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.7388756Z 	"artifact_id": 11331175437,
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.7389577Z 	"pages_build_version": "28059a91ec9984dea4d079b3f684b3a27af669f0",
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.7433465Z 	"oidc_token": "***"
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:50.7434090Z }
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:51.2824576Z Created deployment for 28059a91ec9984dea4d079b3f684b3a27af669f0, ID: 28059a91ec9984dea4d079b3f684b3a27af669f0
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:56.2842293Z Getting Pages deployment status...
+deploy	Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e	2026-10-05T07:22:56.4821152Z Reported success!
+deploy	Complete job	﻿2026-10-05T07:22:56.5050491Z Evaluate and set environment url
+deploy	Complete job	2026-10-05T07:22:56.5054273Z Evaluated environment url: https://tien-lam.github.io/ChronoShift/
+deploy	Complete job	2026-10-05T07:22:56.5054843Z Cleaning up orphan processes
+deploy	Complete job	2026-10-05T07:22:56.5254412Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

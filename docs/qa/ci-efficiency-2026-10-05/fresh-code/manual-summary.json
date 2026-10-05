@@ -1,0 +1,169 @@
+{
+  "observedAt": "2026-10-05T07:24:25.322Z",
+  "run": 37276826095,
+  "activeJobs": [
+    {
+      "name": "prepare",
+      "status": "success",
+      "start": "2026-10-05T07:16:37Z",
+      "end": "2026-10-05T07:16:52Z",
+      "seconds": 15,
+      "roundedMinutes": 1
+    },
+    {
+      "name": "verify / web",
+      "status": "success",
+      "start": "2026-10-05T07:16:54Z",
+      "end": "2026-10-05T07:22:44Z",
+      "seconds": 350,
+      "roundedMinutes": 6
+    },
+    {
+      "name": "deploy",
+      "status": "success",
+      "start": "2026-10-05T07:22:48Z",
+      "end": "2026-10-05T07:22:58Z",
+      "seconds": 10,
+      "roundedMinutes": 1
+    }
+  ],
+  "totalSeconds": 375,
+  "totalRoundedMinutes": 8,
+  "gate": true,
+  "branch": true,
+  "steps": [
+    {
+      "name": "Set up job",
+      "conclusion": "success"
+    },
+    {
+      "name": "Initialize containers",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+      "conclusion": "success"
+    },
+    {
+      "name": "Capture the checked-in corpus audit",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run bun install --frozen-lockfile",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify the pinned browser image matches the dependency",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run bun run format:check",
+      "conclusion": "success"
+    },
+    {
+      "name": "Unit tests and production build",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify the standalone conversion corpus audit",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run bun run test:browser",
+      "conclusion": "success"
+    },
+    {
+      "name": "Record browser resource usage",
+      "conclusion": "success"
+    },
+    {
+      "name": "Retain bounded browser timing metadata",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Run actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify repository-subpath deployment",
+      "conclusion": "success"
+    },
+    {
+      "name": "Upload the verified Pages build",
+      "conclusion": "success"
+    },
+    {
+      "name": "Publish failed-attempt diagnostics",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+      "conclusion": "success"
+    },
+    {
+      "name": "Stop containers",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success"
+    }
+  ],
+  "attempts": {
+    "rows": 258,
+    "distinctOrdinals": 258,
+    "retries": 0,
+    "projects": {
+      "foldable": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      },
+      "chromium": {
+        "passed": 51,
+        "skipped": 0,
+        "failed": 0
+      },
+      "firefox": {
+        "passed": 48,
+        "skipped": 3,
+        "failed": 0
+      },
+      "webkit": {
+        "passed": 48,
+        "skipped": 3,
+        "failed": 0
+      },
+      "android-emulation": {
+        "passed": 51,
+        "skipped": 0,
+        "failed": 0
+      },
+      "iphone-emulation": {
+        "passed": 48,
+        "skipped": 3,
+        "failed": 0
+      }
+    }
+  },
+  "unitSummary": [
+    "2026-10-05T07:17:43.4512360Z  116 pass",
+    "2026-10-05T07:17:43.4512627Z  0 fail",
+    "2026-10-05T07:17:43.4513259Z Ran 116 tests across 6 files. [343.00ms]"
+  ],
+  "subpathSummary": [
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:22:39.0244714Z   1 passed (1.8s)"
+  ],
+  "failedArtifact": false,
+  "archive": {
+    "id": 11331175437,
+    "bytes": 374676,
+    "digest": "sha256:1028f12e73b87ebb12f0bb37b1cddac6803fd4ccfc7e562494b9f8069c39da95",
+    "retentionHours": 335.9997222222222,
+    "nominalByteHours": 125891136
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "name": "unsafe-symlink",
+  "responses": {
+    "repos/synthetic/ChronoShift": {
+      "id": 1
+    },
+    "repos/synthetic/ChronoShift/actions/workflows/web.yml": {
+      "id": 11
+    },
+    "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a": {
+      "commit": {
+        "tree": {
+          "sha": "e66f5c811b8635a8b912fbc25acf0999a283bfbc"
+        }
+      }
+    },
+    "repos/synthetic/ChronoShift/commits/cccccccccccccccccccccccccccccccccccccccc": {
+      "commit": {
+        "tree": {
+          "sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      }
+    },
+    "repos/synthetic/ChronoShift/commits/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa": {
+      "commit": {
+        "tree": {
+          "sha": "e66f5c811b8635a8b912fbc25acf0999a283bfbc"
+        }
+      }
+    },
+    "repos/synthetic/ChronoShift/actions/workflows/11/runs?event=pull_request&status=success&per_page=30": {
+      "workflow_runs": [
+        {
+          "id": 21,
+          "workflow_id": 11,
+          "path": ".github/workflows/web.yml",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "head_repository": {
+            "id": 1
+          }
+        }
+      ]
+    },
+    "repos/synthetic/ChronoShift/actions/runs/21/jobs?per_page=100": {
+      "total_count": 1,
+      "jobs": [
+        {
+          "name": "web",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Run bun run format:check",
+              "conclusion": "success"
+            },
+            {
+              "name": "Unit tests and production build",
+              "conclusion": "success"
+            },
+            {
+              "name": "Verify the standalone conversion corpus audit",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run bun run test:browser",
+              "conclusion": "success"
+            },
+            {
+              "name": "Verify repository-subpath deployment",
+              "conclusion": "success"
+            },
+            {
+              "name": "Upload the verified Pages build",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ]
+    },
+    "repos/synthetic/ChronoShift/actions/runs/21/artifacts?per_page=100": {
+      "total_count": 1,
+      "artifacts": [
+        {
+          "id": 31,
+          "name": "github-pages",
+          "expired": false,
+          "size_in_bytes": 1060,
+          "digest": "sha256:ab0a7518c3dc6f9f7a70b8697e13fda2a0d491ac863020a6d3c41a91f38f76c6"
+        }
+      ]
+    }
+  },
+  "head": "8a4ebec0881f8363ffd19f833bbf29a44e77885a",
+  "tree": "e66f5c811b8635a8b912fbc25acf0999a283bfbc",
+  "otherTree": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+}

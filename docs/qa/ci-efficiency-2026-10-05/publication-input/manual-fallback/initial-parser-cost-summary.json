@@ -1,0 +1,265 @@
+{
+  "analyzedAt": "2026-10-05T07:23:38.560Z",
+  "runId": 37276826095,
+  "head": "28059a91ec9984dea4d079b3f684b3a27af669f0",
+  "event": "workflow_dispatch",
+  "createdAt": "2026-10-05T07:16:31Z",
+  "updatedAt": "2026-10-05T07:22:59Z",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "id": 111655577147,
+      "name": "prepare",
+      "conclusion": "success",
+      "startedAt": "2026-10-05T07:16:37Z",
+      "completedAt": "2026-10-05T07:16:52Z",
+      "seconds": 15,
+      "roundedMinutes": 1,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success",
+          "seconds": 2
+        },
+        {
+          "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+          "conclusion": "success",
+          "seconds": 6
+        },
+        {
+          "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
+          "conclusion": "success",
+          "seconds": 5
+        },
+        {
+          "name": "Reuse the exact verified PR artifact",
+          "conclusion": "skipped",
+          "seconds": null
+        },
+        {
+          "name": "Run actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b",
+          "conclusion": "skipped",
+          "seconds": null
+        },
+        {
+          "name": "Upload the verified Pages build",
+          "conclusion": "skipped",
+          "seconds": null
+        },
+        {
+          "name": "Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e",
+          "conclusion": "skipped",
+          "seconds": null
+        },
+        {
+          "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+          "conclusion": "success",
+          "seconds": 0
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success",
+          "seconds": 0
+        }
+      ]
+    },
+    {
+      "id": 111655673791,
+      "name": "verify / web",
+      "conclusion": "success",
+      "startedAt": "2026-10-05T07:16:54Z",
+      "completedAt": "2026-10-05T07:22:44Z",
+      "seconds": 350,
+      "roundedMinutes": 6,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success",
+          "seconds": 2
+        },
+        {
+          "name": "Initialize containers",
+          "conclusion": "success",
+          "seconds": 34
+        },
+        {
+          "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+          "conclusion": "success",
+          "seconds": 4
+        },
+        {
+          "name": "Capture the checked-in corpus audit",
+          "conclusion": "success",
+          "seconds": 0
+        },
+        {
+          "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
+          "conclusion": "success",
+          "seconds": 5
+        },
+        {
+          "name": "Run bun install --frozen-lockfile",
+          "conclusion": "success",
+          "seconds": 0
+        },
+        {
+          "name": "Verify the pinned browser image matches the dependency",
+          "conclusion": "success",
+          "seconds": 1
+        },
+        {
+          "name": "Run bun run format:check",
+          "conclusion": "success",
+          "seconds": 2
+        },
+        {
+          "name": "Unit tests and production build",
+          "conclusion": "success",
+          "seconds": 1
+        },
+        {
+          "name": "Verify the standalone conversion corpus audit",
+          "conclusion": "success",
+          "seconds": 0
+        },
+        {
+          "name": "Run bun run test:browser",
+          "conclusion": "success",
+          "seconds": 291
+        },
+        {
+          "name": "Record browser resource usage",
+          "conclusion": "success",
+          "seconds": 0
+        },
+        {
+          "name": "Retain bounded browser timing metadata",
+          "conclusion": "skipped",
+          "seconds": null
+        },
+        {
+          "name": "Run actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b",
+          "conclusion": "success",
+          "seconds": 0
+        },
+        {
+          "name": "Verify repository-subpath deployment",
+          "conclusion": "success",
+          "seconds": 4
+        },
+        {
+          "name": "Upload the verified Pages build",
+          "conclusion": "success",
+          "seconds": 1
+        },
+        {
+          "name": "Publish failed-attempt diagnostics",
+          "conclusion": "skipped",
+          "seconds": null
+        },
+        {
+          "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+          "conclusion": "success",
+          "seconds": 0
+        },
+        {
+          "name": "Stop containers",
+          "conclusion": "success",
+          "seconds": 0
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success",
+          "seconds": 0
+        }
+      ]
+    },
+    {
+      "id": 111657388179,
+      "name": "deploy",
+      "conclusion": "success",
+      "startedAt": "2026-10-05T07:22:48Z",
+      "completedAt": "2026-10-05T07:22:58Z",
+      "seconds": 10,
+      "roundedMinutes": 1,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success",
+          "seconds": 1
+        },
+        {
+          "name": "Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e",
+          "conclusion": "success",
+          "seconds": 6
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success",
+          "seconds": 0
+        }
+      ]
+    }
+  ],
+  "additionalValidationRunnerSeconds": 375,
+  "additionalValidationRoundedMinutes": 8,
+  "artifacts": [
+    {
+      "id": 11331175437,
+      "name": "github-pages",
+      "bytes": 374676,
+      "digest": "sha256:1028f12e73b87ebb12f0bb37b1cddac6803fd4ccfc7e562494b9f8069c39da95",
+      "retentionHours": 335.9997222222222,
+      "projectedByteHours": 125891031.92333333
+    }
+  ],
+  "additionalValidationProjectedArtifactByteHours": 125891031.92333333,
+  "browser": {
+    "uniqueCases": 0,
+    "attempts": 0,
+    "initialAttempts": 0,
+    "failedAttempts": 0,
+    "retriedAttempts": 0,
+    "byProject": {},
+    "equalInventory": false,
+    "otherGatesMatch": false
+  },
+  "timingEnvironmentLines": [
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:17:31.7024623Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:17:35.0507609Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:17:35.1176780Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:17:40.2519408Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:17:40.9583913Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:17:41.5019058Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:17:43.0561633Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:17:44.4172138Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:17:44.6940356Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:22:35.4036589Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:22:35.4677077Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:22:35.8851403Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:22:39.0420143Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:22:39.0505033Z   CHRONOSHIFT_CI_TIMING: 0",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:22:39.1012099Z   CHRONOSHIFT_CI_TIMING: 0"
+  ],
+  "timingReporterLines": [],
+  "normalSuccessfulPairUnchanged": {
+    "runIds": [
+      37274709527,
+      37276181716
+    ],
+    "runnerSeconds": 442,
+    "roundedMinutes": 8,
+    "isFaster": false,
+    "meetsTwentyPercentQuotaAndStorageTarget": false
+  },
+  "normalPairPlusManualValidation": {
+    "runnerSeconds": 817,
+    "roundedMinutes": 16
+  },
+  "limits": [
+    "Manual full fallback is additional validation, not a replacement cheaper acceptance pair. Normal successful pair JSON remains unchanged.",
+    "All passing and failed attempts must be reconciled independently of workflow conclusion. No missing capability or retry is inferred from success.",
+    "Artifact bytes multiplied by configured retention are projected usage, not actual accrued account or monthly billing.",
+    "Exact archive/public-file trust and final hosted acceptance remain root audit evidence; this report records actual pipeline execution."
+  ]
+}

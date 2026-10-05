@@ -1,0 +1,148 @@
+{
+  "capturedAt": "2026-10-05T07:01:24.497Z",
+  "runId": 37274709527,
+  "head": "b288920d072d6ebb6ca56d1ea83f7c95ea7bed02",
+  "conclusion": "success",
+  "runCreatedAt": "2026-10-05T06:53:20Z",
+  "runUpdatedAt": "2026-10-05T07:00:03Z",
+  "runElapsedSeconds": 403,
+  "jobs": [
+    {
+      "id": 111649093902,
+      "name": "web",
+      "conclusion": "success",
+      "startedAt": "2026-10-05T06:53:22Z",
+      "completedAt": "2026-10-05T07:00:02Z",
+      "runnerSeconds": 400,
+      "roundedMinutes": 7,
+      "intervalBeforeFirstStepSeconds": 1,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success",
+          "seconds": 2
+        },
+        {
+          "name": "Initialize containers",
+          "conclusion": "success",
+          "seconds": 27
+        },
+        {
+          "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+          "conclusion": "success",
+          "seconds": 3
+        },
+        {
+          "name": "Capture the checked-in corpus audit",
+          "conclusion": "success",
+          "seconds": 0
+        },
+        {
+          "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
+          "conclusion": "success",
+          "seconds": 6
+        },
+        {
+          "name": "Run bun install --frozen-lockfile",
+          "conclusion": "success",
+          "seconds": 1
+        },
+        {
+          "name": "Verify the pinned browser image matches the dependency",
+          "conclusion": "success",
+          "seconds": 1
+        },
+        {
+          "name": "Run bun run format:check",
+          "conclusion": "success",
+          "seconds": 2
+        },
+        {
+          "name": "Unit tests and production build",
+          "conclusion": "success",
+          "seconds": 2
+        },
+        {
+          "name": "Verify the standalone conversion corpus audit",
+          "conclusion": "success",
+          "seconds": 0
+        },
+        {
+          "name": "Run bun run test:browser",
+          "conclusion": "success",
+          "seconds": 347
+        },
+        {
+          "name": "Record browser resource usage",
+          "conclusion": "success",
+          "seconds": 0
+        },
+        {
+          "name": "Verify repository-subpath deployment",
+          "conclusion": "success",
+          "seconds": 4
+        },
+        {
+          "name": "Upload the verified Pages build",
+          "conclusion": "success",
+          "seconds": 1
+        },
+        {
+          "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+          "conclusion": "success",
+          "seconds": 0
+        },
+        {
+          "name": "Stop containers",
+          "conclusion": "success",
+          "seconds": 0
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success",
+          "seconds": 0
+        }
+      ]
+    }
+  ],
+  "runnerSeconds": 400,
+  "roundedMinutes": 7,
+  "artifacts": [
+    {
+      "name": "github-pages",
+      "id": 11330240757,
+      "bytes": 374697,
+      "digest": "sha256:87d46fb4d220e5e7951a72b31779d4fb197012a01cfa6915d5646cef75141181",
+      "createdAt": "2026-10-05T06:59:59Z",
+      "expiresAt": "2026-10-06T06:59:59Z",
+      "configuredRetentionHours": 24,
+      "projectedByteHours": 8992728
+    }
+  ],
+  "webOnlyComparisons": [
+    {
+      "label": "Original expanded-suite published Web",
+      "seconds": 301,
+      "roundedMinutes": 6,
+      "rawSecondsReduction": -99,
+      "rawPercentReduction": -32.89036544850499,
+      "roundedMinuteReduction": -1,
+      "roundedPercentReduction": -16.666666666666675
+    },
+    {
+      "label": "Four-worker instrumented Linux control Web",
+      "seconds": 356,
+      "roundedMinutes": 6,
+      "rawSecondsReduction": -44,
+      "rawPercentReduction": -12.35955056179776,
+      "roundedMinuteReduction": -1,
+      "roundedPercentReduction": -16.666666666666675
+    }
+  ],
+  "limits": [
+    "Web-only comparison; matching main publication pending. Do not infer complete-pair acceptance.",
+    "Different source/optional instrumentation conditions; do not isolate causal speedup from this comparison.",
+    "API job spans include interval before the first step, as the existing metric script does.",
+    "Rounded minutes and configured artifact byte-hours are repository proxies, not an account billing statement."
+  ]
+}

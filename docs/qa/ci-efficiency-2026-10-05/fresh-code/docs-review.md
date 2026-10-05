@@ -1,0 +1,24 @@
+# Documentation-only factual review
+
+Implementation/documentation verdict: **approved after two wording corrections; no remaining blockers**. TIE375 original acceptance remains **unmet/open**. Physical/human and historical TIE370 gaps remain open. No runtime suite, browser rerun, source change or publication was performed for this review.
+
+Actual observation window: **2026-10-05 07:26:20–07:28:24 UTC**. Scope is the uncommitted follow-up content in `docs/qa/ci-efficiency-2026-10-05/README.md`, `docs/developer/ci-efficiency.md` and `docs/planning/offline-web-linear-map.json`. The records identify the reviewed runtime head `b288920...`, tested PR merge `997f3f2...`, automatic/final manual main `28059a9...` and exact shared source tree `c08c0f5...`. These remain distinct from the future documentation commit.
+
+Independent saved execution evidence confirms the current 442-second/eight-minute normal pair, its 400+42 job seconds and lack of rounded-minute savings. The manual 15+350+10 seconds/eight minutes is correctly treated as additional validation. The historical 68-case baseline versus current 258-case inventory is explicit; neither the newer measurement nor the bounded local Bun/Node probe is represented as an isolated hosted causal speedup. The 2,032-second/36-minute experiment ledger plus pair/manual totals arithmetically reconcile to 2,849 seconds/52 minutes within its declared subset.
+
+The 63.00% surviving-API storage view and 69.22% full-original projection are clearly separated. I checked the preserved missing-artifact upload excerpt: artifact 11276513957 uploaded 220,772 bytes with fourteen-day retention. Documentation preserves that historical artifact instead of inferring zero bytes from its missing current API listing. Storage projections, cache occupancy, rounded-minute proxy and monthly account billing remain distinct.
+
+Current public standard compute, the separate ten-GB repository cache allowance and Actions/Packages pooled artifact storage wording agree with the current official [GitHub Actions billing documentation](https://docs.github.com/en/billing/concepts/product-billing/github-actions), read during this review. The docs qualify successful-pair samples and accrued storage, avoiding a false account-wide invoice or quota-saving claim.
+
+Publishing, reviewer roles, trust/digest/tree evidence and actual deployment-step claims match the independent source and delivery reports. The main-only Pages environment is correctly distinguished from absent branch-protection required status checks. All three artifact IDs/digests, both publication paths and the rebuilt manual source match the saved independent archive/API/public evidence. The unchanged `web/` tree was independently read from base/head and matches the documented `78dbdbf...` identity.
+
+The final map's ticket counts recompute to 32 Done, 11 In Progress and one Canceled, total 44. Project states, milestone percentages and null target dates agree with the captured 07:06:49.455 UTC four-project reconciliation. The final map explicitly stores automatic artifact revision/run separately from the latest tested manual main revision/run, preserving source identity. The nine physical/human gaps, TIE370 historical cause and TIE375 efficiency stay open.
+
+Two initial documentation findings were fixed by the owner and independently reread:
+
+1. Timing/resource metadata exclusions now apply specifically to those bounded records. Failure traces/screenshots/context separately retain synthetic test input and zone details; the README no longer implies those bundles omit all such values.
+2. The HTTP404 is identified as the branch-protection required-status-check API response. The separate Pages environment policy correctly remains main-only rather than being implied absent by that response.
+
+The owner also added an explicit manual supplement link, a qualified hosted invocation record and the in-app post-update controller/cache identity limitation. I read the invocation record: expected main SHA and command are retained, original absolute test clocks are null, and the later installed executable/version observation is explicitly separated from the original process. Existing-tab snapshots support the bounded draft/zone/result/readiness journey without establishing exact worker/controller history or physical acceptance.
+
+The final local Markdown reference check resolves **29/29** links across the README/developer page; `docs-final-reference-check.json` preserves the result. `docs-reference-check.json` preserves the earlier reference/map reconciliation. Remote prior-run links were compared with saved report identifiers; no claim is made that every historical remote report was newly fetched. The runtime/publication approvals and original-report verdicts remain separate throughout the documentation.

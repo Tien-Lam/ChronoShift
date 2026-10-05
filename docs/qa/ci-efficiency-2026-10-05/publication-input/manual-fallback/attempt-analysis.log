@@ -1,0 +1,132 @@
+{
+  "measuredAt": "2026-10-05T07:24:19.518Z",
+  "configuredLine": "verify / web\tUNKNOWN STEP\t2026-10-05T07:17:45.4406160Z Running 258 tests using 4 workers",
+  "attempts": 258,
+  "uniqueCases": 258,
+  "initialAttempts": 258,
+  "retriedAttempts": 0,
+  "failedAttempts": 0,
+  "byProject": {
+    "foldable": {
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    },
+    "chromium": {
+      "passed": 51,
+      "failed": 0,
+      "skipped": 0
+    },
+    "firefox": {
+      "passed": 48,
+      "failed": 0,
+      "skipped": 3
+    },
+    "webkit": {
+      "passed": 48,
+      "failed": 0,
+      "skipped": 3
+    },
+    "android-emulation": {
+      "passed": 51,
+      "failed": 0,
+      "skipped": 0
+    },
+    "iphone-emulation": {
+      "passed": 48,
+      "failed": 0,
+      "skipped": 3
+    }
+  },
+  "profileDurations": [
+    {
+      "project": "foldable",
+      "controlInitialPassCount": 3,
+      "candidateInitialPassCount": 3,
+      "controlSummedInitialPassedMs": 5600,
+      "candidateSummedInitialPassedMs": 6000,
+      "controlMedianMs": 2000,
+      "candidateMedianMs": 2300,
+      "controlP95Ms": 2400,
+      "candidateP95Ms": 2600
+    },
+    {
+      "project": "chromium",
+      "controlInitialPassCount": 51,
+      "candidateInitialPassCount": 51,
+      "controlSummedInitialPassedMs": 186100,
+      "candidateSummedInitialPassedMs": 179525,
+      "controlMedianMs": 3100,
+      "candidateMedianMs": 2900,
+      "controlP95Ms": 9200,
+      "candidateP95Ms": 9800
+    },
+    {
+      "project": "firefox",
+      "controlInitialPassCount": 48,
+      "candidateInitialPassCount": 48,
+      "controlSummedInitialPassedMs": 245100,
+      "candidateSummedInitialPassedMs": 247800,
+      "controlMedianMs": 4400,
+      "candidateMedianMs": 4500,
+      "controlP95Ms": 10900,
+      "candidateP95Ms": 11600
+    },
+    {
+      "project": "webkit",
+      "controlInitialPassCount": 48,
+      "candidateInitialPassCount": 48,
+      "controlSummedInitialPassedMs": 292800,
+      "candidateSummedInitialPassedMs": 304800,
+      "controlMedianMs": 4600,
+      "candidateMedianMs": 4900,
+      "controlP95Ms": 11300,
+      "candidateP95Ms": 11600
+    },
+    {
+      "project": "android-emulation",
+      "controlInitialPassCount": 51,
+      "candidateInitialPassCount": 51,
+      "controlSummedInitialPassedMs": 179040,
+      "candidateSummedInitialPassedMs": 185063,
+      "controlMedianMs": 3000,
+      "candidateMedianMs": 2900,
+      "controlP95Ms": 9200,
+      "candidateP95Ms": 10200
+    },
+    {
+      "project": "iphone-emulation",
+      "controlInitialPassCount": 48,
+      "candidateInitialPassCount": 48,
+      "controlSummedInitialPassedMs": 203400,
+      "candidateSummedInitialPassedMs": 193900,
+      "controlMedianMs": 3300,
+      "candidateMedianMs": 3100,
+      "controlP95Ms": 8000,
+      "candidateP95Ms": 7500
+    }
+  ],
+  "summaryLines": [
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:22:35.1895750Z   9 skipped",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:22:35.1896101Z   249 passed (4.8m)"
+  ],
+  "unitSummaryLines": [
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:17:43.4512360Z  116 pass",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:17:43.4512627Z  0 fail",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:17:43.4512949Z  725 expect() calls",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:22:35.1896101Z   249 passed (4.8m)",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:22:39.0244714Z   1 passed (1.8s)"
+  ],
+  "subpathSummaryLines": [
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:22:35.1895750Z   9 skipped",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:22:35.1896101Z   249 passed (4.8m)",
+    "verify / web\tUNKNOWN STEP\t2026-10-05T07:22:39.0244714Z   1 passed (1.8s)"
+  ],
+  "otherGatesMatch": true,
+  "missing": [],
+  "added": [],
+  "skippedChanges": [],
+  "equalInventory": true,
+  "passedAttemptSumMs": 1117088,
+  "durationLimit": "List reporter durations are rounded, overlap concurrent workers and include waits; skipped attempt duration is not printed. Not CPU time."
+}

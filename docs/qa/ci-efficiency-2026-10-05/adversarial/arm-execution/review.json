@@ -1,0 +1,397 @@
+{
+  "runId": "37274080414",
+  "head": "52e8d9c3bc2ba50f6ba2990dde5a128a37849172",
+  "run": {
+    "event": "pull_request",
+    "path": ".github/workflows/web.yml",
+    "head": "52e8d9c3bc2ba50f6ba2990dde5a128a37849172",
+    "conclusion": "success",
+    "attempt": 1
+  },
+  "jobsComplete": true,
+  "artifactsComplete": true,
+  "job": {
+    "id": 111647128698,
+    "conclusion": "success",
+    "labels": [
+      "ubuntu-24.04-arm"
+    ],
+    "started_at": "2026-10-05T06:46:00Z",
+    "completed_at": "2026-10-05T06:52:02Z",
+    "seconds": 362,
+    "steps": [
+      {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-05T06:46:01Z",
+        "completed_at": "2026-10-05T06:46:03Z"
+      },
+      {
+        "name": "Initialize containers",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-05T06:46:03Z",
+        "completed_at": "2026-10-05T06:46:28Z"
+      },
+      {
+        "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-05T06:46:28Z",
+        "completed_at": "2026-10-05T06:46:31Z"
+      },
+      {
+        "name": "Capture the checked-in corpus audit",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-05T06:46:31Z",
+        "completed_at": "2026-10-05T06:46:31Z"
+      },
+      {
+        "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-05T06:46:31Z",
+        "completed_at": "2026-10-05T06:46:50Z"
+      },
+      {
+        "name": "Run bun install --frozen-lockfile",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 6,
+        "started_at": "2026-10-05T06:46:50Z",
+        "completed_at": "2026-10-05T06:46:51Z"
+      },
+      {
+        "name": "Verify the pinned browser image matches the dependency",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 7,
+        "started_at": "2026-10-05T06:46:51Z",
+        "completed_at": "2026-10-05T06:46:51Z"
+      },
+      {
+        "name": "Run bun run format:check",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 8,
+        "started_at": "2026-10-05T06:46:51Z",
+        "completed_at": "2026-10-05T06:46:52Z"
+      },
+      {
+        "name": "Unit tests and production build",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 9,
+        "started_at": "2026-10-05T06:46:52Z",
+        "completed_at": "2026-10-05T06:46:54Z"
+      },
+      {
+        "name": "Verify the standalone conversion corpus audit",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 10,
+        "started_at": "2026-10-05T06:46:54Z",
+        "completed_at": "2026-10-05T06:46:54Z"
+      },
+      {
+        "name": "Run bun run test:browser",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 11,
+        "started_at": "2026-10-05T06:46:54Z",
+        "completed_at": "2026-10-05T06:51:54Z"
+      },
+      {
+        "name": "Record browser resource usage",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 12,
+        "started_at": "2026-10-05T06:51:54Z",
+        "completed_at": "2026-10-05T06:51:54Z"
+      },
+      {
+        "name": "Retain bounded browser timing metadata",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 13,
+        "started_at": "2026-10-05T06:51:54Z",
+        "completed_at": "2026-10-05T06:51:54Z"
+      },
+      {
+        "name": "Run actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 14,
+        "started_at": "2026-10-05T06:51:54Z",
+        "completed_at": "2026-10-05T06:51:54Z"
+      },
+      {
+        "name": "Verify repository-subpath deployment",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 15,
+        "started_at": "2026-10-05T06:51:54Z",
+        "completed_at": "2026-10-05T06:51:58Z"
+      },
+      {
+        "name": "Upload the verified Pages build",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 16,
+        "started_at": "2026-10-05T06:51:58Z",
+        "completed_at": "2026-10-05T06:51:59Z"
+      },
+      {
+        "name": "Publish failed-attempt diagnostics",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 17,
+        "started_at": "2026-10-05T06:51:59Z",
+        "completed_at": "2026-10-05T06:51:59Z"
+      },
+      {
+        "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 33,
+        "started_at": "2026-10-05T06:51:59Z",
+        "completed_at": "2026-10-05T06:51:59Z"
+      },
+      {
+        "name": "Stop containers",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 34,
+        "started_at": "2026-10-05T06:51:59Z",
+        "completed_at": "2026-10-05T06:52:00Z"
+      },
+      {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 35,
+        "started_at": "2026-10-05T06:52:00Z",
+        "completed_at": "2026-10-05T06:52:00Z"
+      }
+    ]
+  },
+  "required": [
+    {
+      "name": "Run bun run format:check",
+      "conclusion": "success"
+    },
+    {
+      "name": "Unit tests and production build",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify the standalone conversion corpus audit",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run bun run test:browser",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify repository-subpath deployment",
+      "conclusion": "success"
+    },
+    {
+      "name": "Upload the verified Pages build",
+      "conclusion": "success"
+    }
+  ],
+  "attempts": 258,
+  "unique": 258,
+  "baselineAttempts": 258,
+  "baselineUnique": 258,
+  "missing": [],
+  "added": [],
+  "profiles": {
+    "foldable": {
+      "passed": 3,
+      "skipped": 0,
+      "failed": 0,
+      "retries": 0
+    },
+    "chromium": {
+      "passed": 51,
+      "skipped": 0,
+      "failed": 0,
+      "retries": 0
+    },
+    "firefox": {
+      "passed": 48,
+      "skipped": 3,
+      "failed": 0,
+      "retries": 0
+    },
+    "webkit": {
+      "passed": 48,
+      "skipped": 3,
+      "failed": 0,
+      "retries": 0
+    },
+    "android-emulation": {
+      "passed": 51,
+      "skipped": 0,
+      "failed": 0,
+      "retries": 0
+    },
+    "iphone-emulation": {
+      "passed": 48,
+      "skipped": 3,
+      "failed": 0,
+      "retries": 0
+    }
+  },
+  "skipped": [
+    {
+      "symbol": "-",
+      "project": "firefox",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 102,
+      "column": 0,
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "retry": 0
+    },
+    {
+      "symbol": "-",
+      "project": "firefox",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 227,
+      "column": 0,
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "retry": 0
+    },
+    {
+      "symbol": "-",
+      "project": "firefox",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 135,
+      "column": 0,
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "retry": 0
+    },
+    {
+      "symbol": "-",
+      "project": "webkit",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 102,
+      "column": 0,
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "retry": 0
+    },
+    {
+      "symbol": "-",
+      "project": "webkit",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 135,
+      "column": 0,
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "retry": 0
+    },
+    {
+      "symbol": "-",
+      "project": "webkit",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 227,
+      "column": 0,
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "retry": 0
+    },
+    {
+      "symbol": "-",
+      "project": "iphone-emulation",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 102,
+      "column": 0,
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "retry": 0
+    },
+    {
+      "symbol": "-",
+      "project": "iphone-emulation",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 135,
+      "column": 0,
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "retry": 0
+    },
+    {
+      "symbol": "-",
+      "project": "iphone-emulation",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 227,
+      "column": 0,
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "retry": 0
+    }
+  ],
+  "failed": [],
+  "retries": [],
+  "resourceObservations": [
+    {
+      "at": "2026-10-05T06:46:54.812Z",
+      "phase": "before",
+      "platform": "linux",
+      "architecture": "arm64",
+      "osRelease": "6.17.0-1022-azure",
+      "availableParallelism": 4,
+      "logicalCpus": 4,
+      "cpuModel": "unknown",
+      "totalMemoryBytes": 16722046976,
+      "cgroup": {
+        "cpu.max": "max 100000",
+        "cpu.stat": "usage_usec 27416318\nuser_usec 23523587\nsystem_usec 3892730\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+        "memory.max": "max",
+        "memory.peak": "1510834176",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+      }
+    },
+    {
+      "at": "2026-10-05T06:51:54.781Z",
+      "phase": "after",
+      "platform": "linux",
+      "architecture": "arm64",
+      "osRelease": "6.17.0-1022-azure",
+      "availableParallelism": 4,
+      "logicalCpus": 4,
+      "cpuModel": "unknown",
+      "totalMemoryBytes": 16722046976,
+      "cgroup": {
+        "cpu.max": "max 100000",
+        "cpu.stat": "usage_usec 1054383900\nuser_usec 914156501\nsystem_usec 140227398\nnice_usec 46382000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+        "memory.max": "max",
+        "memory.peak": "5481730048",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 11328734137,
+      "name": "github-pages",
+      "expired": false,
+      "bytes": 376315,
+      "digest": "sha256:4c720cbd8f54e664b14dc4988b106e25267807c51b1e4ea563834e684c3bef3a",
+      "created": "2026-10-05T06:51:59Z",
+      "expires": "2026-10-06T06:51:58Z"
+    }
+  ],
+  "summaries": [
+    "web\tUnit tests and production build\t2026-10-05T06:46:53.4625939Z  116 pass",
+    "web\tUnit tests and production build\t2026-10-05T06:46:53.4626144Z  0 fail",
+    "web\tRun bun run test:browser\t2026-10-05T06:51:54.4874121Z   9 skipped",
+    "web\tRun bun run test:browser\t2026-10-05T06:51:54.4875939Z   249 passed (5.0m)",
+    "web\tVerify repository-subpath deployment\t2026-10-05T06:51:58.6037664Z   1 passed (2.5s)"
+  ],
+  "retryMarkers": []
+}

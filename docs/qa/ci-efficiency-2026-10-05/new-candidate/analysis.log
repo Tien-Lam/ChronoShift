@@ -1,0 +1,194 @@
+{
+  "measuredAt": "2026-10-05T06:35:01.541Z",
+  "configuredLine": "web\tRun bun run test:browser\t2026-10-05T06:27:26.4623353Z Running 258 tests using 4 workers",
+  "attempts": 258,
+  "uniqueCases": 258,
+  "initialAttempts": 258,
+  "retriedAttempts": 0,
+  "failedAttempts": 0,
+  "byProject": {
+    "foldable": {
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    },
+    "chromium": {
+      "passed": 51,
+      "failed": 0,
+      "skipped": 0
+    },
+    "firefox": {
+      "passed": 48,
+      "failed": 0,
+      "skipped": 3
+    },
+    "webkit": {
+      "passed": 48,
+      "failed": 0,
+      "skipped": 3
+    },
+    "android-emulation": {
+      "passed": 51,
+      "failed": 0,
+      "skipped": 0
+    },
+    "iphone-emulation": {
+      "passed": 48,
+      "failed": 0,
+      "skipped": 3
+    }
+  },
+  "summaryLines": [
+    "web\tRun bun run test:browser\t2026-10-05T06:33:10.7447181Z   9 skipped",
+    "web\tRun bun run test:browser\t2026-10-05T06:33:10.7447678Z   249 passed (5.7m)"
+  ],
+  "missing": [],
+  "added": [],
+  "skippedChanges": [],
+  "equalInventory": true,
+  "passedAttemptSumMs": 1314600,
+  "durationLimit": "List reporter durations are rounded, overlap concurrent workers and include waits; skipped attempt duration is not printed. Not CPU time."
+}
+{
+  "capturedAt": "2026-10-05T06:35:01.563Z",
+  "runId": 37272392986,
+  "head": "8a4ebec0881f8363ffd19f833bbf29a44e77885a",
+  "conclusion": "success",
+  "runCreatedAt": "2026-10-05T06:26:05Z",
+  "runUpdatedAt": "2026-10-05T06:33:18Z",
+  "runElapsedSeconds": 433,
+  "jobs": [
+    {
+      "id": 111641971421,
+      "name": "web",
+      "conclusion": "success",
+      "startedAt": "2026-10-05T06:26:07Z",
+      "completedAt": "2026-10-05T06:33:18Z",
+      "runnerSeconds": 431,
+      "roundedMinutes": 8,
+      "intervalBeforeFirstStepSeconds": 36,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success",
+          "seconds": 2
+        },
+        {
+          "name": "Initialize containers",
+          "conclusion": "success",
+          "seconds": 26
+        },
+        {
+          "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+          "conclusion": "success",
+          "seconds": 3
+        },
+        {
+          "name": "Capture the checked-in corpus audit",
+          "conclusion": "success",
+          "seconds": 0
+        },
+        {
+          "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
+          "conclusion": "success",
+          "seconds": 5
+        },
+        {
+          "name": "Run bun install --frozen-lockfile",
+          "conclusion": "success",
+          "seconds": 1
+        },
+        {
+          "name": "Verify the pinned browser image matches the dependency",
+          "conclusion": "success",
+          "seconds": 1
+        },
+        {
+          "name": "Run bun run format:check",
+          "conclusion": "success",
+          "seconds": 2
+        },
+        {
+          "name": "Unit tests and production build",
+          "conclusion": "success",
+          "seconds": 1
+        },
+        {
+          "name": "Verify the standalone conversion corpus audit",
+          "conclusion": "success",
+          "seconds": 1
+        },
+        {
+          "name": "Run bun run test:browser",
+          "conclusion": "success",
+          "seconds": 346
+        },
+        {
+          "name": "Verify repository-subpath deployment",
+          "conclusion": "success",
+          "seconds": 3
+        },
+        {
+          "name": "Upload the verified Pages build",
+          "conclusion": "success",
+          "seconds": 1
+        },
+        {
+          "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+          "conclusion": "success",
+          "seconds": 1
+        },
+        {
+          "name": "Stop containers",
+          "conclusion": "success",
+          "seconds": 0
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success",
+          "seconds": 0
+        }
+      ]
+    }
+  ],
+  "runnerSeconds": 431,
+  "roundedMinutes": 8,
+  "artifacts": [
+    {
+      "name": "github-pages",
+      "id": 11329810141,
+      "bytes": 383942,
+      "digest": "sha256:c4e25e2d4ec45f2f433903be98458ff22e90eb645363535d2417e590655f4bd6",
+      "createdAt": "2026-10-05T06:33:15Z",
+      "expiresAt": "2026-10-06T06:33:15Z",
+      "configuredRetentionHours": 24,
+      "projectedByteHours": 9214608
+    }
+  ],
+  "webOnlyComparisons": [
+    {
+      "label": "Original expanded-suite published Web",
+      "seconds": 301,
+      "roundedMinutes": 6,
+      "rawSecondsReduction": -130,
+      "rawPercentReduction": -43.18936877076411,
+      "roundedMinuteReduction": -2,
+      "roundedPercentReduction": -33.33333333333333
+    },
+    {
+      "label": "Four-worker instrumented Linux control Web",
+      "seconds": 356,
+      "roundedMinutes": 6,
+      "rawSecondsReduction": -75,
+      "rawPercentReduction": -21.067415730337082,
+      "roundedMinuteReduction": -2,
+      "roundedPercentReduction": -33.33333333333333
+    }
+  ],
+  "limits": [
+    "Web-only comparison; matching main publication pending. Do not infer complete-pair acceptance.",
+    "Different source/optional instrumentation conditions; do not isolate causal speedup from this comparison.",
+    "API job spans include interval before the first step, as the existing metric script does.",
+    "Rounded minutes and configured artifact byte-hours are repository proxies, not an account billing statement."
+  ]
+}

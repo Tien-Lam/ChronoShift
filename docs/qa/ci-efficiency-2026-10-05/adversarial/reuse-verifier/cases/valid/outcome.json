@@ -1,0 +1,87 @@
+{
+  "name": "valid",
+  "expectedReused": true,
+  "passed": true,
+  "start": "2026-10-05T06:33:26.161Z",
+  "end": "2026-10-05T06:33:26.540Z",
+  "stdout": "Reusing verified Web run 21, source 8a4ebec0881f8363ffd19f833bbf29a44e77885a, tree e66f5c811b8635a8b912fbc25acf0999a283bfbc\n",
+  "stderr": "",
+  "code": 0,
+  "output": "prior=value\nreused=true\n",
+  "outputSha256": "75f64afd9643d65eb36f25897ec0e2762b4132c1b909296bf7aea341de26e491",
+  "zipSha256": "369fd1db41f6a0988df3ec79523c7a76c0cdb463c4627750ea5deb6bc655456f",
+  "zipBytes": 978,
+  "beforeInventory": {
+    "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+  },
+  "afterInventory": {
+    "assets/app.js": "e36b1663385c8ab80bbd13812d3865918a29c4959dd26d54c07f75929d22fb78",
+    "index.html": "d9a34646038e6e1040c8ce0c3fe1a59594832c1d7257e1767ad7aa6ee369496c",
+    "release.json": "73ca0dbce4ce7dc8edc7418f4743d10833e9f52d7604a3e7ad4002cf3febbcd0"
+  },
+  "requests": [
+    {
+      "at": "2026-10-05T06:33:26.439Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/actions/workflows/web.yml"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:33:26.439Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:33:26.439Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:33:26.464Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/actions/workflows/11/runs?event=pull_request&status=success&per_page=30"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:33:26.479Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/commits/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:33:26.495Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/actions/runs/21/artifacts?per_page=100"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:33:26.495Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/actions/runs/21/jobs?per_page=100"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:33:26.509Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/actions/artifacts/31/zip"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:33:26.532Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+      ]
+    }
+  ]
+}

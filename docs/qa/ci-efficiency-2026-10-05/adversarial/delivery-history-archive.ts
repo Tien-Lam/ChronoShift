@@ -1,0 +1,17 @@
+import { join } from "node:path";
+const dir=import.meta.dir;
+const recorded=await Bun.file(join(dir,"delivery-history.json")).json();
+const response=JSON.parse(recorded.results[1].value.output);
+const artifact=response.artifacts.find((a:any)=>a.id===11313091969);
+if(!artifact || artifact.expired) throw new Error("Original artifact unavailable");
+const gh="/Users/tien/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_macOS_arm64/bin/gh";
+const started=new Date().toISOString();
+const route="repos/Tien-Lam/ChronoShift/actions/artifacts/11313091969/zip";
+const p=Bun.spawn([gh,"api",route],{stdout:"pipe",stderr:"pipe"});
+const [buffer,stderr,code]=await Promise.all([new Response(p.stdout).arrayBuffer(),new Response(p.stderr).text(),p.exited]);
+if(code!==0) throw new Error(stderr);
+const digest="sha256:"+new Bun.CryptoHasher("sha256").update(buffer).digest("hex");
+if(digest!==artifact.digest) throw new Error("Historical archive digest mismatch");
+await Bun.write(join(dir,"tie-370-original-pages.zip"),buffer);
+await Bun.write(join(dir,"delivery-history-archive.json"),JSON.stringify({started,ended:new Date().toISOString(),route,code,bytes:buffer.byteLength,digest,artifact,head:"150875f7906093ed20b94d76533e0f523f4a9430",kind:"Original trusted build bytes; no missing failure-state evidence reconstructed"},null,2)+"\n");
+console.log(JSON.stringify({started,ended:new Date().toISOString(),bytes:buffer.byteLength,digest}));

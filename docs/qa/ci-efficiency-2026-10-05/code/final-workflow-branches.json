@@ -1,0 +1,526 @@
+{
+  "began": "2026-10-05T06:27:51.568Z",
+  "head": "8a4ebec0881f8363ffd19f833bbf29a44e77885a",
+  "expressions": {
+    "main": "github.ref == 'refs/heads/main'",
+    "verify": "needs.prepare.result == 'success' && needs.prepare.outputs.reused != 'true'",
+    "deploy": "always() && !cancelled() && needs.prepare.result == 'success' && needs.prepare.outputs.reused != 'true' && needs.verify.result == 'success'",
+    "timing": "${{ (inputs.ci-timing || (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'ci-timing'))) && '1' || '0' }}"
+  },
+  "branches": [
+    {
+      "reused": "true",
+      "prepare": "success",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "true",
+      "prepare": "success",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "true",
+      "prepare": "success",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "true",
+      "prepare": "success",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "true",
+      "prepare": "success",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "true",
+      "prepare": "success",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "true",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "true",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "true",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "true",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "true",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "true",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "true",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "true",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "true",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "true",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "true",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "true",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "false",
+      "prepare": "success",
+      "verify": true,
+      "cancelled": false,
+      "deploy": true
+    },
+    {
+      "reused": "false",
+      "prepare": "success",
+      "verify": true,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "false",
+      "prepare": "success",
+      "verify": true,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "false",
+      "prepare": "success",
+      "verify": true,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "false",
+      "prepare": "success",
+      "verify": true,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "false",
+      "prepare": "success",
+      "verify": true,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "false",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "false",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "false",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "false",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "false",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "false",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "false",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "false",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "false",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "false",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "false",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "false",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "",
+      "prepare": "success",
+      "verify": true,
+      "cancelled": false,
+      "deploy": true
+    },
+    {
+      "reused": "",
+      "prepare": "success",
+      "verify": true,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "",
+      "prepare": "success",
+      "verify": true,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "",
+      "prepare": "success",
+      "verify": true,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "",
+      "prepare": "success",
+      "verify": true,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "",
+      "prepare": "success",
+      "verify": true,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "",
+      "prepare": "failure",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    },
+    {
+      "reused": "",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": false,
+      "deploy": false
+    },
+    {
+      "reused": "",
+      "prepare": "cancelled",
+      "verify": false,
+      "cancelled": true,
+      "deploy": false
+    }
+  ],
+  "timing": [
+    {
+      "event": "pull_request",
+      "input": false,
+      "labels": [],
+      "actual": "0"
+    },
+    {
+      "event": "pull_request",
+      "input": false,
+      "labels": [
+        "ci-timing"
+      ],
+      "actual": "1"
+    },
+    {
+      "event": "pull_request",
+      "input": false,
+      "labels": [
+        "other"
+      ],
+      "actual": "0"
+    },
+    {
+      "event": "pull_request",
+      "input": true,
+      "labels": [],
+      "actual": "1"
+    },
+    {
+      "event": "pull_request",
+      "input": true,
+      "labels": [
+        "ci-timing"
+      ],
+      "actual": "1"
+    },
+    {
+      "event": "pull_request",
+      "input": true,
+      "labels": [
+        "other"
+      ],
+      "actual": "1"
+    },
+    {
+      "event": "push",
+      "input": false,
+      "labels": [],
+      "actual": "0"
+    },
+    {
+      "event": "push",
+      "input": false,
+      "labels": [
+        "ci-timing"
+      ],
+      "actual": "0"
+    },
+    {
+      "event": "push",
+      "input": false,
+      "labels": [
+        "other"
+      ],
+      "actual": "0"
+    },
+    {
+      "event": "push",
+      "input": true,
+      "labels": [],
+      "actual": "1"
+    },
+    {
+      "event": "push",
+      "input": true,
+      "labels": [
+        "ci-timing"
+      ],
+      "actual": "1"
+    },
+    {
+      "event": "push",
+      "input": true,
+      "labels": [
+        "other"
+      ],
+      "actual": "1"
+    },
+    {
+      "event": "workflow_dispatch",
+      "input": false,
+      "labels": [],
+      "actual": "0"
+    },
+    {
+      "event": "workflow_dispatch",
+      "input": false,
+      "labels": [
+        "ci-timing"
+      ],
+      "actual": "0"
+    },
+    {
+      "event": "workflow_dispatch",
+      "input": false,
+      "labels": [
+        "other"
+      ],
+      "actual": "0"
+    },
+    {
+      "event": "workflow_dispatch",
+      "input": true,
+      "labels": [],
+      "actual": "1"
+    },
+    {
+      "event": "workflow_dispatch",
+      "input": true,
+      "labels": [
+        "ci-timing"
+      ],
+      "actual": "1"
+    },
+    {
+      "event": "workflow_dispatch",
+      "input": true,
+      "labels": [
+        "other"
+      ],
+      "actual": "1"
+    }
+  ],
+  "status": "passed",
+  "ended": "2026-10-05T06:27:51.570Z"
+}

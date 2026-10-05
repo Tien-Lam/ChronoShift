@@ -1,0 +1,43 @@
+{
+  "name": "different-checkout-tree",
+  "expectedReused": false,
+  "passed": true,
+  "start": "2026-10-05T06:33:27.768Z",
+  "end": "2026-10-05T06:33:27.844Z",
+  "stdout": "",
+  "stderr": "Artifact reuse unavailable: Checkout does not match the publishing tree. Complete verification will run.\n",
+  "code": 0,
+  "output": "prior=value\nreused=false\n",
+  "outputSha256": "b63e8e3a74135994dfa9dd9c238a1cb9806bdf77ad9e09bfc41ab24b5c20d44f",
+  "zipSha256": "d343d783b71b2dfcd11bf64e0ce8436315f42d221ceb76ae9a36d62d419eba6a",
+  "zipBytes": 975,
+  "beforeInventory": {
+    "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+  },
+  "afterInventory": {
+    "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+  },
+  "requests": [
+    {
+      "at": "2026-10-05T06:33:27.833Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:33:27.833Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/actions/workflows/web.yml"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:33:27.833Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+      ]
+    }
+  ]
+}

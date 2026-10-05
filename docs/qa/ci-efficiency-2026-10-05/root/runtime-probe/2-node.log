@@ -1,0 +1,18 @@
+
+Running 5 tests using 4 workers
+
+Configuration Error: HTML reporter output folder clashes with the tests output folder:
+
+    html reporter folder: /Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/root/runtime-probe/2-node/html
+    test results folder: /Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/root/runtime-probe/2-node
+
+HTML reporter will clear its output directory prior to being generated, which will lead to the artifact loss.
+
+  ✓  3 [chromium] › e2e/controls.spec.ts:55:1 › themed choices align and their opened menus fit every breakpoint without losing work (10.4s)
+  ✓  1 [android-emulation] › e2e/controls.spec.ts:55:1 › themed choices align and their opened menus fit every breakpoint without losing work (10.5s)
+  ✓  4 [webkit] › e2e/controls.spec.ts:55:1 › themed choices align and their opened menus fit every breakpoint without losing work (10.9s)
+  ✓  2 [firefox] › e2e/controls.spec.ts:55:1 › themed choices align and their opened menus fit every breakpoint without losing work (12.5s)
+  ✓  5 [iphone-emulation] › e2e/controls.spec.ts:55:1 › themed choices align and their opened menus fit every breakpoint without losing work (11.1s)
+
+  5 passed (22.4s)
+[ci-timing] 5 attempts recorded; 0 omitted by the 1000-attempt limit

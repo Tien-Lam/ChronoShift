@@ -1,0 +1,71 @@
+{
+  "name": "partial-job-list",
+  "expectedReused": false,
+  "passed": true,
+  "start": "2026-10-05T06:32:44.480Z",
+  "end": "2026-10-05T06:32:44.592Z",
+  "stdout": "No reusable verified artifact; complete verification is required.\n",
+  "stderr": "",
+  "code": 0,
+  "output": "prior=value\nreused=false\n",
+  "outputSha256": "b63e8e3a74135994dfa9dd9c238a1cb9806bdf77ad9e09bfc41ab24b5c20d44f",
+  "zipSha256": "482377d757b18a34bb34794758e543a513799e88d5a1772c50963d17392c7a80",
+  "zipBytes": 978,
+  "beforeInventory": {
+    "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+  },
+  "afterInventory": {
+    "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+  },
+  "requests": [
+    {
+      "at": "2026-10-05T06:32:44.546Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:32:44.546Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:32:44.546Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/actions/workflows/web.yml"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:32:44.563Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/actions/workflows/11/runs?event=pull_request&status=success&per_page=30"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:32:44.575Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/commits/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:32:44.588Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/actions/runs/21/jobs?per_page=100"
+      ]
+    },
+    {
+      "at": "2026-10-05T06:32:44.589Z",
+      "args": [
+        "api",
+        "repos/synthetic/ChronoShift/actions/runs/21/artifacts?per_page=100"
+      ]
+    }
+  ]
+}

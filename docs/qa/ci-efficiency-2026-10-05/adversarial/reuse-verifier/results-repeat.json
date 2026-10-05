@@ -1,0 +1,881 @@
+{
+  "started": "2026-10-05T06:33:09.541Z",
+  "ended": "2026-10-05T06:33:11.013Z",
+  "head": "8a4ebec0881f8363ffd19f833bbf29a44e77885a",
+  "tree": "e66f5c811b8635a8b912fbc25acf0999a283bfbc",
+  "endHead": "8a4ebec0881f8363ffd19f833bbf29a44e77885a",
+  "helperHash": "a2ab1a1b5ba2e240dab974b7a725a096a63adf01e1255e75fe70ea8716ac5af1",
+  "bun": "/Users/tien/.local/share/mise/installs/bun/1.4.0/bin/bun",
+  "runtime": "1.4.0",
+  "gh": "synthetic mock (no network; actual gh not invoked)",
+  "actualTools": {
+    "git": "git version 2.56.0",
+    "tar": "bsdtar 3.5.3 - libarchive 3.7.4 zlib/1.2.12 liblzma/5.4.3 bz2lib/1.0.8"
+  },
+  "context": "Reused independent reviewer context; no peer report read",
+  "sourceStable": true,
+  "rootDistUnchanged": true,
+  "results": [
+    {
+      "name": "valid",
+      "expectedReused": true,
+      "passed": true,
+      "start": "2026-10-05T06:33:09.556Z",
+      "end": "2026-10-05T06:33:09.703Z",
+      "stdout": "Reusing verified Web run 21, source 8a4ebec0881f8363ffd19f833bbf29a44e77885a, tree e66f5c811b8635a8b912fbc25acf0999a283bfbc\n",
+      "stderr": "",
+      "code": 0,
+      "output": "prior=value\nreused=true\n",
+      "outputSha256": "75f64afd9643d65eb36f25897ec0e2762b4132c1b909296bf7aea341de26e491",
+      "zipSha256": "0bfebe25028416ac1f8a4b59f479f7d42cb82e2a051402a6bd4e7b019392943e",
+      "zipBytes": 970,
+      "beforeInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "afterInventory": {
+        "assets/app.js": "e36b1663385c8ab80bbd13812d3865918a29c4959dd26d54c07f75929d22fb78",
+        "index.html": "d9a34646038e6e1040c8ce0c3fe1a59594832c1d7257e1767ad7aa6ee369496c",
+        "release.json": "73ca0dbce4ce7dc8edc7418f4743d10833e9f52d7604a3e7ad4002cf3febbcd0"
+      },
+      "requests": [
+        {
+          "at": "2026-10-05T06:33:09.615Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/web.yml"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.615Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.615Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.634Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/11/runs?event=pull_request&status=success&per_page=30"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.646Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.659Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/jobs?per_page=100"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.659Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/artifacts?per_page=100"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.671Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/artifacts/31/zip"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.694Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "missing",
+      "expectedReused": false,
+      "passed": true,
+      "start": "2026-10-05T06:33:09.703Z",
+      "end": "2026-10-05T06:33:09.812Z",
+      "stdout": "No reusable verified artifact; complete verification is required.\n",
+      "stderr": "",
+      "code": 0,
+      "output": "prior=value\nreused=false\n",
+      "outputSha256": "b63e8e3a74135994dfa9dd9c238a1cb9806bdf77ad9e09bfc41ab24b5c20d44f",
+      "zipSha256": "0774205f073fa4f912ced91fa27fed7877bf04ec2c169c0a942f968d76dbe5af",
+      "zipBytes": 975,
+      "beforeInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "afterInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "requests": [
+        {
+          "at": "2026-10-05T06:33:09.764Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/web.yml"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.764Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.764Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.783Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/11/runs?event=pull_request&status=success&per_page=30"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.795Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.808Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/artifacts?per_page=100"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.808Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/jobs?per_page=100"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "expired",
+      "expectedReused": false,
+      "passed": true,
+      "start": "2026-10-05T06:33:09.813Z",
+      "end": "2026-10-05T06:33:09.928Z",
+      "stdout": "No reusable verified artifact; complete verification is required.\n",
+      "stderr": "",
+      "code": 0,
+      "output": "prior=value\nreused=false\n",
+      "outputSha256": "b63e8e3a74135994dfa9dd9c238a1cb9806bdf77ad9e09bfc41ab24b5c20d44f",
+      "zipSha256": "abca1e5db160ddf17d8fb0b496af703e287d4ac97c4761fb995bd8fd6ad0c77e",
+      "zipBytes": 973,
+      "beforeInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "afterInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "requests": [
+        {
+          "at": "2026-10-05T06:33:09.877Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.877Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/web.yml"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.877Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.897Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/11/runs?event=pull_request&status=success&per_page=30"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.909Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.924Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/artifacts?per_page=100"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.924Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/jobs?per_page=100"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "different-run-tree",
+      "expectedReused": false,
+      "passed": true,
+      "start": "2026-10-05T06:33:09.929Z",
+      "end": "2026-10-05T06:33:10.028Z",
+      "stdout": "No reusable verified artifact; complete verification is required.\n",
+      "stderr": "",
+      "code": 0,
+      "output": "prior=value\nreused=false\n",
+      "outputSha256": "b63e8e3a74135994dfa9dd9c238a1cb9806bdf77ad9e09bfc41ab24b5c20d44f",
+      "zipSha256": "e333660b17b1d9fcb57c2f4e501ca822337402c93902bb9763dd6dde829c90a3",
+      "zipBytes": 975,
+      "beforeInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "afterInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "requests": [
+        {
+          "at": "2026-10-05T06:33:09.993Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.993Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:09.993Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/web.yml"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.012Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/11/runs?event=pull_request&status=success&per_page=30"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.024Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "wrong-digest",
+      "expectedReused": false,
+      "passed": true,
+      "start": "2026-10-05T06:33:10.029Z",
+      "end": "2026-10-05T06:33:10.158Z",
+      "stdout": "",
+      "stderr": "Artifact reuse unavailable: Artifact digest mismatch. Complete verification will run.\n",
+      "code": 0,
+      "output": "prior=value\nreused=false\n",
+      "outputSha256": "b63e8e3a74135994dfa9dd9c238a1cb9806bdf77ad9e09bfc41ab24b5c20d44f",
+      "zipSha256": "7fe64506675cedd5f3e4134691e58bbd6622a2cefa4fb6463a41f79ea753cd13",
+      "zipBytes": 972,
+      "beforeInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "afterInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "requests": [
+        {
+          "at": "2026-10-05T06:33:10.096Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/web.yml"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.096Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.096Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.115Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/11/runs?event=pull_request&status=success&per_page=30"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.128Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.141Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/jobs?per_page=100"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.142Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/artifacts?per_page=100"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.154Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/artifacts/31/zip"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "unsafe-symlink",
+      "expectedReused": false,
+      "passed": true,
+      "start": "2026-10-05T06:33:10.159Z",
+      "end": "2026-10-05T06:33:10.294Z",
+      "stdout": "",
+      "stderr": "Artifact reuse unavailable: Unsafe artifact paths or links. Complete verification will run.\n",
+      "code": 0,
+      "output": "prior=value\nreused=false\n",
+      "outputSha256": "b63e8e3a74135994dfa9dd9c238a1cb9806bdf77ad9e09bfc41ab24b5c20d44f",
+      "zipSha256": "ffc306f6ea8b572eb9387fb1f68adc1cfbeccb43bd0f2bc70ec72fa1b1bbb3c5",
+      "zipBytes": 1063,
+      "beforeInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "afterInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "requests": [
+        {
+          "at": "2026-10-05T06:33:10.226Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.226Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/web.yml"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.226Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.244Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/11/runs?event=pull_request&status=success&per_page=30"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.256Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.270Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/jobs?per_page=100"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.270Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/artifacts?per_page=100"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.282Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/artifacts/31/zip"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "api-error",
+      "expectedReused": false,
+      "passed": true,
+      "start": "2026-10-05T06:33:10.295Z",
+      "end": "2026-10-05T06:33:10.409Z",
+      "stdout": "",
+      "stderr": "Artifact reuse unavailable: gh failed: Synthetic HTTP 503\n. Complete verification will run.\n",
+      "code": 0,
+      "output": "prior=value\nreused=false\n",
+      "outputSha256": "b63e8e3a74135994dfa9dd9c238a1cb9806bdf77ad9e09bfc41ab24b5c20d44f",
+      "zipSha256": "497e483ab468dbba7ef05c03beff9c534380820688381c2c4f98132b1aa84dfe",
+      "zipBytes": 972,
+      "beforeInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "afterInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "requests": [
+        {
+          "at": "2026-10-05T06:33:10.359Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/web.yml"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.359Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.359Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.378Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/11/runs?event=pull_request&status=success&per_page=30"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.391Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.405Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/jobs?per_page=100"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.405Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/artifacts?per_page=100"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "different-release-tree",
+      "expectedReused": false,
+      "passed": true,
+      "start": "2026-10-05T06:33:10.410Z",
+      "end": "2026-10-05T06:33:10.563Z",
+      "stdout": "",
+      "stderr": "Artifact reuse unavailable: Tested artifact tree differs from main. Complete verification will run.\n",
+      "code": 0,
+      "output": "prior=value\nreused=false\n",
+      "outputSha256": "b63e8e3a74135994dfa9dd9c238a1cb9806bdf77ad9e09bfc41ab24b5c20d44f",
+      "zipSha256": "c3ea41556f79ee7cccefd0c519969d64281ef21b24a379d137fdd39d35d35294",
+      "zipBytes": 978,
+      "beforeInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "afterInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "requests": [
+        {
+          "at": "2026-10-05T06:33:10.477Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/web.yml"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.477Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.477Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.496Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/11/runs?event=pull_request&status=success&per_page=30"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.509Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.522Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/artifacts?per_page=100"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.522Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/jobs?per_page=100"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.535Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/artifacts/31/zip"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.558Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "missing-browser-step",
+      "expectedReused": false,
+      "passed": true,
+      "start": "2026-10-05T06:33:10.564Z",
+      "end": "2026-10-05T06:33:10.674Z",
+      "stdout": "No reusable verified artifact; complete verification is required.\n",
+      "stderr": "",
+      "code": 0,
+      "output": "prior=value\nreused=false\n",
+      "outputSha256": "b63e8e3a74135994dfa9dd9c238a1cb9806bdf77ad9e09bfc41ab24b5c20d44f",
+      "zipSha256": "b3444b740156ce5bf66c0caebd4de6ac11cf49482e11c0468272535a7401e0b7",
+      "zipBytes": 975,
+      "beforeInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "afterInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "requests": [
+        {
+          "at": "2026-10-05T06:33:10.622Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.622Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.622Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/web.yml"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.642Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/11/runs?event=pull_request&status=success&per_page=30"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.655Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.670Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/jobs?per_page=100"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.670Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/artifacts?per_page=100"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "partial-job-list",
+      "expectedReused": false,
+      "passed": true,
+      "start": "2026-10-05T06:33:10.675Z",
+      "end": "2026-10-05T06:33:10.788Z",
+      "stdout": "No reusable verified artifact; complete verification is required.\n",
+      "stderr": "",
+      "code": 0,
+      "output": "prior=value\nreused=false\n",
+      "outputSha256": "b63e8e3a74135994dfa9dd9c238a1cb9806bdf77ad9e09bfc41ab24b5c20d44f",
+      "zipSha256": "b393eb3f98fce9b81362e7233739789f703d8d7ba514e37726c815a222f5837f",
+      "zipBytes": 976,
+      "beforeInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "afterInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "requests": [
+        {
+          "at": "2026-10-05T06:33:10.740Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/web.yml"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.740Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.740Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.758Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/11/runs?event=pull_request&status=success&per_page=30"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.770Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.784Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/artifacts?per_page=100"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.784Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/jobs?per_page=100"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "unexpected-zip-member",
+      "expectedReused": false,
+      "passed": true,
+      "start": "2026-10-05T06:33:10.788Z",
+      "end": "2026-10-05T06:33:10.922Z",
+      "stdout": "",
+      "stderr": "Artifact reuse unavailable: Unexpected artifact archive. Complete verification will run.\n",
+      "code": 0,
+      "output": "prior=value\nreused=false\n",
+      "outputSha256": "b63e8e3a74135994dfa9dd9c238a1cb9806bdf77ad9e09bfc41ab24b5c20d44f",
+      "zipSha256": "be568c2565f84ddb78314303055fbb26023bdc06bf7386e6f6ff41d2c690ff8d",
+      "zipBytes": 1134,
+      "beforeInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "afterInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "requests": [
+        {
+          "at": "2026-10-05T06:33:10.856Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.856Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.856Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/web.yml"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.875Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/11/runs?event=pull_request&status=success&per_page=30"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.888Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.902Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/artifacts?per_page=100"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.902Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/runs/21/jobs?per_page=100"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.916Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/artifacts/31/zip"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "different-checkout-tree",
+      "expectedReused": false,
+      "passed": true,
+      "start": "2026-10-05T06:33:10.922Z",
+      "end": "2026-10-05T06:33:10.998Z",
+      "stdout": "",
+      "stderr": "Artifact reuse unavailable: Checkout does not match the publishing tree. Complete verification will run.\n",
+      "code": 0,
+      "output": "prior=value\nreused=false\n",
+      "outputSha256": "b63e8e3a74135994dfa9dd9c238a1cb9806bdf77ad9e09bfc41ab24b5c20d44f",
+      "zipSha256": "e23e456427e0e45f7a41e60d43c6ea7c6fe48ca66b792caa3de6ae3734df0588",
+      "zipBytes": 978,
+      "beforeInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "afterInventory": {
+        "sentinel.txt": "04d39af796838b821cede28b00ab1fb99d271d34a6f9335991d6eda20e05dffd"
+      },
+      "requests": [
+        {
+          "at": "2026-10-05T06:33:10.987Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/actions/workflows/web.yml"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.987Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift"
+          ]
+        },
+        {
+          "at": "2026-10-05T06:33:10.987Z",
+          "args": [
+            "api",
+            "repos/synthetic/ChronoShift/commits/8a4ebec0881f8363ffd19f833bbf29a44e77885a"
+          ]
+        }
+      ]
+    }
+  ]
+}
