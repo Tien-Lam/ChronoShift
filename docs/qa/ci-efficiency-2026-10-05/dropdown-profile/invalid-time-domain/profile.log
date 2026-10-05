@@ -1,0 +1,22 @@
+{
+  "began": "2026-10-05T07:30:48.222Z",
+  "ended": "2026-10-05T07:30:48.597Z",
+  "head": "28059a91ec9984dea4d079b3f684b3a27af669f0",
+  "origin": "http://127.0.0.1:4298/",
+  "identicalAssetBytes": true,
+  "operations": 0,
+  "messages": []
+}
+57695 |   else if (error.error.name === "TargetClosedError")
+57696 |     e = new TargetClosedError2(error.error.message);
+57697 |   else if (error.error.name === "AbortError")
+57698 |     e = new AbortError2(error.error.message);
+57699 |   else
+57700 |     e = Object.assign(new PlaywrightError(error.error.message), { name: error.error.name });
+                                  ^
+error: send: Protocol error (Performance.enable): Invalid time domain specification.
+  log: [],
+
+      at /Users/tien/Developer/ChronoShift/node_modules/playwright-core/lib/coreBundle.js:57700:27
+
+Bun v1.4.0 (macOS arm64)

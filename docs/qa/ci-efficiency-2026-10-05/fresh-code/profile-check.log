@@ -1,0 +1,75 @@
+{
+  "observedAt": "2026-10-05T07:39:26.282Z",
+  "meanErrors": [],
+  "traces": [
+    {
+      "relative": "chromium-timeline.json",
+      "bytes": 13790655,
+      "gzipBytes": 1030484,
+      "exactDecompression": true,
+      "events": 59005,
+      "marks": 72,
+      "distinctMarkNames": 72,
+      "pairCount": 36,
+      "allPairsValid": true
+    },
+    {
+      "relative": "cpu-run/chromium-timeline.json",
+      "bytes": 5437735,
+      "gzipBytes": 424778,
+      "exactDecompression": true,
+      "events": 23162,
+      "marks": 24,
+      "distinctMarkNames": 24,
+      "pairCount": 12,
+      "allPairsValid": true
+    }
+  ],
+  "sampleMatches": true,
+  "closeRows": [
+    {
+      "condition": "early",
+      "measuredRemoval": true,
+      "removalArithmeticMatches": true,
+      "assertionArithmeticMatches": true,
+      "entering": true,
+      "runningAnimations": 1,
+      "removalAfterStartMs": 171.19999998807907,
+      "assertionAfterRemovalMs": 10.300000011920929,
+      "removalAfterAnimationFinishMs": 1.7999999821186066
+    },
+    {
+      "condition": "settled",
+      "measuredRemoval": true,
+      "removalArithmeticMatches": true,
+      "assertionArithmeticMatches": true,
+      "entering": false,
+      "runningAnimations": 0,
+      "removalAfterStartMs": 5.899999976158142,
+      "assertionAfterRemovalMs": 2.800000011920929,
+      "removalAfterAnimationFinishMs": null
+    },
+    {
+      "condition": "early",
+      "measuredRemoval": true,
+      "removalArithmeticMatches": true,
+      "assertionArithmeticMatches": true,
+      "entering": true,
+      "runningAnimations": 1,
+      "removalAfterStartMs": 156.90000000596046,
+      "assertionAfterRemovalMs": 33.099999994039536,
+      "removalAfterAnimationFinishMs": 1.0999999940395355
+    },
+    {
+      "condition": "settled",
+      "measuredRemoval": true,
+      "removalArithmeticMatches": true,
+      "assertionArithmeticMatches": true,
+      "entering": false,
+      "runningAnimations": 0,
+      "removalAfterStartMs": 7.699999988079071,
+      "assertionAfterRemovalMs": 3,
+      "removalAfterAnimationFinishMs": null
+    }
+  ]
+}

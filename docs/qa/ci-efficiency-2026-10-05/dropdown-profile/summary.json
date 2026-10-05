@@ -1,0 +1,5498 @@
+{
+  "analyzedAt": "2026-10-05T07:43:15.496Z",
+  "runtimeSource": "28059a91ec9984dea4d079b3f684b3a27af669f0",
+  "runtimeWebTree": "78dbdbf65b5328416f0b169cc52d3ed9541d02f9",
+  "documentHeads": [
+    "28059a91ec9984dea4d079b3f684b3a27af669f0",
+    "094e70c281fc4eeed1d6b889a2b63a94877cbccc"
+  ],
+  "identityStableAcrossBothProfiles": true,
+  "environment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "osRelease": "27.0.0",
+    "cpus": 14,
+    "model": "Apple M4 Pro",
+    "totalMemoryBytes": 51539607552,
+    "bun": "1.4.0",
+    "chromium": "153.0.8010.12"
+  },
+  "clocks": {
+    "repeated": [
+      "2026-10-05T07:31:04.722Z",
+      "2026-10-05T07:31:10.139Z"
+    ],
+    "cpuSample": [
+      "2026-10-05T07:32:16.303Z",
+      "2026-10-05T07:32:19.259Z"
+    ],
+    "closeObserver": [
+      "2026-10-05T07:34:48.381Z",
+      "2026-10-05T07:34:49.557Z"
+    ]
+  },
+  "measurements": [
+    {
+      "key": "1280/small-select-open",
+      "count": 3,
+      "meanActionMs": 43.54958333333328,
+      "meanObservedWallMs": 72.24495866666659,
+      "meanTaskThreadMs": 17.01766666666668,
+      "meanScriptThreadMs": 7.6946666666666585,
+      "meanLayoutThreadMs": 0.43466666666666615,
+      "meanStyleThreadMs": 2.244333333333334,
+      "optionCounts": [
+        3
+      ],
+      "descendantCounts": [
+        22
+      ]
+    },
+    {
+      "key": "1280/small-select-close",
+      "count": 3,
+      "meanActionMs": 3.295986333333341,
+      "meanObservedWallMs": 218.639889,
+      "meanTaskThreadMs": 14.583666666666664,
+      "meanScriptThreadMs": 3.2349999999999945,
+      "meanLayoutThreadMs": 0.2813333333333338,
+      "meanStyleThreadMs": 2.1606666666666654,
+      "optionCounts": [
+        0
+      ],
+      "descendantCounts": [
+        0
+      ]
+    },
+    {
+      "key": "1280/zone-all-open",
+      "count": 3,
+      "meanActionMs": 71.3944166666666,
+      "meanObservedWallMs": 106.95870833333318,
+      "meanTaskThreadMs": 54.67533333333333,
+      "meanScriptThreadMs": 34.52233333333333,
+      "meanLayoutThreadMs": 3.823666666666666,
+      "meanStyleThreadMs": 5.115666666666666,
+      "optionCounts": [
+        454
+      ],
+      "descendantCounts": [
+        2728
+      ]
+    },
+    {
+      "key": "1280/zone-filter",
+      "count": 3,
+      "meanActionMs": 36.395694666666635,
+      "meanObservedWallMs": 67.05627766666665,
+      "meanTaskThreadMs": 43.47966666666668,
+      "meanScriptThreadMs": 30.571,
+      "meanLayoutThreadMs": 0.42533333333333284,
+      "meanStyleThreadMs": 0.592,
+      "optionCounts": [
+        2
+      ],
+      "descendantCounts": [
+        17
+      ]
+    },
+    {
+      "key": "1280/zone-clear-filter",
+      "count": 3,
+      "meanActionMs": 54.389819333333286,
+      "meanObservedWallMs": 85.58780566666678,
+      "meanTaskThreadMs": 54.53033333333335,
+      "meanScriptThreadMs": 43.658666666666655,
+      "meanLayoutThreadMs": 2.4866666666666672,
+      "meanStyleThreadMs": 1.7093333333333327,
+      "optionCounts": [
+        454
+      ],
+      "descendantCounts": [
+        2728
+      ]
+    },
+    {
+      "key": "1280/zone-all-close",
+      "count": 3,
+      "meanActionMs": 27.552374999999984,
+      "meanObservedWallMs": 54.7327363333333,
+      "meanTaskThreadMs": 25.749000000000006,
+      "meanScriptThreadMs": 23.816333333333347,
+      "meanLayoutThreadMs": 0.04666666666666708,
+      "meanStyleThreadMs": 0.20300000000000007,
+      "optionCounts": [
+        0
+      ],
+      "descendantCounts": [
+        0
+      ]
+    },
+    {
+      "key": "390/small-select-open",
+      "count": 3,
+      "meanActionMs": 44.21306966666649,
+      "meanObservedWallMs": 71.90352800000012,
+      "meanTaskThreadMs": 17.769000000000002,
+      "meanScriptThreadMs": 7.930999999999995,
+      "meanLayoutThreadMs": 0.4179999999999997,
+      "meanStyleThreadMs": 2.425333333333333,
+      "optionCounts": [
+        3
+      ],
+      "descendantCounts": [
+        22
+      ]
+    },
+    {
+      "key": "390/small-select-close",
+      "count": 3,
+      "meanActionMs": 2.979888666666587,
+      "meanObservedWallMs": 210.26329199999978,
+      "meanTaskThreadMs": 13.11766666666666,
+      "meanScriptThreadMs": 3.040000000000004,
+      "meanLayoutThreadMs": 0.30400000000000055,
+      "meanStyleThreadMs": 2.005333333333333,
+      "optionCounts": [
+        0
+      ],
+      "descendantCounts": [
+        0
+      ]
+    },
+    {
+      "key": "390/zone-all-open",
+      "count": 3,
+      "meanActionMs": 71.42058333333337,
+      "meanObservedWallMs": 103.79772233333354,
+      "meanTaskThreadMs": 51.49899999999999,
+      "meanScriptThreadMs": 32.705666666666666,
+      "meanLayoutThreadMs": 3.5463333333333336,
+      "meanStyleThreadMs": 5.088,
+      "optionCounts": [
+        454
+      ],
+      "descendantCounts": [
+        2728
+      ]
+    },
+    {
+      "key": "390/zone-filter",
+      "count": 3,
+      "meanActionMs": 35.60620833333314,
+      "meanObservedWallMs": 66.75495833333314,
+      "meanTaskThreadMs": 40.85199999999998,
+      "meanScriptThreadMs": 29.99333333333334,
+      "meanLayoutThreadMs": 0.3943333333333325,
+      "meanStyleThreadMs": 0.6203333333333326,
+      "optionCounts": [
+        2
+      ],
+      "descendantCounts": [
+        17
+      ]
+    },
+    {
+      "key": "390/zone-clear-filter",
+      "count": 3,
+      "meanActionMs": 55.53406899999997,
+      "meanObservedWallMs": 81.17520800000027,
+      "meanTaskThreadMs": 56.137333333333366,
+      "meanScriptThreadMs": 43.96033333333333,
+      "meanLayoutThreadMs": 2.5223333333333335,
+      "meanStyleThreadMs": 1.7733333333333334,
+      "optionCounts": [
+        454
+      ],
+      "descendantCounts": [
+        2728
+      ]
+    },
+    {
+      "key": "390/zone-all-close",
+      "count": 3,
+      "meanActionMs": 27.704555666666693,
+      "meanObservedWallMs": 49.119555666666805,
+      "meanTaskThreadMs": 26.078333333333294,
+      "meanScriptThreadMs": 24.142333333333358,
+      "meanLayoutThreadMs": 0.04633333333333398,
+      "meanStyleThreadMs": 0.19399999999999973,
+      "optionCounts": [
+        0
+      ],
+      "descendantCounts": [
+        0
+      ]
+    }
+  ],
+  "samplingValidation": {
+    "profileCount": 12,
+    "profilesWithNegativeDeltas": 12,
+    "negativeDeltaCount": 50,
+    "minimumDeltaUs": -1233,
+    "negativeSignedSumUs": -24015,
+    "weightedDurationsAndRankingsReliable": false
+  },
+  "sampledFrames": [
+    {
+      "width": 1280,
+      "operation": "small-select-open",
+      "validation": {
+        "sampleCount": 268,
+        "deltaCount": 268,
+        "nonFiniteDeltaCount": 0,
+        "negativeDeltaCount": 7,
+        "minimumDeltaUs": -1151,
+        "negativeSignedSumUs": -1961,
+        "totalSignedSumUs": 99303,
+        "weightedDurationsReliable": false,
+        "weightedRankingsReliable": false
+      },
+      "cpuProfileIntervalMs": 99.355,
+      "nestedActionWallMs": 61.81541699999991,
+      "scriptThreadMs": 9.249,
+      "frameAddressesObserved": [
+        {
+          "nodeId": 2,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 6,
+          "frame": {
+            "functionName": "mark",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 7,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 8,
+          "frame": {
+            "functionName": "Of",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 135067
+          }
+        },
+        {
+          "nodeId": 25,
+          "frame": {
+            "functionName": "cs",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 51591
+          }
+        },
+        {
+          "nodeId": 26,
+          "frame": {
+            "functionName": "K_",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 21,
+            "columnNumber": 7070
+          }
+        },
+        {
+          "nodeId": 30,
+          "frame": {
+            "functionName": "Ai",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 30002
+          }
+        },
+        {
+          "nodeId": 31,
+          "frame": {
+            "functionName": "tl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 80803
+          }
+        },
+        {
+          "nodeId": 32,
+          "frame": {
+            "functionName": "fl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 87468
+          }
+        },
+        {
+          "nodeId": 38,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 25227
+          }
+        },
+        {
+          "nodeId": 37,
+          "frame": {
+            "functionName": "useMemo",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 61659
+          }
+        },
+        {
+          "nodeId": 41,
+          "frame": {
+            "functionName": "bh",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 72369
+          }
+        },
+        {
+          "nodeId": 42,
+          "frame": {
+            "functionName": "fa",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 34057
+          }
+        },
+        {
+          "nodeId": 105,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 103735
+          }
+        },
+        {
+          "nodeId": 172,
+          "frame": {
+            "functionName": "bl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 29220
+          }
+        },
+        {
+          "nodeId": 174,
+          "frame": {
+            "functionName": "Ws",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 58012
+          }
+        },
+        {
+          "nodeId": 255,
+          "frame": {
+            "functionName": "Kf",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 140022
+          }
+        },
+        {
+          "nodeId": 252,
+          "frame": {
+            "functionName": "focus",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 260,
+          "frame": {
+            "functionName": "bn",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 15312
+          }
+        },
+        {
+          "nodeId": 268,
+          "frame": {
+            "functionName": "ga",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 35582
+          }
+        },
+        {
+          "nodeId": 269,
+          "frame": {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "operation": "small-select-close",
+      "validation": {
+        "sampleCount": 356,
+        "deltaCount": 356,
+        "nonFiniteDeltaCount": 0,
+        "negativeDeltaCount": 4,
+        "minimumDeltaUs": -1233,
+        "negativeSignedSumUs": -2438,
+        "totalSignedSumUs": 214202,
+        "weightedDurationsReliable": false,
+        "weightedRankingsReliable": false
+      },
+      "cpuProfileIntervalMs": 214.263,
+      "nestedActionWallMs": 203.00808399999994,
+      "scriptThreadMs": 3.2429999999999994,
+      "frameAddressesObserved": [
+        {
+          "nodeId": 2,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 6,
+          "frame": {
+            "functionName": "mark",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 7,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 19,
+          "frame": {
+            "functionName": "Nd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 3116
+          }
+        },
+        {
+          "nodeId": 99,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 97,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 95,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 93,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 91,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 89,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 87,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 85,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 83,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 81,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 79,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 77,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 75,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 73,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 71,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 69,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 67,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 65,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 63,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 61,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 59,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 57,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 55,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 53,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 51,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 49,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 47,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 45,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 43,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 41,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 39,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 37,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 35,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 33,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 31,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 29,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 27,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 25,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 178,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 176,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 174,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 172,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 170,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 168,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 166,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 164,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 162,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 160,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 158,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 156,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 154,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 152,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 150,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 148,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 146,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 144,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 142,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 140,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 138,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 136,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 134,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 132,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 130,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 128,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 126,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 124,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 122,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 120,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 118,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 116,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 114,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 112,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 110,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 108,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 106,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 104,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 204,
+          "frame": {
+            "functionName": "computeBox",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 3164,
+            "columnNumber": 19
+          }
+        },
+        {
+          "nodeId": 219,
+          "frame": {
+            "functionName": "n",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 39455
+          }
+        },
+        {
+          "nodeId": 301,
+          "frame": {
+            "functionName": "removeChild",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 302,
+          "frame": {
+            "functionName": "_getEngine",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 5733,
+            "columnNumber": 12
+          }
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "operation": "zone-all-open",
+      "validation": {
+        "sampleCount": 253,
+        "deltaCount": 253,
+        "nonFiniteDeltaCount": 0,
+        "negativeDeltaCount": 4,
+        "minimumDeltaUs": -1201,
+        "negativeSignedSumUs": -2457,
+        "totalSignedSumUs": 128843,
+        "weightedDurationsReliable": false,
+        "weightedRankingsReliable": false
+      },
+      "cpuProfileIntervalMs": 129.415,
+      "nestedActionWallMs": 115.39199999999983,
+      "scriptThreadMs": 37.122,
+      "frameAddressesObserved": [
+        {
+          "nodeId": 2,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 6,
+          "frame": {
+            "functionName": "mark",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 8,
+          "frame": {
+            "functionName": "",
+            "scriptId": "18",
+            "url": "",
+            "lineNumber": 0,
+            "columnNumber": 1
+          }
+        },
+        {
+          "nodeId": 9,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 21,
+          "frame": {
+            "functionName": "e.useRef",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 0,
+            "columnNumber": 8805
+          }
+        },
+        {
+          "nodeId": 26,
+          "frame": {
+            "functionName": "setAttribute",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 31,
+          "frame": {
+            "functionName": "Qs",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 10462
+          }
+        },
+        {
+          "nodeId": 16,
+          "frame": {
+            "functionName": "Kd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 127341
+          }
+        },
+        {
+          "nodeId": 32,
+          "frame": {
+            "functionName": "uh",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 67718
+          }
+        },
+        {
+          "nodeId": 34,
+          "frame": {
+            "functionName": "Cd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 47222
+          }
+        },
+        {
+          "nodeId": 38,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 49119
+          }
+        },
+        {
+          "nodeId": 39,
+          "frame": {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 42,
+          "frame": {
+            "functionName": "pc",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 14194
+          }
+        },
+        {
+          "nodeId": 28,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 90602
+          }
+        },
+        {
+          "nodeId": 17,
+          "frame": {
+            "functionName": "al",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 82297
+          }
+        },
+        {
+          "nodeId": 43,
+          "frame": {
+            "functionName": "Y",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 11826
+          }
+        },
+        {
+          "nodeId": 44,
+          "frame": {
+            "functionName": "appendChild",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 45,
+          "frame": {
+            "functionName": "e.createElement",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 0,
+            "columnNumber": 7226
+          }
+        },
+        {
+          "nodeId": 35,
+          "frame": {
+            "functionName": "Cd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 47222
+          }
+        },
+        {
+          "nodeId": 46,
+          "frame": {
+            "functionName": "e.createElement",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 0,
+            "columnNumber": 7226
+          }
+        },
+        {
+          "nodeId": 49,
+          "frame": {
+            "functionName": "useId",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 62752
+          }
+        },
+        {
+          "nodeId": 50,
+          "frame": {
+            "functionName": "qs",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 9928
+          }
+        },
+        {
+          "nodeId": 53,
+          "frame": {
+            "functionName": "e.createElement",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 0,
+            "columnNumber": 7226
+          }
+        },
+        {
+          "nodeId": 199,
+          "frame": {
+            "functionName": "gl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95235
+          }
+        },
+        {
+          "nodeId": 342,
+          "frame": {
+            "functionName": "hl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95013
+          }
+        },
+        {
+          "nodeId": 349,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 11246
+          }
+        },
+        {
+          "nodeId": 351,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 103735
+          }
+        },
+        {
+          "nodeId": 496,
+          "frame": {
+            "functionName": "gl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95235
+          }
+        },
+        {
+          "nodeId": 640,
+          "frame": {
+            "functionName": "a",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 4688
+          }
+        },
+        {
+          "nodeId": 646,
+          "frame": {
+            "functionName": "ts",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 50294
+          }
+        },
+        {
+          "nodeId": 18,
+          "frame": {
+            "functionName": "Rc",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 71978
+          }
+        },
+        {
+          "nodeId": 649,
+          "frame": {
+            "functionName": "ha",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 35069
+          }
+        },
+        {
+          "nodeId": 654,
+          "frame": {
+            "functionName": "wg",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 101949
+          }
+        },
+        {
+          "nodeId": 675,
+          "frame": {
+            "functionName": "query",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 5718,
+            "columnNumber": 20
+          }
+        },
+        {
+          "nodeId": 683,
+          "frame": {
+            "functionName": "",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 3515,
+            "columnNumber": 20
+          }
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "operation": "zone-filter",
+      "validation": {
+        "sampleCount": 92,
+        "deltaCount": 92,
+        "nonFiniteDeltaCount": 0,
+        "negativeDeltaCount": 3,
+        "minimumDeltaUs": -911,
+        "negativeSignedSumUs": -2042,
+        "totalSignedSumUs": 95292,
+        "weightedDurationsReliable": false,
+        "weightedRankingsReliable": false
+      },
+      "cpuProfileIntervalMs": 95.533,
+      "nestedActionWallMs": 71.597125,
+      "scriptThreadMs": 35.496,
+      "frameAddressesObserved": [
+        {
+          "nodeId": 2,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 6,
+          "frame": {
+            "functionName": "mark",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 12,
+          "frame": {
+            "functionName": "getElementLabels",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 5256,
+            "columnNumber": 25
+          }
+        },
+        {
+          "nodeId": 16,
+          "frame": {
+            "functionName": "shouldSkipForTextMatching",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 5204,
+            "columnNumber": 34
+          }
+        },
+        {
+          "nodeId": 19,
+          "frame": {
+            "functionName": "querySelector",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 20,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 39,
+          "frame": {
+            "functionName": "Rr",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 10,
+            "columnNumber": 65483
+          }
+        },
+        {
+          "nodeId": 46,
+          "frame": {
+            "functionName": "Xy",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 21,
+            "columnNumber": 66239
+          }
+        },
+        {
+          "nodeId": 50,
+          "frame": {
+            "functionName": "rd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 43957
+          }
+        },
+        {
+          "nodeId": 51,
+          "frame": {
+            "functionName": "fl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 87468
+          }
+        },
+        {
+          "nodeId": 55,
+          "frame": {
+            "functionName": "e.createElement",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 0,
+            "columnNumber": 7226
+          }
+        },
+        {
+          "nodeId": 61,
+          "frame": {
+            "functionName": "Vs",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 9577
+          }
+        },
+        {
+          "nodeId": 65,
+          "frame": {
+            "functionName": "pa",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 34106
+          }
+        },
+        {
+          "nodeId": 68,
+          "frame": {
+            "functionName": "uc",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 13536
+          }
+        },
+        {
+          "nodeId": 70,
+          "frame": {
+            "functionName": "Cd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 47222
+          }
+        },
+        {
+          "nodeId": 57,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 90602
+          }
+        },
+        {
+          "nodeId": 72,
+          "frame": {
+            "functionName": "gd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 45960
+          }
+        },
+        {
+          "nodeId": 76,
+          "frame": {
+            "functionName": "Ns",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 56985
+          }
+        },
+        {
+          "nodeId": 77,
+          "frame": {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 78,
+          "frame": {
+            "functionName": "vd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 46506
+          }
+        },
+        {
+          "nodeId": 54,
+          "frame": {
+            "functionName": "pc",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 14194
+          }
+        },
+        {
+          "nodeId": 58,
+          "frame": {
+            "functionName": "bh",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 72369
+          }
+        },
+        {
+          "nodeId": 69,
+          "frame": {
+            "functionName": "uh",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 67718
+          }
+        },
+        {
+          "nodeId": 80,
+          "frame": {
+            "functionName": "nh",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 64736
+          }
+        },
+        {
+          "nodeId": 81,
+          "frame": {
+            "functionName": "dl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 87113
+          }
+        },
+        {
+          "nodeId": 233,
+          "frame": {
+            "functionName": "tp",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 8,
+            "columnNumber": 71
+          }
+        },
+        {
+          "nodeId": 239,
+          "frame": {
+            "functionName": "Cu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 109430
+          }
+        },
+        {
+          "nodeId": 243,
+          "frame": {
+            "functionName": "rn",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 9326
+          }
+        },
+        {
+          "nodeId": 244,
+          "frame": {
+            "functionName": "gl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95235
+          }
+        },
+        {
+          "nodeId": 31,
+          "frame": {
+            "functionName": "al",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 82297
+          }
+        },
+        {
+          "nodeId": 250,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 25227
+          }
+        },
+        {
+          "nodeId": 255,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 10719
+          }
+        },
+        {
+          "nodeId": 261,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 11225
+          }
+        },
+        {
+          "nodeId": 404,
+          "frame": {
+            "functionName": "gl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95235
+          }
+        },
+        {
+          "nodeId": 407,
+          "frame": {
+            "functionName": "Z",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 29991
+          }
+        },
+        {
+          "nodeId": 411,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 104580
+          }
+        },
+        {
+          "nodeId": 414,
+          "frame": {
+            "functionName": "match",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 5372,
+            "columnNumber": 16
+          }
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "operation": "zone-clear-filter",
+      "validation": {
+        "sampleCount": 149,
+        "deltaCount": 149,
+        "nonFiniteDeltaCount": 0,
+        "negativeDeltaCount": 5,
+        "minimumDeltaUs": -907,
+        "negativeSignedSumUs": -2544,
+        "totalSignedSumUs": 95431,
+        "weightedDurationsReliable": false,
+        "weightedRankingsReliable": false
+      },
+      "cpuProfileIntervalMs": 96.189,
+      "nestedActionWallMs": 82.384458,
+      "scriptThreadMs": 50.70599999999999,
+      "frameAddressesObserved": [
+        {
+          "nodeId": 2,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 3,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 7,
+          "frame": {
+            "functionName": "mark",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 15,
+          "frame": {
+            "functionName": "elementText",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 5208,
+            "columnNumber": 20
+          }
+        },
+        {
+          "nodeId": 25,
+          "frame": {
+            "functionName": "Kd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 127341
+          }
+        },
+        {
+          "nodeId": 33,
+          "frame": {
+            "functionName": "l",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 40012
+          }
+        },
+        {
+          "nodeId": 38,
+          "frame": {
+            "functionName": "Y",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 11826
+          }
+        },
+        {
+          "nodeId": 40,
+          "frame": {
+            "functionName": "Qs",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 10462
+          }
+        },
+        {
+          "nodeId": 36,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 90602
+          }
+        },
+        {
+          "nodeId": 43,
+          "frame": {
+            "functionName": "pc",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 14194
+          }
+        },
+        {
+          "nodeId": 46,
+          "frame": {
+            "functionName": "Vs",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 9577
+          }
+        },
+        {
+          "nodeId": 48,
+          "frame": {
+            "functionName": "vd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 46506
+          }
+        },
+        {
+          "nodeId": 50,
+          "frame": {
+            "functionName": "gd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 45960
+          }
+        },
+        {
+          "nodeId": 52,
+          "frame": {
+            "functionName": "Cd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 47222
+          }
+        },
+        {
+          "nodeId": 54,
+          "frame": {
+            "functionName": "useRef",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 62084
+          }
+        },
+        {
+          "nodeId": 58,
+          "frame": {
+            "functionName": "Ht",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 5590
+          }
+        },
+        {
+          "nodeId": 59,
+          "frame": {
+            "functionName": "setAttribute",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 65,
+          "frame": {
+            "functionName": "p",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 41096
+          }
+        },
+        {
+          "nodeId": 26,
+          "frame": {
+            "functionName": "al",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 82297
+          }
+        },
+        {
+          "nodeId": 211,
+          "frame": {
+            "functionName": "gl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95235
+          }
+        },
+        {
+          "nodeId": 216,
+          "frame": {
+            "functionName": "kl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 98085
+          }
+        },
+        {
+          "nodeId": 214,
+          "frame": {
+            "functionName": "kl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 98085
+          }
+        },
+        {
+          "nodeId": 213,
+          "frame": {
+            "functionName": "kl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 98085
+          }
+        },
+        {
+          "nodeId": 212,
+          "frame": {
+            "functionName": "wu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 113732
+          }
+        },
+        {
+          "nodeId": 218,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 45861
+          }
+        },
+        {
+          "nodeId": 362,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 10700
+          }
+        },
+        {
+          "nodeId": 508,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 52318
+          }
+        },
+        {
+          "nodeId": 512,
+          "frame": {
+            "functionName": "Eh",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 75409
+          }
+        },
+        {
+          "nodeId": 44,
+          "frame": {
+            "functionName": "ec",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 11021
+          }
+        },
+        {
+          "nodeId": 515,
+          "frame": {
+            "functionName": "e.createElement",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 0,
+            "columnNumber": 7226
+          }
+        },
+        {
+          "nodeId": 516,
+          "frame": {
+            "functionName": "Y",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 11826
+          }
+        },
+        {
+          "nodeId": 520,
+          "frame": {
+            "functionName": "As",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 56627
+          }
+        },
+        {
+          "nodeId": 521,
+          "frame": {
+            "functionName": "ac",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 12238
+          }
+        },
+        {
+          "nodeId": 522,
+          "frame": {
+            "functionName": "gd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 45960
+          }
+        },
+        {
+          "nodeId": 525,
+          "frame": {
+            "functionName": "ba",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 35861
+          }
+        },
+        {
+          "nodeId": 527,
+          "frame": {
+            "functionName": "getItem",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 74973
+          }
+        },
+        {
+          "nodeId": 528,
+          "frame": {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 532,
+          "frame": {
+            "functionName": "ts",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 50294
+          }
+        },
+        {
+          "nodeId": 534,
+          "frame": {
+            "functionName": "Ws",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 58012
+          }
+        },
+        {
+          "nodeId": 41,
+          "frame": {
+            "functionName": "Oc",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 68532
+          }
+        },
+        {
+          "nodeId": 550,
+          "frame": {
+            "functionName": "Cu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 109430
+          }
+        },
+        {
+          "nodeId": 559,
+          "frame": {
+            "functionName": "ha",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 35069
+          }
+        },
+        {
+          "nodeId": 567,
+          "frame": {
+            "functionName": "",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 3515,
+            "columnNumber": 20
+          }
+        },
+        {
+          "nodeId": 568,
+          "frame": {
+            "functionName": "isElementHiddenForAria",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 3545,
+            "columnNumber": 31
+          }
+        },
+        {
+          "nodeId": 575,
+          "frame": {
+            "functionName": "isError",
+            "scriptId": "7",
+            "url": "",
+            "lineNumber": 56,
+            "columnNumber": 16
+          }
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "operation": "zone-all-close",
+      "validation": {
+        "sampleCount": 81,
+        "deltaCount": 81,
+        "nonFiniteDeltaCount": 0,
+        "negativeDeltaCount": 3,
+        "minimumDeltaUs": -1060,
+        "negativeSignedSumUs": -2078,
+        "totalSignedSumUs": 95186,
+        "weightedDurationsReliable": false,
+        "weightedRankingsReliable": false
+      },
+      "cpuProfileIntervalMs": 95.684,
+      "nestedActionWallMs": 59.80166600000007,
+      "scriptThreadMs": 30.392000000000003,
+      "frameAddressesObserved": [
+        {
+          "nodeId": 2,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 6,
+          "frame": {
+            "functionName": "mark",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 7,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 22,
+          "frame": {
+            "functionName": "l",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 40012
+          }
+        },
+        {
+          "nodeId": 25,
+          "frame": {
+            "functionName": "Oi",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 28890
+          }
+        },
+        {
+          "nodeId": 36,
+          "frame": {
+            "functionName": "As",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 56627
+          }
+        },
+        {
+          "nodeId": 38,
+          "frame": {
+            "functionName": "Cd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 47222
+          }
+        },
+        {
+          "nodeId": 46,
+          "frame": {
+            "functionName": "Ko",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 48980
+          }
+        },
+        {
+          "nodeId": 50,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 0,
+            "columnNumber": 373
+          }
+        },
+        {
+          "nodeId": 51,
+          "frame": {
+            "functionName": "ha",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 35069
+          }
+        },
+        {
+          "nodeId": 49,
+          "frame": {
+            "functionName": "pc",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 14194
+          }
+        },
+        {
+          "nodeId": 28,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 90602
+          }
+        },
+        {
+          "nodeId": 54,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 49119
+          }
+        },
+        {
+          "nodeId": 55,
+          "frame": {
+            "functionName": "Y",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 11826
+          }
+        },
+        {
+          "nodeId": 56,
+          "frame": {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 32,
+          "frame": {
+            "functionName": "hd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 45822
+          }
+        },
+        {
+          "nodeId": 47,
+          "frame": {
+            "functionName": "Oc",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 68532
+          }
+        },
+        {
+          "nodeId": 202,
+          "frame": {
+            "functionName": "hl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95013
+          }
+        },
+        {
+          "nodeId": 220,
+          "frame": {
+            "functionName": "Cu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 109430
+          }
+        },
+        {
+          "nodeId": 363,
+          "frame": {
+            "functionName": "hl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95013
+          }
+        },
+        {
+          "nodeId": 368,
+          "frame": {
+            "functionName": "ts",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 50294
+          }
+        },
+        {
+          "nodeId": 373,
+          "frame": {
+            "functionName": "gu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 107013
+          }
+        },
+        {
+          "nodeId": 448,
+          "frame": {
+            "functionName": "gl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95235
+          }
+        },
+        {
+          "nodeId": 449,
+          "frame": {
+            "functionName": "removeChild",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 371,
+          "frame": {
+            "functionName": "gu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 107013
+          }
+        },
+        {
+          "nodeId": 369,
+          "frame": {
+            "functionName": "gu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 107013
+          }
+        },
+        {
+          "nodeId": 515,
+          "frame": {
+            "functionName": "Wu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121996
+          }
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "operation": "small-select-open",
+      "validation": {
+        "sampleCount": 271,
+        "deltaCount": 271,
+        "nonFiniteDeltaCount": 0,
+        "negativeDeltaCount": 4,
+        "minimumDeltaUs": -945,
+        "negativeSignedSumUs": -2625,
+        "totalSignedSumUs": 100669,
+        "weightedDurationsReliable": false,
+        "weightedRankingsReliable": false
+      },
+      "cpuProfileIntervalMs": 100.727,
+      "nestedActionWallMs": 66.27883299999985,
+      "scriptThreadMs": 8.85,
+      "frameAddressesObserved": [
+        {
+          "nodeId": 2,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 6,
+          "frame": {
+            "functionName": "mark",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 7,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 11,
+          "frame": {
+            "functionName": "elementsFromPoint",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 28,
+          "frame": {
+            "functionName": "cs",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 51591
+          }
+        },
+        {
+          "nodeId": 30,
+          "frame": {
+            "functionName": "Kg",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 21,
+            "columnNumber": 1473
+          }
+        },
+        {
+          "nodeId": 34,
+          "frame": {
+            "functionName": "Ai",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 30002
+          }
+        },
+        {
+          "nodeId": 35,
+          "frame": {
+            "functionName": "tl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 80803
+          }
+        },
+        {
+          "nodeId": 36,
+          "frame": {
+            "functionName": "fl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 87468
+          }
+        },
+        {
+          "nodeId": 42,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 25227
+          }
+        },
+        {
+          "nodeId": 41,
+          "frame": {
+            "functionName": "useMemo",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 61659
+          }
+        },
+        {
+          "nodeId": 44,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 90602
+          }
+        },
+        {
+          "nodeId": 45,
+          "frame": {
+            "functionName": "fa",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 34057
+          }
+        },
+        {
+          "nodeId": 108,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 103735
+          }
+        },
+        {
+          "nodeId": 173,
+          "frame": {
+            "functionName": "f",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 95116
+          }
+        },
+        {
+          "nodeId": 175,
+          "frame": {
+            "functionName": "Ws",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 58012
+          }
+        },
+        {
+          "nodeId": 256,
+          "frame": {
+            "functionName": "Kf",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 140022
+          }
+        },
+        {
+          "nodeId": 258,
+          "frame": {
+            "functionName": "xm",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 42387
+          }
+        },
+        {
+          "nodeId": 260,
+          "frame": {
+            "functionName": "checkDeprecatedSelectorUsage",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 7859,
+            "columnNumber": 30
+          }
+        },
+        {
+          "nodeId": 261,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 58318
+          }
+        },
+        {
+          "nodeId": 269,
+          "frame": {
+            "functionName": "ga",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 35582
+          }
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "operation": "small-select-close",
+      "validation": {
+        "sampleCount": 358,
+        "deltaCount": 358,
+        "nonFiniteDeltaCount": 0,
+        "negativeDeltaCount": 7,
+        "minimumDeltaUs": -458,
+        "negativeSignedSumUs": -1331,
+        "totalSignedSumUs": 214394,
+        "weightedDurationsReliable": false,
+        "weightedRankingsReliable": false
+      },
+      "cpuProfileIntervalMs": 214.455,
+      "nestedActionWallMs": 203.108792,
+      "scriptThreadMs": 3.329,
+      "frameAddressesObserved": [
+        {
+          "nodeId": 2,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 6,
+          "frame": {
+            "functionName": "mark",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 17,
+          "frame": {
+            "functionName": "A_",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 21,
+            "columnNumber": 4241
+          }
+        },
+        {
+          "nodeId": 97,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 95,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 93,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 91,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 89,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 87,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 85,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 83,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 81,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 79,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 77,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 75,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 73,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 71,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 69,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 67,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 65,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 63,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 61,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 59,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 57,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 55,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 53,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 51,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 49,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 47,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 45,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 43,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 41,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 39,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 37,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 35,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 33,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 31,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 29,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 27,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 25,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 23,
+          "frame": {
+            "functionName": "xu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 108943
+          }
+        },
+        {
+          "nodeId": 176,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 174,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 172,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 170,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 168,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 166,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 164,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 162,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 160,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 158,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 156,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 154,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 152,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 150,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 148,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 146,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 144,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 142,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 140,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 138,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 136,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 134,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 132,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 130,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 128,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 126,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 124,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 122,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 120,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 118,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 116,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 114,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 112,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 110,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 108,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 106,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 104,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 102,
+          "frame": {
+            "functionName": "Vu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 121210
+          }
+        },
+        {
+          "nodeId": 187,
+          "frame": {
+            "functionName": "parseEvaluationResultValue",
+            "scriptId": "7",
+            "url": "",
+            "lineNumber": 105,
+            "columnNumber": 35
+          }
+        },
+        {
+          "nodeId": 188,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 203,
+          "frame": {
+            "functionName": "n",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 39455
+          }
+        },
+        {
+          "nodeId": 285,
+          "frame": {
+            "functionName": "removeChild",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 287,
+          "frame": {
+            "functionName": "xh",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 8,
+            "columnNumber": 43194
+          }
+        },
+        {
+          "nodeId": 290,
+          "frame": {
+            "functionName": "en",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 8551
+          }
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "operation": "zone-all-open",
+      "validation": {
+        "sampleCount": 251,
+        "deltaCount": 251,
+        "nonFiniteDeltaCount": 0,
+        "negativeDeltaCount": 7,
+        "minimumDeltaUs": -861,
+        "negativeSignedSumUs": -3053,
+        "totalSignedSumUs": 128689,
+        "weightedDurationsReliable": false,
+        "weightedRankingsReliable": false
+      },
+      "cpuProfileIntervalMs": 129.271,
+      "nestedActionWallMs": 115.66062499999998,
+      "scriptThreadMs": 39.463,
+      "frameAddressesObserved": [
+        {
+          "nodeId": 2,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 6,
+          "frame": {
+            "functionName": "mark",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 7,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 17,
+          "frame": {
+            "functionName": "re",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 21,
+            "columnNumber": 63926
+          }
+        },
+        {
+          "nodeId": 31,
+          "frame": {
+            "functionName": "uh",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 67718
+          }
+        },
+        {
+          "nodeId": 29,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 90602
+          }
+        },
+        {
+          "nodeId": 33,
+          "frame": {
+            "functionName": "createElement",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 38,
+          "frame": {
+            "functionName": "uc",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 13536
+          }
+        },
+        {
+          "nodeId": 40,
+          "frame": {
+            "functionName": "gd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 45960
+          }
+        },
+        {
+          "nodeId": 41,
+          "frame": {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 42,
+          "frame": {
+            "functionName": "pc",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 14194
+          }
+        },
+        {
+          "nodeId": 43,
+          "frame": {
+            "functionName": "lh",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 66757
+          }
+        },
+        {
+          "nodeId": 44,
+          "frame": {
+            "functionName": "Y",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 11826
+          }
+        },
+        {
+          "nodeId": 45,
+          "frame": {
+            "functionName": "Cd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 47222
+          }
+        },
+        {
+          "nodeId": 46,
+          "frame": {
+            "functionName": "e.createElement",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 0,
+            "columnNumber": 7226
+          }
+        },
+        {
+          "nodeId": 48,
+          "frame": {
+            "functionName": "tp",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 8,
+            "columnNumber": 71
+          }
+        },
+        {
+          "nodeId": 50,
+          "frame": {
+            "functionName": "hd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 45822
+          }
+        },
+        {
+          "nodeId": 51,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 0,
+            "columnNumber": 373
+          }
+        },
+        {
+          "nodeId": 53,
+          "frame": {
+            "functionName": "qs",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 9928
+          }
+        },
+        {
+          "nodeId": 49,
+          "frame": {
+            "functionName": "Cd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 47222
+          }
+        },
+        {
+          "nodeId": 199,
+          "frame": {
+            "functionName": "gl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95235
+          }
+        },
+        {
+          "nodeId": 339,
+          "frame": {
+            "functionName": "cu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 104570
+          }
+        },
+        {
+          "nodeId": 345,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 11087
+          }
+        },
+        {
+          "nodeId": 347,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 103735
+          }
+        },
+        {
+          "nodeId": 492,
+          "frame": {
+            "functionName": "gl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95235
+          }
+        },
+        {
+          "nodeId": 633,
+          "frame": {
+            "functionName": "Pu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 118255
+          }
+        },
+        {
+          "nodeId": 638,
+          "frame": {
+            "functionName": "plural",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 33222
+          }
+        },
+        {
+          "nodeId": 26,
+          "frame": {
+            "functionName": "Rc",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 71978
+          }
+        },
+        {
+          "nodeId": 641,
+          "frame": {
+            "functionName": "ha",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 35069
+          }
+        },
+        {
+          "nodeId": 643,
+          "frame": {
+            "functionName": "stopPropagation",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 17111
+          }
+        },
+        {
+          "nodeId": 665,
+          "frame": {
+            "functionName": "query",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 5718,
+            "columnNumber": 20
+          }
+        },
+        {
+          "nodeId": 671,
+          "frame": {
+            "functionName": "computeAriaRole",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 3528,
+            "columnNumber": 24
+          }
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "operation": "zone-filter",
+      "validation": {
+        "sampleCount": 142,
+        "deltaCount": 142,
+        "nonFiniteDeltaCount": 0,
+        "negativeDeltaCount": 2,
+        "minimumDeltaUs": -893,
+        "negativeSignedSumUs": -953,
+        "totalSignedSumUs": 112538,
+        "weightedDurationsReliable": false,
+        "weightedRankingsReliable": false
+      },
+      "cpuProfileIntervalMs": 112.796,
+      "nestedActionWallMs": 83.98675000000003,
+      "scriptThreadMs": 35.92099999999999,
+      "frameAddressesObserved": [
+        {
+          "nodeId": 2,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 6,
+          "frame": {
+            "functionName": "mark",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 16,
+          "frame": {
+            "functionName": "elementText",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 5208,
+            "columnNumber": 20
+          }
+        },
+        {
+          "nodeId": 12,
+          "frame": {
+            "functionName": "getElementLabels",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 5256,
+            "columnNumber": 25
+          }
+        },
+        {
+          "nodeId": 17,
+          "frame": {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 18,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 37,
+          "frame": {
+            "functionName": "Rr",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 10,
+            "columnNumber": 65483
+          }
+        },
+        {
+          "nodeId": 44,
+          "frame": {
+            "functionName": "Xy",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 21,
+            "columnNumber": 66239
+          }
+        },
+        {
+          "nodeId": 39,
+          "frame": {
+            "functionName": "Jy",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 21,
+            "columnNumber": 62159
+          }
+        },
+        {
+          "nodeId": 53,
+          "frame": {
+            "functionName": "ts",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 50294
+          }
+        },
+        {
+          "nodeId": 56,
+          "frame": {
+            "functionName": "Vs",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 9577
+          }
+        },
+        {
+          "nodeId": 46,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 90602
+          }
+        },
+        {
+          "nodeId": 60,
+          "frame": {
+            "functionName": "e.useMemo",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 0,
+            "columnNumber": 8637
+          }
+        },
+        {
+          "nodeId": 68,
+          "frame": {
+            "functionName": "Oi",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 28890
+          }
+        },
+        {
+          "nodeId": 70,
+          "frame": {
+            "functionName": "gd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 45960
+          }
+        },
+        {
+          "nodeId": 55,
+          "frame": {
+            "functionName": "Qs",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 10462
+          }
+        },
+        {
+          "nodeId": 71,
+          "frame": {
+            "functionName": "Cd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 47222
+          }
+        },
+        {
+          "nodeId": 72,
+          "frame": {
+            "functionName": "mp",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 8,
+            "columnNumber": 12120
+          }
+        },
+        {
+          "nodeId": 48,
+          "frame": {
+            "functionName": "uh",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 67718
+          }
+        },
+        {
+          "nodeId": 76,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 27198
+          }
+        },
+        {
+          "nodeId": 78,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 21,
+            "columnNumber": 27753
+          }
+        },
+        {
+          "nodeId": 243,
+          "frame": {
+            "functionName": "ap",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 8,
+            "columnNumber": 8012
+          }
+        },
+        {
+          "nodeId": 247,
+          "frame": {
+            "functionName": "rn",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 9326
+          }
+        },
+        {
+          "nodeId": 248,
+          "frame": {
+            "functionName": "hl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95013
+          }
+        },
+        {
+          "nodeId": 271,
+          "frame": {
+            "functionName": "hl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95013
+          }
+        },
+        {
+          "nodeId": 277,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 25227
+          }
+        },
+        {
+          "nodeId": 47,
+          "frame": {
+            "functionName": "bh",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 72369
+          }
+        },
+        {
+          "nodeId": 279,
+          "frame": {
+            "functionName": "uc",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 13536
+          }
+        },
+        {
+          "nodeId": 280,
+          "frame": {
+            "functionName": "gu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 107013
+          }
+        },
+        {
+          "nodeId": 283,
+          "frame": {
+            "functionName": "gl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95235
+          }
+        },
+        {
+          "nodeId": 424,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 80
+          }
+        },
+        {
+          "nodeId": 470,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 102537
+          }
+        },
+        {
+          "nodeId": 473,
+          "frame": {
+            "functionName": "match",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 5372,
+            "columnNumber": 16
+          }
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "operation": "zone-clear-filter",
+      "validation": {
+        "sampleCount": 110,
+        "deltaCount": 110,
+        "nonFiniteDeltaCount": 0,
+        "negativeDeltaCount": 3,
+        "minimumDeltaUs": -1142,
+        "negativeSignedSumUs": -1774,
+        "totalSignedSumUs": 95758,
+        "weightedDurationsReliable": false,
+        "weightedRankingsReliable": false
+      },
+      "cpuProfileIntervalMs": 96,
+      "nestedActionWallMs": 82.13566700000001,
+      "scriptThreadMs": 50.11500000000001,
+      "frameAddressesObserved": [
+        {
+          "nodeId": 2,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 6,
+          "frame": {
+            "functionName": "mark",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 10,
+          "frame": {
+            "functionName": "isElementVisible",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 3183,
+            "columnNumber": 25
+          }
+        },
+        {
+          "nodeId": 26,
+          "frame": {
+            "functionName": "X",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 16465
+          }
+        },
+        {
+          "nodeId": 34,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 28162
+          }
+        },
+        {
+          "nodeId": 40,
+          "frame": {
+            "functionName": "l",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 40012
+          }
+        },
+        {
+          "nodeId": 45,
+          "frame": {
+            "functionName": "Qs",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 10462
+          }
+        },
+        {
+          "nodeId": 46,
+          "frame": {
+            "functionName": "uh",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 67718
+          }
+        },
+        {
+          "nodeId": 50,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 4369
+          }
+        },
+        {
+          "nodeId": 53,
+          "frame": {
+            "functionName": "pc",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 14194
+          }
+        },
+        {
+          "nodeId": 54,
+          "frame": {
+            "functionName": "Qs",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 10462
+          }
+        },
+        {
+          "nodeId": 58,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 4369
+          }
+        },
+        {
+          "nodeId": 60,
+          "frame": {
+            "functionName": "Cd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 47222
+          }
+        },
+        {
+          "nodeId": 69,
+          "frame": {
+            "functionName": "Ti",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 28404
+          }
+        },
+        {
+          "nodeId": 71,
+          "frame": {
+            "functionName": "createElement",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 73,
+          "frame": {
+            "functionName": "am",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 34800
+          }
+        },
+        {
+          "nodeId": 42,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 90602
+          }
+        },
+        {
+          "nodeId": 74,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 21,
+            "columnNumber": 29029
+          }
+        },
+        {
+          "nodeId": 223,
+          "frame": {
+            "functionName": "insertBefore",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 226,
+          "frame": {
+            "functionName": "gl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95235
+          }
+        },
+        {
+          "nodeId": 222,
+          "frame": {
+            "functionName": "kl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 98085
+          }
+        },
+        {
+          "nodeId": 220,
+          "frame": {
+            "functionName": "kl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 98085
+          }
+        },
+        {
+          "nodeId": 219,
+          "frame": {
+            "functionName": "kl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 98085
+          }
+        },
+        {
+          "nodeId": 218,
+          "frame": {
+            "functionName": "wu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 113732
+          }
+        },
+        {
+          "nodeId": 374,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 11087
+          }
+        },
+        {
+          "nodeId": 519,
+          "frame": {
+            "functionName": "gl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95235
+          }
+        },
+        {
+          "nodeId": 18,
+          "frame": {
+            "functionName": "Nd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 123437
+          }
+        },
+        {
+          "nodeId": 59,
+          "frame": {
+            "functionName": "lh",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 66757
+          }
+        },
+        {
+          "nodeId": 520,
+          "frame": {
+            "functionName": "cc",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 12741
+          }
+        },
+        {
+          "nodeId": 523,
+          "frame": {
+            "functionName": "ts",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 50294
+          }
+        },
+        {
+          "nodeId": 524,
+          "frame": {
+            "functionName": "Cd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 47222
+          }
+        },
+        {
+          "nodeId": 528,
+          "frame": {
+            "functionName": "ts",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 50294
+          }
+        },
+        {
+          "nodeId": 529,
+          "frame": {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 530,
+          "frame": {
+            "functionName": "Y",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 11826
+          }
+        },
+        {
+          "nodeId": 531,
+          "frame": {
+            "functionName": "hd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 45822
+          }
+        },
+        {
+          "nodeId": 533,
+          "frame": {
+            "functionName": "getItem",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 74973
+          }
+        },
+        {
+          "nodeId": 534,
+          "frame": {
+            "functionName": "t",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 15380
+          }
+        },
+        {
+          "nodeId": 535,
+          "frame": {
+            "functionName": "gd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 45960
+          }
+        },
+        {
+          "nodeId": 21,
+          "frame": {
+            "functionName": "al",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 82297
+          }
+        },
+        {
+          "nodeId": 538,
+          "frame": {
+            "functionName": "e.split.reduce.shift",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 41973
+          }
+        },
+        {
+          "nodeId": 544,
+          "frame": {
+            "functionName": "ap",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 8,
+            "columnNumber": 8012
+          }
+        },
+        {
+          "nodeId": 546,
+          "frame": {
+            "functionName": "Zt",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 7374
+          }
+        },
+        {
+          "nodeId": 555,
+          "frame": {
+            "functionName": "ha",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 35069
+          }
+        },
+        {
+          "nodeId": 563,
+          "frame": {
+            "functionName": "getAriaRole",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 3520,
+            "columnNumber": 20
+          }
+        },
+        {
+          "nodeId": 567,
+          "frame": {
+            "functionName": "checkVisibility",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 568,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "operation": "zone-all-close",
+      "validation": {
+        "sampleCount": 77,
+        "deltaCount": 77,
+        "nonFiniteDeltaCount": 0,
+        "negativeDeltaCount": 1,
+        "minimumDeltaUs": -759,
+        "negativeSignedSumUs": -759,
+        "totalSignedSumUs": 111785,
+        "weightedDurationsReliable": false,
+        "weightedRankingsReliable": false
+      },
+      "cpuProfileIntervalMs": 111.84,
+      "nestedActionWallMs": 61.062374999999975,
+      "scriptThreadMs": 30.598999999999986,
+      "frameAddressesObserved": [
+        {
+          "nodeId": 2,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 3,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 7,
+          "frame": {
+            "functionName": "mark",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 9,
+          "frame": {
+            "functionName": "Of",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 135067
+          }
+        },
+        {
+          "nodeId": 20,
+          "frame": {
+            "functionName": "Y",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 11826
+          }
+        },
+        {
+          "nodeId": 25,
+          "frame": {
+            "functionName": "uc",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 13536
+          }
+        },
+        {
+          "nodeId": 26,
+          "frame": {
+            "functionName": "fl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 87468
+          }
+        },
+        {
+          "nodeId": 29,
+          "frame": {
+            "functionName": "Qs",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 10462
+          }
+        },
+        {
+          "nodeId": 32,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 0,
+            "columnNumber": 373
+          }
+        },
+        {
+          "nodeId": 24,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 6587
+          }
+        },
+        {
+          "nodeId": 33,
+          "frame": {
+            "functionName": "lc",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 13191
+          }
+        },
+        {
+          "nodeId": 31,
+          "frame": {
+            "functionName": "Cd",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 47222
+          }
+        },
+        {
+          "nodeId": 34,
+          "frame": {
+            "functionName": "(garbage collector)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 19,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 90602
+          }
+        },
+        {
+          "nodeId": 38,
+          "frame": {
+            "functionName": "Ko",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 48980
+          }
+        },
+        {
+          "nodeId": 43,
+          "frame": {
+            "functionName": "ts",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 50294
+          }
+        },
+        {
+          "nodeId": 35,
+          "frame": {
+            "functionName": "pc",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 11,
+            "columnNumber": 14194
+          }
+        },
+        {
+          "nodeId": 207,
+          "frame": {
+            "functionName": "Dl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 97114
+          }
+        },
+        {
+          "nodeId": 209,
+          "frame": {
+            "functionName": "ap",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 8,
+            "columnNumber": 8012
+          }
+        },
+        {
+          "nodeId": 352,
+          "frame": {
+            "functionName": "hl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95013
+          }
+        },
+        {
+          "nodeId": 357,
+          "frame": {
+            "functionName": "gu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 107013
+          }
+        },
+        {
+          "nodeId": 432,
+          "frame": {
+            "functionName": "gl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95235
+          }
+        },
+        {
+          "nodeId": 441,
+          "frame": {
+            "functionName": "hu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 106948
+          }
+        },
+        {
+          "nodeId": 442,
+          "frame": {
+            "functionName": "removeChild",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "nodeId": 355,
+          "frame": {
+            "functionName": "gu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 107013
+          }
+        },
+        {
+          "nodeId": 353,
+          "frame": {
+            "functionName": "gu",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 107013
+          }
+        },
+        {
+          "nodeId": 509,
+          "frame": {
+            "functionName": "gl",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 95235
+          }
+        }
+      ]
+    }
+  ],
+  "closeObserver": [
+    {
+      "condition": "early",
+      "actionMs": 2.716791999999998,
+      "totalHostMs": 181.973209,
+      "start": 236.5,
+      "removed": 407.69999998807907,
+      "animationFinished": [
+        405.90000000596046
+      ],
+      "entering": true,
+      "runningAnimations": 1,
+      "expectObserved": 418,
+      "removalAfterStartMs": 171.19999998807907,
+      "assertionAfterRemovalMs": 10.300000011920929
+    },
+    {
+      "condition": "settled",
+      "actionMs": 6.317083000000025,
+      "totalHostMs": 8.692499999999995,
+      "start": 609.8000000119209,
+      "removed": 615.6999999880791,
+      "animationFinished": [],
+      "entering": false,
+      "runningAnimations": 0,
+      "expectObserved": 618.5,
+      "removalAfterStartMs": 5.899999976158142,
+      "assertionAfterRemovalMs": 2.800000011920929
+    },
+    {
+      "condition": "early",
+      "actionMs": 2.42937500000005,
+      "totalHostMs": 190.11358299999995,
+      "start": 650.0999999940395,
+      "removed": 807,
+      "animationFinished": [
+        805.9000000059605
+      ],
+      "entering": true,
+      "runningAnimations": 1,
+      "expectObserved": 840.0999999940395,
+      "removalAfterStartMs": 156.90000000596046,
+      "assertionAfterRemovalMs": 33.099999994039536
+    },
+    {
+      "condition": "settled",
+      "actionMs": 8.114458000000013,
+      "totalHostMs": 10.633542000000034,
+      "start": 1043.5,
+      "removed": 1051.199999988079,
+      "animationFinished": [],
+      "entering": false,
+      "runningAnimations": 0,
+      "expectObserved": 1054.199999988079,
+      "removalAfterStartMs": 7.699999988079071,
+      "assertionAfterRemovalMs": 3
+    }
+  ],
+  "messages": [
+    {
+      "width": 1280,
+      "type": "csp",
+      "violations": []
+    },
+    {
+      "width": 390,
+      "type": "csp",
+      "violations": []
+    },
+    {
+      "width": 1280,
+      "type": "csp",
+      "violations": []
+    },
+    {
+      "width": 390,
+      "type": "csp",
+      "violations": []
+    }
+  ],
+  "qualifications": [
+    "TaskDuration/ScriptDuration/LayoutDuration/RecalcStyleDuration are CDP threadTicks deltas over an instrumented action/assertion/two-rAF window. They are not an additive partition and are not Linux Actions measurements.",
+    "All CPU profiles contain negative timeDeltas. Signed raw intervals are preserved and validated; weighted frame totals/rankings are unreliable and omitted. Unranked sampled frame addresses establish presence only, not attribution or relative cost.",
+    "CPU profile start/end and nested action walls are distinct. The CPU-pass counter window includes Profiler.start/protocol instrumentation. Raw before/after numeric counters were not saved: saved deltas can be aggregated, but counter subtraction is source-reviewed only and cannot be independently recomputed from raw counter observations.",
+    "Filter readiness checks count <20, which could admit zero. Every actual filtered snapshot has two options; this post-hoc observation does not strengthen the readiness guard into a nonempty assertion.",
+    "Raw timeline event durations nest/overlap and are retained for examination, not summed as independent CPU cost. No screenshot or Playwright trace styles were injected.",
+    "Cold/first iteration and subsequent warm operations are retained; three repetitions per viewport are descriptive, not a statistically powered benchmark or phone/browser performance acceptance.",
+    "Docs-only HEAD changed to094e70c between profiles, while runtime source28059a91/web tree/b5d1df/version/index-DHi9 bytes remained unchanged. This is not a new app release.",
+    "First probes had a stale visible-readiness assumption and unsupported threadTime name; original setup failure outputs are retained separately, not classified as application defects."
+  ]
+}

@@ -153,6 +153,19 @@ comparison. Local macOS ARM and root-base assets are distinct from hosted Linux
 x64 and published subpath assets. Raw lists, timing reports, config, file hashes
 and the nested HTML-folder warning are preserved in that folder.
 
+The follow-up [bounded dropdown profile](dropdown-profile/report.md) retains 36
+unchanged-runtime operations at two widths and four direct native-animation close
+observations. Unsampled thread-domain counters point toward collection lifecycle
+scripting rather than dominant layout cost; the close observer distinguishes a
+running entry animation from an already settled one. These are local explanatory
+observations, not a Linux speedup, phone benchmark or approved app candidate.
+Both reviewers confirmed 50 negative intervals in the separate CPU sampler output;
+its weighted duration/ranking claims are invalid and are explicitly retracted.
+Original reports, samples and calculations remain preserved. Exact gzip copies
+retain both full timelines without adding the larger uncompressed originals to
+Git. Complete collection semantics, normal motion and all existing assertions
+remain unchanged; TIE-375 is still open.
+
 ## Remaining delivery work
 
 [Live four-project reconciliation](delivery-input/reconciliation.json), captured

@@ -1,0 +1,998 @@
+{
+  "began": "2026-10-05T07:40:13.074Z",
+  "ended": "2026-10-05T07:40:13.104Z",
+  "reviewEnvironment": {
+    "bun": "1.4.0",
+    "platform": "darwin",
+    "architecture": "arm64"
+  },
+  "profileEnvironment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "osRelease": "27.0.0",
+    "cpus": 14,
+    "model": "Apple M4 Pro",
+    "totalMemoryBytes": 51539607552,
+    "bun": "1.4.0",
+    "chromium": "153.0.8010.12"
+  },
+  "origin": "http://127.0.0.1:4298/",
+  "source": {
+    "sourceCommit": "28059a91ec9984dea4d079b3f684b3a27af669f0",
+    "base": "/"
+  },
+  "assets": [
+    {
+      "path": "index.html",
+      "hash": "f6d82d24274c508aac8d6420c1ea771f94ca25eae1e2afc6f9328488c2958646",
+      "byteStable": true,
+      "status200": true
+    },
+    {
+      "path": "sw.js",
+      "hash": "e34229a2b004153a8db804408ce523fcae6566571c266bb6d49b6c47b9f9922e",
+      "byteStable": true,
+      "status200": true
+    },
+    {
+      "path": "release.json",
+      "hash": "09598d578897e3ee4ce6b5f65ed0d27f2cdde1a026bba797752351ba24c2769b",
+      "byteStable": true,
+      "status200": true
+    },
+    {
+      "path": "/assets/index-DHi9pTHJ.js",
+      "hash": "b2ec5e8a200f317d260cd7e596c1f9a8d417f55f4379803a39867553791ae640",
+      "byteStable": true,
+      "status200": true
+    }
+  ],
+  "localBundleMatches": true,
+  "reportSHA256": "16a5458f6da0834c5556c450d91e34ffc304755828925efde5e553021275b558",
+  "means": [
+    {
+      "key": "1280/small-select-open",
+      "n": 3,
+      "wall": 72.24495866666659,
+      "task": 17.01766666666668,
+      "script": 7.6946666666666585,
+      "layout": 0.43466666666666615,
+      "style": 2.244333333333334,
+      "matches": true,
+      "minWall": 67.27883299999985,
+      "maxWall": 82.05120899999997
+    },
+    {
+      "key": "1280/small-select-close",
+      "n": 3,
+      "wall": 218.639889,
+      "task": 14.583666666666664,
+      "script": 3.2349999999999945,
+      "layout": 0.2813333333333338,
+      "style": 2.1606666666666654,
+      "matches": true,
+      "minWall": 215.46825000000013,
+      "maxWall": 223.03537500000004
+    },
+    {
+      "key": "1280/zone-all-open",
+      "n": 3,
+      "wall": 106.95870833333318,
+      "task": 54.67533333333333,
+      "script": 34.52233333333333,
+      "layout": 3.823666666666666,
+      "style": 5.115666666666666,
+      "matches": true,
+      "minWall": 105.762833,
+      "maxWall": 107.60137499999973
+    },
+    {
+      "key": "1280/zone-filter",
+      "n": 3,
+      "wall": 67.05627766666665,
+      "task": 43.47966666666668,
+      "script": 30.571,
+      "layout": 0.42533333333333284,
+      "style": 0.592,
+      "matches": true,
+      "minWall": 65.46637499999997,
+      "maxWall": 70.154041
+    },
+    {
+      "key": "1280/zone-clear-filter",
+      "n": 3,
+      "wall": 85.58780566666678,
+      "task": 54.53033333333335,
+      "script": 43.658666666666655,
+      "layout": 2.4866666666666672,
+      "style": 1.7093333333333327,
+      "matches": true,
+      "minWall": 80.57712500000025,
+      "maxWall": 94.036292
+    },
+    {
+      "key": "1280/zone-all-close",
+      "n": 3,
+      "wall": 54.7327363333333,
+      "task": 25.749000000000006,
+      "script": 23.816333333333347,
+      "layout": 0.04666666666666708,
+      "style": 0.20300000000000007,
+      "matches": true,
+      "minWall": 48.989958000000115,
+      "maxWall": 65.87933399999997
+    },
+    {
+      "key": "390/small-select-open",
+      "n": 3,
+      "wall": 71.90352800000012,
+      "task": 17.769000000000002,
+      "script": 7.930999999999995,
+      "layout": 0.4179999999999997,
+      "style": 2.425333333333333,
+      "matches": true,
+      "minWall": 67.20066700000007,
+      "maxWall": 80.75212499999998
+    },
+    {
+      "key": "390/small-select-close",
+      "n": 3,
+      "wall": 210.26329199999978,
+      "task": 13.11766666666666,
+      "script": 3.040000000000004,
+      "layout": 0.30400000000000055,
+      "style": 2.005333333333333,
+      "matches": true,
+      "minWall": 198.96079199999986,
+      "maxWall": 216.3809169999995
+    },
+    {
+      "key": "390/zone-all-open",
+      "n": 3,
+      "wall": 103.79772233333354,
+      "task": 51.49899999999999,
+      "script": 32.705666666666666,
+      "layout": 3.5463333333333336,
+      "style": 5.088,
+      "matches": true,
+      "minWall": 92.80516700000044,
+      "maxWall": 111.42725000000019
+    },
+    {
+      "key": "390/zone-filter",
+      "n": 3,
+      "wall": 66.75495833333314,
+      "task": 40.85199999999998,
+      "script": 29.99333333333334,
+      "layout": 0.3943333333333325,
+      "style": 0.6203333333333326,
+      "matches": true,
+      "minWall": 65.61566700000003,
+      "maxWall": 68.32649999999967
+    },
+    {
+      "key": "390/zone-clear-filter",
+      "n": 3,
+      "wall": 81.17520800000027,
+      "task": 56.137333333333366,
+      "script": 43.96033333333333,
+      "layout": 2.5223333333333335,
+      "style": 1.7733333333333334,
+      "matches": true,
+      "minWall": 79.78529100000014,
+      "maxWall": 82.36529100000007
+    },
+    {
+      "key": "390/zone-all-close",
+      "n": 3,
+      "wall": 49.119555666666805,
+      "task": 26.078333333333294,
+      "script": 24.142333333333358,
+      "layout": 0.04633333333333398,
+      "style": 0.19399999999999973,
+      "matches": true,
+      "minWall": 49.007292000000234,
+      "maxWall": 49.229833000000326
+    }
+  ],
+  "sampling": [
+    {
+      "width": 1280,
+      "operation": "small-select-open",
+      "samples": 268,
+      "deltas": 268,
+      "allKnownNodes": true,
+      "actionWindow": 61.81541699999991,
+      "profileSpanMs": 99.355,
+      "sumWeightsMs": 99.303,
+      "firstDeltaMs": 36.693,
+      "negative": [
+        {
+          "d": -8,
+          "i": 2,
+          "frame": {
+            "functionName": "mark",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -136,
+          "i": 10,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -123,
+          "i": 24,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -130,
+          "i": 27,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -1151,
+          "i": 148,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -15,
+          "i": 172,
+          "frame": {
+            "functionName": "bn",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 15312
+          }
+        },
+        {
+          "d": -398,
+          "i": 262,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        }
+      ],
+      "negativeCount": 7,
+      "negativeSumMs": -1.961,
+      "minDeltaMs": -1.151
+    },
+    {
+      "width": 1280,
+      "operation": "small-select-close",
+      "samples": 356,
+      "deltas": 356,
+      "allKnownNodes": true,
+      "actionWindow": 203.00808399999994,
+      "profileSpanMs": 214.263,
+      "sumWeightsMs": 214.202,
+      "firstDeltaMs": 10.392,
+      "negative": [
+        {
+          "d": -272,
+          "i": 3,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -1233,
+          "i": 237,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -672,
+          "i": 290,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -261,
+          "i": 352,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        }
+      ],
+      "negativeCount": 4,
+      "negativeSumMs": -2.438,
+      "minDeltaMs": -1.233
+    },
+    {
+      "width": 1280,
+      "operation": "zone-all-open",
+      "samples": 253,
+      "deltas": 253,
+      "allKnownNodes": true,
+      "actionWindow": 115.39199999999983,
+      "profileSpanMs": 129.415,
+      "sumWeightsMs": 128.843,
+      "firstDeltaMs": 13.042,
+      "negative": [
+        {
+          "d": -358,
+          "i": 13,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -574,
+          "i": 27,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -324,
+          "i": 233,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -1201,
+          "i": 249,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        }
+      ],
+      "negativeCount": 4,
+      "negativeSumMs": -2.457,
+      "minDeltaMs": -1.201
+    },
+    {
+      "width": 1280,
+      "operation": "zone-filter",
+      "samples": 92,
+      "deltas": 92,
+      "allKnownNodes": true,
+      "actionWindow": 71.597125,
+      "profileSpanMs": 95.533,
+      "sumWeightsMs": 95.292,
+      "firstDeltaMs": 23.031,
+      "negative": [
+        {
+          "d": -407,
+          "i": 62,
+          "frame": {
+            "functionName": "",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 17,
+            "columnNumber": 104580
+          }
+        },
+        {
+          "d": -724,
+          "i": 74,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -911,
+          "i": 88,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        }
+      ],
+      "negativeCount": 3,
+      "negativeSumMs": -2.042,
+      "minDeltaMs": -0.911
+    },
+    {
+      "width": 1280,
+      "operation": "zone-clear-filter",
+      "samples": 149,
+      "deltas": 149,
+      "allKnownNodes": true,
+      "actionWindow": 82.384458,
+      "profileSpanMs": 96.189,
+      "sumWeightsMs": 95.431,
+      "firstDeltaMs": 12.942,
+      "negative": [
+        {
+          "d": -617,
+          "i": 113,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -682,
+          "i": 127,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -90,
+          "i": 129,
+          "frame": {
+            "functionName": "ha",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 35069
+          }
+        },
+        {
+          "d": -907,
+          "i": 133,
+          "frame": {
+            "functionName": "isElementHiddenForAria",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 3545,
+            "columnNumber": 31
+          }
+        },
+        {
+          "d": -248,
+          "i": 146,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        }
+      ],
+      "negativeCount": 5,
+      "negativeSumMs": -2.544,
+      "minDeltaMs": -0.907
+    },
+    {
+      "width": 1280,
+      "operation": "zone-all-close",
+      "samples": 81,
+      "deltas": 81,
+      "allKnownNodes": true,
+      "actionWindow": 59.80166600000007,
+      "profileSpanMs": 95.684,
+      "sumWeightsMs": 95.186,
+      "firstDeltaMs": 34.803,
+      "negative": [
+        {
+          "d": -1010,
+          "i": 57,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -8,
+          "i": 64,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -1060,
+          "i": 77,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        }
+      ],
+      "negativeCount": 3,
+      "negativeSumMs": -2.078,
+      "minDeltaMs": -1.06
+    },
+    {
+      "width": 390,
+      "operation": "small-select-open",
+      "samples": 271,
+      "deltas": 271,
+      "allKnownNodes": true,
+      "actionWindow": 66.27883299999985,
+      "profileSpanMs": 100.727,
+      "sumWeightsMs": 100.669,
+      "firstDeltaMs": 33.653,
+      "negative": [
+        {
+          "d": -269,
+          "i": 14,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -536,
+          "i": 28,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -945,
+          "i": 161,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -875,
+          "i": 265,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        }
+      ],
+      "negativeCount": 4,
+      "negativeSumMs": -2.625,
+      "minDeltaMs": -0.945
+    },
+    {
+      "width": 390,
+      "operation": "small-select-close",
+      "samples": 358,
+      "deltas": 358,
+      "allKnownNodes": true,
+      "actionWindow": 203.108792,
+      "profileSpanMs": 214.455,
+      "sumWeightsMs": 214.394,
+      "firstDeltaMs": 10.516,
+      "negative": [
+        {
+          "d": -3,
+          "i": 153,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -130,
+          "i": 239,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -21,
+          "i": 262,
+          "frame": {
+            "functionName": "xh",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 8,
+            "columnNumber": 43194
+          }
+        },
+        {
+          "d": -458,
+          "i": 276,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -228,
+          "i": 293,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -110,
+          "i": 340,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -381,
+          "i": 354,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        }
+      ],
+      "negativeCount": 7,
+      "negativeSumMs": -1.331,
+      "minDeltaMs": -0.458
+    },
+    {
+      "width": 390,
+      "operation": "zone-all-open",
+      "samples": 251,
+      "deltas": 251,
+      "allKnownNodes": true,
+      "actionWindow": 115.66062499999998,
+      "profileSpanMs": 129.271,
+      "sumWeightsMs": 128.689,
+      "firstDeltaMs": 12.768,
+      "negative": [
+        {
+          "d": -814,
+          "i": 13,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -861,
+          "i": 27,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -312,
+          "i": 38,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -316,
+          "i": 124,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -1,
+          "i": 204,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -588,
+          "i": 233,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -161,
+          "i": 248,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        }
+      ],
+      "negativeCount": 7,
+      "negativeSumMs": -3.053,
+      "minDeltaMs": -0.861
+    },
+    {
+      "width": 390,
+      "operation": "zone-filter",
+      "samples": 142,
+      "deltas": 142,
+      "allKnownNodes": true,
+      "actionWindow": 83.98675000000003,
+      "profileSpanMs": 112.796,
+      "sumWeightsMs": 112.538,
+      "firstDeltaMs": 27.98,
+      "negative": [
+        {
+          "d": -60,
+          "i": 15,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "d": -893,
+          "i": 84,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        }
+      ],
+      "negativeCount": 2,
+      "negativeSumMs": -0.953,
+      "minDeltaMs": -0.893
+    },
+    {
+      "width": 390,
+      "operation": "zone-clear-filter",
+      "samples": 110,
+      "deltas": 110,
+      "allKnownNodes": true,
+      "actionWindow": 82.13566700000001,
+      "profileSpanMs": 96,
+      "sumWeightsMs": 95.758,
+      "firstDeltaMs": 13.04,
+      "negative": [
+        {
+          "d": -302,
+          "i": 11,
+          "frame": {
+            "functionName": "isElementVisible",
+            "scriptId": "6",
+            "url": "",
+            "lineNumber": 3183,
+            "columnNumber": 25
+          }
+        },
+        {
+          "d": -330,
+          "i": 89,
+          "frame": {
+            "functionName": "ha",
+            "scriptId": "5",
+            "url": "http://127.0.0.1:4298/assets/index-DHi9pTHJ.js",
+            "lineNumber": 7,
+            "columnNumber": 35069
+          }
+        },
+        {
+          "d": -1142,
+          "i": 106,
+          "frame": {
+            "functionName": "(idle)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        }
+      ],
+      "negativeCount": 3,
+      "negativeSumMs": -1.774,
+      "minDeltaMs": -1.142
+    },
+    {
+      "width": 390,
+      "operation": "zone-all-close",
+      "samples": 77,
+      "deltas": 77,
+      "allKnownNodes": true,
+      "actionWindow": 61.062374999999975,
+      "profileSpanMs": 111.84,
+      "sumWeightsMs": 111.785,
+      "firstDeltaMs": 33.858,
+      "negative": [
+        {
+          "d": -759,
+          "i": 54,
+          "frame": {
+            "functionName": "(program)",
+            "scriptId": "0",
+            "url": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        }
+      ],
+      "negativeCount": 1,
+      "negativeSumMs": -0.759,
+      "minDeltaMs": -0.759
+    }
+  ],
+  "negativeCount": 50,
+  "negativeSumMs": -24.015,
+  "gzipIdentity": {
+    "timeline": true,
+    "cpuTimeline": true,
+    "rawBytes": 19228390,
+    "gzipBytes": 1455262
+  },
+  "timelineEvents": 59005,
+  "timelineMarkCount": 72,
+  "closeObservations": [
+    {
+      "condition": "early",
+      "entering": true,
+      "running": 1,
+      "remove": 171.19999998807907,
+      "pollMargin": 10.300000011920929,
+      "finishToRemovalMs": [
+        1.7999999821186066
+      ],
+      "validRemoval": true,
+      "negativeMargin": false
+    },
+    {
+      "condition": "settled",
+      "entering": false,
+      "running": 0,
+      "remove": 5.899999976158142,
+      "pollMargin": 2.800000011920929,
+      "finishToRemovalMs": [],
+      "validRemoval": true,
+      "negativeMargin": false
+    },
+    {
+      "condition": "early",
+      "entering": true,
+      "running": 1,
+      "remove": 156.90000000596046,
+      "pollMargin": 33.099999994039536,
+      "finishToRemovalMs": [
+        1.0999999940395355
+      ],
+      "validRemoval": true,
+      "negativeMargin": false
+    },
+    {
+      "condition": "settled",
+      "entering": false,
+      "running": 0,
+      "remove": 7.699999988079071,
+      "pollMargin": 3,
+      "finishToRemovalMs": [],
+      "validRemoval": true,
+      "negativeMargin": false
+    }
+  ]
+}

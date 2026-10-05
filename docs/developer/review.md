@@ -64,6 +64,13 @@ origin, including custom fixtures that override configuration. Match capture,
 tracing, motion, viewport, raster and focus/scroll preconditions; preserve
 competing controls before attributing a newly introduced cause.
 
+Before using profiler totals or frame rankings, validate clock domains, units,
+sample lengths and interval values. Negative or nonfinite sampling intervals
+invalidate time-weighted rankings; preserve the originals and label that evidence
+unreliable rather than silently clamping it. Separate valid counter/observer
+evidence and nested action, profiler and instrumentation windows. Moving a native
+animation wait before an action does not establish a speed improvement.
+
 - **Implementation:** approved within the stated scope, or blockers and required fixes.
 - **Original report:** reproduced and prevented/recovered as intended; bounded related failures verified; or still unverified. State which reported conditions match and what remains unknown. For a feature/documentation change, mark this not applicable.
 

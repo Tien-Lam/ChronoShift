@@ -1,0 +1,44 @@
+{
+  "began": "2026-10-05T07:29:42.232Z",
+  "ended": "2026-10-05T07:30:02.400Z",
+  "head": "28059a91ec9984dea4d079b3f684b3a27af669f0",
+  "origin": "http://127.0.0.1:4298/",
+  "identicalAssetBytes": true,
+  "operations": 0,
+  "messages": []
+}
+8583 | 
+8584 | // packages/utils/stackTrace.ts
+8585 | function captureRawStack() {
+8586 |   const stackTraceLimit = Error.stackTraceLimit;
+8587 |   Error.stackTraceLimit = 50;
+8588 |   const error = new Error();
+                           ^
+error: expect(locator).toBeVisible() failed
+
+Locator: getByText('Offline ready', { exact: true })
+Expected: visible
+Timeout: 20000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeVisible" getByText('Offline ready', { exact: true }) with timeout 20000ms
+  - waiting for getByText('Offline ready', { exact: true })
+
+ matcherResult: {
+  message: "expect(locator).toBeVisible() failed\n\nLocator: getByText('Offline ready', { exact: true })\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByText('Offline ready', { exact: true }) with timeout 20000ms\n  - waiting for getByText('Offline ready', { exact: true })\n",
+  pass: false,
+  actual: undefined,
+  name: "toBeVisible",
+  expected: "visible",
+  log: [ "  - Expect \"toBeVisible\" getByText('Offline ready', { exact: true }) with timeout 20000ms",
+    "  - waiting for getByText('Offline ready', { exact: true })"
+  ],
+  timeout: 20000,
+  ariaSnapshot: "- banner:\n  - link \"ChronoShift home\":\n    - /url: /\n    - text: ChronoShift\n  - group: Appearance\n- main:\n  - heading \"Time zone converter\" [level=1]\n  - region \"Time zone converter\":\n    - heading \"Time zone converter\" [level=2]\n    - text: Message with a date or time\n    - textbox \"Message with a date or time\":\n      - /placeholder: e.g. Let's meet tomorrow at 3pm PT\n    - button \"Paste\"\n    - text: Converts as you type Convert to\n    - group:\n      - combobox \"Convert to\"\n      - button \"Show target timezones\"\n    - text: Sydney · Australia/Sydney\n    - group: More options\n    - group: Try an example\n  - region \"Converted time\":\n    - heading \"Converted time\" [level=2]\n    - text: Live\n    - status\n    - heading \"Ready to convert\" [level=3]\n    - paragraph: Date, time and timezone appear here.\n  - paragraph: Your text stays on this device.\n  - button \"Keep ChronoShift handy\"",
+},
+
+      at captureRawStack (/Users/tien/Developer/ChronoShift/node_modules/playwright-core/lib/coreBundle.js:8588:21)
+      at callMatcherAsStep (/Users/tien/Developer/ChronoShift/node_modules/playwright/lib/matchers/expect.js:13310:57)
+
+Bun v1.4.0 (macOS arm64)
