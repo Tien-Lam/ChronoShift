@@ -31,6 +31,15 @@ and clock suffixes) at the smallest supported width. Page containment does not
 establish readable numeric wrapping or clear associations between each result,
 its source context and its Copy action.
 
+For motion changes, identify anchored controls, ancestor surfaces and positioned
+overlays that own live geometry. Exercise immediate keyboard/pointer interaction
+while entry/press animations run, including close/reopen and resize during an
+open menu; settled captures alone do not establish interaction correctness.
+Keep geometry-owning anchors and outer overlays stationary, using opacity,
+color or nonanchored child/icon motion for feedback. Retain normal-motion
+failing/candidate journeys instead of masking failures with sleeps, force-clicks
+or reduced-motion-only checks.
+
 ## Record verdicts
 
 Each reviewer reports the exact revision/scope inspected, findings with triggers and impact, and actual commands/results or observed browser journeys. Identify browser/profile, timing, fault injection and unexercised states. Report two distinct conclusions:

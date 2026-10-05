@@ -1,0 +1,60 @@
+$ bunx --bun playwright test "e2e/controls.spec.ts" --grep "timezone search preserves" "--project=chromium" "--project=firefox" "--workers=1" "--retries=0" "--output=/tmp/chronoshift-motion-repro"
+
+Running 2 tests using 1 worker
+
+(node:56782) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (3.6s)
+(node:56813) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✘  2 [firefox] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (30.1s)
+
+
+  1) [firefox] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('option', { name: /Tokyo/ })
+        - locator resolved to <div data-rac="" role="option" class="choice-item" aria-selected="false" data-key="Asia/Tokyo" data-value="Asia/Tokyo" data-selection-mode="single" data-react-aria-pressable="true" aria-labelledby="react-aria4572803031-_r_2u6_" data-collection="react-aria4572803031-_r_2u1_" aria-describedby="react-aria4572803031-_r_2u7_" id="react-aria4572803031-_r_b_-option-Asia/Tokyo">…</div>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not stable
+        - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is not stable
+      - retrying click action
+        - waiting 100ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - performing click action
+        - <html lang="en" data-theme="dark" data-design="command">…</html> intercepts pointer events
+      - retrying click action
+        - waiting 100ms
+        - waiting for element to be visible, enabled and stable
+      - element was detached from the DOM, retrying
+
+
+      395 |   await target.press("Escape");
+      396 |   await target.fill("Tokyo");
+    > 397 |   await page.getByRole("option", { name: /Tokyo/ }).click();
+          |                                                    ^
+      398 |   await expect(target).toHaveValue("Asia/Tokyo");
+      399 |   await expect(page.locator(".hero-time")).toHaveText(/12:00 am/i);
+      400 |   await source.fill("New York");
+        at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:397:52
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../../../tmp/chronoshift-motion-repro/controls-timezone-search-p-fb22b-m-empty-and-invalid-choices-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../../../tmp/chronoshift-motion-repro/controls-timezone-search-p-fb22b-m-empty-and-invalid-choices-firefox/error-context.md
+
+  1 failed
+    [firefox] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices 
+  1 passed (34.6s)
+error: script "test:browser" exited with code 1
