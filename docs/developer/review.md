@@ -4,7 +4,7 @@ Use two reviewers with clean context for substantial changes. Keep their tasks c
 
 ## Save the brief
 
-Before dispatch, save in the PR (or a linked repository review record) the brief actually sent to both reviewers. Include:
+Before dispatch, save the complete brief actually sent to both reviewers in the ignored `.work/<ticket-id>/` folder. Put a concise scope and acceptance summary on the PR and ticket. Include in the local brief:
 
 - Base and current head revisions, intended behavior, invariants, changed scope and nearby lifecycle owners.
 - For bugs, the original symptoms/steps and exact relevant console errors, elapsed timing, reported browser/version and known fresh/cached/updated-tab history. Mark unknowns as unknown.
@@ -15,7 +15,7 @@ Both reviewers derive relevant failure paths independently before relying on the
 
 ## Complementary roles
 
-**Code reviewer:** trace the affected behavior through asynchronous completion, rejection, timeout, cancellation and later recovery. Check observer lifetime, retry bounds, state ownership, integrity and explicit-update invariants when applicable. Assess whether regression expectations are independent and whether they distinguish the previous implementation from the candidate.
+**Code reviewer:** use the installed `review-agent` skill (`/Users/tien/.codex/skills/.system/review-agent/SKILL.md`). Read it before reviewing; do not modify files, commit, push, post externally or delegate. Return the complete report to the orchestrator, who saves it in `.work/<ticket-id>/`. Trace the affected behavior through asynchronous completion, rejection, timeout, cancellation and later recovery. Check observer lifetime, retry bounds, state ownership, integrity and explicit-update invariants when applicable. Assess whether regression expectations are independent and whether they distinguish the previous implementation from the candidate.
 
 **Adversarial reviewer:** challenge the proposed explanation with a report-level journey or a relevant competing failure path beyond the new happy-path tests. Choose state and timing from the report. For offline/lifecycle work, distinguish a first visit with no controller, a healthy controlling cache, missing/stale assets and waiting updates/older tabs; select the relevant transitions rather than exhaustively combining every dimension. Exercise beyond implicated deadlines and inspect available page/worker diagnostics. Treat deliberate fault-injection errors separately from unexplained errors in normal use.
 
@@ -101,14 +101,14 @@ When changing interaction triggers, audit existing edit/import/restore/reset exp
 
 Use existing full gates for runtime changes. Prefer targeted failure cases with real workers/caches and accelerated application deadlines in CI, plus a real-time boundary test when the report implicates timing. Reuse successful checks of unchanged code; rerun when a change, failure or unresolved concern justifies it. Documentation-only changes need formatting, link/reference checks and appropriate review, not another runtime suite or deployment.
 
-Keep physical installation, OS share menus, screen readers, actual zoom and phone performance open unless those capabilities were exercised. Save durable review/fix/publication evidence in the PR and linked repository record; ephemeral agent messages alone are insufficient for a later audit.
+The user has excluded testing on real hardware from the current acceptance scope. Use browser/DevTools and automated evidence for the remaining web-app checks, recording exactly which capabilities were exercised. Do not label viewport emulation as physical folding, accessible-tree inspection as screen-reader operation, or desktop measurements as phone performance. Keep any unverified in-scope acceptance item open. Save concise review/fix/publication summaries on the PR and ticket, with full reports and captures in `.work/<ticket-id>/`; do not commit generated QA reports or temporary experiments. Ephemeral agent messages alone are insufficient for a later audit.
 
 Batch source review reports and fixes before the final hosted gate. An evidence-only
 commit on an open runtime PR can still trigger a complete gate because GitHub
 uses the PR's cumulative changed files; it also changes the full source tree used
 for artifact verification. After the exact final gate, save additive delivery
-evidence in the PR and a separate documentation-only follow-up rather than
-changing that tested head solely to annotate its result. Source changes or
+evidence on the PR and ticket, with full local records in the ignored ticket folder,
+instead of changing that tested head solely to annotate its result. Source changes or
 unresolved review findings still require their appropriate checks and exact-tree
 verification.
 

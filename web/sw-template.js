@@ -140,10 +140,25 @@ async function handoff(request) {
       open.onupgradeneeded = ()=>open.result.createObjectStore('messages');
       open.onerror = ()=>reject(open.error);
       open.onsuccess = ()=>{
-        const db = open.result, tx = db.transaction('messages','readwrite'), store=tx.objectStore('messages');
-        store.clear(); store.put({text,created:Date.now()},key);
-        tx.oncomplete = ()=>{db.close();resolve();};
-        tx.onerror = ()=>{db.close();reject(tx.error);};
+        const db = open.result;
+        let tx, settled = false;
+        const finish = (failed, error)=>{
+          if(settled) return;
+          settled = true;
+          db.close();
+          if(failed) reject(error); else resolve();
+        };
+        try {
+          tx = db.transaction('messages','readwrite');
+          tx.oncomplete = ()=>finish(false);
+          // Commit failures can abort without any request error event.
+          tx.onabort = ()=>finish(true,tx.error || new DOMException('Share storage aborted','AbortError'));
+          const store = tx.objectStore('messages');
+          store.clear(); store.put({text,created:Date.now()},key);
+        } catch(error) {
+          try {tx?.abort();} catch {}
+          finish(true,error);
+        }
       };
     });
     return Response.redirect(`${self.location.origin}${BASE}?share=${key}`,303);

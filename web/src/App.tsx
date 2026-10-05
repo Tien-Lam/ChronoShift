@@ -85,6 +85,8 @@ export default function App() {
   draft.current = text;
   const currentDevice = useRef(device);
   currentDevice.current = device;
+  const currentSourcePreference = useRef(prefs.source);
+  currentSourcePreference.current = prefs.source;
   const shareRead = useRef(false);
   const sourceZone = resolveZone(prefs.source, device),
     targetZone = resolveZone(prefs.target, device);
@@ -116,7 +118,13 @@ export default function App() {
     const refresh = () => {
       const nextDevice = deviceTimezone();
       if (nextDevice !== currentDevice.current) {
-        invalidate();
+        const source = currentSourcePreference.current;
+        if (
+          resolveZone(source, nextDevice) !==
+          resolveZone(source, currentDevice.current)
+        )
+          invalidate();
+        else invalidateDisplay();
         setDevice(nextDevice);
       }
     };
@@ -192,9 +200,16 @@ export default function App() {
     setText(value);
     invalidate();
   }
-  function invalidate() {
+  function invalidateDisplay() {
+    // Display edits supersede imports and clipboard work without changing the
+    // source interpretation or canceling a conversion already in flight.
     interactionVersion.current++;
     copyRequest.current++;
+    setManualCopy("");
+    setNotice("");
+  }
+  function invalidate() {
+    invalidateDisplay();
     request.current++;
     setConversionRevision((version) => version + 1);
     worker.current?.terminate();
@@ -202,8 +217,6 @@ export default function App() {
     setBusy(!!draft.current.trim() && !composition.current);
     setConversion({ results: [], warnings: [] });
     setError("");
-    setManualCopy("");
-    setNotice("");
   }
   const referenceValidityChanged = useCallback((valid: boolean) => {
     if (referenceValidity.current === valid) return;
@@ -242,7 +255,7 @@ export default function App() {
         );
         return;
       }
-      if (!targetZone || !sourceZone) {
+      if (!sourceZone) {
         setBusy(false);
         setError(
           "Choose a timezone from the list, or enter a city with one known timezone.",
@@ -310,8 +323,9 @@ export default function App() {
           text,
           options: {
             sourceZone,
-            targetZone,
-            hourCycle: prefs.hourCycle,
+            // The parser resolves source instants; the selected target and
+            // clock format belong only to rendering and copying those results.
+            targetZone: sourceZone,
             dateOrder: prefs.dateOrder,
             referenceDate: referenceDate || undefined,
             locale: navigator.language || "en-AU",
@@ -336,12 +350,8 @@ export default function App() {
   }, [
     text,
     prefs.source,
-    prefs.target,
-    prefs.hourCycle,
     prefs.dateOrder,
     sourceZone,
-    targetZone,
-    device,
     referenceDate,
     referenceValid,
     composing,
@@ -441,11 +451,16 @@ export default function App() {
   const groups = targetZone
     ? [...new Set(conversion.results.map((r) => r.group))]
     : [];
+  const targetError =
+    !targetZone && text.trim()
+      ? "Choose a timezone from the list, or enter a city with one known timezone."
+      : "";
+  const visibleError = targetError || error;
   const liveState = composing
     ? "paused"
     : busy
       ? "pending"
-      : error
+      : visibleError
         ? "error"
         : conversion.results.length || conversion.warnings.length
           ? "ready"
@@ -580,7 +595,7 @@ export default function App() {
                   value={prefs.target}
                   onChange={(target) => {
                     setPrefs({ ...prefs, target });
-                    invalidate();
+                    invalidateDisplay();
                   }}
                   invalid={!targetZone}
                   describedBy="target-zone-help"
@@ -653,7 +668,7 @@ export default function App() {
                       ...prefs,
                       hourCycle: hourCycle as "auto" | "12" | "24",
                     });
-                    invalidate();
+                    invalidateDisplay();
                   }}
                   options={[
                     { id: "auto", label: "Use my device format" },
@@ -746,23 +761,19 @@ export default function App() {
                     ? `${conversion.results.length} time interpretations found`
                     : ""}
             </div>
-            {error && (
+            {visibleError && (
               <div className="message error" role="alert">
-                {error}
+                {visibleError}
               </div>
             )}
-            {!targetZone && !!conversion.results.length && !error && (
-              <p className="message warning" role="alert">
-                Choose a timezone to see and copy the converted time.
-              </p>
-            )}
-            {conversion.warnings.map((w) => (
-              <div key={w} className="message warning" role="alert">
-                {w}
-              </div>
-            ))}
+            {targetZone &&
+              conversion.warnings.map((w) => (
+                <div key={w} className="message warning" role="alert">
+                  {w}
+                </div>
+              ))}
             {!conversion.results.length &&
-              !error &&
+              !visibleError &&
               !conversion.warnings.length && (
                 <div className="result-placeholder">
                   <span className="large-clock" aria-hidden="true" />
