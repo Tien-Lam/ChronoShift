@@ -1,0 +1,138 @@
+[
+  {
+    "action": "typed-canonical",
+    "result": "complete",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "Asia/Tokyo",
+        "focused": "Asia/Tokyo",
+        "expanded": "true"
+      },
+      {
+        "label": "after-leave",
+        "value": "Asia/Tokyo",
+        "expanded": "false"
+      }
+    ]
+  },
+  {
+    "action": "hover-then-tab",
+    "result": "complete",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "Asia/Tokyo",
+        "focused": "Asia/Tokyo",
+        "expanded": "true"
+      },
+      {
+        "label": "after-hover",
+        "value": "Asia/Tokyo",
+        "focused": "osaka",
+        "expanded": "true"
+      },
+      {
+        "label": "after-leave",
+        "value": "osaka",
+        "expanded": "false"
+      }
+    ]
+  },
+  {
+    "action": "hover-then-outside",
+    "result": "complete",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "Asia/Tokyo",
+        "focused": "Asia/Tokyo",
+        "expanded": "true"
+      },
+      {
+        "label": "after-hover",
+        "value": "Asia/Tokyo",
+        "focused": "osaka",
+        "expanded": "true"
+      },
+      {
+        "label": "after-leave",
+        "value": "Asia/Tokyo",
+        "expanded": "false"
+      }
+    ]
+  },
+  {
+    "action": "pointer-selection",
+    "result": "complete",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "Asia/Tokyo",
+        "focused": "Asia/Tokyo",
+        "expanded": "true"
+      },
+      {
+        "label": "after-leave",
+        "value": "osaka",
+        "expanded": "false"
+      }
+    ]
+  },
+  {
+    "action": "keyboard-selection",
+    "result": "complete",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "Asia/Tokyo",
+        "focused": "Asia/Tokyo",
+        "expanded": "true"
+      },
+      {
+        "label": "keyboard-focused",
+        "value": "Asia/Tokyo",
+        "focused": "osaka",
+        "expanded": "true"
+      },
+      {
+        "label": "after-leave",
+        "value": "osaka",
+        "expanded": "false"
+      }
+    ]
+  },
+  {
+    "action": "typed-alias",
+    "result": "complete",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "osaka",
+        "focused": "osaka",
+        "expanded": "true"
+      },
+      {
+        "label": "after-leave",
+        "value": "osaka",
+        "expanded": "false"
+      }
+    ]
+  },
+  {
+    "action": "custom-offset",
+    "result": "complete",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "UTC+05:45",
+        "expanded": "true"
+      },
+      {
+        "label": "after-leave",
+        "value": "UTC+05:45",
+        "expanded": "false"
+      }
+    ]
+  }
+]

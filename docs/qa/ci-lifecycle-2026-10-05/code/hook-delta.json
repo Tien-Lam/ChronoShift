@@ -1,0 +1,74 @@
+[
+  {
+    "mode": "passing-clean",
+    "flushes": 1,
+    "attached": [],
+    "rethrewCaptureError": false
+  },
+  {
+    "mode": "passing-capture-error",
+    "flushes": 1,
+    "attached": [
+      {
+        "name": "offline-lifecycle",
+        "body": {
+          "snapshot": {
+            "controller": {
+              "state": "activated"
+            },
+            "ready": "true"
+          },
+          "logs": [
+            "known-event"
+          ],
+          "captureFailed": true
+        },
+        "contentType": "application/json"
+      }
+    ],
+    "rethrewCaptureError": true
+  },
+  {
+    "mode": "failed-clean",
+    "flushes": 1,
+    "attached": [
+      {
+        "name": "offline-lifecycle",
+        "body": {
+          "snapshot": {
+            "controller": {
+              "state": "activated"
+            },
+            "ready": "true"
+          },
+          "logs": [
+            "known-event"
+          ],
+          "captureFailed": false
+        },
+        "contentType": "application/json"
+      }
+    ],
+    "rethrewCaptureError": false
+  },
+  {
+    "mode": "failed-document-ended",
+    "flushes": 1,
+    "attached": [
+      {
+        "name": "offline-lifecycle",
+        "body": {
+          "snapshot": {
+            "unavailable": "document-ended-before-snapshot"
+          },
+          "logs": [
+            "known-event"
+          ],
+          "captureFailed": false
+        },
+        "contentType": "application/json"
+      }
+    ],
+    "rethrewCaptureError": false
+  }
+]

@@ -1,0 +1,72 @@
+$ bunx --bun playwright test "e2e/uncontrolled.spec.ts" "e2e/diagnostics.spec.ts" "--workers=2" "--retries=0" "--output=/tmp/chronoshift-ci-lifecycle-root-results"
+
+Running 45 tests using 2 workers
+
+(node:65503) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:65504) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓   2 [chromium] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (569ms)
+  ✓   3 [chromium] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (579ms)
+  ✓   1 [chromium] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (1.6s)
+  ✓   4 [chromium] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (575ms)
+  ✓   5 [chromium] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (390ms)
+  ✓   7 [chromium] › e2e/uncontrolled.spec.ts:95:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft (1.5s)
+  ✓   6 [chromium] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (3.5s)
+  ✓   8 [chromium] › e2e/uncontrolled.spec.ts:128:0 › an explicit update recovers a timed-out readiness probe without another reload (5.3s)
+(node:65542) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓   9 [chromium] › e2e/uncontrolled.spec.ts:220:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update (4.0s)
+(node:65544) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  11 [firefox] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (1.4s)
+  ✓  10 [firefox] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (2.4s)
+  ✓  12 [firefox] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (958ms)
+  ✓  14 [firefox] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (696ms)
+  ✓  13 [firefox] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (1.2s)
+  -  16 [firefox] › e2e/uncontrolled.spec.ts:95:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft
+  -  17 [firefox] › e2e/uncontrolled.spec.ts:128:0 › an explicit update recovers a timed-out readiness probe without another reload
+  -  18 [firefox] › e2e/uncontrolled.spec.ts:220:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update
+(node:65579) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  19 [webkit] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (1.8s)
+  ✓  15 [firefox] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (3.7s)
+  ✓  20 [webkit] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (919ms)
+(node:65597) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  21 [webkit] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (663ms)
+  ✓  22 [webkit] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (874ms)
+  ✓  23 [webkit] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (657ms)
+  -  25 [webkit] › e2e/uncontrolled.spec.ts:95:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft
+  -  26 [webkit] › e2e/uncontrolled.spec.ts:128:0 › an explicit update recovers a timed-out readiness probe without another reload
+  -  27 [webkit] › e2e/uncontrolled.spec.ts:220:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update
+(node:65621) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  24 [webkit] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (2.5s)
+(node:65626) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  28 [android-emulation] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (2.1s)
+  ✓  29 [android-emulation] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (582ms)
+  ✓  30 [android-emulation] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (613ms)
+  ✓  32 [android-emulation] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (384ms)
+  ✓  31 [android-emulation] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (567ms)
+  ✓  34 [android-emulation] › e2e/uncontrolled.spec.ts:95:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft (2.0s)
+  ✓  33 [android-emulation] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (3.5s)
+  ✓  35 [android-emulation] › e2e/uncontrolled.spec.ts:128:0 › an explicit update recovers a timed-out readiness probe without another reload (5.2s)
+(node:65648) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  36 [android-emulation] › e2e/uncontrolled.spec.ts:220:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update (4.0s)
+(node:65657) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  38 [iphone-emulation] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (979ms)
+  ✓  37 [iphone-emulation] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (1.8s)
+  ✓  39 [iphone-emulation] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (874ms)
+  ✓  40 [iphone-emulation] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (642ms)
+  ✓  41 [iphone-emulation] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (589ms)
+  -  43 [iphone-emulation] › e2e/uncontrolled.spec.ts:95:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft
+  -  44 [iphone-emulation] › e2e/uncontrolled.spec.ts:128:0 › an explicit update recovers a timed-out readiness probe without another reload
+  -  45 [iphone-emulation] › e2e/uncontrolled.spec.ts:220:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update
+  ✓  42 [iphone-emulation] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (2.5s)
+
+  9 skipped
+  36 passed (34.5s)

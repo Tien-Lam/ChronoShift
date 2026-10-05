@@ -1,0 +1,368 @@
+{
+  "started": "2026-10-05T05:13:58.073Z",
+  "revision": "a565ed03095022f14b827d270564fd6da1d5c23a",
+  "browser": "153.0.8010.12",
+  "runs": [
+    {
+      "mode": "transient-drop",
+      "elapsedMs": 3011,
+      "state": {
+        "calls": [
+          {
+            "at": 169.30000001192093,
+            "since": 0.10000002384185791,
+            "action": "drop-once",
+            "controller": true
+          },
+          {
+            "at": 1375.199999988079,
+            "since": 1206,
+            "action": "capture",
+            "controller": true
+          }
+        ],
+        "ready": "true",
+        "controllerState": "activated",
+        "active": "activated",
+        "caches": [
+          "chronoshift-test-first"
+        ],
+        "direct": {
+          "ready": true,
+          "version": "test-first",
+          "claim": "not-requested",
+          "diagnostics": {
+            "unavailable": []
+          }
+        }
+      },
+      "logs": [
+        "[\"[ChronoShift] offline.register-attempt\",{\"at\":\"2026-10-05T05:13:58.172Z\",\"online\":true,\"attempt\":1}]",
+        "[\"[ChronoShift] offline.registered\",{\"at\":\"2026-10-05T05:13:58.181Z\",\"online\":true,\"controlled\":false}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:13:58.181Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"startup\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"installing\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:13:58.182Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:13:58.182Z\",\"state\":\"installing\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:13:58.182Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"installing\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:13:58.182Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:13:58.224Z\",\"state\":\"installed\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:13:58.224Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"absent\",\"waitingState\":\"installed\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:13:58.224Z\",\"ready\":false,\"updateAvailable\":true,\"reason\":\"update-available\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:13:58.224Z\",\"ready\":false,\"updateAvailable\":true,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:13:58.224Z\",\"state\":\"activating\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:13:58.224Z\",\"online\":true,\"controlled\":false,\"activeMatches\":true,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"activating\",\"controllerState\":\"absent\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:13:58.224Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:13:58.224Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"controller-change\",\"activeState\":\"activating\",\"controllerState\":\"activating\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:13:58.228Z\",\"state\":\"activated\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:13:58.228Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"activated\",\"controllerState\":\"activated\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.probe-result\",{\"at\":\"2026-10-05T05:13:58.230Z\",\"ready\":true,\"controlled\":true,\"elapsedMs\":2,\"version\":\"test-first\",\"claim\":\"not-requested\",\"assets\":[]}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:13:58.230Z\",\"ready\":true,\"updateAvailable\":false,\"reason\":\"probe-result\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:13:58.283Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"page-show\",\"activeState\":\"activated\",\"controllerState\":\"activated\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:13:58.486Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"probe-timeout\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:13:59.489Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":2,\"reason\":\"probe-retry\",\"activeState\":\"activated\",\"controllerState\":\"activated\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.probe-result\",{\"at\":\"2026-10-05T05:13:59.491Z\",\"ready\":true,\"controlled\":true,\"elapsedMs\":2,\"version\":\"test-first\",\"claim\":\"not-requested\",\"assets\":[]}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:13:59.491Z\",\"ready\":true,\"updateAvailable\":false,\"reason\":\"probe-result\"}]"
+      ],
+      "errors": []
+    },
+    {
+      "mode": "transport-throw",
+      "elapsedMs": 2707,
+      "state": {
+        "calls": [
+          {
+            "at": 166.90000000596046,
+            "since": 0.19999998807907104,
+            "action": "throw-once",
+            "controller": true
+          },
+          {
+            "at": 1170.5,
+            "since": 1003.7999999821186,
+            "action": "capture",
+            "controller": true
+          }
+        ],
+        "ready": "true",
+        "controllerState": "activated",
+        "active": "activated",
+        "caches": [
+          "chronoshift-test-first"
+        ],
+        "direct": {
+          "ready": true,
+          "version": "test-first",
+          "claim": "not-requested",
+          "diagnostics": {
+            "unavailable": []
+          }
+        }
+      },
+      "logs": [
+        "[\"[ChronoShift] offline.register-attempt\",{\"at\":\"2026-10-05T05:14:01.385Z\",\"online\":true,\"attempt\":1}]",
+        "[\"[ChronoShift] offline.registered\",{\"at\":\"2026-10-05T05:14:01.404Z\",\"online\":true,\"controlled\":false}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:01.404Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"startup\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"installing\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:01.405Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:01.405Z\",\"state\":\"installing\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:01.405Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"installing\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:01.405Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:01.438Z\",\"state\":\"installed\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:01.438Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"absent\",\"waitingState\":\"installed\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:01.438Z\",\"ready\":false,\"updateAvailable\":true,\"reason\":\"update-available\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:01.438Z\",\"ready\":false,\"updateAvailable\":true,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:01.438Z\",\"state\":\"activating\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:01.439Z\",\"online\":true,\"controlled\":false,\"activeMatches\":true,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"activating\",\"controllerState\":\"absent\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:01.439Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:01.439Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"controller-change\",\"activeState\":\"activating\",\"controllerState\":\"activating\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:01.442Z\",\"state\":\"activated\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:01.442Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"activated\",\"controllerState\":\"activated\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.probe-result\",{\"at\":\"2026-10-05T05:14:01.444Z\",\"ready\":true,\"controlled\":true,\"elapsedMs\":2,\"version\":\"test-first\",\"claim\":\"not-requested\",\"assets\":[]}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:01.444Z\",\"ready\":true,\"updateAvailable\":false,\"reason\":\"probe-result\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:01.497Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"page-show\",\"activeState\":\"activated\",\"controllerState\":\"activated\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:01.497Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"probe-post-failed\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:02.500Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":2,\"reason\":\"probe-retry\",\"activeState\":\"activated\",\"controllerState\":\"activated\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.probe-result\",{\"at\":\"2026-10-05T05:14:02.506Z\",\"ready\":true,\"controlled\":true,\"elapsedMs\":5,\"version\":\"test-first\",\"claim\":\"not-requested\",\"assets\":[]}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:02.506Z\",\"ready\":true,\"updateAvailable\":false,\"reason\":\"probe-result\"}]"
+      ],
+      "errors": []
+    },
+    {
+      "mode": "permanent-drop",
+      "elapsedMs": 6607,
+      "state": {
+        "calls": [
+          {
+            "at": 173.5,
+            "since": 0.19999998807907104,
+            "action": "drop",
+            "controller": true
+          },
+          {
+            "at": 1378.199999988079,
+            "since": 1204.8999999761581,
+            "action": "drop",
+            "controller": true
+          },
+          {
+            "at": 4583.4000000059605,
+            "since": 4410.0999999940395,
+            "action": "drop",
+            "controller": true
+          }
+        ],
+        "ready": "false",
+        "warning": "Offline assets could not be confirmed. Reconnect and reload to try again.",
+        "controllerState": "activated",
+        "active": "activated",
+        "caches": [
+          "chronoshift-test-first"
+        ],
+        "direct": {
+          "ready": true,
+          "version": "test-first",
+          "claim": "not-requested",
+          "diagnostics": {
+            "unavailable": []
+          }
+        }
+      },
+      "logs": [
+        "[\"[ChronoShift] offline.register-attempt\",{\"at\":\"2026-10-05T05:14:04.310Z\",\"online\":true,\"attempt\":1}]",
+        "[\"[ChronoShift] offline.registered\",{\"at\":\"2026-10-05T05:14:04.329Z\",\"online\":true,\"controlled\":false}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:04.329Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"startup\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"installing\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:04.329Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:04.330Z\",\"state\":\"installing\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:04.330Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"installing\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:04.330Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:04.364Z\",\"state\":\"installed\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:04.364Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"absent\",\"waitingState\":\"installed\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:04.364Z\",\"ready\":false,\"updateAvailable\":true,\"reason\":\"update-available\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:04.364Z\",\"ready\":false,\"updateAvailable\":true,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:04.364Z\",\"state\":\"activating\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:04.364Z\",\"online\":true,\"controlled\":false,\"activeMatches\":true,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"activating\",\"controllerState\":\"absent\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:04.364Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:04.364Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"controller-change\",\"activeState\":\"activating\",\"controllerState\":\"activating\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:04.368Z\",\"state\":\"activated\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:04.368Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"activated\",\"controllerState\":\"activated\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.probe-result\",{\"at\":\"2026-10-05T05:14:04.369Z\",\"ready\":true,\"controlled\":true,\"elapsedMs\":2,\"version\":\"test-first\",\"claim\":\"not-requested\",\"assets\":[]}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:04.369Z\",\"ready\":true,\"updateAvailable\":false,\"reason\":\"probe-result\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:04.422Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"page-show\",\"activeState\":\"activated\",\"controllerState\":\"activated\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:04.623Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"probe-timeout\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:05.626Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":2,\"reason\":\"probe-retry\",\"activeState\":\"activated\",\"controllerState\":\"activated\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:05.829Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"probe-timeout\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:08.831Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":3,\"reason\":\"probe-retry\",\"activeState\":\"activated\",\"controllerState\":\"activated\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:09.034Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"probe-timeout\"}]"
+      ],
+      "errors": []
+    },
+    {
+      "mode": "abort-pending",
+      "elapsedMs": 1707,
+      "state": {
+        "calls": [
+          {
+            "at": 172.39999997615814,
+            "since": 0.19999998807907104,
+            "action": "drop",
+            "controller": true
+          }
+        ],
+        "ready": "false",
+        "warning": "Offline assets could not be confirmed. Reconnect and reload to try again.",
+        "controllerState": "activated",
+        "active": "activated",
+        "caches": [
+          "chronoshift-test-first"
+        ],
+        "direct": {
+          "ready": true,
+          "version": "test-first",
+          "claim": "not-requested",
+          "diagnostics": {
+            "unavailable": []
+          }
+        }
+      },
+      "logs": [
+        "[\"[ChronoShift] offline.register-attempt\",{\"at\":\"2026-10-05T05:14:11.136Z\",\"online\":true,\"attempt\":1}]",
+        "[\"[ChronoShift] offline.registered\",{\"at\":\"2026-10-05T05:14:11.155Z\",\"online\":true,\"controlled\":false}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:11.155Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"startup\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"installing\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:11.155Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:11.156Z\",\"state\":\"installing\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:11.156Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"installing\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:11.156Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:11.189Z\",\"state\":\"installed\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:11.189Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"absent\",\"waitingState\":\"installed\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:11.189Z\",\"ready\":false,\"updateAvailable\":true,\"reason\":\"update-available\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:11.190Z\",\"ready\":false,\"updateAvailable\":true,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:11.190Z\",\"state\":\"activating\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:11.190Z\",\"online\":true,\"controlled\":false,\"activeMatches\":true,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"activating\",\"controllerState\":\"absent\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:11.190Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:11.190Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"controller-change\",\"activeState\":\"activating\",\"controllerState\":\"activating\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:11.193Z\",\"state\":\"activated\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:11.194Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"activated\",\"controllerState\":\"activated\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.probe-result\",{\"at\":\"2026-10-05T05:14:11.195Z\",\"ready\":true,\"controlled\":true,\"elapsedMs\":2,\"version\":\"test-first\",\"claim\":\"not-requested\",\"assets\":[]}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:11.195Z\",\"ready\":true,\"updateAvailable\":false,\"reason\":\"probe-result\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:11.248Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"page-show\",\"activeState\":\"activated\",\"controllerState\":\"activated\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:11.449Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"probe-timeout\"}]"
+      ],
+      "errors": []
+    },
+    {
+      "mode": "external-lifecycle",
+      "elapsedMs": 1706,
+      "state": {
+        "calls": [
+          {
+            "at": 172.80000001192093,
+            "since": 0.20000001788139343,
+            "action": "drop",
+            "controller": true
+          },
+          {
+            "at": 460.90000000596046,
+            "since": 288.30000001192093,
+            "action": "capture",
+            "controller": true
+          }
+        ],
+        "ready": "true",
+        "controllerState": "activated",
+        "active": "activated",
+        "caches": [
+          "chronoshift-test-first"
+        ],
+        "direct": {
+          "ready": true,
+          "version": "test-first",
+          "claim": "not-requested",
+          "diagnostics": {
+            "unavailable": []
+          }
+        }
+      },
+      "logs": [
+        "[\"[ChronoShift] offline.register-attempt\",{\"at\":\"2026-10-05T05:14:13.060Z\",\"online\":true,\"attempt\":1}]",
+        "[\"[ChronoShift] offline.registered\",{\"at\":\"2026-10-05T05:14:13.079Z\",\"online\":true,\"controlled\":false}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:13.080Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"startup\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"installing\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:13.080Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:13.080Z\",\"state\":\"installing\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:13.080Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"installing\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:13.080Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:13.115Z\",\"state\":\"installed\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:13.115Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"absent\",\"waitingState\":\"installed\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:13.115Z\",\"ready\":false,\"updateAvailable\":true,\"reason\":\"update-available\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:13.115Z\",\"ready\":false,\"updateAvailable\":true,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:13.115Z\",\"state\":\"activating\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:13.115Z\",\"online\":true,\"controlled\":false,\"activeMatches\":true,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"activating\",\"controllerState\":\"absent\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:13.115Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:13.115Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"controller-change\",\"activeState\":\"activating\",\"controllerState\":\"activating\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:13.119Z\",\"state\":\"activated\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:13.119Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"activated\",\"controllerState\":\"activated\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.probe-result\",{\"at\":\"2026-10-05T05:14:13.121Z\",\"ready\":true,\"controlled\":true,\"elapsedMs\":2,\"version\":\"test-first\",\"claim\":\"not-requested\",\"assets\":[]}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:13.121Z\",\"ready\":true,\"updateAvailable\":false,\"reason\":\"probe-result\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:13.173Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"page-show\",\"activeState\":\"activated\",\"controllerState\":\"activated\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:13.376Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"probe-timeout\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:13.461Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"page-show\",\"activeState\":\"activated\",\"controllerState\":\"activated\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.probe-result\",{\"at\":\"2026-10-05T05:14:13.466Z\",\"ready\":true,\"controlled\":true,\"elapsedMs\":5,\"version\":\"test-first\",\"claim\":\"not-requested\",\"assets\":[]}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:13.466Z\",\"ready\":true,\"updateAvailable\":false,\"reason\":\"probe-result\"}]"
+      ],
+      "errors": []
+    },
+    {
+      "mode": "integrity-false",
+      "elapsedMs": 1420,
+      "state": {
+        "calls": [
+          {
+            "at": 172.7999999821186,
+            "since": 0.19999998807907104,
+            "action": "capture",
+            "controller": true
+          }
+        ],
+        "ready": "false",
+        "warning": "Offline setup is incomplete. Reconnect and reload to try again.",
+        "controllerState": "activated",
+        "active": "activated",
+        "caches": [
+          "chronoshift-test-first"
+        ],
+        "direct": {
+          "ready": false,
+          "version": "test-first",
+          "claim": "not-requested",
+          "diagnostics": {
+            "unavailable": [
+              "/release.json"
+            ]
+          }
+        }
+      },
+      "logs": [
+        "[\"[ChronoShift] offline.register-attempt\",{\"at\":\"2026-10-05T05:14:14.970Z\",\"online\":true,\"attempt\":1}]",
+        "[\"[ChronoShift] offline.registered\",{\"at\":\"2026-10-05T05:14:14.990Z\",\"online\":true,\"controlled\":false}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:14.990Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"startup\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"installing\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:14.990Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:14.990Z\",\"state\":\"installing\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:14.990Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"installing\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:14.990Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:15.029Z\",\"state\":\"installed\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:15.029Z\",\"online\":true,\"controlled\":false,\"activeMatches\":false,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"absent\",\"controllerState\":\"absent\",\"installingState\":\"absent\",\"waitingState\":\"installed\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:15.029Z\",\"ready\":false,\"updateAvailable\":true,\"reason\":\"update-available\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:15.029Z\",\"ready\":false,\"updateAvailable\":true,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:15.030Z\",\"state\":\"activating\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:15.030Z\",\"online\":true,\"controlled\":false,\"activeMatches\":true,\"controllerMatches\":false,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"activating\",\"controllerState\":\"absent\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:15.030Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"no-controller\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:15.030Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"controller-change\",\"activeState\":\"activating\",\"controllerState\":\"activating\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.install-state\",{\"at\":\"2026-10-05T05:14:15.030Z\",\"state\":\"activated\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:15.030Z\",\"online\":true,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"lifecycle\",\"activeState\":\"activated\",\"controllerState\":\"activated\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.probe-result\",{\"at\":\"2026-10-05T05:14:15.034Z\",\"ready\":true,\"controlled\":true,\"elapsedMs\":4,\"version\":\"test-first\",\"claim\":\"not-requested\",\"assets\":[]}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:15.034Z\",\"ready\":true,\"updateAvailable\":false,\"reason\":\"probe-result\"}]",
+        "[\"[ChronoShift] offline.probe-start\",{\"at\":\"2026-10-05T05:14:15.084Z\",\"online\":false,\"controlled\":true,\"activeMatches\":true,\"controllerMatches\":true,\"scopeMatches\":true,\"attempt\":1,\"reason\":\"page-show\",\"activeState\":\"activated\",\"controllerState\":\"activated\",\"installingState\":\"absent\",\"waitingState\":\"absent\"}]",
+        "[\"[ChronoShift] offline.probe-result\",{\"at\":\"2026-10-05T05:14:15.086Z\",\"ready\":false,\"controlled\":true,\"elapsedMs\":2,\"version\":\"test-first\",\"claim\":\"not-requested\",\"assets\":[\"/release.json\"]}]",
+        "[\"[ChronoShift] offline.state\",{\"at\":\"2026-10-05T05:14:15.086Z\",\"ready\":false,\"updateAvailable\":false,\"reason\":\"probe-result\"}]"
+      ],
+      "errors": []
+    }
+  ]
+}

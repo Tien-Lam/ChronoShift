@@ -1,19 +1,19 @@
 {
   "stateSnapshot": {
     "date": "2026-10-05",
-    "implementationRevision": "1114a717f2d1c2b97d4ddf7200a18984ab70bcb1",
-    "testedArtifactRevision": "8efda34526ff8765e254ec20d3c08f385fb7a911",
+    "implementationRevision": "67be6094afd71dc512e001df632cb8157bc71d45",
+    "testedArtifactRevision": "59a182b393e339234f8bfbd1f803b512e8a3c2d8",
     "counts": {
-      "Done": 31,
-      "In Progress": 9,
-      "Todo": 1,
+      "Done": 32,
+      "In Progress": 11,
+      "Todo": 0,
       "Canceled": 1
     },
-    "note": "Prior four-project snapshot retained, plus independently verified TIE-372 Done. Live conversion motion published; 242 first-attempt CI browser passes, six CDP-only skips, four hosted checks, update-draft/pending/selection evidence and independent 64-check publication audit. Nine physical/installed/human gaps remain In Progress; TIE-370 remains Todo for older-worker explicit-update CI behavior and first-attempt diagnostic retention. Project/milestone metadata retains prior snapshot, not live state.",
+    "note": "Prior four-project snapshot plus TIE-370 In Progress, TIE-374 created/Done and TIE-375 created/In Progress. PR36 published: 249 first-attempt passes, nine skips, four hosted checks, published Chrome selection/side-panel update and 63-check artifact audit. Historical Chromium cause, nine physical/installed/human gaps and expanded CI usage target remain open. Current pair: 326 seconds/eight rounded minutes; storage 63.25% lower. Project/milestone metadata retains prior snapshot.",
     "reviewWorkflowRevision": "12b9a7f9bf924472c89c9d33aa28ca14fb482365",
     "previousEvidenceRevision": "12b9a7f9bf924472c89c9d33aa28ca14fb482365",
-    "evidencePath": "docs/qa/live-motion-2026-10-05",
-    "reviewWorkflowNote": "Baseline workflow revision; this documentation update adds immediate normal-motion interaction coverage for geometry-owning anchors, ancestors and positioned overlays after the pre-merge menu regression."
+    "evidencePath": "docs/qa/ci-lifecycle-2026-10-05",
+    "reviewWorkflowNote": "Baseline retained; this documentation adds actual timing provenance and typed/selected/focused ownership with Tab/blur/explicit-selection coverage."
   },
   "initiative": {
     "id": "I-4",
@@ -343,7 +343,7 @@
       "id": "TIE-370",
       "uuid": "b96ff52a-1ddf-42ea-9065-2aff29cc49d8",
       "url": "https://linear.app/tienlam/issue/TIE-370/diagnose-offline-update-ci-flake-and-retain-retry-diagnostics",
-      "state": "Todo"
+      "state": "In Progress"
     },
     "U14": {
       "id": "TIE-371",
@@ -356,6 +356,18 @@
       "uuid": "e16e9c43-e3e6-4624-b103-217ecdd9f69d",
       "url": "https://linear.app/tienlam/issue/TIE-372/make-live-conversion-visible-with-restrained-accessible-motion",
       "state": "Done"
+    },
+    "U16": {
+      "id": "TIE-374",
+      "uuid": "1915af5d-706a-4184-9d1f-98c4880033a7",
+      "url": "https://linear.app/tienlam/issue/TIE-374/keep-typed-timezone-stable-when-suggestions-open-beneath-the-pointer",
+      "state": "Done"
+    },
+    "D10": {
+      "id": "TIE-375",
+      "uuid": "afb8fc50-eae5-4377-ac56-633183cd18c5",
+      "url": "https://linear.app/tienlam/issue/TIE-375/restore-the-ci-usage-target-for-the-expanded-browser-suite",
+      "state": "In Progress"
     }
   }
 }

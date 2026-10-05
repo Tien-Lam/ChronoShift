@@ -1,0 +1,40 @@
+
+Running 4 tests using 1 worker
+
+(node:65725) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✘  1 docs/qa/ci-lifecycle-2026-10-05/retention.spec.ts:4:0 › first attempt fails, retry succeeds (87ms)
+(node:65730) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  2 docs/qa/ci-lifecycle-2026-10-05/retention.spec.ts:4:0 › first attempt fails, retry succeeds (retry #1) (90ms)
+  ✓  3 docs/qa/ci-lifecycle-2026-10-05/retention.spec.ts:8:0 › ordinary success (0ms)
+  ✘  4 docs/qa/ci-lifecycle-2026-10-05/retention.spec.ts:9:0 › expected failure (1ms)
+  -  5 docs/qa/ci-lifecycle-2026-10-05/retention.spec.ts:13:5 › skipped
+
+
+  1) docs/qa/ci-lifecycle-2026-10-05/retention.spec.ts:4:0 › first attempt fails, retry succeeds ───
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 0
+    Received:   0
+
+      4 | test("first attempt fails, retry succeeds", async ({ page }, testInfo) => {
+      5 |   await page.setContent("<main>synthetic diagnostic fixture</main>");
+    > 6 |   expect(testInfo.retry).toBeGreaterThan(0);
+        |                         ^
+      7 | });
+      8 | test("ordinary success", async () => {});
+      9 | test("expected failure", async () => {
+        at /Users/tien/Developer/ChronoShift/docs/qa/ci-lifecycle-2026-10-05/retention.spec.ts:6:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../../../tmp/chronoshift-ci-retention-results/retention-first-attempt-fails-retry-succeeds/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../../../tmp/chronoshift-ci-retention-results/retention-first-attempt-fails-retry-succeeds/error-context.md
+
+  1 flaky
+    docs/qa/ci-lifecycle-2026-10-05/retention.spec.ts:4:0 › first attempt fails, retry succeeds ────
+  1 skipped
+  2 passed (597ms)

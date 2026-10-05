@@ -1,0 +1,413 @@
+{
+  "measuredAt": "2026-10-05T05:39:25.580Z",
+  "scope": "One successful push publication and its successful pull-request verification, before and after optimization",
+  "consolidatedPreview": false,
+  "caveats": [
+    "This public repository uses free standard hosted runners; runner usage is not a dollar billing statement.",
+    "Rounded minutes are a per-job cost proxy, not an account billing export.",
+    "Artifact byte-hours project full configured retention, not already accrued monthly storage.",
+    "A paired sample includes queue variability; it is not a guarantee for every future run or the entire account."
+  ],
+  "baseline": {
+    "runs": [
+      {
+        "id": 37131752983,
+        "workflow": "Web",
+        "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37131752983",
+        "sourceCommit": "c31b8656bc4ef0fce84d5767b0d9c39f89a00f0f",
+        "event": "pull_request",
+        "elapsedSeconds": 159,
+        "jobs": [
+          {
+            "name": "web",
+            "runnerSeconds": 156,
+            "steps": [
+              {
+                "name": "Set up job",
+                "seconds": 1
+              },
+              {
+                "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+                "seconds": 1
+              },
+              {
+                "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
+                "seconds": 4
+              },
+              {
+                "name": "Run bun install --frozen-lockfile",
+                "seconds": 1
+              },
+              {
+                "name": "Run bun run format:check",
+                "seconds": 1
+              },
+              {
+                "name": "Run bun run check",
+                "seconds": 2
+              },
+              {
+                "name": "Verify the standalone conversion corpus audit",
+                "seconds": 1
+              },
+              {
+                "name": "Install browser engines and OS libraries",
+                "seconds": 52
+              },
+              {
+                "name": "Run bun run test:browser",
+                "seconds": 84
+              },
+              {
+                "name": "Verify repository-subpath deployment",
+                "seconds": 4
+              },
+              {
+                "name": "Publish static build and test diagnostics",
+                "seconds": 2
+              },
+              {
+                "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+                "seconds": 0
+              },
+              {
+                "name": "Complete job",
+                "seconds": 0
+              }
+            ]
+          }
+        ],
+        "runnerSeconds": 156,
+        "roundedRunnerMinutes": 3,
+        "artifacts": [
+          {
+            "name": "chronoshift-web-21a38eec3876f58e16adc0c7bc4c1ecfb9d90dd8",
+            "bytes": 561341,
+            "retentionHours": 335.9997222222222
+          }
+        ]
+      },
+      {
+        "id": 37131749773,
+        "workflow": "GitHub Pages",
+        "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37131749773",
+        "sourceCommit": "c31b8656bc4ef0fce84d5767b0d9c39f89a00f0f",
+        "event": "push",
+        "elapsedSeconds": 286,
+        "jobs": [
+          {
+            "name": "verify / web",
+            "runnerSeconds": 132,
+            "steps": [
+              {
+                "name": "Set up job",
+                "seconds": 1
+              },
+              {
+                "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+                "seconds": 0
+              },
+              {
+                "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
+                "seconds": 3
+              },
+              {
+                "name": "Run bun install --frozen-lockfile",
+                "seconds": 0
+              },
+              {
+                "name": "Run bun run format:check",
+                "seconds": 1
+              },
+              {
+                "name": "Run bun run check",
+                "seconds": 2
+              },
+              {
+                "name": "Verify the standalone conversion corpus audit",
+                "seconds": 0
+              },
+              {
+                "name": "Install browser engines and OS libraries",
+                "seconds": 44
+              },
+              {
+                "name": "Run bun run test:browser",
+                "seconds": 74
+              },
+              {
+                "name": "Verify repository-subpath deployment",
+                "seconds": 3
+              },
+              {
+                "name": "Publish static build and test diagnostics",
+                "seconds": 1
+              },
+              {
+                "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+                "seconds": 1
+              },
+              {
+                "name": "Complete job",
+                "seconds": 0
+              }
+            ]
+          },
+          {
+            "name": "build",
+            "runnerSeconds": 8,
+            "steps": [
+              {
+                "name": "Set up job",
+                "seconds": 1
+              },
+              {
+                "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+                "seconds": 0
+              },
+              {
+                "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
+                "seconds": 2
+              },
+              {
+                "name": "Run bun install --frozen-lockfile",
+                "seconds": 1
+              },
+              {
+                "name": "Run actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b",
+                "seconds": 0
+              },
+              {
+                "name": "Build at the Pages repository path",
+                "seconds": 1
+              },
+              {
+                "name": "Run actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b",
+                "seconds": 1
+              },
+              {
+                "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+                "seconds": 0
+              },
+              {
+                "name": "Complete job",
+                "seconds": 0
+              }
+            ]
+          },
+          {
+            "name": "deploy",
+            "runnerSeconds": 11,
+            "steps": [
+              {
+                "name": "Set up job",
+                "seconds": 1
+              },
+              {
+                "name": "Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e",
+                "seconds": 7
+              },
+              {
+                "name": "Complete job",
+                "seconds": 0
+              }
+            ]
+          }
+        ],
+        "runnerSeconds": 151,
+        "roundedRunnerMinutes": 5,
+        "artifacts": [
+          {
+            "name": "chronoshift-web-c31b8656bc4ef0fce84d5767b0d9c39f89a00f0f",
+            "bytes": 530892,
+            "retentionHours": 336
+          }
+        ]
+      }
+    ],
+    "runnerSeconds": 307,
+    "roundedRunnerMinutes": 8,
+    "artifactBytes": 1092233,
+    "projectedArtifactByteHours": 366990132.0719445
+  },
+  "candidate": {
+    "runs": [
+      {
+        "id": 37268219679,
+        "workflow": "Web",
+        "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37268219679",
+        "sourceCommit": "9c7965acfbcbe034471ad427625eb624792812eb",
+        "event": "pull_request",
+        "elapsedSeconds": 305,
+        "jobs": [
+          {
+            "name": "web",
+            "runnerSeconds": 301,
+            "steps": [
+              {
+                "name": "Set up job",
+                "seconds": 4
+              },
+              {
+                "name": "Initialize containers",
+                "seconds": 35
+              },
+              {
+                "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+                "seconds": 2
+              },
+              {
+                "name": "Capture the checked-in corpus audit",
+                "seconds": 0
+              },
+              {
+                "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
+                "seconds": 5
+              },
+              {
+                "name": "Run bun install --frozen-lockfile",
+                "seconds": 0
+              },
+              {
+                "name": "Verify the pinned browser image matches the dependency",
+                "seconds": 1
+              },
+              {
+                "name": "Run bun run format:check",
+                "seconds": 1
+              },
+              {
+                "name": "Unit tests and production build",
+                "seconds": 1
+              },
+              {
+                "name": "Verify the standalone conversion corpus audit",
+                "seconds": 0
+              },
+              {
+                "name": "Run bun run test:browser",
+                "seconds": 246
+              },
+              {
+                "name": "Verify repository-subpath deployment",
+                "seconds": 2
+              },
+              {
+                "name": "Upload the verified Pages build",
+                "seconds": 2
+              },
+              {
+                "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+                "seconds": 0
+              },
+              {
+                "name": "Stop containers",
+                "seconds": 0
+              },
+              {
+                "name": "Complete job",
+                "seconds": 0
+              }
+            ]
+          }
+        ],
+        "runnerSeconds": 301,
+        "roundedRunnerMinutes": 6,
+        "artifacts": [
+          {
+            "name": "github-pages",
+            "bytes": 374682,
+            "retentionHours": 23.99972222222222
+          }
+        ]
+      },
+      {
+        "id": 37268626778,
+        "workflow": "GitHub Pages",
+        "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37268626778",
+        "sourceCommit": "67be6094afd71dc512e001df632cb8157bc71d45",
+        "event": "push",
+        "elapsedSeconds": 37,
+        "jobs": [
+          {
+            "name": "prepare",
+            "runnerSeconds": 17,
+            "steps": [
+              {
+                "name": "Set up job",
+                "seconds": 2
+              },
+              {
+                "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+                "seconds": 2
+              },
+              {
+                "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
+                "seconds": 3
+              },
+              {
+                "name": "Reuse the exact verified PR artifact",
+                "seconds": 5
+              },
+              {
+                "name": "Run actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b",
+                "seconds": 0
+              },
+              {
+                "name": "Upload the verified Pages build",
+                "seconds": 2
+              },
+              {
+                "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+                "seconds": 0
+              },
+              {
+                "name": "Complete job",
+                "seconds": 0
+              }
+            ]
+          },
+          {
+            "name": "deploy",
+            "runnerSeconds": 8,
+            "steps": [
+              {
+                "name": "Set up job",
+                "seconds": 1
+              },
+              {
+                "name": "Run actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e",
+                "seconds": 6
+              },
+              {
+                "name": "Complete job",
+                "seconds": 0
+              }
+            ]
+          }
+        ],
+        "runnerSeconds": 25,
+        "roundedRunnerMinutes": 2,
+        "artifacts": [
+          {
+            "name": "github-pages",
+            "bytes": 374673,
+            "retentionHours": 335.99944444444446
+          }
+        ]
+      }
+    ],
+    "runnerSeconds": 326,
+    "roundedRunnerMinutes": 8,
+    "artifactBytes": 749355,
+    "projectedArtifactByteHours": 134882183.77
+  },
+  "reductions": {
+    "runnerSecondsPercent": -6.19,
+    "roundedRunnerMinutesPercent": 0,
+    "projectedArtifactByteHoursPercent": 63.25
+  },
+  "meetsTwentyPercentTarget": false,
+  "meetsTwentyPercentQuotaAndStorageTarget": false,
+  "isFaster": false
+}

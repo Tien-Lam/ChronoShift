@@ -1,0 +1,2 @@
+import {defineConfig} from '@playwright/test';
+export default defineConfig({testDir:process.cwd()+'/docs/qa/ci-lifecycle-2026-10-05/code',testMatch:'retention.review.spec.ts',workers:1,retries:1,outputDir:process.cwd()+'/docs/qa/ci-lifecycle-2026-10-05/code/retention-output',reporter:[['list'],[process.cwd()+'/e2e/attempt-reporter.ts']],use:{baseURL:'http://127.0.0.1:4262/',screenshot:'only-on-failure',trace:'on-first-retry'}});

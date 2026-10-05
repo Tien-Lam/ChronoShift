@@ -40,9 +40,21 @@ color or nonanchored child/icon motion for feedback. Retain normal-motion
 failing/candidate journeys instead of masking failures with sleeps, force-clicks
 or reduced-motion-only checks.
 
+For searchable choices, distinguish typed input, selected item and focused
+suggestion. Exercise leaving the field with Tab after a popup opens under the
+pointer, plus ordinary blur and deliberate keyboard/pointer selection. A correct
+converted time alone can miss an unintended switch to an equivalent city alias.
+Scope test options to the current input's owned list; an exiting popup can retain
+its options while another field opens.
+
 ## Record verdicts
 
 Each reviewer reports the exact revision/scope inspected, findings with triggers and impact, and actual commands/results or observed browser journeys. Identify browser/profile, timing, fault injection and unexercised states. Report two distinct conclusions:
+
+Record command/observation start and end times from an actual clock or raw runner
+metadata; distinguish them from report-writing time. If timing was not captured,
+mark it unknown rather than estimating a wall-clock timestamp. Preserve an
+already-posted report and add a separate correction when provenance is wrong.
 
 - **Implementation:** approved within the stated scope, or blockers and required fixes.
 - **Original report:** reproduced and prevented/recovered as intended; bounded related failures verified; or still unverified. State which reported conditions match and what remains unknown. For a feature/documentation change, mark this not applicable.

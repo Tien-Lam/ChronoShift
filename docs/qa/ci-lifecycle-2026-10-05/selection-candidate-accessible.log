@@ -1,0 +1,80 @@
+2026-10-05T05:31:12Z
+
+Running 15 tests using 4 workers
+
+(node:68116) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:68117) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:68115) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:68118) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   4 [chromium] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit (1.6s)
+(node:68152) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [chromium] › e2e/imports.spec.ts:173:1 › an unresolved target hides copyable fallback results and correction restores the source interpretation (1.8s)
+(node:68168) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   3 [chromium] › e2e/controls.spec.ts:339:1 › timezone search preserves freeform offsets and recovers from empty and invalid choices (2.7s)
+(node:68196) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   5 [firefox] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit (1.7s)
+(node:68235) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [firefox] › e2e/controls.spec.ts:339:1 › timezone search preserves freeform offsets and recovers from empty and invalid choices (3.8s)
+(node:68254) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   6 [firefox] › e2e/imports.spec.ts:173:1 › an unresolved target hides copyable fallback results and correction restores the source interpretation (2.6s)
+(node:68282) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   7 [webkit] › e2e/controls.spec.ts:339:1 › timezone search preserves freeform offsets and recovers from empty and invalid choices (3.0s)
+  ✓   8 [webkit] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit (1.8s)
+(node:68289) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:68290) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   9 [webkit] › e2e/imports.spec.ts:173:1 › an unresolved target hides copyable fallback results and correction restores the source interpretation (2.2s)
+(node:68300) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  11 [android-emulation] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit (1.6s)
+(node:68324) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  12 [android-emulation] › e2e/imports.spec.ts:173:1 › an unresolved target hides copyable fallback results and correction restores the source interpretation (1.8s)
+  ✓  10 [android-emulation] › e2e/controls.spec.ts:339:1 › timezone search preserves freeform offsets and recovers from empty and invalid choices (2.8s)
+(node:68341) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  14 [iphone-emulation] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit (1.8s)
+  ✓  13 [iphone-emulation] › e2e/controls.spec.ts:339:1 › timezone search preserves freeform offsets and recovers from empty and invalid choices (2.9s)
+  ✓  15 [iphone-emulation] › e2e/imports.spec.ts:173:1 › an unresolved target hides copyable fallback results and correction restores the source interpretation (2.0s)
+
+
+  1) [firefox] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+
+    Error: locator.hover: Error: strict mode violation: getByRole('option', { name: 'Osaka', exact: true }) resolved to 2 elements:
+        1) <div data-rac="" role="option" data-key="osaka" data-value="osaka" class="choice-item" aria-selected="false" data-selection-mode="single" data-react-aria-pressable="true" id="react-aria7565967513-_r_b_-option-osaka" aria-labelledby="react-aria7565967513-_r_3t_" data-collection="react-aria7565967513-_r_3l_" aria-describedby="react-aria7565967513-_r_3u_">…</div> aka getByRole('listbox', { name: 'Suggestions Show target' }).getByLabel('Osaka')
+        2) <div data-rac="" role="option" data-key="osaka" data-value="osaka" class="choice-item" aria-selected="false" data-selection-mode="single" data-react-aria-pressable="true" id="react-aria7565967513-_r_o_-option-osaka" aria-labelledby="react-aria7565967513-_r_4a_" data-collection="react-aria7565967513-_r_41_" aria-describedby="react-aria7565967513-_r_4b_">…</div> aka getByRole('listbox', { name: 'Suggestions Show source' }).getByLabel('Osaka')
+
+    Call log:
+      - waiting for getByRole('option', { name: 'Osaka', exact: true })
+
+
+      429 |     // Leave any prior pointer position so this exercises a fresh hover event.
+      430 |     await page.mouse.move(0, 0);
+    > 431 |     await alias.hover();
+          |                 ^
+      432 |     await expect(alias).toHaveAttribute("data-hovered", "true");
+      433 |     await input.press("Tab");
+      434 |     await expect(input).toHaveValue("Asia/Tokyo");
+        at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:431:17
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../../../tmp/chronoshift-selection-root-candidate-accessible/controls-hovering-timezone-df152-cit-selections-still-commit-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../../../tmp/chronoshift-selection-root-candidate-accessible/controls-hovering-timezone-df152-cit-selections-still-commit-firefox/error-context.md
+
+  1 failed
+    [firefox] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+  14 passed (11.1s)
+2026-10-05T05:31:23Z

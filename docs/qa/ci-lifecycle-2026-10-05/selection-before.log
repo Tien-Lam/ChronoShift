@@ -1,0 +1,86 @@
+
+Running 2 tests using 2 workers
+
+(node:67466) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:67465) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [chromium] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit (30.0s)
+  ✘  2 [iphone-emulation] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit (30.0s)
+
+
+  1) [chromium] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[role="option"][data-value="Asia/Tokyo"]')
+        - locator resolved to <div data-rac="" role="option" class="choice-item" aria-selected="false" data-key="Asia/Tokyo" data-value="Asia/Tokyo" data-selection-mode="single" data-react-aria-pressable="true" aria-labelledby="react-aria4618464583-_r_3l_" data-collection="react-aria4618464583-_r_39_" aria-describedby="react-aria4618464583-_r_3m_" id="react-aria4618464583-_r_b_-option-Asia/Tokyo">…</div>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not stable
+        - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is not stable
+      - retrying click action
+        - waiting 100ms
+        - waiting for element to be visible, enabled and stable
+      - element was detached from the DOM, retrying
+
+
+      442 |     await expect(input).toHaveValue("osaka");
+      443 |     await input.fill("Tokyo");
+    > 444 |     await page.locator('[role="option"][data-value="Asia/Tokyo"]').click();
+          |                                                                    ^
+      445 |     await expect(input).toHaveValue("Asia/Tokyo");
+      446 |     await expect(other).toHaveValue(otherValue);
+      447 |   }
+        at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:444:68
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../../../tmp/chronoshift-selection-root-before/controls-hovering-timezone-df152-cit-selections-still-commit-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../../../tmp/chronoshift-selection-root-before/controls-hovering-timezone-df152-cit-selections-still-commit-chromium/error-context.md
+
+  2) [iphone-emulation] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[role="option"][data-value="Asia/Tokyo"]')
+        - locator resolved to <div data-rac="" role="option" class="choice-item" aria-selected="false" data-key="Asia/Tokyo" data-value="Asia/Tokyo" data-selection-mode="single" data-react-aria-pressable="true" aria-labelledby="react-aria8623970157-_r_3l_" data-collection="react-aria8623970157-_r_39_" aria-describedby="react-aria8623970157-_r_3m_" id="react-aria8623970157-_r_b_-option-Asia/Tokyo">…</div>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not stable
+        - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is not stable
+      - retrying click action
+        - waiting 100ms
+        - waiting for element to be visible, enabled and stable
+      - element was detached from the DOM, retrying
+
+
+      442 |     await expect(input).toHaveValue("osaka");
+      443 |     await input.fill("Tokyo");
+    > 444 |     await page.locator('[role="option"][data-value="Asia/Tokyo"]').click();
+          |                                                                    ^
+      445 |     await expect(input).toHaveValue("Asia/Tokyo");
+      446 |     await expect(other).toHaveValue(otherValue);
+      447 |   }
+        at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:444:68
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../../../tmp/chronoshift-selection-root-before/controls-hovering-timezone-df152-cit-selections-still-commit-iphone-emulation/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../../../tmp/chronoshift-selection-root-before/controls-hovering-timezone-df152-cit-selections-still-commit-iphone-emulation/error-context.md
+
+  2 failed
+    [chromium] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+    [iphone-emulation] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 

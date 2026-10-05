@@ -1,0 +1,206 @@
+[
+  {
+    "action": "typed-canonical",
+    "result": "complete",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "Asia/Tokyo",
+        "focused": "Asia/Tokyo",
+        "expanded": "true"
+      },
+      {
+        "label": "after-leave",
+        "value": "Asia/Tokyo",
+        "expanded": "false"
+      }
+    ]
+  },
+  {
+    "action": "hover-then-tab",
+    "result": "complete",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "Asia/Tokyo",
+        "focused": "Asia/Tokyo",
+        "expanded": "true"
+      },
+      {
+        "label": "after-hover",
+        "value": "Asia/Tokyo",
+        "focused": "Asia/Tokyo",
+        "expanded": "true"
+      },
+      {
+        "label": "after-leave",
+        "value": "Asia/Tokyo",
+        "expanded": "false"
+      }
+    ]
+  },
+  {
+    "action": "hover-then-outside",
+    "result": "complete",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "Asia/Tokyo",
+        "focused": "Asia/Tokyo",
+        "expanded": "true"
+      },
+      {
+        "label": "after-hover",
+        "value": "Asia/Tokyo",
+        "focused": "Asia/Tokyo",
+        "expanded": "true"
+      },
+      {
+        "label": "after-leave",
+        "value": "Asia/Tokyo",
+        "expanded": "false"
+      }
+    ]
+  },
+  {
+    "action": "pointer-selection",
+    "result": "complete",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "Asia/Tokyo",
+        "focused": "Asia/Tokyo",
+        "expanded": "true"
+      },
+      {
+        "label": "after-leave",
+        "value": "osaka",
+        "expanded": "false"
+      }
+    ]
+  },
+  {
+    "action": "keyboard-selection",
+    "result": "complete",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "Asia/Tokyo",
+        "focused": "Asia/Tokyo",
+        "expanded": "true"
+      },
+      {
+        "label": "keyboard-focused",
+        "value": "Asia/Tokyo",
+        "focused": "osaka",
+        "expanded": "true"
+      },
+      {
+        "label": "after-leave",
+        "value": "osaka",
+        "expanded": "false"
+      }
+    ]
+  },
+  {
+    "action": "typed-alias",
+    "result": "complete",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "osaka",
+        "focused": "osaka",
+        "expanded": "true"
+      },
+      {
+        "label": "after-leave",
+        "value": "osaka",
+        "expanded": "false"
+      }
+    ]
+  },
+  {
+    "action": "custom-offset",
+    "result": "error",
+    "error": "expect(locator).toContainText(expected) failed\n\nLocator: locator('.hero-time')\nExpected pattern: /8:45 pm/i\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toContainText\" locator('.hero-time') with timeout 5000ms\n  - waiting for locator('.hero-time')\n",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "UTC+05:45",
+        "expanded": "true"
+      }
+    ]
+  },
+  {
+    "action": "pointer-canonical",
+    "result": "complete",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "Tokyo",
+        "expanded": "true"
+      },
+      {
+        "label": "after-leave",
+        "value": "Asia/Tokyo",
+        "expanded": "false"
+      }
+    ]
+  },
+  {
+    "action": "keyboard-tab",
+    "result": "complete",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "Asia/Tokyo",
+        "focused": "Asia/Tokyo",
+        "expanded": "true"
+      },
+      {
+        "label": "keyboard-focused",
+        "value": "Asia/Tokyo",
+        "focused": "osaka",
+        "expanded": "true"
+      },
+      {
+        "label": "after-leave",
+        "value": "osaka",
+        "expanded": "false"
+      }
+    ]
+  },
+  {
+    "action": "invalid-ambiguity",
+    "result": "complete",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "CST",
+        "expanded": "false"
+      },
+      {
+        "label": "after-leave",
+        "value": "CST",
+        "expanded": "false"
+      }
+    ]
+  },
+  {
+    "action": "source-independent",
+    "result": "complete",
+    "states": [
+      {
+        "label": "typed-before-leave",
+        "value": "Asia/Tokyo",
+        "focused": "Asia/Tokyo",
+        "expanded": "true"
+      },
+      {
+        "label": "after-leave",
+        "value": "Asia/Tokyo",
+        "expanded": "false"
+      }
+    ]
+  }
+]

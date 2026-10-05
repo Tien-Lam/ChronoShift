@@ -1,0 +1,43 @@
+2026-10-05T05:30:00Z
+
+Running 1 test using 1 worker
+
+(node:67672) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [chromium] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit (10.3s)
+
+
+  1) [chromium] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator:  getByLabel('Convert to', { exact: true })
+    Expected: "Asia/Tokyo"
+    Received: "osaka"
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('Convert to', { exact: true }) with timeout 10000ms
+      - waiting for getByLabel('Convert to', { exact: true })
+        24 × locator resolved to <input data-rac="" type="text" tabindex="0" value="osaka" role="combobox" id="target-zone" autocorrect="off" autocomplete="off" spellcheck="false" aria-expanded="false" aria-label="Convert to" aria-autocomplete="list" class="react-aria-Input" aria-describedby="target-zone-help" placeholder="Your timezone · Sydney"/>
+           - unexpected value "osaka"
+
+
+      430 |     await expect(alias).toHaveAttribute("data-hovered", "true");
+      431 |     await input.press("Tab");
+    > 432 |     await expect(input).toHaveValue("Asia/Tokyo");
+          |                         ^
+      433 |     await expect(other).toHaveValue(otherValue);
+      434 |     await expect(page.getByRole("listbox")).toHaveCount(0);
+      435 |     await expect(page.locator(".hero-time")).toHaveText(/12:00 am/i);
+        at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:432:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../../../tmp/chronoshift-selection-root-before-causal/controls-hovering-timezone-df152-cit-selections-still-commit-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../../../tmp/chronoshift-selection-root-before-causal/controls-hovering-timezone-df152-cit-selections-still-commit-chromium/error-context.md
+
+  1 failed
+    [chromium] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+2026-10-05T05:30:11Z

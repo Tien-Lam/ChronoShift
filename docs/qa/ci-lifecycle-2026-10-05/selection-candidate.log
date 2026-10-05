@@ -1,0 +1,184 @@
+2026-10-05T05:30:40Z
+
+Running 15 tests using 4 workers
+
+(node:67797) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:67798) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:67800) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:67799) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 [chromium] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit (1.0s)
+(node:67834) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [chromium] › e2e/imports.spec.ts:173:1 › an unresolved target hides copyable fallback results and correction restores the source interpretation (1.8s)
+(node:67854) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   3 [chromium] › e2e/controls.spec.ts:339:1 › timezone search preserves freeform offsets and recovers from empty and invalid choices (2.7s)
+(node:67865) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   5 [firefox] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit (1.7s)
+(node:67888) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   4 [firefox] › e2e/controls.spec.ts:339:1 › timezone search preserves freeform offsets and recovers from empty and invalid choices (3.7s)
+(node:67910) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   6 [firefox] › e2e/imports.spec.ts:173:1 › an unresolved target hides copyable fallback results and correction restores the source interpretation (2.4s)
+  ✘   8 [webkit] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit (1.2s)
+(node:67932) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:67933) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   7 [webkit] › e2e/controls.spec.ts:339:1 › timezone search preserves freeform offsets and recovers from empty and invalid choices (2.9s)
+(node:67976) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  10 [android-emulation] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit (972ms)
+(node:67981) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   9 [webkit] › e2e/imports.spec.ts:173:1 › an unresolved target hides copyable fallback results and correction restores the source interpretation (2.0s)
+(node:67999) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  12 [android-emulation] › e2e/imports.spec.ts:173:1 › an unresolved target hides copyable fallback results and correction restores the source interpretation (1.7s)
+  ✘  14 [iphone-emulation] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit (1.1s)
+  ✓  11 [android-emulation] › e2e/controls.spec.ts:339:1 › timezone search preserves freeform offsets and recovers from empty and invalid choices (2.9s)
+(node:68025) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  13 [iphone-emulation] › e2e/controls.spec.ts:339:1 › timezone search preserves freeform offsets and recovers from empty and invalid choices (2.8s)
+  ✓  15 [iphone-emulation] › e2e/imports.spec.ts:173:1 › an unresolved target hides copyable fallback results and correction restores the source interpretation (2.1s)
+
+
+  1) [chromium] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+
+    Error: locator.hover: Error: strict mode violation: locator('[role="option"][data-value="osaka"]') resolved to 2 elements:
+        1) <div data-rac="" role="option" data-key="osaka" data-value="osaka" class="choice-item" aria-selected="false" data-selection-mode="single" data-react-aria-pressable="true" id="react-aria6836434038-_r_b_-option-osaka" aria-labelledby="react-aria6836434038-_r_3t_" data-collection="react-aria6836434038-_r_3l_" aria-describedby="react-aria6836434038-_r_3u_">…</div> aka locator('#react-aria6836434038-_r_b_-option-osaka')
+        2) <div data-rac="" role="option" data-key="osaka" data-value="osaka" class="choice-item" aria-selected="false" data-selection-mode="single" data-react-aria-pressable="true" id="react-aria6836434038-_r_o_-option-osaka" aria-labelledby="react-aria6836434038-_r_4a_" data-collection="react-aria6836434038-_r_41_" aria-describedby="react-aria6836434038-_r_4b_">…</div> aka getByRole('option', { name: 'Osaka' })
+
+    Call log:
+      - waiting for locator('[role="option"][data-value="osaka"]')
+
+
+      429 |     // Leave any prior pointer position so this exercises a fresh hover event.
+      430 |     await page.mouse.move(0, 0);
+    > 431 |     await alias.hover();
+          |                 ^
+      432 |     await expect(alias).toHaveAttribute("data-hovered", "true");
+      433 |     await input.press("Tab");
+      434 |     await expect(input).toHaveValue("Asia/Tokyo");
+        at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:431:17
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../../../tmp/chronoshift-selection-root-candidate/controls-hovering-timezone-df152-cit-selections-still-commit-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../../../tmp/chronoshift-selection-root-candidate/controls-hovering-timezone-df152-cit-selections-still-commit-chromium/error-context.md
+
+  2) [firefox] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+
+    Error: locator.hover: Error: strict mode violation: locator('[role="option"][data-value="osaka"]') resolved to 2 elements:
+        1) <div data-rac="" role="option" data-key="osaka" data-value="osaka" class="choice-item" aria-selected="false" data-selection-mode="single" data-react-aria-pressable="true" id="react-aria3013126832-_r_b_-option-osaka" aria-labelledby="react-aria3013126832-_r_3t_" data-collection="react-aria3013126832-_r_3l_" aria-describedby="react-aria3013126832-_r_3u_">…</div> aka getByRole('listbox', { name: 'Suggestions Show target' }).getByLabel('Osaka')
+        2) <div data-rac="" role="option" data-key="osaka" data-value="osaka" class="choice-item" aria-selected="false" data-selection-mode="single" data-react-aria-pressable="true" id="react-aria3013126832-_r_o_-option-osaka" aria-labelledby="react-aria3013126832-_r_4a_" data-collection="react-aria3013126832-_r_41_" aria-describedby="react-aria3013126832-_r_4b_">…</div> aka getByRole('listbox', { name: 'Suggestions Show source' }).getByLabel('Osaka')
+
+    Call log:
+      - waiting for locator('[role="option"][data-value="osaka"]')
+
+
+      429 |     // Leave any prior pointer position so this exercises a fresh hover event.
+      430 |     await page.mouse.move(0, 0);
+    > 431 |     await alias.hover();
+          |                 ^
+      432 |     await expect(alias).toHaveAttribute("data-hovered", "true");
+      433 |     await input.press("Tab");
+      434 |     await expect(input).toHaveValue("Asia/Tokyo");
+        at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:431:17
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../../../tmp/chronoshift-selection-root-candidate/controls-hovering-timezone-df152-cit-selections-still-commit-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../../../tmp/chronoshift-selection-root-candidate/controls-hovering-timezone-df152-cit-selections-still-commit-firefox/error-context.md
+
+  3) [webkit] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+
+    Error: locator.hover: Error: strict mode violation: locator('[role="option"][data-value="osaka"]') resolved to 2 elements:
+        1) <div data-rac="" role="option" data-key="osaka" data-value="osaka" class="choice-item" aria-selected="false" data-selection-mode="single" data-react-aria-pressable="true" id="react-aria747362751-_r_b_-option-osaka" aria-labelledby="react-aria747362751-_r_3t_" data-collection="react-aria747362751-_r_3l_" aria-describedby="react-aria747362751-_r_3u_">…</div> aka locator('#react-aria747362751-_r_b_-option-osaka')
+        2) <div data-rac="" role="option" data-key="osaka" data-value="osaka" class="choice-item" aria-selected="false" data-selection-mode="single" data-react-aria-pressable="true" id="react-aria747362751-_r_o_-option-osaka" aria-labelledby="react-aria747362751-_r_4a_" data-collection="react-aria747362751-_r_41_" aria-describedby="react-aria747362751-_r_4b_">…</div> aka getByRole('option', { name: 'Osaka' })
+
+    Call log:
+      - waiting for locator('[role="option"][data-value="osaka"]')
+
+
+      429 |     // Leave any prior pointer position so this exercises a fresh hover event.
+      430 |     await page.mouse.move(0, 0);
+    > 431 |     await alias.hover();
+          |                 ^
+      432 |     await expect(alias).toHaveAttribute("data-hovered", "true");
+      433 |     await input.press("Tab");
+      434 |     await expect(input).toHaveValue("Asia/Tokyo");
+        at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:431:17
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../../../tmp/chronoshift-selection-root-candidate/controls-hovering-timezone-df152-cit-selections-still-commit-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../../../tmp/chronoshift-selection-root-candidate/controls-hovering-timezone-df152-cit-selections-still-commit-webkit/error-context.md
+
+  4) [android-emulation] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+
+    Error: locator.hover: Error: strict mode violation: locator('[role="option"][data-value="osaka"]') resolved to 2 elements:
+        1) <div data-rac="" role="option" data-key="osaka" data-value="osaka" class="choice-item" aria-selected="false" data-selection-mode="single" data-react-aria-pressable="true" id="react-aria8598114712-_r_b_-option-osaka" aria-labelledby="react-aria8598114712-_r_3t_" data-collection="react-aria8598114712-_r_3l_" aria-describedby="react-aria8598114712-_r_3u_">…</div> aka locator('#react-aria8598114712-_r_b_-option-osaka')
+        2) <div data-rac="" role="option" data-key="osaka" data-value="osaka" class="choice-item" aria-selected="false" data-selection-mode="single" data-react-aria-pressable="true" id="react-aria8598114712-_r_o_-option-osaka" aria-labelledby="react-aria8598114712-_r_4a_" data-collection="react-aria8598114712-_r_41_" aria-describedby="react-aria8598114712-_r_4b_">…</div> aka getByRole('option', { name: 'Osaka' })
+
+    Call log:
+      - waiting for locator('[role="option"][data-value="osaka"]')
+
+
+      429 |     // Leave any prior pointer position so this exercises a fresh hover event.
+      430 |     await page.mouse.move(0, 0);
+    > 431 |     await alias.hover();
+          |                 ^
+      432 |     await expect(alias).toHaveAttribute("data-hovered", "true");
+      433 |     await input.press("Tab");
+      434 |     await expect(input).toHaveValue("Asia/Tokyo");
+        at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:431:17
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../../../tmp/chronoshift-selection-root-candidate/controls-hovering-timezone-df152-cit-selections-still-commit-android-emulation/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../../../tmp/chronoshift-selection-root-candidate/controls-hovering-timezone-df152-cit-selections-still-commit-android-emulation/error-context.md
+
+  5) [iphone-emulation] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+
+    Error: locator.hover: Error: strict mode violation: locator('[role="option"][data-value="osaka"]') resolved to 2 elements:
+        1) <div data-rac="" role="option" data-key="osaka" data-value="osaka" class="choice-item" aria-selected="false" data-selection-mode="single" data-react-aria-pressable="true" id="react-aria8482917416-_r_b_-option-osaka" aria-labelledby="react-aria8482917416-_r_3t_" data-collection="react-aria8482917416-_r_3l_" aria-describedby="react-aria8482917416-_r_3u_">…</div> aka locator('#react-aria8482917416-_r_b_-option-osaka')
+        2) <div data-rac="" role="option" data-key="osaka" data-value="osaka" class="choice-item" aria-selected="false" data-selection-mode="single" data-react-aria-pressable="true" id="react-aria8482917416-_r_o_-option-osaka" aria-labelledby="react-aria8482917416-_r_4a_" data-collection="react-aria8482917416-_r_41_" aria-describedby="react-aria8482917416-_r_4b_">…</div> aka getByRole('option', { name: 'Osaka' })
+
+    Call log:
+      - waiting for locator('[role="option"][data-value="osaka"]')
+
+
+      429 |     // Leave any prior pointer position so this exercises a fresh hover event.
+      430 |     await page.mouse.move(0, 0);
+    > 431 |     await alias.hover();
+          |                 ^
+      432 |     await expect(alias).toHaveAttribute("data-hovered", "true");
+      433 |     await input.press("Tab");
+      434 |     await expect(input).toHaveValue("Asia/Tokyo");
+        at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:431:17
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../../../../tmp/chronoshift-selection-root-candidate/controls-hovering-timezone-df152-cit-selections-still-commit-iphone-emulation/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../../../../tmp/chronoshift-selection-root-candidate/controls-hovering-timezone-df152-cit-selections-still-commit-iphone-emulation/error-context.md
+
+  5 failed
+    [chromium] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+    [firefox] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+    [webkit] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+    [android-emulation] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+    [iphone-emulation] › e2e/controls.spec.ts:407:1 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+  10 passed (10.9s)
+2026-10-05T05:30:52Z

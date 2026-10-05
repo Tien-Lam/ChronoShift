@@ -1,0 +1,35 @@
+
+Running 2 tests using 1 worker
+
+(node:66188) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✘  1 docs/qa/ci-lifecycle-2026-10-05/code/retention.review.spec.ts:2:0 › first failure then success (176ms)
+(node:66194) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  2 docs/qa/ci-lifecycle-2026-10-05/code/retention.review.spec.ts:2:0 › first failure then success (retry #1) (201ms)
+  ✘  3 docs/qa/ci-lifecycle-2026-10-05/code/retention.review.spec.ts:3:0 › expected failure (1ms)
+
+
+  1) docs/qa/ci-lifecycle-2026-10-05/code/retention.review.spec.ts:2:0 › first failure then success 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 1
+    Received: 0
+
+      1 | import {test,expect} from '@playwright/test';
+    > 2 | test('first failure then success',async({page},info)=>{await page.goto('/');await expect(page.locator('main')).toBeVisible();expect(info.retry).toBe(1)});
+        |                                                                                                                                                ^
+      3 | test('expected failure',async()=>{test.fail();expect(1).toBe(2)});
+      4 |
+        at /Users/tien/Developer/ChronoShift/docs/qa/ci-lifecycle-2026-10-05/code/retention.review.spec.ts:2:144
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs/qa/ci-lifecycle-2026-10-05/code/retention-output/retention.review-first-failure-then-success/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs/qa/ci-lifecycle-2026-10-05/code/retention-output/retention.review-first-failure-then-success/error-context.md
+
+  1 flaky
+    docs/qa/ci-lifecycle-2026-10-05/code/retention.review.spec.ts:2:0 › first failure then success ─
+  1 passed (819ms)
