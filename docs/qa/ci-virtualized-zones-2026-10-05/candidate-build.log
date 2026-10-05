@@ -1,0 +1,21 @@
+$ bun run typecheck && bun scripts/third-party-notices.ts && bunx --bun vite build && bun scripts/build-offline.ts
+$ bunx --bun tsc --noEmit
+Included notices for 19 production packages.
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 791 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                    0.80 kB │ gzip:   0.44 kB
+dist/assets/geist-latin-variable-Dm3htQBi.woff2   28.40 kB
+dist/assets/worker-C690IjaR.js                   221.14 kB
+dist/assets/index-CK-q34-T.css                    20.80 kB │ gzip:   4.84 kB
+dist/assets/index-CGs25w8u.js                    807.36 kB │ gzip: 244.28 kB
+
+✓ built in 127ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+Offline version 4360114561ceab09: 13 local assets, /

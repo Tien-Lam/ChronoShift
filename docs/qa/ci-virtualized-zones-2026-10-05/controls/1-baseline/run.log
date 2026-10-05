@@ -1,0 +1,56 @@
+(node:29688) Warning: The 'NO_COLOR  ✓   2 [chromium] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (1.7s)
+  ✓   3 [chromium] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (2.7s)
+  ✓   4 [chromium] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (4.2s)
+  ✓   7 [firefox] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (3.6s)
+  ✓   6 [firefox] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (5.3s)
+  ✓   1 [chromium] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (10.1s)
+  ✓   5 [firefox] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (12.2s)
+  ✓  10 [webkit] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (4.3s)
+  ✓  12 [webkit] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (1.8s)
+  ✓  11 [webkit] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (2.8s)
+  ✓   9 [webkit] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (10.7s)
+  ✘   8 [firefox] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (11.3s)
+  ✓  16 [android-emulation] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (1.6s)
+  ✓  14 [android-emulation] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (4.1s)
+  ✓  15 [android-emulation] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (2.7s)
+  ✓  19 [iphone-emulation] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (2.8s)
+  ✓  18 [iphone-emulation] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (4.3s)
+  ✓  13 [android-emulation] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (10.1s)
+  ✓  20 [iphone-emulation] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (1.8s)
+  ✓  17 [iphone-emulation] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (10.8s)
+
+
+  1) [firefox] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator: getByLabel('Source timezone when none is given', { exact: true })
+    Expected pattern: /.+/
+    Received string:  ""
+    Timeout: 10000ms
+
+    Call log:
+      - Expect "toHaveAttribute" getByLabel('Source timezone when none is given', { exact: true }) with timeout 10000ms
+      - waiting for getByLabel('Source timezone when none is given', { exact: true })
+        24 × locator resolved to <input data-rac="" type="text" tabindex="0" role="combobox" id="source-zone" autocorrect="off" autocomplete="off" spellcheck="false" value="Asia/Tokyo" data-focused="true" aria-expanded="false" aria-autocomplete="list" class="react-aria-Input" data-focus-visible="true" aria-label="Source timezone when none is given" placeholder="Device timezone · Australia/Sydney"/>
+           - unexpected value "null"
+
+
+      426 |     await enterZone(page, "CST", label);
+      427 |     await input.fill("Asia/Tokyo");
+    > 428 |     await expect(input).toHaveAttribute("aria-controls", /.+/);
+          |                        ^
+      429 |     const suggestions = page.locator(
+      430 |       `[id="${await input.getAttribute("aria-controls")}"]`,
+      431 |     );
+        at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:428:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs/qa/ci-virtualized-zones-2026-10-05/controls/1-baseline/results/controls-hovering-timezone-df152-cit-selections-still-commit-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs/qa/ci-virtualized-zones-2026-10-05/controls/1-baseline/results/controls-hovering-timezone-df152-cit-selections-still-commit-firefox/error-context.md
+
+  1 failed
+    [firefox] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+  19 passed (33.1s)

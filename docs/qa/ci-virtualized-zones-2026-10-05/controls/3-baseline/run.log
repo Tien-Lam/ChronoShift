@@ -1,0 +1,59 @@
+(node:31988) Warning: The 'NO_COLO  ✓  2 [webkit] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (2.0s)
+  ✓  1 [firefox] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (2.7s)
+  ✓  5 [iphone-emulation] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (2.1s)
+  ✘  4 [chromium] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (30.0s)
+  ✘  3 [android-emulation] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (30.0s)
+
+
+  1) [chromium] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: hover: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[id="null"]').getByRole('option', { name: 'Osaka', exact: true })
+
+
+      441 |     // Leave any prior pointer position so this exercises a fresh hover event.
+      442 |     await page.mouse.move(0, 0);
+    > 443 |     await alias.hover();
+          |                ^
+      444 |     await expect(alias).toHaveAttribute("data-hovered", "true");
+      445 |     await input.press("Tab");
+      446 |     await expect(input).toHaveValue("Asia/Tokyo");
+        at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:443:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs/qa/ci-virtualized-zones-2026-10-05/controls/3-baseline/results/controls-hovering-timezone-df152-cit-selections-still-commit-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs/qa/ci-virtualized-zones-2026-10-05/controls/3-baseline/results/controls-hovering-timezone-df152-cit-selections-still-commit-chromium/error-context.md
+
+  2) [android-emulation] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: hover: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[id="null"]').getByRole('option', { name: 'Osaka', exact: true })
+
+
+      441 |     // Leave any prior pointer position so this exercises a fresh hover event.
+      442 |     await page.mouse.move(0, 0);
+    > 443 |     await alias.hover();
+          |                ^
+      444 |     await expect(alias).toHaveAttribute("data-hovered", "true");
+      445 |     await input.press("Tab");
+      446 |     await expect(input).toHaveValue("Asia/Tokyo");
+        at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:443:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs/qa/ci-virtualized-zones-2026-10-05/controls/3-baseline/results/controls-hovering-timezone-df152-cit-selections-still-commit-android-emulation/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs/qa/ci-virtualized-zones-2026-10-05/controls/3-baseline/results/controls-hovering-timezone-df152-cit-selections-still-commit-android-emulation/error-context.md
+
+  2 failed
+    [chromium] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+    [android-emulation] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+  3 passed (30.4s)

@@ -1,0 +1,234 @@
+diff --git a/e2e/controls.spec.ts b/e2e/controls.spec.ts
+index 0a61c6c..6afcf24 100644
+--- a/e2e/controls.spec.ts
++++ b/e2e/controls.spec.ts
+@@ -423,7 +423,16 @@ test("hovering timezone suggestions preserves typed values while explicit select
+       { exact: true },
+     );
+     const otherValue = await other.inputValue();
++    // Bring the field into view before either edit, including the setup value.
++    await input.scrollIntoViewIfNeeded();
++    await input.click();
++    await expect(input).toHaveAttribute("aria-expanded", "false");
+     await enterZone(page, "CST", label);
++    // Finish native ancestor scrolling while the popup is closed, before
++    // input-driven opening. A delayed focus scroll intentionally dismisses it.
++    await input.scrollIntoViewIfNeeded();
++    await input.click();
++    await expect(input).toHaveAttribute("aria-expanded", "false");
+     await input.fill("Asia/Tokyo");
+     await expect(input).toHaveAttribute("aria-controls", /.+/);
+     const suggestions = page.locator(
+diff --git a/web/src/components/Choices.tsx b/web/src/components/Choices.tsx
+index d92d280..3047272 100644
+--- a/web/src/components/Choices.tsx
++++ b/web/src/components/Choices.tsx
+@@ -8,8 +8,18 @@ import {
+   ListBoxItem,
+   Text,
+ } from "react-aria-components/Select";
+-import { ComboBox, Input } from "react-aria-components/ComboBox";
+-import { Group } from "react-aria-components/Group";
++import { Input, InputContext } from "react-aria-components/Input";
++import { ButtonContext } from "react-aria-components/Button";
++import { Group, GroupContext } from "react-aria-components/Group";
++import {
++  ListBoxContext,
++  ListStateContext,
++} from "react-aria-components/ListBox";
++import { PopoverContext } from "react-aria-components/Popover";
++import { OverlayTriggerStateContext } from "react-aria-components/Dialog";
++import { useComboBox } from "react-aria/useComboBox";
++import { useComboBoxState } from "react-stately/useComboBoxState";
++import { ZoneCollection } from "./ZoneCollection";
+ import { cityAliases, resolveCity, zoneIds, zoneName } from "../engine/zones";
+ import { diagnostic } from "../platform/diagnostics";
+ 
+@@ -151,6 +161,8 @@ const searchText = new Map(
+   ]),
+ );
+ const optionIds = new Set(timezoneOptions.map((option) => option.id));
++const timezoneCollection = new ZoneCollection(timezoneOptions);
++const popupClearContexts = [InputContext, ButtonContext, GroupContext];
+ 
+ export function ZoneChoice({
+   id,
+@@ -167,6 +179,11 @@ export function ZoneChoice({
+   invalid?: boolean;
+   triggerLabel: string;
+ }) {
++  const inputRef = useRef<HTMLInputElement>(null);
++  const buttonRef = useRef<HTMLButtonElement>(null);
++  const groupRef = useRef<HTMLDivElement>(null);
++  const listBoxRef = useRef<HTMLDivElement>(null);
++  const popoverRef = useRef<HTMLElement>(null);
+   const current = useRef(value);
+   current.current = value;
+   const commit = (next: string) => {
+@@ -175,58 +192,115 @@ export function ZoneChoice({
+       onChange(next);
+     }
+   };
++  const state = useComboBoxState({
++    collection: timezoneCollection,
++    inputValue: value,
++    onInputChange: commit,
++    value: optionIds.has(value) ? value : null,
++    onChange: (key) => {
++      if (key !== null) commit(String(key));
++    },
++    defaultFilter: (text, query) =>
++      (searchText.get(text) || normalize(text)).includes(normalize(query)),
++    allowsCustomValue: true,
++    allowsEmptyCollection: true,
++    isInvalid: invalid,
++    validationBehavior: "aria",
++  });
++  const { inputProps, buttonProps, listBoxProps, isInvalid } = useComboBox(
++    {
++      "aria-label": label,
++      inputRef,
++      buttonRef,
++      listBoxRef,
++      popoverRef,
++      allowsCustomValue: true,
++      validationBehavior: "aria",
++    },
++    state,
++  );
+   return (
+-    <ComboBox
+-      className="choice-combo"
+-      aria-label={label}
+-      inputValue={value}
+-      onInputChange={commit}
+-      value={optionIds.has(value) ? value : null}
+-      onChange={(key) => {
+-        if (key !== null) commit(String(key));
+-      }}
+-      defaultItems={timezoneOptions}
+-      defaultFilter={(text, query) =>
+-        (searchText.get(text) || normalize(text)).includes(normalize(query))
+-      }
+-      allowsCustomValue
+-      allowsEmptyCollection
+-      isInvalid={invalid}
+-      validationBehavior="aria"
+-    >
+-      <Group className="choice-control">
+-        <Input
+-          id={id}
+-          placeholder={placeholder}
+-          aria-describedby={describedBy}
+-          autoComplete="off"
+-          onFocus={() =>
+-            diagnostic("ui.zone-focus", {
+-              field: id === "target-zone" ? "target-zone" : "source-zone",
+-            })
+-          }
+-        />
+-        <Button
+-          className="choice-toggle"
+-          aria-label={triggerLabel}
+-          onPress={() =>
+-            diagnostic("ui.zone-open", {
+-              field: id === "target-zone" ? "target-zone" : "source-zone",
+-            })
+-          }
+-        >
+-          <Chevron />
+-        </Button>
+-      </Group>
+-      <Popover
+-        className="choice-popover"
+-        placement="bottom start"
+-        offset={8}
+-        containerPadding={12}
+-        isNonModal
++    <InputContext.Provider value={{ ...inputProps, ref: inputRef }}>
++      <ButtonContext.Provider
++        value={{ ...buttonProps, ref: buttonRef, isPressed: state.isOpen }}
+       >
+-        <ChoiceItems options={timezoneOptions} byValue />
+-      </Popover>
+-    </ComboBox>
++        <GroupContext.Provider value={{ ref: groupRef, isInvalid }}>
++          <OverlayTriggerStateContext.Provider value={state}>
++            <PopoverContext.Provider
++              value={{
++                ref: popoverRef,
++                triggerRef: groupRef,
++                scrollRef: listBoxRef,
++                placement: "bottom start",
++                isNonModal: true,
++                trigger: "ComboBox",
++                clearContexts: popupClearContexts,
++              }}
++            >
++              <ListBoxContext.Provider
++                value={{ ...listBoxProps, ref: listBoxRef }}
++              >
++                <ListStateContext.Provider value={state}>
++                  <div
++                    className="choice-combo"
++                    data-rac=""
++                    data-focused={state.isFocused || undefined}
++                    data-open={state.isOpen || undefined}
++                    data-invalid={isInvalid || undefined}
++                  >
++                    <Group className="choice-control">
++                      <Input
++                        id={id}
++                        placeholder={placeholder}
++                        aria-describedby={describedBy}
++                        autoComplete="off"
++                        onFocus={() =>
++                          diagnostic("ui.zone-focus", {
++                            field:
++                              id === "target-zone"
++                                ? "target-zone"
++                                : "source-zone",
++                          })
++                        }
++                      />
++                      <Button
++                        className="choice-toggle"
++                        aria-label={triggerLabel}
++                        onPress={() =>
++                          diagnostic("ui.zone-open", {
++                            field:
++                              id === "target-zone"
++                                ? "target-zone"
++                                : "source-zone",
++                          })
++                        }
++                      >
++                        <Chevron />
++                      </Button>
++                    </Group>
++                    <Popover
++                      className="choice-popover"
++                      placement="bottom start"
++                      offset={8}
++                      containerPadding={12}
++                      isNonModal
++                    >
++                      <ListBox
++                        className="choice-list"
++                        // Hover styling never changes the value committed by Tab.
++                        shouldFocusOnHover={false}
++                        renderEmptyState={() => (
++                          <div className="choice-empty">No matches</div>
++                        )}
++                      />
++                    </Popover>
++                  </div>
++                </ListStateContext.Provider>
++              </ListBoxContext.Provider>
++            </PopoverContext.Provider>
++          </OverlayTriggerStateContext.Provider>
++        </GroupContext.Provider>
++      </ButtonContext.Provider>
++    </InputContext.Provider>
+   );
+ }

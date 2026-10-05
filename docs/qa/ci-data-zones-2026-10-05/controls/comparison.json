@@ -1,0 +1,509 @@
+{
+  "analyzedAt": "2026-10-05T12:32:29.030Z",
+  "scope": "Local macOS ARM64 control-suite ABBA, 20 cases/five profiles, four workers, CI geometry/1x mobile pixels, normal motion, retries zero. Root pre/post inventories and all 14 main-origin HTTP assets match. Dedicated fixture requests are not all individually hashed. Initial candidate block excluded by predeclared plan. No Linux, whole-suite or publishing-pair saving established.",
+  "baselineMeanMs": 30980.5927705,
+  "candidateMeanMs": 30817.565124999997,
+  "savedMs": 163.0276455000021,
+  "percentSaved": 0.5262250684087572,
+  "baselineReportMeanMs": 30780.999,
+  "candidateReportMeanMs": 30624.7125,
+  "allIdentitiesEqual": true,
+  "runs": [
+    {
+      "block": "2-baseline",
+      "variant": "baseline",
+      "grep": null,
+      "startedAt": "2026-10-05T12:29:39.097Z",
+      "endedAt": "2026-10-05T12:30:10.086Z",
+      "elapsedMs": 30989.150458,
+      "exitCode": 0,
+      "before": {
+        "assets/geist-latin-variable-Dm3htQBi.woff2": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316",
+        "assets/index-B3d9YDa-.js": "764439adde23302a0e40ff2c221e8fe13055671a6285ac16d528344cf06befc9",
+        "assets/index-Bst_xchV.css": "8d8248b5671d0f98e2298e5ac449864a7fb21c7df9eba5c936dfa978ebd69e9f",
+        "assets/worker-C690IjaR.js": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+        "fonts/README.txt": "542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d",
+        "fonts/geist-OFL.txt": "cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952",
+        "icon-192.png": "cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754",
+        "icon-512.png": "b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7",
+        "icon.svg": "62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f",
+        "index.html": "70c39be8e8f9f5a2c942e3c23893d46c7d41edcecdabaddd9026b013604c5103",
+        "manifest.webmanifest": "a7fb22ee120b3f93e13db351b9da1d7de5745a8879f8c74e7bcc4aff4c094a85",
+        "release.json": "3d51e64d3589e3918264675f8c61066ac4102dd303bf898325abc48d6df516d2",
+        "sw.js": "2301b0b246a865e4f18e6a7249f9cfc7ac7f0d20f14ae4e1d9b9ae558fb7755a",
+        "third-party-notices.txt": "615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037"
+      },
+      "after": {
+        "assets/geist-latin-variable-Dm3htQBi.woff2": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316",
+        "assets/index-B3d9YDa-.js": "764439adde23302a0e40ff2c221e8fe13055671a6285ac16d528344cf06befc9",
+        "assets/index-Bst_xchV.css": "8d8248b5671d0f98e2298e5ac449864a7fb21c7df9eba5c936dfa978ebd69e9f",
+        "assets/worker-C690IjaR.js": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+        "fonts/README.txt": "542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d",
+        "fonts/geist-OFL.txt": "cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952",
+        "icon-192.png": "cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754",
+        "icon-512.png": "b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7",
+        "icon.svg": "62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f",
+        "index.html": "70c39be8e8f9f5a2c942e3c23893d46c7d41edcecdabaddd9026b013604c5103",
+        "manifest.webmanifest": "a7fb22ee120b3f93e13db351b9da1d7de5745a8879f8c74e7bcc4aff4c094a85",
+        "release.json": "3d51e64d3589e3918264675f8c61066ac4102dd303bf898325abc48d6df516d2",
+        "sw.js": "2301b0b246a865e4f18e6a7249f9cfc7ac7f0d20f14ae4e1d9b9ae558fb7755a",
+        "third-party-notices.txt": "615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037"
+      },
+      "reportDurationMs": 30789.966999999997,
+      "cases": [
+        {
+          "identity": "chromium|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 10206
+        },
+        {
+          "identity": "chromium|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 4142
+        },
+        {
+          "identity": "chromium|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 2705
+        },
+        {
+          "identity": "chromium|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 2040
+        },
+        {
+          "identity": "firefox|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 12255
+        },
+        {
+          "identity": "firefox|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 5210
+        },
+        {
+          "identity": "firefox|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 3782
+        },
+        {
+          "identity": "firefox|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 2326
+        },
+        {
+          "identity": "webkit|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 10815
+        },
+        {
+          "identity": "webkit|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 4302
+        },
+        {
+          "identity": "webkit|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 2773
+        },
+        {
+          "identity": "webkit|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 2141
+        },
+        {
+          "identity": "android-emulation|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 10176
+        },
+        {
+          "identity": "android-emulation|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 4106
+        },
+        {
+          "identity": "android-emulation|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 2684
+        },
+        {
+          "identity": "android-emulation|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 1884
+        },
+        {
+          "identity": "iphone-emulation|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 10905
+        },
+        {
+          "identity": "iphone-emulation|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 4347
+        },
+        {
+          "identity": "iphone-emulation|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 2771
+        },
+        {
+          "identity": "iphone-emulation|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 2098
+        }
+      ]
+    },
+    {
+      "block": "3-candidate",
+      "variant": "candidate",
+      "grep": null,
+      "startedAt": "2026-10-05T12:30:10.089Z",
+      "endedAt": "2026-10-05T12:30:40.598Z",
+      "elapsedMs": 30509.476792,
+      "exitCode": 0,
+      "before": {
+        "assets/geist-latin-variable-Dm3htQBi.woff2": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316",
+        "assets/index-B5lUMAkf.js": "be7ba3707d919f80207fa3dcba0e770cb0db6481cad0a5f17ea100bbc2b461ef",
+        "assets/index-Bst_xchV.css": "8d8248b5671d0f98e2298e5ac449864a7fb21c7df9eba5c936dfa978ebd69e9f",
+        "assets/worker-C690IjaR.js": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+        "fonts/README.txt": "542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d",
+        "fonts/geist-OFL.txt": "cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952",
+        "icon-192.png": "cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754",
+        "icon-512.png": "b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7",
+        "icon.svg": "62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f",
+        "index.html": "8ecbf3f56d0233135e885b3c051cf74ab8927a68ea0b6bc32fc604f230e1f32d",
+        "manifest.webmanifest": "a7fb22ee120b3f93e13db351b9da1d7de5745a8879f8c74e7bcc4aff4c094a85",
+        "release.json": "3d51e64d3589e3918264675f8c61066ac4102dd303bf898325abc48d6df516d2",
+        "sw.js": "28b563190abc19e1ff007a5101eb1d2969d0e003d9cc4784935cb56b2150fcd4",
+        "third-party-notices.txt": "615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037"
+      },
+      "after": {
+        "assets/geist-latin-variable-Dm3htQBi.woff2": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316",
+        "assets/index-B5lUMAkf.js": "be7ba3707d919f80207fa3dcba0e770cb0db6481cad0a5f17ea100bbc2b461ef",
+        "assets/index-Bst_xchV.css": "8d8248b5671d0f98e2298e5ac449864a7fb21c7df9eba5c936dfa978ebd69e9f",
+        "assets/worker-C690IjaR.js": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+        "fonts/README.txt": "542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d",
+        "fonts/geist-OFL.txt": "cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952",
+        "icon-192.png": "cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754",
+        "icon-512.png": "b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7",
+        "icon.svg": "62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f",
+        "index.html": "8ecbf3f56d0233135e885b3c051cf74ab8927a68ea0b6bc32fc604f230e1f32d",
+        "manifest.webmanifest": "a7fb22ee120b3f93e13db351b9da1d7de5745a8879f8c74e7bcc4aff4c094a85",
+        "release.json": "3d51e64d3589e3918264675f8c61066ac4102dd303bf898325abc48d6df516d2",
+        "sw.js": "28b563190abc19e1ff007a5101eb1d2969d0e003d9cc4784935cb56b2150fcd4",
+        "third-party-notices.txt": "615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037"
+      },
+      "reportDurationMs": 30316.935,
+      "cases": [
+        {
+          "identity": "chromium|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 10043
+        },
+        {
+          "identity": "chromium|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 4174
+        },
+        {
+          "identity": "chromium|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 2686
+        },
+        {
+          "identity": "chromium|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 1938
+        },
+        {
+          "identity": "firefox|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 11811
+        },
+        {
+          "identity": "firefox|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 5193
+        },
+        {
+          "identity": "firefox|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 3587
+        },
+        {
+          "identity": "firefox|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 2421
+        },
+        {
+          "identity": "webkit|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 10699
+        },
+        {
+          "identity": "webkit|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 4244
+        },
+        {
+          "identity": "webkit|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 2745
+        },
+        {
+          "identity": "webkit|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 2116
+        },
+        {
+          "identity": "android-emulation|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 10027
+        },
+        {
+          "identity": "android-emulation|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 4104
+        },
+        {
+          "identity": "android-emulation|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 2622
+        },
+        {
+          "identity": "android-emulation|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 1813
+        },
+        {
+          "identity": "iphone-emulation|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 10647
+        },
+        {
+          "identity": "iphone-emulation|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 4353
+        },
+        {
+          "identity": "iphone-emulation|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 2748
+        },
+        {
+          "identity": "iphone-emulation|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 2161
+        }
+      ]
+    },
+    {
+      "block": "4-candidate",
+      "variant": "candidate",
+      "grep": null,
+      "startedAt": "2026-10-05T12:30:40.601Z",
+      "endedAt": "2026-10-05T12:31:11.727Z",
+      "elapsedMs": 31125.653457999993,
+      "exitCode": 0,
+      "before": {
+        "assets/geist-latin-variable-Dm3htQBi.woff2": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316",
+        "assets/index-B5lUMAkf.js": "be7ba3707d919f80207fa3dcba0e770cb0db6481cad0a5f17ea100bbc2b461ef",
+        "assets/index-Bst_xchV.css": "8d8248b5671d0f98e2298e5ac449864a7fb21c7df9eba5c936dfa978ebd69e9f",
+        "assets/worker-C690IjaR.js": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+        "fonts/README.txt": "542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d",
+        "fonts/geist-OFL.txt": "cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952",
+        "icon-192.png": "cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754",
+        "icon-512.png": "b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7",
+        "icon.svg": "62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f",
+        "index.html": "8ecbf3f56d0233135e885b3c051cf74ab8927a68ea0b6bc32fc604f230e1f32d",
+        "manifest.webmanifest": "a7fb22ee120b3f93e13db351b9da1d7de5745a8879f8c74e7bcc4aff4c094a85",
+        "release.json": "3d51e64d3589e3918264675f8c61066ac4102dd303bf898325abc48d6df516d2",
+        "sw.js": "28b563190abc19e1ff007a5101eb1d2969d0e003d9cc4784935cb56b2150fcd4",
+        "third-party-notices.txt": "615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037"
+      },
+      "after": {
+        "assets/geist-latin-variable-Dm3htQBi.woff2": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316",
+        "assets/index-B5lUMAkf.js": "be7ba3707d919f80207fa3dcba0e770cb0db6481cad0a5f17ea100bbc2b461ef",
+        "assets/index-Bst_xchV.css": "8d8248b5671d0f98e2298e5ac449864a7fb21c7df9eba5c936dfa978ebd69e9f",
+        "assets/worker-C690IjaR.js": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+        "fonts/README.txt": "542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d",
+        "fonts/geist-OFL.txt": "cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952",
+        "icon-192.png": "cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754",
+        "icon-512.png": "b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7",
+        "icon.svg": "62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f",
+        "index.html": "8ecbf3f56d0233135e885b3c051cf74ab8927a68ea0b6bc32fc604f230e1f32d",
+        "manifest.webmanifest": "a7fb22ee120b3f93e13db351b9da1d7de5745a8879f8c74e7bcc4aff4c094a85",
+        "release.json": "3d51e64d3589e3918264675f8c61066ac4102dd303bf898325abc48d6df516d2",
+        "sw.js": "28b563190abc19e1ff007a5101eb1d2969d0e003d9cc4784935cb56b2150fcd4",
+        "third-party-notices.txt": "615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037"
+      },
+      "reportDurationMs": 30932.489999999998,
+      "cases": [
+        {
+          "identity": "chromium|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 10034
+        },
+        {
+          "identity": "chromium|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 4178
+        },
+        {
+          "identity": "chromium|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 2672
+        },
+        {
+          "identity": "chromium|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 2045
+        },
+        {
+          "identity": "firefox|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 11994
+        },
+        {
+          "identity": "firefox|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 5297
+        },
+        {
+          "identity": "firefox|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 3694
+        },
+        {
+          "identity": "firefox|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 2386
+        },
+        {
+          "identity": "webkit|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 10642
+        },
+        {
+          "identity": "webkit|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 4340
+        },
+        {
+          "identity": "webkit|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 2768
+        },
+        {
+          "identity": "webkit|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 2190
+        },
+        {
+          "identity": "android-emulation|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 10051
+        },
+        {
+          "identity": "android-emulation|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 4613
+        },
+        {
+          "identity": "android-emulation|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 2632
+        },
+        {
+          "identity": "android-emulation|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 1983
+        },
+        {
+          "identity": "iphone-emulation|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 10649
+        },
+        {
+          "identity": "iphone-emulation|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 4214
+        },
+        {
+          "identity": "iphone-emulation|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 2850
+        },
+        {
+          "identity": "iphone-emulation|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 2161
+        }
+      ]
+    },
+    {
+      "block": "5-baseline",
+      "variant": "baseline",
+      "grep": null,
+      "startedAt": "2026-10-05T12:31:11.730Z",
+      "endedAt": "2026-10-05T12:31:42.702Z",
+      "elapsedMs": 30972.035082999995,
+      "exitCode": 0,
+      "before": {
+        "assets/geist-latin-variable-Dm3htQBi.woff2": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316",
+        "assets/index-B3d9YDa-.js": "764439adde23302a0e40ff2c221e8fe13055671a6285ac16d528344cf06befc9",
+        "assets/index-Bst_xchV.css": "8d8248b5671d0f98e2298e5ac449864a7fb21c7df9eba5c936dfa978ebd69e9f",
+        "assets/worker-C690IjaR.js": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+        "fonts/README.txt": "542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d",
+        "fonts/geist-OFL.txt": "cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952",
+        "icon-192.png": "cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754",
+        "icon-512.png": "b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7",
+        "icon.svg": "62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f",
+        "index.html": "70c39be8e8f9f5a2c942e3c23893d46c7d41edcecdabaddd9026b013604c5103",
+        "manifest.webmanifest": "a7fb22ee120b3f93e13db351b9da1d7de5745a8879f8c74e7bcc4aff4c094a85",
+        "release.json": "3d51e64d3589e3918264675f8c61066ac4102dd303bf898325abc48d6df516d2",
+        "sw.js": "2301b0b246a865e4f18e6a7249f9cfc7ac7f0d20f14ae4e1d9b9ae558fb7755a",
+        "third-party-notices.txt": "615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037"
+      },
+      "after": {
+        "assets/geist-latin-variable-Dm3htQBi.woff2": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316",
+        "assets/index-B3d9YDa-.js": "764439adde23302a0e40ff2c221e8fe13055671a6285ac16d528344cf06befc9",
+        "assets/index-Bst_xchV.css": "8d8248b5671d0f98e2298e5ac449864a7fb21c7df9eba5c936dfa978ebd69e9f",
+        "assets/worker-C690IjaR.js": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704",
+        "fonts/README.txt": "542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d",
+        "fonts/geist-OFL.txt": "cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952",
+        "icon-192.png": "cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754",
+        "icon-512.png": "b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7",
+        "icon.svg": "62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f",
+        "index.html": "70c39be8e8f9f5a2c942e3c23893d46c7d41edcecdabaddd9026b013604c5103",
+        "manifest.webmanifest": "a7fb22ee120b3f93e13db351b9da1d7de5745a8879f8c74e7bcc4aff4c094a85",
+        "release.json": "3d51e64d3589e3918264675f8c61066ac4102dd303bf898325abc48d6df516d2",
+        "sw.js": "2301b0b246a865e4f18e6a7249f9cfc7ac7f0d20f14ae4e1d9b9ae558fb7755a",
+        "third-party-notices.txt": "615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037"
+      },
+      "reportDurationMs": 30772.031000000003,
+      "cases": [
+        {
+          "identity": "chromium|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 10201
+        },
+        {
+          "identity": "chromium|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 4181
+        },
+        {
+          "identity": "chromium|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 2709
+        },
+        {
+          "identity": "chromium|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 2047
+        },
+        {
+          "identity": "firefox|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 12253
+        },
+        {
+          "identity": "firefox|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 5247
+        },
+        {
+          "identity": "firefox|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 3731
+        },
+        {
+          "identity": "firefox|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 2456
+        },
+        {
+          "identity": "webkit|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 10666
+        },
+        {
+          "identity": "webkit|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 4338
+        },
+        {
+          "identity": "webkit|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 2797
+        },
+        {
+          "identity": "webkit|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 2054
+        },
+        {
+          "identity": "android-emulation|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 10229
+        },
+        {
+          "identity": "android-emulation|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 4106
+        },
+        {
+          "identity": "android-emulation|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 2683
+        },
+        {
+          "identity": "android-emulation|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 1850
+        },
+        {
+          "identity": "iphone-emulation|controls.spec.ts|controls.spec.ts|themed choices align and their opened menus fit every breakpoint without losing work",
+          "durationMs": 10854
+        },
+        {
+          "identity": "iphone-emulation|controls.spec.ts|controls.spec.ts|choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "durationMs": 4292
+        },
+        {
+          "identity": "iphone-emulation|controls.spec.ts|controls.spec.ts|timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "durationMs": 2767
+        },
+        {
+          "identity": "iphone-emulation|controls.spec.ts|controls.spec.ts|hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "durationMs": 2159
+        }
+      ]
+    }
+  ]
+}

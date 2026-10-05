@@ -1,0 +1,142 @@
+{
+  "startedAt": "2026-10-05T11:59:01.052Z",
+  "endedAt": "2026-10-05T11:59:29.426Z",
+  "environment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "bun": "1.4.0",
+    "chromium": "153.0.8010.12",
+    "firefox": "155.0",
+    "webkit": "26.6"
+  },
+  "cases": [
+    {
+      "engine": "chromium",
+      "version": "baseline",
+      "field": "target-zone",
+      "pass": false,
+      "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 2500ms exceeded while waiting on the predicate",
+      "pageErrors": [],
+      "csp": [],
+      "console": []
+    },
+    {
+      "engine": "chromium",
+      "version": "baseline",
+      "field": "source-zone",
+      "pass": false,
+      "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 2500ms exceeded while waiting on the predicate",
+      "pageErrors": [],
+      "csp": [],
+      "console": []
+    },
+    {
+      "engine": "chromium",
+      "version": "candidate",
+      "field": "target-zone",
+      "pass": false,
+      "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 2500ms exceeded while waiting on the predicate",
+      "pageErrors": [],
+      "csp": [],
+      "console": []
+    },
+    {
+      "engine": "chromium",
+      "version": "candidate",
+      "field": "source-zone",
+      "pass": false,
+      "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 2500ms exceeded while waiting on the predicate",
+      "pageErrors": [],
+      "csp": [],
+      "console": []
+    },
+    {
+      "engine": "firefox",
+      "version": "baseline",
+      "field": "target-zone",
+      "pass": true,
+      "pageErrors": [],
+      "csp": [],
+      "console": []
+    },
+    {
+      "engine": "firefox",
+      "version": "baseline",
+      "field": "source-zone",
+      "pass": true,
+      "pageErrors": [],
+      "csp": [],
+      "console": []
+    },
+    {
+      "engine": "firefox",
+      "version": "candidate",
+      "field": "target-zone",
+      "pass": true,
+      "pageErrors": [],
+      "csp": [],
+      "console": [
+        {
+          "type": "warning",
+          "text": "[JavaScript Warning: \"This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://firefox-source-docs.mozilla.org/performance/scroll-linked_effects.html for further details and to join the discussion on related tools and features!\" {file: \"http://127.0.0.1:4324/\" line: 0}]",
+          "at": "2026-10-05T11:59:15.042Z"
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "version": "candidate",
+      "field": "source-zone",
+      "pass": true,
+      "pageErrors": [],
+      "csp": [],
+      "console": [
+        {
+          "type": "warning",
+          "text": "[JavaScript Warning: \"This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://firefox-source-docs.mozilla.org/performance/scroll-linked_effects.html for further details and to join the discussion on related tools and features!\" {file: \"http://127.0.0.1:4324/\" line: 0}]",
+          "at": "2026-10-05T11:59:17.565Z"
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "version": "baseline",
+      "field": "target-zone",
+      "pass": false,
+      "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 2500ms exceeded while waiting on the predicate",
+      "pageErrors": [],
+      "csp": [],
+      "console": []
+    },
+    {
+      "engine": "webkit",
+      "version": "baseline",
+      "field": "source-zone",
+      "pass": false,
+      "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 2500ms exceeded while waiting on the predicate",
+      "pageErrors": [],
+      "csp": [],
+      "console": []
+    },
+    {
+      "engine": "webkit",
+      "version": "candidate",
+      "field": "target-zone",
+      "pass": false,
+      "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 2500ms exceeded while waiting on the predicate",
+      "pageErrors": [],
+      "csp": [],
+      "console": []
+    },
+    {
+      "engine": "webkit",
+      "version": "candidate",
+      "field": "source-zone",
+      "pass": false,
+      "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 2500ms exceeded while waiting on the predicate",
+      "pageErrors": [],
+      "csp": [],
+      "console": []
+    }
+  ]
+}

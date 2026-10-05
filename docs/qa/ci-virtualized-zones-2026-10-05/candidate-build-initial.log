@@ -1,0 +1,7 @@
+$ bun run typecheck && bun scripts/third-party-notices.ts && bunx --bun vite build && bun scripts/build-offline.ts
+$ bunx --bun tsc --noEmit
+error: Cannot find module '../lib/tsc.js' from '/private/tmp/chronoshift-virtualized-zones/candidate-runtime/node_modules/.bin/tsc'
+
+Bun v1.4.0 (macOS arm64)
+error: script "typecheck" exited with code 1
+error: script "build" exited with code 1

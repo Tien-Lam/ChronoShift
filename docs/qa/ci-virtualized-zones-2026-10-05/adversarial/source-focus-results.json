@@ -1,0 +1,1697 @@
+{
+  "start": "2026-10-05T12:01:12.166Z",
+  "end": "2026-10-05T12:01:30.439Z",
+  "records": [
+    {
+      "build": "baseline",
+      "origin": "http://127.0.0.1:4321",
+      "profile": "firefox",
+      "browser": "155.0",
+      "preparation": "original-fill",
+      "start": "2026-10-05T12:01:12.490Z",
+      "status": "fail",
+      "error": "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator: locator('#source-zone')\nExpected pattern: /.+/\nReceived string:  \"\"\nTimeout: 5000ms\n\nCall log:\n  - Expect \"toHaveAttribute\" locator('#source-zone') with timeout 5000ms\n  - waiting for locator('#source-zone')\n    14 × locator resolved to <input data-rac=\"\" type=\"text\" tabindex=\"0\" role=\"combobox\" id=\"source-zone\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" value=\"Asia/Tokyo\" data-focused=\"true\" aria-expanded=\"false\" aria-autocomplete=\"list\" class=\"react-aria-Input\" data-focus-visible=\"true\" aria-label=\"Source timezone when none is given\" placeholder=\"Device timezone · Australia/Sydney\"/>\n       - unexpected value \"null\"\n",
+      "html": "<div data-live-announcer=\"true\" style=\"border: 0px; clip: rect(0px, 0px, 0px, 0px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;\"><div role=\"log\" aria-live=\"assertive\" aria-relevant=\"additions\"><div>1 option available.</div><div>UTC, selected</div><div>UTC, selected</div><div>1 option available.</div><div>UTC, selected</div><div>0 options available.</div><div>Asia/Tokyo, selected</div><div>2 options available.</div><div>UTC, selected</div><div>0 options available.</div><div>Asia/Tokyo, selected</div><div>2 options available.</div><div>Asia/Tokyo, selected</div></div><div role=\"log\" aria-live=\"polite\" aria-relevant=\"additions\"></div></div>\n    <div id=\"root\"><header class=\"topbar\"><a class=\"brand\" href=\"/\" aria-label=\"ChronoShift home\"><span class=\"brand-clock\" aria-hidden=\"true\"></span>ChronoShift</a><div class=\"header-tools\"><details class=\"appearance\"><summary aria-label=\"Appearance\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"8\"></circle><path d=\"M12 4a8 8 0 0 0 0 16Z\" fill=\"currentColor\" stroke=\"none\"></path></svg><span class=\"appearance-label\">Appearance</span></summary><div class=\"appearance-fields\"><label for=\"theme\">Theme</label><template></template><div class=\"choice-select\" data-rac=\"\"><button id=\"theme\" data-value=\"dark\" class=\"choice-trigger\" data-rac=\"\" type=\"button\" tabindex=\"0\" data-react-aria-pressable=\"true\" aria-label=\"Theme\" aria-labelledby=\"react-aria9729187212-_r_7_ theme\" aria-haspopup=\"listbox\" aria-expanded=\"false\"><span id=\"react-aria9729187212-_r_7_\" class=\"react-aria-SelectValue\" data-rac=\"\">Dark</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg></button><div style=\"border: 0px; clip: rect(0px, 0px, 0px, 0px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; width: 1px; white-space: nowrap; top: 0px; left: 0px;\" aria-hidden=\"true\" data-react-aria-prevent-focus=\"true\" data-a11y-ignore=\"aria-hidden-focus\" data-testid=\"hidden-select-container\"><label><select tabindex=\"-1\" title=\"\"><option value=\"\" label=\"&nbsp;\">&nbsp;</option><option value=\"dark\">Dark</option><option value=\"light\">Light</option><option value=\"system\">System</option></select></label></div></div></div></details></div></header><main data-offline-ready=\"true\"><h1 class=\"sr-only\">Time zone converter</h1><div class=\"workspace has-results\"><section class=\"input-panel\" aria-labelledby=\"input-title\"><div class=\"panel-heading\"><h2 id=\"input-title\">Time zone converter</h2></div><label for=\"message\">Message with a date or time</label><textarea id=\"message\" placeholder=\"e.g. Let's meet tomorrow at 3pm PT\" spellcheck=\"false\" aria-describedby=\"input-help\">April 9, 2026 3pm UTC</textarea><div class=\"input-tools\"><div><button type=\"button\" class=\"text-button\">Paste</button><button type=\"button\" class=\"text-button muted\">Clear</button></div><span id=\"input-help\" class=\"limit\">Converts as you type</span></div><div class=\"target-field\"><label for=\"target-zone\">Convert to</label><div class=\"conversion-controls\"><template><div class=\"choice-control\" data-rac=\"\" role=\"group\"></div></template><div class=\"choice-combo\" data-rac=\"\"><div class=\"choice-control\" data-rac=\"\" role=\"group\"><input aria-label=\"Convert to\" aria-describedby=\"target-zone-help\" aria-autocomplete=\"list\" autocomplete=\"off\" placeholder=\"Your timezone · Sydney\" autocorrect=\"off\" spellcheck=\"false\" tabindex=\"0\" id=\"target-zone\" role=\"combobox\" aria-expanded=\"false\" class=\"react-aria-Input\" data-rac=\"\" type=\"text\" value=\"Asia/Tokyo\"><button id=\"react-aria9729187212-_r_a_\" class=\"choice-toggle\" data-rac=\"\" type=\"button\" tabindex=\"-1\" data-react-aria-pressable=\"true\" aria-label=\"Show target timezones\" aria-haspopup=\"listbox\" aria-expanded=\"false\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg></button></div></div></div><span class=\"field-note\" id=\"target-zone-help\">Tokyo · Asia/Tokyo</span></div><details class=\"options\" open=\"\"><summary>More options</summary><div class=\"option-fields\"><label for=\"source-zone\">Source timezone when none is given</label><template><div class=\"choice-control\" data-rac=\"\" role=\"group\"></div></template><div class=\"choice-combo\" data-rac=\"\" data-focused=\"true\"><div class=\"choice-control\" data-rac=\"\" role=\"group\" data-focus-within=\"true\" data-focus-visible=\"true\"><input aria-label=\"Source timezone when none is given\" aria-autocomplete=\"list\" autocomplete=\"off\" placeholder=\"Device timezone · Australia/Sydney\" autocorrect=\"off\" spellcheck=\"false\" tabindex=\"0\" id=\"source-zone\" role=\"combobox\" aria-expanded=\"false\" class=\"react-aria-Input\" data-rac=\"\" type=\"text\" value=\"Asia/Tokyo\" data-focused=\"true\" data-focus-visible=\"true\"><button id=\"react-aria9729187212-_r_n_\" class=\"choice-toggle\" data-rac=\"\" type=\"button\" tabindex=\"-1\" data-react-aria-pressable=\"true\" aria-label=\"Show source timezones\" aria-haspopup=\"listbox\" aria-expanded=\"false\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg></button></div></div><div class=\"date-choice\" data-rac=\"\"><span class=\"date-choice-label\" id=\"react-aria9729187212-_r_18_\">Reference date for this message</span><div data-react-aria-pressable=\"true\" id=\"reference-date\" aria-labelledby=\"react-aria9729187212-_r_18_\" role=\"group\" class=\"date-choice-control\" data-rac=\"\"><div id=\"react-aria9729187212-_r_16_\" role=\"presentation\" data-react-aria-pressable=\"true\" style=\"unicode-bidi: isolate;\" class=\"date-input choice-trigger\" data-rac=\"\"><span role=\"spinbutton\" aria-valuetext=\"Empty\" aria-valuemin=\"1\" aria-valuemax=\"31\" id=\"react-aria9729187212-_r_1h_\" aria-label=\"day, \" aria-labelledby=\"react-aria9729187212-_r_1h_ react-aria9729187212-_r_18_\" data-placeholder=\"true\" contenteditable=\"true\" spellcheck=\"false\" autocorrect=\"off\" enterkeyhint=\"next\" inputmode=\"numeric\" tabindex=\"0\" style=\"caret-color: transparent;\" class=\"date-choice-segment\" data-rac=\"\" data-type=\"day\">dd</span><span aria-hidden=\"true\" class=\"date-choice-segment\" data-rac=\"\" data-type=\"literal\">/</span><span role=\"spinbutton\" aria-valuetext=\"Empty\" aria-valuemin=\"1\" aria-valuemax=\"12\" id=\"react-aria9729187212-_r_1l_\" aria-label=\"month, \" aria-labelledby=\"react-aria9729187212-_r_1l_ react-aria9729187212-_r_18_\" data-placeholder=\"true\" contenteditable=\"true\" spellcheck=\"false\" autocorrect=\"off\" enterkeyhint=\"next\" inputmode=\"numeric\" tabindex=\"0\" style=\"caret-color: transparent;\" class=\"date-choice-segment\" data-rac=\"\" data-type=\"month\">mm</span><span aria-hidden=\"true\" class=\"date-choice-segment\" data-rac=\"\" data-type=\"literal\">/</span><span role=\"spinbutton\" aria-valuetext=\"Empty\" aria-valuemin=\"1\" aria-valuemax=\"9999\" id=\"react-aria9729187212-_r_1p_\" aria-label=\"year, \" aria-labelledby=\"react-aria9729187212-_r_1p_ react-aria9729187212-_r_18_\" data-placeholder=\"true\" contenteditable=\"true\" spellcheck=\"false\" autocorrect=\"off\" enterkeyhint=\"next\" inputmode=\"numeric\" tabindex=\"0\" style=\"caret-color: transparent;\" class=\"date-choice-segment\" data-rac=\"\" data-type=\"year\">yyyy</span></div><input hidden=\"\" class=\"\" data-rac=\"\" type=\"text\" value=\"\" title=\"\"><button id=\"react-aria9729187212-_r_14_\" class=\"date-choice-calendar-button\" data-rac=\"\" type=\"button\" tabindex=\"0\" data-react-aria-pressable=\"true\" aria-label=\"Choose reference date\" aria-labelledby=\"react-aria9729187212-_r_14_ react-aria9729187212-_r_18_\" aria-haspopup=\"dialog\" aria-expanded=\"false\"><svg viewBox=\"0 0 20 20\" width=\"18\" height=\"18\" aria-hidden=\"true\"><rect x=\"3\" y=\"4.5\" width=\"14\" height=\"13\" rx=\"2\"></rect><path d=\"M6.5 2.5v4M13.5 2.5v4M3 8.5h14\"></path></svg></button></div></div><div style=\"border: 0px; clip: rect(0px, 0px, 0px, 0px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; width: 1px; white-space: nowrap; top: 0px; left: 0px;\" aria-hidden=\"true\" data-react-aria-prevent-focus=\"true\" data-a11y-ignore=\"aria-hidden-focus\" data-testid=\"hidden-dateinput-container\"><input tabindex=\"-1\" form=\"\" step=\"60\" type=\"date\" value=\"\"></div><span class=\"field-note\">Leave empty to use today. Useful for an older message.</span><label for=\"date-order\">Numeric dates</label><template></template><div class=\"choice-select\" data-rac=\"\"><button id=\"date-order\" data-value=\"mdy\" class=\"choice-trigger\" data-rac=\"\" type=\"button\" tabindex=\"0\" data-react-aria-pressable=\"true\" aria-label=\"Numeric dates\" aria-labelledby=\"react-aria9729187212-_r_24_ date-order\" aria-haspopup=\"listbox\" aria-expanded=\"false\"><span id=\"react-aria9729187212-_r_24_\" class=\"react-aria-SelectValue\" data-rac=\"\">Month / day (04/09 = April 9)</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg></button><div style=\"border: 0px; clip: rect(0px, 0px, 0px, 0px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; width: 1px; white-space: nowrap; top: 0px; left: 0px;\" aria-hidden=\"true\" data-react-aria-prevent-focus=\"true\" data-a11y-ignore=\"aria-hidden-focus\" data-testid=\"hidden-select-container\"><label><select tabindex=\"-1\" title=\"\"><option value=\"\" label=\"&nbsp;\">&nbsp;</option><option value=\"mdy\">Month / day (04/09 = April 9)</option><option value=\"dmy\">Day / month (04/09 = 4 September)</option></select></label></div></div><label for=\"time-format\">Time display</label><template></template><div class=\"choice-select\" data-rac=\"\"><button id=\"time-format\" data-value=\"auto\" class=\"choice-trigger\" data-rac=\"\" type=\"button\" tabindex=\"0\" data-react-aria-pressable=\"true\" aria-label=\"Time display\" aria-labelledby=\"react-aria9729187212-_r_2e_ time-format\" aria-haspopup=\"listbox\" aria-expanded=\"false\"><span id=\"react-aria9729187212-_r_2e_\" class=\"react-aria-SelectValue\" data-rac=\"\">Use my device format</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg></button><div style=\"border: 0px; clip: rect(0px, 0px, 0px, 0px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; width: 1px; white-space: nowrap; top: 0px; left: 0px;\" aria-hidden=\"true\" data-react-aria-prevent-focus=\"true\" data-a11y-ignore=\"aria-hidden-focus\" data-testid=\"hidden-select-container\"><label><select tabindex=\"-1\" title=\"\"><option value=\"\" label=\"&nbsp;\">&nbsp;</option><option value=\"auto\">Use my device format</option><option value=\"12\">12-hour (3:00 PM)</option><option value=\"24\">24-hour (15:00)</option></select></label></div></div><label class=\"diagnostic-toggle\"><input type=\"checkbox\"><span>Enable detailed logs</span></label><span class=\"field-note\">Console only. Message text excluded.</span><button type=\"button\" class=\"text-button\">Reset preferences</button></div></details></section><section class=\"result-panel\" aria-labelledby=\"result-title\" aria-busy=\"false\"><div class=\"panel-heading result-heading\"><h2 id=\"result-title\">Converted time</h2><span class=\"live-indicator\" data-state=\"ready\"><span class=\"live-dots\" aria-hidden=\"true\"><span></span><span></span><span></span></span>Live</span></div><div role=\"status\" class=\"sr-only\">1 time interpretations found</div><article class=\"result-group\"><div class=\"result\"><div class=\"result-top\"><div class=\"result-output\"><div class=\"hero-time\">12:00 am</div><p class=\"result-date\">Fri, 10 Apr 2026</p><p class=\"result-zone\">UTC+09:00 Tokyo<span class=\"day-shift\">+1 day</span></p></div><button type=\"button\" class=\"copy-button\" aria-label=\"Copy UTC\">Copy</button></div><div class=\"result-context\"><p>Source: <span class=\"source-label\">UTC</span></p></div></div><div class=\"result-source\"><p>Original: “April 9, 2026 3pm UTC”</p></div></article></section></div><div role=\"status\" class=\"notice\"></div><footer><p>Your text stays on this device.</p><button type=\"button\" class=\"text-button\">Keep ChronoShift handy</button></footer></main></div>\n  \n\n",
+      "events": [
+        {
+          "at": 237,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 245,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 247,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 269,
+          "event": "focusin",
+          "id": "react-aria9729187212-_r_1h_",
+          "scrollY": 342,
+          "expanded": "true",
+          "controls": true
+        },
+        {
+          "at": 273,
+          "event": "scroll",
+          "scrollY": 342,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 280,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 342,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 281,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 342,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 298,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 342,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 309,
+          "event": "focusin",
+          "id": "message",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 310,
+          "event": "input",
+          "id": "message",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 318,
+          "event": "scroll",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 321,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 323,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 336,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 341,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 343,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 423,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 455,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 457,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 467,
+          "event": "focusin",
+          "id": "react-aria9729187212-_r_1h_",
+          "scrollY": 340,
+          "expanded": "true",
+          "controls": true
+        },
+        {
+          "at": 472,
+          "event": "scroll",
+          "scrollY": 340,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 475,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 340,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 479,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 340,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 487,
+          "event": "scroll",
+          "scrollY": 339,
+          "expanded": "true",
+          "controls": true
+        },
+        {
+          "at": 490,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 339,
+          "expanded": "false",
+          "controls": false
+        }
+      ],
+      "pageErrors": [],
+      "end": "2026-10-05T12:01:18.375Z"
+    },
+    {
+      "build": "baseline",
+      "origin": "http://127.0.0.1:4321",
+      "profile": "firefox",
+      "browser": "155.0",
+      "preparation": "native-source-focus",
+      "start": "2026-10-05T12:01:18.382Z",
+      "status": "pass",
+      "events": [
+        {
+          "at": 164,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 170,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 172,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 196,
+          "event": "focusin",
+          "id": "react-aria5778762557-_r_1h_",
+          "scrollY": 341,
+          "expanded": "true",
+          "controls": true
+        },
+        {
+          "at": 205,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 341,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 206,
+          "event": "scroll",
+          "scrollY": 341,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 208,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 341,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 221,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 341,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 227,
+          "event": "focusin",
+          "id": "message",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 227,
+          "event": "scroll",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 229,
+          "event": "input",
+          "id": "message",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 331,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 337,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 348,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 425,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 431,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 513,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 675,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 681,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 692,
+          "event": "focusin",
+          "id": "react-aria5778762557-_r_1h_",
+          "scrollY": 340,
+          "expanded": "true",
+          "controls": true
+        },
+        {
+          "at": 694,
+          "event": "scroll",
+          "scrollY": 340,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 709,
+          "event": "scroll",
+          "scrollY": 339,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 778,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 339,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 784,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 339,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 865,
+          "event": "focusin",
+          "id": "react-aria5778762557-_r_1h_",
+          "scrollY": 339,
+          "expanded": "true",
+          "controls": true
+        }
+      ],
+      "pageErrors": [],
+      "end": "2026-10-05T12:01:19.367Z"
+    },
+    {
+      "build": "baseline",
+      "origin": "http://127.0.0.1:4321",
+      "profile": "iphone",
+      "browser": "26.6",
+      "preparation": "original-fill",
+      "start": "2026-10-05T12:01:19.668Z",
+      "status": "pass",
+      "events": [
+        {
+          "at": 141,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 148,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 151,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 173,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 175,
+          "event": "focusin",
+          "id": "react-aria6499591143-_r_1h_",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 180,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 181,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 196,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 197,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 202,
+          "event": "focusin",
+          "id": "message",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 203,
+          "event": "input",
+          "id": "message",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 210,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 212,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 227,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 229,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 231,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 307,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 336,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 338,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 348,
+          "event": "focusin",
+          "id": "react-aria6499591143-_r_1h_",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 353,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 355,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 420,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 421,
+          "event": "focusin",
+          "id": "react-aria6499591143-_r_1h_",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        }
+      ],
+      "pageErrors": [],
+      "end": "2026-10-05T12:01:20.357Z"
+    },
+    {
+      "build": "baseline",
+      "origin": "http://127.0.0.1:4321",
+      "profile": "iphone",
+      "browser": "26.6",
+      "preparation": "native-source-focus",
+      "start": "2026-10-05T12:01:20.360Z",
+      "status": "pass",
+      "events": [
+        {
+          "at": 114,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 118,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 121,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 146,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 148,
+          "event": "focusin",
+          "id": "react-aria3304214510-_r_1h_",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 153,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 155,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 174,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 176,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 183,
+          "event": "focusin",
+          "id": "message",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 184,
+          "event": "input",
+          "id": "message",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 261,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 267,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 279,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 343,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 348,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 430,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 431,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 580,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 585,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 598,
+          "event": "focusin",
+          "id": "react-aria3304214510-_r_1h_",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 662,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 667,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 746,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 747,
+          "event": "focusin",
+          "id": "react-aria3304214510-_r_1h_",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        }
+      ],
+      "pageErrors": [],
+      "end": "2026-10-05T12:01:21.246Z"
+    },
+    {
+      "build": "candidate",
+      "origin": "http://127.0.0.1:4322",
+      "profile": "firefox",
+      "browser": "155.0",
+      "preparation": "original-fill",
+      "start": "2026-10-05T12:01:21.614Z",
+      "status": "fail",
+      "error": "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator: locator('#source-zone')\nExpected pattern: /.+/\nReceived string:  \"\"\nTimeout: 5000ms\n\nCall log:\n  - Expect \"toHaveAttribute\" locator('#source-zone') with timeout 5000ms\n  - waiting for locator('#source-zone')\n    14 × locator resolved to <input data-rac=\"\" type=\"text\" tabindex=\"0\" role=\"combobox\" id=\"source-zone\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" value=\"Asia/Tokyo\" data-focused=\"true\" aria-expanded=\"false\" aria-autocomplete=\"list\" class=\"react-aria-Input\" data-focus-visible=\"true\" aria-label=\"Source timezone when none is given\" placeholder=\"Device timezone · Australia/Sydney\"/>\n       - unexpected value \"null\"\n",
+      "html": "<div data-live-announcer=\"true\" style=\"border: 0px; clip: rect(0px, 0px, 0px, 0px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;\"><div role=\"log\" aria-live=\"assertive\" aria-relevant=\"additions\"><div>1 option available.</div><div>UTC, selected</div><div>UTC, selected</div><div>1 option available.</div><div>UTC, selected</div><div>0 options available.</div><div>Asia/Tokyo, selected</div><div>2 options available.</div><div>UTC, selected</div><div>0 options available.</div><div>Asia/Tokyo, selected</div><div>2 options available.</div><div>Asia/Tokyo, selected</div></div><div role=\"log\" aria-live=\"polite\" aria-relevant=\"additions\"></div></div>\n    <div id=\"root\"><header class=\"topbar\"><a class=\"brand\" href=\"/\" aria-label=\"ChronoShift home\"><span class=\"brand-clock\" aria-hidden=\"true\"></span>ChronoShift</a><div class=\"header-tools\"><details class=\"appearance\"><summary aria-label=\"Appearance\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"8\"></circle><path d=\"M12 4a8 8 0 0 0 0 16Z\" fill=\"currentColor\" stroke=\"none\"></path></svg><span class=\"appearance-label\">Appearance</span></summary><div class=\"appearance-fields\"><label for=\"theme\">Theme</label><template></template><div class=\"choice-select\" data-rac=\"\"><button id=\"theme\" data-value=\"dark\" class=\"choice-trigger\" data-rac=\"\" type=\"button\" tabindex=\"0\" data-react-aria-pressable=\"true\" aria-label=\"Theme\" aria-labelledby=\"react-aria9223025286-_r_7_ theme\" aria-haspopup=\"listbox\" aria-expanded=\"false\"><span id=\"react-aria9223025286-_r_7_\" class=\"react-aria-SelectValue\" data-rac=\"\">Dark</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg></button><div style=\"border: 0px; clip: rect(0px, 0px, 0px, 0px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; width: 1px; white-space: nowrap; top: 0px; left: 0px;\" aria-hidden=\"true\" data-react-aria-prevent-focus=\"true\" data-a11y-ignore=\"aria-hidden-focus\" data-testid=\"hidden-select-container\"><label><select tabindex=\"-1\" title=\"\"><option value=\"\" label=\"&nbsp;\">&nbsp;</option><option value=\"dark\">Dark</option><option value=\"light\">Light</option><option value=\"system\">System</option></select></label></div></div></div></details></div></header><main data-offline-ready=\"true\"><h1 class=\"sr-only\">Time zone converter</h1><div class=\"workspace has-results\"><section class=\"input-panel\" aria-labelledby=\"input-title\"><div class=\"panel-heading\"><h2 id=\"input-title\">Time zone converter</h2></div><label for=\"message\">Message with a date or time</label><textarea id=\"message\" placeholder=\"e.g. Let's meet tomorrow at 3pm PT\" spellcheck=\"false\" aria-describedby=\"input-help\">April 9, 2026 3pm UTC</textarea><div class=\"input-tools\"><div><button type=\"button\" class=\"text-button\">Paste</button><button type=\"button\" class=\"text-button muted\">Clear</button></div><span id=\"input-help\" class=\"limit\">Converts as you type</span></div><div class=\"target-field\"><label for=\"target-zone\">Convert to</label><div class=\"conversion-controls\"><template><div class=\"choice-control\" data-rac=\"\" role=\"group\"></div></template><div class=\"choice-combo\" data-rac=\"\"><div class=\"choice-control\" data-rac=\"\" role=\"group\"><input aria-label=\"Convert to\" aria-describedby=\"target-zone-help\" aria-autocomplete=\"list\" autocomplete=\"off\" placeholder=\"Your timezone · Sydney\" autocorrect=\"off\" spellcheck=\"false\" tabindex=\"0\" id=\"target-zone\" role=\"combobox\" aria-expanded=\"false\" class=\"react-aria-Input\" data-rac=\"\" type=\"text\" value=\"Asia/Tokyo\"><button id=\"react-aria9223025286-_r_a_\" class=\"choice-toggle\" data-rac=\"\" type=\"button\" tabindex=\"-1\" data-react-aria-pressable=\"true\" aria-label=\"Show target timezones\" aria-haspopup=\"listbox\" aria-expanded=\"false\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg></button></div></div></div><span class=\"field-note\" id=\"target-zone-help\">Tokyo · Asia/Tokyo</span></div><details class=\"options\" open=\"\"><summary>More options</summary><div class=\"option-fields\"><label for=\"source-zone\">Source timezone when none is given</label><template><div class=\"choice-control\" data-rac=\"\" role=\"group\"></div></template><div class=\"choice-combo\" data-rac=\"\" data-focused=\"true\"><div class=\"choice-control\" data-rac=\"\" role=\"group\" data-focus-within=\"true\" data-focus-visible=\"true\"><input aria-label=\"Source timezone when none is given\" aria-autocomplete=\"list\" autocomplete=\"off\" placeholder=\"Device timezone · Australia/Sydney\" autocorrect=\"off\" spellcheck=\"false\" tabindex=\"0\" id=\"source-zone\" role=\"combobox\" aria-expanded=\"false\" class=\"react-aria-Input\" data-rac=\"\" type=\"text\" value=\"Asia/Tokyo\" data-focused=\"true\" data-focus-visible=\"true\"><button id=\"react-aria9223025286-_r_n_\" class=\"choice-toggle\" data-rac=\"\" type=\"button\" tabindex=\"-1\" data-react-aria-pressable=\"true\" aria-label=\"Show source timezones\" aria-haspopup=\"listbox\" aria-expanded=\"false\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg></button></div></div><div class=\"date-choice\" data-rac=\"\"><span class=\"date-choice-label\" id=\"react-aria9223025286-_r_18_\">Reference date for this message</span><div data-react-aria-pressable=\"true\" id=\"reference-date\" aria-labelledby=\"react-aria9223025286-_r_18_\" role=\"group\" class=\"date-choice-control\" data-rac=\"\"><div id=\"react-aria9223025286-_r_16_\" role=\"presentation\" data-react-aria-pressable=\"true\" style=\"unicode-bidi: isolate;\" class=\"date-input choice-trigger\" data-rac=\"\"><span role=\"spinbutton\" aria-valuetext=\"Empty\" aria-valuemin=\"1\" aria-valuemax=\"31\" id=\"react-aria9223025286-_r_1h_\" aria-label=\"day, \" aria-labelledby=\"react-aria9223025286-_r_1h_ react-aria9223025286-_r_18_\" data-placeholder=\"true\" contenteditable=\"true\" spellcheck=\"false\" autocorrect=\"off\" enterkeyhint=\"next\" inputmode=\"numeric\" tabindex=\"0\" style=\"caret-color: transparent;\" class=\"date-choice-segment\" data-rac=\"\" data-type=\"day\">dd</span><span aria-hidden=\"true\" class=\"date-choice-segment\" data-rac=\"\" data-type=\"literal\">/</span><span role=\"spinbutton\" aria-valuetext=\"Empty\" aria-valuemin=\"1\" aria-valuemax=\"12\" id=\"react-aria9223025286-_r_1l_\" aria-label=\"month, \" aria-labelledby=\"react-aria9223025286-_r_1l_ react-aria9223025286-_r_18_\" data-placeholder=\"true\" contenteditable=\"true\" spellcheck=\"false\" autocorrect=\"off\" enterkeyhint=\"next\" inputmode=\"numeric\" tabindex=\"0\" style=\"caret-color: transparent;\" class=\"date-choice-segment\" data-rac=\"\" data-type=\"month\">mm</span><span aria-hidden=\"true\" class=\"date-choice-segment\" data-rac=\"\" data-type=\"literal\">/</span><span role=\"spinbutton\" aria-valuetext=\"Empty\" aria-valuemin=\"1\" aria-valuemax=\"9999\" id=\"react-aria9223025286-_r_1p_\" aria-label=\"year, \" aria-labelledby=\"react-aria9223025286-_r_1p_ react-aria9223025286-_r_18_\" data-placeholder=\"true\" contenteditable=\"true\" spellcheck=\"false\" autocorrect=\"off\" enterkeyhint=\"next\" inputmode=\"numeric\" tabindex=\"0\" style=\"caret-color: transparent;\" class=\"date-choice-segment\" data-rac=\"\" data-type=\"year\">yyyy</span></div><input hidden=\"\" class=\"\" data-rac=\"\" type=\"text\" value=\"\" title=\"\"><button id=\"react-aria9223025286-_r_14_\" class=\"date-choice-calendar-button\" data-rac=\"\" type=\"button\" tabindex=\"0\" data-react-aria-pressable=\"true\" aria-label=\"Choose reference date\" aria-labelledby=\"react-aria9223025286-_r_14_ react-aria9223025286-_r_18_\" aria-haspopup=\"dialog\" aria-expanded=\"false\"><svg viewBox=\"0 0 20 20\" width=\"18\" height=\"18\" aria-hidden=\"true\"><rect x=\"3\" y=\"4.5\" width=\"14\" height=\"13\" rx=\"2\"></rect><path d=\"M6.5 2.5v4M13.5 2.5v4M3 8.5h14\"></path></svg></button></div></div><div style=\"border: 0px; clip: rect(0px, 0px, 0px, 0px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; width: 1px; white-space: nowrap; top: 0px; left: 0px;\" aria-hidden=\"true\" data-react-aria-prevent-focus=\"true\" data-a11y-ignore=\"aria-hidden-focus\" data-testid=\"hidden-dateinput-container\"><input tabindex=\"-1\" form=\"\" step=\"60\" type=\"date\" value=\"\"></div><span class=\"field-note\">Leave empty to use today. Useful for an older message.</span><label for=\"date-order\">Numeric dates</label><template></template><div class=\"choice-select\" data-rac=\"\"><button id=\"date-order\" data-value=\"mdy\" class=\"choice-trigger\" data-rac=\"\" type=\"button\" tabindex=\"0\" data-react-aria-pressable=\"true\" aria-label=\"Numeric dates\" aria-labelledby=\"react-aria9223025286-_r_24_ date-order\" aria-haspopup=\"listbox\" aria-expanded=\"false\"><span id=\"react-aria9223025286-_r_24_\" class=\"react-aria-SelectValue\" data-rac=\"\">Month / day (04/09 = April 9)</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg></button><div style=\"border: 0px; clip: rect(0px, 0px, 0px, 0px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; width: 1px; white-space: nowrap; top: 0px; left: 0px;\" aria-hidden=\"true\" data-react-aria-prevent-focus=\"true\" data-a11y-ignore=\"aria-hidden-focus\" data-testid=\"hidden-select-container\"><label><select tabindex=\"-1\" title=\"\"><option value=\"\" label=\"&nbsp;\">&nbsp;</option><option value=\"mdy\">Month / day (04/09 = April 9)</option><option value=\"dmy\">Day / month (04/09 = 4 September)</option></select></label></div></div><label for=\"time-format\">Time display</label><template></template><div class=\"choice-select\" data-rac=\"\"><button id=\"time-format\" data-value=\"auto\" class=\"choice-trigger\" data-rac=\"\" type=\"button\" tabindex=\"0\" data-react-aria-pressable=\"true\" aria-label=\"Time display\" aria-labelledby=\"react-aria9223025286-_r_2e_ time-format\" aria-haspopup=\"listbox\" aria-expanded=\"false\"><span id=\"react-aria9223025286-_r_2e_\" class=\"react-aria-SelectValue\" data-rac=\"\">Use my device format</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg></button><div style=\"border: 0px; clip: rect(0px, 0px, 0px, 0px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; width: 1px; white-space: nowrap; top: 0px; left: 0px;\" aria-hidden=\"true\" data-react-aria-prevent-focus=\"true\" data-a11y-ignore=\"aria-hidden-focus\" data-testid=\"hidden-select-container\"><label><select tabindex=\"-1\" title=\"\"><option value=\"\" label=\"&nbsp;\">&nbsp;</option><option value=\"auto\">Use my device format</option><option value=\"12\">12-hour (3:00 PM)</option><option value=\"24\">24-hour (15:00)</option></select></label></div></div><label class=\"diagnostic-toggle\"><input type=\"checkbox\"><span>Enable detailed logs</span></label><span class=\"field-note\">Console only. Message text excluded.</span><button type=\"button\" class=\"text-button\">Reset preferences</button></div></details></section><section class=\"result-panel\" aria-labelledby=\"result-title\" aria-busy=\"false\"><div class=\"panel-heading result-heading\"><h2 id=\"result-title\">Converted time</h2><span class=\"live-indicator\" data-state=\"ready\"><span class=\"live-dots\" aria-hidden=\"true\"><span></span><span></span><span></span></span>Live</span></div><div role=\"status\" class=\"sr-only\">1 time interpretations found</div><article class=\"result-group\"><div class=\"result\"><div class=\"result-top\"><div class=\"result-output\"><div class=\"hero-time\">12:00 am</div><p class=\"result-date\">Fri, 10 Apr 2026</p><p class=\"result-zone\">UTC+09:00 Tokyo<span class=\"day-shift\">+1 day</span></p></div><button type=\"button\" class=\"copy-button\" aria-label=\"Copy UTC\">Copy</button></div><div class=\"result-context\"><p>Source: <span class=\"source-label\">UTC</span></p></div></div><div class=\"result-source\"><p>Original: “April 9, 2026 3pm UTC”</p></div></article></section></div><div role=\"status\" class=\"notice\"></div><footer><p>Your text stays on this device.</p><button type=\"button\" class=\"text-button\">Keep ChronoShift handy</button></footer></main></div>\n  \n\n",
+      "events": [
+        {
+          "at": 211,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 217,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 227,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 252,
+          "event": "focusin",
+          "id": "react-aria9223025286-_r_1h_",
+          "scrollY": 341,
+          "expanded": "true",
+          "controls": true
+        },
+        {
+          "at": 255,
+          "event": "scroll",
+          "scrollY": 341,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 266,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 341,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 268,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 341,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 287,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 341,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 295,
+          "event": "focusin",
+          "id": "message",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 296,
+          "event": "input",
+          "id": "message",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 305,
+          "event": "scroll",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 306,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 308,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 322,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 326,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 327,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 407,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 438,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 439,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 451,
+          "event": "focusin",
+          "id": "react-aria9223025286-_r_1h_",
+          "scrollY": 340,
+          "expanded": "true",
+          "controls": true
+        },
+        {
+          "at": 454,
+          "event": "scroll",
+          "scrollY": 340,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 458,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 340,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 462,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 340,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 471,
+          "event": "scroll",
+          "scrollY": 339,
+          "expanded": "true",
+          "controls": true
+        },
+        {
+          "at": 475,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 339,
+          "expanded": "false",
+          "controls": false
+        }
+      ],
+      "pageErrors": [],
+      "end": "2026-10-05T12:01:27.501Z"
+    },
+    {
+      "build": "candidate",
+      "origin": "http://127.0.0.1:4322",
+      "profile": "firefox",
+      "browser": "155.0",
+      "preparation": "native-source-focus",
+      "start": "2026-10-05T12:01:27.510Z",
+      "status": "pass",
+      "events": [
+        {
+          "at": 166,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 172,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 174,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 191,
+          "event": "focusin",
+          "id": "react-aria5392224611-_r_1h_",
+          "scrollY": 344,
+          "expanded": "true",
+          "controls": true
+        },
+        {
+          "at": 194,
+          "event": "scroll",
+          "scrollY": 344,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 200,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 344,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 203,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 344,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 215,
+          "event": "scroll",
+          "scrollY": 343,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 218,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 343,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 220,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 343,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 228,
+          "event": "focusin",
+          "id": "message",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 228,
+          "event": "input",
+          "id": "message",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 238,
+          "event": "scroll",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 327,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 335,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 349,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 422,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 427,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 515,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 674,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 681,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 693,
+          "event": "focusin",
+          "id": "react-aria5392224611-_r_1h_",
+          "scrollY": 340,
+          "expanded": "true",
+          "controls": true
+        },
+        {
+          "at": 707,
+          "event": "scroll",
+          "scrollY": 340,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 720,
+          "event": "scroll",
+          "scrollY": 339,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 808,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 339,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 815,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 339,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 892,
+          "event": "focusin",
+          "id": "react-aria5392224611-_r_1h_",
+          "scrollY": 339,
+          "expanded": "true",
+          "controls": true
+        }
+      ],
+      "pageErrors": [],
+      "end": "2026-10-05T12:01:28.531Z"
+    },
+    {
+      "build": "candidate",
+      "origin": "http://127.0.0.1:4322",
+      "profile": "iphone",
+      "browser": "26.6",
+      "preparation": "original-fill",
+      "start": "2026-10-05T12:01:28.826Z",
+      "status": "pass",
+      "events": [
+        {
+          "at": 140,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 147,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 149,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 175,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 178,
+          "event": "focusin",
+          "id": "react-aria3399103697-_r_1h_",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 184,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 188,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 205,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 207,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 210,
+          "event": "focusin",
+          "id": "message",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 211,
+          "event": "input",
+          "id": "message",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 220,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 222,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 234,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 240,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 241,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 325,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 353,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 354,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 365,
+          "event": "focusin",
+          "id": "react-aria3399103697-_r_1h_",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 371,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 374,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 454,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 455,
+          "event": "focusin",
+          "id": "react-aria3399103697-_r_1h_",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        }
+      ],
+      "pageErrors": [],
+      "end": "2026-10-05T12:01:29.537Z"
+    },
+    {
+      "build": "candidate",
+      "origin": "http://127.0.0.1:4322",
+      "profile": "iphone",
+      "browser": "26.6",
+      "preparation": "native-source-focus",
+      "start": "2026-10-05T12:01:29.540Z",
+      "status": "pass",
+      "events": [
+        {
+          "at": 107,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 111,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 113,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 140,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 142,
+          "event": "focusin",
+          "id": "react-aria8013857232-_r_1h_",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 150,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 152,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 168,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 170,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 175,
+          "event": "focusin",
+          "id": "message",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 176,
+          "event": "input",
+          "id": "message",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 255,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 260,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 272,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 337,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 341,
+          "event": "input",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 424,
+          "event": "focusin",
+          "id": "target-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 425,
+          "event": "focusin",
+          "id": "",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 574,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 579,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 591,
+          "event": "focusin",
+          "id": "react-aria8013857232-_r_1h_",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 657,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 662,
+          "event": "input",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 742,
+          "event": "focusin",
+          "id": "source-zone",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        },
+        {
+          "at": 743,
+          "event": "focusin",
+          "id": "react-aria8013857232-_r_1h_",
+          "scrollY": 0,
+          "expanded": "false",
+          "controls": false
+        }
+      ],
+      "pageErrors": [],
+      "end": "2026-10-05T12:01:30.423Z"
+    }
+  ]
+}

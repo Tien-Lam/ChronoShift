@@ -1,0 +1,33 @@
+baseline failure: TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of ArrayBuffer
+candidate failure: TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of ArrayBuffer
+{
+  "startedAt": "2026-10-05T12:21:38.582Z",
+  "endedAt": "2026-10-05T12:21:38.811Z",
+  "browser": "153.0.8010.12",
+  "conditions": [
+    {
+      "name": "baseline",
+      "passed": false,
+      "observations": 0,
+      "failure": {
+        "at": "2026-10-05T12:21:38.684Z",
+        "text": "TypeError [ERR_INVALID_ARG_TYPE]: The \"data\" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of ArrayBuffer",
+        "stack": "TypeError: The \"data\" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of ArrayBuffer\n    at update (unknown)\n    at <anonymous> (/Users/tien/Developer/ChronoShift/docs/qa/ci-data-zones-2026-10-05/newcode/runtime-probe.ts:13:59)\n    at processTicksAndRejections (native:7:39)"
+      },
+      "console": [],
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "passed": false,
+      "observations": 0,
+      "failure": {
+        "at": "2026-10-05T12:21:38.758Z",
+        "text": "TypeError [ERR_INVALID_ARG_TYPE]: The \"data\" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of ArrayBuffer",
+        "stack": "TypeError: The \"data\" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of ArrayBuffer\n    at update (unknown)\n    at <anonymous> (/Users/tien/Developer/ChronoShift/docs/qa/ci-data-zones-2026-10-05/newcode/runtime-probe.ts:13:59)\n    at processTicksAndRejections (native:7:39)"
+      },
+      "console": [],
+      "errors": []
+    }
+  ]
+}

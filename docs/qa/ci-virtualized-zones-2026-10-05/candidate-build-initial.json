@@ -1,0 +1,12 @@
+{
+  "start": {
+    "current_time": "2026-10-05 11:54:43 UTC"
+  },
+  "build": {
+    "chunk_id": "97c2f0",
+    "wall_time_seconds": 0.029659333,
+    "exit_code": 1,
+    "original_token_count": 97,
+    "output": "$ bun run typecheck && bun scripts/third-party-notices.ts && bunx --bun vite build && bun scripts/build-offline.ts\n$ bunx --bun tsc --noEmit\nerror: Cannot find module '../lib/tsc.js' from '/private/tmp/chronoshift-virtualized-zones/candidate-runtime/node_modules/.bin/tsc'\n\nBun v1.4.0 (macOS arm64)\nerror: script \"typecheck\" exited with code 1\nerror: script \"build\" exited with code 1\n"
+  }
+}

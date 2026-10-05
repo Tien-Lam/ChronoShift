@@ -1,0 +1,48 @@
+{
+  "startedAt": "2026-10-05T12:21:38.582Z",
+  "motion": "no-preference",
+  "viewport": {
+    "width": 900,
+    "height": 2400
+  },
+  "locale": "en-AU",
+  "timezoneId": "Australia/Sydney",
+  "conditions": [
+    {
+      "name": "baseline",
+      "root": "/tmp/chronoshift-virtualized-zones/baseline-runtime/dist",
+      "port": 4327,
+      "origin": "http://127.0.0.1:4327",
+      "startedAt": "2026-10-05T12:21:38.648Z",
+      "observations": [],
+      "console": [],
+      "errors": [],
+      "passed": false,
+      "failure": {
+        "at": "2026-10-05T12:21:38.684Z",
+        "text": "TypeError [ERR_INVALID_ARG_TYPE]: The \"data\" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of ArrayBuffer",
+        "stack": "TypeError: The \"data\" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of ArrayBuffer\n    at update (unknown)\n    at <anonymous> (/Users/tien/Developer/ChronoShift/docs/qa/ci-data-zones-2026-10-05/newcode/runtime-probe.ts:13:59)\n    at processTicksAndRejections (native:7:39)"
+      },
+      "endedAt": "2026-10-05T12:21:38.728Z"
+    },
+    {
+      "name": "candidate",
+      "root": "/tmp/chronoshift-data-zones/candidate-runtime/dist",
+      "port": 4328,
+      "origin": "http://127.0.0.1:4328",
+      "startedAt": "2026-10-05T12:21:38.731Z",
+      "observations": [],
+      "console": [],
+      "errors": [],
+      "passed": false,
+      "failure": {
+        "at": "2026-10-05T12:21:38.758Z",
+        "text": "TypeError [ERR_INVALID_ARG_TYPE]: The \"data\" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of ArrayBuffer",
+        "stack": "TypeError: The \"data\" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of ArrayBuffer\n    at update (unknown)\n    at <anonymous> (/Users/tien/Developer/ChronoShift/docs/qa/ci-data-zones-2026-10-05/newcode/runtime-probe.ts:13:59)\n    at processTicksAndRejections (native:7:39)"
+      },
+      "endedAt": "2026-10-05T12:21:38.797Z"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "endedAt": "2026-10-05T12:21:38.811Z"
+}

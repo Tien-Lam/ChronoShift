@@ -1,0 +1,33 @@
+{
+  "recordedAt": "2026-10-05T11:54:11.106Z",
+  "environment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "bun": "1.4.0",
+    "reactAriaComponents": "1.21.1"
+  },
+  "identity": {
+    "web/src/components/Choices.tsx": "8f8d673449e03553a2a92cae7c7f950972045c9641ecfc4fe2385c9cb62f4bee",
+    "web/src/style.css": "6c9266b76d8af98c62781b71a1413797a31c8b016d27cabe1ec22fc4fe0d6e93"
+  },
+  "checks": [
+    {
+      "command": "mise exec -- bun run typecheck",
+      "startedAt": "2026-10-05T11:54:10.630Z",
+      "endedAt": "2026-10-05T11:54:10.781Z",
+      "elapsedMs": 151.785166,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "$ bunx --bun tsc --noEmit\n"
+    },
+    {
+      "command": "mise exec -- bun run format:check",
+      "startedAt": "2026-10-05T11:54:10.630Z",
+      "endedAt": "2026-10-05T11:54:11.105Z",
+      "elapsedMs": 475.494042,
+      "exitCode": 0,
+      "stdout": "Checking formatting...\nAll matched files use Prettier code style!\n",
+      "stderr": "$ bunx --bun prettier --check web scripts/*.ts tests e2e *.ts\n"
+    }
+  ]
+}

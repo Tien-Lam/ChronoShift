@@ -1,0 +1,57 @@
+diff --git a/web/src/components/Choices.tsx b/web/src/components/Choices.tsx
+index d92d280..bce946a 100644
+--- a/web/src/components/Choices.tsx
++++ b/web/src/components/Choices.tsx
+@@ -10,6 +10,7 @@ import {
+ } from "react-aria-components/Select";
+ import { ComboBox, Input } from "react-aria-components/ComboBox";
+ import { Group } from "react-aria-components/Group";
++import { Virtualizer, ListLayout } from "react-aria-components/Virtualizer";
+ import { cityAliases, resolveCity, zoneIds, zoneName } from "../engine/zones";
+ import { diagnostic } from "../platform/diagnostics";
+ 
+@@ -42,9 +43,9 @@ function ChoiceItems({
+   options: Option[];
+   byValue?: boolean;
+ }) {
+-  return (
++  const list = (
+     <ListBox
+-      className="choice-list"
++      className={byValue ? "choice-list choice-list-virtual" : "choice-list"}
+       items={options}
+       // A suggestion appearing under the pointer must not become the value
+       // committed by Tab. Arrow navigation and option presses still select.
+@@ -80,6 +81,17 @@ function ChoiceItems({
+       )}
+     </ListBox>
+   );
++  if (!byValue) return list;
++  return (
++    <Virtualizer
++      layout={ListLayout}
++      // Two-line rows start at 62px; wrapped descriptions retain natural height.
++      layoutOptions={{ estimatedRowSize: 62 }}
++      shouldObserveItemSize
++    >
++      {list}
++    </Virtualizer>
++  );
+ }
+ export function ChoiceSelect({
+   id,
+diff --git a/web/src/style.css b/web/src/style.css
+index ffe5ce0..bfa9ef0 100644
+--- a/web/src/style.css
++++ b/web/src/style.css
+@@ -451,6 +451,10 @@ select {
+   overflow: auto;
+   outline: none;
+ }
++.choice-list-virtual {
++  display: block;
++  overflow-x: hidden;
++}
+ .choice-item {
+   min-height: 44px;
+   padding: 10px 8px;

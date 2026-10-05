@@ -1,0 +1,32 @@
+{
+  "environment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "bun": "1.4.0"
+  },
+  "checks": [
+    {
+      "command": "mise exec -- bun run typecheck",
+      "startedAt": "2026-10-05T12:04:34.357Z",
+      "endedAt": "2026-10-05T12:04:34.498Z",
+      "elapsedMs": 140.67325,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "$ bunx --bun tsc --noEmit\n"
+    },
+    {
+      "command": "mise exec -- bunx --bun prettier --check web/src/components/Choices.tsx",
+      "startedAt": "2026-10-05T12:04:34.498Z",
+      "endedAt": "2026-10-05T12:04:34.568Z",
+      "elapsedMs": 69.98904099999999,
+      "exitCode": 0,
+      "stdout": "Checking formatting...\nAll matched files use Prettier code style!\n",
+      "stderr": ""
+    }
+  ],
+  "recordedAt": "2026-10-05T12:04:34.568Z",
+  "sha256": {
+    "web/src/components/Choices.tsx": "8f8d673449e03553a2a92cae7c7f950972045c9641ecfc4fe2385c9cb62f4bee",
+    "web/src/style.css": "6c9266b76d8af98c62781b71a1413797a31c8b016d27cabe1ec22fc4fe0d6e93"
+  }
+}

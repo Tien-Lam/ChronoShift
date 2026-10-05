@@ -1,0 +1,21 @@
+{
+  "startedAt": "2026-10-05T12:04:14.478Z",
+  "endedAt": "2026-10-05T12:04:14.526Z",
+  "elapsedMs": 48.450458,
+  "command": "mise exec -- bunx --bun tsc --ignoreConfig --noEmit --skipLibCheck --jsx react-jsx --module ESNext --moduleResolution Bundler --target ES2022 --strict docs/qa/ci-virtualized-zones-2026-10-05/v2-public-api-probe.tsx",
+  "exitCode": 1,
+  "stdout": "docs/qa/ci-virtualized-zones-2026-10-05/v2-public-api-probe.tsx(7,28): error TS2322: Type '{ layoutDelegate: ListLayout<unknown, ListLayoutOptions>; children: Element; }' is not assignable to type 'IntrinsicAttributes & ComboBoxProps<unknown, \"single\"> & RefAttributes<HTMLDivElement>'.\n  Property 'layoutDelegate' does not exist on type 'IntrinsicAttributes & ComboBoxProps<unknown, \"single\"> & RefAttributes<HTMLDivElement>'.\n",
+  "stderr": "",
+  "source": "import { ComboBox } from \"react-aria-components/ComboBox\";\nimport type { AriaComboBoxOptions } from \"react-aria/useComboBox\";\nimport { Virtualizer, ListLayout } from \"react-aria-components/Virtualizer\";\nconst layout = new ListLayout();\nconst hookDelegate: Pick<AriaComboBoxOptions<unknown>, \"layoutDelegate\"> = { layoutDelegate: layout };\nconst viewport = <Virtualizer layout={layout} shouldObserveItemSize layoutOptions={{ estimatedRowSize: 62 }}><div /></Virtualizer>;\nconst comboBox = <ComboBox layoutDelegate={layout}><div /></ComboBox>;\nvoid hookDelegate; void viewport; void comboBox;\n",
+  "environment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "bun": "1.4.0",
+    "typescript": "7.0.2"
+  },
+  "priorAttempt": {
+    "method": "TypeScript in-process createProgram API",
+    "exitCode": 1,
+    "reason": "TypeScript7 root module exposes only version metadata; ts.JsxEmit was undefined. No diagnostics or runtime source mutation resulted."
+  }
+}

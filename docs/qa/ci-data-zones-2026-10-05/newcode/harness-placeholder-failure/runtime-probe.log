@@ -1,0 +1,57 @@
+baseline failure: Error: expect(locator).toHaveCount(expected) failed
+
+Locator:  locator('[id="react-aria2619175156-_r_b_"]').locator('[role="option"]')
+Expected: 0
+Received: 1
+Timeout:  5000ms
+
+Call log:
+  - Expect "toHaveCount" locator('[id="react-aria2619175156-_r_b_"]').locator('[role="option"]') with timeout 5000ms
+  - waiting for locator('[id="react-aria2619175156-_r_b_"]').locator('[role="option"]')
+    14 × locator resolved to 1 element
+       - unexpected value "1"
+
+candidate failure: Error: expect(locator).toHaveCount(expected) failed
+
+Locator:  locator('[id="react-aria248397192-_r_b_"]').locator('[role="option"]')
+Expected: 0
+Received: 1
+Timeout:  5000ms
+
+Call log:
+  - Expect "toHaveCount" locator('[id="react-aria248397192-_r_b_"]').locator('[role="option"]') with timeout 5000ms
+  - waiting for locator('[id="react-aria248397192-_r_b_"]').locator('[role="option"]')
+    14 × locator resolved to 1 element
+       - unexpected value "1"
+
+{
+  "startedAt": "2026-10-05T12:22:16.944Z",
+  "endedAt": "2026-10-05T12:22:27.971Z",
+  "browser": "153.0.8010.12",
+  "conditions": [
+    {
+      "name": "baseline",
+      "passed": false,
+      "observations": 4,
+      "failure": {
+        "at": "2026-10-05T12:22:22.469Z",
+        "text": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('[id=\"react-aria2619175156-_r_b_\"]').locator('[role=\"option\"]')\nExpected: 0\nReceived: 1\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('[id=\"react-aria2619175156-_r_b_\"]').locator('[role=\"option\"]') with timeout 5000ms\n  - waiting for locator('[id=\"react-aria2619175156-_r_b_\"]').locator('[role=\"option\"]')\n    14 × locator resolved to 1 element\n       - unexpected value \"1\"\n",
+        "stack": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('[id=\"react-aria2619175156-_r_b_\"]').locator('[role=\"option\"]')\nExpected: 0\nReceived: 1\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('[id=\"react-aria2619175156-_r_b_\"]').locator('[role=\"option\"]') with timeout 5000ms\n  - waiting for locator('[id=\"react-aria2619175156-_r_b_\"]').locator('[role=\"option\"]')\n    14 × locator resolved to 1 element\n       - unexpected value \"1\"\n\n    at captureRawStack (/Users/tien/Developer/ChronoShift/node_modules/playwright-core/lib/coreBundle.js:8588:21)\n    at callMatcherAsStep (/Users/tien/Developer/ChronoShift/node_modules/playwright/lib/matchers/expect.js:13310:57)\n    at /Users/tien/Developer/ChronoShift/docs/qa/ci-data-zones-2026-10-05/newcode/runtime-probe.ts:71:53\n    at processTicksAndRejections (native:7:39)"
+      },
+      "console": [],
+      "errors": []
+    },
+    {
+      "name": "candidate",
+      "passed": false,
+      "observations": 4,
+      "failure": {
+        "at": "2026-10-05T12:22:27.915Z",
+        "text": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('[id=\"react-aria248397192-_r_b_\"]').locator('[role=\"option\"]')\nExpected: 0\nReceived: 1\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('[id=\"react-aria248397192-_r_b_\"]').locator('[role=\"option\"]') with timeout 5000ms\n  - waiting for locator('[id=\"react-aria248397192-_r_b_\"]').locator('[role=\"option\"]')\n    14 × locator resolved to 1 element\n       - unexpected value \"1\"\n",
+        "stack": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('[id=\"react-aria248397192-_r_b_\"]').locator('[role=\"option\"]')\nExpected: 0\nReceived: 1\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('[id=\"react-aria248397192-_r_b_\"]').locator('[role=\"option\"]') with timeout 5000ms\n  - waiting for locator('[id=\"react-aria248397192-_r_b_\"]').locator('[role=\"option\"]')\n    14 × locator resolved to 1 element\n       - unexpected value \"1\"\n\n    at captureRawStack (/Users/tien/Developer/ChronoShift/node_modules/playwright-core/lib/coreBundle.js:8588:21)\n    at callMatcherAsStep (/Users/tien/Developer/ChronoShift/node_modules/playwright/lib/matchers/expect.js:13310:57)\n    at /Users/tien/Developer/ChronoShift/docs/qa/ci-data-zones-2026-10-05/newcode/runtime-probe.ts:71:53\n    at processTicksAndRejections (native:7:39)"
+      },
+      "console": [],
+      "errors": []
+    }
+  ]
+}

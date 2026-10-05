@@ -1,0 +1,148 @@
+{
+  "started": "2026-10-05T12:00:33.272Z",
+  "ended": "2026-10-05T12:00:33.273Z",
+  "summaries": [
+    {
+      "block": "1-baseline",
+      "exitCode": 1,
+      "startedAt": "2026-10-05T11:56:40.108Z",
+      "endedAt": "2026-10-05T11:57:13.448Z",
+      "elapsedMs": 33339.718916,
+      "cases": 20,
+      "uniqueIdentities": 20,
+      "identities": [
+        "controls.spec.ts:choice menus support keyboard selection, nested Escape and pointer dismissal:android-emulation",
+        "controls.spec.ts:choice menus support keyboard selection, nested Escape and pointer dismissal:chromium",
+        "controls.spec.ts:choice menus support keyboard selection, nested Escape and pointer dismissal:firefox",
+        "controls.spec.ts:choice menus support keyboard selection, nested Escape and pointer dismissal:iphone-emulation",
+        "controls.spec.ts:choice menus support keyboard selection, nested Escape and pointer dismissal:webkit",
+        "controls.spec.ts:hovering timezone suggestions preserves typed values while explicit selections still commit:android-emulation",
+        "controls.spec.ts:hovering timezone suggestions preserves typed values while explicit selections still commit:chromium",
+        "controls.spec.ts:hovering timezone suggestions preserves typed values while explicit selections still commit:firefox",
+        "controls.spec.ts:hovering timezone suggestions preserves typed values while explicit selections still commit:iphone-emulation",
+        "controls.spec.ts:hovering timezone suggestions preserves typed values while explicit selections still commit:webkit",
+        "controls.spec.ts:themed choices align and their opened menus fit every breakpoint without losing work:android-emulation",
+        "controls.spec.ts:themed choices align and their opened menus fit every breakpoint without losing work:chromium",
+        "controls.spec.ts:themed choices align and their opened menus fit every breakpoint without losing work:firefox",
+        "controls.spec.ts:themed choices align and their opened menus fit every breakpoint without losing work:iphone-emulation",
+        "controls.spec.ts:themed choices align and their opened menus fit every breakpoint without losing work:webkit",
+        "controls.spec.ts:timezone search preserves freeform offsets and recovers from empty and invalid choices:android-emulation",
+        "controls.spec.ts:timezone search preserves freeform offsets and recovers from empty and invalid choices:chromium",
+        "controls.spec.ts:timezone search preserves freeform offsets and recovers from empty and invalid choices:firefox",
+        "controls.spec.ts:timezone search preserves freeform offsets and recovers from empty and invalid choices:iphone-emulation",
+        "controls.spec.ts:timezone search preserves freeform offsets and recovers from empty and invalid choices:webkit"
+      ],
+      "attemptCounts": {
+        "passed": 19,
+        "failed": 1,
+        "skipped": 0,
+        "timedOut": 0,
+        "interrupted": 0
+      },
+      "retries": 0,
+      "failures": [
+        {
+          "file": "controls.spec.ts",
+          "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "project": "firefox",
+          "expectedStatus": "passed",
+          "attempts": [
+            {
+              "status": "failed",
+              "retry": 0,
+              "duration": 11283,
+              "errors": [
+                {
+                  "location": {
+                    "file": "/Users/tien/Developer/ChronoShift/e2e/controls.spec.ts",
+                    "column": 24,
+                    "line": 428
+                  },
+                  "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Source timezone when none is given', { exact: true })\nExpected pattern: \u001b[32m/.+/\u001b[39m\nReceived string:  \u001b[31m\"\"\u001b[39m\nTimeout: 10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByLabel('Source timezone when none is given', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Source timezone when none is given', { exact: true })\u001b[22m\n\u001b[2m    24 × locator resolved to <input data-rac=\"\" type=\"text\" tabindex=\"0\" role=\"combobox\" id=\"source-zone\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" value=\"Asia/Tokyo\" data-focused=\"true\" aria-expanded=\"false\" aria-autocomplete=\"list\" class=\"react-aria-Input\" data-focus-visible=\"true\" aria-label=\"Source timezone when none is given\" placeholder=\"Device timezone · Australia/Sydney\"/>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n\n  426 |     await enterZone(page, \"CST\", label);\n  427 |     await input.fill(\"Asia/Tokyo\");\n> 428 |     await expect(input).toHaveAttribute(\"aria-controls\", /.+/);\n      |                        ^\n  429 |     const suggestions = page.locator(\n  430 |       `[id=\"${await input.getAttribute(\"aria-controls\")}\"]`,\n  431 |     );\n    at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:428:24"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "globalErrors": [],
+      "frozenInventoryUnchanged": true,
+      "servedFiles": 14,
+      "allServedHashesMatch": true
+    },
+    {
+      "block": "2-candidate",
+      "exitCode": 1,
+      "startedAt": "2026-10-05T11:57:38.392Z",
+      "endedAt": "2026-10-05T11:58:17.091Z",
+      "elapsedMs": 38699.630417,
+      "cases": 20,
+      "uniqueIdentities": 20,
+      "identities": [
+        "controls.spec.ts:choice menus support keyboard selection, nested Escape and pointer dismissal:android-emulation",
+        "controls.spec.ts:choice menus support keyboard selection, nested Escape and pointer dismissal:chromium",
+        "controls.spec.ts:choice menus support keyboard selection, nested Escape and pointer dismissal:firefox",
+        "controls.spec.ts:choice menus support keyboard selection, nested Escape and pointer dismissal:iphone-emulation",
+        "controls.spec.ts:choice menus support keyboard selection, nested Escape and pointer dismissal:webkit",
+        "controls.spec.ts:hovering timezone suggestions preserves typed values while explicit selections still commit:android-emulation",
+        "controls.spec.ts:hovering timezone suggestions preserves typed values while explicit selections still commit:chromium",
+        "controls.spec.ts:hovering timezone suggestions preserves typed values while explicit selections still commit:firefox",
+        "controls.spec.ts:hovering timezone suggestions preserves typed values while explicit selections still commit:iphone-emulation",
+        "controls.spec.ts:hovering timezone suggestions preserves typed values while explicit selections still commit:webkit",
+        "controls.spec.ts:themed choices align and their opened menus fit every breakpoint without losing work:android-emulation",
+        "controls.spec.ts:themed choices align and their opened menus fit every breakpoint without losing work:chromium",
+        "controls.spec.ts:themed choices align and their opened menus fit every breakpoint without losing work:firefox",
+        "controls.spec.ts:themed choices align and their opened menus fit every breakpoint without losing work:iphone-emulation",
+        "controls.spec.ts:themed choices align and their opened menus fit every breakpoint without losing work:webkit",
+        "controls.spec.ts:timezone search preserves freeform offsets and recovers from empty and invalid choices:android-emulation",
+        "controls.spec.ts:timezone search preserves freeform offsets and recovers from empty and invalid choices:chromium",
+        "controls.spec.ts:timezone search preserves freeform offsets and recovers from empty and invalid choices:firefox",
+        "controls.spec.ts:timezone search preserves freeform offsets and recovers from empty and invalid choices:iphone-emulation",
+        "controls.spec.ts:timezone search preserves freeform offsets and recovers from empty and invalid choices:webkit"
+      ],
+      "attemptCounts": {
+        "passed": 19,
+        "failed": 0,
+        "skipped": 0,
+        "timedOut": 1,
+        "interrupted": 0
+      },
+      "retries": 0,
+      "failures": [
+        {
+          "file": "controls.spec.ts",
+          "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "project": "firefox",
+          "expectedStatus": "passed",
+          "attempts": [
+            {
+              "status": "timedOut",
+              "retry": 0,
+              "duration": 30057,
+              "errors": [
+                {
+                  "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                },
+                {
+                  "location": {
+                    "file": "/Users/tien/Developer/ChronoShift/e2e/controls.spec.ts",
+                    "column": 16,
+                    "line": 438
+                  },
+                  "message": "Error: hover: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[id=\"null\"]').getByRole('option', { name: 'Osaka', exact: true })\u001b[22m\n\n\n  436 |     // Leave any prior pointer position so this exercises a fresh hover event.\n  437 |     await page.mouse.move(0, 0);\n> 438 |     await alias.hover();\n      |                ^\n  439 |     await expect(alias).toHaveAttribute(\"data-hovered\", \"true\");\n  440 |     await input.press(\"Tab\");\n  441 |     await expect(input).toHaveValue(\"Asia/Tokyo\");\n    at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:438:16"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "globalErrors": [],
+      "frozenInventoryUnchanged": true,
+      "servedFiles": 14,
+      "allServedHashesMatch": true
+    }
+  ],
+  "sameCompleteIdentities": true,
+  "performanceComparisonValid": false,
+  "reason": "Both unchanged full controls sweeps have an original failed Firefox source-field opening assertion; candidate block was independent correctness only, not a successful comparison."
+}

@@ -1,0 +1,137 @@
+{
+  "generatedAt": "2026-10-05T12:30:30.518Z",
+  "runStart": "2026-10-05T12:27:32.444Z",
+  "runEnd": "2026-10-05T12:28:49.138Z",
+  "uniqueRows": 36,
+  "totalEdits": 108,
+  "identityFailures": [],
+  "phases": [
+    {
+      "phase": 0,
+      "variant": "baseline",
+      "origin": "http://127.0.0.1:54053/",
+      "files": 14
+    },
+    {
+      "phase": 1,
+      "variant": "candidate",
+      "origin": "http://127.0.0.1:54080/",
+      "files": 14
+    },
+    {
+      "phase": 2,
+      "variant": "candidate",
+      "origin": "http://127.0.0.1:54114/",
+      "files": 14
+    },
+    {
+      "phase": 3,
+      "variant": "baseline",
+      "origin": "http://127.0.0.1:54149/",
+      "files": 14
+    }
+  ],
+  "groups": [
+    {
+      "engine": "chromium",
+      "baseline": {
+        "contexts": 6,
+        "edits": 18,
+        "browserVersions": [
+          "153.0.8010.12"
+        ],
+        "scripts": [
+          "/assets/index-B3d9YDa-.js"
+        ],
+        "readyMeanMs": 169.3846316666677,
+        "firstMeanMs": 805.0084514999988,
+        "laterMeanMs": 726.8667014166658,
+        "counterMeansMs": {
+          "ScriptDuration": 20.320833333333336,
+          "TaskDuration": 41.05477777777777,
+          "LayoutDuration": 1.0055,
+          "RecalcStyleDuration": 1.6958888888888892
+        },
+        "counterValid": true
+      },
+      "candidate": {
+        "contexts": 6,
+        "edits": 18,
+        "browserVersions": [
+          "153.0.8010.12"
+        ],
+        "scripts": [
+          "/assets/index-B5lUMAkf.js"
+        ],
+        "readyMeanMs": 164.5233471666676,
+        "firstMeanMs": 636.4143609999998,
+        "laterMeanMs": 723.3220278333329,
+        "counterMeansMs": {
+          "ScriptDuration": 17.605555555555554,
+          "TaskDuration": 36.89044444444444,
+          "LayoutDuration": 0.9545555555555557,
+          "RecalcStyleDuration": 1.6203888888888889
+        },
+        "counterValid": true
+      }
+    },
+    {
+      "engine": "firefox",
+      "baseline": {
+        "contexts": 6,
+        "edits": 18,
+        "browserVersions": [
+          "155.0"
+        ],
+        "scripts": [
+          "/assets/index-B3d9YDa-.js"
+        ],
+        "readyMeanMs": 218.27543766666335,
+        "firstMeanMs": 569.9758123333344,
+        "laterMeanMs": 661.3023644999986
+      },
+      "candidate": {
+        "contexts": 6,
+        "edits": 18,
+        "browserVersions": [
+          "155.0"
+        ],
+        "scripts": [
+          "/assets/index-B5lUMAkf.js"
+        ],
+        "readyMeanMs": 211.1464166666677,
+        "firstMeanMs": 743.5603958333335,
+        "laterMeanMs": 618.6050243333326
+      }
+    },
+    {
+      "engine": "webkit",
+      "baseline": {
+        "contexts": 6,
+        "edits": 18,
+        "browserVersions": [
+          "26.6"
+        ],
+        "scripts": [
+          "/assets/index-B3d9YDa-.js"
+        ],
+        "readyMeanMs": 170.1977361666674,
+        "firstMeanMs": 306.02105549999914,
+        "laterMeanMs": 383.2735624999973
+      },
+      "candidate": {
+        "contexts": 6,
+        "edits": 18,
+        "browserVersions": [
+          "26.6"
+        ],
+        "scripts": [
+          "/assets/index-B5lUMAkf.js"
+        ],
+        "readyMeanMs": 168.5206528333365,
+        "firstMeanMs": 305.41611099999744,
+        "laterMeanMs": 379.03276733333286
+      }
+    }
+  ]
+}

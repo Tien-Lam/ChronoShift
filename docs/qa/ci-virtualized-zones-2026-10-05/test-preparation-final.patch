@@ -1,0 +1,21 @@
+diff --git a/e2e/controls.spec.ts b/e2e/controls.spec.ts
+index 0a61c6c..6afcf24 100644
+--- a/e2e/controls.spec.ts
++++ b/e2e/controls.spec.ts
+@@ -423,7 +423,16 @@ test("hovering timezone suggestions preserves typed values while explicit select
+       { exact: true },
+     );
+     const otherValue = await other.inputValue();
++    // Bring the field into view before either edit, including the setup value.
++    await input.scrollIntoViewIfNeeded();
++    await input.click();
++    await expect(input).toHaveAttribute("aria-expanded", "false");
+     await enterZone(page, "CST", label);
++    // Finish native ancestor scrolling while the popup is closed, before
++    // input-driven opening. A delayed focus scroll intentionally dismisses it.
++    await input.scrollIntoViewIfNeeded();
++    await input.click();
++    await expect(input).toHaveAttribute("aria-expanded", "false");
+     await input.fill("Asia/Tokyo");
+     await expect(input).toHaveAttribute("aria-controls", /.+/);
+     const suggestions = page.locator(

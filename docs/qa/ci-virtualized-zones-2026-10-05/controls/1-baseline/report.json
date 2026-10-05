@@ -1,0 +1,1031 @@
+{
+  "config": {
+    "argv": [
+      "/Users/tien/.local/share/mise/installs/bun/1.4.0/bin/bun",
+      "/Users/tien/Developer/ChronoShift/node_modules/.bin/playwright",
+      "test",
+      "--config=docs/qa/ci-virtualized-zones-2026-10-05/controls.config.ts"
+    ],
+    "configFile": "/Users/tien/Developer/ChronoShift/docs/qa/ci-virtualized-zones-2026-10-05/controls.config.ts",
+    "rootDir": "/Users/tien/Developer/ChronoShift/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "/Users/tien/Developer/ChronoShift/docs/qa/ci-virtualized-zones-2026-10-05/verify-served.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/tien/Developer/ChronoShift/docs/qa/ci-virtualized-zones-2026-10-05/controls/1-baseline/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/tien/Developer/ChronoShift/e2e",
+        "testIgnore": [
+          "**/subpath.spec.ts",
+          "**/foldable.spec.ts",
+          "**/hosted.spec.ts"
+        ],
+        "testMatch": [
+          "**/controls.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/tien/Developer/ChronoShift/docs/qa/ci-virtualized-zones-2026-10-05/controls/1-baseline/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/tien/Developer/ChronoShift/e2e",
+        "testIgnore": [
+          "**/subpath.spec.ts",
+          "**/foldable.spec.ts",
+          "**/hosted.spec.ts"
+        ],
+        "testMatch": [
+          "**/controls.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/tien/Developer/ChronoShift/docs/qa/ci-virtualized-zones-2026-10-05/controls/1-baseline/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/Users/tien/Developer/ChronoShift/e2e",
+        "testIgnore": [
+          "**/subpath.spec.ts",
+          "**/foldable.spec.ts",
+          "**/hosted.spec.ts"
+        ],
+        "testMatch": [
+          "**/controls.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/tien/Developer/ChronoShift/docs/qa/ci-virtualized-zones-2026-10-05/controls/1-baseline/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "android-emulation",
+        "name": "android-emulation",
+        "testDir": "/Users/tien/Developer/ChronoShift/e2e",
+        "testIgnore": [
+          "**/subpath.spec.ts",
+          "**/foldable.spec.ts",
+          "**/hosted.spec.ts"
+        ],
+        "testMatch": [
+          "**/controls.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/tien/Developer/ChronoShift/docs/qa/ci-virtualized-zones-2026-10-05/controls/1-baseline/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "iphone-emulation",
+        "name": "iphone-emulation",
+        "testDir": "/Users/tien/Developer/ChronoShift/e2e",
+        "testIgnore": [
+          "**/subpath.spec.ts",
+          "**/foldable.spec.ts",
+          "**/hosted.spec.ts"
+        ],
+        "testMatch": [
+          "**/controls.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "/Users/tien/Developer/ChronoShift/docs/qa/ci-virtualized-zones-2026-10-05/controls/1-baseline/html"
+        }
+      ],
+      [
+        "/Users/tien/Developer/ChronoShift/e2e/attempt-reporter.ts",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/Users/tien/Developer/ChronoShift/docs/qa/ci-virtualized-zones-2026-10-05/controls/1-baseline/report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 4,
+    "webServer": {
+      "command": "PORT=4191 CHRONOSHIFT_TEST_SERVER=1 bun scripts/serve-web.ts",
+      "url": "http://127.0.0.1:4191",
+      "reuseExistingServer": false,
+      "cwd": "/Users/tien/Developer/ChronoShift"
+    }
+  },
+  "suites": [
+    {
+      "title": "controls.spec.ts",
+      "file": "controls.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10128,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "dark, 280px",
+                      "duration": 1543
+                    },
+                    {
+                      "title": "dark, 740px",
+                      "duration": 1526
+                    },
+                    {
+                      "title": "dark, 1280px",
+                      "duration": 1514
+                    },
+                    {
+                      "title": "light, 280px",
+                      "duration": 1450
+                    },
+                    {
+                      "title": "light, 740px",
+                      "duration": 1448
+                    },
+                    {
+                      "title": "light, 1280px",
+                      "duration": 1485
+                    }
+                  ],
+                  "startTime": "2026-10-05T11:56:40.543Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-35e0b7a31500705013d1",
+          "file": "controls.spec.ts",
+          "line": 55,
+          "column": 0
+        },
+        {
+          "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4172,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T11:56:40.543Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-675e87c198e4f8622b85",
+          "file": "controls.spec.ts",
+          "line": 232,
+          "column": 0
+        },
+        {
+          "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 2720,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T11:56:40.543Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-926f0e16605985759e3b",
+          "file": "controls.spec.ts",
+          "line": 339,
+          "column": 0
+        },
+        {
+          "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 3,
+                  "status": "passed",
+                  "duration": 1691,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T11:56:40.543Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-9b53bcac90e55729717f",
+          "file": "controls.spec.ts",
+          "line": 407,
+          "column": 0
+        },
+        {
+          "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 3,
+                  "status": "passed",
+                  "duration": 12202,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "dark, 280px",
+                      "duration": 1767
+                    },
+                    {
+                      "title": "dark, 740px",
+                      "duration": 1656
+                    },
+                    {
+                      "title": "dark, 1280px",
+                      "duration": 1700
+                    },
+                    {
+                      "title": "light, 280px",
+                      "duration": 1815
+                    },
+                    {
+                      "title": "light, 740px",
+                      "duration": 1696
+                    },
+                    {
+                      "title": "light, 1280px",
+                      "duration": 1674
+                    }
+                  ],
+                  "startTime": "2026-10-05T11:56:42.509Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-c6cee6ea1a8e5d72ebf6",
+          "file": "controls.spec.ts",
+          "line": 55,
+          "column": 0
+        },
+        {
+          "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 5258,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T11:56:43.540Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-777191fd43637dd5be1e",
+          "file": "controls.spec.ts",
+          "line": 232,
+          "column": 0
+        },
+        {
+          "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3648,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T11:56:44.987Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-a8782b42cf1fc1a7a306",
+          "file": "controls.spec.ts",
+          "line": 339,
+          "column": 0
+        },
+        {
+          "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 11283,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Source timezone when none is given', { exact: true })\nExpected pattern: \u001b[32m/.+/\u001b[39m\nReceived string:  \u001b[31m\"\"\u001b[39m\nTimeout: 10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByLabel('Source timezone when none is given', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Source timezone when none is given', { exact: true })\u001b[22m\n\u001b[2m    24 × locator resolved to <input data-rac=\"\" type=\"text\" tabindex=\"0\" role=\"combobox\" id=\"source-zone\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" value=\"Asia/Tokyo\" data-focused=\"true\" aria-expanded=\"false\" aria-autocomplete=\"list\" class=\"react-aria-Input\" data-focus-visible=\"true\" aria-label=\"Source timezone when none is given\" placeholder=\"Device timezone · Australia/Sydney\"/>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Source timezone when none is given', { exact: true })\nExpected pattern: \u001b[32m/.+/\u001b[39m\nReceived string:  \u001b[31m\"\"\u001b[39m\nTimeout: 10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByLabel('Source timezone when none is given', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Source timezone when none is given', { exact: true })\u001b[22m\n\u001b[2m    24 × locator resolved to <input data-rac=\"\" type=\"text\" tabindex=\"0\" role=\"combobox\" id=\"source-zone\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" value=\"Asia/Tokyo\" data-focused=\"true\" aria-expanded=\"false\" aria-autocomplete=\"list\" class=\"react-aria-Input\" data-focus-visible=\"true\" aria-label=\"Source timezone when none is given\" placeholder=\"Device timezone · Australia/Sydney\"/>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n    at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:428:24",
+                    "location": {
+                      "file": "/Users/tien/Developer/ChronoShift/e2e/controls.spec.ts",
+                      "column": 24,
+                      "line": 428
+                    },
+                    "snippet": "  426 |     await enterZone(page, \"CST\", label);\n  427 |     await input.fill(\"Asia/Tokyo\");\n> 428 |     await expect(input).toHaveAttribute(\"aria-controls\", /.+/);\n      |                        ^\n  429 |     const suggestions = page.locator(\n  430 |       `[id=\"${await input.getAttribute(\"aria-controls\")}\"]`,\n  431 |     );"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/tien/Developer/ChronoShift/e2e/controls.spec.ts",
+                        "column": 24,
+                        "line": 428
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Source timezone when none is given', { exact: true })\nExpected pattern: \u001b[32m/.+/\u001b[39m\nReceived string:  \u001b[31m\"\"\u001b[39m\nTimeout: 10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByLabel('Source timezone when none is given', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Source timezone when none is given', { exact: true })\u001b[22m\n\u001b[2m    24 × locator resolved to <input data-rac=\"\" type=\"text\" tabindex=\"0\" role=\"combobox\" id=\"source-zone\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" value=\"Asia/Tokyo\" data-focused=\"true\" aria-expanded=\"false\" aria-autocomplete=\"list\" class=\"react-aria-Input\" data-focus-visible=\"true\" aria-label=\"Source timezone when none is given\" placeholder=\"Device timezone · Australia/Sydney\"/>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n\n  426 |     await enterZone(page, \"CST\", label);\n  427 |     await input.fill(\"Asia/Tokyo\");\n> 428 |     await expect(input).toHaveAttribute(\"aria-controls\", /.+/);\n      |                        ^\n  429 |     const suggestions = page.locator(\n  430 |       `[id=\"${await input.getAttribute(\"aria-controls\")}\"]`,\n  431 |     );\n    at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:428:24"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T11:56:48.987Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/ci-virtualized-zones-2026-10-05/controls/1-baseline/results/controls-hovering-timezone-df152-cit-selections-still-commit-firefox/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/ci-virtualized-zones-2026-10-05/controls/1-baseline/results/controls-hovering-timezone-df152-cit-selections-still-commit-firefox/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/tien/Developer/ChronoShift/e2e/controls.spec.ts",
+                    "column": 24,
+                    "line": 428
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-0cf8be93593955dcb1ef",
+          "file": "controls.spec.ts",
+          "line": 407,
+          "column": 0
+        },
+        {
+          "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 10710,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "dark, 280px",
+                      "duration": 1574
+                    },
+                    {
+                      "title": "dark, 740px",
+                      "duration": 1569
+                    },
+                    {
+                      "title": "dark, 1280px",
+                      "duration": 1503
+                    },
+                    {
+                      "title": "light, 280px",
+                      "duration": 1541
+                    },
+                    {
+                      "title": "light, 740px",
+                      "duration": 1530
+                    },
+                    {
+                      "title": "light, 1280px",
+                      "duration": 1502
+                    }
+                  ],
+                  "startTime": "2026-10-05T11:56:49.483Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-a6032a7af9e05ef8667f",
+          "file": "controls.spec.ts",
+          "line": 55,
+          "column": 0
+        },
+        {
+          "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4347,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T11:56:50.938Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-f15f8caed7cc5cbfadf5",
+          "file": "controls.spec.ts",
+          "line": 232,
+          "column": 0
+        },
+        {
+          "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 3,
+                  "status": "passed",
+                  "duration": 2786,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T11:56:55.417Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-a40c442f29e33805080c",
+          "file": "controls.spec.ts",
+          "line": 339,
+          "column": 0
+        },
+        {
+          "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1758,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T11:56:55.444Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-c5836952a20ab8a13e56",
+          "file": "controls.spec.ts",
+          "line": 407,
+          "column": 0
+        },
+        {
+          "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-emulation",
+              "projectName": "android-emulation",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10126,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "dark, 280px",
+                      "duration": 1543
+                    },
+                    {
+                      "title": "dark, 740px",
+                      "duration": 1506
+                    },
+                    {
+                      "title": "dark, 1280px",
+                      "duration": 1503
+                    },
+                    {
+                      "title": "light, 280px",
+                      "duration": 1508
+                    },
+                    {
+                      "title": "light, 740px",
+                      "duration": 1472
+                    },
+                    {
+                      "title": "light, 1280px",
+                      "duration": 1480
+                    }
+                  ],
+                  "startTime": "2026-10-05T11:56:57.360Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-34a9805afdc77447cd9f",
+          "file": "controls.spec.ts",
+          "line": 55,
+          "column": 0
+        },
+        {
+          "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-emulation",
+              "projectName": "android-emulation",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 3,
+                  "status": "passed",
+                  "duration": 4070,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T11:56:58.518Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-a7a901d2c9709c00f373",
+          "file": "controls.spec.ts",
+          "line": 232,
+          "column": 0
+        },
+        {
+          "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-emulation",
+              "projectName": "android-emulation",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 2689,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T11:57:00.513Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-ba33d5ece25161593353",
+          "file": "controls.spec.ts",
+          "line": 339,
+          "column": 0
+        },
+        {
+          "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-emulation",
+              "projectName": "android-emulation",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1635,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T11:57:00.559Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-e7b33c624eb4b2460836",
+          "file": "controls.spec.ts",
+          "line": 407,
+          "column": 0
+        },
+        {
+          "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "iphone-emulation",
+              "projectName": "iphone-emulation",
+              "results": [
+                {
+                  "workerIndex": 14,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 10784,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "dark, 280px",
+                      "duration": 1602
+                    },
+                    {
+                      "title": "dark, 740px",
+                      "duration": 1527
+                    },
+                    {
+                      "title": "dark, 1280px",
+                      "duration": 1515
+                    },
+                    {
+                      "title": "light, 280px",
+                      "duration": 1562
+                    },
+                    {
+                      "title": "light, 740px",
+                      "duration": 1544
+                    },
+                    {
+                      "title": "light, 1280px",
+                      "duration": 1569
+                    }
+                  ],
+                  "startTime": "2026-10-05T11:57:02.438Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-f4f31f4baaa1dea4482f",
+          "file": "controls.spec.ts",
+          "line": 55,
+          "column": 0
+        },
+        {
+          "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "iphone-emulation",
+              "projectName": "iphone-emulation",
+              "results": [
+                {
+                  "workerIndex": 15,
+                  "parallelIndex": 3,
+                  "status": "passed",
+                  "duration": 4324,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T11:57:02.811Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-1dd507c83bc330cd2c6b",
+          "file": "controls.spec.ts",
+          "line": 232,
+          "column": 0
+        },
+        {
+          "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "iphone-emulation",
+              "projectName": "iphone-emulation",
+              "results": [
+                {
+                  "workerIndex": 16,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 2817,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T11:57:03.444Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-bbe94f259b23dcc20ade",
+          "file": "controls.spec.ts",
+          "line": 339,
+          "column": 0
+        },
+        {
+          "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "iphone-emulation",
+              "projectName": "iphone-emulation",
+              "results": [
+                {
+                  "workerIndex": 16,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 1751,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T11:57:06.420Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-db30c59fbeabe097e4b9",
+          "file": "controls.spec.ts",
+          "line": 407,
+          "column": 0
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-05T11:56:40.272Z",
+    "duration": 33144.592000000004,
+    "expected": 19,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

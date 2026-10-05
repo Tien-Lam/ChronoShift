@@ -1,0 +1,2397 @@
+{
+  "recordedAt": "2026-10-05T12:24:29.123Z",
+  "scope": "Source-only static definitions; expand two explicit template loops; ordinary playwright.config projects and declared uncontrolled browserName skip only. No test registration or browser execution.",
+  "inventory": [
+    {
+      "file": "e2e/app.spec.ts",
+      "definitions": [
+        {
+          "line": 6,
+          "title": "worker failure recovers and a late response cannot resurrect cleared input",
+          "multiplicity": 1
+        },
+        {
+          "line": 67,
+          "title": "an intact offline app survives a failed registration check while changing target zones",
+          "multiplicity": 1
+        },
+        {
+          "line": 90,
+          "title": "a delayed failed readiness probe cannot overwrite a newer successful check",
+          "multiplicity": 1
+        },
+        {
+          "line": 130,
+          "title": "missing cache reports incomplete and reconnect repairs the complete offline app",
+          "multiplicity": 1
+        },
+        {
+          "line": 162,
+          "title": "pasted HTML cannot execute or fetch its URL",
+          "multiplicity": 1
+        },
+        {
+          "line": 182,
+          "title": "convert, inspect ambiguity, copy manually and protect privacy",
+          "multiplicity": 1
+        },
+        {
+          "line": 215,
+          "title": "close and reopen offline, then convert previously unseen input",
+          "multiplicity": 1
+        },
+        {
+          "line": 239,
+          "title": "preferences persist, input does not; denied storage still converts",
+          "multiplicity": 1
+        },
+        {
+          "line": 267,
+          "title": "input errors recover, edits invalidate results, keyboard keeps multiline input",
+          "multiplicity": 1
+        },
+        {
+          "line": 286,
+          "title": "readable at 320px, dark mode, with no serious accessibility violations",
+          "multiplicity": 1
+        },
+        {
+          "line": 340,
+          "title": "offline POST share is single-use and never places message in URL",
+          "multiplicity": 1
+        },
+        {
+          "line": 378,
+          "title": "an update waits, preserves draft on opt-in, and survives a partial next update",
+          "multiplicity": 1
+        }
+      ],
+      "logicalTests": 12,
+      "ordinaryProjects": 5,
+      "configured": 60,
+      "sourceDeclaredSkips": 0,
+      "firstAttemptBodies": 60
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "definitions": [
+        {
+          "line": 55,
+          "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+          "multiplicity": 1
+        },
+        {
+          "line": 232,
+          "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "multiplicity": 1
+        },
+        {
+          "line": 339,
+          "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "multiplicity": 1
+        },
+        {
+          "line": 407,
+          "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+          "multiplicity": 1
+        }
+      ],
+      "logicalTests": 4,
+      "ordinaryProjects": 5,
+      "configured": 20,
+      "sourceDeclaredSkips": 0,
+      "firstAttemptBodies": 20
+    },
+    {
+      "file": "e2e/copy-focus.spec.ts",
+      "definitions": [
+        {
+          "line": 262,
+          "title": "a deferred manual-copy focus frame cannot steal a new target keyboard edit",
+          "multiplicity": 1
+        },
+        {
+          "line": 296,
+          "title": "an unchanged copy owner still receives selected manual fallback text",
+          "multiplicity": 1
+        },
+        {
+          "line": 317,
+          "title": "same-owner keyboard intent keeps the newer owner",
+          "multiplicity": 1
+        }
+      ],
+      "logicalTests": 3,
+      "ordinaryProjects": 5,
+      "configured": 15,
+      "sourceDeclaredSkips": 0,
+      "firstAttemptBodies": 15
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "definitions": [
+        {
+          "line": 12,
+          "title": "detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled",
+          "multiplicity": 1
+        },
+        {
+          "line": 84,
+          "title": "detailed logging survives a tab reload and reset preferences disables it",
+          "multiplicity": 1
+        },
+        {
+          "line": 114,
+          "title": "detailed logs still work in memory when session storage is denied",
+          "multiplicity": 1
+        },
+        {
+          "line": 145,
+          "title": "a retired release repairs only missing files using its intact cached assets",
+          "multiplicity": 1
+        },
+        {
+          "line": 191,
+          "title": "corrupt cached files fail integrity checks and detailed logs identify bounded repair failure",
+          "multiplicity": 1
+        },
+        {
+          "line": 232,
+          "title": "waiting updates remain actionable when a current cache probe times out",
+          "multiplicity": 1
+        }
+      ],
+      "logicalTests": 6,
+      "ordinaryProjects": 5,
+      "configured": 30,
+      "sourceDeclaredSkips": 0,
+      "firstAttemptBodies": 30
+    },
+    {
+      "file": "e2e/engine.spec.ts",
+      "definitions": [
+        {
+          "line": 4,
+          "title": "independent exact fixture expectations run in the production browser worker",
+          "multiplicity": 1
+        }
+      ],
+      "logicalTests": 1,
+      "ordinaryProjects": 5,
+      "configured": 5,
+      "sourceDeclaredSkips": 0,
+      "firstAttemptBodies": 5
+    },
+    {
+      "file": "e2e/foldable.spec.ts",
+      "definitions": [
+        {
+          "line": 4,
+          "title": "input and results avoid a vertical hinge and survive folding",
+          "multiplicity": 1
+        },
+        {
+          "line": 70,
+          "title": "tabletop posture confines the scrollable task to the upper screen",
+          "multiplicity": 1
+        },
+        {
+          "line": 112,
+          "title": "notch and home-indicator safe areas inset the task",
+          "multiplicity": 1
+        }
+      ],
+      "logicalTests": 3,
+      "ordinaryProjects": 1,
+      "configured": 3,
+      "sourceDeclaredSkips": 0,
+      "firstAttemptBodies": 3
+    },
+    {
+      "file": "e2e/hosted.spec.ts",
+      "definitions": [
+        {
+          "line": 4,
+          "title": "public Pages deployment converts fresh input after offline close and reopen",
+          "multiplicity": 1
+        },
+        {
+          "line": 68,
+          "title": "Pages serves scoped manifest, identifiable release and effective static CSP",
+          "multiplicity": 1
+        }
+      ],
+      "logicalTests": 2,
+      "ordinaryProjects": 5,
+      "configured": 0,
+      "sourceDeclaredSkips": 0,
+      "firstAttemptBodies": 0
+    },
+    {
+      "file": "e2e/imports.spec.ts",
+      "definitions": [
+        {
+          "line": 5,
+          "title": "delayed ${source} offers replacement instead of overwriting edited or cleared work",
+          "multiplicity": 2
+        },
+        {
+          "line": 173,
+          "title": "an unresolved target hides copyable fallback results and correction restores the source interpretation",
+          "multiplicity": 1
+        }
+      ],
+      "logicalTests": 3,
+      "ordinaryProjects": 5,
+      "configured": 15,
+      "sourceDeclaredSkips": 0,
+      "firstAttemptBodies": 15
+    },
+    {
+      "file": "e2e/live.spec.ts",
+      "definitions": [
+        {
+          "line": 4,
+          "title": "typing, pasted text and conversion settings update without submission",
+          "multiplicity": 1
+        },
+        {
+          "line": 30,
+          "title": "composition defers conversion and queued work cannot overwrite a newer draft",
+          "multiplicity": 1
+        }
+      ],
+      "logicalTests": 2,
+      "ordinaryProjects": 5,
+      "configured": 10,
+      "sourceDeclaredSkips": 0,
+      "firstAttemptBodies": 10
+    },
+    {
+      "file": "e2e/motion.spec.ts",
+      "definitions": [
+        {
+          "line": 4,
+          "title": "live feedback covers debounce and worker completion, then settles or cancels",
+          "multiplicity": 1
+        },
+        {
+          "line": 61,
+          "title": "reduced motion keeps live feedback and usable results without animation",
+          "multiplicity": 1
+        }
+      ],
+      "logicalTests": 2,
+      "ordinaryProjects": 5,
+      "configured": 10,
+      "sourceDeclaredSkips": 0,
+      "firstAttemptBodies": 10
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "definitions": [
+        {
+          "line": 31,
+          "title": "a transient initial registration failure retries before any controller exists",
+          "multiplicity": 1
+        },
+        {
+          "line": 59,
+          "title": "slow first installation clears its expired warning without losing conversion",
+          "multiplicity": 1
+        },
+        {
+          "line": 82,
+          "title": "a stale mutable release marker is refetched and checked before offline readiness",
+          "multiplicity": 1
+        },
+        {
+          "line": 106,
+          "title": "a rejected first installation retries without reloading or clearing input",
+          "multiplicity": 1
+        },
+        {
+          "line": 126,
+          "title": "persistently wrong release bytes never activate or claim offline readiness",
+          "multiplicity": 1
+        },
+        {
+          "line": 155,
+          "title": "HTML response rewriting cannot break first installation or offline navigation",
+          "multiplicity": 1
+        }
+      ],
+      "logicalTests": 6,
+      "ordinaryProjects": 5,
+      "configured": 30,
+      "sourceDeclaredSkips": 0,
+      "firstAttemptBodies": 30
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "definitions": [
+        {
+          "line": 6,
+          "title": "legacy ${legacyDesign} preferences migrate, reset removes them and quota failures keep conversion usable",
+          "multiplicity": 2
+        },
+        {
+          "line": 85,
+          "title": "invalid and oversized local shares return a paste fallback without storing text",
+          "multiplicity": 1
+        },
+        {
+          "line": 119,
+          "title": "expired and invalid temporary text is consumed and erased without restoring it",
+          "multiplicity": 1
+        },
+        {
+          "line": 223,
+          "title": "denied update storage keeps the draft active and requires clearing before reload",
+          "multiplicity": 1
+        }
+      ],
+      "logicalTests": 5,
+      "ordinaryProjects": 5,
+      "configured": 25,
+      "sourceDeclaredSkips": 0,
+      "firstAttemptBodies": 25
+    },
+    {
+      "file": "e2e/responsive.spec.ts",
+      "definitions": [
+        {
+          "line": 4,
+          "title": "reflows across cover screens, phones, tablets and desktops without losing work",
+          "multiplicity": 1
+        },
+        {
+          "line": 83,
+          "title": "touch-sized controls and keyboard navigation remain usable in a short viewport",
+          "multiplicity": 1
+        }
+      ],
+      "logicalTests": 2,
+      "ordinaryProjects": 5,
+      "configured": 10,
+      "sourceDeclaredSkips": 0,
+      "firstAttemptBodies": 10
+    },
+    {
+      "file": "e2e/subpath.spec.ts",
+      "definitions": [
+        {
+          "line": 3,
+          "title": "subpath scope, manifest and worker survive offline restart",
+          "multiplicity": 1
+        }
+      ],
+      "logicalTests": 1,
+      "ordinaryProjects": 5,
+      "configured": 0,
+      "sourceDeclaredSkips": 0,
+      "firstAttemptBodies": 0
+    },
+    {
+      "file": "e2e/uncontrolled.spec.ts",
+      "definitions": [
+        {
+          "line": 102,
+          "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+          "multiplicity": 1
+        },
+        {
+          "line": 135,
+          "title": "an explicit update recovers a timed-out readiness probe without another reload",
+          "multiplicity": 1
+        },
+        {
+          "line": 227,
+          "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+          "multiplicity": 1
+        }
+      ],
+      "logicalTests": 3,
+      "ordinaryProjects": 5,
+      "configured": 15,
+      "sourceDeclaredSkips": 9,
+      "firstAttemptBodies": 6
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "definitions": [
+        {
+          "line": 6,
+          "title": "repair refuses another release and leaves the existing offline shell intact",
+          "multiplicity": 1
+        },
+        {
+          "line": 45,
+          "title": "an interrupted rollback preserves a retained cache and its old tab worker",
+          "multiplicity": 1
+        },
+        {
+          "line": 93,
+          "title": "oversized drafts block an update until they can be safely preserved",
+          "multiplicity": 1
+        },
+        {
+          "line": 209,
+          "title": "old and new tabs retain their own workers across successive releases and offline restart",
+          "multiplicity": 1
+        },
+        {
+          "line": 270,
+          "title": "rollback preserves draft and preferences and removes obsolete caches with one remaining tab",
+          "multiplicity": 1
+        }
+      ],
+      "logicalTests": 5,
+      "ordinaryProjects": 5,
+      "configured": 25,
+      "sourceDeclaredSkips": 0,
+      "firstAttemptBodies": 25
+    }
+  ],
+  "totalConfigured": 273,
+  "totalFirstAttemptBodies": 264,
+  "sequentialMessageLength": 32,
+  "identities": [
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 6,
+      "title": "worker failure recovers and a late response cannot resurrect cleared input",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 6,
+      "title": "worker failure recovers and a late response cannot resurrect cleared input",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 6,
+      "title": "worker failure recovers and a late response cannot resurrect cleared input",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 6,
+      "title": "worker failure recovers and a late response cannot resurrect cleared input",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 6,
+      "title": "worker failure recovers and a late response cannot resurrect cleared input",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 67,
+      "title": "an intact offline app survives a failed registration check while changing target zones",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 67,
+      "title": "an intact offline app survives a failed registration check while changing target zones",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 67,
+      "title": "an intact offline app survives a failed registration check while changing target zones",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 67,
+      "title": "an intact offline app survives a failed registration check while changing target zones",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 67,
+      "title": "an intact offline app survives a failed registration check while changing target zones",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 90,
+      "title": "a delayed failed readiness probe cannot overwrite a newer successful check",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 90,
+      "title": "a delayed failed readiness probe cannot overwrite a newer successful check",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 90,
+      "title": "a delayed failed readiness probe cannot overwrite a newer successful check",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 90,
+      "title": "a delayed failed readiness probe cannot overwrite a newer successful check",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 90,
+      "title": "a delayed failed readiness probe cannot overwrite a newer successful check",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 130,
+      "title": "missing cache reports incomplete and reconnect repairs the complete offline app",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 130,
+      "title": "missing cache reports incomplete and reconnect repairs the complete offline app",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 130,
+      "title": "missing cache reports incomplete and reconnect repairs the complete offline app",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 130,
+      "title": "missing cache reports incomplete and reconnect repairs the complete offline app",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 130,
+      "title": "missing cache reports incomplete and reconnect repairs the complete offline app",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 162,
+      "title": "pasted HTML cannot execute or fetch its URL",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 162,
+      "title": "pasted HTML cannot execute or fetch its URL",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 162,
+      "title": "pasted HTML cannot execute or fetch its URL",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 162,
+      "title": "pasted HTML cannot execute or fetch its URL",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 162,
+      "title": "pasted HTML cannot execute or fetch its URL",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 182,
+      "title": "convert, inspect ambiguity, copy manually and protect privacy",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 182,
+      "title": "convert, inspect ambiguity, copy manually and protect privacy",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 182,
+      "title": "convert, inspect ambiguity, copy manually and protect privacy",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 182,
+      "title": "convert, inspect ambiguity, copy manually and protect privacy",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 182,
+      "title": "convert, inspect ambiguity, copy manually and protect privacy",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 215,
+      "title": "close and reopen offline, then convert previously unseen input",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 215,
+      "title": "close and reopen offline, then convert previously unseen input",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 215,
+      "title": "close and reopen offline, then convert previously unseen input",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 215,
+      "title": "close and reopen offline, then convert previously unseen input",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 215,
+      "title": "close and reopen offline, then convert previously unseen input",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 239,
+      "title": "preferences persist, input does not; denied storage still converts",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 239,
+      "title": "preferences persist, input does not; denied storage still converts",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 239,
+      "title": "preferences persist, input does not; denied storage still converts",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 239,
+      "title": "preferences persist, input does not; denied storage still converts",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 239,
+      "title": "preferences persist, input does not; denied storage still converts",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 267,
+      "title": "input errors recover, edits invalidate results, keyboard keeps multiline input",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 267,
+      "title": "input errors recover, edits invalidate results, keyboard keeps multiline input",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 267,
+      "title": "input errors recover, edits invalidate results, keyboard keeps multiline input",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 267,
+      "title": "input errors recover, edits invalidate results, keyboard keeps multiline input",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 267,
+      "title": "input errors recover, edits invalidate results, keyboard keeps multiline input",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 286,
+      "title": "readable at 320px, dark mode, with no serious accessibility violations",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 286,
+      "title": "readable at 320px, dark mode, with no serious accessibility violations",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 286,
+      "title": "readable at 320px, dark mode, with no serious accessibility violations",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 286,
+      "title": "readable at 320px, dark mode, with no serious accessibility violations",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 286,
+      "title": "readable at 320px, dark mode, with no serious accessibility violations",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 340,
+      "title": "offline POST share is single-use and never places message in URL",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 340,
+      "title": "offline POST share is single-use and never places message in URL",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 340,
+      "title": "offline POST share is single-use and never places message in URL",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 340,
+      "title": "offline POST share is single-use and never places message in URL",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 340,
+      "title": "offline POST share is single-use and never places message in URL",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 378,
+      "title": "an update waits, preserves draft on opt-in, and survives a partial next update",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 378,
+      "title": "an update waits, preserves draft on opt-in, and survives a partial next update",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 378,
+      "title": "an update waits, preserves draft on opt-in, and survives a partial next update",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 378,
+      "title": "an update waits, preserves draft on opt-in, and survives a partial next update",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/app.spec.ts",
+      "line": 378,
+      "title": "an update waits, preserves draft on opt-in, and survives a partial next update",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 55,
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 55,
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 55,
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 55,
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 55,
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 232,
+      "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 232,
+      "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 232,
+      "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 232,
+      "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 232,
+      "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 339,
+      "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 339,
+      "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 339,
+      "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 339,
+      "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 339,
+      "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 407,
+      "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 407,
+      "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 407,
+      "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 407,
+      "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "line": 407,
+      "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/copy-focus.spec.ts",
+      "line": 262,
+      "title": "a deferred manual-copy focus frame cannot steal a new target keyboard edit",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/copy-focus.spec.ts",
+      "line": 262,
+      "title": "a deferred manual-copy focus frame cannot steal a new target keyboard edit",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/copy-focus.spec.ts",
+      "line": 262,
+      "title": "a deferred manual-copy focus frame cannot steal a new target keyboard edit",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/copy-focus.spec.ts",
+      "line": 262,
+      "title": "a deferred manual-copy focus frame cannot steal a new target keyboard edit",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/copy-focus.spec.ts",
+      "line": 262,
+      "title": "a deferred manual-copy focus frame cannot steal a new target keyboard edit",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/copy-focus.spec.ts",
+      "line": 296,
+      "title": "an unchanged copy owner still receives selected manual fallback text",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/copy-focus.spec.ts",
+      "line": 296,
+      "title": "an unchanged copy owner still receives selected manual fallback text",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/copy-focus.spec.ts",
+      "line": 296,
+      "title": "an unchanged copy owner still receives selected manual fallback text",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/copy-focus.spec.ts",
+      "line": 296,
+      "title": "an unchanged copy owner still receives selected manual fallback text",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/copy-focus.spec.ts",
+      "line": 296,
+      "title": "an unchanged copy owner still receives selected manual fallback text",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/copy-focus.spec.ts",
+      "line": 317,
+      "title": "same-owner keyboard intent keeps the newer owner",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/copy-focus.spec.ts",
+      "line": 317,
+      "title": "same-owner keyboard intent keeps the newer owner",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/copy-focus.spec.ts",
+      "line": 317,
+      "title": "same-owner keyboard intent keeps the newer owner",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/copy-focus.spec.ts",
+      "line": 317,
+      "title": "same-owner keyboard intent keeps the newer owner",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/copy-focus.spec.ts",
+      "line": 317,
+      "title": "same-owner keyboard intent keeps the newer owner",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 12,
+      "title": "detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 12,
+      "title": "detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 12,
+      "title": "detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 12,
+      "title": "detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 12,
+      "title": "detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 84,
+      "title": "detailed logging survives a tab reload and reset preferences disables it",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 84,
+      "title": "detailed logging survives a tab reload and reset preferences disables it",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 84,
+      "title": "detailed logging survives a tab reload and reset preferences disables it",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 84,
+      "title": "detailed logging survives a tab reload and reset preferences disables it",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 84,
+      "title": "detailed logging survives a tab reload and reset preferences disables it",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 114,
+      "title": "detailed logs still work in memory when session storage is denied",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 114,
+      "title": "detailed logs still work in memory when session storage is denied",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 114,
+      "title": "detailed logs still work in memory when session storage is denied",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 114,
+      "title": "detailed logs still work in memory when session storage is denied",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 114,
+      "title": "detailed logs still work in memory when session storage is denied",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 145,
+      "title": "a retired release repairs only missing files using its intact cached assets",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 145,
+      "title": "a retired release repairs only missing files using its intact cached assets",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 145,
+      "title": "a retired release repairs only missing files using its intact cached assets",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 145,
+      "title": "a retired release repairs only missing files using its intact cached assets",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 145,
+      "title": "a retired release repairs only missing files using its intact cached assets",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 191,
+      "title": "corrupt cached files fail integrity checks and detailed logs identify bounded repair failure",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 191,
+      "title": "corrupt cached files fail integrity checks and detailed logs identify bounded repair failure",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 191,
+      "title": "corrupt cached files fail integrity checks and detailed logs identify bounded repair failure",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 191,
+      "title": "corrupt cached files fail integrity checks and detailed logs identify bounded repair failure",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 191,
+      "title": "corrupt cached files fail integrity checks and detailed logs identify bounded repair failure",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 232,
+      "title": "waiting updates remain actionable when a current cache probe times out",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 232,
+      "title": "waiting updates remain actionable when a current cache probe times out",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 232,
+      "title": "waiting updates remain actionable when a current cache probe times out",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 232,
+      "title": "waiting updates remain actionable when a current cache probe times out",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 232,
+      "title": "waiting updates remain actionable when a current cache probe times out",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/engine.spec.ts",
+      "line": 4,
+      "title": "independent exact fixture expectations run in the production browser worker",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/engine.spec.ts",
+      "line": 4,
+      "title": "independent exact fixture expectations run in the production browser worker",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/engine.spec.ts",
+      "line": 4,
+      "title": "independent exact fixture expectations run in the production browser worker",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/engine.spec.ts",
+      "line": 4,
+      "title": "independent exact fixture expectations run in the production browser worker",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/engine.spec.ts",
+      "line": 4,
+      "title": "independent exact fixture expectations run in the production browser worker",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/foldable.spec.ts",
+      "line": 4,
+      "title": "input and results avoid a vertical hinge and survive folding",
+      "project": "foldable",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/foldable.spec.ts",
+      "line": 70,
+      "title": "tabletop posture confines the scrollable task to the upper screen",
+      "project": "foldable",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/foldable.spec.ts",
+      "line": 112,
+      "title": "notch and home-indicator safe areas inset the task",
+      "project": "foldable",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed clipboard offers replacement instead of overwriting edited or cleared work",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed clipboard offers replacement instead of overwriting edited or cleared work",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed clipboard offers replacement instead of overwriting edited or cleared work",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed clipboard offers replacement instead of overwriting edited or cleared work",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed clipboard offers replacement instead of overwriting edited or cleared work",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed share offers replacement instead of overwriting edited or cleared work",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed share offers replacement instead of overwriting edited or cleared work",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed share offers replacement instead of overwriting edited or cleared work",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed share offers replacement instead of overwriting edited or cleared work",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed share offers replacement instead of overwriting edited or cleared work",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/imports.spec.ts",
+      "line": 173,
+      "title": "an unresolved target hides copyable fallback results and correction restores the source interpretation",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/imports.spec.ts",
+      "line": 173,
+      "title": "an unresolved target hides copyable fallback results and correction restores the source interpretation",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/imports.spec.ts",
+      "line": 173,
+      "title": "an unresolved target hides copyable fallback results and correction restores the source interpretation",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/imports.spec.ts",
+      "line": 173,
+      "title": "an unresolved target hides copyable fallback results and correction restores the source interpretation",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/imports.spec.ts",
+      "line": 173,
+      "title": "an unresolved target hides copyable fallback results and correction restores the source interpretation",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/live.spec.ts",
+      "line": 4,
+      "title": "typing, pasted text and conversion settings update without submission",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/live.spec.ts",
+      "line": 4,
+      "title": "typing, pasted text and conversion settings update without submission",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/live.spec.ts",
+      "line": 4,
+      "title": "typing, pasted text and conversion settings update without submission",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/live.spec.ts",
+      "line": 4,
+      "title": "typing, pasted text and conversion settings update without submission",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/live.spec.ts",
+      "line": 4,
+      "title": "typing, pasted text and conversion settings update without submission",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/live.spec.ts",
+      "line": 30,
+      "title": "composition defers conversion and queued work cannot overwrite a newer draft",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/live.spec.ts",
+      "line": 30,
+      "title": "composition defers conversion and queued work cannot overwrite a newer draft",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/live.spec.ts",
+      "line": 30,
+      "title": "composition defers conversion and queued work cannot overwrite a newer draft",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/live.spec.ts",
+      "line": 30,
+      "title": "composition defers conversion and queued work cannot overwrite a newer draft",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/live.spec.ts",
+      "line": 30,
+      "title": "composition defers conversion and queued work cannot overwrite a newer draft",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/motion.spec.ts",
+      "line": 4,
+      "title": "live feedback covers debounce and worker completion, then settles or cancels",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/motion.spec.ts",
+      "line": 4,
+      "title": "live feedback covers debounce and worker completion, then settles or cancels",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/motion.spec.ts",
+      "line": 4,
+      "title": "live feedback covers debounce and worker completion, then settles or cancels",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/motion.spec.ts",
+      "line": 4,
+      "title": "live feedback covers debounce and worker completion, then settles or cancels",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/motion.spec.ts",
+      "line": 4,
+      "title": "live feedback covers debounce and worker completion, then settles or cancels",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/motion.spec.ts",
+      "line": 61,
+      "title": "reduced motion keeps live feedback and usable results without animation",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/motion.spec.ts",
+      "line": 61,
+      "title": "reduced motion keeps live feedback and usable results without animation",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/motion.spec.ts",
+      "line": 61,
+      "title": "reduced motion keeps live feedback and usable results without animation",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/motion.spec.ts",
+      "line": 61,
+      "title": "reduced motion keeps live feedback and usable results without animation",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/motion.spec.ts",
+      "line": 61,
+      "title": "reduced motion keeps live feedback and usable results without animation",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 31,
+      "title": "a transient initial registration failure retries before any controller exists",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 31,
+      "title": "a transient initial registration failure retries before any controller exists",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 31,
+      "title": "a transient initial registration failure retries before any controller exists",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 31,
+      "title": "a transient initial registration failure retries before any controller exists",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 31,
+      "title": "a transient initial registration failure retries before any controller exists",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 59,
+      "title": "slow first installation clears its expired warning without losing conversion",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 59,
+      "title": "slow first installation clears its expired warning without losing conversion",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 59,
+      "title": "slow first installation clears its expired warning without losing conversion",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 59,
+      "title": "slow first installation clears its expired warning without losing conversion",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 59,
+      "title": "slow first installation clears its expired warning without losing conversion",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 82,
+      "title": "a stale mutable release marker is refetched and checked before offline readiness",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 82,
+      "title": "a stale mutable release marker is refetched and checked before offline readiness",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 82,
+      "title": "a stale mutable release marker is refetched and checked before offline readiness",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 82,
+      "title": "a stale mutable release marker is refetched and checked before offline readiness",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 82,
+      "title": "a stale mutable release marker is refetched and checked before offline readiness",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 106,
+      "title": "a rejected first installation retries without reloading or clearing input",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 106,
+      "title": "a rejected first installation retries without reloading or clearing input",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 106,
+      "title": "a rejected first installation retries without reloading or clearing input",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 106,
+      "title": "a rejected first installation retries without reloading or clearing input",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 106,
+      "title": "a rejected first installation retries without reloading or clearing input",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 126,
+      "title": "persistently wrong release bytes never activate or claim offline readiness",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 126,
+      "title": "persistently wrong release bytes never activate or claim offline readiness",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 126,
+      "title": "persistently wrong release bytes never activate or claim offline readiness",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 126,
+      "title": "persistently wrong release bytes never activate or claim offline readiness",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 126,
+      "title": "persistently wrong release bytes never activate or claim offline readiness",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 155,
+      "title": "HTML response rewriting cannot break first installation or offline navigation",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 155,
+      "title": "HTML response rewriting cannot break first installation or offline navigation",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 155,
+      "title": "HTML response rewriting cannot break first installation or offline navigation",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 155,
+      "title": "HTML response rewriting cannot break first installation or offline navigation",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/offline-install.spec.ts",
+      "line": 155,
+      "title": "HTML response rewriting cannot break first installation or offline navigation",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy lens preferences migrate, reset removes them and quota failures keep conversion usable",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy lens preferences migrate, reset removes them and quota failures keep conversion usable",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy lens preferences migrate, reset removes them and quota failures keep conversion usable",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy lens preferences migrate, reset removes them and quota failures keep conversion usable",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy lens preferences migrate, reset removes them and quota failures keep conversion usable",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy command preferences migrate, reset removes them and quota failures keep conversion usable",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy command preferences migrate, reset removes them and quota failures keep conversion usable",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy command preferences migrate, reset removes them and quota failures keep conversion usable",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy command preferences migrate, reset removes them and quota failures keep conversion usable",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy command preferences migrate, reset removes them and quota failures keep conversion usable",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 85,
+      "title": "invalid and oversized local shares return a paste fallback without storing text",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 85,
+      "title": "invalid and oversized local shares return a paste fallback without storing text",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 85,
+      "title": "invalid and oversized local shares return a paste fallback without storing text",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 85,
+      "title": "invalid and oversized local shares return a paste fallback without storing text",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 85,
+      "title": "invalid and oversized local shares return a paste fallback without storing text",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 119,
+      "title": "expired and invalid temporary text is consumed and erased without restoring it",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 119,
+      "title": "expired and invalid temporary text is consumed and erased without restoring it",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 119,
+      "title": "expired and invalid temporary text is consumed and erased without restoring it",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 119,
+      "title": "expired and invalid temporary text is consumed and erased without restoring it",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 119,
+      "title": "expired and invalid temporary text is consumed and erased without restoring it",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 223,
+      "title": "denied update storage keeps the draft active and requires clearing before reload",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 223,
+      "title": "denied update storage keeps the draft active and requires clearing before reload",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 223,
+      "title": "denied update storage keeps the draft active and requires clearing before reload",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 223,
+      "title": "denied update storage keeps the draft active and requires clearing before reload",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/privacy.spec.ts",
+      "line": 223,
+      "title": "denied update storage keeps the draft active and requires clearing before reload",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/responsive.spec.ts",
+      "line": 4,
+      "title": "reflows across cover screens, phones, tablets and desktops without losing work",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/responsive.spec.ts",
+      "line": 4,
+      "title": "reflows across cover screens, phones, tablets and desktops without losing work",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/responsive.spec.ts",
+      "line": 4,
+      "title": "reflows across cover screens, phones, tablets and desktops without losing work",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/responsive.spec.ts",
+      "line": 4,
+      "title": "reflows across cover screens, phones, tablets and desktops without losing work",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/responsive.spec.ts",
+      "line": 4,
+      "title": "reflows across cover screens, phones, tablets and desktops without losing work",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/responsive.spec.ts",
+      "line": 83,
+      "title": "touch-sized controls and keyboard navigation remain usable in a short viewport",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/responsive.spec.ts",
+      "line": 83,
+      "title": "touch-sized controls and keyboard navigation remain usable in a short viewport",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/responsive.spec.ts",
+      "line": 83,
+      "title": "touch-sized controls and keyboard navigation remain usable in a short viewport",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/responsive.spec.ts",
+      "line": 83,
+      "title": "touch-sized controls and keyboard navigation remain usable in a short viewport",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/responsive.spec.ts",
+      "line": 83,
+      "title": "touch-sized controls and keyboard navigation remain usable in a short viewport",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 102,
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 102,
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "project": "firefox",
+      "sourceDeclaredSkip": true
+    },
+    {
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 102,
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "project": "webkit",
+      "sourceDeclaredSkip": true
+    },
+    {
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 102,
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 102,
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": true
+    },
+    {
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 135,
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 135,
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "project": "firefox",
+      "sourceDeclaredSkip": true
+    },
+    {
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 135,
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "project": "webkit",
+      "sourceDeclaredSkip": true
+    },
+    {
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 135,
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 135,
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": true
+    },
+    {
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 227,
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 227,
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "project": "firefox",
+      "sourceDeclaredSkip": true
+    },
+    {
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 227,
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "project": "webkit",
+      "sourceDeclaredSkip": true
+    },
+    {
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 227,
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 227,
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": true
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 6,
+      "title": "repair refuses another release and leaves the existing offline shell intact",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 6,
+      "title": "repair refuses another release and leaves the existing offline shell intact",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 6,
+      "title": "repair refuses another release and leaves the existing offline shell intact",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 6,
+      "title": "repair refuses another release and leaves the existing offline shell intact",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 6,
+      "title": "repair refuses another release and leaves the existing offline shell intact",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 45,
+      "title": "an interrupted rollback preserves a retained cache and its old tab worker",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 45,
+      "title": "an interrupted rollback preserves a retained cache and its old tab worker",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 45,
+      "title": "an interrupted rollback preserves a retained cache and its old tab worker",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 45,
+      "title": "an interrupted rollback preserves a retained cache and its old tab worker",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 45,
+      "title": "an interrupted rollback preserves a retained cache and its old tab worker",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 93,
+      "title": "oversized drafts block an update until they can be safely preserved",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 93,
+      "title": "oversized drafts block an update until they can be safely preserved",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 93,
+      "title": "oversized drafts block an update until they can be safely preserved",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 93,
+      "title": "oversized drafts block an update until they can be safely preserved",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 93,
+      "title": "oversized drafts block an update until they can be safely preserved",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 209,
+      "title": "old and new tabs retain their own workers across successive releases and offline restart",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 209,
+      "title": "old and new tabs retain their own workers across successive releases and offline restart",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 209,
+      "title": "old and new tabs retain their own workers across successive releases and offline restart",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 209,
+      "title": "old and new tabs retain their own workers across successive releases and offline restart",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 209,
+      "title": "old and new tabs retain their own workers across successive releases and offline restart",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 270,
+      "title": "rollback preserves draft and preferences and removes obsolete caches with one remaining tab",
+      "project": "chromium",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 270,
+      "title": "rollback preserves draft and preferences and removes obsolete caches with one remaining tab",
+      "project": "firefox",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 270,
+      "title": "rollback preserves draft and preferences and removes obsolete caches with one remaining tab",
+      "project": "webkit",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 270,
+      "title": "rollback preserves draft and preferences and removes obsolete caches with one remaining tab",
+      "project": "android-emulation",
+      "sourceDeclaredSkip": false
+    },
+    {
+      "file": "e2e/updates.spec.ts",
+      "line": 270,
+      "title": "rollback preserves draft and preferences and removes obsolete caches with one remaining tab",
+      "project": "iphone-emulation",
+      "sourceDeclaredSkip": false
+    }
+  ],
+  "sourceBlobs": {
+    "e2e/app.spec.ts": "c884e3cd36edb239efa22ed02396657f461b5c8f",
+    "e2e/controls.spec.ts": "6afcf2482d8a570469acdae0d75067a136d1a7e6",
+    "e2e/copy-focus.spec.ts": "21eae8f97deea9dd2dc3890a47dfaab464f1bdd3",
+    "e2e/diagnostics.spec.ts": "a80506bdd1d2292941f0c15a7bf60786cf6257fe",
+    "e2e/engine.spec.ts": "c623f27c5628bf00018d572c82072f17a290410e",
+    "e2e/foldable.spec.ts": "9db1a0f1c81c5ba1c6978120f59a5a70df4d58ba",
+    "e2e/hosted.spec.ts": "df8d53aa718bfeec0693bb0c189a0f3adce0ca34",
+    "e2e/imports.spec.ts": "a607347a9f60df82c6802fcfaa349025c43ee3c8",
+    "e2e/live.spec.ts": "981e5a0d92a3f3208b76dce36c323c2dea205d4e",
+    "e2e/motion.spec.ts": "a86d8968cde698243b105e42c07a592f97aae8fb",
+    "e2e/offline-install.spec.ts": "bfa2739f6eea6abe847e1bedeab54590a2f1c0f7",
+    "e2e/privacy.spec.ts": "d40635ce2015b48d6cb58de59ba10c7df6da3109",
+    "e2e/responsive.spec.ts": "dfd77d33f2a791304cacfdf9c9e3e561b9243e1e",
+    "e2e/subpath.spec.ts": "fbe0e03e0e132a950eb441d93f7152e5d7ef31c2",
+    "e2e/uncontrolled.spec.ts": "a756ceb2b2d0ee13cdd61f0072c6171c552beb78",
+    "e2e/updates.spec.ts": "dfd8a1a10daef8ab85e0894e455d3e2396819a3b",
+    "web/src/components/Choices.tsx": "3047272ecae9a0c681ff7b09ed0592b00ad40cef",
+    "web/src/components/ZoneCollection.tsx": "cc0356e8ae31c2716ffb70b8a8d78a147dc6a5ff",
+    "web/src/App.tsx": "8bec3cbf656e92265f9f586fb9443de6e3c5aecc",
+    "web/src/style.css": "ffe5ce02cee2073a9b9dc888304465bf41a361f8",
+    "playwright.config.ts": "7a1c28db0dc15faaff76e2b02d72dc65962c9268",
+    "e2e/fixtures.ts": "0f1980702fb6bcdb124c925cc32d1d26e49e9efb",
+    "e2e/choices.ts": "6b81841ccf108483f35c9d3bea7ca017db6719ea"
+  }
+}

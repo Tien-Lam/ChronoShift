@@ -1,0 +1,70 @@
+{
+  "startedAt": "2026-10-05T12:21:51.799Z",
+  "motion": "no-preference",
+  "viewport": {
+    "width": 900,
+    "height": 2400
+  },
+  "locale": "en-AU",
+  "timezoneId": "Australia/Sydney",
+  "conditions": [
+    {
+      "name": "baseline",
+      "root": "/tmp/chronoshift-virtualized-zones/baseline-runtime/dist",
+      "port": 4327,
+      "origin": "http://127.0.0.1:4327",
+      "startedAt": "2026-10-05T12:21:51.860Z",
+      "observations": [],
+      "console": [],
+      "errors": [],
+      "artifacts": {
+        "shell": "70c39be8e8f9f5a2c942e3c23893d46c7d41edcecdabaddd9026b013604c5103",
+        "sw": "2301b0b246a865e4f18e6a7249f9cfc7ac7f0d20f14ae4e1d9b9ae558fb7755a",
+        "release": {
+          "sourceCommit": "cea0de547094ba51a598fdc4303409fdf1d36bb7",
+          "base": "/"
+        }
+      },
+      "servedScripts": [
+        "/assets/index-B3d9YDa-.js"
+      ],
+      "passed": false,
+      "failure": {
+        "at": "2026-10-05T12:21:57.094Z",
+        "text": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('[id=\"react-aria9629558822-_r_b_\"]').locator('[role=\"option\"]')\nExpected: 563\nReceived: 454\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('[id=\"react-aria9629558822-_r_b_\"]').locator('[role=\"option\"]') with timeout 5000ms\n  - waiting for locator('[id=\"react-aria9629558822-_r_b_\"]').locator('[role=\"option\"]')\n    14 × locator resolved to 454 elements\n       - unexpected value \"454\"\n",
+        "stack": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('[id=\"react-aria9629558822-_r_b_\"]').locator('[role=\"option\"]')\nExpected: 563\nReceived: 454\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('[id=\"react-aria9629558822-_r_b_\"]').locator('[role=\"option\"]') with timeout 5000ms\n  - waiting for locator('[id=\"react-aria9629558822-_r_b_\"]').locator('[role=\"option\"]')\n    14 × locator resolved to 454 elements\n       - unexpected value \"454\"\n\n    at captureRawStack (/Users/tien/Developer/ChronoShift/node_modules/playwright-core/lib/coreBundle.js:8588:21)\n    at callMatcherAsStep (/Users/tien/Developer/ChronoShift/node_modules/playwright/lib/matchers/expect.js:13310:57)\n    at /Users/tien/Developer/ChronoShift/docs/qa/ci-data-zones-2026-10-05/newcode/runtime-probe.ts:49:53\n    at processTicksAndRejections (native:7:39)"
+      },
+      "endedAt": "2026-10-05T12:21:57.156Z"
+    },
+    {
+      "name": "candidate",
+      "root": "/tmp/chronoshift-data-zones/candidate-runtime/dist",
+      "port": 4328,
+      "origin": "http://127.0.0.1:4328",
+      "startedAt": "2026-10-05T12:21:57.159Z",
+      "observations": [],
+      "console": [],
+      "errors": [],
+      "artifacts": {
+        "shell": "8ecbf3f56d0233135e885b3c051cf74ab8927a68ea0b6bc32fc604f230e1f32d",
+        "sw": "28b563190abc19e1ff007a5101eb1d2969d0e003d9cc4784935cb56b2150fcd4",
+        "release": {
+          "sourceCommit": "cea0de547094ba51a598fdc4303409fdf1d36bb7",
+          "base": "/"
+        }
+      },
+      "servedScripts": [
+        "/assets/index-B5lUMAkf.js"
+      ],
+      "passed": false,
+      "failure": {
+        "at": "2026-10-05T12:22:02.373Z",
+        "text": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('[id=\"react-aria9454956921-_r_b_\"]').locator('[role=\"option\"]')\nExpected: 563\nReceived: 454\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('[id=\"react-aria9454956921-_r_b_\"]').locator('[role=\"option\"]') with timeout 5000ms\n  - waiting for locator('[id=\"react-aria9454956921-_r_b_\"]').locator('[role=\"option\"]')\n    14 × locator resolved to 454 elements\n       - unexpected value \"454\"\n",
+        "stack": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('[id=\"react-aria9454956921-_r_b_\"]').locator('[role=\"option\"]')\nExpected: 563\nReceived: 454\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('[id=\"react-aria9454956921-_r_b_\"]').locator('[role=\"option\"]') with timeout 5000ms\n  - waiting for locator('[id=\"react-aria9454956921-_r_b_\"]').locator('[role=\"option\"]')\n    14 × locator resolved to 454 elements\n       - unexpected value \"454\"\n\n    at captureRawStack (/Users/tien/Developer/ChronoShift/node_modules/playwright-core/lib/coreBundle.js:8588:21)\n    at callMatcherAsStep (/Users/tien/Developer/ChronoShift/node_modules/playwright/lib/matchers/expect.js:13310:57)\n    at /Users/tien/Developer/ChronoShift/docs/qa/ci-data-zones-2026-10-05/newcode/runtime-probe.ts:49:53\n    at processTicksAndRejections (native:7:39)"
+      },
+      "endedAt": "2026-10-05T12:22:02.435Z"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "endedAt": "2026-10-05T12:22:02.450Z"
+}

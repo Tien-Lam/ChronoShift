@@ -1,0 +1,11 @@
+# Exact dispatch brief
+
+Independent code/evidence closure audit, clean context. Repo /Users/tien/Developer/ChronoShift head cea0de547094ba51a598fdc4303409fdf1d36bb7. Read AGENTS.md/docs/developer/review.md. Scope documentation-only CI wrapup; root updating docs/developer/ci-efficiency.md and peer creating data-zones README now. Inspect source restoration tracked diff and snapshots, proof analyzers and raw JSON/log firstattempt/hash reconciliation in docs/qa/ci-data-zones-2026-10-05 controls/ and closed*. Existing current shipped evidence ci-next-2026-10-05/delivery/README.md & paired-metrics.json. Both prototypes rejected, no runtime adoption/full candidate273/Linux saving. User explicitly revised20%+faster to10% improvement, accepts longer raw time, focus billing; latest says retain reductions already shipped. OrdinaryPR41pair380seconds/7rounded vs307/8=12.5% usage proxy; survivingAPI projected artifactbytehours63.06% lower. Public standard runners free; no monthly-dollar claim. No private billing access/publication. Audit final docs once written; separate documentation implementation verdict from revised objective/evidence resolution, capture actual clocks/environment/source hashes. Save original report and brief under docs/qa/ci-data-zones-2026-10-05/closure-code/. No changes outside own reportdir, no Git commits/Linear writes/new CI/browser runs.
+
+# Follow-up constraints received
+
+Root updated docs/developer/ci-efficiency.md now: currentPR41metrics,10%/longerraw/retain delivered reductions, no invoice/monthly claim; tool unchanged original20+raw policy with explicit current failure qualification. Please review final opening. Need closure docs source refs match. No further runtime/browser runs.
+
+Fixed residual historical paragraph to 'Neither result met the original 20% plus faster-runtime target.' Need final docs verdict once data README arrives. No invoice savings or private billing published.
+
+Please preserve exact brief actually received in your own reportdir as review-brief.md (not merely a reconstructed scope). Audit documentation-only delta; correction original objective20% remains unmet historical but revised10% usage proxy met and user requests retention, no actual account savings assertion. Closure is scope revision/retaining shipped work.

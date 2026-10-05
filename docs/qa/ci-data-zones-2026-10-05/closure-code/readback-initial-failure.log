@@ -1,0 +1,17 @@
+Initial readback command: mise exec -- bun docs/qa/ci-data-zones-2026-10-05/closure-code/readback.ts > docs/qa/ci-data-zones-2026-10-05/closure-code/readback.log
+Exit1. Original stderr observed by exec_command and copied here; stdout file was empty.
+
+ 5 | const root = process.cwd();
+ 6 | const data = join(root, "docs/qa/ci-data-zones-2026-10-05");
+ 7 | const out = import.meta.dir;
+ 8 | const assertions: string[] = [];
+ 9 | const assert = (ok: boolean, message: string) => {
+10 |   if (!ok) throw Error(message);
+                      ^
+error: Closed baseline/TaskDuration: independently reconciled counter mean
+      at assert (/Users/tien/Developer/ChronoShift/docs/qa/ci-data-zones-2026-10-05/closure-code/readback.ts:10:18)
+      at /Users/tien/Developer/ChronoShift/docs/qa/ci-data-zones-2026-10-05/closure-code/readback.ts:83:5
+
+Bun v1.4.0 (macOS arm64)
+
+Cause: exact IEEE754 equality is order-sensitive; retained analyzer sorts values before summation, independent readback summed raw order. Fixed readback tolerance to1e-12; no raw evidence or retained analyzer changed.

@@ -1,0 +1,34 @@
+{
+  "recordedAt": "2026-10-05T12:12:42.579Z",
+  "environment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "bun": "1.4.0"
+  },
+  "identity": {
+    "web/src/components/Choices.tsx": "82ede66b6a7209f940a8b37026f9e40217ebaf00ba92922135af8cb3b3b99f7b",
+    "web/src/components/ZoneCollection.tsx": "d772baf00e8b934fc134698d69f35812b902ad1ea8bb7b799f2b52f687d02cb2",
+    "web/src/style.css": "eb8c5cb2ace718b11803eedce92674d3819920c32f358bcd780936a1c3c4b54b",
+    "e2e/controls.spec.ts": "f6d3924543314046e19391ef194ae6f52562befce0ae4ae00021ff2291bc9710"
+  },
+  "checks": [
+    {
+      "command": "mise exec -- bun run typecheck",
+      "startedAt": "2026-10-05T12:12:42.107Z",
+      "endedAt": "2026-10-05T12:12:42.256Z",
+      "elapsedMs": 148.981625,
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "$ bunx --bun tsc --noEmit\n"
+    },
+    {
+      "command": "mise exec -- bun run format:check",
+      "startedAt": "2026-10-05T12:12:42.107Z",
+      "endedAt": "2026-10-05T12:12:42.579Z",
+      "elapsedMs": 472.09195900000003,
+      "exitCode": 0,
+      "stdout": "Checking formatting...\nAll matched files use Prettier code style!\n",
+      "stderr": "$ bunx --bun prettier --check web scripts/*.ts tests e2e *.ts\n"
+    }
+  ]
+}

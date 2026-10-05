@@ -1,0 +1,247 @@
+{
+  "analyzedAt": "2026-10-05T12:29:02.672Z",
+  "scope": "Serial local ABBA; three fresh contexts per engine/phase; ordinary 900x640 1x normal-motion UI with More options closed. Readiness/result locator elapsed includes observation delay and 250ms debounce. Chromium CDP duration counters are cumulative seconds for page renderer, not whole-browser/worker/CPU-profile/Linux CI time. Both sourceCommit markers are base CEA; full served hashes identify actual artifacts. No captures, forced actions, fault injection or browser coverage changes. Partial failures are preserved and invalidate comparison.",
+  "matched36UniqueObservations": true,
+  "groups": [
+    {
+      "engine": "chromium",
+      "variant": "baseline",
+      "readyMs": {
+        "count": 6,
+        "mean": 169.3846316666677,
+        "median": 169.23422899999946,
+        "min": 167.5339159999994,
+        "max": 171.4882080000002
+      },
+      "firstEditMs": {
+        "count": 6,
+        "mean": 805.0084514999988,
+        "median": 805.255438,
+        "min": 802.9910830000008,
+        "max": 806.1987919999956
+      },
+      "laterEditMs": {
+        "count": 12,
+        "mean": 726.8667014166658,
+        "median": 808.2516669999982,
+        "min": 312.7938750000003,
+        "max": 818.4757919999975
+      },
+      "rendererCountersSeconds": {
+        "ScriptDuration": {
+          "valid": true,
+          "changes": {
+            "count": 18,
+            "mean": 0.020320833333333337,
+            "median": 0.021063,
+            "min": 0.013461,
+            "max": 0.023256
+          }
+        },
+        "TaskDuration": {
+          "valid": true,
+          "changes": {
+            "count": 18,
+            "mean": 0.04105477777777779,
+            "median": 0.0411435,
+            "min": 0.032109,
+            "max": 0.048906000000000005
+          }
+        },
+        "LayoutDuration": {
+          "valid": true,
+          "changes": {
+            "count": 18,
+            "mean": 0.0010054999999999999,
+            "median": 0.0008520000000000012,
+            "min": 0.0004609999999999996,
+            "max": 0.0015810000000000008
+          }
+        },
+        "RecalcStyleDuration": {
+          "valid": true,
+          "changes": {
+            "count": 18,
+            "mean": 0.001695888888888889,
+            "median": 0.0017024999999999996,
+            "min": 0.001333,
+            "max": 0.001973
+          }
+        }
+      }
+    },
+    {
+      "engine": "chromium",
+      "variant": "candidate",
+      "readyMs": {
+        "count": 6,
+        "mean": 164.5233471666676,
+        "median": 163.88118750000285,
+        "min": 161.5137500000019,
+        "max": 168.38133299999754
+      },
+      "firstEditMs": {
+        "count": 6,
+        "mean": 636.4143609999998,
+        "median": 801.7392915,
+        "min": 293.8679169999996,
+        "max": 812.8132079999996
+      },
+      "laterEditMs": {
+        "count": 12,
+        "mean": 723.3220278333329,
+        "median": 808.058687499999,
+        "min": 290.4904999999999,
+        "max": 819.1040839999987
+      },
+      "rendererCountersSeconds": {
+        "ScriptDuration": {
+          "valid": true,
+          "changes": {
+            "count": 18,
+            "mean": 0.017605555555555555,
+            "median": 0.01772249999999999,
+            "min": 0.009689000000000003,
+            "max": 0.02146200000000001
+          }
+        },
+        "TaskDuration": {
+          "valid": true,
+          "changes": {
+            "count": 18,
+            "mean": 0.03689044444444444,
+            "median": 0.0384075,
+            "min": 0.02121300000000001,
+            "max": 0.04630199999999998
+          }
+        },
+        "LayoutDuration": {
+          "valid": true,
+          "changes": {
+            "count": 18,
+            "mean": 0.0009545555555555555,
+            "median": 0.0008710000000000002,
+            "min": 0.0003530000000000009,
+            "max": 0.0015969999999999995
+          }
+        },
+        "RecalcStyleDuration": {
+          "valid": true,
+          "changes": {
+            "count": 18,
+            "mean": 0.0016203888888888887,
+            "median": 0.0017714999999999999,
+            "min": 0.0009579999999999997,
+            "max": 0.0020109999999999998
+          }
+        }
+      }
+    },
+    {
+      "engine": "firefox",
+      "variant": "baseline",
+      "readyMs": {
+        "count": 6,
+        "mean": 218.27543766666335,
+        "median": 192.13277099999868,
+        "min": 189.48324999999022,
+        "max": 276.43216699999994
+      },
+      "firstEditMs": {
+        "count": 6,
+        "mean": 569.9758123333344,
+        "median": 570.2756664999979,
+        "min": 314.24370799999997,
+        "max": 828.165500000001
+      },
+      "laterEditMs": {
+        "count": 12,
+        "mean": 661.3023644999986,
+        "median": 822.0209999999979,
+        "min": 324.7787499999977,
+        "max": 845.0241249999963
+      }
+    },
+    {
+      "engine": "firefox",
+      "variant": "candidate",
+      "readyMs": {
+        "count": 6,
+        "mean": 211.1464166666677,
+        "median": 186.984187500002,
+        "min": 177.59912500000064,
+        "max": 270.59012500000244
+      },
+      "firstEditMs": {
+        "count": 6,
+        "mean": 743.5603958333335,
+        "median": 825.2050415000012,
+        "min": 318.4073749999952,
+        "max": 842.263084000002
+      },
+      "laterEditMs": {
+        "count": 12,
+        "mean": 618.6050243333326,
+        "median": 815.5285205,
+        "min": 319.36195900000166,
+        "max": 850.5917090000003
+      }
+    },
+    {
+      "engine": "webkit",
+      "variant": "baseline",
+      "readyMs": {
+        "count": 6,
+        "mean": 170.1977361666674,
+        "median": 166.8619164999982,
+        "min": 160.0634170000012,
+        "max": 185.35404199999903
+      },
+      "firstEditMs": {
+        "count": 6,
+        "mean": 306.02105549999914,
+        "median": 305.72372899999755,
+        "min": 304.83016599999974,
+        "max": 307.9795000000013
+      },
+      "laterEditMs": {
+        "count": 12,
+        "mean": 383.2735624999973,
+        "median": 300.2777914999979,
+        "min": 293.97437499999796,
+        "max": 807.8083749999932
+      }
+    },
+    {
+      "engine": "webkit",
+      "variant": "candidate",
+      "readyMs": {
+        "count": 6,
+        "mean": 168.5206528333365,
+        "median": 165.85181250000096,
+        "min": 155.07591700000194,
+        "max": 181.00429200000508
+      },
+      "firstEditMs": {
+        "count": 6,
+        "mean": 305.41611099999744,
+        "median": 305.5291664999968,
+        "min": 302.91049999999814,
+        "max": 308.2459579999995
+      },
+      "laterEditMs": {
+        "count": 12,
+        "mean": 379.03276733333286,
+        "median": 295.56662499999584,
+        "min": 291.3810000000012,
+        "max": 799.5675000000047
+      }
+    }
+  ],
+  "gaps": [
+    "Six fresh contexts per variant/engine is bounded exploration, not a robust p95",
+    "Locator elapsed includes poll/automation/debounce and cannot isolate collection work",
+    "Counters cover Chromium renderer only; no initialization counter subtraction or whole-system extrapolation",
+    "No Linux, whole-suite or successful publication-pair savings established"
+  ]
+}

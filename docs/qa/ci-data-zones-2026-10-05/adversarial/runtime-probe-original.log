@@ -1,0 +1,15 @@
+ 9 | const servers:any = {};
+10 | for (const [name, root] of Object.entries(roots)) {
+11 |  const options = { hostname:'127.0.0.1', port:name === 'baseline' ? 4325 : 4326, async fetch(request:Request) { const filePath = resolve(root,new URL(request.url).pathname.slice(1) || 'index.html'); if (!filePath.startsWith(root+'/')) return new Response('Not found',{status:404}); const f=Bun.file(filePath); if (!await f.exists()) return new Response('Not found',{status:404}); return new Response(f,{headers:{'Content-Type':mime[extname(filePath)] || 'application/octet-stream','Content-Security-Policy':PREVIEW_CSP}}); } };
+12 |  try { servers[name]=Bun.serve(options); } catch(e) { if ((e as any).code!=='EADDRINUSE') throw e; servers[name]=Bun.serve({...options,port:0}); }
+13 |  const files = [...new Bun.Glob('**/*').scanSync({cwd:root,onlyFiles:true})].sort();
+14 |  report.assets[name]={origin:`http://127.0.0.1:${servers[name].port}`,root,files:await Promise.all(files.map(async file=>({file,sha256:createHash('sha256').update(await Bun.file(root+'/'+file).arrayBuffer()).digest('hex')}))),release:await Bun.file(root+'/release.json').json()};
+     ^
+TypeError: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of ArrayBuffer
+ code: "ERR_INVALID_ARG_TYPE"
+
+      at update (unknown:1:1)
+      at /Users/tien/Developer/ChronoShift/docs/qa/ci-data-zones-2026-10-05/adversarial/runtime-probe-original.ts:14:157
+      at processTicksAndRejections (unknown:7:39)
+
+Bun v1.4.0 (macOS arm64)
