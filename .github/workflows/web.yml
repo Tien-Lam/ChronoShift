@@ -67,6 +67,15 @@ jobs:
           bun run corpus:audit
           diff -u "$RUNNER_TEMP/chronoshift-corpus-audit.json" docs/planning/corpus-audit.json
       - run: bun run test:browser
+        env:
+          CHRONOSHIFT_CI_TIMING: "1"
+      - name: Retain bounded browser timing metadata
+        if: ${{ !cancelled() && hashFiles('test-results/ci-timing.json') != '' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: chronoshift-ci-timing-${{ github.run_id }}-${{ github.run_attempt }}
+          path: test-results/ci-timing.json
+          retention-days: 1
       - id: pages
         if: inputs.publish-pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5

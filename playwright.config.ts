@@ -26,6 +26,9 @@ export default defineConfig({
     ["list"],
     ["html", { open: "never" }],
     ["./e2e/attempt-reporter.ts"],
+    ...(process.env.CHRONOSHIFT_CI_TIMING === "1"
+      ? ([["./e2e/timing-reporter.ts"]] as [string][])
+      : []),
   ],
   use: {
     baseURL: `http://127.0.0.1:${port}`,
