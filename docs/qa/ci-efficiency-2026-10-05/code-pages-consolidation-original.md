@@ -2,7 +2,7 @@
 
 Scope: read-only design review requested by root; no workflow/source edits, builds, browser runs, CI dispatches or publication. Context reused from the earlier independent code reviews because the configured agent slots are occupied. No peer review was read for this scope. The browser prototype and its test preparation remain outside this review.
 
-Observed clocks: review began at 2026-10-05 06:21:01 UTC; intermediate clocks 06:22:03, 06:23:43 and 06:24:20; environment evidence saved before the observed 06:24:33 clock. Report-writing end was not instrumented. These are observation times, not test durations.
+Observed clocks: review began at 2026-10-05 06:21:01 UTC; intermediate clocks 06:22:03, 06:23:43 and 06:24:20; environment evidence saved before the observed 06:24:33 clock. Initial report save completed before observed 06:25:19; precise writing start/end were not instrumented. These are observation times, not test durations.
 
 Local HEAD during review: `77fbf61b33d0b2752a3f90b20a261f30f0842b0f`. Shared worktree also contained unrelated dirty runtime/test/config/docs changes. Root changed Pages YAML during this review: the initially read workflow had separate prepare/deploy on reuse; the final read contains the proposed consolidation. No frozen runtime identity is relevant to this workflow-only proposal. Final observed hashes:
 
@@ -62,12 +62,14 @@ jobs:
       publish-pages: true
   deploy:
     needs: [prepare, verify]
-    if: always() && needs.prepare.result == 'success' && needs.prepare.outputs.reused != 'true' && needs.verify.result == 'success'
+    if: always() && !cancelled() && needs.prepare.result == 'success' && needs.prepare.outputs.reused != 'true' && needs.verify.result == 'success'
     # Existing pinned deploy-pages job, github-pages environment,
     # pages:write/id-token:write and github-pages concurrency unchanged.
 ```
 
 Keep the exact string comparison. A missing/false output means fallback only after successful preparation. A failed upload or reused deployment makes prepare fail and must not start another publication. Manual dispatch skips reuse, so its empty output deliberately enters the full fallback. Neither branch should use continue-on-error. A failed or cancelled fallback gate cannot deploy; its existing failed-attempt retention remains intact.
+
+The observed dirty final-deploy expression retains the existing `always()` without `!cancelled()`. The excerpt recommends adding that explicit cancellation guard: successful prerequisite results alone can remain true after a later manual cancellation. This is a bounded refinement to avoid starting publication after that cancellation, not evidence that a deployed run exhibited the issue. Active deployment cancellation remains handled by the pinned action's signal handler.
 
 The workflow-level lock must continue covering preparation, verification and deployment. The two job-level deployment locks may use the same `github-pages` group because they run sequentially and exclusively; neither can hold the lock while waiting for the other. Preserve main-only workflow/job gating and the actual environment's main branch policy. Queued Actions runs are not a guaranteed chronological FIFO; the existing serialization specifically prevents an already-running slower fallback from being overtaken by a concurrently publishing newer run. No new ordering guarantee is claimed.
 

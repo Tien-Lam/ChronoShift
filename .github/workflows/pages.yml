@@ -72,7 +72,7 @@ jobs:
   deploy:
     needs: [prepare, verify]
     # A failed reuse/upload/deployment must not start a second publication.
-    if: always() && needs.prepare.result == 'success' && needs.prepare.outputs.reused != 'true' && needs.verify.result == 'success'
+    if: always() && !cancelled() && needs.prepare.result == 'success' && needs.prepare.outputs.reused != 'true' && needs.verify.result == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     concurrency:
