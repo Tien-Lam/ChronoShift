@@ -1,0 +1,454 @@
+{
+  "config": {
+    "argv": [
+      "/Users/tien/.local/share/mise/installs/bun/1.4.0/bin/bun",
+      "/Users/tien/Developer/ChronoShift/node_modules/.bin/playwright",
+      "test",
+      "--config=docs/qa/copy-focus-2026-10-05/code-runtime/playwright.config.ts",
+      "--grep",
+      "probe|an unresolved target hides copyable fallback results and correction restores the source interpretation"
+    ],
+    "configFile": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/playwright.config.ts",
+    "rootDir": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime",
+        "testIgnore": [],
+        "testMatch": [
+          "*.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/qa/copy-focus-2026-10-05/code-runtime/report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "cwd": "/Users/tien/Developer/ChronoShift",
+      "command": "PORT=4317 CHRONOSHIFT_TEST_SERVER=1 bun scripts/serve-web.ts",
+      "url": "http://127.0.0.1:4317",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "existing-import.spec.ts",
+      "file": "existing-import.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "an unresolved target hides copyable fallback results and correction restores the source interpretation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1971,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:39:47.063Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbf085111b0a48fe66a6-dc69593b12085ff7dcb6",
+          "file": "../../../../e2e/imports.spec.ts",
+          "line": 173,
+          "column": 0
+        }
+      ]
+    },
+    {
+      "title": "focus-probes.spec.ts",
+      "file": "focus-probes.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "probe uninterrupted fallback selects exact copy text with diagnostics disabled",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 11082,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Text to copy')\nTimeout: 10000ms\nExpected pattern: \u001b[32m/9 Apr 2026.*3:00 pm.*UTC/s\u001b[39m\nReceived string:  \u001b[31m\"3:00 pm · Thu, 9 Apr 2026 · UTC\u001b[39m\n\u001b[31mApril 9, 2026 3pm UTC — UTC\"\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('Text to copy') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Text to copy')\u001b[22m\n\u001b[2m    24 × locator resolved to <textarea readonly id=\"manual-copy\">3:00 pm · Thu, 9 Apr 2026 · UTC↵April 9, 2026 3pm…</textarea>\u001b[22m\n\u001b[2m       - unexpected value \"3:00 pm · Thu, 9 Apr 2026 · UTC\u001b[22m\n\u001b[2mApril 9, 2026 3pm UTC — UTC\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Text to copy')\nTimeout: 10000ms\nExpected pattern: \u001b[32m/9 Apr 2026.*3:00 pm.*UTC/s\u001b[39m\nReceived string:  \u001b[31m\"3:00 pm · Thu, 9 Apr 2026 · UTC\u001b[39m\n\u001b[31mApril 9, 2026 3pm UTC — UTC\"\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('Text to copy') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Text to copy')\u001b[22m\n\u001b[2m    24 × locator resolved to <textarea readonly id=\"manual-copy\">3:00 pm · Thu, 9 Apr 2026 · UTC↵April 9, 2026 3pm…</textarea>\u001b[22m\n\u001b[2m       - unexpected value \"3:00 pm · Thu, 9 Apr 2026 · UTC\u001b[22m\n\u001b[2mApril 9, 2026 3pm UTC — UTC\"\u001b[22m\n\n    at /Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/focus-probes.spec.ts:155:22",
+                    "location": {
+                      "file": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/focus-probes.spec.ts",
+                      "column": 22,
+                      "line": 155
+                    },
+                    "snippet": "  153 |   const field = page.getByLabel(\"Text to copy\");\n  154 |   await expect(field).toBeFocused();\n> 155 |   await expect(field).toHaveValue(/9 Apr 2026.*3:00 pm.*UTC/s);\n      |                      ^\n  156 |   expect(\n  157 |     await field.evaluate((el: HTMLTextAreaElement) => [\n  158 |       el.selectionStart,"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/focus-probes.spec.ts",
+                        "column": 22,
+                        "line": 155
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Text to copy')\nTimeout: 10000ms\nExpected pattern: \u001b[32m/9 Apr 2026.*3:00 pm.*UTC/s\u001b[39m\nReceived string:  \u001b[31m\"3:00 pm · Thu, 9 Apr 2026 · UTC\u001b[39m\n\u001b[31mApril 9, 2026 3pm UTC — UTC\"\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('Text to copy') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Text to copy')\u001b[22m\n\u001b[2m    24 × locator resolved to <textarea readonly id=\"manual-copy\">3:00 pm · Thu, 9 Apr 2026 · UTC↵April 9, 2026 3pm…</textarea>\u001b[22m\n\u001b[2m       - unexpected value \"3:00 pm · Thu, 9 Apr 2026 · UTC\u001b[22m\n\u001b[2mApril 9, 2026 3pm UTC — UTC\"\u001b[22m\n\n\n  153 |   const field = page.getByLabel(\"Text to copy\");\n  154 |   await expect(field).toBeFocused();\n> 155 |   await expect(field).toHaveValue(/9 Apr 2026.*3:00 pm.*UTC/s);\n      |                      ^\n  156 |   expect(\n  157 |     await field.evaluate((el: HTMLTextAreaElement) => [\n  158 |       el.selectionStart,\n    at /Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/focus-probes.spec.ts:155:22"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:39:49.190Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/results/focus-probes-probe-uninter-b1e75-t-with-diagnostics-disabled/test-failed-1.png"
+                    },
+                    {
+                      "name": "probe-evidence",
+                      "contentType": "application/json",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/results/focus-probes-probe-uninter-b1e75-t-with-diagnostics-disabled/attachments/probe-evidence-52394bff5d1a1d22b73b376a3389de94bbd0f0c9.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/results/focus-probes-probe-uninter-b1e75-t-with-diagnostics-disabled/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/results/focus-probes-probe-uninter-b1e75-t-with-diagnostics-disabled/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/focus-probes.spec.ts",
+                    "column": 22,
+                    "line": 155
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "159c35428ed679f2cedf-02b80641da8dd2a16e10",
+          "file": "focus-probes.spec.ts",
+          "line": 148,
+          "column": 0
+        },
+        {
+          "title": "probe held native fallback frame yields to target keyboard entry and exact correction",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1826,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:40:00.444Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "probe-evidence",
+                      "contentType": "application/json",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/results/focus-probes-probe-held-na-643b3--entry-and-exact-correction/attachments/probe-evidence-c5f10346784786c1678df1a8d2db2ce2d5157d83.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "159c35428ed679f2cedf-96a327ee792bc769f51a",
+          "file": "focus-probes.spec.ts",
+          "line": 170,
+          "column": 0
+        },
+        {
+          "title": "probe delayed rejection after focus-only handoff retains fallback without stealing focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 969,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:40:02.419Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "probe-evidence",
+                      "contentType": "application/json",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/results/focus-probes-probe-delayed-ecfd2-back-without-stealing-focus/attachments/probe-evidence-99e0668be8105b3d6c24900a8f53c60eaaedf348.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "159c35428ed679f2cedf-f1a600bf99ffcf0c2922",
+          "file": "focus-probes.spec.ts",
+          "line": 200,
+          "column": 0
+        },
+        {
+          "title": "probe invalidation suppresses delayed clipboard rejection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1284,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:40:03.391Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "probe-evidence",
+                      "contentType": "application/json",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/results/focus-probes-probe-invalid-649ed-delayed-clipboard-rejection/attachments/probe-evidence-1fafc9d0b44f09c971f2301437b20bbf76fbfa4c.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "159c35428ed679f2cedf-a9fc1307543f2abff533",
+          "file": "focus-probes.spec.ts",
+          "line": 219,
+          "column": 0
+        },
+        {
+          "title": "probe latest successful copy owns outcome after earlier late rejection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1137,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:40:04.677Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "probe-evidence",
+                      "contentType": "application/json",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/results/focus-probes-probe-latest--2d760-fter-earlier-late-rejection/attachments/probe-evidence-20f3f4a978900c8f3919aacb0fd819a3f84f0d95.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "159c35428ed679f2cedf-188b543d194681f5f001",
+          "file": "focus-probes.spec.ts",
+          "line": 237,
+          "column": 0
+        },
+        {
+          "title": "probe old queued frame cannot target newer fallback field",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1507,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:40:05.817Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "probe-evidence",
+                      "contentType": "application/json",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/results/focus-probes-probe-old-que-37f8a-target-newer-fallback-field/attachments/probe-evidence-e3ac18ef1729dd157bfe4f8b936f9fec6cd5a691.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "159c35428ed679f2cedf-16fc9070fcb4e0f05016",
+          "file": "focus-probes.spec.ts",
+          "line": 258,
+          "column": 0
+        },
+        {
+          "title": "probe focus away and back does not revive queued focus ownership",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 925,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:40:07.328Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "probe-evidence",
+                      "contentType": "application/json",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/results/focus-probes-probe-focus-a-ddb6b-vive-queued-focus-ownership/attachments/probe-evidence-bd50f75920eb95cdb64fe5e099ed208d4ce86c42.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "159c35428ed679f2cedf-8fbab7bb0b24e8848f98",
+          "file": "focus-probes.spec.ts",
+          "line": 281,
+          "column": 0
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-05T09:39:46.820Z",
+    "duration": 21463.409000000003,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,59 @@
+
+Running 1 test using 1 worker
+
+(node:5790) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✘  1 [webkit] › e2e/copy-focus.spec.ts:7:0 › a deferred manual-copy focus frame cannot steal a new target keyboard edit (11.1s)
+
+
+  1) [webkit] › e2e/copy-focus.spec.ts:7:0 › a deferred manual-copy focus frame cannot steal a new target keyboard edit 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "target-zone"
+    Received: "manual-copy"
+
+      183 |       (window as any).__copyFocusProbe.snapshot(),
+      184 |     );
+    > 185 |     expect.soft(afterFrame.active).toBe("target-zone");
+          |                                   ^
+      186 |     await page.keyboard.insertText("CST");
+      187 |     await target.press("Tab");
+      188 |     await expect(target).toHaveValue("CST");
+        at /Users/tien/Developer/ChronoShift/e2e/copy-focus.spec.ts:185:35
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator:  getByLabel('Convert to', { exact: true })
+    Expected: "CST"
+    Received: "UTC"
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('Convert to', { exact: true }) with timeout 10000ms
+      - waiting for getByLabel('Convert to', { exact: true })
+        24 × locator resolved to <input data-rac="" type="text" value="UTC" tabindex="0" role="combobox" id="target-zone" autocorrect="off" autocomplete="off" spellcheck="false" data-hovered="true" aria-expanded="false" aria-label="Convert to" aria-autocomplete="list" class="react-aria-Input" aria-describedby="target-zone-help" placeholder="Your timezone · Sydney"/>
+           - unexpected value "UTC"
+
+
+      186 |     await page.keyboard.insertText("CST");
+      187 |     await target.press("Tab");
+    > 188 |     await expect(target).toHaveValue("CST");
+          |                         ^
+      189 |     await expect(page.locator(".result")).toHaveCount(0);
+      190 |     await expect(page.getByLabel("Text to copy")).toHaveCount(0);
+      191 |     await expect(page.getByRole("alert")).toContainText("Choose a timezone");
+        at /Users/tien/Developer/ChronoShift/e2e/copy-focus.spec.ts:188:25
+
+    attachment #1: copy-focus-observation (application/json) ───────────────────────────────────────
+    docs/qa/copy-focus-2026-10-05/reproduction/robust-old/results/copy-focus-a-deferred-manu-2b629--a-new-target-keyboard-edit-webkit/attachments/copy-focus-observation-3f14667927322c978521dc86f291557f461ccda7.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs/qa/copy-focus-2026-10-05/reproduction/robust-old/results/copy-focus-a-deferred-manu-2b629--a-new-target-keyboard-edit-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs/qa/copy-focus-2026-10-05/reproduction/robust-old/results/copy-focus-a-deferred-manu-2b629--a-new-target-keyboard-edit-webkit/error-context.md
+
+  1 failed
+    [webkit] › e2e/copy-focus.spec.ts:7:0 › a deferred manual-copy focus frame cannot steal a new target keyboard edit 

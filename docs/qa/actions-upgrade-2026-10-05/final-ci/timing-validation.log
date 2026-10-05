@@ -1,0 +1,117 @@
+{
+  "observedAt": "2026-10-05T09:18:44.315Z",
+  "run": {
+    "id": 37288000068,
+    "attempt": 1,
+    "head": "eef0d51ea3ca835dfe27d7e157c6bfad1610a7b3",
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success",
+    "createdAt": "2026-10-05T09:07:49Z",
+    "updatedAt": "2026-10-05T09:14:50Z",
+    "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37288000068"
+  },
+  "archive": {
+    "artifactId": 11336030084,
+    "bytes": 47474,
+    "digest": "sha256:f0d6eed8277b92c00698178255942165f50eb8ee4f1ce6598504ee94259fa81a"
+  },
+  "timingContentSha256": "423d4efb9cfc5d4e9157659f4ffbe4f2544f534873bbf6039259c55860fa9fee",
+  "durationMs": 361307.677,
+  "startTime": "2026-10-05T09:08:37.475Z",
+  "byProject": {
+    "foldable": {
+      "passed": 3
+    },
+    "chromium": {
+      "passed": 51
+    },
+    "firefox": {
+      "passed": 48,
+      "skipped": 3
+    },
+    "webkit": {
+      "passed": 48,
+      "failed": 1,
+      "skipped": 3
+    },
+    "android-emulation": {
+      "passed": 51
+    },
+    "iphone-emulation": {
+      "passed": 48,
+      "skipped": 3
+    }
+  },
+  "checks": [
+    {
+      "name": "Downloaded archive SHA256 equals artifact API digest",
+      "pass": true,
+      "details": {
+        "actual": "sha256:f0d6eed8277b92c00698178255942165f50eb8ee4f1ce6598504ee94259fa81a",
+        "expected": "sha256:f0d6eed8277b92c00698178255942165f50eb8ee4f1ce6598504ee94259fa81a"
+      }
+    },
+    {
+      "name": "Downloaded archive bytes equal artifact API size",
+      "pass": true,
+      "details": {
+        "actual": 47474,
+        "expected": 47474
+      }
+    },
+    {
+      "name": "Archive contains only the declared timing JSON",
+      "pass": true
+    },
+    {
+      "name": "Timing upload executed successfully at flag1",
+      "pass": true
+    },
+    {
+      "name": "Exact bounded root schema",
+      "pass": true
+    },
+    {
+      "name": "Reporter metadata matches complete four-worker run",
+      "pass": true
+    },
+    {
+      "name": "Inclusive/leaf semantics retained",
+      "pass": true
+    },
+    {
+      "name": "All raw attempts retained within cap, including retry",
+      "pass": true
+    },
+    {
+      "name": "258 unique hashed case identities across259 attempts",
+      "pass": true
+    },
+    {
+      "name": "Structured attempts biject raw project/file/line/retry identities",
+      "pass": true
+    },
+    {
+      "name": "Structured counts honestly retain248 first passes/one failed original/one passed retry/nine skips",
+      "pass": true,
+      "details": {
+        "passed": 249,
+        "skipped": 9,
+        "failed": 1
+      }
+    },
+    {
+      "name": "Bounded fixed-field metadata; no titles/selectors/inputs/error payloads or raw step names",
+      "pass": true,
+      "details": []
+    }
+  ],
+  "allPassed": true,
+  "limits": [
+    "Digest covers the actual downloaded archive; privacy validation covers this report's schema/values, not arbitrary future reporter modifications.",
+    "Counter timing is inclusive/overlapping and not CPU attribution; no speed claim follows from a successful upload.",
+    "allPassed here validates artifact consistency/bounds, NOT a first-attempt-clean suite: one unexpected original and one passed retry are preserved.",
+    "Failure upload actually ran because an unexpected-attempt marker existed despite eventual workflow success; failure-archive verification is separate."
+  ]
+}

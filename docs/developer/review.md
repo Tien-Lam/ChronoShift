@@ -47,6 +47,14 @@ converted time alone can miss an unintended switch to an equivalent city alias.
 Scope test options to the current input's owned list; an exiting popup can retain
 its options while another field opens.
 
+For clipboard fallbacks, distinguish a rendered copy field from a pending focus
+callback. Exercise a new field's focus and keyboard input before that callback,
+including focus away and back, same-field pointer/key activity, delayed rejection
+and superseding copy requests. Recheck request and focus ownership inside deferred
+callbacks; a check before scheduling does not protect later interaction. Preserve
+an old-source failing control and normal-motion candidate results without adding
+sleeps or reacquiring focus to mask stolen keyboard input.
+
 ## Record verdicts
 
 Each reviewer reports the exact revision/scope inspected, findings with triggers and impact, and actual commands/results or observed browser journeys. Identify browser/profile, timing, fault injection and unexercised states. Report two distinct conclusions:
@@ -59,6 +67,11 @@ already-posted report and add a separate correction when provenance is wrong.
 Before claiming zero retries or a first-attempt pass, reconcile the complete
 runner log, structured attempts, failed-attempt marker and uploaded artifacts.
 A green workflow conclusion does not establish that every first attempt passed.
+Retry-only tracing can retain a successful retry's trace while the original
+failure has only screenshot/context. Identify which attempt each attachment
+covers; never use a retry trace to claim the first failure's event sequence.
+Consider bounded, value-free focus/input breadcrumbs for implicated checks before
+enabling costly first-attempt tracing across the complete suite.
 For before/candidate comparisons, record the actual served asset identity and
 origin, including custom fixtures that override configuration. Match capture,
 tracing, motion, viewport, raster and focus/scroll preconditions; preserve

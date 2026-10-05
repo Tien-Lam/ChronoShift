@@ -1,0 +1,117 @@
+{"version":9,"type":"context-options","origin":"testRunner","browserName":"","playwrightVersion":"1.63.0","options":{},"platform":"linux","wallTime":1791191516976,"monotonicTime":200053.942,"sdkLanguage":"javascript","testTimeout":30000,"annotations":[]}
+{"type":"before","callId":"hook@1","stepId":"hook@1","startTime":200067.904,"class":"Test","method":"hook","title":"Before Hooks","params":{},"stack":[]}
+{"type":"before","callId":"fixture@23","stepId":"fixture@23","parentId":"hook@1","startTime":200078.027,"class":"Test","method":"fixture","title":"Fixture \"origin\"","params":{},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/fixtures.ts","line":5,"column":25}]}
+{"type":"after","callId":"fixture@23","endTime":200131.284,"annotations":[]}
+{"type":"before","callId":"fixture@24","stepId":"fixture@24","parentId":"hook@1","startTime":200131.433,"class":"Test","method":"fixture","title":"Fixture \"baseURL\"","params":{},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/fixtures.ts","line":5,"column":25}]}
+{"type":"after","callId":"fixture@24","endTime":200131.611,"annotations":[]}
+{"type":"before","callId":"fixture@30","stepId":"fixture@30","parentId":"hook@1","startTime":200134.915,"class":"Test","method":"fixture","title":"Fixture \"browser\"","params":{},"stack":[]}
+{"type":"before","callId":"pw:api@31","stepId":"pw:api@31","parentId":"fixture@30","startTime":200137.871,"class":"Test","method":"pw:api","title":"Launch browser","params":{},"stack":[]}
+{"type":"after","callId":"pw:api@31","endTime":200297.827,"annotations":[]}
+{"type":"after","callId":"fixture@30","endTime":200297.898,"annotations":[]}
+{"type":"before","callId":"fixture@34","stepId":"fixture@34","parentId":"hook@1","startTime":200300.284,"class":"Test","method":"fixture","title":"Fixture \"context\"","params":{},"stack":[]}
+{"type":"before","callId":"pw:api@35","stepId":"pw:api@35","parentId":"fixture@34","startTime":200302.439,"class":"Test","method":"pw:api","title":"Create context","params":{},"stack":[]}
+{"type":"after","callId":"pw:api@35","endTime":200329.02,"annotations":[]}
+{"type":"after","callId":"fixture@34","endTime":200345.371,"annotations":[]}
+{"type":"before","callId":"fixture@36","stepId":"fixture@36","parentId":"hook@1","startTime":200345.683,"class":"Test","method":"fixture","title":"Fixture \"page\"","params":{},"stack":[]}
+{"type":"before","callId":"pw:api@37","stepId":"pw:api@37","parentId":"fixture@36","startTime":200349.255,"class":"Test","method":"pw:api","title":"Create page","params":{},"stack":[]}
+{"type":"after","callId":"pw:api@37","endTime":201013.223,"annotations":[]}
+{"type":"after","callId":"fixture@36","endTime":201013.273,"annotations":[]}
+{"type":"after","callId":"hook@1","endTime":201013.338,"annotations":[]}
+{"type":"before","callId":"pw:api@38","stepId":"pw:api@38","startTime":201014.615,"class":"Test","method":"pw:api","title":"Add init script","params":{},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":176,"column":13}],"group":"configuration"}
+{"type":"after","callId":"pw:api@38","endTime":201036.937,"annotations":[]}
+{"type":"before","callId":"pw:api@39","stepId":"pw:api@39","startTime":201038.359,"class":"Test","method":"pw:api","title":"Navigate","subtitle":"/","params":{"url":"/"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":188,"column":13}]}
+{"type":"after","callId":"pw:api@39","endTime":201780.332,"annotations":[]}
+{"type":"before","callId":"expect@40","stepId":"expect@40","startTime":201810.373,"class":"Test","method":"expect","title":"Expect \"toBeVisible\"","subtitle":"locator('main[data-offline-ready=\"true\"]')","params":{"locator":"locator('main[data-offline-ready=\"true\"]')"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":189,"column":64}]}
+{"type":"after","callId":"expect@40","endTime":202995.684,"annotations":[]}
+{"type":"before","callId":"pw:api@41","stepId":"pw:api@41","startTime":202997.034,"class":"Test","method":"pw:api","title":"Fill \"UTC\"","subtitle":"getByLabel('Convert to', { exact: true })","params":{"locator":"getByLabel('Convert to', { exact: true })","value":"UTC"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/choices.ts","line":24,"column":14,"function":"enterZone"}]}
+{"type":"after","callId":"pw:api@41","endTime":203142.785,"annotations":[]}
+{"type":"before","callId":"pw:api@42","stepId":"pw:api@42","startTime":203143.827,"class":"Test","method":"pw:api","title":"Press \"Tab\"","subtitle":"getByLabel('Convert to', { exact: true })","params":{"locator":"getByLabel('Convert to', { exact: true })","key":"Tab"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/choices.ts","line":27,"column":14,"function":"enterZone"}]}
+{"type":"after","callId":"pw:api@42","endTime":203222,"annotations":[]}
+{"type":"before","callId":"expect@43","stepId":"expect@43","startTime":203222.588,"class":"Test","method":"expect","title":"Expect \"toHaveValue\"","subtitle":"getByLabel('Convert to', { exact: true })","params":{"locator":"getByLabel('Convert to', { exact: true })","expected":"UTC"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/choices.ts","line":28,"column":22,"function":"enterZone"}]}
+{"type":"after","callId":"expect@43","endTime":203301.151,"annotations":[]}
+{"type":"before","callId":"pw:api@44","stepId":"pw:api@44","startTime":203301.669,"class":"Test","method":"pw:api","title":"Fill \"April 9, 2026 3pm UTC\"","subtitle":"getByLabel('Message with a date or time')","params":{"locator":"getByLabel('Message with a date or time')","value":"April 9, 2026 3pm UTC"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":193,"column":5}]}
+{"type":"after","callId":"pw:api@44","endTime":203363.723,"annotations":[]}
+{"type":"before","callId":"expect@45","stepId":"expect@45","startTime":203364.616,"class":"Test","method":"expect","title":"Expect \"toContainText\"","subtitle":"locator('.hero-time')","params":{"locator":"locator('.hero-time')","expected":"Object"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":194,"column":43}]}
+{"type":"after","callId":"expect@45","endTime":204332.813,"annotations":[]}
+{"type":"before","callId":"pw:api@46","stepId":"pw:api@46","startTime":204342.831,"class":"Test","method":"pw:api","title":"Click","subtitle":"getByRole('button', { name: 'Copy UTC', exact: true })","params":{"locator":"getByRole('button', { name: 'Copy UTC', exact: true })"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":195,"column":68}]}
+{"type":"after","callId":"pw:api@46","endTime":204501.659,"annotations":[]}
+{"type":"before","callId":"expect@47","stepId":"expect@47","startTime":204502.328,"class":"Test","method":"expect","title":"Expect \"toBeVisible\"","subtitle":"getByLabel('Text to copy')","params":{"locator":"getByLabel('Text to copy')"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":196,"column":48}]}
+{"type":"after","callId":"expect@47","endTime":204534.601,"annotations":[]}
+{"type":"before","callId":"pw:api@48","stepId":"pw:api@48","startTime":204535.09,"class":"Test","method":"pw:api","title":"Fill \"CST\"","subtitle":"getByLabel('Convert to', { exact: true })","params":{"locator":"getByLabel('Convert to', { exact: true })","value":"CST"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/choices.ts","line":24,"column":14,"function":"enterZone"}]}
+{"type":"after","callId":"pw:api@48","endTime":204768.075,"annotations":[]}
+{"type":"before","callId":"pw:api@49","stepId":"pw:api@49","startTime":204768.619,"class":"Test","method":"pw:api","title":"Press \"Tab\"","subtitle":"getByLabel('Convert to', { exact: true })","params":{"locator":"getByLabel('Convert to', { exact: true })","key":"Tab"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/choices.ts","line":27,"column":14,"function":"enterZone"}]}
+{"type":"after","callId":"pw:api@49","endTime":204891.717,"annotations":[]}
+{"type":"before","callId":"expect@50","stepId":"expect@50","startTime":204892.277,"class":"Test","method":"expect","title":"Expect \"toHaveValue\"","subtitle":"getByLabel('Convert to', { exact: true })","params":{"locator":"getByLabel('Convert to', { exact: true })","expected":"CST"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/choices.ts","line":28,"column":22,"function":"enterZone"}]}
+{"type":"after","callId":"expect@50","endTime":205027.346,"annotations":[]}
+{"type":"before","callId":"expect@51","stepId":"expect@51","startTime":205028.099,"class":"Test","method":"expect","title":"Expect \"toHaveCount\"","subtitle":"locator('.result')","params":{"locator":"locator('.result')"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":198,"column":40}]}
+{"type":"after","callId":"expect@51","endTime":205048.84,"annotations":[]}
+{"type":"before","callId":"expect@52","stepId":"expect@52","startTime":205049.423,"class":"Test","method":"expect","title":"Expect \"toHaveCount\"","subtitle":"getByRole('button', { name: 'Copy UTC', exact: true })","params":{"locator":"getByRole('button', { name: 'Copy UTC', exact: true })"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":201,"column":4}]}
+{"type":"after","callId":"expect@52","endTime":205085.44,"annotations":[]}
+{"type":"before","callId":"expect@53","stepId":"expect@53","startTime":205086.014,"class":"Test","method":"expect","title":"Expect \"toHaveCount\"","subtitle":"getByLabel('Text to copy')","params":{"locator":"getByLabel('Text to copy')"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":202,"column":48}]}
+{"type":"after","callId":"expect@53","endTime":205103.033,"annotations":[]}
+{"type":"before","callId":"expect@54","stepId":"expect@54","startTime":205103.749,"class":"Test","method":"expect","title":"Expect \"toContainText\"","subtitle":"getByRole('alert')","params":{"locator":"getByRole('alert')","expected":"Choose a timezone"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":203,"column":40}]}
+{"type":"after","callId":"expect@54","endTime":205127.11,"annotations":[]}
+{"type":"before","callId":"expect@55","stepId":"expect@55","startTime":205129.943,"class":"Test","method":"expect","title":"Expect \"toHaveCount\"","subtitle":"locator('.result')","params":{"locator":"locator('.result')"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":204,"column":40}]}
+{"type":"after","callId":"expect@55","endTime":205153.978,"annotations":[]}
+{"type":"before","callId":"pw:api@56","stepId":"pw:api@56","startTime":205154.611,"class":"Test","method":"pw:api","title":"Fill \"Asia/Tokyo\"","subtitle":"getByLabel('Convert to', { exact: true })","params":{"locator":"getByLabel('Convert to', { exact: true })","value":"Asia/Tokyo"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/choices.ts","line":24,"column":14,"function":"enterZone"}]}
+{"type":"after","callId":"pw:api@56","endTime":205304.88,"annotations":[]}
+{"type":"before","callId":"pw:api@57","stepId":"pw:api@57","startTime":205305.41,"class":"Test","method":"pw:api","title":"Press \"Tab\"","subtitle":"getByLabel('Convert to', { exact: true })","params":{"locator":"getByLabel('Convert to', { exact: true })","key":"Tab"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/choices.ts","line":27,"column":14,"function":"enterZone"}]}
+{"type":"after","callId":"pw:api@57","endTime":205409.252,"annotations":[]}
+{"type":"before","callId":"expect@58","stepId":"expect@58","startTime":205409.756,"class":"Test","method":"expect","title":"Expect \"toHaveValue\"","subtitle":"getByLabel('Convert to', { exact: true })","params":{"locator":"getByLabel('Convert to', { exact: true })","expected":"Asia/Tokyo"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/choices.ts","line":28,"column":22,"function":"enterZone"}]}
+{"type":"after","callId":"expect@58","endTime":205423.691,"annotations":[]}
+{"type":"before","callId":"expect@59","stepId":"expect@59","startTime":205424.298,"class":"Test","method":"expect","title":"Expect \"toHaveCount\"","subtitle":"getByRole('alert')","params":{"locator":"getByRole('alert')"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":206,"column":40}]}
+{"type":"after","callId":"expect@59","endTime":205442.877,"annotations":[]}
+{"type":"before","callId":"expect@60","stepId":"expect@60","startTime":205443.422,"class":"Test","method":"expect","title":"Expect \"toContainText\"","subtitle":"locator('.hero-time')","params":{"locator":"locator('.hero-time')","expected":"Object"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":207,"column":43}]}
+{"type":"after","callId":"expect@60","endTime":205998.528,"annotations":[]}
+{"type":"before","callId":"expect@61","stepId":"expect@61","startTime":205999.168,"class":"Test","method":"expect","title":"Expect \"toContainText\"","subtitle":"locator('.result-date')","params":{"locator":"locator('.result-date')","expected":"Object"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":208,"column":45}]}
+{"type":"after","callId":"expect@61","endTime":206027.783,"annotations":[]}
+{"type":"before","callId":"expect@62","stepId":"expect@62","startTime":206028.379,"class":"Test","method":"expect","title":"Expect \"toHaveText\"","subtitle":"locator('.source-label')","params":{"locator":"locator('.source-label')","expected":"UTC"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":209,"column":46}]}
+{"type":"after","callId":"expect@62","endTime":206043.346,"annotations":[]}
+{"type":"before","callId":"pw:api@63","stepId":"pw:api@63","startTime":206045.418,"class":"Test","method":"pw:api","title":"Click","subtitle":"getByRole('button', { name: 'Copy UTC', exact: true })","params":{"locator":"getByRole('button', { name: 'Copy UTC', exact: true })"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":210,"column":68}]}
+{"type":"after","callId":"pw:api@63","endTime":206412.9,"annotations":[]}
+{"type":"before","callId":"expect@64","stepId":"expect@64","startTime":206413.641,"class":"Test","method":"expect","title":"Expect \"toHaveValue\"","subtitle":"getByLabel('Text to copy')","params":{"locator":"getByLabel('Text to copy')","expected":"Object"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":211,"column":48}]}
+{"type":"after","callId":"expect@64","endTime":206433.175,"annotations":[]}
+{"type":"before","callId":"pw:api@65","stepId":"pw:api@65","startTime":206433.996,"class":"Test","method":"pw:api","title":"Evaluate","params":{},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":214,"column":13}]}
+{"type":"after","callId":"pw:api@65","endTime":206445.668,"annotations":[]}
+{"type":"before","callId":"pw:api@66","stepId":"pw:api@66","startTime":206446.389,"class":"Test","method":"pw:api","title":"Click","subtitle":"getByRole('button', { name: 'Copy UTC', exact: true })","params":{"locator":"getByRole('button', { name: 'Copy UTC', exact: true })"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":217,"column":68}]}
+{"type":"after","callId":"pw:api@66","endTime":206703.043,"annotations":[]}
+{"type":"before","callId":"pw:api@67","stepId":"pw:api@67","startTime":206703.594,"class":"Test","method":"pw:api","title":"Fill \"CST\"","subtitle":"getByLabel('Convert to', { exact: true })","params":{"locator":"getByLabel('Convert to', { exact: true })","value":"CST"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/choices.ts","line":24,"column":14,"function":"enterZone"}]}
+{"type":"after","callId":"pw:api@67","endTime":206771.635,"annotations":[]}
+{"type":"before","callId":"pw:api@68","stepId":"pw:api@68","startTime":206772.234,"class":"Test","method":"pw:api","title":"Press \"Tab\"","subtitle":"getByLabel('Convert to', { exact: true })","params":{"locator":"getByLabel('Convert to', { exact: true })","key":"Tab"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/choices.ts","line":27,"column":14,"function":"enterZone"}]}
+{"type":"after","callId":"pw:api@68","endTime":206877.016,"annotations":[]}
+{"type":"before","callId":"expect@69","stepId":"expect@69","startTime":206877.452,"class":"Test","method":"expect","title":"Expect \"toHaveValue\"","subtitle":"getByLabel('Convert to', { exact: true })","params":{"locator":"getByLabel('Convert to', { exact: true })","expected":"CST"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/choices.ts","line":28,"column":22,"function":"enterZone"}]}
+{"type":"after","callId":"expect@69","endTime":206901.537,"annotations":[]}
+{"type":"before","callId":"pw:api@70","stepId":"pw:api@70","startTime":206901.999,"class":"Test","method":"pw:api","title":"Evaluate","params":{},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":219,"column":13}]}
+{"type":"after","callId":"pw:api@70","endTime":206925.913,"annotations":[]}
+{"type":"before","callId":"expect@71","stepId":"expect@71","startTime":206926.364,"class":"Test","method":"expect","title":"Expect \"toHaveCount\"","subtitle":"getByLabel('Text to copy')","params":{"locator":"getByLabel('Text to copy')"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":222,"column":48}]}
+{"type":"after","callId":"expect@71","endTime":206945.489,"annotations":[]}
+{"type":"before","callId":"expect@72","stepId":"expect@72","startTime":206946.03,"class":"Test","method":"expect","title":"Expect \"toHaveText\"","subtitle":"locator('.notice')","params":{"locator":"locator('.notice')"},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/imports.spec.ts","line":223,"column":40}]}
+{"type":"after","callId":"expect@72","endTime":206968.746,"annotations":[]}
+{"type":"before","callId":"hook@73","stepId":"hook@73","startTime":206969.364,"class":"Test","method":"hook","title":"After Hooks","params":{},"stack":[]}
+{"type":"before","callId":"fixture@74","stepId":"fixture@74","parentId":"hook@73","startTime":206971.069,"class":"Test","method":"fixture","title":"Fixture \"page\"","params":{},"stack":[]}
+{"type":"after","callId":"fixture@74","endTime":206973.519,"annotations":[]}
+{"type":"before","callId":"fixture@75","stepId":"fixture@75","parentId":"hook@73","startTime":206973.657,"class":"Test","method":"fixture","title":"Fixture \"context\"","params":{},"stack":[]}
+{"type":"before","callId":"pw:api@76","stepId":"pw:api@76","parentId":"fixture@75","startTime":207937.121,"class":"Test","method":"pw:api","title":"Close context","params":{},"stack":[]}
+{"type":"after","callId":"pw:api@76","endTime":207943.273,"annotations":[]}
+{"type":"after","callId":"fixture@75","endTime":207943.35,"annotations":[]}
+{"type":"before","callId":"fixture@85","stepId":"fixture@85","parentId":"hook@73","startTime":207945.455,"class":"Test","method":"fixture","title":"Fixture \"baseURL\"","params":{},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/fixtures.ts","line":5,"column":25}]}
+{"type":"after","callId":"fixture@85","endTime":207945.554,"annotations":[]}
+{"type":"before","callId":"fixture@86","stepId":"fixture@86","parentId":"hook@73","startTime":207945.65,"class":"Test","method":"fixture","title":"Fixture \"origin\"","params":{},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/fixtures.ts","line":5,"column":25}]}
+{"type":"after","callId":"fixture@86","endTime":207967.614,"annotations":[]}
+{"type":"before","callId":"fixture@87","stepId":"fixture@87","parentId":"hook@73","startTime":207967.738,"class":"Test","method":"fixture","title":"Fixture \"isolatedOrigin\"","params":{},"stack":[{"file":"/__w/ChronoShift/ChronoShift/e2e/fixtures.ts","line":5,"column":25}]}
+{"type":"after","callId":"fixture@87","endTime":207967.823,"annotations":[]}
+{"type":"before","callId":"fixture@88","stepId":"fixture@88","parentId":"hook@73","startTime":207967.875,"class":"Test","method":"fixture","title":"Fixture \"userAgent\"","params":{},"stack":[{"file":"project#webkit","line":1,"column":1}],"group":"configuration"}
+{"type":"after","callId":"fixture@88","endTime":207967.909,"annotations":[]}
+{"type":"before","callId":"fixture@89","stepId":"fixture@89","parentId":"hook@73","startTime":207967.93,"class":"Test","method":"fixture","title":"Fixture \"timezoneId\"","params":{},"stack":[{"file":"project#webkit","line":1,"column":1}],"group":"configuration"}
+{"type":"after","callId":"fixture@89","endTime":207967.959,"annotations":[]}
+{"type":"before","callId":"fixture@90","stepId":"fixture@90","parentId":"hook@73","startTime":207967.991,"class":"Test","method":"fixture","title":"Fixture \"viewport\"","params":{},"stack":[{"file":"project#webkit","line":1,"column":1}],"group":"configuration"}
+{"type":"after","callId":"fixture@90","endTime":207968.018,"annotations":[]}
+{"type":"before","callId":"fixture@96","stepId":"fixture@96","parentId":"hook@73","startTime":207969.624,"class":"Test","method":"fixture","title":"Fixture \"locale\"","params":{},"stack":[{"file":"project#webkit","line":1,"column":1}],"group":"configuration"}
+{"type":"after","callId":"fixture@96","endTime":207969.641,"annotations":[]}
+{"type":"before","callId":"fixture@98","stepId":"fixture@98","parentId":"hook@73","startTime":207969.793,"class":"Test","method":"fixture","title":"Fixture \"isMobile\"","params":{},"stack":[{"file":"project#webkit","line":1,"column":1}],"group":"configuration"}
+{"type":"after","callId":"fixture@98","endTime":207969.809,"annotations":[]}
+{"type":"before","callId":"fixture@102","stepId":"fixture@102","parentId":"hook@73","startTime":207970.167,"class":"Test","method":"fixture","title":"Fixture \"hasTouch\"","params":{},"stack":[{"file":"project#webkit","line":1,"column":1}],"group":"configuration"}
+{"type":"after","callId":"fixture@102","endTime":207970.183,"annotations":[]}
+{"type":"before","callId":"fixture@105","stepId":"fixture@105","parentId":"hook@73","startTime":207970.419,"class":"Test","method":"fixture","title":"Fixture \"deviceScaleFactor\"","params":{},"stack":[{"file":"project#webkit","line":1,"column":1}],"group":"configuration"}
+{"type":"after","callId":"fixture@105","endTime":207970.437,"annotations":[]}
+{"type":"after","callId":"hook@73","endTime":207971.254,"annotations":[]}

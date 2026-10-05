@@ -1,0 +1,181 @@
+{
+  "config": {
+    "argv": [
+      "/Users/tien/.local/share/mise/installs/bun/1.4.0/bin/bun",
+      "/Users/tien/Developer/ChronoShift/node_modules/.bin/playwright",
+      "test",
+      "--config=docs/qa/copy-focus-2026-10-05/code-runtime/playwright.config.ts",
+      "--grep",
+      "probe uninterrupted fallback|an unresolved target hides copyable fallback results and correction restores the source interpretation"
+    ],
+    "configFile": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/playwright.config.ts",
+    "rootDir": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime",
+        "testIgnore": [],
+        "testMatch": [
+          "*.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "./report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "cwd": "/Users/tien/Developer/ChronoShift",
+      "command": "PORT=4317 CHRONOSHIFT_TEST_SERVER=1 bun scripts/serve-web.ts",
+      "url": "http://127.0.0.1:4317",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "existing-import.spec.ts",
+      "file": "existing-import.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "an unresolved target hides copyable fallback results and correction restores the source interpretation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1992,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:40:51.627Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "existing-case-environment",
+                      "contentType": "application/json",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/results/existing-import-an-unresol-b7399-s-the-source-interpretation/attachments/existing-case-environment-3c371c7388270485bde1feb99ff3c0baba2a6e4f.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cbf085111b0a48fe66a6-dc69593b12085ff7dcb6",
+          "file": "../../../../e2e/imports.spec.ts",
+          "line": 173,
+          "column": 0
+        }
+      ]
+    },
+    {
+      "title": "focus-probes.spec.ts",
+      "file": "focus-probes.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "probe uninterrupted fallback selects exact copy text with diagnostics disabled",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 933,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:40:53.769Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "probe-evidence",
+                      "contentType": "application/json",
+                      "path": "/Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/results/focus-probes-probe-uninter-b1e75-t-with-diagnostics-disabled/attachments/probe-evidence-52394bff5d1a1d22b73b376a3389de94bbd0f0c9.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "159c35428ed679f2cedf-02b80641da8dd2a16e10",
+          "file": "focus-probes.spec.ts",
+          "line": 148,
+          "column": 0
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-05T09:40:51.377Z",
+    "duration": 3348.843,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,1095 @@
+{
+  "startedAt": "2026-10-05T09:40:37.260Z",
+  "origin": "http://127.0.0.1:4318/",
+  "source": "35e11bac657a0c379fda48af9b454e674d2ea854",
+  "appBlob": "8bec3cbf656e92265f9f586fb9443de6e3c5aecc",
+  "results": [
+    {
+      "name": "away-back",
+      "begunAt": "2026-10-05T09:40:37.406Z",
+      "attempt": 0,
+      "browser": "26.6",
+      "platform": "darwin",
+      "origin": "http://127.0.0.1:4318/",
+      "configuration": {
+        "viewport": {
+          "width": 900,
+          "height": 640
+        },
+        "deviceScaleFactor": 2,
+        "locale": "en-AU",
+        "timezoneId": "Australia/Sydney",
+        "reducedMotion": "no-preference",
+        "trace": true,
+        "clipboard": "immediate rejection",
+        "holdOnlyFocusSelectFrame": true
+      },
+      "release": {
+        "sourceCommit": "35e11bac657a0c379fda48af9b454e674d2ea854",
+        "base": "/"
+      },
+      "assets": [
+        {
+          "url": "http://127.0.0.1:4318/assets/index-B3d9YDa-.js",
+          "status": 200,
+          "sha256": "764439adde23302a0e40ff2c221e8fe13055671a6285ac16d528344cf06befc9"
+        }
+      ],
+      "status": "passed",
+      "observed": {
+        "events": [
+          {
+            "at": 184,
+            "type": "focus",
+            "target": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            }
+          },
+          {
+            "at": 223,
+            "type": "keydown",
+            "target": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "key": "Tab"
+          },
+          {
+            "at": 225,
+            "type": "focus",
+            "target": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            }
+          },
+          {
+            "at": 226,
+            "type": "blur",
+            "target": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 227,
+            "type": "focus",
+            "target": {
+              "tag": "SUMMARY",
+              "id": "",
+              "label": ""
+            },
+            "active": {
+              "tag": "SUMMARY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 238,
+            "type": "blur",
+            "target": {
+              "tag": "SUMMARY",
+              "id": "",
+              "label": ""
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 238,
+            "type": "focus",
+            "target": {
+              "tag": "TEXTAREA",
+              "id": "message",
+              "label": ""
+            },
+            "active": {
+              "tag": "TEXTAREA",
+              "id": "message",
+              "label": ""
+            }
+          },
+          {
+            "at": 538,
+            "type": "blur",
+            "target": {
+              "tag": "TEXTAREA",
+              "id": "message",
+              "label": ""
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 539,
+            "type": "focus",
+            "target": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            },
+            "active": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            }
+          },
+          {
+            "at": 890,
+            "type": "pointerdown",
+            "target": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            },
+            "active": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            }
+          },
+          {
+            "at": 890,
+            "type": "blur",
+            "target": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 906,
+            "type": "focus",
+            "target": {
+              "tag": "TEXTAREA",
+              "id": "message",
+              "label": ""
+            },
+            "active": {
+              "tag": "TEXTAREA",
+              "id": "message",
+              "label": ""
+            }
+          },
+          {
+            "at": 910,
+            "type": "blur",
+            "target": {
+              "tag": "TEXTAREA",
+              "id": "message",
+              "label": ""
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          }
+        ],
+        "writes": [
+          {
+            "at": 892,
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          }
+        ],
+        "callbackSources": [
+          "()=>{let e=L.current,r=t===z.current?n===ce.current?e?void 0:`no-field`:`new-interaction`:`superseded`;if(r||!e){As(`copy.focus-skipped`,{requestId:t,reason:r||`no-field`});return}e.focus(),e.select(),As(`copy.focus-applied`,{requestId:t})}"
+        ],
+        "active": {
+          "tag": "BODY",
+          "id": ""
+        },
+        "pendingFrames": 0,
+        "target": "UTC",
+        "reducedMotion": false
+      },
+      "diagnostics": [
+        {
+          "event": "copy.started",
+          "fields": {
+            "at": "2026-10-05T09:40:38.479Z",
+            "requestId": 3
+          }
+        },
+        {
+          "event": "copy.focus-scheduled",
+          "fields": {
+            "at": "2026-10-05T09:40:38.479Z",
+            "requestId": 3
+          }
+        },
+        {
+          "event": "copy.focus-skipped",
+          "fields": {
+            "at": "2026-10-05T09:40:38.500Z",
+            "requestId": 3,
+            "reason": "new-interaction"
+          }
+        }
+      ],
+      "warnings": [
+        "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+        "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+        "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+      ],
+      "errors": [],
+      "endedAt": "2026-10-05T09:40:38.533Z"
+    },
+    {
+      "name": "same-owner-pointer",
+      "begunAt": "2026-10-05T09:40:38.593Z",
+      "attempt": 0,
+      "browser": "26.6",
+      "platform": "darwin",
+      "origin": "http://127.0.0.1:4318/",
+      "configuration": {
+        "viewport": {
+          "width": 900,
+          "height": 640
+        },
+        "deviceScaleFactor": 2,
+        "locale": "en-AU",
+        "timezoneId": "Australia/Sydney",
+        "reducedMotion": "no-preference",
+        "trace": true,
+        "clipboard": "immediate rejection",
+        "holdOnlyFocusSelectFrame": true
+      },
+      "release": {
+        "sourceCommit": "35e11bac657a0c379fda48af9b454e674d2ea854",
+        "base": "/"
+      },
+      "assets": [
+        {
+          "url": "http://127.0.0.1:4318/assets/index-B3d9YDa-.js",
+          "status": 200,
+          "sha256": "764439adde23302a0e40ff2c221e8fe13055671a6285ac16d528344cf06befc9"
+        }
+      ],
+      "status": "passed",
+      "observed": {
+        "events": [
+          {
+            "at": 154,
+            "type": "focus",
+            "target": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            }
+          },
+          {
+            "at": 179,
+            "type": "keydown",
+            "target": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "key": "Tab"
+          },
+          {
+            "at": 181,
+            "type": "focus",
+            "target": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            }
+          },
+          {
+            "at": 182,
+            "type": "blur",
+            "target": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 183,
+            "type": "focus",
+            "target": {
+              "tag": "SUMMARY",
+              "id": "",
+              "label": ""
+            },
+            "active": {
+              "tag": "SUMMARY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 199,
+            "type": "blur",
+            "target": {
+              "tag": "SUMMARY",
+              "id": "",
+              "label": ""
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 199,
+            "type": "focus",
+            "target": {
+              "tag": "TEXTAREA",
+              "id": "message",
+              "label": ""
+            },
+            "active": {
+              "tag": "TEXTAREA",
+              "id": "message",
+              "label": ""
+            }
+          },
+          {
+            "at": 515,
+            "type": "blur",
+            "target": {
+              "tag": "TEXTAREA",
+              "id": "message",
+              "label": ""
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 515,
+            "type": "focus",
+            "target": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            },
+            "active": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            }
+          },
+          {
+            "at": 761,
+            "type": "pointerdown",
+            "target": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            },
+            "active": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            }
+          },
+          {
+            "at": 761,
+            "type": "blur",
+            "target": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 791,
+            "type": "pointerdown",
+            "target": {
+              "tag": "HEADER",
+              "id": "",
+              "label": ""
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          }
+        ],
+        "writes": [
+          {
+            "at": 763,
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          }
+        ],
+        "callbackSources": [
+          "()=>{let e=L.current,r=t===z.current?n===ce.current?e?void 0:`no-field`:`new-interaction`:`superseded`;if(r||!e){As(`copy.focus-skipped`,{requestId:t,reason:r||`no-field`});return}e.focus(),e.select(),As(`copy.focus-applied`,{requestId:t})}"
+        ],
+        "active": {
+          "tag": "BODY",
+          "id": ""
+        },
+        "pendingFrames": 0,
+        "target": "UTC",
+        "reducedMotion": false
+      },
+      "diagnostics": [
+        {
+          "event": "copy.started",
+          "fields": {
+            "at": "2026-10-05T09:40:39.490Z",
+            "requestId": 3
+          }
+        },
+        {
+          "event": "copy.focus-scheduled",
+          "fields": {
+            "at": "2026-10-05T09:40:39.490Z",
+            "requestId": 3
+          }
+        },
+        {
+          "event": "copy.focus-skipped",
+          "fields": {
+            "at": "2026-10-05T09:40:39.533Z",
+            "requestId": 3,
+            "reason": "new-interaction"
+          }
+        }
+      ],
+      "warnings": [
+        "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+        "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+        "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+      ],
+      "errors": [],
+      "endedAt": "2026-10-05T09:40:39.564Z"
+    },
+    {
+      "name": "same-owner-key",
+      "begunAt": "2026-10-05T09:40:39.624Z",
+      "attempt": 0,
+      "browser": "26.6",
+      "platform": "darwin",
+      "origin": "http://127.0.0.1:4318/",
+      "configuration": {
+        "viewport": {
+          "width": 900,
+          "height": 640
+        },
+        "deviceScaleFactor": 2,
+        "locale": "en-AU",
+        "timezoneId": "Australia/Sydney",
+        "reducedMotion": "no-preference",
+        "trace": true,
+        "clipboard": "immediate rejection",
+        "holdOnlyFocusSelectFrame": true
+      },
+      "release": {
+        "sourceCommit": "35e11bac657a0c379fda48af9b454e674d2ea854",
+        "base": "/"
+      },
+      "assets": [
+        {
+          "url": "http://127.0.0.1:4318/assets/index-B3d9YDa-.js",
+          "status": 200,
+          "sha256": "764439adde23302a0e40ff2c221e8fe13055671a6285ac16d528344cf06befc9"
+        }
+      ],
+      "status": "passed",
+      "observed": {
+        "events": [
+          {
+            "at": 214,
+            "type": "focus",
+            "target": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            }
+          },
+          {
+            "at": 247,
+            "type": "keydown",
+            "target": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "key": "Tab"
+          },
+          {
+            "at": 249,
+            "type": "focus",
+            "target": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            }
+          },
+          {
+            "at": 250,
+            "type": "blur",
+            "target": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 251,
+            "type": "focus",
+            "target": {
+              "tag": "SUMMARY",
+              "id": "",
+              "label": ""
+            },
+            "active": {
+              "tag": "SUMMARY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 260,
+            "type": "blur",
+            "target": {
+              "tag": "SUMMARY",
+              "id": "",
+              "label": ""
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 260,
+            "type": "focus",
+            "target": {
+              "tag": "TEXTAREA",
+              "id": "message",
+              "label": ""
+            },
+            "active": {
+              "tag": "TEXTAREA",
+              "id": "message",
+              "label": ""
+            }
+          },
+          {
+            "at": 561,
+            "type": "blur",
+            "target": {
+              "tag": "TEXTAREA",
+              "id": "message",
+              "label": ""
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 561,
+            "type": "focus",
+            "target": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            },
+            "active": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            }
+          },
+          {
+            "at": 904,
+            "type": "pointerdown",
+            "target": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            },
+            "active": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            }
+          },
+          {
+            "at": 904,
+            "type": "blur",
+            "target": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 923,
+            "type": "keydown",
+            "target": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            },
+            "key": "Shift"
+          }
+        ],
+        "writes": [
+          {
+            "at": 906,
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          }
+        ],
+        "callbackSources": [
+          "()=>{let e=L.current,r=t===z.current?n===ce.current?e?void 0:`no-field`:`new-interaction`:`superseded`;if(r||!e){As(`copy.focus-skipped`,{requestId:t,reason:r||`no-field`});return}e.focus(),e.select(),As(`copy.focus-applied`,{requestId:t})}"
+        ],
+        "active": {
+          "tag": "BODY",
+          "id": ""
+        },
+        "pendingFrames": 0,
+        "target": "UTC",
+        "reducedMotion": false
+      },
+      "diagnostics": [
+        {
+          "event": "copy.started",
+          "fields": {
+            "at": "2026-10-05T09:40:40.664Z",
+            "requestId": 3
+          }
+        },
+        {
+          "event": "copy.focus-scheduled",
+          "fields": {
+            "at": "2026-10-05T09:40:40.664Z",
+            "requestId": 3
+          }
+        },
+        {
+          "event": "copy.focus-skipped",
+          "fields": {
+            "at": "2026-10-05T09:40:40.694Z",
+            "requestId": 3,
+            "reason": "new-interaction"
+          }
+        }
+      ],
+      "warnings": [
+        "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+        "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+        "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+      ],
+      "errors": [],
+      "endedAt": "2026-10-05T09:40:40.726Z"
+    },
+    {
+      "name": "superseding",
+      "begunAt": "2026-10-05T09:40:40.777Z",
+      "attempt": 0,
+      "browser": "26.6",
+      "platform": "darwin",
+      "origin": "http://127.0.0.1:4318/",
+      "configuration": {
+        "viewport": {
+          "width": 900,
+          "height": 640
+        },
+        "deviceScaleFactor": 2,
+        "locale": "en-AU",
+        "timezoneId": "Australia/Sydney",
+        "reducedMotion": "no-preference",
+        "trace": true,
+        "clipboard": "immediate rejection",
+        "holdOnlyFocusSelectFrame": true
+      },
+      "release": {
+        "sourceCommit": "35e11bac657a0c379fda48af9b454e674d2ea854",
+        "base": "/"
+      },
+      "assets": [
+        {
+          "url": "http://127.0.0.1:4318/assets/index-B3d9YDa-.js",
+          "status": 200,
+          "sha256": "764439adde23302a0e40ff2c221e8fe13055671a6285ac16d528344cf06befc9"
+        }
+      ],
+      "status": "passed",
+      "observed": {
+        "events": [
+          {
+            "at": 150,
+            "type": "focus",
+            "target": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            }
+          },
+          {
+            "at": 175,
+            "type": "keydown",
+            "target": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "key": "Tab"
+          },
+          {
+            "at": 177,
+            "type": "focus",
+            "target": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "active": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            }
+          },
+          {
+            "at": 179,
+            "type": "blur",
+            "target": {
+              "tag": "INPUT",
+              "id": "target-zone",
+              "label": "Convert to"
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 179,
+            "type": "focus",
+            "target": {
+              "tag": "SUMMARY",
+              "id": "",
+              "label": ""
+            },
+            "active": {
+              "tag": "SUMMARY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 202,
+            "type": "blur",
+            "target": {
+              "tag": "SUMMARY",
+              "id": "",
+              "label": ""
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 202,
+            "type": "focus",
+            "target": {
+              "tag": "TEXTAREA",
+              "id": "message",
+              "label": ""
+            },
+            "active": {
+              "tag": "TEXTAREA",
+              "id": "message",
+              "label": ""
+            }
+          },
+          {
+            "at": 515,
+            "type": "blur",
+            "target": {
+              "tag": "TEXTAREA",
+              "id": "message",
+              "label": ""
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 515,
+            "type": "focus",
+            "target": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            },
+            "active": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            }
+          },
+          {
+            "at": 741,
+            "type": "pointerdown",
+            "target": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            },
+            "active": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            }
+          },
+          {
+            "at": 741,
+            "type": "blur",
+            "target": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 988,
+            "type": "pointerdown",
+            "target": {
+              "tag": "BUTTON",
+              "id": "",
+              "label": "Copy UTC"
+            },
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 1034,
+            "type": "focus",
+            "target": {
+              "tag": "TEXTAREA",
+              "id": "manual-copy",
+              "label": ""
+            },
+            "active": {
+              "tag": "TEXTAREA",
+              "id": "manual-copy",
+              "label": ""
+            }
+          }
+        ],
+        "writes": [
+          {
+            "at": 743,
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          },
+          {
+            "at": 989,
+            "active": {
+              "tag": "BODY",
+              "id": "",
+              "label": ""
+            }
+          }
+        ],
+        "callbackSources": [
+          "()=>{let e=L.current,r=t===z.current?n===ce.current?e?void 0:`no-field`:`new-interaction`:`superseded`;if(r||!e){As(`copy.focus-skipped`,{requestId:t,reason:r||`no-field`});return}e.focus(),e.select(),As(`copy.focus-applied`,{requestId:t})}",
+          "()=>{let e=L.current,r=t===z.current?n===ce.current?e?void 0:`no-field`:`new-interaction`:`superseded`;if(r||!e){As(`copy.focus-skipped`,{requestId:t,reason:r||`no-field`});return}e.focus(),e.select(),As(`copy.focus-applied`,{requestId:t})}"
+        ],
+        "active": {
+          "tag": "TEXTAREA",
+          "id": "manual-copy"
+        },
+        "pendingFrames": 0,
+        "target": "UTC",
+        "reducedMotion": false
+      },
+      "diagnostics": [
+        {
+          "event": "copy.started",
+          "fields": {
+            "at": "2026-10-05T09:40:41.649Z",
+            "requestId": 3
+          }
+        },
+        {
+          "event": "copy.focus-scheduled",
+          "fields": {
+            "at": "2026-10-05T09:40:41.650Z",
+            "requestId": 3
+          }
+        },
+        {
+          "event": "copy.started",
+          "fields": {
+            "at": "2026-10-05T09:40:41.896Z",
+            "requestId": 4
+          }
+        },
+        {
+          "event": "copy.focus-scheduled",
+          "fields": {
+            "at": "2026-10-05T09:40:41.896Z",
+            "requestId": 4
+          }
+        },
+        {
+          "event": "copy.focus-skipped",
+          "fields": {
+            "at": "2026-10-05T09:40:41.908Z",
+            "requestId": 3,
+            "reason": "superseded"
+          }
+        },
+        {
+          "event": "copy.focus-applied",
+          "fields": {
+            "at": "2026-10-05T09:40:41.941Z",
+            "requestId": 4
+          }
+        }
+      ],
+      "warnings": [
+        "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+        "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy.",
+        "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+      ],
+      "errors": [],
+      "endedAt": "2026-10-05T09:40:41.967Z"
+    }
+  ]
+}

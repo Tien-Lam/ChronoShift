@@ -1,0 +1,2606 @@
+{
+  "observedAt": "2026-10-05T09:20:54.537Z",
+  "run": {
+    "id": 37288000068,
+    "attempt": 1,
+    "head": "eef0d51ea3ca835dfe27d7e157c6bfad1610a7b3",
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success",
+    "createdAt": "2026-10-05T09:07:49Z",
+    "updatedAt": "2026-10-05T09:14:50Z",
+    "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37288000068"
+  },
+  "evidence": [
+    {
+      "symbol": "✓",
+      "ordinal": 4,
+      "project": "foldable",
+      "file": "e2e/foldable.spec.ts",
+      "line": 112,
+      "title": "notch and home-indicator safe areas inset the task",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:40.9425133Z   ✓    4 [foldable] › e2e/foldable.spec.ts:112:0 › notch and home-indicator safe areas inset the task (1.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 1,
+      "project": "foldable",
+      "file": "e2e/foldable.spec.ts",
+      "line": 70,
+      "title": "tabletop posture confines the scrollable task to the upper screen",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:41.4971316Z   ✓    1 [foldable] › e2e/foldable.spec.ts:70:0 › tabletop posture confines the scrollable task to the upper screen (2.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 2,
+      "project": "foldable",
+      "file": "e2e/foldable.spec.ts",
+      "line": 4,
+      "title": "input and results avoid a vertical hinge and survive folding",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:42.0816968Z   ✓    2 [foldable] › e2e/foldable.spec.ts:4:0 › input and results avoid a vertical hinge and survive folding (2.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 3,
+      "project": "chromium",
+      "file": "e2e/app.spec.ts",
+      "line": 6,
+      "title": "worker failure recovers and a late response cannot resurrect cleared input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:43.7469126Z   ✓    3 [chromium] › e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (4.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 6,
+      "project": "chromium",
+      "file": "e2e/app.spec.ts",
+      "line": 90,
+      "title": "a delayed failed readiness probe cannot overwrite a newer successful check",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:45.0696710Z   ✓    6 [chromium] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (2.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 8,
+      "project": "chromium",
+      "file": "e2e/app.spec.ts",
+      "line": 162,
+      "title": "pasted HTML cannot execute or fetch its URL",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:45.5184505Z   ✓    8 [chromium] › e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (1.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 5,
+      "project": "chromium",
+      "file": "e2e/app.spec.ts",
+      "line": 67,
+      "title": "an intact offline app survives a failed registration check while changing target zones",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:45.6781319Z   ✓    5 [chromium] › e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (4.0s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 7,
+      "project": "chromium",
+      "file": "e2e/app.spec.ts",
+      "line": 130,
+      "title": "missing cache reports incomplete and reconnect repairs the complete offline app",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:46.0893076Z   ✓    7 [chromium] › e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (2.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 9,
+      "project": "chromium",
+      "file": "e2e/app.spec.ts",
+      "line": 182,
+      "title": "convert, inspect ambiguity, copy manually and protect privacy",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:47.4464039Z   ✓    9 [chromium] › e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (2.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 10,
+      "project": "chromium",
+      "file": "e2e/app.spec.ts",
+      "line": 215,
+      "title": "close and reopen offline, then convert previously unseen input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:48.3309686Z   ✓   10 [chromium] › e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (2.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 11,
+      "project": "chromium",
+      "file": "e2e/app.spec.ts",
+      "line": 239,
+      "title": "preferences persist, input does not; denied storage still converts",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:49.4661401Z   ✓   11 [chromium] › e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (3.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 14,
+      "project": "chromium",
+      "file": "e2e/app.spec.ts",
+      "line": 340,
+      "title": "offline POST share is single-use and never places message in URL",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:49.6673484Z   ✓   14 [chromium] › e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (1.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 12,
+      "project": "chromium",
+      "file": "e2e/app.spec.ts",
+      "line": 267,
+      "title": "input errors recover, edits invalidate results, keyboard keeps multiline input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:50.3959999Z   ✓   12 [chromium] › e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (4.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 13,
+      "project": "chromium",
+      "file": "e2e/app.spec.ts",
+      "line": 286,
+      "title": "readable at 320px, dark mode, with no serious accessibility violations",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:52.6990400Z   ✓   13 [chromium] › e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (5.2s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 15,
+      "project": "chromium",
+      "file": "e2e/app.spec.ts",
+      "line": 378,
+      "title": "an update waits, preserves draft on opt-in, and survives a partial next update",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:55.2550137Z   ✓   15 [chromium] › e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (5.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 18,
+      "project": "chromium",
+      "file": "e2e/controls.spec.ts",
+      "line": 339,
+      "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:58.2932126Z   ✓   18 [chromium] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (5.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 17,
+      "project": "chromium",
+      "file": "e2e/controls.spec.ts",
+      "line": 232,
+      "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:58.4377551Z   ✓   17 [chromium] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (8.0s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 19,
+      "project": "chromium",
+      "file": "e2e/controls.spec.ts",
+      "line": 407,
+      "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:08:58.5299356Z   ✓   19 [chromium] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (3.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 22,
+      "project": "chromium",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 114,
+      "title": "detailed logs still work in memory when session storage is denied",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:00.1483023Z   ✓   22 [chromium] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (1.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 21,
+      "project": "chromium",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 84,
+      "title": "detailed logging survives a tab reload and reset preferences disables it",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:00.5813052Z   ✓   21 [chromium] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (2.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 24,
+      "project": "chromium",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 191,
+      "title": "corrupt cached files fail integrity checks and detailed logs identify bounded repair failure",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:02.8225487Z   ✓   24 [chromium] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (2.2s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 23,
+      "project": "chromium",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 145,
+      "title": "a retired release repairs only missing files using its intact cached assets",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:03.0274046Z   ✓   23 [chromium] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (2.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 20,
+      "project": "chromium",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 12,
+      "title": "detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:03.3980189Z   ✓   20 [chromium] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (5.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 26,
+      "project": "chromium",
+      "file": "e2e/engine.spec.ts",
+      "line": 4,
+      "title": "independent exact fixture expectations run in the production browser worker",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:05.5414392Z   ✓   26 [chromium] › e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (2.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 16,
+      "project": "chromium",
+      "file": "e2e/controls.spec.ts",
+      "line": 55,
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:05.7836214Z   ✓   16 [chromium] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (16.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 27,
+      "project": "chromium",
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed clipboard offers replacement instead of overwriting edited or cleared work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:08.8369346Z   ✓   27 [chromium] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (5.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 29,
+      "project": "chromium",
+      "file": "e2e/imports.spec.ts",
+      "line": 173,
+      "title": "an unresolved target hides copyable fallback results and correction restores the source interpretation",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:09.3582969Z   ✓   29 [chromium] › e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (3.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 25,
+      "project": "chromium",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 232,
+      "title": "waiting updates remain actionable when a current cache probe times out",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:09.6013652Z   ✓   25 [chromium] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (6.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 28,
+      "project": "chromium",
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed share offers replacement instead of overwriting edited or cleared work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:11.8454075Z   ✓   28 [chromium] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (6.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 33,
+      "project": "chromium",
+      "file": "e2e/motion.spec.ts",
+      "line": 61,
+      "title": "reduced motion keeps live feedback and usable results without animation",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:12.8533806Z   ✓   33 [chromium] › e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (998ms)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 30,
+      "project": "chromium",
+      "file": "e2e/live.spec.ts",
+      "line": 4,
+      "title": "typing, pasted text and conversion settings update without submission",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:13.9967996Z   ✓   30 [chromium] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (5.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 31,
+      "project": "chromium",
+      "file": "e2e/live.spec.ts",
+      "line": 30,
+      "title": "composition defers conversion and queued work cannot overwrite a newer draft",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:14.7173953Z   ✓   31 [chromium] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (5.2s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 34,
+      "project": "chromium",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 31,
+      "title": "a transient initial registration failure retries before any controller exists",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:14.9997422Z   ✓   34 [chromium] › e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (2.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 32,
+      "project": "chromium",
+      "file": "e2e/motion.spec.ts",
+      "line": 4,
+      "title": "live feedback covers debounce and worker completion, then settles or cancels",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:15.9446861Z   ✓   32 [chromium] › e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (6.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 35,
+      "project": "chromium",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 59,
+      "title": "slow first installation clears its expired warning without losing conversion",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:16.3719113Z   ✓   35 [chromium] › e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (2.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 36,
+      "project": "chromium",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 82,
+      "title": "a stale mutable release marker is refetched and checked before offline readiness",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:16.6486027Z   ✓   36 [chromium] › e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (1.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 37,
+      "project": "chromium",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 106,
+      "title": "a rejected first installation retries without reloading or clearing input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:17.7421430Z   ✓   37 [chromium] › e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (2.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 39,
+      "project": "chromium",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 155,
+      "title": "HTML response rewriting cannot break first installation or offline navigation",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:19.5316602Z   ✓   39 [chromium] › e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (3.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 40,
+      "project": "chromium",
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy lens preferences migrate, reset removes them and quota failures keep conversion usable",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:19.8118680Z   ✓   40 [chromium] › e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (3.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 41,
+      "project": "chromium",
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy command preferences migrate, reset removes them and quota failures keep conversion usable",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:20.3993928Z   ✓   41 [chromium] › e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (2.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 42,
+      "project": "chromium",
+      "file": "e2e/privacy.spec.ts",
+      "line": 85,
+      "title": "invalid and oversized local shares return a paste fallback without storing text",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:21.4626458Z   ✓   42 [chromium] › e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (1.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 38,
+      "project": "chromium",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 126,
+      "title": "persistently wrong release bytes never activate or claim offline readiness",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:22.4370357Z   ✓   38 [chromium] › e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (6.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 43,
+      "project": "chromium",
+      "file": "e2e/privacy.spec.ts",
+      "line": 119,
+      "title": "expired and invalid temporary text is consumed and erased without restoring it",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:22.6596126Z   ✓   43 [chromium] › e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (2.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 44,
+      "project": "chromium",
+      "file": "e2e/privacy.spec.ts",
+      "line": 223,
+      "title": "denied update storage keeps the draft active and requires clearing before reload",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:23.7886440Z   ✓   44 [chromium] › e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (3.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 46,
+      "project": "chromium",
+      "file": "e2e/responsive.spec.ts",
+      "line": 83,
+      "title": "touch-sized controls and keyboard navigation remain usable in a short viewport",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:23.8367839Z   ✓   46 [chromium] › e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (1.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 45,
+      "project": "chromium",
+      "file": "e2e/responsive.spec.ts",
+      "line": 4,
+      "title": "reflows across cover screens, phones, tablets and desktops without losing work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:25.0408337Z   ✓   45 [chromium] › e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (3.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 47,
+      "project": "chromium",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 102,
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:26.6234933Z   ✓   47 [chromium] › e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft (3.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 50,
+      "project": "chromium",
+      "file": "e2e/updates.spec.ts",
+      "line": 6,
+      "title": "repair refuses another release and leaves the existing offline shell intact",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:27.6551592Z   ✓   50 [chromium] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (2.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 49,
+      "project": "chromium",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 227,
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:30.6055497Z   ✓   49 [chromium] › e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update (6.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 51,
+      "project": "chromium",
+      "file": "e2e/updates.spec.ts",
+      "line": 45,
+      "title": "an interrupted rollback preserves a retained cache and its old tab worker",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:30.7140512Z   ✓   51 [chromium] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (4.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 48,
+      "project": "chromium",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 135,
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:31.0213097Z   ✓   48 [chromium] › e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload (7.2s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 52,
+      "project": "chromium",
+      "file": "e2e/updates.spec.ts",
+      "line": 93,
+      "title": "oversized drafts block an update until they can be safely preserved",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:31.5877876Z   ✓   52 [chromium] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (3.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 55,
+      "project": "firefox",
+      "file": "e2e/app.spec.ts",
+      "line": 6,
+      "title": "worker failure recovers and a late response cannot resurrect cleared input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:37.6087656Z   ✓   55 [firefox] › e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (4.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 56,
+      "project": "firefox",
+      "file": "e2e/app.spec.ts",
+      "line": 67,
+      "title": "an intact offline app survives a failed registration check while changing target zones",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:39.3674809Z   ✓   56 [firefox] › e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (5.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 57,
+      "project": "firefox",
+      "file": "e2e/app.spec.ts",
+      "line": 90,
+      "title": "a delayed failed readiness probe cannot overwrite a newer successful check",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:40.6197711Z   ✓   57 [firefox] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (3.0s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 53,
+      "project": "chromium",
+      "file": "e2e/updates.spec.ts",
+      "line": 209,
+      "title": "old and new tabs retain their own workers across successive releases and offline restart",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:41.8251881Z   ✓   53 [chromium] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (11.2s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 54,
+      "project": "chromium",
+      "file": "e2e/updates.spec.ts",
+      "line": 270,
+      "title": "rollback preserves draft and preferences and removes obsolete caches with one remaining tab",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:42.3727180Z   ✓   54 [chromium] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (11.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 58,
+      "project": "firefox",
+      "file": "e2e/app.spec.ts",
+      "line": 130,
+      "title": "missing cache reports incomplete and reconnect repairs the complete offline app",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:43.0827829Z   ✓   58 [firefox] › e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (3.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 59,
+      "project": "firefox",
+      "file": "e2e/app.spec.ts",
+      "line": 162,
+      "title": "pasted HTML cannot execute or fetch its URL",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:43.2610592Z   ✓   59 [firefox] › e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (2.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 60,
+      "project": "firefox",
+      "file": "e2e/app.spec.ts",
+      "line": 182,
+      "title": "convert, inspect ambiguity, copy manually and protect privacy",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:48.4759400Z   ✓   60 [firefox] › e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (5.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 63,
+      "project": "firefox",
+      "file": "e2e/app.spec.ts",
+      "line": 267,
+      "title": "input errors recover, edits invalidate results, keyboard keeps multiline input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:48.9527704Z   ✓   63 [firefox] › e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (5.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 62,
+      "project": "firefox",
+      "file": "e2e/app.spec.ts",
+      "line": 239,
+      "title": "preferences persist, input does not; denied storage still converts",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:49.1017007Z   ✓   62 [firefox] › e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (6.0s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 61,
+      "project": "firefox",
+      "file": "e2e/app.spec.ts",
+      "line": 215,
+      "title": "close and reopen offline, then convert previously unseen input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:50.6195028Z   ✓   61 [firefox] › e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (6.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 65,
+      "project": "firefox",
+      "file": "e2e/app.spec.ts",
+      "line": 340,
+      "title": "offline POST share is single-use and never places message in URL",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:52.1704489Z   ✓   65 [firefox] › e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (3.2s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 64,
+      "project": "firefox",
+      "file": "e2e/app.spec.ts",
+      "line": 286,
+      "title": "readable at 320px, dark mode, with no serious accessibility violations",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:55.0211590Z   ✓   64 [firefox] › e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (6.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 66,
+      "project": "firefox",
+      "file": "e2e/app.spec.ts",
+      "line": 378,
+      "title": "an update waits, preserves draft on opt-in, and survives a partial next update",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:09:56.9344827Z   ✓   66 [firefox] › e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (7.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 70,
+      "project": "firefox",
+      "file": "e2e/controls.spec.ts",
+      "line": 407,
+      "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:02.5716008Z   ✓   70 [firefox] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (5.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 68,
+      "project": "firefox",
+      "file": "e2e/controls.spec.ts",
+      "line": 232,
+      "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:03.2696908Z   ✓   68 [firefox] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (11.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 69,
+      "project": "firefox",
+      "file": "e2e/controls.spec.ts",
+      "line": 339,
+      "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:04.8172471Z   ✓   69 [firefox] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (9.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 72,
+      "project": "firefox",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 84,
+      "title": "detailed logging survives a tab reload and reset preferences disables it",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:06.6104019Z   ✓   72 [firefox] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (3.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 73,
+      "project": "firefox",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 114,
+      "title": "detailed logs still work in memory when session storage is denied",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:07.2660710Z   ✓   73 [firefox] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (2.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 71,
+      "project": "firefox",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 12,
+      "title": "detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:07.5024910Z   ✓   71 [firefox] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (4.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 74,
+      "project": "firefox",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 145,
+      "title": "a retired release repairs only missing files using its intact cached assets",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:09.3851062Z   ✓   74 [firefox] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (2.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 75,
+      "project": "firefox",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 191,
+      "title": "corrupt cached files fail integrity checks and detailed logs identify bounded repair failure",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:09.8730628Z   ✓   75 [firefox] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (2.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 77,
+      "project": "firefox",
+      "file": "e2e/engine.spec.ts",
+      "line": 4,
+      "title": "independent exact fixture expectations run in the production browser worker",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:11.5754472Z   ✓   77 [firefox] › e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (2.2s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 76,
+      "project": "firefox",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 232,
+      "title": "waiting updates remain actionable when a current cache probe times out",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:14.4456040Z   ✓   76 [firefox] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (6.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 78,
+      "project": "firefox",
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed clipboard offers replacement instead of overwriting edited or cleared work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:17.8290263Z   ✓   78 [firefox] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (7.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 80,
+      "project": "firefox",
+      "file": "e2e/imports.spec.ts",
+      "line": 173,
+      "title": "an unresolved target hides copyable fallback results and correction restores the source interpretation",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:19.2519881Z   ✓   80 [firefox] › e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (4.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 67,
+      "project": "firefox",
+      "file": "e2e/controls.spec.ts",
+      "line": 55,
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:20.7844910Z   ✓   67 [firefox] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (30.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 79,
+      "project": "firefox",
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed share offers replacement instead of overwriting edited or cleared work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:23.0030352Z   ✓   79 [firefox] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (11.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 81,
+      "project": "firefox",
+      "file": "e2e/live.spec.ts",
+      "line": 4,
+      "title": "typing, pasted text and conversion settings update without submission",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:24.2343402Z   ✓   81 [firefox] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (6.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 84,
+      "project": "firefox",
+      "file": "e2e/motion.spec.ts",
+      "line": 61,
+      "title": "reduced motion keeps live feedback and usable results without animation",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:24.6704504Z   ✓   84 [firefox] › e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (1.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 82,
+      "project": "firefox",
+      "file": "e2e/live.spec.ts",
+      "line": 30,
+      "title": "composition defers conversion and queued work cannot overwrite a newer draft",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:25.6147611Z   ✓   82 [firefox] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (6.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 85,
+      "project": "firefox",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 31,
+      "title": "a transient initial registration failure retries before any controller exists",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:26.8005984Z   ✓   85 [firefox] › e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (2.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 83,
+      "project": "firefox",
+      "file": "e2e/motion.spec.ts",
+      "line": 4,
+      "title": "live feedback covers debounce and worker completion, then settles or cancels",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:28.3154125Z   ✓   83 [firefox] › e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (7.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 86,
+      "project": "firefox",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 59,
+      "title": "slow first installation clears its expired warning without losing conversion",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:28.3453288Z   ✓   86 [firefox] › e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (3.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 87,
+      "project": "firefox",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 82,
+      "title": "a stale mutable release marker is refetched and checked before offline readiness",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:29.0660993Z   ✓   87 [firefox] › e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (3.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 88,
+      "project": "firefox",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 106,
+      "title": "a rejected first installation retries without reloading or clearing input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:30.2769563Z   ✓   88 [firefox] › e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (3.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 90,
+      "project": "firefox",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 155,
+      "title": "HTML response rewriting cannot break first installation or offline navigation",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:33.1069198Z   ✓   90 [firefox] › e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (4.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 91,
+      "project": "firefox",
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy lens preferences migrate, reset removes them and quota failures keep conversion usable",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:34.7303293Z   ✓   91 [firefox] › e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (5.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 93,
+      "project": "firefox",
+      "file": "e2e/privacy.spec.ts",
+      "line": 85,
+      "title": "invalid and oversized local shares return a paste fallback without storing text",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:35.4079504Z   ✓   93 [firefox] › e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (2.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 89,
+      "project": "firefox",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 126,
+      "title": "persistently wrong release bytes never activate or claim offline readiness",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:35.7190397Z   ✓   89 [firefox] › e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (7.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 92,
+      "project": "firefox",
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy command preferences migrate, reset removes them and quota failures keep conversion usable",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:37.1637787Z   ✓   92 [firefox] › e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (6.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 97,
+      "project": "firefox",
+      "file": "e2e/responsive.spec.ts",
+      "line": 83,
+      "title": "touch-sized controls and keyboard navigation remain usable in a short viewport",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:39.3708522Z   ✓   97 [firefox] › e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (2.2s)"
+    },
+    {
+      "symbol": "-",
+      "ordinal": 98,
+      "project": "firefox",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 102,
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:39.9858442Z   -   98 [firefox] › e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft"
+    },
+    {
+      "symbol": "-",
+      "ordinal": 99,
+      "project": "firefox",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 135,
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:40.6812169Z   -   99 [firefox] › e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 95,
+      "project": "firefox",
+      "file": "e2e/privacy.spec.ts",
+      "line": 223,
+      "title": "denied update storage keeps the draft active and requires clearing before reload",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:40.9912099Z   ✓   95 [firefox] › e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (5.6s)"
+    },
+    {
+      "symbol": "-",
+      "ordinal": 100,
+      "project": "firefox",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 227,
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:41.3192454Z   -  100 [firefox] › e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 94,
+      "project": "firefox",
+      "file": "e2e/privacy.spec.ts",
+      "line": 119,
+      "title": "expired and invalid temporary text is consumed and erased without restoring it",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:41.9587314Z   ✓   94 [firefox] › e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (7.2s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 96,
+      "project": "firefox",
+      "file": "e2e/responsive.spec.ts",
+      "line": 4,
+      "title": "reflows across cover screens, phones, tablets and desktops without losing work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:42.1085320Z   ✓   96 [firefox] › e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (6.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 101,
+      "project": "firefox",
+      "file": "e2e/updates.spec.ts",
+      "line": 6,
+      "title": "repair refuses another release and leaves the existing offline shell intact",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:44.9970105Z   ✓  101 [firefox] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (4.0s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 103,
+      "project": "firefox",
+      "file": "e2e/updates.spec.ts",
+      "line": 93,
+      "title": "oversized drafts block an update until they can be safely preserved",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:47.0483450Z   ✓  103 [firefox] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (5.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 102,
+      "project": "firefox",
+      "file": "e2e/updates.spec.ts",
+      "line": 45,
+      "title": "an interrupted rollback preserves a retained cache and its old tab worker",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:48.9640663Z   ✓  102 [firefox] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (7.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 107,
+      "project": "webkit",
+      "file": "e2e/app.spec.ts",
+      "line": 67,
+      "title": "an intact offline app survives a failed registration check while changing target zones",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:55.6132552Z   ✓  107 [webkit] › e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (4.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 106,
+      "project": "webkit",
+      "file": "e2e/app.spec.ts",
+      "line": 6,
+      "title": "worker failure recovers and a late response cannot resurrect cleared input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:56.4046950Z   ✓  106 [webkit] › e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (6.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 104,
+      "project": "firefox",
+      "file": "e2e/updates.spec.ts",
+      "line": 209,
+      "title": "old and new tabs retain their own workers across successive releases and offline restart",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:58.4393285Z   ✓  104 [firefox] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (16.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 105,
+      "project": "firefox",
+      "file": "e2e/updates.spec.ts",
+      "line": 270,
+      "title": "rollback preserves draft and preferences and removes obsolete caches with one remaining tab",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:59.4723057Z   ✓  105 [firefox] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (14.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 108,
+      "project": "webkit",
+      "file": "e2e/app.spec.ts",
+      "line": 90,
+      "title": "a delayed failed readiness probe cannot overwrite a newer successful check",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:10:59.9351794Z   ✓  108 [webkit] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (4.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 109,
+      "project": "webkit",
+      "file": "e2e/app.spec.ts",
+      "line": 130,
+      "title": "missing cache reports incomplete and reconnect repairs the complete offline app",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:01.9710591Z   ✓  109 [webkit] › e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (5.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 111,
+      "project": "webkit",
+      "file": "e2e/app.spec.ts",
+      "line": 162,
+      "title": "pasted HTML cannot execute or fetch its URL",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:04.3112253Z   ✓  111 [webkit] › e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (3.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 110,
+      "project": "webkit",
+      "file": "e2e/app.spec.ts",
+      "line": 215,
+      "title": "close and reopen offline, then convert previously unseen input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:05.9662328Z   ✓  110 [webkit] › e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (6.0s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 112,
+      "project": "webkit",
+      "file": "e2e/app.spec.ts",
+      "line": 182,
+      "title": "convert, inspect ambiguity, copy manually and protect privacy",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:06.2328476Z   ✓  112 [webkit] › e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (4.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 113,
+      "project": "webkit",
+      "file": "e2e/app.spec.ts",
+      "line": 239,
+      "title": "preferences persist, input does not; denied storage still converts",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:08.9313227Z   ✓  113 [webkit] › e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (6.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 114,
+      "project": "webkit",
+      "file": "e2e/app.spec.ts",
+      "line": 267,
+      "title": "input errors recover, edits invalidate results, keyboard keeps multiline input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:10.0703015Z   ✓  114 [webkit] › e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (5.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 116,
+      "project": "webkit",
+      "file": "e2e/app.spec.ts",
+      "line": 340,
+      "title": "offline POST share is single-use and never places message in URL",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:10.7940282Z   ✓  116 [webkit] › e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (4.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 115,
+      "project": "webkit",
+      "file": "e2e/app.spec.ts",
+      "line": 286,
+      "title": "readable at 320px, dark mode, with no serious accessibility violations",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:15.1932238Z   ✓  115 [webkit] › e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (9.2s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 117,
+      "project": "webkit",
+      "file": "e2e/app.spec.ts",
+      "line": 378,
+      "title": "an update waits, preserves draft on opt-in, and survives a partial next update",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:16.4805228Z   ✓  117 [webkit] › e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (7.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 121,
+      "project": "webkit",
+      "file": "e2e/controls.spec.ts",
+      "line": 407,
+      "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:26.4053008Z   ✓  121 [webkit] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (9.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 120,
+      "project": "webkit",
+      "file": "e2e/controls.spec.ts",
+      "line": 339,
+      "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:27.7483526Z   ✓  120 [webkit] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (12.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 119,
+      "project": "webkit",
+      "file": "e2e/controls.spec.ts",
+      "line": 232,
+      "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:30.2314372Z   ✓  119 [webkit] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (19.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 123,
+      "project": "webkit",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 84,
+      "title": "detailed logging survives a tab reload and reset preferences disables it",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:33.4860299Z   ✓  123 [webkit] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (5.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 122,
+      "project": "webkit",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 12,
+      "title": "detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:33.9913300Z   ✓  122 [webkit] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (7.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 124,
+      "project": "webkit",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 114,
+      "title": "detailed logs still work in memory when session storage is denied",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:34.1170579Z   ✓  124 [webkit] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (3.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 126,
+      "project": "webkit",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 191,
+      "title": "corrupt cached files fail integrity checks and detailed logs identify bounded repair failure",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:37.4984997Z   ✓  126 [webkit] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (3.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 125,
+      "project": "webkit",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 145,
+      "title": "a retired release repairs only missing files using its intact cached assets",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:37.7939624Z   ✓  125 [webkit] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (4.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 127,
+      "project": "webkit",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 232,
+      "title": "waiting updates remain actionable when a current cache probe times out",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:40.2988857Z   ✓  127 [webkit] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (6.2s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 128,
+      "project": "webkit",
+      "file": "e2e/engine.spec.ts",
+      "line": 4,
+      "title": "independent exact fixture expectations run in the production browser worker",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:41.5156433Z   ✓  128 [webkit] › e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (4.0s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 129,
+      "project": "webkit",
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed clipboard offers replacement instead of overwriting edited or cleared work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:46.6834914Z   ✓  129 [webkit] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (8.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 130,
+      "project": "webkit",
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed share offers replacement instead of overwriting edited or cleared work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:51.7340245Z   ✓  130 [webkit] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (11.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 132,
+      "project": "webkit",
+      "file": "e2e/live.spec.ts",
+      "line": 4,
+      "title": "typing, pasted text and conversion settings update without submission",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:54.6326606Z   ✓  132 [webkit] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (7.9s)"
+    },
+    {
+      "symbol": "✘",
+      "ordinal": 131,
+      "project": "webkit",
+      "file": "e2e/imports.spec.ts",
+      "line": 173,
+      "title": "an unresolved target hides copyable fallback results and correction restores the source interpretation",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:55.8730524Z   ✘  131 [webkit] › e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (14.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 118,
+      "project": "webkit",
+      "file": "e2e/controls.spec.ts",
+      "line": 55,
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:57.2002095Z   ✓  118 [webkit] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (47.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 133,
+      "project": "webkit",
+      "file": "e2e/live.spec.ts",
+      "line": 30,
+      "title": "composition defers conversion and queued work cannot overwrite a newer draft",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:57.5179852Z   ✓  133 [webkit] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (5.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 136,
+      "project": "webkit",
+      "file": "e2e/motion.spec.ts",
+      "line": 61,
+      "title": "reduced motion keeps live feedback and usable results without animation",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:11:59.9398685Z   ✓  136 [webkit] › e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (2.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 137,
+      "project": "webkit",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 31,
+      "title": "a transient initial registration failure retries before any controller exists",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:01.0274520Z   ✓  137 [webkit] › e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (3.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 134,
+      "project": "webkit",
+      "file": "e2e/motion.spec.ts",
+      "line": 4,
+      "title": "live feedback covers debounce and worker completion, then settles or cancels",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:02.2554312Z   ✓  134 [webkit] › e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (7.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 139,
+      "project": "webkit",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 82,
+      "title": "a stale mutable release marker is refetched and checked before offline readiness",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:04.3710516Z   ✓  139 [webkit] › e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (3.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 135,
+      "project": "webkit",
+      "file": "e2e/imports.spec.ts",
+      "line": 173,
+      "title": "an unresolved target hides copyable fallback results and correction restores the source interpretation",
+      "retry": 1,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:05.1329222Z   ✓  135 [webkit] › e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (retry #1) (7.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 138,
+      "project": "webkit",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 59,
+      "title": "slow first installation clears its expired warning without losing conversion",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:05.5172632Z   ✓  138 [webkit] › e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (5.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 140,
+      "project": "webkit",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 106,
+      "title": "a rejected first installation retries without reloading or clearing input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:06.8571817Z   ✓  140 [webkit] › e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (4.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 142,
+      "project": "webkit",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 155,
+      "title": "HTML response rewriting cannot break first installation or offline navigation",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:10.4273479Z   ✓  142 [webkit] › e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (5.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 141,
+      "project": "webkit",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 126,
+      "title": "persistently wrong release bytes never activate or claim offline readiness",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:12.2111880Z   ✓  141 [webkit] › e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (7.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 143,
+      "project": "webkit",
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy lens preferences migrate, reset removes them and quota failures keep conversion usable",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:12.8012140Z   ✓  143 [webkit] › e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (7.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 145,
+      "project": "webkit",
+      "file": "e2e/privacy.spec.ts",
+      "line": 85,
+      "title": "invalid and oversized local shares return a paste fallback without storing text",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:13.2620406Z   ✓  145 [webkit] › e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (2.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 144,
+      "project": "webkit",
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy command preferences migrate, reset removes them and quota failures keep conversion usable",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:13.6698325Z   ✓  144 [webkit] › e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (6.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 149,
+      "project": "webkit",
+      "file": "e2e/responsive.spec.ts",
+      "line": 83,
+      "title": "touch-sized controls and keyboard navigation remain usable in a short viewport",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:16.6790494Z   ✓  149 [webkit] › e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (3.0s)"
+    },
+    {
+      "symbol": "-",
+      "ordinal": 150,
+      "project": "webkit",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 102,
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:17.9958742Z   -  150 [webkit] › e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 147,
+      "project": "webkit",
+      "file": "e2e/privacy.spec.ts",
+      "line": 223,
+      "title": "denied update storage keeps the draft active and requires clearing before reload",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:18.8327211Z   ✓  147 [webkit] › e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (6.0s)"
+    },
+    {
+      "symbol": "-",
+      "ordinal": 151,
+      "project": "webkit",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 135,
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:19.4114282Z   -  151 [webkit] › e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload"
+    },
+    {
+      "symbol": "-",
+      "ordinal": 152,
+      "project": "webkit",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 227,
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:19.9644383Z   -  152 [webkit] › e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 146,
+      "project": "webkit",
+      "file": "e2e/privacy.spec.ts",
+      "line": 119,
+      "title": "expired and invalid temporary text is consumed and erased without restoring it",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:20.4190499Z   ✓  146 [webkit] › e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (8.2s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 153,
+      "project": "webkit",
+      "file": "e2e/updates.spec.ts",
+      "line": 6,
+      "title": "repair refuses another release and leaves the existing offline shell intact",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:23.9012270Z   ✓  153 [webkit] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (4.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 148,
+      "project": "webkit",
+      "file": "e2e/responsive.spec.ts",
+      "line": 4,
+      "title": "reflows across cover screens, phones, tablets and desktops without losing work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:24.9392309Z   ✓  148 [webkit] › e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (11.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 155,
+      "project": "webkit",
+      "file": "e2e/updates.spec.ts",
+      "line": 93,
+      "title": "oversized drafts block an update until they can be safely preserved",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:26.0402990Z   ✓  155 [webkit] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (5.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 154,
+      "project": "webkit",
+      "file": "e2e/updates.spec.ts",
+      "line": 45,
+      "title": "an interrupted rollback preserves a retained cache and its old tab worker",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:27.4970847Z   ✓  154 [webkit] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (7.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 158,
+      "project": "android-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 6,
+      "title": "worker failure recovers and a late response cannot resurrect cleared input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:31.8054274Z   ✓  158 [android-emulation] › e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (4.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 159,
+      "project": "android-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 67,
+      "title": "an intact offline app survives a failed registration check while changing target zones",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:34.9560144Z   ✓  159 [android-emulation] › e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (5.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 160,
+      "project": "android-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 90,
+      "title": "a delayed failed readiness probe cannot overwrite a newer successful check",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:35.3510411Z   ✓  160 [android-emulation] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (3.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 157,
+      "project": "webkit",
+      "file": "e2e/updates.spec.ts",
+      "line": 270,
+      "title": "rollback preserves draft and preferences and removes obsolete caches with one remaining tab",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:37.5037973Z   ✓  157 [webkit] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (12.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 162,
+      "project": "android-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 162,
+      "title": "pasted HTML cannot execute or fetch its URL",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:37.7714935Z   ✓  162 [android-emulation] › e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (2.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 156,
+      "project": "webkit",
+      "file": "e2e/updates.spec.ts",
+      "line": 209,
+      "title": "old and new tabs retain their own workers across successive releases and offline restart",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:38.5595336Z   ✓  156 [webkit] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (14.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 161,
+      "project": "android-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 130,
+      "title": "missing cache reports incomplete and reconnect repairs the complete offline app",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:38.9731449Z   ✓  161 [android-emulation] › e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (4.0s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 164,
+      "project": "android-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 182,
+      "title": "convert, inspect ambiguity, copy manually and protect privacy",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:41.4406685Z   ✓  164 [android-emulation] › e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (2.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 163,
+      "project": "android-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 215,
+      "title": "close and reopen offline, then convert previously unseen input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:41.5220797Z   ✓  163 [android-emulation] › e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (3.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 168,
+      "project": "android-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 340,
+      "title": "offline POST share is single-use and never places message in URL",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:42.9545931Z   ✓  168 [android-emulation] › e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (1.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 166,
+      "project": "android-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 239,
+      "title": "preferences persist, input does not; denied storage still converts",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:43.6630421Z   ✓  166 [android-emulation] › e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (3.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 165,
+      "project": "android-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 267,
+      "title": "input errors recover, edits invalidate results, keyboard keeps multiline input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:44.0941320Z   ✓  165 [android-emulation] › e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (5.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 167,
+      "project": "android-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 286,
+      "title": "readable at 320px, dark mode, with no serious accessibility violations",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:45.4065276Z   ✓  167 [android-emulation] › e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (4.0s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 169,
+      "project": "android-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 378,
+      "title": "an update waits, preserves draft on opt-in, and survives a partial next update",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:47.8622415Z   ✓  169 [android-emulation] › e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (4.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 173,
+      "project": "android-emulation",
+      "file": "e2e/controls.spec.ts",
+      "line": 407,
+      "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:50.9982464Z   ✓  173 [android-emulation] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (3.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 172,
+      "project": "android-emulation",
+      "file": "e2e/controls.spec.ts",
+      "line": 339,
+      "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:51.2469726Z   ✓  172 [android-emulation] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (5.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 171,
+      "project": "android-emulation",
+      "file": "e2e/controls.spec.ts",
+      "line": 232,
+      "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:51.7086663Z   ✓  171 [android-emulation] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (7.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 175,
+      "project": "android-emulation",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 84,
+      "title": "detailed logging survives a tab reload and reset preferences disables it",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:53.2540966Z   ✓  175 [android-emulation] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (2.0s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 176,
+      "project": "android-emulation",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 114,
+      "title": "detailed logs still work in memory when session storage is denied",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:53.8645081Z   ✓  176 [android-emulation] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (2.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 174,
+      "project": "android-emulation",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 12,
+      "title": "detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:54.7456087Z   ✓  174 [android-emulation] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (3.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 178,
+      "project": "android-emulation",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 191,
+      "title": "corrupt cached files fail integrity checks and detailed logs identify bounded repair failure",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:55.2311990Z   ✓  178 [android-emulation] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (1.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 177,
+      "project": "android-emulation",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 145,
+      "title": "a retired release repairs only missing files using its intact cached assets",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:55.7652384Z   ✓  177 [android-emulation] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (2.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 180,
+      "project": "android-emulation",
+      "file": "e2e/engine.spec.ts",
+      "line": 4,
+      "title": "independent exact fixture expectations run in the production browser worker",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:57.2068445Z   ✓  180 [android-emulation] › e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (2.0s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 170,
+      "project": "android-emulation",
+      "file": "e2e/controls.spec.ts",
+      "line": 55,
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:12:59.4607498Z   ✓  170 [android-emulation] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (15.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 179,
+      "project": "android-emulation",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 232,
+      "title": "waiting updates remain actionable when a current cache probe times out",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:00.4875142Z   ✓  179 [android-emulation] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (5.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 181,
+      "project": "android-emulation",
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed clipboard offers replacement instead of overwriting edited or cleared work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:01.1837596Z   ✓  181 [android-emulation] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (5.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 182,
+      "project": "android-emulation",
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed share offers replacement instead of overwriting edited or cleared work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:02.6192747Z   ✓  182 [android-emulation] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (5.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 183,
+      "project": "android-emulation",
+      "file": "e2e/imports.spec.ts",
+      "line": 173,
+      "title": "an unresolved target hides copyable fallback results and correction restores the source interpretation",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:03.1891051Z   ✓  183 [android-emulation] › e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (3.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 184,
+      "project": "android-emulation",
+      "file": "e2e/live.spec.ts",
+      "line": 4,
+      "title": "typing, pasted text and conversion settings update without submission",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:03.9641119Z   ✓  184 [android-emulation] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (3.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 187,
+      "project": "android-emulation",
+      "file": "e2e/motion.spec.ts",
+      "line": 61,
+      "title": "reduced motion keeps live feedback and usable results without animation",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:04.7817269Z   ✓  187 [android-emulation] › e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (1.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 185,
+      "project": "android-emulation",
+      "file": "e2e/live.spec.ts",
+      "line": 30,
+      "title": "composition defers conversion and queued work cannot overwrite a newer draft",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:06.0327064Z   ✓  185 [android-emulation] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (4.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 188,
+      "project": "android-emulation",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 31,
+      "title": "a transient initial registration failure retries before any controller exists",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:06.1172907Z   ✓  188 [android-emulation] › e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (2.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 189,
+      "project": "android-emulation",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 59,
+      "title": "slow first installation clears its expired warning without losing conversion",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:07.1076024Z   ✓  189 [android-emulation] › e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (2.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 190,
+      "project": "android-emulation",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 82,
+      "title": "a stale mutable release marker is refetched and checked before offline readiness",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:07.6317604Z   ✓  190 [android-emulation] › e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (1.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 186,
+      "project": "android-emulation",
+      "file": "e2e/motion.spec.ts",
+      "line": 4,
+      "title": "live feedback covers debounce and worker completion, then settles or cancels",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:08.3573568Z   ✓  186 [android-emulation] › e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (5.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 191,
+      "project": "android-emulation",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 106,
+      "title": "a rejected first installation retries without reloading or clearing input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:08.8094826Z   ✓  191 [android-emulation] › e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (2.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 193,
+      "project": "android-emulation",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 155,
+      "title": "HTML response rewriting cannot break first installation or offline navigation",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:10.2530396Z   ✓  193 [android-emulation] › e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (2.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 195,
+      "project": "android-emulation",
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy command preferences migrate, reset removes them and quota failures keep conversion usable",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:11.3170129Z   ✓  195 [android-emulation] › e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (2.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 196,
+      "project": "android-emulation",
+      "file": "e2e/privacy.spec.ts",
+      "line": 85,
+      "title": "invalid and oversized local shares return a paste fallback without storing text",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:11.8937992Z   ✓  196 [android-emulation] › e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (1.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 194,
+      "project": "android-emulation",
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy lens preferences migrate, reset removes them and quota failures keep conversion usable",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:11.9380421Z   ✓  194 [android-emulation] › e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (3.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 192,
+      "project": "android-emulation",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 126,
+      "title": "persistently wrong release bytes never activate or claim offline readiness",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:13.3091112Z   ✓  192 [android-emulation] › e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (6.2s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 197,
+      "project": "android-emulation",
+      "file": "e2e/privacy.spec.ts",
+      "line": 119,
+      "title": "expired and invalid temporary text is consumed and erased without restoring it",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:14.0606618Z   ✓  197 [android-emulation] › e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (2.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 200,
+      "project": "android-emulation",
+      "file": "e2e/responsive.spec.ts",
+      "line": 83,
+      "title": "touch-sized controls and keyboard navigation remain usable in a short viewport",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:14.8289425Z   ✓  200 [android-emulation] › e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (1.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 199,
+      "project": "android-emulation",
+      "file": "e2e/responsive.spec.ts",
+      "line": 4,
+      "title": "reflows across cover screens, phones, tablets and desktops without losing work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:15.6869957Z   ✓  199 [android-emulation] › e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (3.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 198,
+      "project": "android-emulation",
+      "file": "e2e/privacy.spec.ts",
+      "line": 223,
+      "title": "denied update storage keeps the draft active and requires clearing before reload",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:16.4103893Z   ✓  198 [android-emulation] › e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (4.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 201,
+      "project": "android-emulation",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 102,
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:17.3580998Z   ✓  201 [android-emulation] › e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft (3.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 204,
+      "project": "android-emulation",
+      "file": "e2e/updates.spec.ts",
+      "line": 6,
+      "title": "repair refuses another release and leaves the existing offline shell intact",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:18.5510714Z   ✓  204 [android-emulation] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (2.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 202,
+      "project": "android-emulation",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 135,
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:21.7860286Z   ✓  202 [android-emulation] › e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload (6.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 205,
+      "project": "android-emulation",
+      "file": "e2e/updates.spec.ts",
+      "line": 45,
+      "title": "an interrupted rollback preserves a retained cache and its old tab worker",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:22.1425407Z   ✓  205 [android-emulation] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (4.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 203,
+      "project": "android-emulation",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 227,
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:22.2221158Z   ✓  203 [android-emulation] › e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update (6.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 206,
+      "project": "android-emulation",
+      "file": "e2e/updates.spec.ts",
+      "line": 93,
+      "title": "oversized drafts block an update until they can be safely preserved",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:22.4727780Z   ✓  206 [android-emulation] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (3.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 209,
+      "project": "iphone-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 6,
+      "title": "worker failure recovers and a late response cannot resurrect cleared input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:27.1750183Z   ✓  209 [iphone-emulation] › e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (3.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 210,
+      "project": "iphone-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 67,
+      "title": "an intact offline app survives a failed registration check while changing target zones",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:27.4629558Z   ✓  210 [iphone-emulation] › e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (3.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 211,
+      "project": "iphone-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 90,
+      "title": "a delayed failed readiness probe cannot overwrite a newer successful check",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:29.8710448Z   ✓  211 [iphone-emulation] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (2.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 212,
+      "project": "iphone-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 130,
+      "title": "missing cache reports incomplete and reconnect repairs the complete offline app",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:31.3375161Z   ✓  212 [iphone-emulation] › e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (3.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 213,
+      "project": "iphone-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 162,
+      "title": "pasted HTML cannot execute or fetch its URL",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:31.8162008Z   ✓  213 [iphone-emulation] › e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (1.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 208,
+      "project": "android-emulation",
+      "file": "e2e/updates.spec.ts",
+      "line": 270,
+      "title": "rollback preserves draft and preferences and removes obsolete caches with one remaining tab",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:32.9769042Z   ✓  208 [android-emulation] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (10.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 214,
+      "project": "iphone-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 182,
+      "title": "convert, inspect ambiguity, copy manually and protect privacy",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:34.2105048Z   ✓  214 [iphone-emulation] › e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (2.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 207,
+      "project": "android-emulation",
+      "file": "e2e/updates.spec.ts",
+      "line": 209,
+      "title": "old and new tabs retain their own workers across successive releases and offline restart",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:34.7737951Z   ✓  207 [android-emulation] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (12.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 215,
+      "project": "iphone-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 215,
+      "title": "close and reopen offline, then convert previously unseen input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:36.0611843Z   ✓  215 [iphone-emulation] › e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (4.2s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 219,
+      "project": "iphone-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 340,
+      "title": "offline POST share is single-use and never places message in URL",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:38.5987470Z   ✓  219 [iphone-emulation] › e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (2.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 217,
+      "project": "iphone-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 267,
+      "title": "input errors recover, edits invalidate results, keyboard keeps multiline input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:39.1245959Z   ✓  217 [iphone-emulation] › e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (4.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 216,
+      "project": "iphone-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 239,
+      "title": "preferences persist, input does not; denied storage still converts",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:39.4197571Z   ✓  216 [iphone-emulation] › e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (5.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 218,
+      "project": "iphone-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 286,
+      "title": "readable at 320px, dark mode, with no serious accessibility violations",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:42.8344323Z   ✓  218 [iphone-emulation] › e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (6.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 220,
+      "project": "iphone-emulation",
+      "file": "e2e/app.spec.ts",
+      "line": 378,
+      "title": "an update waits, preserves draft on opt-in, and survives a partial next update",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:43.7298324Z   ✓  220 [iphone-emulation] › e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (5.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 224,
+      "project": "iphone-emulation",
+      "file": "e2e/controls.spec.ts",
+      "line": 407,
+      "title": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:49.7572207Z   ✓  224 [iphone-emulation] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (6.0s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 222,
+      "project": "iphone-emulation",
+      "file": "e2e/controls.spec.ts",
+      "line": 232,
+      "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:51.5414132Z   ✓  222 [iphone-emulation] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (12.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 223,
+      "project": "iphone-emulation",
+      "file": "e2e/controls.spec.ts",
+      "line": 339,
+      "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:52.4679596Z   ✓  223 [iphone-emulation] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (9.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 225,
+      "project": "iphone-emulation",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 12,
+      "title": "detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:54.7454396Z   ✓  225 [iphone-emulation] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (5.0s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 227,
+      "project": "iphone-emulation",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 114,
+      "title": "detailed logs still work in memory when session storage is denied",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:55.0577545Z   ✓  227 [iphone-emulation] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (2.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 226,
+      "project": "iphone-emulation",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 84,
+      "title": "detailed logging survives a tab reload and reset preferences disables it",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:55.3511675Z   ✓  226 [iphone-emulation] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (3.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 228,
+      "project": "iphone-emulation",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 145,
+      "title": "a retired release repairs only missing files using its intact cached assets",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:57.6881841Z   ✓  228 [iphone-emulation] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (2.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 229,
+      "project": "iphone-emulation",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 191,
+      "title": "corrupt cached files fail integrity checks and detailed logs identify bounded repair failure",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:57.8502032Z   ✓  229 [iphone-emulation] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (2.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 231,
+      "project": "iphone-emulation",
+      "file": "e2e/engine.spec.ts",
+      "line": 4,
+      "title": "independent exact fixture expectations run in the production browser worker",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:13:59.9377906Z   ✓  231 [iphone-emulation] › e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (2.2s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 230,
+      "project": "iphone-emulation",
+      "file": "e2e/diagnostics.spec.ts",
+      "line": 232,
+      "title": "waiting updates remain actionable when a current cache probe times out",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:01.0970530Z   ✓  230 [iphone-emulation] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (5.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 232,
+      "project": "iphone-emulation",
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed clipboard offers replacement instead of overwriting edited or cleared work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:05.2284929Z   ✓  232 [iphone-emulation] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (7.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 234,
+      "project": "iphone-emulation",
+      "file": "e2e/imports.spec.ts",
+      "line": 173,
+      "title": "an unresolved target hides copyable fallback results and correction restores the source interpretation",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:06.5428714Z   ✓  234 [iphone-emulation] › e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (5.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 233,
+      "project": "iphone-emulation",
+      "file": "e2e/imports.spec.ts",
+      "line": 5,
+      "title": "delayed share offers replacement instead of overwriting edited or cleared work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:09.8358633Z   ✓  233 [iphone-emulation] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (9.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 221,
+      "project": "iphone-emulation",
+      "file": "e2e/controls.spec.ts",
+      "line": 55,
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:10.0581646Z   ✓  221 [iphone-emulation] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (30.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 235,
+      "project": "iphone-emulation",
+      "file": "e2e/live.spec.ts",
+      "line": 4,
+      "title": "typing, pasted text and conversion settings update without submission",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:11.7912815Z   ✓  235 [iphone-emulation] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (6.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 238,
+      "project": "iphone-emulation",
+      "file": "e2e/motion.spec.ts",
+      "line": 61,
+      "title": "reduced motion keeps live feedback and usable results without animation",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:12.3130392Z   ✓  238 [iphone-emulation] › e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (2.2s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 236,
+      "project": "iphone-emulation",
+      "file": "e2e/live.spec.ts",
+      "line": 30,
+      "title": "composition defers conversion and queued work cannot overwrite a newer draft",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:12.8879257Z   ✓  236 [iphone-emulation] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (6.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 239,
+      "project": "iphone-emulation",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 31,
+      "title": "a transient initial registration failure retries before any controller exists",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:14.2071234Z   ✓  239 [iphone-emulation] › e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (2.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 241,
+      "project": "iphone-emulation",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 82,
+      "title": "a stale mutable release marker is refetched and checked before offline readiness",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:14.7572693Z   ✓  241 [iphone-emulation] › e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (1.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 240,
+      "project": "iphone-emulation",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 59,
+      "title": "slow first installation clears its expired warning without losing conversion",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:16.0712404Z   ✓  240 [iphone-emulation] › e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (3.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 237,
+      "project": "iphone-emulation",
+      "file": "e2e/motion.spec.ts",
+      "line": 4,
+      "title": "live feedback covers debounce and worker completion, then settles or cancels",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:16.9779426Z   ✓  237 [iphone-emulation] › e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (7.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 242,
+      "project": "iphone-emulation",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 106,
+      "title": "a rejected first installation retries without reloading or clearing input",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:17.3668483Z   ✓  242 [iphone-emulation] › e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (3.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 244,
+      "project": "iphone-emulation",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 155,
+      "title": "HTML response rewriting cannot break first installation or offline navigation",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:19.8838803Z   ✓  244 [iphone-emulation] › e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (3.8s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 245,
+      "project": "iphone-emulation",
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy lens preferences migrate, reset removes them and quota failures keep conversion usable",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:21.0749881Z   ✓  245 [iphone-emulation] › e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (4.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 246,
+      "project": "iphone-emulation",
+      "file": "e2e/privacy.spec.ts",
+      "line": 6,
+      "title": "legacy command preferences migrate, reset removes them and quota failures keep conversion usable",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:21.8849658Z   ✓  246 [iphone-emulation] › e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (4.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 243,
+      "project": "iphone-emulation",
+      "file": "e2e/offline-install.spec.ts",
+      "line": 126,
+      "title": "persistently wrong release bytes never activate or claim offline readiness",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:22.0073934Z   ✓  243 [iphone-emulation] › e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (7.2s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 247,
+      "project": "iphone-emulation",
+      "file": "e2e/privacy.spec.ts",
+      "line": 85,
+      "title": "invalid and oversized local shares return a paste fallback without storing text",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:22.2870105Z   ✓  247 [iphone-emulation] › e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (2.4s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 251,
+      "project": "iphone-emulation",
+      "file": "e2e/responsive.spec.ts",
+      "line": 83,
+      "title": "touch-sized controls and keyboard navigation remain usable in a short viewport",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:24.9234996Z   ✓  251 [iphone-emulation] › e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (2.6s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 249,
+      "project": "iphone-emulation",
+      "file": "e2e/privacy.spec.ts",
+      "line": 223,
+      "title": "denied update storage keeps the draft active and requires clearing before reload",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:25.9527287Z   ✓  249 [iphone-emulation] › e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (4.0s)"
+    },
+    {
+      "symbol": "-",
+      "ordinal": 252,
+      "project": "iphone-emulation",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 102,
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:25.9660945Z   -  252 [iphone-emulation] › e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft"
+    },
+    {
+      "symbol": "-",
+      "ordinal": 254,
+      "project": "iphone-emulation",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 227,
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:26.8513036Z   -  254 [iphone-emulation] › e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update"
+    },
+    {
+      "symbol": "-",
+      "ordinal": 253,
+      "project": "iphone-emulation",
+      "file": "e2e/uncontrolled.spec.ts",
+      "line": 135,
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:26.9031421Z   -  253 [iphone-emulation] › e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 248,
+      "project": "iphone-emulation",
+      "file": "e2e/privacy.spec.ts",
+      "line": 119,
+      "title": "expired and invalid temporary text is consumed and erased without restoring it",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:28.0127182Z   ✓  248 [iphone-emulation] › e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (6.9s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 250,
+      "project": "iphone-emulation",
+      "file": "e2e/responsive.spec.ts",
+      "line": 4,
+      "title": "reflows across cover screens, phones, tablets and desktops without losing work",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:29.1423022Z   ✓  250 [iphone-emulation] › e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (7.1s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 255,
+      "project": "iphone-emulation",
+      "file": "e2e/updates.spec.ts",
+      "line": 6,
+      "title": "repair refuses another release and leaves the existing offline shell intact",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:30.6128250Z   ✓  255 [iphone-emulation] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (3.7s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 257,
+      "project": "iphone-emulation",
+      "file": "e2e/updates.spec.ts",
+      "line": 93,
+      "title": "oversized drafts block an update until they can be safely preserved",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:32.3123876Z   ✓  257 [iphone-emulation] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (4.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 256,
+      "project": "iphone-emulation",
+      "file": "e2e/updates.spec.ts",
+      "line": 45,
+      "title": "an interrupted rollback preserves a retained cache and its old tab worker",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:33.3893186Z   ✓  256 [iphone-emulation] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (6.5s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 259,
+      "project": "iphone-emulation",
+      "file": "e2e/updates.spec.ts",
+      "line": 270,
+      "title": "rollback preserves draft and preferences and removes obsolete caches with one remaining tab",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:37.9507008Z   ✓  259 [iphone-emulation] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (7.3s)"
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 258,
+      "project": "iphone-emulation",
+      "file": "e2e/updates.spec.ts",
+      "line": 209,
+      "title": "old and new tabs retain their own workers across successive releases and offline restart",
+      "retry": 0,
+      "rawLine": "web\tRun bun run test:browser\t2026-10-05T09:14:38.6872026Z   ✓  258 [iphone-emulation] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (9.5s)"
+    }
+  ]
+}
