@@ -1,0 +1,391 @@
+{
+  "began": "2026-10-05T11:35:18.498Z",
+  "ended": "2026-10-05T11:35:18.500Z",
+  "source": "docs/qa/ci-next-2026-10-05/delivery/pipeline",
+  "attempts": 273,
+  "passes": 264,
+  "skips": [
+    {
+      "symbol": "-",
+      "ordinal": 104,
+      "project": "firefox",
+      "location": "e2e/uncontrolled.spec.ts:102:0",
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "seconds": null
+    },
+    {
+      "symbol": "-",
+      "ordinal": 105,
+      "project": "firefox",
+      "location": "e2e/uncontrolled.spec.ts:135:0",
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "seconds": null
+    },
+    {
+      "symbol": "-",
+      "ordinal": 106,
+      "project": "firefox",
+      "location": "e2e/uncontrolled.spec.ts:227:0",
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "seconds": null
+    },
+    {
+      "symbol": "-",
+      "ordinal": 158,
+      "project": "webkit",
+      "location": "e2e/uncontrolled.spec.ts:102:0",
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "seconds": null
+    },
+    {
+      "symbol": "-",
+      "ordinal": 159,
+      "project": "webkit",
+      "location": "e2e/uncontrolled.spec.ts:135:0",
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "seconds": null
+    },
+    {
+      "symbol": "-",
+      "ordinal": 160,
+      "project": "webkit",
+      "location": "e2e/uncontrolled.spec.ts:227:0",
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "seconds": null
+    },
+    {
+      "symbol": "-",
+      "ordinal": 266,
+      "project": "iphone-emulation",
+      "location": "e2e/uncontrolled.spec.ts:102:0",
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "seconds": null
+    },
+    {
+      "symbol": "-",
+      "ordinal": 267,
+      "project": "iphone-emulation",
+      "location": "e2e/uncontrolled.spec.ts:135:0",
+      "title": "an explicit update recovers a timed-out readiness probe without another reload",
+      "seconds": null
+    },
+    {
+      "symbol": "-",
+      "ordinal": 268,
+      "project": "iphone-emulation",
+      "location": "e2e/uncontrolled.spec.ts:227:0",
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "seconds": null
+    }
+  ],
+  "webSeconds": 358,
+  "pagesSeconds": 22,
+  "browserSeconds": 299,
+  "webOutsideBrowserSeconds": 59,
+  "pairSeconds": 380,
+  "pairRoundedMinutes": 7,
+  "webSteps": [
+    {
+      "name": "Set up job",
+      "conclusion": "success",
+      "seconds": 3
+    },
+    {
+      "name": "Initialize containers",
+      "conclusion": "success",
+      "seconds": 33
+    },
+    {
+      "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "conclusion": "success",
+      "seconds": 2
+    },
+    {
+      "name": "Capture the checked-in corpus audit",
+      "conclusion": "success",
+      "seconds": 0
+    },
+    {
+      "name": "Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492",
+      "conclusion": "success",
+      "seconds": 6
+    },
+    {
+      "name": "Run bun install --frozen-lockfile",
+      "conclusion": "success",
+      "seconds": 1
+    },
+    {
+      "name": "Verify the pinned browser image matches the dependency",
+      "conclusion": "success",
+      "seconds": 0
+    },
+    {
+      "name": "Run bun run format:check",
+      "conclusion": "success",
+      "seconds": 2
+    },
+    {
+      "name": "Unit tests and production build",
+      "conclusion": "success",
+      "seconds": 1
+    },
+    {
+      "name": "Verify the standalone conversion corpus audit",
+      "conclusion": "success",
+      "seconds": 1
+    },
+    {
+      "name": "Run bun run test:browser",
+      "conclusion": "success",
+      "seconds": 299
+    },
+    {
+      "name": "Record browser resource usage",
+      "conclusion": "success",
+      "seconds": 0
+    },
+    {
+      "name": "Retain bounded browser timing metadata",
+      "conclusion": "skipped",
+      "seconds": 0
+    },
+    {
+      "name": "Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+      "conclusion": "skipped",
+      "seconds": 0
+    },
+    {
+      "name": "Verify repository-subpath deployment",
+      "conclusion": "success",
+      "seconds": 3
+    },
+    {
+      "name": "Upload the verified Pages build",
+      "conclusion": "success",
+      "seconds": 1
+    },
+    {
+      "name": "Publish failed-attempt diagnostics",
+      "conclusion": "skipped",
+      "seconds": 0
+    },
+    {
+      "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "conclusion": "success",
+      "seconds": 1
+    },
+    {
+      "name": "Stop containers",
+      "conclusion": "success",
+      "seconds": 0
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success",
+      "seconds": 0
+    }
+  ],
+  "pagesSteps": [
+    {
+      "name": "Set up job",
+      "conclusion": "success",
+      "seconds": 2
+    },
+    {
+      "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "conclusion": "success",
+      "seconds": 2
+    },
+    {
+      "name": "Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492",
+      "conclusion": "success",
+      "seconds": 3
+    },
+    {
+      "name": "Reuse the exact verified PR artifact",
+      "conclusion": "success",
+      "seconds": 4
+    },
+    {
+      "name": "Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+      "conclusion": "success",
+      "seconds": 0
+    },
+    {
+      "name": "Upload the verified Pages build",
+      "conclusion": "success",
+      "seconds": 1
+    },
+    {
+      "name": "Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346",
+      "conclusion": "success",
+      "seconds": 7
+    },
+    {
+      "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "conclusion": "success",
+      "seconds": 0
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success",
+      "seconds": 0
+    }
+  ],
+  "sumCaseSeconds": 1139.1770000000008,
+  "idealFourSlotSeconds": 284.7942500000002,
+  "hypotheticalFixedDurationSchedulingGap": 14.205749999999796,
+  "families": [
+    [
+      "controls",
+      217.3
+    ],
+    [
+      "app",
+      209.30000000000004
+    ],
+    [
+      "updates",
+      151.1
+    ],
+    [
+      "offline-install",
+      95
+    ],
+    [
+      "diagnostics",
+      89.10000000000002
+    ],
+    [
+      "imports",
+      84.50000000000001
+    ],
+    [
+      "privacy",
+      78.3
+    ],
+    [
+      "live",
+      51.400000000000006
+    ],
+    [
+      "copy-focus",
+      43.4
+    ],
+    [
+      "motion",
+      39.542
+    ],
+    [
+      "responsive",
+      37.2
+    ],
+    [
+      "uncontrolled",
+      29.3
+    ],
+    [
+      "engine",
+      7.935000000000001
+    ],
+    [
+      "foldable",
+      5.8
+    ]
+  ],
+  "projects": {
+    "foldable": 5.8,
+    "chromium": 191.73399999999998,
+    "firefox": 246.59999999999994,
+    "webkit": 302.7,
+    "android-emulation": 181.343,
+    "iphone-emulation": 211
+  },
+  "themedSweep": [
+    {
+      "symbol": "✓",
+      "ordinal": 16,
+      "project": "chromium",
+      "location": "e2e/controls.spec.ts:55:0",
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "seconds": 15
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 70,
+      "project": "firefox",
+      "location": "e2e/controls.spec.ts:55:0",
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "seconds": 22.1
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 124,
+      "project": "webkit",
+      "location": "e2e/controls.spec.ts:55:0",
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "seconds": 38.2
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 178,
+      "project": "android-emulation",
+      "location": "e2e/controls.spec.ts:55:0",
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "seconds": 13.4
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 232,
+      "project": "iphone-emulation",
+      "location": "e2e/controls.spec.ts:55:0",
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "seconds": 24
+    }
+  ],
+  "thresholds": {
+    "quotaWebAtMost": 300,
+    "quotaBrowserAtMost": 241,
+    "rawWebStrictlyBelow": 285,
+    "rawBrowserStrictlyBelow": 226
+  },
+  "models": [
+    {
+      "setupSaving": 0,
+      "browserSavingStrictlyGreaterForRaw": 73,
+      "browserSavingAtLeastForQuota": 58
+    },
+    {
+      "setupSaving": 6,
+      "browserSavingStrictlyGreaterForRaw": 67,
+      "browserSavingAtLeastForQuota": 52
+    },
+    {
+      "setupSaving": 20,
+      "browserSavingStrictlyGreaterForRaw": 53,
+      "browserSavingAtLeastForQuota": 38
+    },
+    {
+      "setupSaving": 33,
+      "browserSavingStrictlyGreaterForRaw": 40,
+      "browserSavingAtLeastForQuota": 25
+    },
+    {
+      "setupSaving": 39,
+      "browserSavingStrictlyGreaterForRaw": 34,
+      "browserSavingAtLeastForQuota": 19
+    },
+    {
+      "setupSaving": 59,
+      "browserSavingStrictlyGreaterForRaw": 14,
+      "browserSavingAtLeastForQuota": 0
+    }
+  ],
+  "limits": [
+    "Rounded pass durations overlap and include waits; they are not CPU time.",
+    "Fixed-duration ideal scheduling arithmetic is not a measured saving or a causal bound across altered schedules.",
+    "Timing reporter was disabled in this final run; earlier 258-case timing records must not be attributed to this 273-case run.",
+    "No source or browser execution is performed by this helper."
+  ]
+}

@@ -1,0 +1,2676 @@
+{
+  "startedAt": "2026-10-05T11:33:59.977Z",
+  "completedAt": "2026-10-05T11:33:59.982Z",
+  "environment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "bun": "1.4.0"
+  },
+  "semantics": "Read-only offline arithmetic. Concurrent attempt/operation sums are neither CPU time nor removable wall time. No browser/build/Actions execution.",
+  "sourceHashes": {
+    "playwright.config.ts": "8a840ed09b0246a203c1182325cffea9c0070c99b4cb9ef6720d80592a1fd3a1",
+    "playwright.subpath.config.ts": "cacf99a2dd2f95f2965ac5199f5da2ad06120a32cfdb9caa36ec720d21469e7e",
+    "e2e/fixtures.ts": "f2fae8b63aa63efd8a76b15e8b4ef8e75a553f8c2ee49b5dadaa45bfea583f1f",
+    "e2e/choices.ts": "6f7bf127b6c7195fdd3a6834e785e40726d9580dc946ec7b4125c1c53764b97f",
+    "e2e/controls.spec.ts": "dda4d69c407f237ec323f8e31a373cf247a461fc096e99ac247b4bbf457b72f9",
+    "e2e/timing-reporter.ts": "d9523adbebaa5e558d315226fd67155e57af4bd3b4d1ae27d9fe78efc7542dbf",
+    "scripts/serve-web.ts": "8c89f56d9c73f82cfd0cd0b21648c49ba11360b46d82647b27328a45eb44cfc3",
+    "scripts/test-releases.ts": "82e90fd45a4bd5f94c046a6ebe572e6b879120f2779ddc2186e82edbb2ba6f5a",
+    ".github/workflows/web.yml": "5d32bea5a2f918415212ed1199d9f4ef9bb0100627bc3e31ae14cf48cd07b4a8",
+    "tests/fixtures/temporal.json": "3a3e9fffbe98156e39ff8dc29ed527745df5583624077908e207c0faeb71a9a9",
+    "tests/fixtures/resilience-corpus.json": "33ca990cf95430f38493d2d3de446385fe0de7d033437377da0a7915ae0a5b13"
+  },
+  "records": [
+    {
+      "path": "docs/qa/ci-efficiency-2026-10-05/control-linux-timing.json",
+      "sha256": "efeedddcf7a93cd816f9fe4d3bb5d454039e6e06f8993a903a7b64392e050ba5",
+      "startTime": "2026-10-05T05:54:59.198Z",
+      "durationMs": 290306.86,
+      "workers": 4,
+      "attempts": 258,
+      "uniqueCases": 258,
+      "retries": 0,
+      "failures": 0,
+      "skips": 9,
+      "dropped": 0,
+      "totalAttemptMs": 1118060,
+      "spanMs": 289140,
+      "occupancyMs": {
+        "0": 0,
+        "1": 975,
+        "2": 5904,
+        "3": 23767,
+        "4": 258494
+      },
+      "occupiedCapacityFraction": 0.9667116275852529,
+      "fixedDurationIdealMs": 279515,
+      "idealizedGapMs": 10791.859999999986,
+      "projects": {
+        "foldable": {
+          "count": 3,
+          "durationMs": 5609,
+          "first": 1791179700270,
+          "last": 1791179702674
+        },
+        "chromium": {
+          "count": 51,
+          "durationMs": 186046,
+          "first": 1791179700525,
+          "last": 1791179754562
+        },
+        "firefox": {
+          "count": 51,
+          "durationMs": 246563,
+          "first": 1791179744943,
+          "last": 1791179816620
+        },
+        "webkit": {
+          "count": 51,
+          "durationMs": 295709,
+          "first": 1791179808499,
+          "last": 1791179892919
+        },
+        "android-emulation": {
+          "count": 51,
+          "durationMs": 179258,
+          "first": 1791179884432,
+          "last": 1791179938861
+        },
+        "iphone-emulation": {
+          "count": 51,
+          "durationMs": 204875,
+          "first": 1791179930697,
+          "last": 1791179989410
+        }
+      },
+      "operations": {
+        "pw:api/browser-launch": {
+          "count": 23,
+          "leafMs": 5630,
+          "inclusiveMs": 5630
+        },
+        "fixture/fixture": {
+          "count": 2330,
+          "leafMs": 12072,
+          "inclusiveMs": 121470
+        },
+        "pw:api/context-create": {
+          "count": 258,
+          "leafMs": 3274,
+          "inclusiveMs": 3274
+        },
+        "pw:api/page-create": {
+          "count": 341,
+          "leafMs": 84903,
+          "inclusiveMs": 84903
+        },
+        "hook/hook": {
+          "count": 576,
+          "leafMs": 29,
+          "inclusiveMs": 139042
+        },
+        "pw:api/viewport": {
+          "count": 112,
+          "leafMs": 2014,
+          "inclusiveMs": 2014
+        },
+        "pw:api/navigate": {
+          "count": 360,
+          "leafMs": 91251,
+          "inclusiveMs": 91251
+        },
+        "pw:api/other-api": {
+          "count": 893,
+          "leafMs": 20999,
+          "inclusiveMs": 20999
+        },
+        "expect/expect": {
+          "count": 10501,
+          "leafMs": 455357,
+          "inclusiveMs": 476209
+        },
+        "pw:api/evaluate": {
+          "count": 1163,
+          "leafMs": 39036,
+          "inclusiveMs": 39036
+        },
+        "pw:api/context-close": {
+          "count": 258,
+          "leafMs": 6056,
+          "inclusiveMs": 6056
+        },
+        "pw:api/fill": {
+          "count": 734,
+          "leafMs": 56081,
+          "inclusiveMs": 56081
+        },
+        "pw:api/scroll": {
+          "count": 66,
+          "leafMs": 6961,
+          "inclusiveMs": 6961
+        },
+        "pw:api/press": {
+          "count": 649,
+          "leafMs": 31624,
+          "inclusiveMs": 31624
+        },
+        "pw:api/click": {
+          "count": 717,
+          "leafMs": 138018,
+          "inclusiveMs": 138018
+        },
+        "pw:api/reload": {
+          "count": 105,
+          "leafMs": 14337,
+          "inclusiveMs": 14337
+        },
+        "pw:api/page-close": {
+          "count": 68,
+          "leafMs": 359,
+          "inclusiveMs": 359
+        },
+        "pw:api/offline": {
+          "count": 9,
+          "leafMs": 83,
+          "inclusiveMs": 83
+        },
+        "pw:api/screenshot": {
+          "count": 23,
+          "leafMs": 1616,
+          "inclusiveMs": 1616
+        },
+        "pw:api/request": {
+          "count": 206,
+          "leafMs": 1531,
+          "inclusiveMs": 1531
+        },
+        "pw:api/wait": {
+          "count": 144,
+          "leafMs": 104855,
+          "inclusiveMs": 104855
+        },
+        "pw:api/pointer": {
+          "count": 10,
+          "leafMs": 386,
+          "inclusiveMs": 386
+        },
+        "pw:api/hover": {
+          "count": 10,
+          "leafMs": 1346,
+          "inclusiveMs": 1346
+        },
+        "pw:api/focus": {
+          "count": 10,
+          "leafMs": 199,
+          "inclusiveMs": 199
+        },
+        "test.step/test.step": {
+          "count": 80,
+          "leafMs": 0,
+          "inclusiveMs": 103565
+        },
+        "pw:api/type": {
+          "count": 5,
+          "leafMs": 6499,
+          "inclusiveMs": 6499
+        },
+        "pw:api/tap": {
+          "count": 2,
+          "leafMs": 115,
+          "inclusiveMs": 115
+        }
+      }
+    },
+    {
+      "path": "docs/qa/actions-upgrade-2026-10-05/final-ci/ci-timing.json",
+      "sha256": "423d4efb9cfc5d4e9157659f4ffbe4f2544f534873bbf6039259c55860fa9fee",
+      "startTime": "2026-10-05T09:08:37.475Z",
+      "durationMs": 361307.677,
+      "workers": 4,
+      "attempts": 259,
+      "uniqueCases": 258,
+      "retries": 1,
+      "failures": 1,
+      "skips": 9,
+      "dropped": 0,
+      "totalAttemptMs": 1388463,
+      "spanMs": 359897,
+      "occupancyMs": {
+        "0": 0,
+        "1": 796,
+        "2": 8742,
+        "3": 31253,
+        "4": 319106
+      },
+      "occupiedCapacityFraction": 0.9644863669327614,
+      "fixedDurationIdealMs": 347115.75,
+      "idealizedGapMs": 14191.927000000025,
+      "projects": {
+        "foldable": {
+          "count": 3,
+          "durationMs": 6750,
+          "first": 1791191318780,
+          "last": 1791191321673
+        },
+        "chromium": {
+          "count": 51,
+          "durationMs": 219108,
+          "first": 1791191318912,
+          "last": 1791191382359
+        },
+        "firefox": {
+          "count": 51,
+          "durationMs": 298873,
+          "first": 1791191371965,
+          "last": 1791191459440
+        },
+        "webkit": {
+          "count": 52,
+          "durationMs": 383441,
+          "first": 1791191448249,
+          "last": 1791191558544
+        },
+        "android-emulation": {
+          "count": 51,
+          "durationMs": 216141,
+          "first": 1791191547476,
+          "last": 1791191614725
+        },
+        "iphone-emulation": {
+          "count": 51,
+          "durationMs": 264150,
+          "first": 1791191603214,
+          "last": 1791191678677
+        }
+      },
+      "operations": {
+        "pw:api/browser-launch": {
+          "count": 24,
+          "leafMs": 8428,
+          "inclusiveMs": 8428
+        },
+        "fixture/fixture": {
+          "count": 2341,
+          "leafMs": 15206,
+          "inclusiveMs": 158380
+        },
+        "pw:api/context-create": {
+          "count": 259,
+          "leafMs": 4188,
+          "inclusiveMs": 4188
+        },
+        "pw:api/page-create": {
+          "count": 342,
+          "leafMs": 109913,
+          "inclusiveMs": 109913
+        },
+        "hook/hook": {
+          "count": 579,
+          "leafMs": 5,
+          "inclusiveMs": 181704
+        },
+        "pw:api/viewport": {
+          "count": 112,
+          "leafMs": 2315,
+          "inclusiveMs": 2315
+        },
+        "pw:api/navigate": {
+          "count": 361,
+          "leafMs": 123767,
+          "inclusiveMs": 123767
+        },
+        "pw:api/other-api": {
+          "count": 893,
+          "leafMs": 26310,
+          "inclusiveMs": 26310
+        },
+        "expect/expect": {
+          "count": 10538,
+          "leafMs": 546439,
+          "inclusiveMs": 568559
+        },
+        "pw:api/evaluate": {
+          "count": 1163,
+          "leafMs": 48986,
+          "inclusiveMs": 48986
+        },
+        "pw:api/context-close": {
+          "count": 259,
+          "leafMs": 7986,
+          "inclusiveMs": 7986
+        },
+        "pw:api/fill": {
+          "count": 737,
+          "leafMs": 78312,
+          "inclusiveMs": 78312
+        },
+        "pw:api/scroll": {
+          "count": 76,
+          "leafMs": 10260,
+          "inclusiveMs": 10260
+        },
+        "pw:api/press": {
+          "count": 651,
+          "leafMs": 43008,
+          "inclusiveMs": 43008
+        },
+        "pw:api/click": {
+          "count": 728,
+          "leafMs": 176363,
+          "inclusiveMs": 176363
+        },
+        "pw:api/reload": {
+          "count": 105,
+          "leafMs": 18590,
+          "inclusiveMs": 18590
+        },
+        "pw:api/page-close": {
+          "count": 68,
+          "leafMs": 460,
+          "inclusiveMs": 460
+        },
+        "pw:api/offline": {
+          "count": 9,
+          "leafMs": 72,
+          "inclusiveMs": 72
+        },
+        "pw:api/screenshot": {
+          "count": 23,
+          "leafMs": 2249,
+          "inclusiveMs": 2249
+        },
+        "pw:api/request": {
+          "count": 206,
+          "leafMs": 2022,
+          "inclusiveMs": 2022
+        },
+        "pw:api/wait": {
+          "count": 144,
+          "leafMs": 113118,
+          "inclusiveMs": 113118
+        },
+        "pw:api/focus": {
+          "count": 10,
+          "leafMs": 388,
+          "inclusiveMs": 388
+        },
+        "pw:api/pointer": {
+          "count": 10,
+          "leafMs": 434,
+          "inclusiveMs": 434
+        },
+        "pw:api/hover": {
+          "count": 10,
+          "leafMs": 1364,
+          "inclusiveMs": 1364
+        },
+        "test.step/test.step": {
+          "count": 80,
+          "leafMs": 0,
+          "inclusiveMs": 133613
+        },
+        "pw:api/type": {
+          "count": 5,
+          "leafMs": 7279,
+          "inclusiveMs": 7279
+        },
+        "pw:api/tap": {
+          "count": 2,
+          "leafMs": 249,
+          "inclusiveMs": 249
+        }
+      }
+    }
+  ],
+  "latest": {
+    "logPath": "docs/qa/copy-focus-2026-10-05/final-ci/run.log",
+    "sha256": "8438bb0bfe38edaa339327f99b73a6184fe408f3e01693ac096bad956c83557a",
+    "rows": [
+      {
+        "status": "passed",
+        "ordinal": 2,
+        "project": "foldable",
+        "file": "foldable.spec.ts",
+        "durationMs": 1200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 1,
+        "project": "foldable",
+        "file": "foldable.spec.ts",
+        "durationMs": 2100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 3,
+        "project": "foldable",
+        "file": "foldable.spec.ts",
+        "durationMs": 2200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 4,
+        "project": "chromium",
+        "file": "app.spec.ts",
+        "durationMs": 3600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 5,
+        "project": "chromium",
+        "file": "app.spec.ts",
+        "durationMs": 2700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 6,
+        "project": "chromium",
+        "file": "app.spec.ts",
+        "durationMs": 2300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 8,
+        "project": "chromium",
+        "file": "app.spec.ts",
+        "durationMs": 1600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 7,
+        "project": "chromium",
+        "file": "app.spec.ts",
+        "durationMs": 2400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 9,
+        "project": "chromium",
+        "file": "app.spec.ts",
+        "durationMs": 1500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 10,
+        "project": "chromium",
+        "file": "app.spec.ts",
+        "durationMs": 2400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 11,
+        "project": "chromium",
+        "file": "app.spec.ts",
+        "durationMs": 2400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 14,
+        "project": "chromium",
+        "file": "app.spec.ts",
+        "durationMs": 1300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 12,
+        "project": "chromium",
+        "file": "app.spec.ts",
+        "durationMs": 3500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 13,
+        "project": "chromium",
+        "file": "app.spec.ts",
+        "durationMs": 4200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 15,
+        "project": "chromium",
+        "file": "app.spec.ts",
+        "durationMs": 4400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 19,
+        "project": "chromium",
+        "file": "controls.spec.ts",
+        "durationMs": 2400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 18,
+        "project": "chromium",
+        "file": "controls.spec.ts",
+        "durationMs": 4300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 17,
+        "project": "chromium",
+        "file": "controls.spec.ts",
+        "durationMs": 6700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 21,
+        "project": "chromium",
+        "file": "copy-focus.spec.ts",
+        "durationMs": 1800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 22,
+        "project": "chromium",
+        "file": "copy-focus.spec.ts",
+        "durationMs": 1300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 20,
+        "project": "chromium",
+        "file": "copy-focus.spec.ts",
+        "durationMs": 2800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 24,
+        "project": "chromium",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 1400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 25,
+        "project": "chromium",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 1500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 23,
+        "project": "chromium",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 2700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 27,
+        "project": "chromium",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 1400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 26,
+        "project": "chromium",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 2100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 29,
+        "project": "chromium",
+        "file": "engine.spec.ts",
+        "durationMs": 1300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 16,
+        "project": "chromium",
+        "file": "controls.spec.ts",
+        "durationMs": 13800,
+        "themedSweep": true
+      },
+      {
+        "status": "passed",
+        "ordinal": 28,
+        "project": "chromium",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 5500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 30,
+        "project": "chromium",
+        "file": "imports.spec.ts",
+        "durationMs": 4800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 32,
+        "project": "chromium",
+        "file": "imports.spec.ts",
+        "durationMs": 3000,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 31,
+        "project": "chromium",
+        "file": "imports.spec.ts",
+        "durationMs": 4800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 36,
+        "project": "chromium",
+        "file": "motion.spec.ts",
+        "durationMs": 833,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 33,
+        "project": "chromium",
+        "file": "live.spec.ts",
+        "durationMs": 3200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 37,
+        "project": "chromium",
+        "file": "offline-install.spec.ts",
+        "durationMs": 2000,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 38,
+        "project": "chromium",
+        "file": "offline-install.spec.ts",
+        "durationMs": 1800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 34,
+        "project": "chromium",
+        "file": "live.spec.ts",
+        "durationMs": 4800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 39,
+        "project": "chromium",
+        "file": "offline-install.spec.ts",
+        "durationMs": 1100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 35,
+        "project": "chromium",
+        "file": "motion.spec.ts",
+        "durationMs": 5700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 40,
+        "project": "chromium",
+        "file": "offline-install.spec.ts",
+        "durationMs": 1800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 42,
+        "project": "chromium",
+        "file": "offline-install.spec.ts",
+        "durationMs": 2600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 43,
+        "project": "chromium",
+        "file": "privacy.spec.ts",
+        "durationMs": 2300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 44,
+        "project": "chromium",
+        "file": "privacy.spec.ts",
+        "durationMs": 2700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 45,
+        "project": "chromium",
+        "file": "privacy.spec.ts",
+        "durationMs": 1500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 46,
+        "project": "chromium",
+        "file": "privacy.spec.ts",
+        "durationMs": 1700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 41,
+        "project": "chromium",
+        "file": "offline-install.spec.ts",
+        "durationMs": 6100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 49,
+        "project": "chromium",
+        "file": "responsive.spec.ts",
+        "durationMs": 1100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 48,
+        "project": "chromium",
+        "file": "responsive.spec.ts",
+        "durationMs": 3000,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 47,
+        "project": "chromium",
+        "file": "privacy.spec.ts",
+        "durationMs": 3400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 50,
+        "project": "chromium",
+        "file": "uncontrolled.spec.ts",
+        "durationMs": 2500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 53,
+        "project": "chromium",
+        "file": "updates.spec.ts",
+        "durationMs": 1500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 55,
+        "project": "chromium",
+        "file": "updates.spec.ts",
+        "durationMs": 2900,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 54,
+        "project": "chromium",
+        "file": "updates.spec.ts",
+        "durationMs": 4100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 51,
+        "project": "chromium",
+        "file": "uncontrolled.spec.ts",
+        "durationMs": 6700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 52,
+        "project": "chromium",
+        "file": "uncontrolled.spec.ts",
+        "durationMs": 5700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 58,
+        "project": "firefox",
+        "file": "app.spec.ts",
+        "durationMs": 4400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 59,
+        "project": "firefox",
+        "file": "app.spec.ts",
+        "durationMs": 4700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 56,
+        "project": "chromium",
+        "file": "updates.spec.ts",
+        "durationMs": 8700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 60,
+        "project": "firefox",
+        "file": "app.spec.ts",
+        "durationMs": 2700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 57,
+        "project": "chromium",
+        "file": "updates.spec.ts",
+        "durationMs": 9400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 61,
+        "project": "firefox",
+        "file": "app.spec.ts",
+        "durationMs": 2900,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 62,
+        "project": "firefox",
+        "file": "app.spec.ts",
+        "durationMs": 2600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 63,
+        "project": "firefox",
+        "file": "app.spec.ts",
+        "durationMs": 3600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 64,
+        "project": "firefox",
+        "file": "app.spec.ts",
+        "durationMs": 4800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 66,
+        "project": "firefox",
+        "file": "app.spec.ts",
+        "durationMs": 3300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 65,
+        "project": "firefox",
+        "file": "app.spec.ts",
+        "durationMs": 4500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 68,
+        "project": "firefox",
+        "file": "app.spec.ts",
+        "durationMs": 2300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 67,
+        "project": "firefox",
+        "file": "app.spec.ts",
+        "durationMs": 5200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 69,
+        "project": "firefox",
+        "file": "app.spec.ts",
+        "durationMs": 6200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 73,
+        "project": "firefox",
+        "file": "controls.spec.ts",
+        "durationMs": 3900,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 71,
+        "project": "firefox",
+        "file": "controls.spec.ts",
+        "durationMs": 8200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 72,
+        "project": "firefox",
+        "file": "controls.spec.ts",
+        "durationMs": 7300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 75,
+        "project": "firefox",
+        "file": "copy-focus.spec.ts",
+        "durationMs": 2300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 76,
+        "project": "firefox",
+        "file": "copy-focus.spec.ts",
+        "durationMs": 2000,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 74,
+        "project": "firefox",
+        "file": "copy-focus.spec.ts",
+        "durationMs": 3800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 78,
+        "project": "firefox",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 2500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 79,
+        "project": "firefox",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 2000,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 77,
+        "project": "firefox",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 4300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 81,
+        "project": "firefox",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 1700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 80,
+        "project": "firefox",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 2400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 83,
+        "project": "firefox",
+        "file": "engine.spec.ts",
+        "durationMs": 2800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 70,
+        "project": "firefox",
+        "file": "controls.spec.ts",
+        "durationMs": 20700,
+        "themedSweep": true
+      },
+      {
+        "status": "passed",
+        "ordinal": 82,
+        "project": "firefox",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 5700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 84,
+        "project": "firefox",
+        "file": "imports.spec.ts",
+        "durationMs": 6100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 86,
+        "project": "firefox",
+        "file": "imports.spec.ts",
+        "durationMs": 4100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 87,
+        "project": "firefox",
+        "file": "live.spec.ts",
+        "durationMs": 4800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 85,
+        "project": "firefox",
+        "file": "imports.spec.ts",
+        "durationMs": 7300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 88,
+        "project": "firefox",
+        "file": "live.spec.ts",
+        "durationMs": 5600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 90,
+        "project": "firefox",
+        "file": "motion.spec.ts",
+        "durationMs": 2200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 91,
+        "project": "firefox",
+        "file": "offline-install.spec.ts",
+        "durationMs": 2600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 93,
+        "project": "firefox",
+        "file": "offline-install.spec.ts",
+        "durationMs": 1800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 89,
+        "project": "firefox",
+        "file": "motion.spec.ts",
+        "durationMs": 6500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 94,
+        "project": "firefox",
+        "file": "offline-install.spec.ts",
+        "durationMs": 2500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 92,
+        "project": "firefox",
+        "file": "offline-install.spec.ts",
+        "durationMs": 3500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 96,
+        "project": "firefox",
+        "file": "offline-install.spec.ts",
+        "durationMs": 3900,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 97,
+        "project": "firefox",
+        "file": "privacy.spec.ts",
+        "durationMs": 4100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 99,
+        "project": "firefox",
+        "file": "privacy.spec.ts",
+        "durationMs": 1800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 98,
+        "project": "firefox",
+        "file": "privacy.spec.ts",
+        "durationMs": 4800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 95,
+        "project": "firefox",
+        "file": "offline-install.spec.ts",
+        "durationMs": 6800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 103,
+        "project": "firefox",
+        "file": "responsive.spec.ts",
+        "durationMs": 2500,
+        "themedSweep": false
+      },
+      {
+        "status": "skipped",
+        "ordinal": 104,
+        "project": "firefox",
+        "file": "uncontrolled.spec.ts",
+        "durationMs": null,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 100,
+        "project": "firefox",
+        "file": "privacy.spec.ts",
+        "durationMs": 4600,
+        "themedSweep": false
+      },
+      {
+        "status": "skipped",
+        "ordinal": 105,
+        "project": "firefox",
+        "file": "uncontrolled.spec.ts",
+        "durationMs": null,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 101,
+        "project": "firefox",
+        "file": "privacy.spec.ts",
+        "durationMs": 4200,
+        "themedSweep": false
+      },
+      {
+        "status": "skipped",
+        "ordinal": 106,
+        "project": "firefox",
+        "file": "uncontrolled.spec.ts",
+        "durationMs": null,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 102,
+        "project": "firefox",
+        "file": "responsive.spec.ts",
+        "durationMs": 5700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 107,
+        "project": "firefox",
+        "file": "updates.spec.ts",
+        "durationMs": 2400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 109,
+        "project": "firefox",
+        "file": "updates.spec.ts",
+        "durationMs": 4200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 108,
+        "project": "firefox",
+        "file": "updates.spec.ts",
+        "durationMs": 6500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 112,
+        "project": "webkit",
+        "file": "app.spec.ts",
+        "durationMs": 4200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 113,
+        "project": "webkit",
+        "file": "app.spec.ts",
+        "durationMs": 4400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 111,
+        "project": "firefox",
+        "file": "updates.spec.ts",
+        "durationMs": 10300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 114,
+        "project": "webkit",
+        "file": "app.spec.ts",
+        "durationMs": 3000,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 110,
+        "project": "firefox",
+        "file": "updates.spec.ts",
+        "durationMs": 12100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 115,
+        "project": "webkit",
+        "file": "app.spec.ts",
+        "durationMs": 4000,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 116,
+        "project": "webkit",
+        "file": "app.spec.ts",
+        "durationMs": 3300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 117,
+        "project": "webkit",
+        "file": "app.spec.ts",
+        "durationMs": 2800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 120,
+        "project": "webkit",
+        "file": "app.spec.ts",
+        "durationMs": 4500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 118,
+        "project": "webkit",
+        "file": "app.spec.ts",
+        "durationMs": 5600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 119,
+        "project": "webkit",
+        "file": "app.spec.ts",
+        "durationMs": 5700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 121,
+        "project": "webkit",
+        "file": "app.spec.ts",
+        "durationMs": 6200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 122,
+        "project": "webkit",
+        "file": "app.spec.ts",
+        "durationMs": 3000,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 123,
+        "project": "webkit",
+        "file": "app.spec.ts",
+        "durationMs": 6200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 126,
+        "project": "webkit",
+        "file": "controls.spec.ts",
+        "durationMs": 10300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 127,
+        "project": "webkit",
+        "file": "controls.spec.ts",
+        "durationMs": 7100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 125,
+        "project": "webkit",
+        "file": "controls.spec.ts",
+        "durationMs": 12900,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 129,
+        "project": "webkit",
+        "file": "copy-focus.spec.ts",
+        "durationMs": 3200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 128,
+        "project": "webkit",
+        "file": "copy-focus.spec.ts",
+        "durationMs": 4800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 130,
+        "project": "webkit",
+        "file": "copy-focus.spec.ts",
+        "durationMs": 3100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 133,
+        "project": "webkit",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 2600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 131,
+        "project": "webkit",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 5200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 132,
+        "project": "webkit",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 4200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 134,
+        "project": "webkit",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 3100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 135,
+        "project": "webkit",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 2600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 137,
+        "project": "webkit",
+        "file": "engine.spec.ts",
+        "durationMs": 2200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 136,
+        "project": "webkit",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 5900,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 138,
+        "project": "webkit",
+        "file": "imports.spec.ts",
+        "durationMs": 8900,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 140,
+        "project": "webkit",
+        "file": "imports.spec.ts",
+        "durationMs": 5600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 124,
+        "project": "webkit",
+        "file": "controls.spec.ts",
+        "durationMs": 33700,
+        "themedSweep": true
+      },
+      {
+        "status": "passed",
+        "ordinal": 139,
+        "project": "webkit",
+        "file": "imports.spec.ts",
+        "durationMs": 10400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 144,
+        "project": "webkit",
+        "file": "motion.spec.ts",
+        "durationMs": 1800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 142,
+        "project": "webkit",
+        "file": "live.spec.ts",
+        "durationMs": 6400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 141,
+        "project": "webkit",
+        "file": "live.spec.ts",
+        "durationMs": 7200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 145,
+        "project": "webkit",
+        "file": "offline-install.spec.ts",
+        "durationMs": 2500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 143,
+        "project": "webkit",
+        "file": "motion.spec.ts",
+        "durationMs": 7900,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 147,
+        "project": "webkit",
+        "file": "offline-install.spec.ts",
+        "durationMs": 2100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 146,
+        "project": "webkit",
+        "file": "offline-install.spec.ts",
+        "durationMs": 3700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 148,
+        "project": "webkit",
+        "file": "offline-install.spec.ts",
+        "durationMs": 3400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 150,
+        "project": "webkit",
+        "file": "offline-install.spec.ts",
+        "durationMs": 5400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 151,
+        "project": "webkit",
+        "file": "privacy.spec.ts",
+        "durationMs": 4400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 152,
+        "project": "webkit",
+        "file": "privacy.spec.ts",
+        "durationMs": 4000,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 149,
+        "project": "webkit",
+        "file": "offline-install.spec.ts",
+        "durationMs": 7600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 153,
+        "project": "webkit",
+        "file": "privacy.spec.ts",
+        "durationMs": 2600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 155,
+        "project": "webkit",
+        "file": "privacy.spec.ts",
+        "durationMs": 3100,
+        "themedSweep": false
+      },
+      {
+        "status": "skipped",
+        "ordinal": 158,
+        "project": "webkit",
+        "file": "uncontrolled.spec.ts",
+        "durationMs": null,
+        "themedSweep": false
+      },
+      {
+        "status": "skipped",
+        "ordinal": 159,
+        "project": "webkit",
+        "file": "uncontrolled.spec.ts",
+        "durationMs": null,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 157,
+        "project": "webkit",
+        "file": "responsive.spec.ts",
+        "durationMs": 3500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 154,
+        "project": "webkit",
+        "file": "privacy.spec.ts",
+        "durationMs": 5700,
+        "themedSweep": false
+      },
+      {
+        "status": "skipped",
+        "ordinal": 160,
+        "project": "webkit",
+        "file": "uncontrolled.spec.ts",
+        "durationMs": null,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 161,
+        "project": "webkit",
+        "file": "updates.spec.ts",
+        "durationMs": 3300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 163,
+        "project": "webkit",
+        "file": "updates.spec.ts",
+        "durationMs": 3800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 156,
+        "project": "webkit",
+        "file": "responsive.spec.ts",
+        "durationMs": 8400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 162,
+        "project": "webkit",
+        "file": "updates.spec.ts",
+        "durationMs": 6100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 166,
+        "project": "android-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 4100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 167,
+        "project": "android-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 3900,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 168,
+        "project": "android-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 2500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 165,
+        "project": "webkit",
+        "file": "updates.spec.ts",
+        "durationMs": 8800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 169,
+        "project": "android-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 2600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 164,
+        "project": "webkit",
+        "file": "updates.spec.ts",
+        "durationMs": 10700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 170,
+        "project": "android-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 2400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 171,
+        "project": "android-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 2000,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 172,
+        "project": "android-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 2500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 176,
+        "project": "android-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 845,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 173,
+        "project": "android-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 3300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 174,
+        "project": "android-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 3500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 175,
+        "project": "android-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 3200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 177,
+        "project": "android-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 4400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 180,
+        "project": "android-emulation",
+        "file": "controls.spec.ts",
+        "durationMs": 3800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 181,
+        "project": "android-emulation",
+        "file": "controls.spec.ts",
+        "durationMs": 2500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 179,
+        "project": "android-emulation",
+        "file": "controls.spec.ts",
+        "durationMs": 6500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 182,
+        "project": "android-emulation",
+        "file": "copy-focus.spec.ts",
+        "durationMs": 2500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 183,
+        "project": "android-emulation",
+        "file": "copy-focus.spec.ts",
+        "durationMs": 1600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 184,
+        "project": "android-emulation",
+        "file": "copy-focus.spec.ts",
+        "durationMs": 1700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 186,
+        "project": "android-emulation",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 1400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 185,
+        "project": "android-emulation",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 2800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 187,
+        "project": "android-emulation",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 1400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 188,
+        "project": "android-emulation",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 1500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 189,
+        "project": "android-emulation",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 1400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 191,
+        "project": "android-emulation",
+        "file": "engine.spec.ts",
+        "durationMs": 993,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 178,
+        "project": "android-emulation",
+        "file": "controls.spec.ts",
+        "durationMs": 12900,
+        "themedSweep": true
+      },
+      {
+        "status": "passed",
+        "ordinal": 190,
+        "project": "android-emulation",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 4600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 192,
+        "project": "android-emulation",
+        "file": "imports.spec.ts",
+        "durationMs": 3800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 194,
+        "project": "android-emulation",
+        "file": "imports.spec.ts",
+        "durationMs": 3000,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 193,
+        "project": "android-emulation",
+        "file": "imports.spec.ts",
+        "durationMs": 4400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 198,
+        "project": "android-emulation",
+        "file": "motion.spec.ts",
+        "durationMs": 854,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 195,
+        "project": "android-emulation",
+        "file": "live.spec.ts",
+        "durationMs": 3000,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 199,
+        "project": "android-emulation",
+        "file": "offline-install.spec.ts",
+        "durationMs": 2000,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 200,
+        "project": "android-emulation",
+        "file": "offline-install.spec.ts",
+        "durationMs": 1700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 196,
+        "project": "android-emulation",
+        "file": "live.spec.ts",
+        "durationMs": 4600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 201,
+        "project": "android-emulation",
+        "file": "offline-install.spec.ts",
+        "durationMs": 1100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 197,
+        "project": "android-emulation",
+        "file": "motion.spec.ts",
+        "durationMs": 5500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 202,
+        "project": "android-emulation",
+        "file": "offline-install.spec.ts",
+        "durationMs": 1900,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 204,
+        "project": "android-emulation",
+        "file": "offline-install.spec.ts",
+        "durationMs": 2100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 205,
+        "project": "android-emulation",
+        "file": "privacy.spec.ts",
+        "durationMs": 2100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 206,
+        "project": "android-emulation",
+        "file": "privacy.spec.ts",
+        "durationMs": 2300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 207,
+        "project": "android-emulation",
+        "file": "privacy.spec.ts",
+        "durationMs": 1500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 208,
+        "project": "android-emulation",
+        "file": "privacy.spec.ts",
+        "durationMs": 1900,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 203,
+        "project": "android-emulation",
+        "file": "offline-install.spec.ts",
+        "durationMs": 6000,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 209,
+        "project": "android-emulation",
+        "file": "privacy.spec.ts",
+        "durationMs": 2900,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 211,
+        "project": "android-emulation",
+        "file": "responsive.spec.ts",
+        "durationMs": 1400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 210,
+        "project": "android-emulation",
+        "file": "responsive.spec.ts",
+        "durationMs": 3200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 212,
+        "project": "android-emulation",
+        "file": "uncontrolled.spec.ts",
+        "durationMs": 2700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 215,
+        "project": "android-emulation",
+        "file": "updates.spec.ts",
+        "durationMs": 1700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 217,
+        "project": "android-emulation",
+        "file": "updates.spec.ts",
+        "durationMs": 2700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 214,
+        "project": "android-emulation",
+        "file": "uncontrolled.spec.ts",
+        "durationMs": 5100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 216,
+        "project": "android-emulation",
+        "file": "updates.spec.ts",
+        "durationMs": 3600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 213,
+        "project": "android-emulation",
+        "file": "uncontrolled.spec.ts",
+        "durationMs": 6300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 220,
+        "project": "iphone-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 3100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 221,
+        "project": "iphone-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 2700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 222,
+        "project": "iphone-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 1800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 223,
+        "project": "iphone-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 2200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 224,
+        "project": "iphone-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 1700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 218,
+        "project": "android-emulation",
+        "file": "updates.spec.ts",
+        "durationMs": 8400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 225,
+        "project": "iphone-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 2100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 219,
+        "project": "android-emulation",
+        "file": "updates.spec.ts",
+        "durationMs": 9000,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 226,
+        "project": "iphone-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 3300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 230,
+        "project": "iphone-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 1600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 228,
+        "project": "iphone-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 3900,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 227,
+        "project": "iphone-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 4800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 229,
+        "project": "iphone-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 4800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 231,
+        "project": "iphone-emulation",
+        "file": "app.spec.ts",
+        "durationMs": 4600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 235,
+        "project": "iphone-emulation",
+        "file": "controls.spec.ts",
+        "durationMs": 4400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 234,
+        "project": "iphone-emulation",
+        "file": "controls.spec.ts",
+        "durationMs": 7200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 233,
+        "project": "iphone-emulation",
+        "file": "controls.spec.ts",
+        "durationMs": 9500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 237,
+        "project": "iphone-emulation",
+        "file": "copy-focus.spec.ts",
+        "durationMs": 2600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 236,
+        "project": "iphone-emulation",
+        "file": "copy-focus.spec.ts",
+        "durationMs": 3400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 238,
+        "project": "iphone-emulation",
+        "file": "copy-focus.spec.ts",
+        "durationMs": 2500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 240,
+        "project": "iphone-emulation",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 2500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 241,
+        "project": "iphone-emulation",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 2100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 239,
+        "project": "iphone-emulation",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 3500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 243,
+        "project": "iphone-emulation",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 1700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 242,
+        "project": "iphone-emulation",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 2300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 245,
+        "project": "iphone-emulation",
+        "file": "engine.spec.ts",
+        "durationMs": 2200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 244,
+        "project": "iphone-emulation",
+        "file": "diagnostics.spec.ts",
+        "durationMs": 4500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 232,
+        "project": "iphone-emulation",
+        "file": "controls.spec.ts",
+        "durationMs": 20100,
+        "themedSweep": true
+      },
+      {
+        "status": "passed",
+        "ordinal": 246,
+        "project": "iphone-emulation",
+        "file": "imports.spec.ts",
+        "durationMs": 4900,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 248,
+        "project": "iphone-emulation",
+        "file": "imports.spec.ts",
+        "durationMs": 3600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 249,
+        "project": "iphone-emulation",
+        "file": "live.spec.ts",
+        "durationMs": 4800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 247,
+        "project": "iphone-emulation",
+        "file": "imports.spec.ts",
+        "durationMs": 6600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 252,
+        "project": "iphone-emulation",
+        "file": "motion.spec.ts",
+        "durationMs": 1300,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 250,
+        "project": "iphone-emulation",
+        "file": "live.spec.ts",
+        "durationMs": 5100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 253,
+        "project": "iphone-emulation",
+        "file": "offline-install.spec.ts",
+        "durationMs": 1900,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 255,
+        "project": "iphone-emulation",
+        "file": "offline-install.spec.ts",
+        "durationMs": 1600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 254,
+        "project": "iphone-emulation",
+        "file": "offline-install.spec.ts",
+        "durationMs": 2600,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 251,
+        "project": "iphone-emulation",
+        "file": "motion.spec.ts",
+        "durationMs": 6000,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 256,
+        "project": "iphone-emulation",
+        "file": "offline-install.spec.ts",
+        "durationMs": 2500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 258,
+        "project": "iphone-emulation",
+        "file": "offline-install.spec.ts",
+        "durationMs": 3100,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 260,
+        "project": "iphone-emulation",
+        "file": "privacy.spec.ts",
+        "durationMs": 2900,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 259,
+        "project": "iphone-emulation",
+        "file": "privacy.spec.ts",
+        "durationMs": 4000,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 261,
+        "project": "iphone-emulation",
+        "file": "privacy.spec.ts",
+        "durationMs": 1800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 257,
+        "project": "iphone-emulation",
+        "file": "offline-install.spec.ts",
+        "durationMs": 6400,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 263,
+        "project": "iphone-emulation",
+        "file": "privacy.spec.ts",
+        "durationMs": 2500,
+        "themedSweep": false
+      },
+      {
+        "status": "skipped",
+        "ordinal": 266,
+        "project": "iphone-emulation",
+        "file": "uncontrolled.spec.ts",
+        "durationMs": null,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 262,
+        "project": "iphone-emulation",
+        "file": "privacy.spec.ts",
+        "durationMs": 4000,
+        "themedSweep": false
+      },
+      {
+        "status": "skipped",
+        "ordinal": 267,
+        "project": "iphone-emulation",
+        "file": "uncontrolled.spec.ts",
+        "durationMs": null,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 265,
+        "project": "iphone-emulation",
+        "file": "responsive.spec.ts",
+        "durationMs": 1900,
+        "themedSweep": false
+      },
+      {
+        "status": "skipped",
+        "ordinal": 268,
+        "project": "iphone-emulation",
+        "file": "uncontrolled.spec.ts",
+        "durationMs": null,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 264,
+        "project": "iphone-emulation",
+        "file": "responsive.spec.ts",
+        "durationMs": 4800,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 269,
+        "project": "iphone-emulation",
+        "file": "updates.spec.ts",
+        "durationMs": 2500,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 271,
+        "project": "iphone-emulation",
+        "file": "updates.spec.ts",
+        "durationMs": 2900,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 270,
+        "project": "iphone-emulation",
+        "file": "updates.spec.ts",
+        "durationMs": 4700,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 273,
+        "project": "iphone-emulation",
+        "file": "updates.spec.ts",
+        "durationMs": 5200,
+        "themedSweep": false
+      },
+      {
+        "status": "passed",
+        "ordinal": 272,
+        "project": "iphone-emulation",
+        "file": "updates.spec.ts",
+        "durationMs": 6700,
+        "themedSweep": false
+      }
+    ],
+    "passes": 264,
+    "skips": 9,
+    "totalRoundedPassingMs": 1090325,
+    "familyMs": {
+      "foldable.spec.ts": 5500,
+      "app.spec.ts": 204245,
+      "controls.spec.ts": 198200,
+      "copy-focus.spec.ts": 39400,
+      "diagnostics.spec.ts": 86500,
+      "engine.spec.ts": 9493,
+      "imports.spec.ts": 81300,
+      "motion.spec.ts": 38587,
+      "live.spec.ts": 49500,
+      "offline-install.spec.ts": 94100,
+      "privacy.spec.ts": 76800,
+      "responsive.spec.ts": 35500,
+      "uncontrolled.spec.ts": 29000,
+      "updates.spec.ts": 142200
+    },
+    "themedSweeps": [
+      {
+        "status": "passed",
+        "ordinal": 16,
+        "project": "chromium",
+        "file": "controls.spec.ts",
+        "durationMs": 13800,
+        "themedSweep": true
+      },
+      {
+        "status": "passed",
+        "ordinal": 70,
+        "project": "firefox",
+        "file": "controls.spec.ts",
+        "durationMs": 20700,
+        "themedSweep": true
+      },
+      {
+        "status": "passed",
+        "ordinal": 124,
+        "project": "webkit",
+        "file": "controls.spec.ts",
+        "durationMs": 33700,
+        "themedSweep": true
+      },
+      {
+        "status": "passed",
+        "ordinal": 178,
+        "project": "android-emulation",
+        "file": "controls.spec.ts",
+        "durationMs": 12900,
+        "themedSweep": true
+      },
+      {
+        "status": "passed",
+        "ordinal": 232,
+        "project": "iphone-emulation",
+        "file": "controls.spec.ts",
+        "durationMs": 20100,
+        "themedSweep": true
+      }
+    ]
+  }
+}

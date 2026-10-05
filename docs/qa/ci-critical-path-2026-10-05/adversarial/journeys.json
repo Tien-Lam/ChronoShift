@@ -1,0 +1,355 @@
+{
+  "started": "2026-10-05T11:41:56.700Z",
+  "artifact": "/tmp/chronoshift-ci-critical/candidate-runtime/dist",
+  "base": "/",
+  "port": 4311,
+  "motion": "no-preference",
+  "locale": "en-AU",
+  "timezone": "Australia/Sydney",
+  "observations": [
+    {
+      "name": "chromium",
+      "origin": "http://127.0.0.1:4311/",
+      "version": "153.0.8010.12",
+      "started": "2026-10-05T11:41:56.767Z",
+      "errors": [],
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4311/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/index-D1UmQBQr.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/index-Bst_xchV.css",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/geist-latin-variable-Dm3htQBi.woff2",
+          "method": "GET"
+        }
+      ],
+      "steps": [],
+      "status": "fail",
+      "failure": "Error: expect(received).toEqual(expected) // deep equality\n\n- Expected  - 2\n+ Received  + 2\n\n  Object {\n-   \"active\": \"source-zone\",\n+   \"active\": \"\",\n    \"open\": true,\n-   \"value\": \"UTC\",\n+   \"value\": undefined,\n  }",
+      "ended": "2026-10-05T11:41:56.965Z"
+    },
+    {
+      "name": "firefox",
+      "origin": "http://127.0.0.1:4311/",
+      "version": "155.0",
+      "started": "2026-10-05T11:41:57.359Z",
+      "errors": [],
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4311/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/index-D1UmQBQr.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/index-Bst_xchV.css",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/geist-latin-variable-Dm3htQBi.woff2",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/icon.svg",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/index-D1UmQBQr.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/index-Bst_xchV.css",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/icon.svg",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/worker-C690IjaR.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/worker-C690IjaR.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/worker-C690IjaR.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/worker-C690IjaR.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/index-D1UmQBQr.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/index-Bst_xchV.css",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/icon.svg",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/worker-C690IjaR.js",
+          "method": "GET"
+        }
+      ],
+      "steps": [
+        {
+          "journey": "first-Enter-Tab-typing",
+          "time": "2026-10-05T11:41:58.014Z",
+          "immediate": {
+            "active": "source-zone",
+            "value": "UTC",
+            "open": true
+          }
+        },
+        {
+          "journey": "first-Space-Tab-typing",
+          "time": "2026-10-05T11:41:58.189Z",
+          "immediate": {
+            "active": "source-zone",
+            "value": "UTC",
+            "open": true
+          }
+        },
+        {
+          "journey": "rapid-toggle-partial-date-close-resize-reopen-reset",
+          "time": "2026-10-05T11:42:01.336Z",
+          "sameNode": true
+        },
+        {
+          "journey": "persisted-prefs-unopened-reload-stopped-origin-offline-reopen",
+          "time": "2026-10-05T11:42:03.341Z",
+          "uncachedRejected": true
+        }
+      ],
+      "calendar": {
+        "popover": {
+          "x": 33,
+          "y": 452,
+          "width": 214,
+          "height": 342
+        },
+        "grid": {
+          "x": 44,
+          "y": 507,
+          "width": 192,
+          "height": 224
+        },
+        "viewport": {
+          "width": 280,
+          "height": 844
+        }
+      },
+      "beforeOffline": {
+        "controller": "http://127.0.0.1:4311/sw.js",
+        "registration": true,
+        "storage": [
+          "chronoshift.preferences.v1"
+        ],
+        "assets": [
+          "http://127.0.0.1:4311/assets/index-Bst_xchV.css",
+          "http://127.0.0.1:4311/assets/index-D1UmQBQr.js",
+          "http://127.0.0.1:4311/icon.svg",
+          "http://127.0.0.1:4311/assets/worker-C690IjaR.js"
+        ]
+      },
+      "status": "pass",
+      "ended": "2026-10-05T11:42:03.341Z"
+    },
+    {
+      "name": "webkit",
+      "origin": "http://127.0.0.1:4311/",
+      "version": "26.6",
+      "started": "2026-10-05T11:42:03.715Z",
+      "errors": [
+        {
+          "kind": "console",
+          "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+        },
+        {
+          "kind": "console",
+          "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+        }
+      ],
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4311/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/manifest.webmanifest",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/index-D1UmQBQr.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/index-Bst_xchV.css",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/geist-latin-variable-Dm3htQBi.woff2",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/sw.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/manifest.webmanifest",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/index-D1UmQBQr.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/index-Bst_xchV.css",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/geist-latin-variable-Dm3htQBi.woff2",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/worker-C690IjaR.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/worker-C690IjaR.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/worker-C690IjaR.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/worker-C690IjaR.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/worker-C690IjaR.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/manifest.webmanifest",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/index-D1UmQBQr.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/index-Bst_xchV.css",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/geist-latin-variable-Dm3htQBi.woff2",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:4311/assets/worker-C690IjaR.js",
+          "method": "GET"
+        }
+      ],
+      "steps": [
+        {
+          "journey": "first-Enter-Tab-typing",
+          "time": "2026-10-05T11:42:04.080Z",
+          "immediate": {
+            "active": "source-zone",
+            "value": "UTC",
+            "open": true
+          }
+        },
+        {
+          "journey": "first-Space-Tab-typing",
+          "time": "2026-10-05T11:42:04.241Z",
+          "immediate": {
+            "active": "source-zone",
+            "value": "UTC",
+            "open": true
+          }
+        },
+        {
+          "journey": "rapid-toggle-partial-date-close-resize-reopen-reset",
+          "time": "2026-10-05T11:42:07.275Z",
+          "sameNode": true
+        },
+        {
+          "journey": "persisted-prefs-unopened-reload-stopped-origin-offline-reopen",
+          "time": "2026-10-05T11:42:08.825Z",
+          "uncachedRejected": true
+        }
+      ],
+      "calendar": {
+        "popover": {
+          "x": 33,
+          "y": 451,
+          "width": 214,
+          "height": 342
+        },
+        "grid": {
+          "x": 44,
+          "y": 506,
+          "width": 192,
+          "height": 224
+        },
+        "viewport": {
+          "width": 280,
+          "height": 844
+        }
+      },
+      "beforeOffline": {
+        "controller": "http://127.0.0.1:4311/sw.js",
+        "registration": true,
+        "storage": [
+          "chronoshift.preferences.v1"
+        ],
+        "assets": [
+          "http://127.0.0.1:4311/manifest.webmanifest",
+          "http://127.0.0.1:4311/assets/index-D1UmQBQr.js",
+          "http://127.0.0.1:4311/assets/index-Bst_xchV.css",
+          "http://127.0.0.1:4311/assets/geist-latin-variable-Dm3htQBi.woff2",
+          "http://127.0.0.1:4311/assets/worker-C690IjaR.js"
+        ]
+      },
+      "status": "pass",
+      "ended": "2026-10-05T11:42:08.825Z"
+    }
+  ],
+  "ended": "2026-10-05T11:42:08.889Z"
+}

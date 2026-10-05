@@ -1,0 +1,225 @@
+diff --git a/web/src/App.tsx b/web/src/App.tsx
+index 8bec3cb..2818b05 100644
+--- a/web/src/App.tsx
++++ b/web/src/App.tsx
+@@ -50,6 +50,9 @@ export default function App() {
+   const [device, setDevice] = useState(deviceTimezone);
+   const [referenceDate, setReferenceDate] = useState("");
+   const [referenceReset, setReferenceReset] = useState(0);
++  // Keep unfinished fields alive after first use, without building the hidden
++  // timezone/date collections during the common initial conversion flow.
++  const [optionsMounted, setOptionsMounted] = useState(false);
+   const [detailedLogs, setDetailedLogsChecked] = useState(detailedLogsEnabled);
+   const [referenceValid, setReferenceValid] = useState(true);
+   const referenceValidity = useRef(true);
+@@ -595,106 +598,113 @@ export default function App() {
+               </span>
+             </div>
+ 
+-            <details className="options">
++            <details
++              className="options"
++              onToggle={(event) => {
++                if (event.currentTarget.open) setOptionsMounted(true);
++              }}
++            >
+               <summary>More options</summary>
+-              <div className="option-fields">
+-                <label htmlFor="source-zone">
+-                  Source timezone when none is given
+-                </label>
+-                <ZoneChoice
+-                  id="source-zone"
+-                  label="Source timezone when none is given"
+-                  value={prefs.source}
+-                  onChange={(source) => {
+-                    setPrefs({ ...prefs, source });
+-                    invalidate();
+-                  }}
+-                  placeholder={`Device timezone · ${device}`}
+-                  triggerLabel="Show source timezones"
+-                />
+-                <DateChoice
+-                  key={referenceReset}
+-                  id="reference-date"
+-                  label="Reference date for this message"
+-                  value={referenceDate}
+-                  onChange={(date) => {
+-                    setReferenceDate(date);
+-                    invalidate();
+-                  }}
+-                  onValidityChange={referenceValidityChanged}
+-                />
+-                <span className="field-note">
+-                  Leave empty to use today. Useful for an older message.
+-                </span>
+-                <label htmlFor="date-order">Numeric dates</label>
+-                <ChoiceSelect
+-                  id="date-order"
+-                  label="Numeric dates"
+-                  value={prefs.dateOrder}
+-                  onChange={(dateOrder) => {
+-                    setPrefs({
+-                      ...prefs,
+-                      dateOrder: dateOrder as "mdy" | "dmy",
+-                    });
+-                    invalidate();
+-                  }}
+-                  options={[
+-                    { id: "mdy", label: "Month / day (04/09 = April 9)" },
+-                    { id: "dmy", label: "Day / month (04/09 = 4 September)" },
+-                  ]}
+-                />
+-                <label htmlFor="time-format">Time display</label>
+-                <ChoiceSelect
+-                  id="time-format"
+-                  label="Time display"
+-                  value={prefs.hourCycle}
+-                  onChange={(hourCycle) => {
+-                    setPrefs({
+-                      ...prefs,
+-                      hourCycle: hourCycle as "auto" | "12" | "24",
+-                    });
+-                    invalidate();
+-                  }}
+-                  options={[
+-                    { id: "auto", label: "Use my device format" },
+-                    { id: "12", label: "12-hour (3:00 PM)" },
+-                    { id: "24", label: "24-hour (15:00)" },
+-                  ]}
+-                />
+-                <label className="diagnostic-toggle">
+-                  <input
+-                    type="checkbox"
+-                    checked={detailedLogs}
+-                    onChange={(event) => {
+-                      const enabled = event.target.checked;
+-                      setDetailedLogsChecked(enabled);
+-                      setDetailedLogs(enabled);
++              {optionsMounted && (
++                <div className="option-fields">
++                  <label htmlFor="source-zone">
++                    Source timezone when none is given
++                  </label>
++                  <ZoneChoice
++                    id="source-zone"
++                    label="Source timezone when none is given"
++                    value={prefs.source}
++                    onChange={(source) => {
++                      setPrefs({ ...prefs, source });
++                      invalidate();
+                     }}
++                    placeholder={`Device timezone · ${device}`}
++                    triggerLabel="Show source timezones"
+                   />
+-                  <span>Enable detailed logs</span>
+-                </label>
+-                <span className="field-note">
+-                  Console only. Message text excluded.
+-                </span>
+-                <button
+-                  type="button"
+-                  className="text-button"
+-                  onClick={() => {
+-                    setDetailedLogs(false);
+-                    setDetailedLogsChecked(false);
+-                    resetPreferences();
+-                    setPrefs({ ...DEFAULTS });
+-                    setReferenceDate("");
+-                    referenceValidity.current = true;
+-                    setReferenceValid(true);
+-                    setReferenceReset((version) => version + 1);
+-                    invalidate();
+-                    setNotice("Preferences reset.");
+-                  }}
+-                >
+-                  Reset preferences
+-                </button>
+-              </div>
++                  <DateChoice
++                    key={referenceReset}
++                    id="reference-date"
++                    label="Reference date for this message"
++                    value={referenceDate}
++                    onChange={(date) => {
++                      setReferenceDate(date);
++                      invalidate();
++                    }}
++                    onValidityChange={referenceValidityChanged}
++                  />
++                  <span className="field-note">
++                    Leave empty to use today. Useful for an older message.
++                  </span>
++                  <label htmlFor="date-order">Numeric dates</label>
++                  <ChoiceSelect
++                    id="date-order"
++                    label="Numeric dates"
++                    value={prefs.dateOrder}
++                    onChange={(dateOrder) => {
++                      setPrefs({
++                        ...prefs,
++                        dateOrder: dateOrder as "mdy" | "dmy",
++                      });
++                      invalidate();
++                    }}
++                    options={[
++                      { id: "mdy", label: "Month / day (04/09 = April 9)" },
++                      { id: "dmy", label: "Day / month (04/09 = 4 September)" },
++                    ]}
++                  />
++                  <label htmlFor="time-format">Time display</label>
++                  <ChoiceSelect
++                    id="time-format"
++                    label="Time display"
++                    value={prefs.hourCycle}
++                    onChange={(hourCycle) => {
++                      setPrefs({
++                        ...prefs,
++                        hourCycle: hourCycle as "auto" | "12" | "24",
++                      });
++                      invalidate();
++                    }}
++                    options={[
++                      { id: "auto", label: "Use my device format" },
++                      { id: "12", label: "12-hour (3:00 PM)" },
++                      { id: "24", label: "24-hour (15:00)" },
++                    ]}
++                  />
++                  <label className="diagnostic-toggle">
++                    <input
++                      type="checkbox"
++                      checked={detailedLogs}
++                      onChange={(event) => {
++                        const enabled = event.target.checked;
++                        setDetailedLogsChecked(enabled);
++                        setDetailedLogs(enabled);
++                      }}
++                    />
++                    <span>Enable detailed logs</span>
++                  </label>
++                  <span className="field-note">
++                    Console only. Message text excluded.
++                  </span>
++                  <button
++                    type="button"
++                    className="text-button"
++                    onClick={() => {
++                      setDetailedLogs(false);
++                      setDetailedLogsChecked(false);
++                      resetPreferences();
++                      setPrefs({ ...DEFAULTS });
++                      setReferenceDate("");
++                      referenceValidity.current = true;
++                      setReferenceValid(true);
++                      setReferenceReset((version) => version + 1);
++                      invalidate();
++                      setNotice("Preferences reset.");
++                    }}
++                  >
++                    Reset preferences
++                  </button>
++                </div>
++              )}
+             </details>
+             {!text && (
+               <details className="examples">

@@ -1,0 +1,144 @@
+{
+  "readmeSha256": "34a24bae88d8b1575236fc36450a2156f62c5667757496dacee2343e4f88125e",
+  "links": [
+    {
+      "label": "saved dispatch",
+      "target": "analysis-brief.md",
+      "exists": true
+    },
+    {
+      "label": "runtime",
+      "target": "runtime/findings.md",
+      "exists": true
+    },
+    {
+      "label": "harness",
+      "target": "harness/report.md",
+      "exists": true
+    },
+    {
+      "label": "pipeline",
+      "target": "pipeline/README.md",
+      "exists": true
+    },
+    {
+      "label": "Exact rejected source",
+      "target": "rejected-source/App.tsx",
+      "exists": true
+    },
+    {
+      "label": "patch",
+      "target": "rejected-source/change.patch",
+      "exists": true
+    },
+    {
+      "label": "cold-probe.ts",
+      "target": "cold-probe.ts",
+      "exists": true
+    },
+    {
+      "label": "complete raw output",
+      "target": "cold-probe.json",
+      "exists": true
+    },
+    {
+      "label": "log",
+      "target": "cold-probe.log",
+      "exists": true
+    },
+    {
+      "label": "initial-probe/",
+      "target": "initial-probe/",
+      "exists": true
+    },
+    {
+      "label": "Independent runtime reconciliation",
+      "target": "runtime/cold-results-review.md",
+      "exists": true
+    },
+    {
+      "label": "code assessment",
+      "target": "code/cold-probe-assessment.md",
+      "exists": true
+    },
+    {
+      "label": "exact candidate brief",
+      "target": "candidate-review-brief.md",
+      "exists": true
+    },
+    {
+      "label": "adversarial original-candidate runtime report",
+      "target": "adversarial/runtime-original-candidate.md",
+      "exists": true
+    },
+    {
+      "label": "Control source",
+      "target": "adversarial/keyboard-control.ts",
+      "exists": true
+    },
+    {
+      "label": "raw rows",
+      "target": "adversarial/keyboard-control.json",
+      "exists": true
+    },
+    {
+      "label": "independent code restoration report",
+      "target": "code/rejection-and-restoration.md",
+      "exists": true
+    },
+    {
+      "label": "Installed-source opportunity assessment",
+      "target": "runtime/next-opportunity.md",
+      "exists": true
+    },
+    {
+      "label": "official Virtualizer documentation",
+      "target": "https://react-aria.adobe.com/Virtualizer",
+      "check": "not fetched; network reruns prohibited"
+    }
+  ],
+  "uniqueColdRows": 72,
+  "coldRows": 72,
+  "independentMeans": {
+    "chromium": {
+      "baseline": {
+        "readyMs": 164.437,
+        "firstOpenMs": 7.943
+      },
+      "candidate": {
+        "readyMs": 148.374,
+        "firstOpenMs": 33.38
+      }
+    },
+    "firefox": {
+      "baseline": {
+        "readyMs": 199.439,
+        "firstOpenMs": 10.841
+      },
+      "candidate": {
+        "readyMs": 177.91,
+        "firstOpenMs": 33.946
+      }
+    },
+    "webkit": {
+      "baseline": {
+        "readyMs": 166.736,
+        "firstOpenMs": 7.771
+      },
+      "candidate": {
+        "readyMs": 153.902,
+        "firstOpenMs": 19.924
+      }
+    }
+  },
+  "integerPairArithmetic": {
+    "web": 358,
+    "browsers": 299,
+    "overhead": 59,
+    "pages": 22,
+    "pair": 380,
+    "pairWithoutWebOverhead": 321,
+    "maximumWebIntegerForPairBelow307": 284,
+    "requiredIntegerWebSaving": 74
+  }
+}

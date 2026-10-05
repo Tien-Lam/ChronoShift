@@ -1,0 +1,41 @@
+# Critical-path investigation and rejected deferred-options candidate
+
+Base: main `2abac48a103064b9f967c8f8595a6fce9cab30f3`. The previous goal turn delivered PR #41 and its publication evidence. This turn produced new runtime evidence that changes the next action; the CI objective remains active and unmet. Latest accepted ordinary pair stays **380 runner seconds/seven rounded minutes**, against 307/eight baseline; storage projection already meets its percentage criterion. No new Actions job or runtime PR was requested during this investigation.
+
+## Independent critical-path analyses
+
+The [saved dispatch](analysis-brief.md) assigns complementary source/data work to [runtime](runtime/findings.md), [harness](harness/report.md) and [pipeline](pipeline/README.md) analysts. Full 116 units/273 browser cases/subpath, independent expectations, normal motion, test isolation, input privacy, exact-tree/digest trust and serialized main-only publication remain required.
+
+The 358-second Web job contains 299 seconds of browser execution and 59 seconds elsewhere; automatic Slim publication is 22 seconds. With publication held at that observed cost, strict raw improvement needs Web below 285 seconds, at least 74 seconds off integer job timing. Four workers already occupied over 96% of available test-wall slots in two retained structured runs; fixed-duration scheduling arithmetic leaves only about 11–14 seconds. This is not CPU occupancy or a causal speed forecast. Docker download messages finish roughly 29.5 seconds before final layer completion, so network-only tuning cannot be assigned the full 33-second container setup budget. Removing every Web overhead second would still leave 321 seconds per pair. The analyses preserve underlying run/workload/CPU differences and rejected alternatives.
+
+## Local candidate and measurement
+
+Root prototyped deferring the hidden More options subtree until native details first opens, retaining it thereafter. Base App blob is `8bec3cbf656e92265f9f586fb9443de6e3c5aecc`; rejected candidate blob is `2818b056357b8c6156bfd7c8ff50284839fdb331`. [Exact rejected source](rejected-source/App.tsx) and [patch](rejected-source/change.patch) remain. Initial builds used the base release SHA in both artifacts; that marker alone does not identify the candidate. Separate frozen file inventories and actual script identities distinguish them.
+
+[cold-probe.ts](cold-probe.ts), [complete raw output](cold-probe.json) and [log](cold-probe.log) record **72 unique accepted rows** in serial ABBA order: six fresh contexts per Chromium/Firefox/WebKit per phase, 900×640/1× raster, en-AU/Sydney, normal motion, production static root origins. Window is 2026-10-05T11:37:43.158Z–11:38:49.208Z. This is macOS ARM, not Linux CI or a physical phone. Browser/context/page/server creation is excluded; fresh storage/context does not mean cold OS or browser-process caches. Readiness/conversion scopes include assertion observation; first-open scope establishes source visibility, not settled paint or animation/CPU time. The probe waits for that field before typing, so it does not exercise immediate first-open Tab.
+
+The initial probe stopped before any accepted row because its date regex incorrectly excluded the supported Apr abbreviation. Original source, JSON and error log are retained under [initial-probe/](initial-probe/); correction only accepts Apr or April. No failed original was reconstructed into a pass.
+
+| Engine   | Mean ready baseline → candidate | Mean first-open baseline → candidate |
+| -------- | ------------------------------: | -----------------------------------: |
+| Chromium |             164.437 → 148.374ms |                     7.943 → 33.380ms |
+| Firefox  |             199.439 → 177.910ms |                    10.841 → 33.946ms |
+| WebKit   |             166.736 → 153.902ms |                     7.771 → 19.924ms |
+
+[Independent runtime reconciliation](runtime/cold-results-review.md) and [code assessment](code/cold-probe-assessment.md) confirm the 13–22ms readiness gain and 12–25ms first-open penalty. Conversion means contain substantial observation variance and are not native conversion speed evidence. The startup result is too small to justify a target-sized hosted run. Actual served-response hashes were not collected by the root cold probe; the separate adversarial inventories supply bounded later served identity, not retroactive first-probe response certification.
+
+## Review caught a real keyboard regression
+
+Two newly spawned clean-context reviewers received the [exact candidate brief](candidate-review-brief.md), independently derived native toggle timing risks, and saved initial code/adversarial reports before seeing each other's verdict. Root's serial measurement completed before adversarial runtime execution; no competing browser measurement ran in that window.
+
+The [adversarial original-candidate runtime report](adversarial/runtime-original-candidate.md) rejects adoption. In Chromium, native Enter/Space followed immediately by Tab and UTC typing can reach Try an example before the source field is mounted. Matching eager baseline passes **6/6** focused controls; candidate fails **5/6**. Example event sequence: Tab at 101.5ms, wrong summary focus at 101.6ms, U/T/C at 102.5–103.1ms, delayed toggle at 104.1ms, first source mount at 117.1ms. These are same-browser event-order breadcrumbs, not CPU profiling. [Control source](adversarial/keyboard-control.ts), [raw rows](adversarial/keyboard-control.json), original failure, traces, screenshots, actual browser versions, clocks and served inventories are preserved. Waiting for a source locator after first opening masks this fault.
+
+Firefox/WebKit passed bounded keyboard, partial-date retained-invalidity, reset, persisted settings and healthy-cache offline close/reopen journeys; Chromium's initial failure prevented its later branches. The subsequent focused controls are separate trials, not retries that erase the original failure. WebKit screenshot-only stylesheet CSP errors were independently isolated: zero before screenshot, two after, no additional errors during normal conversion. They are tooling observations, not a reason to weaken CSP. Physical-device/screen-reader/zoom acceptance and damaged/waiting-update states were not exercised.
+
+Root rejected the optimization instead of fixing/adopting a marginal shift with no target-sized evidence. On 2026-10-05, root restored exact App blob `8bec3cbf…` and rebuilt the frozen base release `48294a1b9ee0aab9`; tracked runtime diff is empty. The [independent code restoration report](code/rejection-and-restoration.md) verifies preserved rejected source and matching restored baseline dist inventory. Original source assessments remain, separately from the later confirmed blocker. No production defect or performance change from this prototype was shipped. This demonstrates the existing independent review workflow catching the first-input gap before delivery.
+
+## Next evidence-backed search
+
+[Installed-source opportunity assessment](runtime/next-opportunity.md) compares the old virtualization blockers with current preparation. The existing hover/selection scenario now establishes native scroll/focus and a closed popup before typing; that directly changes the old both-build iPhone ancestor-scroll dismissal precondition. A new scoped candidate is testable; the old candidate is not approved. The [official Virtualizer documentation](https://react-aria.adobe.com/Virtualizer) describes rendering a visible window with variable row estimates, consistent with installed public 1.21.1 types.
+
+Remaining conditions include native-height mobile focus, immediate scroll-to-pointer behavior, resize feedback, wrapped rows, no-match sentinel and reachability of all logical interior choices. The installed 300ms scroll pointer shielding has no public override; do not bypass it with force-clicks/sleeps or weaker assertions. Eight previously mounted rows are DOM/correctness observations, not measured saving. A future candidate needs passing complete semantics and a material matched full-workload benefit before any hosted pair. No 20% Linux or monthly-account saving follows from this investigation. TIE-375 remains In Progress.

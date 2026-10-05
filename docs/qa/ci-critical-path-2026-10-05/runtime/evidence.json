@@ -1,0 +1,156 @@
+{
+  "began": "2026-10-05T11:35:08.171Z",
+  "ended": "2026-10-05T11:35:08.172Z",
+  "head": "2abac48a103064b9f967c8f8595a6fce9cab30f3",
+  "webTree": "e8a7963096c8dcb09de5a259a966cf1b7aa595d9",
+  "scope": "Read-only source and retained JSON analysis. No product imports, browser, tests, build, network, Actions, or protected-file reads.",
+  "sourceHashes": {
+    "web/src/App.tsx": "aac68d2a4fd94562474104a258b057730eb65822767dd4cf72dbf65fc0fc5fc1",
+    "web/src/components/Choices.tsx": "3977874ea3fd83f01333bce6cd9ccd8a971eb39dd52a4963223763098a7c96f1",
+    "web/src/components/DateChoice.tsx": "0f9d1a3251fe88a45e03d1904927326c550029ad82437129c0486a7c487803fc",
+    "web/src/engine/worker.ts": "7bcc4a164a6798f3be94c6294faf8a9a2ae18f520066e2bf84917fa15f35e223",
+    "web/src/engine/convert.ts": "53674694330d6e4f5a5a8f8e71b6961251ca52989dd8ba7c6ff69d58cc929614",
+    "web/src/engine/parser.ts": "e4fac1ad9af403299e1d93791f9f622a2322d80dbf793d85fcd1fa9b3d8a2e59",
+    "web/src/engine/time.ts": "6cac59b49249e6f3ac078a938e59b154698c6d9e4beb2b60bc8238c3036968c5",
+    "web/src/engine/zones.ts": "d53f713404683897d3baa045cf089ff72c884f89aef260e042eccaadacf56e02",
+    "web/src/style.css": "eb8c5cb2ace718b11803eedce92674d3819920c32f358bcd780936a1c3c4b54b",
+    "node_modules/react-aria-components/dist/private/ComboBox.js": "a0d7aeaefc3a893f77af04e07ba969560ab28c62a0bb6c346d6fec2c5aa010af",
+    "node_modules/react-aria-components/dist/private/ListBox.js": "5461ed40a7aed197fc28c916ead84dfe85bc2c49be3fc4c3d7edbea0e7611090",
+    "node_modules/react-aria-components/dist/private/Popover.js": "8b1f0eb8508b43f4cc73dadc80c0568e53298ee319cc1336cd34557144af96b8",
+    "node_modules/react-aria/dist/private/collections/useCachedChildren.js": "d99d779efb17ecde13a07b4b1f94724c3cbf706a5d0285abc16dac35f4bd8803"
+  },
+  "ordinaryPair": {
+    "webSeconds": 358,
+    "pagesSeconds": 22,
+    "totalSeconds": 380,
+    "roundedMinutes": 7,
+    "baselineSeconds": 307,
+    "baselineRoundedMinutes": 8,
+    "targetTotalRoundedMinutesAtMost": 6,
+    "targetWebRawStrictBelow": 285,
+    "minimumWholeSecondWebSaving": 74,
+    "targetBrowserStepAtMostSecondsHoldingOtherWebTimeFixed": 225,
+    "stepDurations": [
+      {
+        "name": "Set up job",
+        "seconds": 3
+      },
+      {
+        "name": "Initialize containers",
+        "seconds": 33
+      },
+      {
+        "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "seconds": 2
+      },
+      {
+        "name": "Capture the checked-in corpus audit",
+        "seconds": 0
+      },
+      {
+        "name": "Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492",
+        "seconds": 6
+      },
+      {
+        "name": "Run bun install --frozen-lockfile",
+        "seconds": 1
+      },
+      {
+        "name": "Verify the pinned browser image matches the dependency",
+        "seconds": 0
+      },
+      {
+        "name": "Run bun run format:check",
+        "seconds": 2
+      },
+      {
+        "name": "Unit tests and production build",
+        "seconds": 1
+      },
+      {
+        "name": "Verify the standalone conversion corpus audit",
+        "seconds": 1
+      },
+      {
+        "name": "Run bun run test:browser",
+        "seconds": 299
+      },
+      {
+        "name": "Record browser resource usage",
+        "seconds": 0
+      },
+      {
+        "name": "Verify repository-subpath deployment",
+        "seconds": 3
+      },
+      {
+        "name": "Upload the verified Pages build",
+        "seconds": 1
+      },
+      {
+        "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "seconds": 1
+      },
+      {
+        "name": "Stop containers",
+        "seconds": 0
+      },
+      {
+        "name": "Complete job",
+        "seconds": 0
+      }
+    ]
+  },
+  "retainedLocalNativeConversionRemainder": [
+    {
+      "engine": "chromium",
+      "baselinePendingToSettledMeanMs": 297.43333333233994,
+      "nativeDebounceMs": 250,
+      "remainderMeanMs": 47.43333333233994,
+      "limitation": "Includes worker initialization, conversion, main-thread/result commit, scheduling and instrumentation. Not isolated worker cost or Linux forecast."
+    },
+    {
+      "engine": "firefox",
+      "baselinePendingToSettledMeanMs": 309.8333333333333,
+      "nativeDebounceMs": 250,
+      "remainderMeanMs": 59.833333333333314,
+      "limitation": "Includes worker initialization, conversion, main-thread/result commit, scheduling and instrumentation. Not isolated worker cost or Linux forecast."
+    },
+    {
+      "engine": "webkit",
+      "baselinePendingToSettledMeanMs": 290.75,
+      "nativeDebounceMs": 250,
+      "remainderMeanMs": 40.75,
+      "limitation": "Includes worker initialization, conversion, main-thread/result commit, scheduling and instrumentation. Not isolated worker cost or Linux forecast."
+    }
+  ],
+  "olderInstrumentedLinuxControl": {
+    "attempts": 258,
+    "durationMs": 290306.86,
+    "workers": 4,
+    "aggregateTestMs": 1111545,
+    "operations": {
+      "pw:api/page-create": {
+        "count": 332,
+        "leafTotalMs": 81039,
+        "totalMs": 81039
+      },
+      "pw:api/navigate": {
+        "count": 360,
+        "leafTotalMs": 91251,
+        "totalMs": 91251
+      },
+      "expect/expect": {
+        "count": 10501,
+        "leafTotalMs": 455357,
+        "totalMs": 476209
+      },
+      "pw:api/fill": {
+        "count": 734,
+        "leafTotalMs": 56081,
+        "totalMs": 56081
+      }
+    },
+    "limitation": "258-case older instrumented control, not current ordinary 273-case gate. Aggregates overlap scheduling and include protocol/browser work, not CPU attribution."
+  }
+}

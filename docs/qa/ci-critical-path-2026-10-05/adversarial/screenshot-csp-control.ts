@@ -1,0 +1,11 @@
+import {webkit,expect} from '@playwright/test';
+import {resolve,extname} from 'node:path';
+import {writeFile} from 'node:fs/promises';
+import {PREVIEW_CSP} from '../../../../scripts/csp';
+const started=new Date().toISOString(),root='/tmp/chronoshift-ci-critical/candidate-runtime/dist';
+const mime:Record<string,string>={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.json':'application/json','.webmanifest':'application/manifest+json'};
+const server=Bun.serve({hostname:'127.0.0.1',port:4311,async fetch(req){const path=resolve(root,new URL(req.url).pathname.slice(1)||'index.html'),file=Bun.file(path);if(!path.startsWith(root+'/')||!(await file.exists()))return new Response('Not found',{status:404});return new Response(file,{headers:{'Content-Type':mime[extname(path)]||'application/octet-stream','Content-Security-Policy':PREVIEW_CSP}});}});
+const browser=await webkit.launch(),context=await browser.newContext({viewport:{width:280,height:844},locale:'en-AU',timezoneId:'Australia/Sydney',reducedMotion:'no-preference'}),page=await context.newPage();
+const errors:any[]=[];page.on('console',event=>{if(event.type()==='error')errors.push({at:new Date().toISOString(),message:event.text(),location:event.location()});});
+await page.goto('http://127.0.0.1:4311/');await page.locator('.options > summary').click();await page.getByRole('button',{name:/^Choose reference date/}).click();await expect(page.locator('.calendar-popover')).toBeVisible();const before=errors.length;await page.screenshot({path:resolve(import.meta.dir,'webkit-csp-isolation.png'),fullPage:true});const after=errors.length;await page.keyboard.press('Escape');await page.locator('#message').fill('April 9, 2026 3pm UTC');await expect(page.locator('.hero-time')).toBeVisible();const final=errors.length;
+await writeFile(resolve(import.meta.dir,'screenshot-csp-control.json'),JSON.stringify({started,ended:new Date().toISOString(),version:browser.version(),beforeScreenshot:before,afterScreenshot:after,afterNormalConversion:final,errors},null,2));await context.close();await browser.close();server.stop(true);

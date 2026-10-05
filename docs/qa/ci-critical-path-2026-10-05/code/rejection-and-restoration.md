@@ -1,0 +1,25 @@
+# Additive independent code resolution review
+
+Read-only evidence review began at actual clock observation 2026-10-05 11:44:24 UTC. Final source/git verification followed the 11:44:50 UTC clock observation; the separately saved resolution-clocks.json records the actual end bound. No browser/runtime/build/Actions/network rerun was performed. Initial source-only report and cold-probe assessment remain preserved with their original bounded verdicts.
+
+## Independent evidence assessment
+
+After my initial independent review was saved, I inspected adversarial/runtime-original-candidate.md, the matching keyboard-control.ts and complete keyboard-control.json/log, the candidate Enter-0 screenshot, and the Enter-0 trace's actual recorded action calls. The control JSON SHA-256 is 8e2b95c83c7b4ec7fc19f46344a86edc9a57f722b915d7c45b6a7154349b0123. Its runner metadata records 2026-10-05T11:42:42.534Z–11:42:45.271Z, Chromium 153.0.8010.12. Those are the adversarial runtime clocks, distinct from this later source/evidence-review window.
+
+The same script serves the frozen eager baseline and deferred candidate serially at port 4311, fresh en-AU/Australia/Sydney contexts at normal motion 900×640/1x. Each native Enter/Space activation is followed by trusted Playwright keyboard Tab and UTC without source-ready waits or refocus. It waits for source visibility only after taking the immediate focus/value observation. Source summary focus before activation is an explicit matching precondition. The trace action order agrees: focus → evaluate before → keyboardPress → keyboardPress → keyboardType → evaluate immediate → expect visible → evaluate settled → screenshot. Mutation/focus/key/toggle breadcrumbs have one browser performance clock; their positive finite ordering is valid event evidence, not a CPU/performance ranking.
+
+Recomputed results: baseline Enter 3/3 and Space 3/3 pass; candidate Enter 1/3 pass, Space 0/3 pass. For candidate Enter 0, details is open at 100.6ms, Tab keydown occurs at 101.5ms while source is absent, Try an example gains focus at 101.6ms, U/T/C go to that summary at 102.5–103.1ms, native toggle occurs at 104.1ms and source mounting at 117.1ms. Source remains blank and summary retains focus after mount. The actual screenshot shows the Try an example focus ring and blank source. This confirms the precise native toggle/first Tab risk independently derived in my initial source review. Settled field-locator tests and cold-probe first-open measurements masked the interval by waiting before editing.
+
+The runtime control order is baseline then candidate, not randomized; one candidate Enter control passes. These qualifications limit any population failure-rate claim, but cannot dismiss the five real normal-use failures or the first uninstrumented candidate journey failure. This is a confirmed input-loss/focus regression with a relevant eager baseline control, so the original implementation is rejected. Bounded Firefox/WebKit lifecycle and cache successes do not override it. A future deferred implementation needs controls mounted before native navigation can leave the summary and must preserve once-mounted lifetime; my proposed pending-conversion/partial-date regressions remain useful if that work resumes.
+
+## Restoration verification
+
+HEAD remains 2abac48a103064b9f967c8f8595a6fce9cab30f3. `git hash-object web/src/App.tsx` returns original eager App blob 8bec3cbf656e92265f9f586fb9443de6e3c5aecc; both App diff and complete tracked diff are empty (`git diff --quiet`, exit 0). Thus there is no tracked candidate change to adopt. Preserved rejected-source/App.tsx hashes to the exact rejected candidate 2818b056357b8c6156bfd7c8ff50284839fdb331 and change.patch remains available.
+
+Independently compared every frozen baseline dist file to current dist by SHA-256: no mismatches. Current dist/sw.js has VERSION 48294a1b9ee0aab9 and release.json identifies the base SHA. This establishes restoration of the existing local build inventory; no new build/test result or hosted publication is claimed by this reviewer. Untracked evidence and user-owned protected files are outside the clean tracked-diff conclusion.
+
+## Separate resolution verdicts
+
+Candidate implementation: **REJECTED** for confirmed first-open keyboard input loss. Restoring the eager source removes the candidate from adoption; this is abandonment of that optimization, not approval of a fixed deferred candidate. Original no-source-blocker statement was explicitly source-only and is superseded by the matching runtime evidence above.
+
+CI efficiency objective / TIE-375 report resolution: **UNRESOLVED**. No current same-workload Linux, at least 20% Actions usage, faster-than-307-seconds plus lower rounded-minute/storage-proxy evidence or monthly billing saving was produced. Tiny local readiness gains with slower first open do not satisfy that objective. No Actions run, PR, adoption or publication is warranted by this rejected candidate. Existing physical-device and unrelated offline/update acceptance gaps retain their original limits.

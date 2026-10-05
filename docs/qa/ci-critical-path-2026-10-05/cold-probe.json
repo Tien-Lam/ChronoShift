@@ -1,0 +1,1603 @@
+{
+  "started": "2026-10-05T11:37:43.158Z",
+  "ended": "2026-10-05T11:38:49.208Z",
+  "environment": {
+    "bun": "1.4.0",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "order": "ABBA; six fresh contexts per browser/phase",
+  "hashes": {
+    "baseline": [
+      {
+        "path": "index.html",
+        "bytes": 1200,
+        "sha256": "70c39be8e8f9f5a2c942e3c23893d46c7d41edcecdabaddd9026b013604c5103"
+      },
+      {
+        "path": "icon-192.png",
+        "bytes": 7136,
+        "sha256": "cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754"
+      },
+      {
+        "path": "icon.svg",
+        "bytes": 355,
+        "sha256": "62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f"
+      },
+      {
+        "path": "release.json",
+        "bytes": 79,
+        "sha256": "b250d787b3036c999964ee421e543cd9d47c6931173943c728276de28ab2f94e"
+      },
+      {
+        "path": "third-party-notices.txt",
+        "bytes": 112585,
+        "sha256": "615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037"
+      },
+      {
+        "path": "manifest.webmanifest",
+        "bytes": 838,
+        "sha256": "a7fb22ee120b3f93e13db351b9da1d7de5745a8879f8c74e7bcc4aff4c094a85"
+      },
+      {
+        "path": "fonts/README.txt",
+        "bytes": 483,
+        "sha256": "542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d"
+      },
+      {
+        "path": "fonts/geist-OFL.txt",
+        "bytes": 4386,
+        "sha256": "cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952"
+      },
+      {
+        "path": "assets/index-B3d9YDa-.js",
+        "bytes": 775642,
+        "sha256": "764439adde23302a0e40ff2c221e8fe13055671a6285ac16d528344cf06befc9"
+      },
+      {
+        "path": "assets/index-Bst_xchV.css",
+        "bytes": 20748,
+        "sha256": "8d8248b5671d0f98e2298e5ac449864a7fb21c7df9eba5c936dfa978ebd69e9f"
+      },
+      {
+        "path": "assets/worker-C690IjaR.js",
+        "bytes": 221144,
+        "sha256": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704"
+      },
+      {
+        "path": "assets/geist-latin-variable-Dm3htQBi.woff2",
+        "bytes": 28400,
+        "sha256": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316"
+      },
+      {
+        "path": "sw.js",
+        "bytes": 11290,
+        "sha256": "fc58eda7ab715e18335bd988de6c2f54f4a791ca3a3cef31e561400c3d5b9759"
+      },
+      {
+        "path": "icon-512.png",
+        "bytes": 19658,
+        "sha256": "b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7"
+      }
+    ],
+    "candidate": [
+      {
+        "path": "index.html",
+        "bytes": 1200,
+        "sha256": "72a137400db88f53d6d5a9daab7674d1c161f515769e3308667fc04008e663dd"
+      },
+      {
+        "path": "icon-192.png",
+        "bytes": 7136,
+        "sha256": "cd0a84d8d3bf3013b0458df4a9cce59b66d028ae04b5cb10e7506dd6b3842754"
+      },
+      {
+        "path": "icon.svg",
+        "bytes": 355,
+        "sha256": "62e93246bc95d3775dd8b749d54ba1e10b9ad06c6ee680d7096a7b1d33cbaa3f"
+      },
+      {
+        "path": "release.json",
+        "bytes": 79,
+        "sha256": "b250d787b3036c999964ee421e543cd9d47c6931173943c728276de28ab2f94e"
+      },
+      {
+        "path": "third-party-notices.txt",
+        "bytes": 112585,
+        "sha256": "615de06d87fde3cddd1207306fa73aaf6dbd80dbcd24aba83815de58289fc037"
+      },
+      {
+        "path": "manifest.webmanifest",
+        "bytes": 838,
+        "sha256": "a7fb22ee120b3f93e13db351b9da1d7de5745a8879f8c74e7bcc4aff4c094a85"
+      },
+      {
+        "path": "fonts/README.txt",
+        "bytes": 483,
+        "sha256": "542d67f387a6f6401f3bb58fef22e6deeb858c77b47d447adc20687a6833631d"
+      },
+      {
+        "path": "fonts/geist-OFL.txt",
+        "bytes": 4386,
+        "sha256": "cc27b0f563500a9e0658866241d06d05ef20a9efbf8bac47fe0499a65ede5952"
+      },
+      {
+        "path": "assets/index-D1UmQBQr.js",
+        "bytes": 775731,
+        "sha256": "08e08b051d5ebf7047f792049c039376a0c9c7967d8f8f8a2d8180bc0321414a"
+      },
+      {
+        "path": "assets/index-Bst_xchV.css",
+        "bytes": 20748,
+        "sha256": "8d8248b5671d0f98e2298e5ac449864a7fb21c7df9eba5c936dfa978ebd69e9f"
+      },
+      {
+        "path": "assets/worker-C690IjaR.js",
+        "bytes": 221144,
+        "sha256": "e17b01198be6045d352561d10fe1f6004eb83d106b13f16ef027f0ec36230704"
+      },
+      {
+        "path": "assets/geist-latin-variable-Dm3htQBi.woff2",
+        "bytes": 28400,
+        "sha256": "0cbbe6286a00f356e98980783cc950a9b693751e04aedfb97d9526ff6dc2b316"
+      },
+      {
+        "path": "sw.js",
+        "bytes": 11290,
+        "sha256": "11c75dac6eec0be4e2cf9c92dcc1893d32c8bebec02e36c97bbd0c115155adfb"
+      },
+      {
+        "path": "icon-512.png",
+        "bytes": 19658,
+        "sha256": "b6fedaaae95c974d6bc302f4efe0eef124f65bfacd51b4e30537e98045877ae7"
+      }
+    ]
+  },
+  "rows": [
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 0,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:43.262Z",
+      "ended": "2026-10-05T11:37:44.260Z",
+      "readyMs": 163.517167,
+      "navigation": {
+        "domInteractive": 4.5,
+        "domComplete": 35.20000001788139,
+        "loadEventEnd": 35.20000001788139
+      },
+      "firstConversionMs": 801.420333,
+      "firstOpenMs": 5.528291999999965,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 1,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:44.292Z",
+      "ended": "2026-10-05T11:37:45.305Z",
+      "readyMs": 164.86208299999998,
+      "navigation": {
+        "domInteractive": 3.5999999940395355,
+        "domComplete": 33.5,
+        "loadEventEnd": 33.5
+      },
+      "firstConversionMs": 800.6103329999999,
+      "firstOpenMs": 10.476416999999856,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 2,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:45.338Z",
+      "ended": "2026-10-05T11:37:46.337Z",
+      "readyMs": 163.14429199999995,
+      "navigation": {
+        "domInteractive": 3.5999999940395355,
+        "domComplete": 34.599999994039536,
+        "loadEventEnd": 34.70000001788139
+      },
+      "firstConversionMs": 795.7834170000001,
+      "firstOpenMs": 6.383082999999715,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 3,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:46.370Z",
+      "ended": "2026-10-05T11:37:47.380Z",
+      "readyMs": 164.70020799999975,
+      "navigation": {
+        "domInteractive": 3.800000011920929,
+        "domComplete": 34.5,
+        "loadEventEnd": 34.5
+      },
+      "firstConversionMs": 799.2643330000001,
+      "firstOpenMs": 9.206624999999804,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 4,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:47.414Z",
+      "ended": "2026-10-05T11:37:48.424Z",
+      "readyMs": 165.33145799999966,
+      "navigation": {
+        "domInteractive": 3.7000000178813934,
+        "domComplete": 34.900000005960464,
+        "loadEventEnd": 34.900000005960464
+      },
+      "firstConversionMs": 798.5983750000005,
+      "firstOpenMs": 10.921582999999373,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 5,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:48.458Z",
+      "ended": "2026-10-05T11:37:49.467Z",
+      "readyMs": 164.9234580000002,
+      "navigation": {
+        "domInteractive": 3.800000011920929,
+        "domComplete": 35,
+        "loadEventEnd": 35
+      },
+      "firstConversionMs": 797.1059580000001,
+      "firstOpenMs": 10.096166000000267,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 0,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:50.230Z",
+      "ended": "2026-10-05T11:37:51.382Z",
+      "readyMs": 257.02050000000054,
+      "navigation": {
+        "domInteractive": 37,
+        "domComplete": 144,
+        "loadEventEnd": 144
+      },
+      "firstConversionMs": 824.5469590000002,
+      "firstOpenMs": 15.995624999999563,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 1,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:51.487Z",
+      "ended": "2026-10-05T11:37:52.044Z",
+      "readyMs": 187.73004200000105,
+      "navigation": {
+        "domInteractive": 4,
+        "domComplete": 84,
+        "loadEventEnd": 85
+      },
+      "firstConversionMs": 317.70024999999987,
+      "firstOpenMs": 7.747084000000541,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 2,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:52.143Z",
+      "ended": "2026-10-05T11:37:52.704Z",
+      "readyMs": 190.07491599999958,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 86,
+        "loadEventEnd": 86
+      },
+      "firstConversionMs": 318.47649999999885,
+      "firstOpenMs": 7.872957999999926,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 3,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:52.799Z",
+      "ended": "2026-10-05T11:37:53.357Z",
+      "readyMs": 188.64583400000083,
+      "navigation": {
+        "domInteractive": 4,
+        "domComplete": 83,
+        "loadEventEnd": 83
+      },
+      "firstConversionMs": 317.059874999999,
+      "firstOpenMs": 8.62012500000128,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 4,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:53.454Z",
+      "ended": "2026-10-05T11:37:54.545Z",
+      "readyMs": 187.70858299999963,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 83,
+        "loadEventEnd": 83
+      },
+      "firstConversionMs": 832.5674579999995,
+      "firstOpenMs": 16.812958000000435,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 5,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:54.645Z",
+      "ended": "2026-10-05T11:37:55.203Z",
+      "readyMs": 187.78091700000004,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 84,
+        "loadEventEnd": 84
+      },
+      "firstConversionMs": 318.5560000000005,
+      "firstOpenMs": 7.634792000000743,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 0,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:55.670Z",
+      "ended": "2026-10-05T11:37:56.208Z",
+      "readyMs": 182.6013750000002,
+      "navigation": {
+        "domInteractive": 10,
+        "domComplete": 38,
+        "loadEventEnd": 38
+      },
+      "firstConversionMs": 303.0502919999999,
+      "firstOpenMs": 6.7072079999998095,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 1,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:56.330Z",
+      "ended": "2026-10-05T11:37:56.845Z",
+      "readyMs": 166.21545800000058,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 29,
+        "loadEventEnd": 29
+      },
+      "firstConversionMs": 301.3981249999997,
+      "firstOpenMs": 5.937583999999333,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 2,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:56.971Z",
+      "ended": "2026-10-05T11:37:57.493Z",
+      "readyMs": 170.738209000001,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 30,
+        "loadEventEnd": 30
+      },
+      "firstConversionMs": 299.22591699999975,
+      "firstOpenMs": 5.053332999999839,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 3,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:57.615Z",
+      "ended": "2026-10-05T11:37:58.650Z",
+      "readyMs": 169.45945799999936,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 30,
+        "loadEventEnd": 30
+      },
+      "firstConversionMs": 805.5530829999989,
+      "firstOpenMs": 12.662874999999985,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 4,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:58.772Z",
+      "ended": "2026-10-05T11:37:59.299Z",
+      "readyMs": 165.93974999999955,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 29,
+        "loadEventEnd": 29
+      },
+      "firstConversionMs": 303.68079099999886,
+      "firstOpenMs": 10.028833000000304,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 0,
+      "version": "baseline",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 5,
+      "url": "http://127.0.0.1:51811/",
+      "began": "2026-10-05T11:37:59.419Z",
+      "ended": "2026-10-05T11:37:59.938Z",
+      "readyMs": 157.1547500000015,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 58,
+        "loadEventEnd": 58
+      },
+      "firstConversionMs": 310.41349999999875,
+      "firstOpenMs": 6.549957999999606,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 0,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:00.061Z",
+      "ended": "2026-10-05T11:38:01.089Z",
+      "readyMs": 150.16283400000248,
+      "navigation": {
+        "domInteractive": 5.4000000059604645,
+        "domComplete": 35.80000001192093,
+        "loadEventEnd": 35.80000001192093
+      },
+      "firstConversionMs": 800.9900410000009,
+      "firstOpenMs": 44.586999999999534,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 1,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:01.121Z",
+      "ended": "2026-10-05T11:38:02.125Z",
+      "readyMs": 146.64637500000026,
+      "navigation": {
+        "domInteractive": 3.7000000178813934,
+        "domComplete": 33.70000001788139,
+        "loadEventEnd": 33.70000001788139
+      },
+      "firstConversionMs": 798.9117499999993,
+      "firstOpenMs": 29.018458999998984,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 2,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:02.157Z",
+      "ended": "2026-10-05T11:38:03.162Z",
+      "readyMs": 148.8573749999996,
+      "navigation": {
+        "domInteractive": 3.800000011920929,
+        "domComplete": 34.099999994039536,
+        "loadEventEnd": 34.099999994039536
+      },
+      "firstConversionMs": 794.8332499999997,
+      "firstOpenMs": 32.21820799999841,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 3,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:03.195Z",
+      "ended": "2026-10-05T11:38:04.199Z",
+      "readyMs": 147.87512499999866,
+      "navigation": {
+        "domInteractive": 3.7000000178813934,
+        "domComplete": 33.80000001192093,
+        "loadEventEnd": 33.80000001192093
+      },
+      "firstConversionMs": 794.0779999999977,
+      "firstOpenMs": 33.250208999997994,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 4,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:04.231Z",
+      "ended": "2026-10-05T11:38:05.235Z",
+      "readyMs": 147.45762500000274,
+      "navigation": {
+        "domInteractive": 3.7000000178813934,
+        "domComplete": 33.70000001788139,
+        "loadEventEnd": 33.70000001788139
+      },
+      "firstConversionMs": 793.2644170000021,
+      "firstOpenMs": 34.317040999998426,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 5,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:05.267Z",
+      "ended": "2026-10-05T11:38:06.273Z",
+      "readyMs": 147.7944580000003,
+      "navigation": {
+        "domInteractive": 3.600000023841858,
+        "domComplete": 33.400000005960464,
+        "loadEventEnd": 33.400000005960464
+      },
+      "firstConversionMs": 794.9786249999997,
+      "firstOpenMs": 33.11774999999761,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 0,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:06.966Z",
+      "ended": "2026-10-05T11:38:08.116Z",
+      "readyMs": 235.3296249999985,
+      "navigation": {
+        "domInteractive": 37,
+        "domComplete": 123,
+        "loadEventEnd": 123
+      },
+      "firstConversionMs": 818.9819590000006,
+      "firstOpenMs": 43.20737499999814,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 1,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:08.222Z",
+      "ended": "2026-10-05T11:38:08.773Z",
+      "readyMs": 165.72341700000106,
+      "navigation": {
+        "domInteractive": 4,
+        "domComplete": 65,
+        "loadEventEnd": 65
+      },
+      "firstConversionMs": 311.82820899999933,
+      "firstOpenMs": 28.463584000000992,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 2,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:08.869Z",
+      "ended": "2026-10-05T11:38:09.421Z",
+      "readyMs": 165.00404100000014,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 65,
+        "loadEventEnd": 65
+      },
+      "firstConversionMs": 312.4198749999996,
+      "firstOpenMs": 29.415625000001455,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 3,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:09.518Z",
+      "ended": "2026-10-05T11:38:10.065Z",
+      "readyMs": 166.11491599999863,
+      "navigation": {
+        "domInteractive": 4,
+        "domComplete": 65,
+        "loadEventEnd": 65
+      },
+      "firstConversionMs": 308.37579200000255,
+      "firstOpenMs": 27.48212500000227,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 4,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:10.161Z",
+      "ended": "2026-10-05T11:38:10.713Z",
+      "readyMs": 166.1389999999992,
+      "navigation": {
+        "domInteractive": 4,
+        "domComplete": 66,
+        "loadEventEnd": 66
+      },
+      "firstConversionMs": 310.7769999999982,
+      "firstOpenMs": 29.644749999999476,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 5,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:10.811Z",
+      "ended": "2026-10-05T11:38:11.364Z",
+      "readyMs": 165.1531670000004,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 65,
+        "loadEventEnd": 65
+      },
+      "firstConversionMs": 312.6330420000013,
+      "firstOpenMs": 29.42358299999978,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 0,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:11.799Z",
+      "ended": "2026-10-05T11:38:12.335Z",
+      "readyMs": 173.17654100000073,
+      "navigation": {
+        "domInteractive": 9,
+        "domComplete": 37,
+        "loadEventEnd": 37
+      },
+      "firstConversionMs": 302.48699999999735,
+      "firstOpenMs": 19.831374999997934,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 1,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:12.457Z",
+      "ended": "2026-10-05T11:38:12.967Z",
+      "readyMs": 154.45545800000036,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 29,
+        "loadEventEnd": 29
+      },
+      "firstConversionMs": 297.96666600000026,
+      "firstOpenMs": 19.898292000001675,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 2,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:13.087Z",
+      "ended": "2026-10-05T11:38:13.589Z",
+      "readyMs": 144.2383340000015,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 48,
+        "loadEventEnd": 48
+      },
+      "firstConversionMs": 301.0427920000002,
+      "firstOpenMs": 19.56708300000173,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 3,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:13.709Z",
+      "ended": "2026-10-05T11:38:14.214Z",
+      "readyMs": 145.38033300000097,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 48,
+        "loadEventEnd": 48
+      },
+      "firstConversionMs": 300.7541250000031,
+      "firstOpenMs": 20.49383300000045,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 4,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:14.332Z",
+      "ended": "2026-10-05T11:38:14.838Z",
+      "readyMs": 145.71754200000214,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 48,
+        "loadEventEnd": 48
+      },
+      "firstConversionMs": 301.5051249999997,
+      "firstOpenMs": 20.35216600000058,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 1,
+      "version": "candidate",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 5,
+      "url": "http://127.0.0.1:51860/",
+      "began": "2026-10-05T11:38:14.957Z",
+      "ended": "2026-10-05T11:38:15.476Z",
+      "readyMs": 156.27341700000034,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 29,
+        "loadEventEnd": 29
+      },
+      "firstConversionMs": 299.5564999999988,
+      "firstOpenMs": 20.319875000001048,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 0,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:15.598Z",
+      "ended": "2026-10-05T11:38:16.099Z",
+      "readyMs": 150.283875000001,
+      "navigation": {
+        "domInteractive": 6.300000011920929,
+        "domComplete": 36.5,
+        "loadEventEnd": 36.5
+      },
+      "firstConversionMs": 295.5,
+      "firstOpenMs": 29.7000840000037,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 1,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:16.129Z",
+      "ended": "2026-10-05T11:38:17.127Z",
+      "readyMs": 147.42137499999808,
+      "navigation": {
+        "domInteractive": 3.5,
+        "domComplete": 33.10000002384186,
+        "loadEventEnd": 33.20000001788139
+      },
+      "firstConversionMs": 791.1897089999984,
+      "firstOpenMs": 32.19104199999856,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 2,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:17.158Z",
+      "ended": "2026-10-05T11:38:18.157Z",
+      "readyMs": 150.17787500000122,
+      "navigation": {
+        "domInteractive": 3.5999999940395355,
+        "domComplete": 35.69999998807907,
+        "loadEventEnd": 35.69999998807907
+      },
+      "firstConversionMs": 792.458915999996,
+      "firstOpenMs": 30.76825000000099,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 3,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:18.188Z",
+      "ended": "2026-10-05T11:38:19.193Z",
+      "readyMs": 148.1889580000061,
+      "navigation": {
+        "domInteractive": 3.7000000178813934,
+        "domComplete": 34,
+        "loadEventEnd": 34
+      },
+      "firstConversionMs": 793.0564159999994,
+      "firstOpenMs": 34.46370800000295,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 4,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:19.226Z",
+      "ended": "2026-10-05T11:38:20.230Z",
+      "readyMs": 147.76062499999534,
+      "navigation": {
+        "domInteractive": 3.7000000178813934,
+        "domComplete": 34,
+        "loadEventEnd": 34
+      },
+      "firstConversionMs": 792.8520410000056,
+      "firstOpenMs": 33.49345799999719,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 5,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:20.262Z",
+      "ended": "2026-10-05T11:38:21.267Z",
+      "readyMs": 147.85733400000026,
+      "navigation": {
+        "domInteractive": 3.7000000178813934,
+        "domComplete": 33.80000001192093,
+        "loadEventEnd": 33.80000001192093
+      },
+      "firstConversionMs": 794.5865840000042,
+      "firstOpenMs": 33.428916999997455,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 0,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:21.985Z",
+      "ended": "2026-10-05T11:38:23.115Z",
+      "readyMs": 234.1571249999979,
+      "navigation": {
+        "domInteractive": 38,
+        "domComplete": 125,
+        "loadEventEnd": 125
+      },
+      "firstConversionMs": 812.9166669999977,
+      "firstOpenMs": 35.118875000000116,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 1,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:23.221Z",
+      "ended": "2026-10-05T11:38:24.298Z",
+      "readyMs": 164.16304200000013,
+      "navigation": {
+        "domInteractive": 4,
+        "domComplete": 65,
+        "loadEventEnd": 65
+      },
+      "firstConversionMs": 817.7419999999984,
+      "firstOpenMs": 42.95499999999447,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 2,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:24.396Z",
+      "ended": "2026-10-05T11:38:25.480Z",
+      "readyMs": 165.76725000000442,
+      "navigation": {
+        "domInteractive": 4,
+        "domComplete": 65,
+        "loadEventEnd": 66
+      },
+      "firstConversionMs": 824.7336250000008,
+      "firstOpenMs": 42.90854099999706,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 3,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:25.574Z",
+      "ended": "2026-10-05T11:38:26.124Z",
+      "readyMs": 165.8137910000005,
+      "navigation": {
+        "domInteractive": 4,
+        "domComplete": 66,
+        "loadEventEnd": 66
+      },
+      "firstConversionMs": 310.9237080000021,
+      "firstOpenMs": 27.951833999999508,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 4,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:26.219Z",
+      "ended": "2026-10-05T11:38:27.296Z",
+      "readyMs": 166.00379199999588,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 65,
+        "loadEventEnd": 65
+      },
+      "firstConversionMs": 818.5722909999968,
+      "firstOpenMs": 41.73924999999872,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 5,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:27.401Z",
+      "ended": "2026-10-05T11:38:27.963Z",
+      "readyMs": 175.54962499999965,
+      "navigation": {
+        "domInteractive": 4,
+        "domComplete": 73,
+        "loadEventEnd": 73
+      },
+      "firstConversionMs": 311.98449999999866,
+      "firstOpenMs": 29.039542000005895,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 0,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:28.399Z",
+      "ended": "2026-10-05T11:38:28.926Z",
+      "readyMs": 170.1317080000008,
+      "navigation": {
+        "domInteractive": 9,
+        "domComplete": 38,
+        "loadEventEnd": 38
+      },
+      "firstConversionMs": 298.343584000002,
+      "firstOpenMs": 17.609375,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 1,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:29.047Z",
+      "ended": "2026-10-05T11:38:29.554Z",
+      "readyMs": 155.23941700000432,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 30,
+        "loadEventEnd": 30
+      },
+      "firstConversionMs": 296.7066249999989,
+      "firstOpenMs": 17.930707999999868,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 2,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:29.672Z",
+      "ended": "2026-10-05T11:38:30.191Z",
+      "readyMs": 154.58633299999929,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 29,
+        "loadEventEnd": 29
+      },
+      "firstConversionMs": 300.45787500000006,
+      "firstOpenMs": 21.168334000001778,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 3,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:30.311Z",
+      "ended": "2026-10-05T11:38:30.816Z",
+      "readyMs": 146.0613749999975,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 48,
+        "loadEventEnd": 49
+      },
+      "firstConversionMs": 300.3575419999979,
+      "firstOpenMs": 19.80870899999718,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 4,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:30.936Z",
+      "ended": "2026-10-05T11:38:31.435Z",
+      "readyMs": 145.0739160000012,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 48,
+        "loadEventEnd": 48
+      },
+      "firstConversionMs": 294.7497500000027,
+      "firstOpenMs": 22.286832999998296,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 2,
+      "version": "candidate",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 5,
+      "url": "http://127.0.0.1:51903/",
+      "began": "2026-10-05T11:38:31.555Z",
+      "ended": "2026-10-05T11:38:32.066Z",
+      "readyMs": 156.49445900000137,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 30,
+        "loadEventEnd": 31
+      },
+      "firstConversionMs": 297.99395899999945,
+      "firstOpenMs": 19.826708000000508,
+      "script": "/assets/index-D1UmQBQr.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 0,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:32.190Z",
+      "ended": "2026-10-05T11:38:33.203Z",
+      "readyMs": 163.55724999999802,
+      "navigation": {
+        "domInteractive": 5.4000000059604645,
+        "domComplete": 36.099999994039536,
+        "loadEventEnd": 36.099999994039536
+      },
+      "firstConversionMs": 803.5913749999963,
+      "firstOpenMs": 9.60662500000035,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 1,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:33.237Z",
+      "ended": "2026-10-05T11:38:34.224Z",
+      "readyMs": 164.99612500000512,
+      "navigation": {
+        "domInteractive": 3.5,
+        "domComplete": 34.70000001788139,
+        "loadEventEnd": 34.70000001788139
+      },
+      "firstConversionMs": 792.7132920000004,
+      "firstOpenMs": 4.135415999997349,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 2,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:34.256Z",
+      "ended": "2026-10-05T11:38:35.249Z",
+      "readyMs": 163.25625000000582,
+      "navigation": {
+        "domInteractive": 3.699999988079071,
+        "domComplete": 33.5,
+        "loadEventEnd": 33.5
+      },
+      "firstConversionMs": 793.2676659999997,
+      "firstOpenMs": 4.9670420000038575,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 3,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:35.282Z",
+      "ended": "2026-10-05T11:38:36.287Z",
+      "readyMs": 163.5341249999983,
+      "navigation": {
+        "domInteractive": 3.7000000178813934,
+        "domComplete": 34,
+        "loadEventEnd": 34
+      },
+      "firstConversionMs": 795.4131669999988,
+      "firstOpenMs": 9.694083000002138,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 4,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:36.323Z",
+      "ended": "2026-10-05T11:38:37.323Z",
+      "readyMs": 166.36258399999497,
+      "navigation": {
+        "domInteractive": 3.5999999940395355,
+        "domComplete": 35.099999994039536,
+        "loadEventEnd": 35.099999994039536
+      },
+      "firstConversionMs": 797.8174169999984,
+      "firstOpenMs": 5.128916999994544,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "sample": 5,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:37.356Z",
+      "ended": "2026-10-05T11:38:38.370Z",
+      "readyMs": 165.0572089999987,
+      "navigation": {
+        "domInteractive": 3.5999999940395355,
+        "domComplete": 34.30000001192093,
+        "loadEventEnd": 34.30000001192093
+      },
+      "firstConversionMs": 802.4514999999956,
+      "firstOpenMs": 9.17766699999629,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 0,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:39.072Z",
+      "ended": "2026-10-05T11:38:40.226Z",
+      "readyMs": 259.1412500000006,
+      "navigation": {
+        "domInteractive": 38,
+        "domComplete": 145,
+        "loadEventEnd": 145
+      },
+      "firstConversionMs": 824.8105409999989,
+      "firstOpenMs": 17.151125000003958,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 1,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:40.336Z",
+      "ended": "2026-10-05T11:38:41.413Z",
+      "readyMs": 187.17779200000223,
+      "navigation": {
+        "domInteractive": 4,
+        "domComplete": 84,
+        "loadEventEnd": 84
+      },
+      "firstConversionMs": 821.3317920000045,
+      "firstOpenMs": 16.123374999995576,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 2,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:41.512Z",
+      "ended": "2026-10-05T11:38:42.070Z",
+      "readyMs": 190.2378749999989,
+      "navigation": {
+        "domInteractive": 5,
+        "domComplete": 86,
+        "loadEventEnd": 86
+      },
+      "firstConversionMs": 316.50266700000066,
+      "firstOpenMs": 8.616291999998793,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 3,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:42.164Z",
+      "ended": "2026-10-05T11:38:43.221Z",
+      "readyMs": 190.39749999999913,
+      "navigation": {
+        "domInteractive": 4,
+        "domComplete": 84,
+        "loadEventEnd": 84
+      },
+      "firstConversionMs": 814.0667499999981,
+      "firstOpenMs": 8.108667000000423,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 4,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:43.315Z",
+      "ended": "2026-10-05T11:38:43.862Z",
+      "readyMs": 178.12966600000073,
+      "navigation": {
+        "domInteractive": 4,
+        "domComplete": 83,
+        "loadEventEnd": 83
+      },
+      "firstConversionMs": 317.47037499999715,
+      "firstOpenMs": 7.802499999997963,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "sample": 5,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:43.961Z",
+      "ended": "2026-10-05T11:38:44.518Z",
+      "readyMs": 189.22875000000204,
+      "navigation": {
+        "domInteractive": 4,
+        "domComplete": 84,
+        "loadEventEnd": 84
+      },
+      "firstConversionMs": 317.29674999999406,
+      "firstOpenMs": 7.61124999999447,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 0,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:44.963Z",
+      "ended": "2026-10-05T11:38:45.500Z",
+      "readyMs": 181.44491700000071,
+      "navigation": {
+        "domInteractive": 9,
+        "domComplete": 38,
+        "loadEventEnd": 38
+      },
+      "firstConversionMs": 304.2374170000039,
+      "firstOpenMs": 8.733625000000757,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 1,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:45.622Z",
+      "ended": "2026-10-05T11:38:46.134Z",
+      "readyMs": 166.57891599999857,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 29,
+        "loadEventEnd": 29
+      },
+      "firstConversionMs": 297.745041999995,
+      "firstOpenMs": 7.59912500000064,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 2,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:46.255Z",
+      "ended": "2026-10-05T11:38:46.782Z",
+      "readyMs": 167.294415999997,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 29,
+        "loadEventEnd": 29
+      },
+      "firstConversionMs": 309.02037500000006,
+      "firstOpenMs": 5.742041999998037,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 3,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:46.902Z",
+      "ended": "2026-10-05T11:38:47.411Z",
+      "readyMs": 157.36795799999527,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 59,
+        "loadEventEnd": 59
+      },
+      "firstConversionMs": 307.21650000000227,
+      "firstOpenMs": 8.036166999998386,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 4,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:47.534Z",
+      "ended": "2026-10-05T11:38:48.041Z",
+      "readyMs": 158.5760420000006,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 59,
+        "loadEventEnd": 60
+      },
+      "firstConversionMs": 305.7154159999991,
+      "firstOpenMs": 5.432666000000609,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    },
+    {
+      "phase": 3,
+      "version": "baseline",
+      "engine": "webkit",
+      "browserVersion": "26.6",
+      "sample": 5,
+      "url": "http://127.0.0.1:51970/",
+      "began": "2026-10-05T11:38:48.161Z",
+      "ended": "2026-10-05T11:38:49.190Z",
+      "readyMs": 157.4642079999976,
+      "navigation": {
+        "domInteractive": 3,
+        "domComplete": 58,
+        "loadEventEnd": 59
+      },
+      "firstConversionMs": 814.1367499999978,
+      "firstOpenMs": 10.768790999994962,
+      "script": "/assets/index-B3d9YDa-.js",
+      "errors": []
+    }
+  ],
+  "gaps": [
+    "Local macOS ARM desktop 1x profiles, not Linux CI or physical phones",
+    "Root base, fresh caches, no faults; readyness locator includes assertion observation delay",
+    "Build release identifier is the base SHA in both artifacts; file inventories distinguish actual candidate bytes"
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "input": "docs/qa/ci-critical-path-2026-10-05/cold-probe.json",
+  "sha256": "0c2afb6983aea7df2295e59724ea75c1eacbd4edb0e0a1580ab01d4e6bc2cebe",
+  "environment": {
+    "bun": "1.4.0",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "window": [
+    "2026-10-05T11:37:43.158Z",
+    "2026-10-05T11:38:49.208Z"
+  ],
+  "rowCount": 72,
+  "counts": {
+    "0 baseline chromium": 6,
+    "0 baseline firefox": 6,
+    "0 baseline webkit": 6,
+    "1 candidate chromium": 6,
+    "1 candidate firefox": 6,
+    "1 candidate webkit": 6,
+    "2 candidate chromium": 6,
+    "2 candidate firefox": 6,
+    "2 candidate webkit": 6,
+    "3 baseline chromium": 6,
+    "3 baseline firefox": 6,
+    "3 baseline webkit": 6
+  },
+  "inventoryChecks": {
+    "baseline": {
+      "files": 14,
+      "mismatches": [],
+      "rowScripts": [
+        "/assets/index-B3d9YDa-.js"
+      ],
+      "scriptsInventoried": true
+    },
+    "candidate": {
+      "files": 14,
+      "mismatches": [],
+      "rowScripts": [
+        "/assets/index-D1UmQBQr.js"
+      ],
+      "scriptsInventoried": true
+    }
+  },
+  "summaries": {
+    "chromium": {
+      "baseline": {
+        "count": 12,
+        "versions": [
+          "153.0.8010.12"
+        ],
+        "origins": [
+          "http://127.0.0.1:51811/",
+          "http://127.0.0.1:51970/"
+        ],
+        "errors": 0,
+        "durationsValid": true,
+        "readyMs": {
+          "median": 164.78114549999987,
+          "min": 163.14429199999995,
+          "max": 166.36258399999497
+        },
+        "firstConversionMs": {
+          "median": 798.2078959999994,
+          "min": 792.7132920000004,
+          "max": 803.5913749999963
+        },
+        "firstOpenMs": {
+          "median": 9.192145999998047,
+          "min": 4.135415999997349,
+          "max": 10.921582999999373
+        }
+      },
+      "candidate": {
+        "count": 12,
+        "versions": [
+          "153.0.8010.12"
+        ],
+        "origins": [
+          "http://127.0.0.1:51860/",
+          "http://127.0.0.1:51903/"
+        ],
+        "errors": 0,
+        "durationsValid": true,
+        "readyMs": {
+          "median": 147.86622949999946,
+          "min": 146.64637500000026,
+          "max": 150.283875000001
+        },
+        "firstConversionMs": {
+          "median": 793.6712084999999,
+          "min": 295.5,
+          "max": 800.9900410000009
+        },
+        "firstOpenMs": {
+          "median": 33.183979499997804,
+          "min": 29.018458999998984,
+          "max": 44.586999999999534
+        }
+      },
+      "medianCandidateMinusBaseline": {
+        "readyMs": -16.914916000000403,
+        "firstConversionMs": -4.536687499999516,
+        "firstOpenMs": 23.991833499999757
+      }
+    },
+    "firefox": {
+      "baseline": {
+        "count": 12,
+        "versions": [
+          "155.0"
+        ],
+        "origins": [
+          "http://127.0.0.1:51811/",
+          "http://127.0.0.1:51970/"
+        ],
+        "errors": 0,
+        "durationsValid": true,
+        "readyMs": {
+          "median": 188.93729200000143,
+          "min": 178.12966600000073,
+          "max": 259.1412500000006
+        },
+        "firstConversionMs": {
+          "median": 318.5162499999997,
+          "min": 316.50266700000066,
+          "max": 832.5674579999995
+        },
+        "firstOpenMs": {
+          "median": 8.362479499999608,
+          "min": 7.61124999999447,
+          "max": 17.151125000003958
+        }
+      },
+      "candidate": {
+        "count": 12,
+        "versions": [
+          "155.0"
+        ],
+        "origins": [
+          "http://127.0.0.1:51860/",
+          "http://127.0.0.1:51903/"
+        ],
+        "errors": 0,
+        "durationsValid": true,
+        "readyMs": {
+          "median": 165.9087914999982,
+          "min": 164.16304200000013,
+          "max": 235.3296249999985
+        },
+        "firstConversionMs": {
+          "median": 312.52645850000044,
+          "min": 308.37579200000255,
+          "max": 824.7336250000008
+        },
+        "firstOpenMs": {
+          "median": 29.53416649999963,
+          "min": 27.48212500000227,
+          "max": 43.20737499999814
+        }
+      },
+      "medianCandidateMinusBaseline": {
+        "readyMs": -23.028500500003247,
+        "firstConversionMs": -5.989791499999228,
+        "firstOpenMs": 21.17168700000002
+      }
+    },
+    "webkit": {
+      "baseline": {
+        "count": 12,
+        "versions": [
+          "26.6"
+        ],
+        "origins": [
+          "http://127.0.0.1:51811/",
+          "http://127.0.0.1:51970/"
+        ],
+        "errors": 0,
+        "durationsValid": true,
+        "readyMs": {
+          "median": 166.39718699999958,
+          "min": 157.1547500000015,
+          "max": 182.6013750000002
+        },
+        "firstConversionMs": {
+          "median": 304.9764165000015,
+          "min": 297.745041999995,
+          "max": 814.1367499999978
+        },
+        "firstOpenMs": {
+          "median": 7.153166500000225,
+          "min": 5.053332999999839,
+          "max": 12.662874999999985
+        }
+      },
+      "candidate": {
+        "count": 12,
+        "versions": [
+          "26.6"
+        ],
+        "origins": [
+          "http://127.0.0.1:51860/",
+          "http://127.0.0.1:51903/"
+        ],
+        "errors": 0,
+        "durationsValid": true,
+        "readyMs": {
+          "median": 154.52089549999982,
+          "min": 144.2383340000015,
+          "max": 173.17654100000073
+        },
+        "firstConversionMs": {
+          "median": 299.95702099999835,
+          "min": 294.7497500000027,
+          "max": 302.48699999999735
+        },
+        "firstOpenMs": {
+          "median": 19.864833499999804,
+          "min": 17.609375,
+          "max": 22.286832999998296
+        }
+      },
+      "medianCandidateMinusBaseline": {
+        "readyMs": -11.876291499999752,
+        "firstConversionMs": -5.0193955000031565,
+        "firstOpenMs": 12.71166699999958
+      }
+    }
+  }
+}

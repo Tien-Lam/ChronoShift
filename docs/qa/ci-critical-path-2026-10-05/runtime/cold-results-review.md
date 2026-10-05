@@ -1,0 +1,25 @@
+# Independent retained cold-probe result reconciliation
+
+Root reported terminal session 82113 exit 0 and released the measurement window. This role then independently parsed **only the retained `cold-probe.json`**, without a browser/build/network/Actions run or another current reviewer's report. Actual first clock **2026-10-05 11:41:47 UTC**; arithmetic and phase inspection ended at actual clock **11:41:55 UTC**. Reproducible analyzer execution is **11:41:47.283–11:41:47.284Z**. Report preparation follows. `analyze-cold.ts` and `cold-results.json` preserve raw-file SHA-256, all grouping arithmetic, means/medians/ranges, source clocks and limits.
+
+The retained record spans **2026-10-05T11:37:43.158–11:38:49.208Z**, **66.050s** including inventory/setup/cleanup. It contains **72 unique phase/engine/sample rows**, exactly18 in each phase and12 baseline plus12 candidate per engine. Each row's phase/version agrees with ABBA; all metrics are finite/nonnegative, all row clocks are ordered, every row error list is empty and every recorded module script path matches its variant's inventoried main JS. Browser versions are consistent within each engine: Chromium 153.0.8010.12, Firefox 155.0, WebKit 26.6. These are accepted complete rows from the corrected probe; zero original preparation rows are added. Root's reported process exit is separate from JSON's final timestamp, which alone would not certify a successful exit.
+
+| Engine | ready mean baseline/candidate ms | first-open mean baseline/candidate ms | ready + first-open candidate minus baseline ms | first-conversion assertion-finish mean baseline/candidate ms |
+| --- | --- | --- | --- | --- |
+| Chromium |164.437 /148.374 |7.943 /33.380 |+9.373 |798.170 /753.058 |
+| Firefox |199.439 /177.910 |10.841 /33.946 |+1.575 |528.365 /522.657 |
+| WebKit |166.736 /153.902 |7.771 /19.924 |−0.680 |388.449 /299.327 |
+
+All12 rows per variant/engine remain included, including first samples. Ready means decrease **16.063/21.530/12.834ms**; first-open means increase **25.436/23.104/12.153ms**. Both candidate phases have lower ready means than either baseline phase in each engine, while both candidate phases have higher first-open means than either baseline phase. This is a consistent **local fresh-context startup versus first-open cost tradeoff** in the saved data. The sum of these two selected, disjoint timing windows is almost unchanged for WebKit and slightly slower for Chromium/Firefox. It is a selected-window subtotal, not complete journey time; source edits, inter-window readback and setup/cleanup are absent. It does not mean the unopened journey lacks its observed readiness benefit.
+
+First-conversion mean reductions **45.111/5.708/89.123ms** are not native conversion completion measurements. The driver uses ordinary locator expectations rather than pending/settled timestamps; its rows show two observation clusters:
+
+- Chromium baseline has12/12 conversions above700ms; candidate has11/12 above700ms and one below500ms. One fast observation largely explains its mean difference.
+- Firefox baseline and candidate each have7 below500ms and5 above700ms. Candidate phase1 mean395.836ms and phase2 mean649.479ms straddle baseline phases488.151/568.580ms; this variation is not a stable first-conversion performance effect.
+- WebKit baseline has10 below500ms and2 above700ms, while candidate has12 below500ms and none above700ms. Those two late baseline observations account for much of its89ms mean difference.
+
+These clusters are consistent with the previously retained ordinary assertion backoff mechanism, but the current driver does not observe true settlement, so this analysis **does not attribute the clusters causally to polling or claim faster application completion**. All raw observations remain part of the complete result. No favorable sample trimming is appropriate.
+
+Both artifacts contain14 regular files: baseline 1,203,944 bytes, candidate 1,204,033 bytes, a candidate increase of89 bytes. Eleven members match path/size/SHA-256 exactly, including CSS,221,144-byte conversion worker, font, manifest, icons, notices and release marker. Differing/renamed members are HTML, main JS and service worker. Baseline main JS is 775,642 bytes (`assets/index-B3d9YDa-.js`); candidate 775,731 (`assets/index-D1UmQBQr.js`). These are pre-run on-disk inventories and recorded script paths, not independently fetched browser response hashes or after-run byte stability. The common release marker remains the base SHA and cannot by itself attest the candidate source.
+
+Bounded result verdict: accepted saved rows show **roughly13–22ms lower observed initial readiness and12–25ms higher observed first options visibility** under serial local desktop conditions. No CPU isolation, completed-animation/paint timing, immediate first-open Tab, partial-date validity, Linux contention, complete-gate improvement or74-second quota-gap projection follows. Candidate implementation approval and original objective resolution remain outside this result analysis. The initial oracle failure and its6.112s execution remain explicit separate investigation evidence.
