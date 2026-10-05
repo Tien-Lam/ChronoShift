@@ -1,0 +1,190 @@
+# Example Workflow
+
+```yaml
+name: test
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+        with:
+          version: 2026.3.10 # [default: newest release at least 24h old] mise version to install
+          # minimum_release_age: 7d # default: 24h; use 0s to disable the delay
+          install: true # [default: true] run `mise install`
+          install_args: "bun" # [default: ""] additional arguments to `mise install`
+          bootstrap: false # [default: false] run `mise bootstrap` instead of `mise install`
+          bootstrap_skip: "tools,task" # [default: ""] comma-separated parts to skip when bootstrapping
+          bootstrap_args: "--yes" # [default: ""] additional arguments to `mise bootstrap`
+          cache: true # [default: true] cache mise using GitHub's cache
+          experimental: true # [default: false] enable experimental features
+          log_level: debug # [default: info] log level
+          # automatically write this .tool-versions file
+          tool_versions: |
+            shellcheck 0.11.0
+          # or, if you prefer .mise.toml format:
+          mise_toml: |
+            [tools]
+            shellcheck = "0.11.0"
+          working_directory: app # [default: .] directory to run mise in
+          reshim: false # [default: false] run `mise reshim -f`
+          env: true # [default: true] export mise environment variables
+          export_path: true # [default: true] add mise PATH entries to subsequent steps
+          github_token: ${{ secrets.GITHUB_TOKEN }} # [default: ${{ github.token }}] GitHub token for API authentication
+      - run: shellcheck scripts/*.sh
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v4
+      # .tool-versions will be read from repo root
+      - run: node ./my_app.js
+```
+
+## Minimum Release Age
+
+By default, the action installs the newest stable mise release that is at least
+24 hours old. To change the delay, set `minimum_release_age` and omit `version`:
+
+```yaml
+- uses: jdx/mise-action@v4
+  with:
+    minimum_release_age: 7d
+```
+
+Relative durations such as `24h`, `7d`, `6mo`, and `1y` are supported, as are
+absolute ISO dates and timestamps. The action selects the newest stable,
+non-draft mise release published before the cutoff. An explicit `version`
+takes precedence over `minimum_release_age` and can install a release immediately.
+Set `minimum_release_age: 0s` to select the latest stable release without a delay.
+Release selection reads the public CDN release index and does not consume GitHub
+API quota, including when reusing a cached mise binary. If the index is unavailable
+or invalid, the action fails rather than bypassing the age policy.
+This input controls the mise binary; it does not set the release-age policy for
+tools installed by mise.
+
+## Environment and PATH Export
+
+The action exports environment variables and PATH entries configured by mise
+to subsequent workflow steps. PATH entries are added individually through
+`GITHUB_PATH`, so the runner's complete PATH is not copied into `GITHUB_ENV`.
+Set `export_path: false` to export regular environment variables without
+persisting mise's PATH changes.
+
+## Cache Configuration
+
+You can customize the cache key used by the action:
+
+```yaml
+- uses: jdx/mise-action@v4
+  with:
+    cache_key: "my-custom-cache-key"  # Override the entire cache key
+    cache_key_prefix: "mise-cache-v1"       # Or just change the prefix (default: "mise-v1")
+```
+
+### Template Variables in Cache Keys
+
+When using `cache_key`, you can use template variables to reference internal values:
+
+```yaml
+- uses: jdx/mise-action@v4
+  with:
+    cache_key: "mise-{{platform}}-{{version}}-{{file_hash}}"
+    version: "2026.3.10"
+    install_args: "node python"
+```
+
+Available template variables:
+- `{{version}}` - The mise version (from the `version` input)
+- `{{cache_key_prefix}}` - The cache key prefix (from `cache_key_prefix` input or default)
+- `{{platform}}` - The target platform, including the runner image (e.g., "linux-x64-ubuntu24", "macos-arm64-macos15", "linux-x64-self-hosted"). The trailing segment is `process.env.ImageOS` on github-hosted runners and falls back to `"self-hosted"` elsewhere — preventing cache collisions when the same repo runs on different runner providers (github-hosted, namespace.so, self-hosted).
+- `{{file_hash}}` - Hash of all mise configuration files
+- `{{mise_env}}` - The MISE_ENV environment variable value
+- `{{install_args_hash}}` - SHA256 hash of the sorted tools from install args
+- `{{bootstrap_hash}}` - SHA256 hash of bootstrap mode, skip list, and args
+- `{{default}}` - The processed default cache key (useful for extending)
+
+Conditional logic is also supported using Handlebars syntax like `{{#if version}}...{{/if}}`.
+
+Example using multiple variables:
+```yaml
+- uses: jdx/mise-action@v4
+  with:
+    cache_key: "mise-v1-{{platform}}-{{install_args_hash}}-{{file_hash}}"
+    install_args: "node@24 python@3.14"
+```
+
+You can also extend the default cache key:
+```yaml
+- uses: jdx/mise-action@v4
+  with:
+    cache_key: "{{default}}-custom-suffix"
+    install_args: "node@24 python@3.14"
+```
+
+This gives you full control over cache invalidation based on the specific aspects that matter to your workflow.
+
+### Rust Cache
+
+Rust has a known cache interaction because mise installs Rust through `rustup`.
+See [jdx/mise-action#215](https://github.com/jdx/mise-action/issues/215).
+
+## GitHub API Rate Limits
+
+When installing tools hosted on GitHub (like `gh`, `node`, `bun`, etc.), mise needs to make API calls to GitHub's releases API. Without authentication, these calls are subject to GitHub's rate limit of 60 requests per hour, which can cause installation failures.
+
+```yaml
+- uses: jdx/mise-action@v4
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    # your other configuration
+```
+
+**Note:** The action automatically uses `${{ github.token }}` as the default, so in most cases you don't need to explicitly provide it. However, if you encounter rate limit errors, make sure the token is being passed correctly.
+
+## Lock Files
+
+If a repo mise lock file such as `mise.lock` is present in the working
+directory or one of its parents, this action automatically runs
+`mise install --locked`. You can still pass `install_args`; `--locked`
+will be added automatically unless you already included it yourself.
+
+This auto-detection is intended for repo-managed config files. If you provide
+`mise_toml` or `tool_versions` inputs, the action does not automatically force
+locked mode.
+
+## Bootstrap
+
+Set `bootstrap: true` to run `mise bootstrap` instead of `mise install`:
+
+```yaml
+- uses: jdx/mise-action@v4
+  with:
+    bootstrap: true
+```
+
+When a repo mise lock file is present, the action automatically runs
+`mise --locked bootstrap`. `install_args` cannot be combined with
+`bootstrap: true`; use `bootstrap_skip` and `bootstrap_args` for bootstrap
+customization.
+
+## Alternative Installation
+
+Alternatively, mise is easy to use in GitHub Actions even without this:
+
+```yaml
+jobs:
+  build:
+    steps:
+    - run: |
+        curl https://mise.run | sh
+        echo "$HOME/.local/share/mise/bin" >> $GITHUB_PATH
+        echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
+```

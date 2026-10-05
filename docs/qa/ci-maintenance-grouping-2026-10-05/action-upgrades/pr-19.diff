@@ -1,0 +1,26 @@
+diff --git a/.github/workflows/pages.yml b/.github/workflows/pages.yml
+index 8192047..9a421b3 100644
+--- a/.github/workflows/pages.yml
++++ b/.github/workflows/pages.yml
+@@ -50,7 +50,7 @@ jobs:
+         run: bun scripts/reuse-pages-artifact.ts
+         env:
+           GH_TOKEN: ${{ github.token }}
+-      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
++      - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+         if: steps.reuse.outputs.reused == 'true'
+       - name: Upload the verified Pages build
+         if: steps.reuse.outputs.reused == 'true'
+diff --git a/.github/workflows/web.yml b/.github/workflows/web.yml
+index c7df3a2..85a0ef0 100644
+--- a/.github/workflows/web.yml
++++ b/.github/workflows/web.yml
+@@ -87,7 +87,7 @@ jobs:
+           retention-days: 1
+       - id: pages
+         if: inputs.publish-pages
+-        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
++        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+       - name: Verify repository-subpath deployment
+         run: |
+           bun run build

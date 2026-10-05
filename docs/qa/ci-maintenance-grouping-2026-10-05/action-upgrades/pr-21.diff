@@ -1,0 +1,26 @@
+diff --git a/.github/workflows/pages.yml b/.github/workflows/pages.yml
+index 54df065..6f173fd 100644
+--- a/.github/workflows/pages.yml
++++ b/.github/workflows/pages.yml
+@@ -42,7 +42,7 @@ jobs:
+         if: steps.reuse.outputs.reused == 'true'
+       - name: Upload the verified Pages build
+         if: steps.reuse.outputs.reused == 'true'
+-        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
++        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+         with:
+           path: dist
+           retention-days: 14
+diff --git a/.github/workflows/web.yml b/.github/workflows/web.yml
+index f644a56..845c9d0 100644
+--- a/.github/workflows/web.yml
++++ b/.github/workflows/web.yml
+@@ -76,7 +76,7 @@ jobs:
+           BASE_PATH: /ChronoShift/
+       - name: Upload the verified Pages build
+         if: env.PUBLISH_PAGES == 'true'
+-        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
++        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+         with:
+           path: dist
+           retention-days: ${{ inputs.publish-pages && 14 || 1 }}
