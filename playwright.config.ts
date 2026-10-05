@@ -19,8 +19,8 @@ export default defineConfig({
   timeout: 30000,
   expect: { timeout: 10000 },
   fullyParallel: true,
-  // Two and six workers were slower in the expanded suite. Keep four and
-  // measure the supported ARM runner without changing browser coverage.
+  // The measured two/six-worker and ARM alternatives were slower.
+  // Keep the established four workers and complete browser coverage.
   workers: process.env.CI ? 4 : 3,
   retries: process.env.CI ? 1 : 0,
   reporter: [
