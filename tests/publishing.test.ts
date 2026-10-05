@@ -28,6 +28,13 @@ test("publication reuse requires a trusted complete PR verification and exact tr
     ].map((name) => ({ name, conclusion: "success" })),
   };
   expect(trustedRun(run, 3, 2, [job])).toBe(true);
+  // A successful workflow record does not make deferred verification trusted.
+  expect(trustedRun(run, 3, 2, [{ ...job, name: "web-deferred" }])).toBe(false);
+  expect(
+    trustedRun(run, 3, 2, [
+      { name: "web-deferred", conclusion: "skipped", steps: [] },
+    ]),
+  ).toBe(false);
   for (const patch of [
     { head_repository: { id: 4 } },
     { workflow_id: 5 },

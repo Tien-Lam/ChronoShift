@@ -1,0 +1,668 @@
+{
+  "note": "Literal expected rows authored from requested admission semantics before evaluating source. Raw expressions on unsubscribed events are distinct from scheduling. Optional PR caller input bypass is intentionally absent from current implementation.",
+  "expectedTypes": [
+    "opened",
+    "reopened",
+    "synchronize",
+    "ready_for_review",
+    "labeled"
+  ],
+  "rows": [
+    {
+      "id": "draft-open",
+      "eventName": "pull_request",
+      "action": "opened",
+      "draft": true,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "ready-open",
+      "eventName": "pull_request",
+      "action": "opened",
+      "draft": false,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "draft-reopen",
+      "eventName": "pull_request",
+      "action": "reopened",
+      "draft": true,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "ready-reopen",
+      "eventName": "pull_request",
+      "action": "reopened",
+      "draft": false,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "draft-sync",
+      "eventName": "pull_request",
+      "action": "synchronize",
+      "draft": true,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "ready-sync",
+      "eventName": "pull_request",
+      "action": "synchronize",
+      "draft": false,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "ready-for-review",
+      "eventName": "pull_request",
+      "action": "ready_for_review",
+      "draft": false,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "contradictory-ready-event-draft",
+      "eventName": "pull_request",
+      "action": "ready_for_review",
+      "draft": true,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "draft-add-ci-run",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": true,
+      "labels": ["ci-run"],
+      "newLabel": "ci-run",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "ready-add-ci-run",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": false,
+      "labels": ["ci-run"],
+      "newLabel": "ci-run",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "draft-add-ci-timing",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": true,
+      "labels": ["ci-timing"],
+      "newLabel": "ci-timing",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "1"
+      }
+    },
+    {
+      "id": "ready-add-ci-timing",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": false,
+      "labels": ["ci-timing"],
+      "newLabel": "ci-timing",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "1"
+      }
+    },
+    {
+      "id": "draft-add-unrelated",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": true,
+      "labels": ["unrelated"],
+      "newLabel": "unrelated",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "ready-add-unrelated",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": false,
+      "labels": ["unrelated"],
+      "newLabel": "unrelated",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "draft-add-ci-run-extra",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": true,
+      "labels": ["ci-run-extra"],
+      "newLabel": "ci-run-extra",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "ready-add-ci-run-extra",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": false,
+      "labels": ["ci-run-extra"],
+      "newLabel": "ci-run-extra",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "draft-sticky-run",
+      "eventName": "pull_request",
+      "action": "synchronize",
+      "draft": true,
+      "labels": ["ci-run"],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "draft-sticky-timing",
+      "eventName": "pull_request",
+      "action": "synchronize",
+      "draft": true,
+      "labels": ["ci-timing"],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "draft-sticky-both",
+      "eventName": "pull_request",
+      "action": "synchronize",
+      "draft": true,
+      "labels": ["ci-run", "ci-timing"],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "ready-sticky-timing",
+      "eventName": "pull_request",
+      "action": "synchronize",
+      "draft": false,
+      "labels": ["ci-timing"],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "unsubscribed-unlabeled",
+      "eventName": "pull_request",
+      "action": "unlabeled",
+      "draft": false,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": false,
+        "jobIf": true,
+        "name": "web",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "unsubscribed-converted_to_draft",
+      "eventName": "pull_request",
+      "action": "converted_to_draft",
+      "draft": true,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": false,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "unsubscribed-edited",
+      "eventName": "pull_request",
+      "action": "edited",
+      "draft": false,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": false,
+        "jobIf": true,
+        "name": "web",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "unsubscribed-review_requested",
+      "eventName": "pull_request",
+      "action": "review_requested",
+      "draft": false,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": false,
+        "jobIf": true,
+        "name": "web",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "unsubscribed-closed",
+      "eventName": "pull_request",
+      "action": "closed",
+      "draft": false,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": false,
+        "jobIf": true,
+        "name": "web",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "draft-add-unrelated-with-sticky-timing",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": true,
+      "labels": ["ci-timing", "unrelated"],
+      "newLabel": "unrelated",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "ready-add-unrelated-with-sticky-run",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": false,
+      "labels": ["ci-run", "unrelated"],
+      "newLabel": "unrelated",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "draft-inherited-optional-timing-no-bypass",
+      "eventName": "pull_request",
+      "action": "synchronize",
+      "draft": true,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {
+        "ci-timing": true
+      },
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "1"
+      }
+    },
+    {
+      "id": "draft-inherited-optional-publish-no-bypass",
+      "eventName": "pull_request",
+      "action": "synchronize",
+      "draft": true,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {
+        "publish-pages": true
+      },
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "inherited-main-push",
+      "eventName": "push",
+      "action": null,
+      "draft": null,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "inherited-main-push-timing",
+      "eventName": "push",
+      "action": null,
+      "draft": null,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {
+        "ci-timing": true
+      },
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "1"
+      }
+    },
+    {
+      "id": "inherited-main-workflow_dispatch",
+      "eventName": "workflow_dispatch",
+      "action": null,
+      "draft": null,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "0"
+      }
+    },
+    {
+      "id": "inherited-main-workflow_dispatch-timing",
+      "eventName": "workflow_dispatch",
+      "action": null,
+      "draft": null,
+      "labels": [],
+      "newLabel": null,
+      "inputs": {
+        "ci-timing": true
+      },
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "1"
+      }
+    }
+  ],
+  "pagesCases": [
+    {
+      "id": "reused-publication",
+      "prepare": "success",
+      "reused": "true",
+      "verify": "skipped",
+      "cancelled": false,
+      "expected": {
+        "prepare": true,
+        "reuse": true,
+        "verify": false,
+        "deploy": false
+      }
+    },
+    {
+      "id": "automatic-fallback",
+      "prepare": "success",
+      "reused": "false",
+      "verify": "success",
+      "cancelled": false,
+      "expected": {
+        "prepare": true,
+        "reuse": true,
+        "verify": true,
+        "deploy": true
+      }
+    },
+    {
+      "id": "manual-fallback",
+      "event": "workflow_dispatch",
+      "prepare": "success",
+      "reused": "",
+      "verify": "success",
+      "cancelled": false,
+      "expected": {
+        "prepare": true,
+        "reuse": false,
+        "verify": true,
+        "deploy": true
+      }
+    },
+    {
+      "id": "missing-reuse-output-full-fallback",
+      "prepare": "success",
+      "verify": "success",
+      "cancelled": false,
+      "expected": {
+        "prepare": true,
+        "reuse": true,
+        "verify": true,
+        "deploy": true
+      }
+    },
+    {
+      "id": "prepare-failed-no-second-publication",
+      "prepare": "failure",
+      "reused": "false",
+      "verify": "skipped",
+      "cancelled": false,
+      "expected": {
+        "prepare": true,
+        "reuse": true,
+        "verify": false,
+        "deploy": false
+      }
+    },
+    {
+      "id": "reused-prepare-deploy-failed",
+      "prepare": "failure",
+      "reused": "true",
+      "verify": "skipped",
+      "cancelled": false,
+      "expected": {
+        "prepare": true,
+        "reuse": true,
+        "verify": false,
+        "deploy": false
+      }
+    },
+    {
+      "id": "fallback-verification-failed",
+      "prepare": "success",
+      "reused": "false",
+      "verify": "failure",
+      "cancelled": false,
+      "expected": {
+        "prepare": true,
+        "reuse": true,
+        "verify": true,
+        "deploy": false
+      }
+    },
+    {
+      "id": "cancelled-no-deploy",
+      "prepare": "success",
+      "reused": "false",
+      "verify": "success",
+      "cancelled": true,
+      "expected": {
+        "prepare": true,
+        "reuse": true,
+        "verify": true,
+        "deploy": false
+      }
+    },
+    {
+      "id": "non-main-manual",
+      "event": "workflow_dispatch",
+      "ref": "refs/heads/candidate",
+      "prepare": "skipped",
+      "verify": "skipped",
+      "cancelled": false,
+      "expected": {
+        "prepare": false,
+        "reuse": false,
+        "verify": false,
+        "deploy": false
+      }
+    }
+  ]
+}

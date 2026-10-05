@@ -1,0 +1,9 @@
+# Additive sparse-checkout review scope
+
+Both reviewers receive the same additive scope independently. Existing runtime review remains exact App8a72819/Choices61cfa2b. Full local runtime ABBA remains live; no reviewer browser/build runs until root releases it.
+
+Two checkout steps now add identical non-cone patterns `/*` then `!/docs/qa/`, retaining the existing pinned checkout/default ref/filter/depth/authentication. Review the exact current workflow blobs and record their IDs. Read sparse-proposal.md and primary pinned provider/manager source, then independently inspect all required gate inputs and unchanged full-tree/artifact trust. This omits only QA evidence blobs from checkout, not Git tree identities, runtime/test inputs, expectations or successful gate requirements.
+
+Basef8c073a has2595 tracked blobs; rules select all132 non-QA paths and omit2463 QA blobs. The148.98MB/147.63MB figures describe uncompressed committed file bytes, not actual Git wire transfer. Actual fresh hosted filtering/sparse fetch/setup performance is unmeasured. Keep full `HEAD^{tree}` metadata and exact committed-tree comparisons including omitted QA. No source-tree relaxation or changed-only testing is permitted.
+
+Check safe inclusion of future inputs, hidden root config/license files, corpus snapshot and generated outputs, event-tested merge identity, automatic reuse and reusable full fallback. Reject stale cone config, unsupported transport filtering as efficiency proof, missing inputs, broad blob-demand audits, or claims of target savings from file-byte counts. Separate source approval from hosted execution/cost acceptance. Save additive original report/timings/hash scope; do not overwrite initial reports or see the other reviewer's initial verdict. No runtime/CI/API execution needed for this source review.

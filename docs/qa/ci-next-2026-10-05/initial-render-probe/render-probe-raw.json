@@ -1,0 +1,31 @@
+{
+  "startedAt": "2026-10-05T10:27:30.070Z",
+  "checkout": "f8c073a289f2c4af1f369a4588d5e0e74daf392c",
+  "patch": "diff --git a/web/src/App.tsx b/web/src/App.tsx\nindex 8bec3cb..8a72819 100644\n--- a/web/src/App.tsx\n+++ b/web/src/App.tsx\n@@ -192,7 +192,7 @@ export default function App() {\n     setText(value);\n     invalidate();\n   }\n-  function invalidate() {\n+  const invalidate = useCallback(() => {\n     interactionVersion.current++;\n     copyRequest.current++;\n     request.current++;\n@@ -204,7 +204,21 @@ export default function App() {\n     setError(\"\");\n     setManualCopy(\"\");\n     setNotice(\"\");\n-  }\n+  }, []);\n+  const changeTarget = useCallback(\n+    (target: string) => {\n+      setPrefs((current) => ({ ...current, target }));\n+      invalidate();\n+    },\n+    [invalidate],\n+  );\n+  const changeSource = useCallback(\n+    (source: string) => {\n+      setPrefs((current) => ({ ...current, source }));\n+      invalidate();\n+    },\n+    [invalidate],\n+  );\n   const referenceValidityChanged = useCallback((valid: boolean) => {\n     if (referenceValidity.current === valid) return;\n     referenceValidity.current = valid;\n@@ -578,10 +592,7 @@ export default function App() {\n                   id=\"target-zone\"\n                   label=\"Convert to\"\n                   value={prefs.target}\n-                  onChange={(target) => {\n-                    setPrefs({ ...prefs, target });\n-                    invalidate();\n-                  }}\n+                  onChange={changeTarget}\n                   invalid={!targetZone}\n                   describedBy=\"target-zone-help\"\n                   placeholder={`Your timezone · ${zoneName(device)}`}\n@@ -605,10 +616,7 @@ export default function App() {\n                   id=\"source-zone\"\n                   label=\"Source timezone when none is given\"\n                   value={prefs.source}\n-                  onChange={(source) => {\n-                    setPrefs({ ...prefs, source });\n-                    invalidate();\n-                  }}\n+                  onChange={changeSource}\n                   placeholder={`Device timezone · ${device}`}\n                   triggerLabel=\"Show source timezones\"\n                 />\ndiff --git a/web/src/components/Choices.tsx b/web/src/components/Choices.tsx\nindex d92d280..61cfa2b 100644\n--- a/web/src/components/Choices.tsx\n+++ b/web/src/components/Choices.tsx\n@@ -1,4 +1,4 @@\n-import { useRef } from \"react\";\n+import { memo, useRef } from \"react\";\n import {\n   Select,\n   SelectValue,\n@@ -151,8 +151,10 @@ const searchText = new Map(\n   ]),\n );\n const optionIds = new Set(timezoneOptions.map((option) => option.id));\n+const filterTimezone = (text: string, query: string) =>\n+  (searchText.get(text) || normalize(text)).includes(normalize(query));\n \n-export function ZoneChoice({\n+export const ZoneChoice = memo(function ZoneChoice({\n   id,\n   label,\n   value,\n@@ -186,9 +188,7 @@ export function ZoneChoice({\n         if (key !== null) commit(String(key));\n       }}\n       defaultItems={timezoneOptions}\n-      defaultFilter={(text, query) =>\n-        (searchText.get(text) || normalize(text)).includes(normalize(query))\n-      }\n+      defaultFilter={filterTimezone}\n       allowsCustomValue\n       allowsEmptyCollection\n       isInvalid={invalid}\n@@ -229,4 +229,4 @@ export function ZoneChoice({\n       </Popover>\n     </ComboBox>\n   );\n-}\n+});\n",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "rows": [],
+  "errors": [
+    {
+      "message": "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  locator('.result-zone')\nExpected: \"UTC+00:00 UTC\"\nReceived: \"UTC\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveText\" locator('.result-zone') with timeout 5000ms\n  - waiting for locator('.result-zone')\n    14 × locator resolved to <p class=\"result-zone\">UTC</p>\n       - unexpected value \"UTC\"\n"
+    }
+  ],
+  "artifacts": {
+    "baseline": {
+      "index.html": "714f01bb10089f40d9a7ad3da23ac110d9734be8d4873e73cbf6b305b5570418",
+      "sw.js": "d2af3e9cde5f72ca4a777746ce9a47119c0f5ff5dd4462bd1bb0faa9ea6e0bde",
+      "release.json": "02937ab01fcb00e7be0dad158ce2415cd0938393434b91278ef2bc4ac1508a3a",
+      "assets/index-B3d9YDa-.js": "764439adde23302a0e40ff2c221e8fe13055671a6285ac16d528344cf06befc9",
+      "assets/index-Bst_xchV.css": "8d8248b5671d0f98e2298e5ac449864a7fb21c7df9eba5c936dfa978ebd69e9f"
+    },
+    "candidate": {
+      "index.html": "ed988ed43823c25b160843ee64c357b82f97904f2d1d936b360cd51ae2021781",
+      "sw.js": "d08bdbb2d81ccd1df1d5047e9b4824f96bdd8aba5a5ec93b8685c787f62d004e",
+      "release.json": "e510009768ef062f7456c6dfdeb4fc3b5ca18da09970cf8747e42f269ed78cdf",
+      "assets/index-D8N01f_U.js": "137c64d19eb7e0038aa7b5c745e6609fd04383fe66460062b585fa13a2c63af2",
+      "assets/index-Bst_xchV.css": "8d8248b5671d0f98e2298e5ac449864a7fb21c7df9eba5c936dfa978ebd69e9f"
+    }
+  },
+  "chromium": "153.0.8010.12",
+  "endedAt": "2026-10-05T10:27:37.030Z"
+}

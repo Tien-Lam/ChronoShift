@@ -1,0 +1,1205 @@
+{
+  "began": "2026-10-05T10:52:15.179Z",
+  "ended": "2026-10-05T10:52:15.194Z",
+  "durationMs": 15.303,
+  "environment": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "bun": "1.4.0",
+    "dependencies": "/tmp/chronoshift-scheduling.uTUGnc",
+    "root": "/Users/tien/Developer/ChronoShift"
+  },
+  "identities": [
+    {
+      "file": ".github/workflows/web.yml",
+      "blob": "fb5b017a40bfb2c189aae4563a05988b29b3be7a",
+      "sha256": "5d32bea5a2f918415212ed1199d9f4ef9bb0100627bc3e31ae14cf48cd07b4a8",
+      "expectedBlob": "fb5b017a40bfb2c189aae4563a05988b29b3be7a"
+    },
+    {
+      "file": ".github/workflows/pages.yml",
+      "blob": "d92bca178f4596f578bb4e915924ba3d7fb83082",
+      "sha256": "d05d0185479c70b45ae61645c39f64cf44a1b783bf08ee666c158962bd9a99dd",
+      "expectedBlob": "d92bca178f4596f578bb4e915924ba3d7fb83082"
+    }
+  ],
+  "versions": {
+    "expressions": {
+      "name": "@actions/expressions",
+      "version": "0.3.61",
+      "gitHead": "b71ac284fc6a7382c22ecbf3e0009a6ae216823b"
+    },
+    "yaml": {
+      "name": "yaml",
+      "version": "2.8.1",
+      "gitHead": null
+    }
+  },
+  "expressions": {
+    "jobIf": "github.event_name != 'pull_request' || (github.event.action != 'labeled' && !github.event.pull_request.draft) || (github.event.action == 'labeled' && (github.event.label.name == 'ci-run' || github.event.label.name == 'ci-timing'))",
+    "name": "${{ (github.event_name != 'pull_request' || (github.event.action != 'labeled' && !github.event.pull_request.draft) || (github.event.action == 'labeled' && (github.event.label.name == 'ci-run' || github.event.label.name == 'ci-timing'))) && 'web' || 'web-deferred' }}",
+    "timing": "${{ (inputs.ci-timing || (github.event_name == 'pull_request' && github.event.action == 'labeled' && github.event.label.name == 'ci-timing')) && '1' || '0' }}",
+    "prepare": "github.ref == 'refs/heads/main'",
+    "reuse": "github.event_name == 'push'",
+    "verify": "needs.prepare.result == 'success' && needs.prepare.outputs.reused != 'true'",
+    "deploy": "always() && !cancelled() && needs.prepare.result == 'success' && needs.prepare.outputs.reused != 'true' && needs.verify.result == 'success'"
+  },
+  "triggerTypes": [
+    "opened",
+    "reopened",
+    "synchronize",
+    "ready_for_review",
+    "labeled"
+  ],
+  "rows": [
+    {
+      "id": "draft-\"CI-RUN\"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": true,
+      "labels": [
+        "CI-RUN"
+      ],
+      "newLabel": "CI-RUN",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": true,
+              "number": 42,
+              "labels": [
+                {
+                  "name": "CI-RUN"
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": "CI-RUN"
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "0"
+      },
+      "scheduled": true,
+      "effectiveTiming": "0"
+    },
+    {
+      "id": "ready-\"CI-RUN\"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": false,
+      "labels": [
+        "CI-RUN"
+      ],
+      "newLabel": "CI-RUN",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": false,
+              "number": 42,
+              "labels": [
+                {
+                  "name": "CI-RUN"
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": "CI-RUN"
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "0"
+      },
+      "scheduled": true,
+      "effectiveTiming": "0"
+    },
+    {
+      "id": "draft-\"CI-TIMING\"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": true,
+      "labels": [
+        "CI-TIMING"
+      ],
+      "newLabel": "CI-TIMING",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "1"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": true,
+              "number": 42,
+              "labels": [
+                {
+                  "name": "CI-TIMING"
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": "CI-TIMING"
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "1"
+      },
+      "scheduled": true,
+      "effectiveTiming": "1"
+    },
+    {
+      "id": "ready-\"CI-TIMING\"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": false,
+      "labels": [
+        "CI-TIMING"
+      ],
+      "newLabel": "CI-TIMING",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "1"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": false,
+              "number": 42,
+              "labels": [
+                {
+                  "name": "CI-TIMING"
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": "CI-TIMING"
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": true,
+        "name": "web",
+        "timing": "1"
+      },
+      "scheduled": true,
+      "effectiveTiming": "1"
+    },
+    {
+      "id": "draft-\"ci-run \"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": true,
+      "labels": [
+        "ci-run "
+      ],
+      "newLabel": "ci-run ",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": true,
+              "number": 42,
+              "labels": [
+                {
+                  "name": "ci-run "
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": "ci-run "
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "scheduled": false,
+      "effectiveTiming": "not-running"
+    },
+    {
+      "id": "ready-\"ci-run \"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": false,
+      "labels": [
+        "ci-run "
+      ],
+      "newLabel": "ci-run ",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": false,
+              "number": 42,
+              "labels": [
+                {
+                  "name": "ci-run "
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": "ci-run "
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "scheduled": false,
+      "effectiveTiming": "not-running"
+    },
+    {
+      "id": "draft-\" ci-run\"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": true,
+      "labels": [
+        " ci-run"
+      ],
+      "newLabel": " ci-run",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": true,
+              "number": 42,
+              "labels": [
+                {
+                  "name": " ci-run"
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": " ci-run"
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "scheduled": false,
+      "effectiveTiming": "not-running"
+    },
+    {
+      "id": "ready-\" ci-run\"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": false,
+      "labels": [
+        " ci-run"
+      ],
+      "newLabel": " ci-run",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": false,
+              "number": 42,
+              "labels": [
+                {
+                  "name": " ci-run"
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": " ci-run"
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "scheduled": false,
+      "effectiveTiming": "not-running"
+    },
+    {
+      "id": "draft-\"ci-timing \"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": true,
+      "labels": [
+        "ci-timing "
+      ],
+      "newLabel": "ci-timing ",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": true,
+              "number": 42,
+              "labels": [
+                {
+                  "name": "ci-timing "
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": "ci-timing "
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "scheduled": false,
+      "effectiveTiming": "not-running"
+    },
+    {
+      "id": "ready-\"ci-timing \"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": false,
+      "labels": [
+        "ci-timing "
+      ],
+      "newLabel": "ci-timing ",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": false,
+              "number": 42,
+              "labels": [
+                {
+                  "name": "ci-timing "
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": "ci-timing "
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "scheduled": false,
+      "effectiveTiming": "not-running"
+    },
+    {
+      "id": "draft-\" ci-timing\"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": true,
+      "labels": [
+        " ci-timing"
+      ],
+      "newLabel": " ci-timing",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": true,
+              "number": 42,
+              "labels": [
+                {
+                  "name": " ci-timing"
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": " ci-timing"
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "scheduled": false,
+      "effectiveTiming": "not-running"
+    },
+    {
+      "id": "ready-\" ci-timing\"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": false,
+      "labels": [
+        " ci-timing"
+      ],
+      "newLabel": " ci-timing",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": false,
+              "number": 42,
+              "labels": [
+                {
+                  "name": " ci-timing"
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": " ci-timing"
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "scheduled": false,
+      "effectiveTiming": "not-running"
+    },
+    {
+      "id": "draft-\"xci-run\"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": true,
+      "labels": [
+        "xci-run"
+      ],
+      "newLabel": "xci-run",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": true,
+              "number": 42,
+              "labels": [
+                {
+                  "name": "xci-run"
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": "xci-run"
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "scheduled": false,
+      "effectiveTiming": "not-running"
+    },
+    {
+      "id": "ready-\"xci-run\"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": false,
+      "labels": [
+        "xci-run"
+      ],
+      "newLabel": "xci-run",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": false,
+              "number": 42,
+              "labels": [
+                {
+                  "name": "xci-run"
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": "xci-run"
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "scheduled": false,
+      "effectiveTiming": "not-running"
+    },
+    {
+      "id": "draft-\"xci-timing\"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": true,
+      "labels": [
+        "xci-timing"
+      ],
+      "newLabel": "xci-timing",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": true,
+              "number": 42,
+              "labels": [
+                {
+                  "name": "xci-timing"
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": "xci-timing"
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "scheduled": false,
+      "effectiveTiming": "not-running"
+    },
+    {
+      "id": "ready-\"xci-timing\"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": false,
+      "labels": [
+        "xci-timing"
+      ],
+      "newLabel": "xci-timing",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": false,
+              "number": 42,
+              "labels": [
+                {
+                  "name": "xci-timing"
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": "xci-timing"
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "scheduled": false,
+      "effectiveTiming": "not-running"
+    },
+    {
+      "id": "draft-\"ci-run-extra\"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": true,
+      "labels": [
+        "ci-run-extra"
+      ],
+      "newLabel": "ci-run-extra",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": true,
+              "number": 42,
+              "labels": [
+                {
+                  "name": "ci-run-extra"
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": "ci-run-extra"
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "scheduled": false,
+      "effectiveTiming": "not-running"
+    },
+    {
+      "id": "ready-\"ci-run-extra\"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": false,
+      "labels": [
+        "ci-run-extra"
+      ],
+      "newLabel": "ci-run-extra",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": false,
+              "number": 42,
+              "labels": [
+                {
+                  "name": "ci-run-extra"
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": "ci-run-extra"
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "scheduled": false,
+      "effectiveTiming": "not-running"
+    },
+    {
+      "id": "draft-\"ci-timing-extra\"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": true,
+      "labels": [
+        "ci-timing-extra"
+      ],
+      "newLabel": "ci-timing-extra",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": true,
+              "number": 42,
+              "labels": [
+                {
+                  "name": "ci-timing-extra"
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": "ci-timing-extra"
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "scheduled": false,
+      "effectiveTiming": "not-running"
+    },
+    {
+      "id": "ready-\"ci-timing-extra\"",
+      "eventName": "pull_request",
+      "action": "labeled",
+      "draft": false,
+      "labels": [
+        "ci-timing-extra"
+      ],
+      "newLabel": "ci-timing-extra",
+      "inputs": {},
+      "ref": "refs/heads/main",
+      "expected": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "context": {
+        "github": {
+          "event_name": "pull_request",
+          "event": {
+            "action": "labeled",
+            "pull_request": {
+              "draft": false,
+              "number": 42,
+              "labels": [
+                {
+                  "name": "ci-timing-extra"
+                }
+              ],
+              "head": {
+                "repo": {
+                  "full_name": "Tien-Lam/ChronoShift"
+                }
+              }
+            },
+            "label": {
+              "name": "ci-timing-extra"
+            }
+          },
+          "repository": "Tien-Lam/ChronoShift",
+          "ref": "refs/heads/main"
+        },
+        "inputs": {
+          "publish-pages": false,
+          "ci-timing": false
+        }
+      },
+      "actual": {
+        "trigger": true,
+        "jobIf": false,
+        "name": "web-deferred",
+        "timing": "0"
+      },
+      "scheduled": false,
+      "effectiveTiming": "not-running"
+    }
+  ],
+  "pageRows": [],
+  "failures": [],
+  "limits": [
+    "Official expression evaluation and YAML parsing only, not GitHub's complete server/workflow compiler.",
+    "No implicit success() wrapping, event delivery, path-filter engine, approvals, branch checks, runner allocation, display-name evaluation ordering or concurrency scheduling is simulated.",
+    "always()/cancelled() are injected from each declared synthetic row; no other status functions are used.",
+    "Raw expression values for unsubscribed events do not imply that a workflow is scheduled.",
+    "Inherited push/manual payloads are modeled from official caller-context semantics and actual parsed caller inputs."
+  ]
+}

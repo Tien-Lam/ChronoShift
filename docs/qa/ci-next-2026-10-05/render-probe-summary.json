@@ -1,0 +1,143 @@
+{
+  "analyzedAt": "2026-10-05T10:29:19.164Z",
+  "startedAt": "2026-10-05T10:27:48.815Z",
+  "endedAt": "2026-10-05T10:28:42.708Z",
+  "count": 72,
+  "errors": [],
+  "platform": "darwin",
+  "architecture": "arm64",
+  "scope": "Local serial ARM64 ABBA; native conversion pipeline includes250ms debounce. Raw CDP before/after use threadTicks; totals are nonadditive. Not Linux/fullsuite/CI target acceptance.",
+  "groups": [
+    {
+      "engine": "chromium",
+      "variants": {
+        "baseline": {
+          "count": 12,
+          "meanElapsedMs": 598.9501770833331,
+          "meanPendingToSettledMs": 297.43333333233994,
+          "blocks": [
+            {
+              "block": 0,
+              "meanElapsedMs": 639.9202013333332,
+              "meanPendingToSettledMs": 297.18333333233994
+            },
+            {
+              "block": 3,
+              "meanElapsedMs": 557.9801528333328,
+              "meanPendingToSettledMs": 297.68333333233994
+            }
+          ],
+          "TaskDurationMeanMs": 41.317,
+          "ScriptDurationMeanMs": 17.883166666666668,
+          "LayoutDurationMeanMs": 0.6449999999999999,
+          "RecalcStyleDurationMeanMs": 1.77775
+        },
+        "candidate": {
+          "count": 12,
+          "meanElapsedMs": 592.8767292499999,
+          "meanPendingToSettledMs": 291.691666662693,
+          "blocks": [
+            {
+              "block": 1,
+              "meanElapsedMs": 638.8188475000002,
+              "meanPendingToSettledMs": 295.84999999900657
+            },
+            {
+              "block": 2,
+              "meanElapsedMs": 546.9346109999997,
+              "meanPendingToSettledMs": 287.5333333263795
+            }
+          ],
+          "TaskDurationMeanMs": 33.55233333333333,
+          "ScriptDurationMeanMs": 12.099083333333333,
+          "LayoutDurationMeanMs": 0.68275,
+          "RecalcStyleDurationMeanMs": 1.6649166666666666
+        }
+      },
+      "meanElapsedSavedMs": 6.073447833333148,
+      "meanNativePipelineSavedMs": 5.741666669646918
+    },
+    {
+      "engine": "firefox",
+      "variants": {
+        "baseline": {
+          "count": 12,
+          "meanElapsedMs": 411.1231875000012,
+          "meanPendingToSettledMs": 309.8333333333333,
+          "blocks": [
+            {
+              "block": 0,
+              "meanElapsedMs": 502.13727083333407,
+              "meanPendingToSettledMs": 316
+            },
+            {
+              "block": 3,
+              "meanElapsedMs": 320.1091041666684,
+              "meanPendingToSettledMs": 303.6666666666667
+            }
+          ]
+        },
+        "candidate": {
+          "count": 12,
+          "meanElapsedMs": 408.2967395833336,
+          "meanPendingToSettledMs": 305.75,
+          "blocks": [
+            {
+              "block": 1,
+              "meanElapsedMs": 319.3906945000005,
+              "meanPendingToSettledMs": 300.6666666666667
+            },
+            {
+              "block": 2,
+              "meanElapsedMs": 497.2027846666667,
+              "meanPendingToSettledMs": 310.8333333333333
+            }
+          ]
+        }
+      },
+      "meanElapsedSavedMs": 2.8264479166676324,
+      "meanNativePipelineSavedMs": 4.083333333333314
+    },
+    {
+      "engine": "webkit",
+      "variants": {
+        "baseline": {
+          "count": 12,
+          "meanElapsedMs": 596.0261874166657,
+          "meanPendingToSettledMs": 290.75,
+          "blocks": [
+            {
+              "block": 0,
+              "meanElapsedMs": 553.6269236666654,
+              "meanPendingToSettledMs": 289.5
+            },
+            {
+              "block": 3,
+              "meanElapsedMs": 638.4254511666659,
+              "meanPendingToSettledMs": 292
+            }
+          ]
+        },
+        "candidate": {
+          "count": 12,
+          "meanElapsedMs": 510.8714827500007,
+          "meanPendingToSettledMs": 290.25,
+          "blocks": [
+            {
+              "block": 1,
+              "meanElapsedMs": 552.3669028333328,
+              "meanPendingToSettledMs": 289.8333333333333
+            },
+            {
+              "block": 2,
+              "meanElapsedMs": 469.3760626666687,
+              "meanPendingToSettledMs": 290.6666666666667
+            }
+          ]
+        }
+      },
+      "meanElapsedSavedMs": 85.154704666665,
+      "meanNativePipelineSavedMs": 0.5
+    }
+  ]
+}

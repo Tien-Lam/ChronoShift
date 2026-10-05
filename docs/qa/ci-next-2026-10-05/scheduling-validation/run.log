@@ -1,0 +1,44 @@
+begin 2026-10-05T10:51:31.503Z
+draft-open: trigger=true if=false name=web-deferred timing=0 scheduled=false
+ready-open: trigger=true if=true name=web timing=0 scheduled=true
+draft-reopen: trigger=true if=false name=web-deferred timing=0 scheduled=false
+ready-reopen: trigger=true if=true name=web timing=0 scheduled=true
+draft-sync: trigger=true if=false name=web-deferred timing=0 scheduled=false
+ready-sync: trigger=true if=true name=web timing=0 scheduled=true
+ready-for-review: trigger=true if=true name=web timing=0 scheduled=true
+contradictory-ready-event-draft: trigger=true if=false name=web-deferred timing=0 scheduled=false
+draft-add-ci-run: trigger=true if=true name=web timing=0 scheduled=true
+ready-add-ci-run: trigger=true if=true name=web timing=0 scheduled=true
+draft-add-ci-timing: trigger=true if=true name=web timing=1 scheduled=true
+ready-add-ci-timing: trigger=true if=true name=web timing=1 scheduled=true
+draft-add-unrelated: trigger=true if=false name=web-deferred timing=0 scheduled=false
+ready-add-unrelated: trigger=true if=false name=web-deferred timing=0 scheduled=false
+draft-add-ci-run-extra: trigger=true if=false name=web-deferred timing=0 scheduled=false
+ready-add-ci-run-extra: trigger=true if=false name=web-deferred timing=0 scheduled=false
+draft-sticky-run: trigger=true if=false name=web-deferred timing=0 scheduled=false
+draft-sticky-timing: trigger=true if=false name=web-deferred timing=0 scheduled=false
+draft-sticky-both: trigger=true if=false name=web-deferred timing=0 scheduled=false
+ready-sticky-timing: trigger=true if=true name=web timing=0 scheduled=true
+unsubscribed-unlabeled: trigger=false if=true name=web timing=0 scheduled=false
+unsubscribed-converted_to_draft: trigger=false if=false name=web-deferred timing=0 scheduled=false
+unsubscribed-edited: trigger=false if=true name=web timing=0 scheduled=false
+unsubscribed-review_requested: trigger=false if=true name=web timing=0 scheduled=false
+unsubscribed-closed: trigger=false if=true name=web timing=0 scheduled=false
+draft-add-unrelated-with-sticky-timing: trigger=true if=false name=web-deferred timing=0 scheduled=false
+ready-add-unrelated-with-sticky-run: trigger=true if=false name=web-deferred timing=0 scheduled=false
+draft-inherited-optional-timing-no-bypass: trigger=true if=false name=web-deferred timing=1 scheduled=false
+draft-inherited-optional-publish-no-bypass: trigger=true if=false name=web-deferred timing=0 scheduled=false
+inherited-main-push: trigger=true if=true name=web timing=0 scheduled=true
+inherited-main-push-timing: trigger=true if=true name=web timing=1 scheduled=true
+inherited-main-workflow_dispatch: trigger=true if=true name=web timing=0 scheduled=true
+inherited-main-workflow_dispatch-timing: trigger=true if=true name=web timing=1 scheduled=true
+reused-publication: {"prepare":true,"reuse":true,"verify":false,"deploy":false}
+automatic-fallback: {"prepare":true,"reuse":true,"verify":true,"deploy":true}
+manual-fallback: {"prepare":true,"reuse":false,"verify":true,"deploy":true}
+missing-reuse-output-full-fallback: {"prepare":true,"reuse":true,"verify":true,"deploy":true}
+prepare-failed-no-second-publication: {"prepare":true,"reuse":true,"verify":false,"deploy":false}
+reused-prepare-deploy-failed: {"prepare":true,"reuse":true,"verify":false,"deploy":false}
+fallback-verification-failed: {"prepare":true,"reuse":true,"verify":true,"deploy":false}
+cancelled-no-deploy: {"prepare":true,"reuse":true,"verify":true,"deploy":false}
+non-main-manual: {"prepare":false,"reuse":false,"verify":false,"deploy":false}
+end 2026-10-05T10:51:31.519Z; rows=33; pages=9; failures=0
