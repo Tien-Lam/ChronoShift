@@ -1,0 +1,536 @@
+{
+  "observedAt": "2026-10-05T09:17:26.519Z",
+  "scope": "Exact final reviewed head; timing-artifact extraction validation is recorded separately.",
+  "run": {
+    "id": 37288000068,
+    "attempt": 1,
+    "head": "eef0d51ea3ca835dfe27d7e157c6bfad1610a7b3",
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success",
+    "createdAt": "2026-10-05T09:07:49Z",
+    "updatedAt": "2026-10-05T09:14:50Z",
+    "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37288000068"
+  },
+  "jobs": [
+    {
+      "id": 111691417008,
+      "name": "web",
+      "conclusion": "success",
+      "startedAt": "2026-10-05T09:07:52Z",
+      "completedAt": "2026-10-05T09:14:49Z",
+      "seconds": 417,
+      "roundedMinutes": 7,
+      "intervalBeforeFirstStepSeconds": 1,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:07:53Z",
+          "completedAt": "2026-10-05T09:07:55Z",
+          "seconds": 2
+        },
+        {
+          "name": "Initialize containers",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:07:55Z",
+          "completedAt": "2026-10-05T09:08:21Z",
+          "seconds": 26
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:08:21Z",
+          "completedAt": "2026-10-05T09:08:25Z",
+          "seconds": 4
+        },
+        {
+          "name": "Capture the checked-in corpus audit",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:08:25Z",
+          "completedAt": "2026-10-05T09:08:25Z",
+          "seconds": 0
+        },
+        {
+          "name": "Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:08:25Z",
+          "completedAt": "2026-10-05T09:08:31Z",
+          "seconds": 6
+        },
+        {
+          "name": "Run bun install --frozen-lockfile",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:08:31Z",
+          "completedAt": "2026-10-05T09:08:32Z",
+          "seconds": 1
+        },
+        {
+          "name": "Verify the pinned browser image matches the dependency",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:08:32Z",
+          "completedAt": "2026-10-05T09:08:32Z",
+          "seconds": 0
+        },
+        {
+          "name": "Run bun run format:check",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:08:32Z",
+          "completedAt": "2026-10-05T09:08:34Z",
+          "seconds": 2
+        },
+        {
+          "name": "Unit tests and production build",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:08:34Z",
+          "completedAt": "2026-10-05T09:08:36Z",
+          "seconds": 2
+        },
+        {
+          "name": "Verify the standalone conversion corpus audit",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:08:36Z",
+          "completedAt": "2026-10-05T09:08:36Z",
+          "seconds": 0
+        },
+        {
+          "name": "Run bun run test:browser",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:08:36Z",
+          "completedAt": "2026-10-05T09:14:39Z",
+          "seconds": 363
+        },
+        {
+          "name": "Record browser resource usage",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:14:39Z",
+          "completedAt": "2026-10-05T09:14:39Z",
+          "seconds": 0
+        },
+        {
+          "name": "Retain bounded browser timing metadata",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:14:39Z",
+          "completedAt": "2026-10-05T09:14:40Z",
+          "seconds": 1
+        },
+        {
+          "name": "Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+          "conclusion": "skipped",
+          "startedAt": "2026-10-05T09:14:40Z",
+          "completedAt": "2026-10-05T09:14:40Z",
+          "seconds": null
+        },
+        {
+          "name": "Verify repository-subpath deployment",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:14:40Z",
+          "completedAt": "2026-10-05T09:14:44Z",
+          "seconds": 4
+        },
+        {
+          "name": "Upload the verified Pages build",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:14:44Z",
+          "completedAt": "2026-10-05T09:14:45Z",
+          "seconds": 1
+        },
+        {
+          "name": "Publish failed-attempt diagnostics",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:14:45Z",
+          "completedAt": "2026-10-05T09:14:46Z",
+          "seconds": 1
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:14:46Z",
+          "completedAt": "2026-10-05T09:14:47Z",
+          "seconds": 1
+        },
+        {
+          "name": "Stop containers",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:14:47Z",
+          "completedAt": "2026-10-05T09:14:47Z",
+          "seconds": 0
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T09:14:47Z",
+          "completedAt": "2026-10-05T09:14:47Z",
+          "seconds": 0
+        }
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "conclusion": "success"
+    },
+    {
+      "name": "Capture the checked-in corpus audit",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run bun install --frozen-lockfile",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify the pinned browser image matches the dependency",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run bun run format:check",
+      "conclusion": "success"
+    },
+    {
+      "name": "Unit tests and production build",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify the standalone conversion corpus audit",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run bun run test:browser",
+      "conclusion": "success"
+    },
+    {
+      "name": "Record browser resource usage",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify repository-subpath deployment",
+      "conclusion": "success"
+    },
+    {
+      "name": "Upload the verified Pages build",
+      "conclusion": "success"
+    }
+  ],
+  "allRequiredGatesSuccessful": true,
+  "browser": {
+    "rows": 259,
+    "distinctOrdinals": 259,
+    "distinctSemanticCases": 258,
+    "firstAttemptRows": 258,
+    "firstPasses": 248,
+    "skipped": 9,
+    "failedRows": 1,
+    "retries": 1,
+    "byProject": {
+      "foldable": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0,
+        "retries": 0
+      },
+      "chromium": {
+        "passed": 51,
+        "skipped": 0,
+        "failed": 0,
+        "retries": 0
+      },
+      "firefox": {
+        "passed": 48,
+        "skipped": 3,
+        "failed": 0,
+        "retries": 0
+      },
+      "webkit": {
+        "passed": 48,
+        "skipped": 3,
+        "failed": 1,
+        "retries": 1
+      },
+      "android-emulation": {
+        "passed": 51,
+        "skipped": 0,
+        "failed": 0,
+        "retries": 0
+      },
+      "iphone-emulation": {
+        "passed": 48,
+        "skipped": 3,
+        "failed": 0,
+        "retries": 0
+      }
+    },
+    "equalInventoryToPR37": true,
+    "skipIdentityMatchesPR37": true
+  },
+  "unitEvidence": [
+    "web\tUnit tests and production build\t2026-10-05T09:08:35.3242391Z  116 pass",
+    "web\tUnit tests and production build\t2026-10-05T09:08:35.3242698Z  0 fail",
+    "web\tUnit tests and production build\t2026-10-05T09:08:35.3243401Z Ran 116 tests across 6 files. [484.00ms]"
+  ],
+  "browserSummaryEvidence": [
+    "web\tRun bun run test:browser\t2026-10-05T09:08:38.0902723Z Running 258 tests using 4 workers",
+    "web\tRun bun run test:browser\t2026-10-05T09:14:38.7870620Z   9 skipped"
+  ],
+  "subpathEvidence": [
+    "web\tVerify repository-subpath deployment\t2026-10-05T09:14:44.0234734Z   1 passed (2.1s)"
+  ],
+  "timingFlagEvidence": [
+    "web\tRun actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\t2026-10-05T09:08:21.9332261Z   CHRONOSHIFT_CI_TIMING: 1",
+    "web\tCapture the checked-in corpus audit\t2026-10-05T09:08:25.1968602Z   CHRONOSHIFT_CI_TIMING: 1",
+    "web\tRun jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492\t2026-10-05T09:08:25.2835388Z   CHRONOSHIFT_CI_TIMING: 1",
+    "web\tRun bun install --frozen-lockfile\t2026-10-05T09:08:31.1829501Z   CHRONOSHIFT_CI_TIMING: 1",
+    "web\tVerify the pinned browser image matches the dependency\t2026-10-05T09:08:32.3783904Z   CHRONOSHIFT_CI_TIMING: 1",
+    "web\tRun bun run format:check\t2026-10-05T09:08:32.9850382Z   CHRONOSHIFT_CI_TIMING: 1",
+    "web\tUnit tests and production build\t2026-10-05T09:08:34.7808815Z   CHRONOSHIFT_CI_TIMING: 1",
+    "web\tVerify the standalone conversion corpus audit\t2026-10-05T09:08:36.4949356Z   CHRONOSHIFT_CI_TIMING: 1",
+    "web\tRun bun run test:browser\t2026-10-05T09:08:36.8520167Z   CHRONOSHIFT_CI_TIMING: 1",
+    "web\tRecord browser resource usage\t2026-10-05T09:14:39.1063010Z   CHRONOSHIFT_CI_TIMING: 1",
+    "web\tRetain bounded browser timing metadata\t2026-10-05T09:14:39.2429798Z   CHRONOSHIFT_CI_TIMING: 1",
+    "web\tVerify repository-subpath deployment\t2026-10-05T09:14:40.2623875Z   CHRONOSHIFT_CI_TIMING: 1",
+    "web\tUpload the verified Pages build\t2026-10-05T09:14:44.0482565Z   CHRONOSHIFT_CI_TIMING: 1",
+    "web\tUpload the verified Pages build\t2026-10-05T09:14:44.0581327Z   CHRONOSHIFT_CI_TIMING: 1",
+    "web\tUpload the verified Pages build\t2026-10-05T09:14:44.1232659Z   CHRONOSHIFT_CI_TIMING: 1",
+    "web\tPublish failed-attempt diagnostics\t2026-10-05T09:14:45.2709877Z   CHRONOSHIFT_CI_TIMING: 1"
+  ],
+  "timingEnabled": true,
+  "timingArtifactStep": {
+    "name": "Retain bounded browser timing metadata",
+    "conclusion": "success",
+    "startedAt": "2026-10-05T09:14:39Z",
+    "completedAt": "2026-10-05T09:14:40Z",
+    "seconds": 1
+  },
+  "failureDiagnosticStep": {
+    "name": "Publish failed-attempt diagnostics",
+    "conclusion": "success",
+    "startedAt": "2026-10-05T09:14:45Z",
+    "completedAt": "2026-10-05T09:14:46Z",
+    "seconds": 1
+  },
+  "totalArtifactCount": 3,
+  "artifacts": [
+    {
+      "id": 11336030084,
+      "node_id": "MDg6QXJ0aWZhY3QxMTMzNjAzMDA4NA==",
+      "name": "chronoshift-ci-timing-37288000068-1",
+      "size_in_bytes": 47474,
+      "url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11336030084",
+      "archive_download_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11336030084/zip",
+      "expired": false,
+      "digest": "sha256:f0d6eed8277b92c00698178255942165f50eb8ee4f1ce6598504ee94259fa81a",
+      "created_at": "2026-10-05T09:14:40Z",
+      "updated_at": "2026-10-05T09:14:40Z",
+      "expires_at": "2026-10-06T09:14:39Z",
+      "workflow_run": {
+        "id": 37288000068,
+        "repository_id": 1206473449,
+        "head_repository_id": 1206473449,
+        "head_branch": "dependabot/github_actions/actions-maintenance-69fc19fed9",
+        "head_sha": "eef0d51ea3ca835dfe27d7e157c6bfad1610a7b3"
+      },
+      "nominalRetentionHours": 24,
+      "nominalProjectedByteHours": 1139376,
+      "apiExpiryHours": 23.99972222222222
+    },
+    {
+      "id": 11335666301,
+      "node_id": "MDg6QXJ0aWZhY3QxMTMzNTY2NjMwMQ==",
+      "name": "chronoshift-web-failure-37288000068-1",
+      "size_in_bytes": 4628437,
+      "url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11335666301",
+      "archive_download_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11335666301/zip",
+      "expired": false,
+      "digest": "sha256:54b9fdb870e20db6ecc036892a984d90b3fc5919323145edea2b3814ace0dc0e",
+      "created_at": "2026-10-05T09:14:46Z",
+      "updated_at": "2026-10-05T09:14:46Z",
+      "expires_at": "2026-10-08T09:14:45Z",
+      "workflow_run": {
+        "id": 37288000068,
+        "repository_id": 1206473449,
+        "head_repository_id": 1206473449,
+        "head_branch": "dependabot/github_actions/actions-maintenance-69fc19fed9",
+        "head_sha": "eef0d51ea3ca835dfe27d7e157c6bfad1610a7b3"
+      },
+      "nominalRetentionHours": 24,
+      "nominalProjectedByteHours": 111082488,
+      "apiExpiryHours": 71.99972222222222
+    },
+    {
+      "id": 11335542152,
+      "node_id": "MDg6QXJ0aWZhY3QxMTMzNTU0MjE1Mg==",
+      "name": "github-pages",
+      "size_in_bytes": 374684,
+      "url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11335542152",
+      "archive_download_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11335542152/zip",
+      "expired": false,
+      "digest": "sha256:b26ac7bb98f269a0682a073659296adf05c8b4813b6ce9d63e5532868394d4be",
+      "created_at": "2026-10-05T09:14:45Z",
+      "updated_at": "2026-10-05T09:14:45Z",
+      "expires_at": "2026-10-06T09:14:44Z",
+      "workflow_run": {
+        "id": 37288000068,
+        "repository_id": 1206473449,
+        "head_repository_id": 1206473449,
+        "head_branch": "dependabot/github_actions/actions-maintenance-69fc19fed9",
+        "head_sha": "eef0d51ea3ca835dfe27d7e157c6bfad1610a7b3"
+      },
+      "nominalRetentionHours": 24,
+      "nominalProjectedByteHours": 8992416,
+      "apiExpiryHours": 23.99972222222222
+    }
+  ],
+  "source": {
+    "base": "0fb0b915a1e1f2ab19613ad1f8ac9dae0eec43cc",
+    "head": "eef0d51ea3ca835dfe27d7e157c6bfad1610a7b3",
+    "approvedSource": "416f94e559a8b49237c58ca44455db8a6067a043",
+    "approvedWorkflowIdentities": [
+      {
+        "path": ".github/workflows/web.yml",
+        "source": "4a2d098605337417b84965f2227d1cda67a981d7",
+        "head": "4a2d098605337417b84965f2227d1cda67a981d7"
+      },
+      {
+        "path": ".github/workflows/pages.yml",
+        "source": "403f2d3a603847520efc76033141f272e3094fdb",
+        "head": "403f2d3a603847520efc76033141f272e3094fdb"
+      }
+    ],
+    "identities": [
+      {
+        "path": "web",
+        "base": "78dbdbf65b5328416f0b169cc52d3ed9541d02f9",
+        "head": "78dbdbf65b5328416f0b169cc52d3ed9541d02f9"
+      },
+      {
+        "path": "e2e",
+        "base": "295d14434adb5ad70b272aa80b012efc90f572ff",
+        "head": "295d14434adb5ad70b272aa80b012efc90f572ff"
+      },
+      {
+        "path": "tests",
+        "base": "39aaa930e5002536108aabce7b2d445d0a9bd429",
+        "head": "39aaa930e5002536108aabce7b2d445d0a9bd429"
+      },
+      {
+        "path": "scripts",
+        "base": "213342d4e83321aabf46bd2a280fae54ca6b4299",
+        "head": "213342d4e83321aabf46bd2a280fae54ca6b4299"
+      },
+      {
+        "path": "playwright.config.ts",
+        "base": "7a1c28db0dc15faaff76e2b02d72dc65962c9268",
+        "head": "7a1c28db0dc15faaff76e2b02d72dc65962c9268"
+      },
+      {
+        "path": "playwright.subpath.config.ts",
+        "base": "38acbcbda958e58264b5b71b70dc4fce3f0793aa",
+        "head": "38acbcbda958e58264b5b71b70dc4fce3f0793aa"
+      },
+      {
+        "path": "package.json",
+        "base": "5627cebee4d2062dadbf7536572981e5b9337fc4",
+        "head": "5627cebee4d2062dadbf7536572981e5b9337fc4"
+      },
+      {
+        "path": "bun.lock",
+        "base": "e418e7c65172b9b563f34a7c9f898bb3f0e988da",
+        "head": "e418e7c65172b9b563f34a7c9f898bb3f0e988da"
+      },
+      {
+        "path": ".github/dependabot.yml",
+        "base": "4cf4ca1242df077d8a625f55ffc6213a6bdd33b5",
+        "head": "4cf4ca1242df077d8a625f55ffc6213a6bdd33b5"
+      },
+      {
+        "path": ".github/workflows/web.yml",
+        "base": "c7df3a227e1f6802300a2f6858c6ff2c531a9102",
+        "head": "4a2d098605337417b84965f2227d1cda67a981d7"
+      },
+      {
+        "path": ".github/workflows/pages.yml",
+        "base": "819204762ca782b8e60aacfe1f991272eaddd595",
+        "head": "403f2d3a603847520efc76033141f272e3094fdb"
+      }
+    ],
+    "unchangedRuntimeTestsConfigs": true,
+    "testedMerge": "1078b575ceae65d575a831e2dc9c005c7863fdd0",
+    "testedTree": "6d01fce2b52fcfc27f6343812c02099857856f28",
+    "headTree": "6d01fce2b52fcfc27f6343812c02099857856f28",
+    "nonDocsDiff": [
+      ".github/workflows/pages.yml",
+      ".github/workflows/web.yml"
+    ]
+  },
+  "resource": {
+    "records": [
+      {
+        "at": "2026-10-05T09:08:36.912Z",
+        "phase": "before",
+        "platform": "linux",
+        "architecture": "x64",
+        "osRelease": "6.17.0-1022-azure",
+        "availableParallelism": 4,
+        "logicalCpus": 4,
+        "cpuModel": "AMD EPYC 7763 64-Core Processor",
+        "totalMemoryBytes": 16766414848,
+        "cgroup": {
+          "cpu.max": "max 100000",
+          "cpu.stat": "usage_usec 20113324\nuser_usec 16053460\nsystem_usec 4059864\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+          "memory.max": "max",
+          "memory.peak": "1582137344",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+        }
+      },
+      {
+        "at": "2026-10-05T09:14:39.169Z",
+        "phase": "after",
+        "platform": "linux",
+        "architecture": "x64",
+        "osRelease": "6.17.0-1022-azure",
+        "availableParallelism": 4,
+        "logicalCpus": 4,
+        "cpuModel": "AMD EPYC 7763 64-Core Processor",
+        "totalMemoryBytes": 16766414848,
+        "cgroup": {
+          "cpu.max": "max 100000",
+          "cpu.stat": "usage_usec 1276751114\nuser_usec 1082966588\nsystem_usec 193784525\nnice_usec 70582000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+          "memory.max": "max",
+          "memory.peak": "6605164544",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+        }
+      }
+    ],
+    "bracketSeconds": 362.257,
+    "cpuDelta": {
+      "usage_usec": 1256637790,
+      "user_usec": 1066913128,
+      "system_usec": 189724661,
+      "nice_usec": 70582000,
+      "core_sched.force_idle_usec": 0,
+      "nr_periods": 0,
+      "nr_throttled": 0,
+      "throttled_usec": 0,
+      "nr_bursts": 0,
+      "burst_usec": 0
+    },
+    "memoryEventsDelta": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0
+    }
+  },
+  "limits": [
+    "Configure/deploy and failure-conditional actions remain separate; actual timing upload is reconciled with its downloaded archive.",
+    "Complete raw list attempts are additionally reconciled with the extracted successful timing artifact. No direct green marker file is retained.",
+    "API spans/round-up minutes and nominal byte-hours are repository proxies, not account billing or complete paired publication.",
+    "Artifact/public-byte verification remains root-owned; no extraction/public identity assertion here."
+  ]
+}

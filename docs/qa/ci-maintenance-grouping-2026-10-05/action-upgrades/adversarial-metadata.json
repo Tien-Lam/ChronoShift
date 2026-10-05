@@ -1,0 +1,75 @@
+{
+  "reviewStartUtc": "2026-10-05 08:37:58 UTC",
+  "reviewEndUtc": "2026-10-05 08:40:13 UTC",
+  "reportWritingAfterWindow": true,
+  "localHead": "66e5fd32f2654e0a61d35ceae6e75b5e4561bc19",
+  "environment": {
+    "os": "Darwin 27.0.0 arm64",
+    "bun": "1.4.0",
+    "gh": "2.100.0",
+    "tools": "mise-managed"
+  },
+  "actions": [
+    {
+      "name": "checkout",
+      "pin": "3d3c42e5aac5ba805825da76410c181273ba90b1"
+    },
+    {
+      "name": "deploy-pages",
+      "pin": "368f82528645a54fb793d4d04e342629a3f51346"
+    },
+    {
+      "name": "configure-pages",
+      "pin": "45bfe0192ca1faeb007ade9deae92b16b8254a0d"
+    },
+    {
+      "name": "upload-artifact",
+      "pin": "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
+    },
+    {
+      "name": "upload-pages-artifact",
+      "pin": "fc324d3547104276b827a68afc52ff2a11cc49c9"
+    }
+  ],
+  "fullRetrievedLogSha256": {
+    "37181435922": "5f1edde6fc9242bfbd41c52e68d941bb5bf487a35a317edab9f52215e9b54e4a",
+    "37181447538": "f22e86d338787f16470a655e88ba04a717d1019fdc9ca3133b4a2390b9b209e9"
+  },
+  "fullLogsSaved": false,
+  "local": {
+    ".github/workflows/web.yml": "6701f72007ce6821f9c7ddf24b6200c51ef7adeb6a2277e6de6b26748e172b66",
+    ".github/workflows/pages.yml": "ff7ec8b1dd51086de24611fd7f23671efb149f5db4d3d1ea4727a0aea0892a44",
+    "scripts/reuse-pages-artifact.ts": "a2ab1a1b5ba2e240dab974b7a725a096a63adf01e1255e75fe70ea8716ac5af1"
+  },
+  "hashes": {
+    "pr-17-metadata.json": "ec98515d7798fe70e388ef754bed34caf86bb30b56bd792238fe97014e06394c",
+    "pr-17.diff": "1010ead8e369b891d97a45293f6374bda739a1f5c5f51371ff0e29bc4bbe1714",
+    "pr-17-run.json": "26a130acea0c53b50f61f3694d894bdc6c0ea0c0978a8f35cf9994f70057f195",
+    "pr-18-metadata.json": "307f8a4aeb698ac9ed5730a74a4cc48891aa29843d2390655e9d96959025191b",
+    "pr-18.diff": "b8260a604577b77a5ca5d9a89dbb3660ffd24caac73381054fd6b14ce5783338",
+    "pr-18-run.json": "4cdbb9756746186c18c2d21fe549c6554f376f4c15883d40b5cf1fc8dc47ab05",
+    "pr-19-metadata.json": "84ebeafcc34f8c6bbc269c2222e644c85ff8022c7ad860c17adb59a3d7246ec0",
+    "pr-19.diff": "2e12358e5775874576cfb388a727b69a692fc221594331e5f756857db7d3e2cc",
+    "pr-19-run.json": "8653fa5d777195828b80dcb0b1a1d8d30fc6aa722807bf7a42514150996a005c",
+    "pr-20-metadata.json": "1d18b4b238fe6a14cb1f523c6a94ff30e2e9e05886938adbfbdad0eb1697014e",
+    "pr-20.diff": "1d4a42db0dbb5e1d4e99dfc8fdf8118e062a0c75d3513f5efd1fdc5b32d955e1",
+    "pr-20-run.json": "b2656ac4cde384612d76125a0108144d970c3bbe87ec8b75d5d84aae12280319",
+    "pr-21-metadata.json": "dd27da0c18269b926be6ba3e0dd3af96243c29d74f68f92dd366038b8cf95ff6",
+    "pr-21.diff": "696d64b436eb00126ada0c955c97cc4fd5d3f8d942f4f9824c32dfcd71311a63",
+    "pr-21-run.json": "8b93746cb8eb8182b34849dc26186ad9d48bc6a3cf19e84de3ec0d2f00bd92d2",
+    "checkout-action.yml": "d59219cb79590abdb877deaa14e3b65a00c05318bf5a6f3b989b9162b5d08c35",
+    "checkout-README.md": "3df94d90d0df6df603a549cc779bc6cab4b21f8deef82eb6fef1f4d88b788174",
+    "deploy-pages-action.yml": "64c44539fba53559a157b5de16c01d3ab91dbc999c1b98b5c0b2fc3528d5d059",
+    "deploy-pages-README.md": "1b4f2ff21a06ad31a4f33e97cdc53f3e17b9bb35011aaddc3463a52721190102",
+    "configure-pages-action.yml": "55f1486ae3901c69be182cea1c1e3313954c78be626751a85b19ddaf14ae8da6",
+    "configure-pages-README.md": "fb2eb9972c7b7e79a7aaa7f05705c11d2ee6841303a1cd5f51702a97de5664e1",
+    "upload-artifact-action.yml": "c5979822866a72362e609844b6ebe77d4b7e759af68cc1c2c425dcf51481fab4",
+    "upload-artifact-README.md": "82e3d7226dabea938b107b93e015aa816150d6894fff631064aa2884c26771f7",
+    "upload-pages-artifact-action.yml": "f84e759011e0c497e696f5bce4ebb5fbe9bbdc5aea309b73795283fa139c1558",
+    "upload-pages-artifact-README.md": "866ca49996b0debddcdff491a57c30ef625783089ef609e49b227ffa474c8f11",
+    "deploy-pages-deployment.js": "60a215dcb2fb9827f9f22e09a5fbe3ac521a77f9b0f04d9489b2b32a1db3bbd5",
+    "pr-17-runner-fragments.txt": "ea717a038a647011953a2eb0ca9b6f4644a3de59e9f498f2a56433f29bb5cc89",
+    "pr-21-runner-fragments.txt": "ac891dbb64b6c38c8ddde8dbc7313c845db17dc31dc4a6a32dba8eb16c47390d",
+    "adversarial-audit.md": "04487f433da187c010792501355caca97688d7687e919264f832520434dc14f5"
+  }
+}

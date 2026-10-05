@@ -1,0 +1,328 @@
+{
+  "capturedAt": "2026-10-05T09:41:34.400Z",
+  "reports": [
+    {
+      "name": "initial-report.json",
+      "stats": {
+        "startTime": "2026-10-05T09:39:46.820Z",
+        "duration": 21463.409000000003,
+        "expected": 7,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "attempts": [
+        {
+          "title": "an unresolved target hides copyable fallback results and correction restores the source interpretation",
+          "outcome": "expected",
+          "status": "passed",
+          "retry": 0,
+          "startTime": "2026-10-05T09:39:47.063Z",
+          "duration": 1971,
+          "errors": []
+        },
+        {
+          "title": "probe uninterrupted fallback selects exact copy text with diagnostics disabled",
+          "outcome": "unexpected",
+          "status": "failed",
+          "retry": 0,
+          "startTime": "2026-10-05T09:39:49.190Z",
+          "duration": 11082,
+          "errors": [
+            "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Text to copy')\nTimeout: 10000ms\nExpected pattern: \u001b[32m/9 Apr 2026.*3:00 pm.*UTC/s\u001b[39m\nReceived string:  \u001b[31m\"3:00 pm · Thu, 9 Apr 2026 · UTC\u001b[39m\n\u001b[31mApril 9, 2026 3pm UTC — UTC\"\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByLabel('Text to copy') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Text to copy')\u001b[22m\n\u001b[2m    24 × locator resolved to <textarea readonly id=\"manual-copy\">3:00 pm · Thu, 9 Apr 2026 · UTC↵April 9, 2026 3pm…</textarea>\u001b[22m\n\u001b[2m       - unexpected value \"3:00 pm · Thu, 9 Apr 2026 · UTC\u001b[22m\n\u001b[2mApril 9, 2026 3pm UTC — UTC\"\u001b[22m\n\n\n  153 |   const field = page.getByLabel(\"Text to copy\");\n  154 |   await expect(field).toBeFocused();\n> 155 |   await expect(field).toHaveValue(/9 Apr 2026.*3:00 pm.*UTC/s);\n      |                      ^\n  156 |   expect(\n  157 |     await field.evaluate((el: HTMLTextAreaElement) => [\n  158 |       el.selectionStart,\n    at /Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/focus-probes.spec.ts:155:22"
+          ]
+        },
+        {
+          "title": "probe held native fallback frame yields to target keyboard entry and exact correction",
+          "outcome": "expected",
+          "status": "passed",
+          "retry": 0,
+          "startTime": "2026-10-05T09:40:00.444Z",
+          "duration": 1826,
+          "errors": []
+        },
+        {
+          "title": "probe delayed rejection after focus-only handoff retains fallback without stealing focus",
+          "outcome": "expected",
+          "status": "passed",
+          "retry": 0,
+          "startTime": "2026-10-05T09:40:02.419Z",
+          "duration": 969,
+          "errors": []
+        },
+        {
+          "title": "probe invalidation suppresses delayed clipboard rejection",
+          "outcome": "expected",
+          "status": "passed",
+          "retry": 0,
+          "startTime": "2026-10-05T09:40:03.391Z",
+          "duration": 1284,
+          "errors": []
+        },
+        {
+          "title": "probe latest successful copy owns outcome after earlier late rejection",
+          "outcome": "expected",
+          "status": "passed",
+          "retry": 0,
+          "startTime": "2026-10-05T09:40:04.677Z",
+          "duration": 1137,
+          "errors": []
+        },
+        {
+          "title": "probe old queued frame cannot target newer fallback field",
+          "outcome": "expected",
+          "status": "passed",
+          "retry": 0,
+          "startTime": "2026-10-05T09:40:05.817Z",
+          "duration": 1507,
+          "errors": []
+        },
+        {
+          "title": "probe focus away and back does not revive queued focus ownership",
+          "outcome": "expected",
+          "status": "passed",
+          "retry": 0,
+          "startTime": "2026-10-05T09:40:07.328Z",
+          "duration": 925,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "name": "report.json",
+      "stats": {
+        "startTime": "2026-10-05T09:40:51.377Z",
+        "duration": 3348.843,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "attempts": [
+        {
+          "title": "an unresolved target hides copyable fallback results and correction restores the source interpretation",
+          "outcome": "expected",
+          "status": "passed",
+          "retry": 0,
+          "startTime": "2026-10-05T09:40:51.627Z",
+          "duration": 1992,
+          "errors": []
+        },
+        {
+          "title": "probe uninterrupted fallback selects exact copy text with diagnostics disabled",
+          "outcome": "expected",
+          "status": "passed",
+          "retry": 0,
+          "startTime": "2026-10-05T09:40:53.769Z",
+          "duration": 933,
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "diagnostics": [
+    {
+      "evidence": "initial-results/focus-probes-probe-held-na-643b3--entry-and-exact-correction/probe-evidence.json",
+      "environment": {
+        "origin": "http://127.0.0.1:4317",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6 Safari/605.1.15",
+        "reducedMotion": false,
+        "activeField": "SUMMARY"
+      },
+      "retry": 0,
+      "status": "passed",
+      "eventCount": 3,
+      "events": [
+        {
+          "event": "[ChronoShift] copy.started",
+          "requestId": 3
+        },
+        {
+          "event": "[ChronoShift] copy.focus-scheduled",
+          "requestId": 3
+        },
+        {
+          "event": "[ChronoShift] copy.focus-skipped",
+          "requestId": 3,
+          "reason": "new-interaction"
+        }
+      ]
+    },
+    {
+      "evidence": "initial-results/focus-probes-probe-uninter-b1e75-t-with-diagnostics-disabled/probe-evidence.json",
+      "environment": {
+        "origin": "http://127.0.0.1:4317",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6 Safari/605.1.15",
+        "reducedMotion": false,
+        "activeField": "manual-copy"
+      },
+      "retry": 0,
+      "status": "failed",
+      "eventCount": 0,
+      "events": []
+    },
+    {
+      "evidence": "initial-results/focus-probes-probe-latest--2d760-fter-earlier-late-rejection/probe-evidence.json",
+      "environment": {
+        "origin": "http://127.0.0.1:4317",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6 Safari/605.1.15",
+        "reducedMotion": false,
+        "activeField": "BODY"
+      },
+      "retry": 0,
+      "status": "passed",
+      "eventCount": 2,
+      "events": [
+        {
+          "event": "[ChronoShift] copy.started",
+          "requestId": 3
+        },
+        {
+          "event": "[ChronoShift] copy.started",
+          "requestId": 4
+        }
+      ]
+    },
+    {
+      "evidence": "initial-results/focus-probes-probe-focus-a-ddb6b-vive-queued-focus-ownership/probe-evidence.json",
+      "environment": {
+        "origin": "http://127.0.0.1:4317",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6 Safari/605.1.15",
+        "reducedMotion": false,
+        "activeField": "BUTTON"
+      },
+      "retry": 0,
+      "status": "passed",
+      "eventCount": 3,
+      "events": [
+        {
+          "event": "[ChronoShift] copy.started",
+          "requestId": 3
+        },
+        {
+          "event": "[ChronoShift] copy.focus-scheduled",
+          "requestId": 3
+        },
+        {
+          "event": "[ChronoShift] copy.focus-skipped",
+          "requestId": 3,
+          "reason": "new-interaction"
+        }
+      ]
+    },
+    {
+      "evidence": "initial-results/focus-probes-probe-invalid-649ed-delayed-clipboard-rejection/probe-evidence.json",
+      "environment": {
+        "origin": "http://127.0.0.1:4317",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6 Safari/605.1.15",
+        "reducedMotion": false,
+        "activeField": "SUMMARY"
+      },
+      "retry": 0,
+      "status": "passed",
+      "eventCount": 1,
+      "events": [
+        {
+          "event": "[ChronoShift] copy.started",
+          "requestId": 3
+        }
+      ]
+    },
+    {
+      "evidence": "initial-results/focus-probes-probe-old-que-37f8a-target-newer-fallback-field/probe-evidence.json",
+      "environment": {
+        "origin": "http://127.0.0.1:4317",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6 Safari/605.1.15",
+        "reducedMotion": false,
+        "activeField": "target-zone"
+      },
+      "retry": 0,
+      "status": "passed",
+      "eventCount": 6,
+      "events": [
+        {
+          "event": "[ChronoShift] copy.started",
+          "requestId": 3
+        },
+        {
+          "event": "[ChronoShift] copy.focus-scheduled",
+          "requestId": 3
+        },
+        {
+          "event": "[ChronoShift] copy.started",
+          "requestId": 5
+        },
+        {
+          "event": "[ChronoShift] copy.focus-scheduled",
+          "requestId": 5
+        },
+        {
+          "event": "[ChronoShift] copy.focus-applied",
+          "requestId": 5
+        },
+        {
+          "event": "[ChronoShift] copy.focus-skipped",
+          "requestId": 3,
+          "reason": "superseded"
+        }
+      ]
+    },
+    {
+      "evidence": "initial-results/focus-probes-probe-delayed-ecfd2-back-without-stealing-focus/probe-evidence.json",
+      "environment": {
+        "origin": "http://127.0.0.1:4317",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6 Safari/605.1.15",
+        "reducedMotion": false,
+        "activeField": "target-zone"
+      },
+      "retry": 0,
+      "status": "passed",
+      "eventCount": 3,
+      "events": [
+        {
+          "event": "[ChronoShift] copy.started",
+          "requestId": 3
+        },
+        {
+          "event": "[ChronoShift] copy.focus-scheduled",
+          "requestId": 3
+        },
+        {
+          "event": "[ChronoShift] copy.focus-skipped",
+          "requestId": 3,
+          "reason": "new-interaction"
+        }
+      ]
+    },
+    {
+      "evidence": "results/focus-probes-probe-uninter-b1e75-t-with-diagnostics-disabled/probe-evidence.json",
+      "environment": {
+        "origin": "http://127.0.0.1:4317",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6 Safari/605.1.15",
+        "reducedMotion": false,
+        "activeField": "manual-copy"
+      },
+      "retry": 0,
+      "status": "passed",
+      "eventCount": 0,
+      "events": []
+    }
+  ],
+  "existing": [
+    {
+      "capturedAt": "2026-10-05T09:40:53.727Z",
+      "retry": 0,
+      "status": "passed",
+      "environment": {
+        "origin": "http://127.0.0.1:58250",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6 Safari/605.1.15",
+        "reducedMotion": false
+      },
+      "release": {
+        "sourceCommit": "35e11bac657a0c379fda48af9b454e674d2ea854",
+        "base": "/"
+      }
+    }
+  ],
+  "privacyAudit": "All observed copy diagnostic payloads use only at/requestId/fixed reason; disabled case emitted none. No application storage/network implementation changes are inferred from this console check."
+}

@@ -1,0 +1,53 @@
+
+Running 8 tests using 4 workers
+
+(node:6999) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:6997) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:6996) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:6998) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  2 [webkit] › e2e/copy-focus.spec.ts:326:0 › focus-only handoff is retained before any value changes (1.3s)
+  ✓  1 [webkit] › e2e/copy-focus.spec.ts:305:0 › an unchanged copy owner still receives selected manual fallback text (1.3s)
+  ✘  4 [webkit] › e2e/copy-focus.spec.ts:339:0 › focus away and back does not revive the older copy frame (1.4s)
+(node:7068) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  3 [webkit] › e2e/copy-focus.spec.ts:271:0 › a deferred manual-copy focus frame cannot steal a new target keyboard edit (2.2s)
+  ✓  6 [webkit] › e2e/copy-focus.spec.ts:363:0 › same-owner pointer intent keeps the newer owner (1.1s)
+  ✓  5 [webkit] › e2e/copy-focus.spec.ts:354:0 › same-owner keyboard intent keeps the newer owner (1.2s)
+  ✓  7 [webkit] › e2e/copy-focus.spec.ts:381:0 › a newer copy request makes the older held frame inert (1.4s)
+  ✓  8 [webkit] › e2e/copy-focus.spec.ts:394:0 › late clipboard rejection cannot restore a fallback invalidated by a target edit (1.3s)
+
+
+  1) [webkit] › e2e/copy-focus.spec.ts:339:0 › focus away and back does not revive the older copy frame 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      266 |       () => (window as any).__copyFocusProbe.snapshot().sameRememberedOwner,
+      267 |     ),
+    > 268 |   ).toBe(true);
+          |    ^
+      269 | }
+      270 |
+      271 | test("a deferred manual-copy focus frame cannot steal a new target keyboard edit", async ({
+        at expectOwnerRetained (/Users/tien/Developer/ChronoShift/e2e/copy-focus.spec.ts:268:4)
+        at /Users/tien/Developer/ChronoShift/e2e/copy-focus.spec.ts:349:8
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs/qa/copy-focus-2026-10-05/candidate/webkit/results/copy-focus-focus-away-and--06027-revive-the-older-copy-frame-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: copy-focus-observation (application/json) ───────────────────────────────────────
+    docs/qa/copy-focus-2026-10-05/candidate/webkit/results/copy-focus-focus-away-and--06027-revive-the-older-copy-frame-webkit/attachments/copy-focus-observation-3e317c8b3f53d1c0066d95540fcd1add31862794.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs/qa/copy-focus-2026-10-05/candidate/webkit/results/copy-focus-focus-away-and--06027-revive-the-older-copy-frame-webkit/error-context.md
+
+  1 failed
+    [webkit] › e2e/copy-focus.spec.ts:339:0 › focus away and back does not revive the older copy frame 
+  7 passed (4.0s)

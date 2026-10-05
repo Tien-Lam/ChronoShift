@@ -1,0 +1,22 @@
+diff --git a/.github/workflows/web.yml b/.github/workflows/web.yml
+index c7df3a2..946e374 100644
+--- a/.github/workflows/web.yml
++++ b/.github/workflows/web.yml
+@@ -80,7 +80,7 @@ jobs:
+         run: bun scripts/ci-environment.ts after
+       - name: Retain bounded browser timing metadata
+         if: ${{ !cancelled() && env.CHRONOSHIFT_CI_TIMING == '1' && hashFiles('test-results/ci-timing.json') != '' }}
+-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
++        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+         with:
+           name: chronoshift-ci-timing-${{ github.run_id }}-${{ github.run_attempt }}
+           path: test-results/ci-timing.json
+@@ -104,7 +104,7 @@ jobs:
+           retention-days: ${{ inputs.publish-pages && 14 || 1 }}
+       - name: Publish failed-attempt diagnostics
+         if: ${{ !cancelled() && (failure() || hashFiles('test-results/attempt-failures.json') != '') }}
+-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
++        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+         with:
+           name: chronoshift-web-failure-${{ github.run_id }}-${{ github.run_attempt }}
+           path: |

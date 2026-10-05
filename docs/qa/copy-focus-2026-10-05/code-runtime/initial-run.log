@@ -1,0 +1,65 @@
+
+Running 8 tests using 1 worker
+
+(node:6245) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (2.0s)
+  ✘  2 docs/qa/copy-focus-2026-10-05/code-runtime/focus-probes.spec.ts:148:0 › probe uninterrupted fallback selects exact copy text with diagnostics disabled (11.1s)
+(node:6311) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  3 docs/qa/copy-focus-2026-10-05/code-runtime/focus-probes.spec.ts:170:0 › probe held native fallback frame yields to target keyboard entry and exact correction (1.8s)
+  ✓  4 docs/qa/copy-focus-2026-10-05/code-runtime/focus-probes.spec.ts:200:0 › probe delayed rejection after focus-only handoff retains fallback without stealing focus (969ms)
+  ✓  5 docs/qa/copy-focus-2026-10-05/code-runtime/focus-probes.spec.ts:219:0 › probe invalidation suppresses delayed clipboard rejection (1.3s)
+  ✓  6 docs/qa/copy-focus-2026-10-05/code-runtime/focus-probes.spec.ts:237:0 › probe latest successful copy owns outcome after earlier late rejection (1.1s)
+  ✓  7 docs/qa/copy-focus-2026-10-05/code-runtime/focus-probes.spec.ts:258:0 › probe old queued frame cannot target newer fallback field (1.5s)
+  ✓  8 docs/qa/copy-focus-2026-10-05/code-runtime/focus-probes.spec.ts:281:0 › probe focus away and back does not revive queued focus ownership (925ms)
+
+
+  1) docs/qa/copy-focus-2026-10-05/code-runtime/focus-probes.spec.ts:148:0 › probe uninterrupted fallback selects exact copy text with diagnostics disabled 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByLabel('Text to copy')
+    Timeout: 10000ms
+    Expected pattern: /9 Apr 2026.*3:00 pm.*UTC/s
+    Received string:  "3:00 pm · Thu, 9 Apr 2026 · UTC
+    April 9, 2026 3pm UTC — UTC"
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('Text to copy') with timeout 10000ms
+      - waiting for getByLabel('Text to copy')
+        24 × locator resolved to <textarea readonly id="manual-copy">3:00 pm · Thu, 9 Apr 2026 · UTC↵April 9, 2026 3pm…</textarea>
+           - unexpected value "3:00 pm · Thu, 9 Apr 2026 · UTC
+    April 9, 2026 3pm UTC — UTC"
+
+
+      153 |   const field = page.getByLabel("Text to copy");
+      154 |   await expect(field).toBeFocused();
+    > 155 |   await expect(field).toHaveValue(/9 Apr 2026.*3:00 pm.*UTC/s);
+          |                      ^
+      156 |   expect(
+      157 |     await field.evaluate((el: HTMLTextAreaElement) => [
+      158 |       el.selectionStart,
+        at /Users/tien/Developer/ChronoShift/docs/qa/copy-focus-2026-10-05/code-runtime/focus-probes.spec.ts:155:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs/qa/copy-focus-2026-10-05/code-runtime/results/focus-probes-probe-uninter-b1e75-t-with-diagnostics-disabled/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: probe-evidence (application/json) ───────────────────────────────────────────────
+    docs/qa/copy-focus-2026-10-05/code-runtime/results/focus-probes-probe-uninter-b1e75-t-with-diagnostics-disabled/attachments/probe-evidence-52394bff5d1a1d22b73b376a3389de94bbd0f0c9.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs/qa/copy-focus-2026-10-05/code-runtime/results/focus-probes-probe-uninter-b1e75-t-with-diagnostics-disabled/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    docs/qa/copy-focus-2026-10-05/code-runtime/results/focus-probes-probe-uninter-b1e75-t-with-diagnostics-disabled/trace.zip
+    Usage:
+
+        npx playwright show-trace docs/qa/copy-focus-2026-10-05/code-runtime/results/focus-probes-probe-uninter-b1e75-t-with-diagnostics-disabled/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    docs/qa/copy-focus-2026-10-05/code-runtime/focus-probes.spec.ts:148:0 › probe uninterrupted fallback selects exact copy text with diagnostics disabled 
+  7 passed (21.5s)

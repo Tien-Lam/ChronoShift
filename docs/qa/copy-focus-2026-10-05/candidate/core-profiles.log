@@ -1,0 +1,39 @@
+
+Running 12 tests using 4 workers
+
+(node:7252) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:7253) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:7254) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:7255) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓   1 [chromium] › e2e/copy-focus.spec.ts:313:0 › an unchanged copy owner still receives selected manual fallback text (995ms)
+  ✓   2 [chromium] › e2e/copy-focus.spec.ts:362:0 › same-owner keyboard intent keeps the newer owner (995ms)
+(node:7281) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:7280) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓   3 [chromium] › e2e/copy-focus.spec.ts:279:0 › a deferred manual-copy focus frame cannot steal a new target keyboard edit (1.9s)
+(node:7284) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓   4 [firefox] › e2e/copy-focus.spec.ts:279:0 › a deferred manual-copy focus frame cannot steal a new target keyboard edit (2.5s)
+(node:7299) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓   7 [android-emulation] › e2e/copy-focus.spec.ts:279:0 › a deferred manual-copy focus frame cannot steal a new target keyboard edit (1.9s)
+  ✓   8 [android-emulation] › e2e/copy-focus.spec.ts:313:0 › an unchanged copy owner still receives selected manual fallback text (988ms)
+(node:7316) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓   5 [firefox] › e2e/copy-focus.spec.ts:362:0 › same-owner keyboard intent keeps the newer owner (1.5s)
+  ✓   9 [android-emulation] › e2e/copy-focus.spec.ts:362:0 › same-owner keyboard intent keeps the newer owner (915ms)
+(node:7330) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:7342) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  11 [iphone-emulation] › e2e/copy-focus.spec.ts:362:0 › same-owner keyboard intent keeps the newer owner (1.3s)
+  ✓  12 [iphone-emulation] › e2e/copy-focus.spec.ts:313:0 › an unchanged copy owner still receives selected manual fallback text (1.2s)
+  ✓  10 [iphone-emulation] › e2e/copy-focus.spec.ts:279:0 › a deferred manual-copy focus frame cannot steal a new target keyboard edit (2.0s)
+  ✓   6 [firefox] › e2e/copy-focus.spec.ts:313:0 › an unchanged copy owner still receives selected manual fallback text (1.4s)
+
+  12 passed (7.4s)

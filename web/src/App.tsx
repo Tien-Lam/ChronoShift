@@ -80,6 +80,7 @@ export default function App() {
   // Imports conflict with user changes, not automatic conversion requests.
   const interactionVersion = useRef(0);
   const copyRequest = useRef(0);
+  const copyFocusIntent = useRef(0);
   const draft = useRef(text);
   draft.current = text;
   const currentDevice = useRef(device);
@@ -95,6 +96,19 @@ export default function App() {
     referenceDate: referenceDate || undefined,
     locale: navigator.language || "en-AU",
   };
+
+  useEffect(() => {
+    const moved = () => copyFocusIntent.current++;
+    // A newer focus, pointer or keyboard action owns focus even before it
+    // changes a value. Keep this separate from draft/import invalidation.
+    for (const event of ["focus", "pointerdown", "keydown"])
+      document.addEventListener(event, moved, true);
+    return () => {
+      for (const event of ["focus", "pointerdown", "keydown"])
+        document.removeEventListener(event, moved, true);
+      copyFocusIntent.current++;
+    };
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -366,7 +380,9 @@ export default function App() {
   async function copy(result: TimeResult) {
     if (!targetZone || !sourceZone) return;
     const copyId = ++copyRequest.current;
+    const focusIntent = copyFocusIntent.current;
     const value = copyText(result, displayOptions);
+    diagnostic("copy.started", { requestId: copyId });
     try {
       await navigator.clipboard.writeText(value);
       if (copyId !== copyRequest.current) return;
@@ -378,9 +394,27 @@ export default function App() {
       setNotice(
         "Select the text below and copy it using your keyboard or touch menu.",
       );
+      diagnostic("copy.focus-scheduled", { requestId: copyId });
       requestAnimationFrame(() => {
-        copyField.current?.focus();
-        copyField.current?.select();
+        const field = copyField.current;
+        const reason =
+          copyId !== copyRequest.current
+            ? "superseded"
+            : focusIntent !== copyFocusIntent.current
+              ? "new-interaction"
+              : !field
+                ? "no-field"
+                : undefined;
+        if (reason || !field) {
+          diagnostic("copy.focus-skipped", {
+            requestId: copyId,
+            reason: reason || "no-field",
+          });
+          return;
+        }
+        field.focus();
+        field.select();
+        diagnostic("copy.focus-applied", { requestId: copyId });
       });
     }
   }

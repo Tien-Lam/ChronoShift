@@ -1,0 +1,30 @@
+# Independent original-failure assessment
+
+Observation clock: 2026-10-05 09:17:20–09:22:41 UTC. Report saved before any candidate source was provided. Explicit working directory: `/Users/tien/Developer/ChronoShift`. No tests, API calls, installs or source mutations. I inspected raw failure ZIP/log/marker/context/screenshot, the successful retry trace, and surrounding App/Choices/helper/React Aria source; I did not inspect another reviewer's verdict or analysis.
+
+Source head: `eef0d51ea3ca835dfe27d7e157c6bfad1610a7b3`, tree `6d01fce2b52fcfc27f6343812c02099857856f28`. App/test source is unchanged from main `0fb0b915a1e1f2ab19613ad1f8ac9dae0eec43cc`. Web run 37288000068 is the original observed gate. Failure artifact 11335666301 is 4,628,437 bytes, SHA256 `54b9fdb870e20db6ecc036892a984d90b3fc5919323145edea2b3814ace0dc0e`; its complete ZIP matches the saved artifact metadata. An earlier partial ZIP could not be read and was discarded as evidence.
+
+## Observed conditions
+
+WebKit `imports.spec.ts:173`, retry 0, failed after 14,145 ms. At line 197 the helper fills Convert to with CST, presses Tab, and expects CST. The 10-second assertion observed UTC on 23 polls, with the combobox closed. The retained screenshot still shows the UTC result, manual-copy field and fallback notice; More options has focus. This is the failure after the first immediate clipboard rejection, before the later delayed-rejection scenario.
+
+The marker records exactly one failed original attempt with screenshot/error context. There is no first-failure trace: CI uses `on-first-retry`. The sole retry-1 trace belongs to the successful 7.7-second retry. It shows manual fallback visible, then CST fill/Tab/value success, correction to Tokyo, and the later invalidated delayed clipboard rejection. That establishes a successful alternate schedule, not the failed schedule. The full gate retains 258 unique cases, 248 first passes, nine skips, one first failure and one successful retry.
+
+## Competing paths and contract
+
+1. Deferred fallback focus can steal focus during target entry. App.copy guards request identity before setting fallback state, then schedules unguarded `requestAnimationFrame` focus/select. Visibility of the manual field does not establish completion of that callback. A pending callback could run after the target receives focus but before keyboard text insertion. Input would then remain UTC, and a subsequent target Tab could focus More options. The settled screenshot is consistent with this path; the missing original trace prevents proving it.
+2. Controlled combobox selection/blur could restore UTC. React Aria commits on blur; controlled selection and custom text have different commit paths. However, ZoneChoice commits a new CST input to App immediately, and App.invalidate clears manual-copy state and notice. A simple accepted CST followed by UTC restoration should therefore have removed those fallback elements. Their retention weighs against this simple version, without ruling out every scheduling path.
+3. A suggestion appearing under the pointer could select UTC. Existing zone lists disable focus-on-hover, and the helper uses input fill/Tab rather than an option press. That weakens this path. Normal motion and keyboard/explicit option selection must remain intact; altering hover, motion or waits to hide this failure would not establish a product fix.
+4. A later worker or clipboard completion could restore stale state. Clipboard request identity guards settlement, and invalidation increments that identity. Worker conversion does not write target preferences. These source protections weaken later stale restoration as the cause of the original unchanged field; the deferred focus callback itself remains outside the guard.
+
+The usable contract is: a rejected copy offers visible, selectable manual text when the initiating interaction still owns focus; subsequent user focus or input must retain ownership, including moving to a new control without changing its value. Invalidated or superseded copies must not reclaim focus or recreate stale fallback. Source and target remain independent and unresolved targets hide copyable results.
+
+A copyId-only guard does not cover a user focusing a different control without editing: that action does not increment copyRequest. The eventual candidate needs both request identity and a focus-ownership rule covering movement before rejection and between rejection and frame execution, while preserving ordinary automatic fallback selection. It must also distinguish a newer copy request whose button receives focus, and cancellation/invalidation before the frame runs.
+
+## Separate verdicts
+
+Original report: unresolved. A controlled normal-motion old-source reproduction that holds only the fallback focus frame and releases it on target focus can establish the equivalent bounded race if it reproduces UTC persistence and focus theft. It cannot recover the missing historical first-failure event sequence. Candidate acceptance must repeat that control with unchanged visible keyboard semantics and show CST survives, correction preserves source interpretation, stale callbacks yield, and fallback remains usable.
+
+Implementation: no candidate assessed. The Actions workflow static approval remains inherited for unchanged workflow bytes; it does not approve a new App change. No evidence attributes this failure to the Actions migration or identifies TIE-370's historical cause.
+
+Raw evidence: [failure ZIP](../actions-upgrade-2026-10-05/final-ci/failure.zip), [first context](../actions-upgrade-2026-10-05/final-ci/failure-original/error-context.md), [first screenshot](../actions-upgrade-2026-10-05/final-ci/failure-original/test-failed-1.png), [passed retry trace](../actions-upgrade-2026-10-05/final-ci/passed-retry/trace.zip), [run log](../actions-upgrade-2026-10-05/final-ci/run.log). Primary local sources: `web/src/App.tsx`, `web/src/components/Choices.tsx`, `e2e/imports.spec.ts`, `e2e/choices.ts`, `playwright.config.ts`, installed React Aria/Stately combobox implementation.

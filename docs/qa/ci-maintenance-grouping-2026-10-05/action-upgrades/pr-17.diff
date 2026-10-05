@@ -1,0 +1,26 @@
+diff --git a/.github/workflows/pages.yml b/.github/workflows/pages.yml
+index 54df065..738b51f 100644
+--- a/.github/workflows/pages.yml
++++ b/.github/workflows/pages.yml
+@@ -28,7 +28,7 @@ jobs:
+     outputs:
+       reused: ${{ steps.reuse.outputs.reused }}
+     steps:
+-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
++      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v4
+       - uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db # v3
+         with:
+           install_args: bun gh
+diff --git a/.github/workflows/web.yml b/.github/workflows/web.yml
+index f644a56..fe4f245 100644
+--- a/.github/workflows/web.yml
++++ b/.github/workflows/web.yml
+@@ -41,7 +41,7 @@ jobs:
+       group: web-verify-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+       cancel-in-progress: true
+     steps:
+-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
++      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v4
+       - name: Capture the checked-in corpus audit
+         run: cp -f docs/planning/corpus-audit.json "$RUNNER_TEMP/chronoshift-corpus-audit.json"
+       - uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db # v3

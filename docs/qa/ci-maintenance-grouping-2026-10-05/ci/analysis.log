@@ -1,0 +1,446 @@
+{
+  "observedAt": "2026-10-05T08:43:09.433Z",
+  "run": {
+    "id": 37284698483,
+    "attempt": 1,
+    "head": "66e5fd32f2654e0a61d35ceae6e75b5e4561bc19",
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success",
+    "createdAt": "2026-10-05T08:36:36Z",
+    "updatedAt": "2026-10-05T08:42:09Z",
+    "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37284698483"
+  },
+  "jobs": [
+    {
+      "id": 111680695222,
+      "name": "web",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-05T08:36:38Z",
+      "completedAt": "2026-10-05T08:42:08Z",
+      "runnerSeconds": 330,
+      "roundedMinutes": 6,
+      "intervalBeforeFirstStepSeconds": 1,
+      "runnerName": "GitHub Actions 1000004083",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T08:36:39Z",
+          "completedAt": "2026-10-05T08:36:42Z",
+          "seconds": 3
+        },
+        {
+          "name": "Initialize containers",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T08:36:42Z",
+          "completedAt": "2026-10-05T08:37:18Z",
+          "seconds": 36
+        },
+        {
+          "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T08:37:18Z",
+          "completedAt": "2026-10-05T08:37:21Z",
+          "seconds": 3
+        },
+        {
+          "name": "Capture the checked-in corpus audit",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T08:37:21Z",
+          "completedAt": "2026-10-05T08:37:21Z",
+          "seconds": 0
+        },
+        {
+          "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T08:37:21Z",
+          "completedAt": "2026-10-05T08:37:26Z",
+          "seconds": 5
+        },
+        {
+          "name": "Run bun install --frozen-lockfile",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T08:37:26Z",
+          "completedAt": "2026-10-05T08:37:27Z",
+          "seconds": 1
+        },
+        {
+          "name": "Verify the pinned browser image matches the dependency",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T08:37:27Z",
+          "completedAt": "2026-10-05T08:37:28Z",
+          "seconds": 1
+        },
+        {
+          "name": "Run bun run format:check",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T08:37:28Z",
+          "completedAt": "2026-10-05T08:37:29Z",
+          "seconds": 1
+        },
+        {
+          "name": "Unit tests and production build",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T08:37:29Z",
+          "completedAt": "2026-10-05T08:37:30Z",
+          "seconds": 1
+        },
+        {
+          "name": "Verify the standalone conversion corpus audit",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T08:37:30Z",
+          "completedAt": "2026-10-05T08:37:31Z",
+          "seconds": 1
+        },
+        {
+          "name": "Run bun run test:browser",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T08:37:31Z",
+          "completedAt": "2026-10-05T08:42:00Z",
+          "seconds": 269
+        },
+        {
+          "name": "Record browser resource usage",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T08:42:00Z",
+          "completedAt": "2026-10-05T08:42:00Z",
+          "seconds": 0
+        },
+        {
+          "name": "Retain bounded browser timing metadata",
+          "conclusion": "skipped",
+          "startedAt": "2026-10-05T08:42:00Z",
+          "completedAt": "2026-10-05T08:42:00Z",
+          "seconds": null
+        },
+        {
+          "name": "Run actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b",
+          "conclusion": "skipped",
+          "startedAt": "2026-10-05T08:42:00Z",
+          "completedAt": "2026-10-05T08:42:00Z",
+          "seconds": null
+        },
+        {
+          "name": "Verify repository-subpath deployment",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T08:42:00Z",
+          "completedAt": "2026-10-05T08:42:03Z",
+          "seconds": 3
+        },
+        {
+          "name": "Upload the verified Pages build",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T08:42:03Z",
+          "completedAt": "2026-10-05T08:42:04Z",
+          "seconds": 1
+        },
+        {
+          "name": "Publish failed-attempt diagnostics",
+          "conclusion": "skipped",
+          "startedAt": "2026-10-05T08:42:04Z",
+          "completedAt": "2026-10-05T08:42:04Z",
+          "seconds": null
+        },
+        {
+          "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T08:42:04Z",
+          "completedAt": "2026-10-05T08:42:05Z",
+          "seconds": 1
+        },
+        {
+          "name": "Stop containers",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T08:42:05Z",
+          "completedAt": "2026-10-05T08:42:05Z",
+          "seconds": 0
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success",
+          "startedAt": "2026-10-05T08:42:05Z",
+          "completedAt": "2026-10-05T08:42:05Z",
+          "seconds": 0
+        }
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+      "conclusion": "success"
+    },
+    {
+      "name": "Capture the checked-in corpus audit",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run bun install --frozen-lockfile",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify the pinned browser image matches the dependency",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run bun run format:check",
+      "conclusion": "success"
+    },
+    {
+      "name": "Unit tests and production build",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify the standalone conversion corpus audit",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run bun run test:browser",
+      "conclusion": "success"
+    },
+    {
+      "name": "Record browser resource usage",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify repository-subpath deployment",
+      "conclusion": "success"
+    },
+    {
+      "name": "Upload the verified Pages build",
+      "conclusion": "success"
+    }
+  ],
+  "allRequiredGatesSuccessful": true,
+  "browser": {
+    "rows": 258,
+    "distinctOrdinals": 258,
+    "distinctSemanticCases": 258,
+    "firstAttemptRows": 258,
+    "firstPasses": 249,
+    "skipped": 9,
+    "failedRows": 0,
+    "retries": 0,
+    "byProject": {
+      "foldable": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0,
+        "retries": 0
+      },
+      "chromium": {
+        "passed": 51,
+        "skipped": 0,
+        "failed": 0,
+        "retries": 0
+      },
+      "firefox": {
+        "passed": 48,
+        "skipped": 3,
+        "failed": 0,
+        "retries": 0
+      },
+      "webkit": {
+        "passed": 48,
+        "skipped": 3,
+        "failed": 0,
+        "retries": 0
+      },
+      "android-emulation": {
+        "passed": 51,
+        "skipped": 0,
+        "failed": 0,
+        "retries": 0
+      },
+      "iphone-emulation": {
+        "passed": 48,
+        "skipped": 3,
+        "failed": 0,
+        "retries": 0
+      }
+    },
+    "equalInventoryToPR37": true,
+    "skipIdentityMatchesPR37": true
+  },
+  "unitEvidence": [
+    "web\tUnit tests and production build\t2026-10-05T08:37:30.0481002Z  116 pass",
+    "web\tUnit tests and production build\t2026-10-05T08:37:30.0481273Z  0 fail",
+    "web\tUnit tests and production build\t2026-10-05T08:37:30.0482050Z Ran 116 tests across 6 files. [338.00ms]"
+  ],
+  "browserSummaryEvidence": [
+    "web\tRun bun run test:browser\t2026-10-05T08:37:32.2923192Z Running 258 tests using 4 workers",
+    "web\tRun bun run test:browser\t2026-10-05T08:42:00.1958104Z   9 skipped",
+    "web\tRun bun run test:browser\t2026-10-05T08:42:00.1958507Z   249 passed (4.5m)"
+  ],
+  "subpathEvidence": [
+    "web\tVerify repository-subpath deployment\t2026-10-05T08:42:03.5073499Z   1 passed (1.7s)"
+  ],
+  "timingArtifactStep": {
+    "name": "Retain bounded browser timing metadata",
+    "conclusion": "skipped",
+    "startedAt": "2026-10-05T08:42:00Z",
+    "completedAt": "2026-10-05T08:42:00Z",
+    "seconds": null
+  },
+  "failureDiagnosticStep": {
+    "name": "Publish failed-attempt diagnostics",
+    "conclusion": "skipped",
+    "startedAt": "2026-10-05T08:42:04Z",
+    "completedAt": "2026-10-05T08:42:04Z",
+    "seconds": null
+  },
+  "artifactInventory": [
+    {
+      "id": 11333319904,
+      "node_id": "MDg6QXJ0aWZhY3QxMTMzMzMxOTkwNA==",
+      "name": "github-pages",
+      "size_in_bytes": 374676,
+      "url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11333319904",
+      "archive_download_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11333319904/zip",
+      "expired": false,
+      "digest": "sha256:144f310d4ec422e007a56b6489d0e4772878e123610ab0461a89c4bfc4bbe570",
+      "created_at": "2026-10-05T08:42:04Z",
+      "updated_at": "2026-10-05T08:42:04Z",
+      "expires_at": "2026-10-06T08:42:03Z",
+      "workflow_run": {
+        "id": 37284698483,
+        "repository_id": 1206473449,
+        "head_repository_id": 1206473449,
+        "head_branch": "codex/ci-maintenance-grouping",
+        "head_sha": "66e5fd32f2654e0a61d35ceae6e75b5e4561bc19"
+      },
+      "nominalConfiguredRetentionHours": 24,
+      "nominalProjectedByteHours": 8992224,
+      "apiExpiryHours": 23.99972222222222
+    }
+  ],
+  "totalArtifactCount": 1,
+  "failureArtifactExists": false,
+  "source": {
+    "base": "82843f46e554a04d7a9db9c8b0aaacb77466442e",
+    "reviewedSource": "4ff0472089817193a39228d93ac062107c9b441b",
+    "head": "66e5fd32f2654e0a61d35ceae6e75b5e4561bc19",
+    "identities": [
+      {
+        "path": "web",
+        "base": "78dbdbf65b5328416f0b169cc52d3ed9541d02f9",
+        "source": "78dbdbf65b5328416f0b169cc52d3ed9541d02f9",
+        "head": "78dbdbf65b5328416f0b169cc52d3ed9541d02f9"
+      },
+      {
+        "path": "e2e",
+        "base": "295d14434adb5ad70b272aa80b012efc90f572ff",
+        "source": "295d14434adb5ad70b272aa80b012efc90f572ff",
+        "head": "295d14434adb5ad70b272aa80b012efc90f572ff"
+      },
+      {
+        "path": "tests",
+        "base": "39aaa930e5002536108aabce7b2d445d0a9bd429",
+        "source": "39aaa930e5002536108aabce7b2d445d0a9bd429",
+        "head": "39aaa930e5002536108aabce7b2d445d0a9bd429"
+      },
+      {
+        "path": "scripts",
+        "base": "213342d4e83321aabf46bd2a280fae54ca6b4299",
+        "source": "213342d4e83321aabf46bd2a280fae54ca6b4299",
+        "head": "213342d4e83321aabf46bd2a280fae54ca6b4299"
+      },
+      {
+        "path": ".github/workflows/web.yml",
+        "base": "c7df3a227e1f6802300a2f6858c6ff2c531a9102",
+        "source": "c7df3a227e1f6802300a2f6858c6ff2c531a9102",
+        "head": "c7df3a227e1f6802300a2f6858c6ff2c531a9102"
+      },
+      {
+        "path": ".github/workflows/pages.yml",
+        "base": "819204762ca782b8e60aacfe1f991272eaddd595",
+        "source": "819204762ca782b8e60aacfe1f991272eaddd595",
+        "head": "819204762ca782b8e60aacfe1f991272eaddd595"
+      },
+      {
+        "path": "playwright.config.ts",
+        "base": "7a1c28db0dc15faaff76e2b02d72dc65962c9268",
+        "source": "7a1c28db0dc15faaff76e2b02d72dc65962c9268",
+        "head": "7a1c28db0dc15faaff76e2b02d72dc65962c9268"
+      },
+      {
+        "path": "playwright.subpath.config.ts",
+        "base": "38acbcbda958e58264b5b71b70dc4fce3f0793aa",
+        "source": "38acbcbda958e58264b5b71b70dc4fce3f0793aa",
+        "head": "38acbcbda958e58264b5b71b70dc4fce3f0793aa"
+      },
+      {
+        "path": "package.json",
+        "base": "5627cebee4d2062dadbf7536572981e5b9337fc4",
+        "source": "5627cebee4d2062dadbf7536572981e5b9337fc4",
+        "head": "5627cebee4d2062dadbf7536572981e5b9337fc4"
+      },
+      {
+        "path": "bun.lock",
+        "base": "e418e7c65172b9b563f34a7c9f898bb3f0e988da",
+        "source": "e418e7c65172b9b563f34a7c9f898bb3f0e988da",
+        "head": "e418e7c65172b9b563f34a7c9f898bb3f0e988da"
+      },
+      {
+        "path": ".github/dependabot.yml",
+        "base": "139eb37bc161b06fe2c84b1a4f8f388e34a72fd9",
+        "source": "4cf4ca1242df077d8a625f55ffc6213a6bdd33b5",
+        "head": "4cf4ca1242df077d8a625f55ffc6213a6bdd33b5"
+      }
+    ],
+    "exactReviewedSourceBytes": true,
+    "unchangedBaseRuntimeTestsWorkflows": true,
+    "nonDocsDiff": [
+      ".github/dependabot.yml"
+    ],
+    "testedMerge": "8b380dcee298b06e7693fcacb9ca9c44486b3a36",
+    "testedMergeTree": "6bae04113c9ebce83e2c914a04f3f0adf0c07c5d",
+    "headTree": "6bae04113c9ebce83e2c914a04f3f0adf0c07c5d",
+    "checkoutEvidence": [
+      "web\tRun actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5\t2026-10-05T08:37:19.0241944Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +8b380dcee298b06e7693fcacb9ca9c44486b3a36:refs/remotes/pull/39/merge",
+      "web\tRun actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5\t2026-10-05T08:37:21.4194729Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/39/merge",
+      "web\tRun actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5\t2026-10-05T08:37:21.7800635Z Note: switching to 'refs/remotes/pull/39/merge'.",
+      "web\tRun actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5\t2026-10-05T08:37:21.7806805Z HEAD is now at 8b380dc Merge 66e5fd32f2654e0a61d35ceae6e75b5e4561bc19 into 5502b3cfdf3eac4fa0f09c0ac6f5366982c16499",
+      "web\tRun actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5\t2026-10-05T08:37:21.7861042Z [command]/usr/bin/git log -1 --format=%H"
+    ]
+  },
+  "resource": {
+    "bracketSeconds": 269.144,
+    "cpuDelta": {
+      "usage_usec": 894726539,
+      "user_usec": 776194630,
+      "system_usec": 118531908,
+      "nice_usec": 50888000,
+      "core_sched.force_idle_usec": 0,
+      "nr_periods": 0,
+      "nr_throttled": 0,
+      "throttled_usec": 0,
+      "nr_bursts": 0,
+      "burst_usec": 0
+    },
+    "memoryEventsDelta": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0
+    }
+  },
+  "limits": [
+    "Timing is disabled: list logs/known marker-upload logic/artifact absence corroborate first attempts; no direct green-run marker or structured successful timing artifact is retained.",
+    "API spans and rounded minutes are repository proxies, not account billing. No candidate paired main publication is included.",
+    "Grouping changes future maintenance PR organization; no grouped PR/avoided gate or monthly savings has been observed.",
+    "Artifact digest is API provenance only here; extraction/public file verification remains root-owned.",
+    "Resource counters bracket whole browser/protocol/server processes; memory.peak is cumulative, not per-test attribution."
+  ]
+}
