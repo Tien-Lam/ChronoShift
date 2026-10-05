@@ -1,0 +1,585 @@
+{
+  "observedAt": "2026-10-05T08:28:52.402Z",
+  "sourceRun": 37281970385,
+  "head": "299e3864f01d4e87a1770594628b84cf5a3972c8",
+  "rows": 258,
+  "passes": 249,
+  "roundedPassingCaseSeconds": 1399.4,
+  "byFile": [
+    {
+      "name": "e2e/controls.spec.ts",
+      "passed": 20,
+      "skipped": 0,
+      "sumRoundedListSeconds": 277.79999999999995
+    },
+    {
+      "name": "e2e/app.spec.ts",
+      "passed": 60,
+      "skipped": 0,
+      "sumRoundedListSeconds": 268.7
+    },
+    {
+      "name": "e2e/updates.spec.ts",
+      "passed": 25,
+      "skipped": 0,
+      "sumRoundedListSeconds": 195.50000000000003
+    },
+    {
+      "name": "e2e/diagnostics.spec.ts",
+      "passed": 30,
+      "skipped": 0,
+      "sumRoundedListSeconds": 116.89999999999999
+    },
+    {
+      "name": "e2e/offline-install.spec.ts",
+      "passed": 30,
+      "skipped": 0,
+      "sumRoundedListSeconds": 114.39999999999999
+    },
+    {
+      "name": "e2e/privacy.spec.ts",
+      "passed": 25,
+      "skipped": 0,
+      "sumRoundedListSeconds": 109
+    },
+    {
+      "name": "e2e/imports.spec.ts",
+      "passed": 15,
+      "skipped": 0,
+      "sumRoundedListSeconds": 108.7
+    },
+    {
+      "name": "e2e/live.spec.ts",
+      "passed": 10,
+      "skipped": 0,
+      "sumRoundedListSeconds": 61.10000000000001
+    },
+    {
+      "name": "e2e/motion.spec.ts",
+      "passed": 10,
+      "skipped": 0,
+      "sumRoundedListSeconds": 47.9
+    },
+    {
+      "name": "e2e/responsive.spec.ts",
+      "passed": 10,
+      "skipped": 0,
+      "sumRoundedListSeconds": 44.300000000000004
+    },
+    {
+      "name": "e2e/uncontrolled.spec.ts",
+      "passed": 6,
+      "skipped": 9,
+      "sumRoundedListSeconds": 35
+    },
+    {
+      "name": "e2e/engine.spec.ts",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 13.2
+    },
+    {
+      "name": "e2e/foldable.spec.ts",
+      "passed": 3,
+      "skipped": 0,
+      "sumRoundedListSeconds": 6.8999999999999995
+    }
+  ],
+  "byProject": [
+    {
+      "name": "webkit",
+      "passed": 48,
+      "skipped": 3,
+      "sumRoundedListSeconds": 383.59999999999997
+    },
+    {
+      "name": "firefox",
+      "passed": 48,
+      "skipped": 3,
+      "sumRoundedListSeconds": 313.9
+    },
+    {
+      "name": "iphone-emulation",
+      "passed": 48,
+      "skipped": 3,
+      "sumRoundedListSeconds": 262.09999999999997
+    },
+    {
+      "name": "android-emulation",
+      "passed": 51,
+      "skipped": 0,
+      "sumRoundedListSeconds": 217.20000000000005
+    },
+    {
+      "name": "chromium",
+      "passed": 51,
+      "skipped": 0,
+      "sumRoundedListSeconds": 215.69999999999993
+    },
+    {
+      "name": "foldable",
+      "passed": 3,
+      "skipped": 0,
+      "sumRoundedListSeconds": 6.8999999999999995
+    }
+  ],
+  "byTitle": [
+    {
+      "name": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 146.4
+    },
+    {
+      "name": "old and new tabs retain their own workers across successive releases and offline restart",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 62
+    },
+    {
+      "name": "rollback preserves draft and preferences and removes obsolete caches with one remaining tab",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 59.39999999999999
+    },
+    {
+      "name": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 57.5
+    },
+    {
+      "name": "delayed share offers replacement instead of overwriting edited or cleared work",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 48.199999999999996
+    },
+    {
+      "name": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 45.5
+    },
+    {
+      "name": "delayed clipboard offers replacement instead of overwriting edited or cleared work",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 37.6
+    },
+    {
+      "name": "persistently wrong release bytes never activate or claim offline readiness",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 36.4
+    },
+    {
+      "name": "live feedback covers debounce and worker completion, then settles or cancels",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 34.5
+    },
+    {
+      "name": "an interrupted rollback preserves a retained cache and its old tab worker",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 33.4
+    },
+    {
+      "name": "waiting updates remain actionable when a current cache probe times out",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 33.300000000000004
+    },
+    {
+      "name": "an update waits, preserves draft on opt-in, and survives a partial next update",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 32.800000000000004
+    },
+    {
+      "name": "reflows across cover screens, phones, tablets and desktops without losing work",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 32.3
+    },
+    {
+      "name": "readable at 320px, dark mode, with no serious accessibility violations",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 31.3
+    },
+    {
+      "name": "typing, pasted text and conversion settings update without submission",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 30.6
+    },
+    {
+      "name": "composition defers conversion and queued work cannot overwrite a newer draft",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 30.5
+    },
+    {
+      "name": "expired and invalid temporary text is consumed and erased without restoring it",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 30.4
+    },
+    {
+      "name": "hovering timezone suggestions preserves typed values while explicit selections still commit",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 28.4
+    },
+    {
+      "name": "detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 26.9
+    },
+    {
+      "name": "preferences persist, input does not; denied storage still converts",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 26.3
+    },
+    {
+      "name": "worker failure recovers and a late response cannot resurrect cleared input",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 25.900000000000002
+    },
+    {
+      "name": "input errors recover, edits invalidate results, keyboard keeps multiline input",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 25.4
+    },
+    {
+      "name": "denied update storage keeps the draft active and requires clearing before reload",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 23.4
+    },
+    {
+      "name": "an unresolved target hides copyable fallback results and correction restores the source interpretation",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 22.9
+    },
+    {
+      "name": "oversized drafts block an update until they can be safely preserved",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 22.599999999999998
+    },
+    {
+      "name": "an intact offline app survives a failed registration check while changing target zones",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 22.2
+    },
+    {
+      "name": "legacy command preferences migrate, reset removes them and quota failures keep conversion usable",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 22.099999999999998
+    },
+    {
+      "name": "legacy lens preferences migrate, reset removes them and quota failures keep conversion usable",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 22
+    },
+    {
+      "name": "close and reopen offline, then convert previously unseen input",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 21.900000000000002
+    },
+    {
+      "name": "HTML response rewriting cannot break first installation or offline navigation",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 20.1
+    },
+    {
+      "name": "missing cache reports incomplete and reconnect repairs the complete offline app",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 19.599999999999998
+    },
+    {
+      "name": "slow first installation clears its expired warning without losing conversion",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 18.2
+    },
+    {
+      "name": "convert, inspect ambiguity, copy manually and protect privacy",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 18.099999999999998
+    },
+    {
+      "name": "repair refuses another release and leaves the existing offline shell intact",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 18.099999999999998
+    },
+    {
+      "name": "a delayed failed readiness probe cannot overwrite a newer successful check",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 17.2
+    },
+    {
+      "name": "detailed logging survives a tab reload and reset preferences disables it",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 16.8
+    },
+    {
+      "name": "an explicit update recovers a timed-out readiness probe without another reload",
+      "passed": 2,
+      "skipped": 3,
+      "sumRoundedListSeconds": 15.6
+    },
+    {
+      "name": "a rejected first installation retries without reloading or clearing input",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 15.5
+    },
+    {
+      "name": "detailed logs still work in memory when session storage is denied",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 14.7
+    },
+    {
+      "name": "offline POST share is single-use and never places message in URL",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 14.299999999999999
+    },
+    {
+      "name": "pasted HTML cannot execute or fetch its URL",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 13.7
+    },
+    {
+      "name": "reduced motion keeps live feedback and usable results without animation",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 13.400000000000002
+    },
+    {
+      "name": "independent exact fixture expectations run in the production browser worker",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 13.2
+    },
+    {
+      "name": "a retired release repairs only missing files using its intact cached assets",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 12.9
+    },
+    {
+      "name": "a transient initial registration failure retries before any controller exists",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 12.600000000000001
+    },
+    {
+      "name": "corrupt cached files fail integrity checks and detailed logs identify bounded repair failure",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 12.299999999999999
+    },
+    {
+      "name": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update",
+      "passed": 2,
+      "skipped": 3,
+      "sumRoundedListSeconds": 12.100000000000001
+    },
+    {
+      "name": "touch-sized controls and keyboard navigation remain usable in a short viewport",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 12
+    },
+    {
+      "name": "a stale mutable release marker is refetched and checked before offline readiness",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 11.600000000000001
+    },
+    {
+      "name": "invalid and oversized local shares return a paste fallback without storing text",
+      "passed": 5,
+      "skipped": 0,
+      "sumRoundedListSeconds": 11.1
+    },
+    {
+      "name": "an activated worker reclaims a hard-refreshed tab without reloading its draft",
+      "passed": 2,
+      "skipped": 3,
+      "sumRoundedListSeconds": 7.3
+    },
+    {
+      "name": "input and results avoid a vertical hinge and survive folding",
+      "passed": 1,
+      "skipped": 0,
+      "sumRoundedListSeconds": 2.8
+    },
+    {
+      "name": "tabletop posture confines the scrollable task to the upper screen",
+      "passed": 1,
+      "skipped": 0,
+      "sumRoundedListSeconds": 2.7
+    },
+    {
+      "name": "notch and home-indicator safe areas inset the task",
+      "passed": 1,
+      "skipped": 0,
+      "sumRoundedListSeconds": 1.4
+    }
+  ],
+  "longestCases": [
+    {
+      "symbol": "✓",
+      "ordinal": 118,
+      "project": "webkit",
+      "file": "e2e/controls.spec.ts",
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "roundedListSeconds": 51.2
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 67,
+      "project": "firefox",
+      "file": "e2e/controls.spec.ts",
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "roundedListSeconds": 31.9
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 220,
+      "project": "iphone-emulation",
+      "file": "e2e/controls.spec.ts",
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "roundedListSeconds": 31
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 119,
+      "project": "webkit",
+      "file": "e2e/controls.spec.ts",
+      "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+      "roundedListSeconds": 18.6
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 16,
+      "project": "chromium",
+      "file": "e2e/controls.spec.ts",
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "roundedListSeconds": 16.4
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 169,
+      "project": "android-emulation",
+      "file": "e2e/controls.spec.ts",
+      "title": "themed choices align and their opened menus fit every breakpoint without losing work",
+      "roundedListSeconds": 15.9
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 104,
+      "project": "firefox",
+      "file": "e2e/updates.spec.ts",
+      "title": "old and new tabs retain their own workers across successive releases and offline restart",
+      "roundedListSeconds": 15.5
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 105,
+      "project": "firefox",
+      "file": "e2e/updates.spec.ts",
+      "title": "rollback preserves draft and preferences and removes obsolete caches with one remaining tab",
+      "roundedListSeconds": 15.4
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 155,
+      "project": "webkit",
+      "file": "e2e/updates.spec.ts",
+      "title": "old and new tabs retain their own workers across successive releases and offline restart",
+      "roundedListSeconds": 15.4
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 120,
+      "project": "webkit",
+      "file": "e2e/controls.spec.ts",
+      "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+      "roundedListSeconds": 14
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 130,
+      "project": "webkit",
+      "file": "e2e/imports.spec.ts",
+      "title": "delayed share offers replacement instead of overwriting edited or cleared work",
+      "roundedListSeconds": 14
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 156,
+      "project": "webkit",
+      "file": "e2e/updates.spec.ts",
+      "title": "rollback preserves draft and preferences and removes obsolete caches with one remaining tab",
+      "roundedListSeconds": 13.7
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 68,
+      "project": "firefox",
+      "file": "e2e/controls.spec.ts",
+      "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+      "roundedListSeconds": 11.9
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 207,
+      "project": "android-emulation",
+      "file": "e2e/updates.spec.ts",
+      "title": "rollback preserves draft and preferences and removes obsolete caches with one remaining tab",
+      "roundedListSeconds": 11.8
+    },
+    {
+      "symbol": "✓",
+      "ordinal": 79,
+      "project": "firefox",
+      "file": "e2e/imports.spec.ts",
+      "title": "delayed share offers replacement instead of overwriting edited or cleared work",
+      "roundedListSeconds": 11.7
+    }
+  ],
+  "resource": {
+    "cpuProcessorSeconds": 1288.368651,
+    "resourceBracketSeconds": 367.336,
+    "averageCpuProcessorSecondsPerWallSecond": 3.5073302126663326
+  },
+  "limits": [
+    "List durations are rounded case elapsed times; their sum is concurrent worker time, not additive exclusive wall time or CPU attribution.",
+    "Case duration rankings do not identify avoidable overhead or prove causes.",
+    "Cgroup CPU includes browser/protocol/server processes; it does not identify script, layout, polling or individual test costs.",
+    "Offline aggregation of already saved evidence; no browser/CI benchmark or source change."
+  ]
+}

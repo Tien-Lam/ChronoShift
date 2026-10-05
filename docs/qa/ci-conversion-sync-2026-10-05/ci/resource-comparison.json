@@ -1,0 +1,199 @@
+{
+  "observedAt": "2026-10-05T08:20:28.627Z",
+  "out": [
+    {
+      "name": "PR38",
+      "sourceLog": "docs/qa/ci-conversion-sync-2026-10-05/ci/run.log",
+      "before": {
+        "at": "2026-10-05T08:11:40.054Z",
+        "phase": "before",
+        "platform": "linux",
+        "architecture": "x64",
+        "osRelease": "6.17.0-1022-azure",
+        "availableParallelism": 4,
+        "logicalCpus": 4,
+        "cpuModel": "AMD EPYC 7763 64-Core Processor",
+        "totalMemoryBytes": 16766406656,
+        "cgroup": {
+          "cpu.max": "max 100000",
+          "cpu.stat": "usage_usec 20519115\nuser_usec 16474338\nsystem_usec 4044776\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+          "memory.max": "max",
+          "memory.peak": "1569906688",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+        }
+      },
+      "after": {
+        "at": "2026-10-05T08:17:47.390Z",
+        "phase": "after",
+        "platform": "linux",
+        "architecture": "x64",
+        "osRelease": "6.17.0-1022-azure",
+        "availableParallelism": 4,
+        "logicalCpus": 4,
+        "cpuModel": "AMD EPYC 7763 64-Core Processor",
+        "totalMemoryBytes": 16766406656,
+        "cgroup": {
+          "cpu.max": "max 100000",
+          "cpu.stat": "usage_usec 1308887766\nuser_usec 1111722239\nsystem_usec 197165526\nnice_usec 71137000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+          "memory.max": "max",
+          "memory.peak": "6650695680",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+        }
+      },
+      "cpuDelta": {
+        "usage_usec": 1288368651,
+        "user_usec": 1095247901,
+        "system_usec": 193120750,
+        "nice_usec": 71137000,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "bracketSeconds": 367.336,
+      "runnerImageLines": [
+        "web\tSet up job\t2026-10-05T08:10:56.4498853Z Version: 20260901.588",
+        "web\tSet up job\t2026-10-05T08:10:56.4507912Z Image: ubuntu-24.04",
+        "web\tSet up job\t2026-10-05T08:10:56.4508498Z Version: 20260927.320.1",
+        "web\tRun jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db\t2026-10-05T08:11:33.9137102Z ^[[2mmise^[[0m ^[[38;5;11m⇢^[[0m bun@1.4.0    0ms · already installed",
+        "web\tRun bun install --frozen-lockfile\t2026-10-05T08:11:35.1576041Z + @types/bun@1.4.2"
+      ],
+      "timingFlags": [
+        "0"
+      ]
+    },
+    {
+      "name": "PR37",
+      "sourceLog": "docs/qa/ci-efficiency-2026-10-05/fresh-code/candidate.log",
+      "before": {
+        "at": "2026-10-05T06:54:07.474Z",
+        "phase": "before",
+        "platform": "linux",
+        "architecture": "x64",
+        "osRelease": "6.17.0-1022-azure",
+        "availableParallelism": 4,
+        "logicalCpus": 4,
+        "cpuModel": "AMD EPYC 9V74 80-Core Processor",
+        "totalMemoryBytes": 16766414848,
+        "cgroup": {
+          "cpu.max": "max 100000",
+          "cpu.stat": "usage_usec 18774467\nuser_usec 14501121\nsystem_usec 4273345\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+          "memory.max": "max",
+          "memory.peak": "1518452736",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+        }
+      },
+      "after": {
+        "at": "2026-10-05T06:59:54.984Z",
+        "phase": "after",
+        "platform": "linux",
+        "architecture": "x64",
+        "osRelease": "6.17.0-1022-azure",
+        "availableParallelism": 4,
+        "logicalCpus": 4,
+        "cpuModel": "AMD EPYC 9V74 80-Core Processor",
+        "totalMemoryBytes": 16766414848,
+        "cgroup": {
+          "cpu.max": "max 100000",
+          "cpu.stat": "usage_usec 1221216380\nuser_usec 1024577956\nsystem_usec 196638424\nnice_usec 66378000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+          "memory.max": "max",
+          "memory.peak": "6822293504",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+        }
+      },
+      "cpuDelta": {
+        "usage_usec": 1202441913,
+        "user_usec": 1010076835,
+        "system_usec": 192365079,
+        "nice_usec": 66378000,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "bracketSeconds": 347.51,
+      "runnerImageLines": [
+        "web\tSet up job\t2026-10-05T06:53:23.5674737Z Version: 20260901.588",
+        "web\tSet up job\t2026-10-05T06:53:23.5683603Z Image: ubuntu-24.04",
+        "web\tSet up job\t2026-10-05T06:53:23.5684252Z Version: 20260927.320.1",
+        "web\tRun jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db\t2026-10-05T06:54:01.7508098Z ^[[2mmise^[[0m ^[[38;5;11m⇢^[[0m bun@1.4.0    0ms · already installed",
+        "web\tRun bun install --frozen-lockfile\t2026-10-05T06:54:02.9844112Z + @types/bun@1.4.2"
+      ],
+      "timingFlags": [
+        "0"
+      ]
+    },
+    {
+      "name": "Manual fallback",
+      "sourceLog": "docs/qa/ci-efficiency-2026-10-05/fresh-code/manual.log",
+      "before": {
+        "at": "2026-10-05T07:17:44.750Z",
+        "phase": "before",
+        "platform": "linux",
+        "architecture": "x64",
+        "osRelease": "6.17.0-1022-azure",
+        "availableParallelism": 4,
+        "logicalCpus": 4,
+        "cpuModel": "Intel(R) Xeon(R) 6973P-C",
+        "totalMemoryBytes": 16765374464,
+        "cgroup": {
+          "cpu.max": "max 100000",
+          "cpu.stat": "usage_usec 14773192\nuser_usec 12063060\nsystem_usec 2710132\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+          "memory.max": "max",
+          "memory.peak": "1520762880",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+        }
+      },
+      "after": {
+        "at": "2026-10-05T07:22:35.457Z",
+        "phase": "after",
+        "platform": "linux",
+        "architecture": "x64",
+        "osRelease": "6.17.0-1022-azure",
+        "availableParallelism": 4,
+        "logicalCpus": 4,
+        "cpuModel": "Intel(R) Xeon(R) 6973P-C",
+        "totalMemoryBytes": 16765374464,
+        "cgroup": {
+          "cpu.max": "max 100000",
+          "cpu.stat": "usage_usec 996413805\nuser_usec 866940467\nsystem_usec 129473337\nnice_usec 54773000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+          "memory.max": "max",
+          "memory.peak": "7147012096",
+          "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+        }
+      },
+      "cpuDelta": {
+        "usage_usec": 981640613,
+        "user_usec": 854877407,
+        "system_usec": 126763205,
+        "nice_usec": 54773000,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "bracketSeconds": 290.707,
+      "runnerImageLines": [
+        "prepare\tSet up job\t2026-10-05T07:16:38.5696362Z Version: 20260901.588",
+        "prepare\tSet up job\t2026-10-05T07:16:38.5714445Z - Version: 20260925.9.1",
+        "verify / web\tUNKNOWN STEP\t2026-10-05T07:16:55.4916051Z Version: 20260901.588",
+        "verify / web\tUNKNOWN STEP\t2026-10-05T07:16:55.4923278Z Image: ubuntu-24.04",
+        "verify / web\tUNKNOWN STEP\t2026-10-05T07:16:55.4923729Z Version: 20260927.320.1",
+        "verify / web\tUNKNOWN STEP\t2026-10-05T07:17:40.1997298Z ^[[2mmise^[[0m ^[[38;5;11m⇢^[[0m bun@1.4.0    0ms · already installed",
+        "verify / web\tUNKNOWN STEP\t2026-10-05T07:17:40.9500141Z + @types/bun@1.4.2",
+        "deploy\tSet up job\t2026-10-05T07:22:49.0981836Z Version: 20260901.588",
+        "deploy\tSet up job\t2026-10-05T07:22:49.0987166Z Image: ubuntu-24.04",
+        "deploy\tSet up job\t2026-10-05T07:22:49.0987581Z Version: 20260927.320.1"
+      ],
+      "timingFlags": [
+        "0"
+      ]
+    }
+  ]
+}

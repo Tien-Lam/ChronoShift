@@ -1,0 +1,397 @@
+{
+  "start": "2026-10-05T08:03:46.355Z",
+  "end": "2026-10-05T08:03:51.422Z",
+  "environment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "bun": "1.4.0",
+    "concurrency": 1,
+    "normalMotion": true
+  },
+  "results": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "coalesced",
+      "actualStart": "2026-10-05T08:03:46.458Z",
+      "actualEnd": "2026-10-05T08:03:46.477Z",
+      "elapsedMs": 19.673417,
+      "failure": "expect(locator).toHaveText(expected) failed\n\nLocator:  locator('.hero-time')\nExpected: \"new\"\nReceived: \"\"\n",
+      "callbacks": 1,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": false
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "error",
+      "actualStart": "2026-10-05T08:03:46.513Z",
+      "actualEnd": "2026-10-05T08:03:46.523Z",
+      "elapsedMs": 10.513250000000028,
+      "failure": "evaluate: Error: Observed ordinary conversion failed\n    at fail (eval at evaluate (:311:30), <anonymous>:29:14)\n    at window.MutationObserver.eval (eval at evaluate (:311:30), <anonymous>:54:9)",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "pending-timeout",
+      "actualStart": "2026-10-05T08:03:46.558Z",
+      "actualEnd": "2026-10-05T08:03:46.775Z",
+      "elapsedMs": 217.36754200000007,
+      "failure": "evaluate: Error: Conversion did not settle within the assertion deadline\n    at fail (eval at evaluate (:311:30), <anonymous>:29:14)\n    at eval (eval at evaluate (:311:30), <anonymous>:84:36)\n    at eval (eval at evaluate (:311:30), <anonymous>:18:15)",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "idle-timeout",
+      "actualStart": "2026-10-05T08:03:46.825Z",
+      "actualEnd": "2026-10-05T08:03:47.038Z",
+      "elapsedMs": 213.38699999999994,
+      "failure": "evaluate: Error: Conversion did not settle within the assertion deadline\n    at fail (eval at evaluate (:311:30), <anonymous>:29:14)\n    at eval (eval at evaluate (:311:30), <anonymous>:84:36)\n    at eval (eval at evaluate (:311:30), <anonymous>:18:15)",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "removed",
+      "actualStart": "2026-10-05T08:03:47.076Z",
+      "actualEnd": "2026-10-05T08:03:47.086Z",
+      "elapsedMs": 10.140250000000037,
+      "failure": "evaluate: Error: Conversion observation lost its owned panel\n    at fail (eval at evaluate (:311:30), <anonymous>:29:14)\n    at window.MutationObserver.eval (eval at evaluate (:311:30), <anonymous>:64:9)",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "pagehide",
+      "actualStart": "2026-10-05T08:03:47.121Z",
+      "actualEnd": "2026-10-05T08:03:47.131Z",
+      "elapsedMs": 10.055041999999958,
+      "failure": "evaluate: Error: Conversion observation lost its document\n    at fail (eval at evaluate (:311:30), <anonymous>:29:14)\n    at onPageHide (eval at evaluate (:311:30), <anonymous>:35:27)\n    at HTMLTextAreaElement.eval (eval at evaluate (:311:30), <anonymous>:36:13)",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "action-rejection",
+      "actualStart": "2026-10-05T08:03:47.164Z",
+      "actualEnd": "2026-10-05T08:03:47.165Z",
+      "elapsedMs": 1.0015839999999798,
+      "failure": "synthetic-action-rejection",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "mode": "assertion-rejection",
+      "actualStart": "2026-10-05T08:03:47.200Z",
+      "actualEnd": "2026-10-05T08:03:47.210Z",
+      "elapsedMs": 10.165250000000015,
+      "failure": "synthetic-assertion-rejection",
+      "callbacks": 1,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "mode": "coalesced",
+      "actualStart": "2026-10-05T08:03:48.007Z",
+      "actualEnd": "2026-10-05T08:03:48.076Z",
+      "elapsedMs": 68.52883399999996,
+      "failure": "expect(locator).toHaveText(expected) failed\n\nLocator:  locator('.hero-time')\nExpected: \"new\"\nReceived: \"\"\n",
+      "callbacks": 1,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": false
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "mode": "error",
+      "actualStart": "2026-10-05T08:03:48.198Z",
+      "actualEnd": "2026-10-05T08:03:48.220Z",
+      "elapsedMs": 22.03108300000008,
+      "failure": "evaluate: Observed ordinary conversion failed\nfail@debugger eval code line 311 > eval:29:14\nobserver<@debugger eval code line 311 > eval:54:13\nMutationCallback*@debugger eval code line 311 > eval:3:35\n@debugger eval code line 311 > eval:35:88\nevaluate@debugger eval code:313:16\n@debugger eval code:1:44\n@debugger eval code:1:62\n",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "mode": "pending-timeout",
+      "actualStart": "2026-10-05T08:03:48.433Z",
+      "actualEnd": "2026-10-05T08:03:48.656Z",
+      "elapsedMs": 222.95395800000006,
+      "failure": "evaluate: Conversion did not settle within the assertion deadline\nfail@debugger eval code line 311 > eval:29:14\nwait/timer<@debugger eval code line 311 > eval:84:40\nwindow.setTimeout/id<@debugger eval code line 311 > eval:18:23\nsetTimeout handler*window.setTimeout@debugger eval code line 311 > eval:15:31\nwait@debugger eval code line 311 > eval:84:19\n@debugger eval code line 311 > eval:1:29\nevaluate@debugger eval code:313:16\n@debugger eval code:1:44\n@debugger eval code:1:62\n",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "mode": "idle-timeout",
+      "actualStart": "2026-10-05T08:03:48.772Z",
+      "actualEnd": "2026-10-05T08:03:48.994Z",
+      "elapsedMs": 222.1976249999998,
+      "failure": "evaluate: Conversion did not settle within the assertion deadline\nfail@debugger eval code line 311 > eval:29:14\nwait/timer<@debugger eval code line 311 > eval:84:40\nwindow.setTimeout/id<@debugger eval code line 311 > eval:18:23\nsetTimeout handler*window.setTimeout@debugger eval code line 311 > eval:15:31\nwait@debugger eval code line 311 > eval:84:19\n@debugger eval code line 311 > eval:1:29\nevaluate@debugger eval code:313:16\n@debugger eval code:1:44\n@debugger eval code:1:62\n",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "mode": "removed",
+      "actualStart": "2026-10-05T08:03:49.119Z",
+      "actualEnd": "2026-10-05T08:03:49.135Z",
+      "elapsedMs": 16.150750000000244,
+      "failure": "evaluate: Conversion observation lost its owned panel\nfail@debugger eval code line 311 > eval:29:14\nownershipObserver<@debugger eval code line 311 > eval:64:13\nMutationCallback*@debugger eval code line 311 > eval:3:35\n@debugger eval code line 311 > eval:62:29\nevaluate@debugger eval code:313:16\n@debugger eval code:1:44\n@debugger eval code:1:62\n",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "mode": "pagehide",
+      "actualStart": "2026-10-05T08:03:49.236Z",
+      "actualEnd": "2026-10-05T08:03:49.252Z",
+      "elapsedMs": 16.35799999999972,
+      "failure": "evaluate: Conversion observation lost its document\nfail@debugger eval code line 311 > eval:29:14\nonPageHide@debugger eval code line 311 > eval:35:31\n@debugger eval code line 311 > eval:36:26\n",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "mode": "action-rejection",
+      "actualStart": "2026-10-05T08:03:49.356Z",
+      "actualEnd": "2026-10-05T08:03:49.357Z",
+      "elapsedMs": 0.8644159999998919,
+      "failure": "synthetic-action-rejection",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "mode": "assertion-rejection",
+      "actualStart": "2026-10-05T08:03:49.469Z",
+      "actualEnd": "2026-10-05T08:03:49.485Z",
+      "elapsedMs": 15.941375000000335,
+      "failure": "synthetic-assertion-rejection",
+      "callbacks": 1,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "mode": "coalesced",
+      "actualStart": "2026-10-05T08:03:49.960Z",
+      "actualEnd": "2026-10-05T08:03:49.986Z",
+      "elapsedMs": 25.87474999999995,
+      "failure": "expect(locator).toHaveText(expected) failed\n\nLocator:  locator('.hero-time')\nExpected: \"new\"\nReceived: \"\"\n",
+      "callbacks": 1,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": false
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "mode": "error",
+      "actualStart": "2026-10-05T08:03:50.130Z",
+      "actualEnd": "2026-10-05T08:03:50.144Z",
+      "elapsedMs": 14.1059580000001,
+      "failure": "evaluate: Error: Observed ordinary conversion failed",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "mode": "pending-timeout",
+      "actualStart": "2026-10-05T08:03:50.271Z",
+      "actualEnd": "2026-10-05T08:03:50.486Z",
+      "elapsedMs": 214.81124999999975,
+      "failure": "evaluate: Error: Conversion did not settle within the assertion deadline",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "mode": "idle-timeout",
+      "actualStart": "2026-10-05T08:03:50.633Z",
+      "actualEnd": "2026-10-05T08:03:50.849Z",
+      "elapsedMs": 215.74683299999924,
+      "failure": "evaluate: Error: Conversion did not settle within the assertion deadline",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "mode": "removed",
+      "actualStart": "2026-10-05T08:03:50.995Z",
+      "actualEnd": "2026-10-05T08:03:51.007Z",
+      "elapsedMs": 12.632207999999991,
+      "failure": "evaluate: Error: Conversion observation lost its owned panel",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "mode": "pagehide",
+      "actualStart": "2026-10-05T08:03:51.132Z",
+      "actualEnd": "2026-10-05T08:03:51.145Z",
+      "elapsedMs": 13.189957999999933,
+      "failure": "evaluate: Error: Conversion observation lost its document",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "mode": "action-rejection",
+      "actualStart": "2026-10-05T08:03:51.271Z",
+      "actualEnd": "2026-10-05T08:03:51.272Z",
+      "elapsedMs": 0.9084579999998823,
+      "failure": "synthetic-action-rejection",
+      "callbacks": 0,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "mode": "assertion-rejection",
+      "actualStart": "2026-10-05T08:03:51.397Z",
+      "actualEnd": "2026-10-05T08:03:51.410Z",
+      "elapsedMs": 12.740749999999935,
+      "failure": "synthetic-assertion-rejection",
+      "callbacks": 1,
+      "resources": {
+        "observers": 0,
+        "timers": 0
+      },
+      "pageErrors": [],
+      "passed": true
+    }
+  ]
+}

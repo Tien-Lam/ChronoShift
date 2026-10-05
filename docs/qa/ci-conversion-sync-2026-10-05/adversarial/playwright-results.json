@@ -1,0 +1,1033 @@
+{
+  "config": {
+    "argv": [
+      "/Users/tien/.local/share/mise/installs/bun/1.4.0/bin/bun",
+      "/Users/tien/Developer/ChronoShift/node_modules/.bin/playwright",
+      "test",
+      "--config=docs/qa/ci-conversion-sync-2026-10-05/adversarial/playwright.config.ts",
+      "--project=chromium",
+      "--project=firefox",
+      "--project=webkit",
+      "--grep",
+      "choice menus support|timezone search preserves|input errors recover|legacy .* preferences migrate|close and reopen offline|pasted HTML|preferences persist"
+    ],
+    "configFile": "/Users/tien/Developer/ChronoShift/docs/qa/ci-conversion-sync-2026-10-05/adversarial/playwright.config.ts",
+    "rootDir": "/Users/tien/Developer/ChronoShift/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 3
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/tien/Developer/ChronoShift/docs/qa/ci-conversion-sync-2026-10-05/adversarial/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "foldable",
+        "name": "foldable",
+        "testDir": "/Users/tien/Developer/ChronoShift/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/foldable.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/tien/Developer/ChronoShift/docs/qa/ci-conversion-sync-2026-10-05/adversarial/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/tien/Developer/ChronoShift/e2e",
+        "testIgnore": [
+          "**/subpath.spec.ts",
+          "**/foldable.spec.ts",
+          "**/hosted.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/tien/Developer/ChronoShift/docs/qa/ci-conversion-sync-2026-10-05/adversarial/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/tien/Developer/ChronoShift/e2e",
+        "testIgnore": [
+          "**/subpath.spec.ts",
+          "**/foldable.spec.ts",
+          "**/hosted.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/tien/Developer/ChronoShift/docs/qa/ci-conversion-sync-2026-10-05/adversarial/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/Users/tien/Developer/ChronoShift/e2e",
+        "testIgnore": [
+          "**/subpath.spec.ts",
+          "**/foldable.spec.ts",
+          "**/hosted.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/tien/Developer/ChronoShift/docs/qa/ci-conversion-sync-2026-10-05/adversarial/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "android-emulation",
+        "name": "android-emulation",
+        "testDir": "/Users/tien/Developer/ChronoShift/e2e",
+        "testIgnore": [
+          "**/subpath.spec.ts",
+          "**/foldable.spec.ts",
+          "**/hosted.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/tien/Developer/ChronoShift/docs/qa/ci-conversion-sync-2026-10-05/adversarial/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "iphone-emulation",
+        "name": "iphone-emulation",
+        "testDir": "/Users/tien/Developer/ChronoShift/e2e",
+        "testIgnore": [
+          "**/subpath.spec.ts",
+          "**/foldable.spec.ts",
+          "**/hosted.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/Users/tien/Developer/ChronoShift/docs/qa/ci-conversion-sync-2026-10-05/adversarial/playwright-results.json"
+        }
+      ],
+      [
+        "/Users/tien/Developer/ChronoShift/e2e/attempt-reporter.ts",
+        {
+          "outputFile": "/Users/tien/Developer/ChronoShift/docs/qa/ci-conversion-sync-2026-10-05/adversarial/attempt-failures.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 3,
+    "webServer": {
+      "command": "PORT=4324 CHRONOSHIFT_TEST_SERVER=1 bun scripts/serve-web.ts",
+      "url": "http://127.0.0.1:4324",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "app.spec.ts",
+      "file": "app.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "pasted HTML cannot execute or fetch its URL",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 633,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:08.397Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-95dd1b623f7e99f2d5c8",
+          "file": "app.spec.ts",
+          "line": 163,
+          "column": 0
+        },
+        {
+          "title": "close and reopen offline, then convert previously unseen input",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1096,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:08.397Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-35fb7fd1c43a6296f1b9",
+          "file": "app.spec.ts",
+          "line": 226,
+          "column": 0
+        },
+        {
+          "title": "preferences persist, input does not; denied storage still converts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 1413,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:08.397Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-3d48ae7ee5a735e5bfbf",
+          "file": "app.spec.ts",
+          "line": 250,
+          "column": 0
+        },
+        {
+          "title": "input errors recover, edits invalidate results, keyboard keeps multiline input",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1983,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:09.146Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-b328df0e47e22dae3f46",
+          "file": "app.spec.ts",
+          "line": 278,
+          "column": 0
+        },
+        {
+          "title": "pasted HTML cannot execute or fetch its URL",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 1091,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:12.875Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-902bfb03f8cd6e80d001",
+          "file": "app.spec.ts",
+          "line": 163,
+          "column": 0
+        },
+        {
+          "title": "close and reopen offline, then convert previously unseen input",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1725,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:13.604Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-47da31352614a44accdf",
+          "file": "app.spec.ts",
+          "line": 226,
+          "column": 0
+        },
+        {
+          "title": "preferences persist, input does not; denied storage still converts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2118,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:14.514Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-46e743836bb67bbbc2ea",
+          "file": "app.spec.ts",
+          "line": 250,
+          "column": 0
+        },
+        {
+          "title": "input errors recover, edits invalidate results, keyboard keeps multiline input",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 2639,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:14.327Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-bcda6879ba00b82b7bb9",
+          "file": "app.spec.ts",
+          "line": 278,
+          "column": 0
+        },
+        {
+          "title": "pasted HTML cannot execute or fetch its URL",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 770,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:20.478Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-f7613ae56f965fe88110",
+          "file": "app.spec.ts",
+          "line": 163,
+          "column": 0
+        },
+        {
+          "title": "close and reopen offline, then convert previously unseen input",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 1522,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:20.671Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-92b919399cdb8bb593c1",
+          "file": "app.spec.ts",
+          "line": 226,
+          "column": 0
+        },
+        {
+          "title": "preferences persist, input does not; denied storage still converts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1745,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:20.699Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-a8a516cd6fb250f2ab3c",
+          "file": "app.spec.ts",
+          "line": 250,
+          "column": 0
+        },
+        {
+          "title": "input errors recover, edits invalidate results, keyboard keeps multiline input",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1599,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:21.420Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c31ff144dc4fee3acd0a-c427483946cbadc16163",
+          "file": "app.spec.ts",
+          "line": 278,
+          "column": 0
+        }
+      ]
+    },
+    {
+      "title": "controls.spec.ts",
+      "file": "controls.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4701,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:09.609Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-675e87c198e4f8622b85",
+          "file": "controls.spec.ts",
+          "line": 233,
+          "column": 0
+        },
+        {
+          "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 2761,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:09.926Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-926f0e16605985759e3b",
+          "file": "controls.spec.ts",
+          "line": 340,
+          "column": 0
+        },
+        {
+          "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4677,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:15.710Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-777191fd43637dd5be1e",
+          "file": "controls.spec.ts",
+          "line": 233,
+          "column": 0
+        },
+        {
+          "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 3382,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:16.971Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-a8782b42cf1fc1a7a306",
+          "file": "controls.spec.ts",
+          "line": 340,
+          "column": 0
+        },
+        {
+          "title": "choice menus support keyboard selection, nested Escape and pointer dismissal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 4478,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:22.366Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-f15f8caed7cc5cbfadf5",
+          "file": "controls.spec.ts",
+          "line": 233,
+          "column": 0
+        },
+        {
+          "title": "timezone search preserves freeform offsets and recovers from empty and invalid choices",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2994,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:22.619Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b018fb422dd9cd1fd1e5-a40c442f29e33805080c",
+          "file": "controls.spec.ts",
+          "line": 340,
+          "column": 0
+        }
+      ]
+    },
+    {
+      "title": "privacy.spec.ts",
+      "file": "privacy.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "legacy lens preferences migrate, reset removes them and quota failures keep conversion usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1141,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:11.133Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62491902cb946290adea-414daa45f78f6fef8354",
+          "file": "privacy.spec.ts",
+          "line": 7,
+          "column": 2
+        },
+        {
+          "title": "legacy command preferences migrate, reset removes them and quota failures keep conversion usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1137,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:12.277Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62491902cb946290adea-23d561f5ec2501615a0b",
+          "file": "privacy.spec.ts",
+          "line": 7,
+          "column": 2
+        },
+        {
+          "title": "legacy lens preferences migrate, reset removes them and quota failures keep conversion usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1590,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:16.991Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62491902cb946290adea-d9688f2aecaa60f178d7",
+          "file": "privacy.spec.ts",
+          "line": 7,
+          "column": 2
+        },
+        {
+          "title": "legacy command preferences migrate, reset removes them and quota failures keep conversion usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1586,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:18.584Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62491902cb946290adea-c57a748127cf9e4a5b4e",
+          "file": "privacy.spec.ts",
+          "line": 7,
+          "column": 2
+        },
+        {
+          "title": "legacy lens preferences migrate, reset removes them and quota failures keep conversion usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1511,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:23.024Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62491902cb946290adea-4609375e86901a035a91",
+          "file": "privacy.spec.ts",
+          "line": 7,
+          "column": 2
+        },
+        {
+          "title": "legacy command preferences migrate, reset removes them and quota failures keep conversion usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1511,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T08:03:24.538Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62491902cb946290adea-83cc0f85d5b9808641e1",
+          "file": "privacy.spec.ts",
+          "line": 7,
+          "column": 2
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-05T08:03:08.193Z",
+    "duration": 18678.908,
+    "expected": 24,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

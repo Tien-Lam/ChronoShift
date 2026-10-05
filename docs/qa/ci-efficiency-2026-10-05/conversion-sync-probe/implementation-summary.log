@@ -1,0 +1,209 @@
+{
+  "observedAt": "2026-10-05T08:06:17.125Z",
+  "base": "82843f46e554a04d7a9db9c8b0aaacb77466442e",
+  "finalCommit": "0f0d9d3ec38b8b53cd42b8413e52c7a0d5067318",
+  "runtimeSource": "28059a91ec9984dea4d079b3f684b3a27af669f0",
+  "runtimeWebTree": "78dbdbf65b5328416f0b169cc52d3ed9541d02f9",
+  "finalJsSha256": "b2ec5e8a200f317d260cd7e596c1f9a8d417f55f4379803a39867553791ae640",
+  "conditions": {
+    "CI": "1",
+    "CHRONOSHIFT_CI_TIMING": "1",
+    "workers": 4,
+    "profiles": [
+      "chromium",
+      "firefox",
+      "webkit",
+      "android-emulation",
+      "iphone-emulation"
+    ],
+    "normalMotion": "Existing config/use preserved; tests retain their original explicit reduced-motion journeys",
+    "rootBase": "/",
+    "fixtureTestMode": 1,
+    "initialPort": 4299,
+    "finalPort": 4301,
+    "hardware": "Darwin arm64 Apple M4 Pro; local installed engines, not pinned Linux image"
+  },
+  "runs": [
+    {
+      "folder": "implementation",
+      "status": "passed",
+      "began": "2026-10-05T08:01:55.731Z",
+      "durationMs": 60073.727999999996,
+      "ended": "2026-10-05T08:02:55.804Z",
+      "workers": 4,
+      "attempts": 115,
+      "uniqueCases": 115,
+      "droppedAttempts": 0,
+      "firstAttempts": 115,
+      "retries": 0,
+      "failedAttempts": 0,
+      "failureMarkerExists": false,
+      "byProject": {
+        "chromium": {
+          "attempts": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "retries": 0
+        },
+        "firefox": {
+          "attempts": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "retries": 0
+        },
+        "webkit": {
+          "attempts": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "retries": 0
+        },
+        "android-emulation": {
+          "attempts": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "retries": 0
+        },
+        "iphone-emulation": {
+          "attempts": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "retries": 0
+        }
+      },
+      "source": [
+        {
+          "path": "e2e/conversion.ts",
+          "sha256": "6f49ce534d6e4b8aca61b0ef58173027686547dc1c9c5184d49d1b86b03cf340",
+          "matchesFinalCommit": false
+        },
+        {
+          "path": "e2e/app.spec.ts",
+          "sha256": "c1bdecc55c201e037960b2bce6f2deb980760edc2d42070a251688799b17cc41",
+          "matchesFinalCommit": false
+        },
+        {
+          "path": "e2e/privacy.spec.ts",
+          "sha256": "4be11c562121eab9de0ce38f811d0d2a3aa57d0e78fad2af2ce938b86a62755c",
+          "matchesFinalCommit": false
+        },
+        {
+          "path": "e2e/responsive.spec.ts",
+          "sha256": "3ee5c91db9d14c61103fff2994b761194469626f8843f61edb65d34534c53013",
+          "matchesFinalCommit": false
+        },
+        {
+          "path": "e2e/controls.spec.ts",
+          "sha256": "1cc594388e882ca312257fb40500d2c9e954ef3a103a582ebc88a2de39dcccdd",
+          "matchesFinalCommit": false
+        }
+      ]
+    },
+    {
+      "folder": "final-implementation",
+      "status": "passed",
+      "began": "2026-10-05T08:04:47.163Z",
+      "durationMs": 27242.699,
+      "ended": "2026-10-05T08:05:14.405Z",
+      "workers": 4,
+      "attempts": 60,
+      "uniqueCases": 60,
+      "droppedAttempts": 0,
+      "firstAttempts": 60,
+      "retries": 0,
+      "failedAttempts": 0,
+      "failureMarkerExists": false,
+      "byProject": {
+        "chromium": {
+          "attempts": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "retries": 0
+        },
+        "firefox": {
+          "attempts": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "retries": 0
+        },
+        "webkit": {
+          "attempts": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "retries": 0
+        },
+        "android-emulation": {
+          "attempts": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "retries": 0
+        },
+        "iphone-emulation": {
+          "attempts": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "retries": 0
+        }
+      },
+      "source": [
+        {
+          "path": "e2e/conversion.ts",
+          "sha256": "49ed73f85d26ca5e7ba7df6a991f65c5baff1a3c875dcb708c212a35f7d2ec45",
+          "matchesFinalCommit": true
+        },
+        {
+          "path": "e2e/app.spec.ts",
+          "sha256": "a3ccabe9c2022968193466f4c12d2f65702ef5882d75681e8006f285fd4e3374",
+          "matchesFinalCommit": true
+        },
+        {
+          "path": "e2e/privacy.spec.ts",
+          "sha256": "db47694c2cf301c2bfd529475df2d053d2724a0ba4c2d5b2c1de9b956345c585",
+          "matchesFinalCommit": true
+        },
+        {
+          "path": "e2e/responsive.spec.ts",
+          "sha256": "fda8df8178ed1ffd5e42f34419e2bfc761fee4426fd2801cf70d0166e0a7de92",
+          "matchesFinalCommit": true
+        },
+        {
+          "path": "e2e/controls.spec.ts",
+          "sha256": "521ec0c702b014890e2193b78f814c0267ad5073bb8c56a68f70da91d66f2e83",
+          "matchesFinalCommit": true
+        }
+      ]
+    }
+  ],
+  "sourcesCurrent": [
+    {
+      "path": "e2e/conversion.ts",
+      "matchesFinalCommit": true
+    },
+    {
+      "path": "e2e/app.spec.ts",
+      "matchesFinalCommit": true
+    },
+    {
+      "path": "e2e/privacy.spec.ts",
+      "matchesFinalCommit": true
+    },
+    {
+      "path": "e2e/responsive.spec.ts",
+      "matchesFinalCommit": true
+    },
+    {
+      "path": "e2e/controls.spec.ts",
+      "matchesFinalCommit": true
+    }
+  ],
+  "verdict": "Selected final source passes60 affected existing cases at exact final file identity; broader115 earlier-source passes retained separately. Required complete hosted gate/reviewer lifecycle probes remain root-owned; no Linux savings or TIE375 completion claim."
+}

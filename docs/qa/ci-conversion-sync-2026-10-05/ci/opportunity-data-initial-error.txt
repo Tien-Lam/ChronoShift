@@ -1,0 +1,5 @@
+Offline aggregation attempt, between observed clocks 2026-10-05 08:27:31Z and 08:28:52.402Z; exact command start/end clocks unknown. Bun v1.4.0 (macOS arm64):
+command: mise exec -- bun docs/qa/ci-conversion-sync-2026-10-05/ci/opportunity-data.ts
+exit code: 1
+error: Inventory mismatch
+Cause: initial parser demanded a duration suffix on all 258 rows, whereas the nine skipped rows have no duration. No browser or Actions run occurred. The initial source is preserved as opportunity-data-initial.ts. Corrected parsing permits durationless skips and requires every passing row's duration; resource timestamp key is at, not observedAt/timestamp.

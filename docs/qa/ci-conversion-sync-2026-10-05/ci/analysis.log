@@ -1,0 +1,204 @@
+{
+  "observedAt": "2026-10-05T08:21:47.816Z",
+  "run": {
+    "id": 37281970385,
+    "attempt": 1,
+    "head": "299e3864f01d4e87a1770594628b84cf5a3972c8",
+    "headBranch": "codex/ci-conversion-sync",
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success",
+    "createdAt": "2026-10-05T08:10:17Z",
+    "updatedAt": "2026-10-05T08:17:55Z",
+    "url": "https://github.com/Tien-Lam/ChronoShift/actions/runs/37281970385"
+  },
+  "jobs": [
+    {
+      "id": 111671888600,
+      "name": "web",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-05T08:10:19Z",
+      "completedAt": "2026-10-05T08:17:54Z",
+      "seconds": 455,
+      "roundedMinutes": 8,
+      "intervalBeforeFirstStepSeconds": 37,
+      "runnerName": "GitHub Actions 1000004082",
+      "labels": [
+        "ubuntu-latest"
+      ]
+    }
+  ],
+  "allRequiredGatesSuccessful": true,
+  "browser": {
+    "rows": 258,
+    "distinctOrdinals": 258,
+    "distinctSemanticCases": 258,
+    "firstAttemptRows": 258,
+    "retries": 0,
+    "failedRows": 0,
+    "byProject": {
+      "foldable": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0,
+        "retries": 0
+      },
+      "chromium": {
+        "passed": 51,
+        "skipped": 0,
+        "failed": 0,
+        "retries": 0
+      },
+      "firefox": {
+        "passed": 48,
+        "skipped": 3,
+        "failed": 0,
+        "retries": 0
+      },
+      "webkit": {
+        "passed": 48,
+        "skipped": 3,
+        "failed": 0,
+        "retries": 0
+      },
+      "android-emulation": {
+        "passed": 51,
+        "skipped": 0,
+        "failed": 0,
+        "retries": 0
+      },
+      "iphone-emulation": {
+        "passed": 48,
+        "skipped": 3,
+        "failed": 0,
+        "retries": 0
+      }
+    },
+    "equalInventoryToPR37": true,
+    "skipIdentityMatchesPR37": true
+  },
+  "unitEvidence": [
+    "web\tUnit tests and production build\t2026-10-05T08:11:38.3431609Z  116 pass",
+    "web\tUnit tests and production build\t2026-10-05T08:11:38.3431916Z  0 fail",
+    "web\tUnit tests and production build\t2026-10-05T08:11:38.3432624Z Ran 116 tests across 6 files. [502.00ms]"
+  ],
+  "subpathEvidence": [
+    "web\tVerify repository-subpath deployment\t2026-10-05T08:17:51.1628780Z   1 passed (2.1s)"
+  ],
+  "resourceRecords": [
+    {
+      "at": "2026-10-05T08:11:40.054Z",
+      "phase": "before",
+      "platform": "linux",
+      "architecture": "x64",
+      "osRelease": "6.17.0-1022-azure",
+      "availableParallelism": 4,
+      "logicalCpus": 4,
+      "cpuModel": "AMD EPYC 7763 64-Core Processor",
+      "totalMemoryBytes": 16766406656,
+      "cgroup": {
+        "cpu.max": "max 100000",
+        "cpu.stat": "usage_usec 20519115\nuser_usec 16474338\nsystem_usec 4044776\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+        "memory.max": "max",
+        "memory.peak": "1569906688",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+      }
+    },
+    {
+      "at": "2026-10-05T08:17:47.390Z",
+      "phase": "after",
+      "platform": "linux",
+      "architecture": "x64",
+      "osRelease": "6.17.0-1022-azure",
+      "availableParallelism": 4,
+      "logicalCpus": 4,
+      "cpuModel": "AMD EPYC 7763 64-Core Processor",
+      "totalMemoryBytes": 16766406656,
+      "cgroup": {
+        "cpu.max": "max 100000",
+        "cpu.stat": "usage_usec 1308887766\nuser_usec 1111722239\nsystem_usec 197165526\nnice_usec 71137000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+        "memory.max": "max",
+        "memory.peak": "6650695680",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+      }
+    }
+  ],
+  "resourceCounterDeltas": {
+    "cpu": {
+      "usage_usec": 1288368651,
+      "user_usec": 1095247901,
+      "system_usec": 193120750,
+      "nice_usec": 71137000,
+      "core_sched.force_idle_usec": 0,
+      "nr_periods": 0,
+      "nr_throttled": 0,
+      "throttled_usec": 0,
+      "nr_bursts": 0,
+      "burst_usec": 0
+    },
+    "memoryEvents": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0
+    }
+  },
+  "totalArtifactCount": 1,
+  "artifacts": [
+    {
+      "id": 11332463388,
+      "node_id": "MDg6QXJ0aWZhY3QxMTMzMjQ2MzM4OA==",
+      "name": "github-pages",
+      "size_in_bytes": 374686,
+      "url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11332463388",
+      "archive_download_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11332463388/zip",
+      "expired": false,
+      "digest": "sha256:236a7950abb12001b7a0d42b868dc46327c0569567b5c53fd9a32f3aad208b6f",
+      "created_at": "2026-10-05T08:17:52Z",
+      "updated_at": "2026-10-05T08:17:52Z",
+      "expires_at": "2026-10-06T08:17:51Z",
+      "workflow_run": {
+        "id": 37281970385,
+        "repository_id": 1206473449,
+        "head_repository_id": 1206473449,
+        "head_branch": "codex/ci-conversion-sync",
+        "head_sha": "299e3864f01d4e87a1770594628b84cf5a3972c8"
+      },
+      "nominalConfiguredRetentionHours": 24,
+      "nominalProjectedByteHours": 8992464,
+      "actualApiExpiryHours": 23.99972222222222
+    }
+  ],
+  "failureArtifactExists": false,
+  "comparisons": [
+    {
+      "label": "PR37 complete Web37274709527",
+      "seconds": 400,
+      "roundedMinutes": 7,
+      "browserStepSeconds": 347,
+      "currentSeconds": 455,
+      "currentRoundedMinutes": 8,
+      "rawSecondsReduction": -55,
+      "rawPercentReduction": -13.75,
+      "roundedMinuteReduction": -1,
+      "roundedPercentReduction": -14.285714285714286,
+      "currentBrowserStepSeconds": 368
+    },
+    {
+      "label": "Manual fallback verification job37276826095",
+      "seconds": 350,
+      "roundedMinutes": 6,
+      "browserStepSeconds": 291,
+      "currentSeconds": 455,
+      "currentRoundedMinutes": 8,
+      "rawSecondsReduction": -105,
+      "rawPercentReduction": -30,
+      "roundedMinuteReduction": -2,
+      "roundedPercentReduction": -33.333333333333336,
+      "currentBrowserStepSeconds": 368
+    }
+  ]
+}

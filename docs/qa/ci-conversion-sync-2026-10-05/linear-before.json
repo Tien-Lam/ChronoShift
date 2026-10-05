@@ -1,0 +1,62 @@
+{
+  "capturedAt": "2026-10-05T08:26:52Z",
+  "observationClockNote": "Clock read before this retrieval; API description snapshot follows.",
+  "issue": {
+    "id": "TIE-375",
+    "uuid": "afb8fc50-eae5-4377-ac56-633183cd18c5",
+    "title": "Restore the CI usage target for the expanded browser suite",
+    "description": "The expanded browser suite no longer meets the user's requested 20% Actions usage reduction. The current successful PR #36 Web run 37268219679 and main Pages run 37268626778 use 326 runner seconds/eight rounded minutes, versus 307 seconds/eight minutes in the retained baseline pair 37131752983/37131749773. Raw usage increased 6.19%; rounded savings are zero. Projected artifact storage is 63.25% lower.\n\nThe historical 168-case sample achieved a 25% quota reduction; it is not current-suite acceptance. The current suite has 258 configured cases, 249 first-attempt passes, nine CDP-only skips, 116 units and subpath verification.\n\nAcceptance:\n\n- [ ] Identify measured bottlenecks and implement independently reviewed changes.\n- [ ] A current equivalent successful PR/main pair reaches at least 20% lower rounded minutes and artifact byte-hours, with raw runner time improved.\n- [ ] Preserve browser/lifecycle/normal-motion coverage, independent exact expectations, integrity, main-only exact-artifact publishing and bounded diagnostics. Do not skip assertions, mask retries or multiply jobs at higher quota cost.\n\nAn independent read-only investigation finds browser work dominates: 246 seconds of the 301-second Web job; 249 cases total 939.247 concurrent test-seconds. Controls total 182.2 seconds, app cases 177.06 and updates 130. The largest menu sweep totals 94.2 seconds. Next step: bounded Linux operation timing to choose an evidence-backed improvement. Full option rendering, protocol observation overhead and retry synchronization are hypotheses, not established optimizations.\n\nCurrent reviewed runtime head: 9c7965a; merged main: 67be609. [Measurement and investigation](<https://github.com/Tien-Lam/ChronoShift/tree/main/docs/qa/ci-lifecycle-2026-10-05>). Workload expansion and timing variability must remain explicit; these samples do not claim monthly account totals.\n\n5 October progress: draft PR #37 preserves all 258 configured scenarios and adds bounded sanitized timing metadata. Instrumented four-worker control 37269816926 passed 249 browser cases plus nine capability skips, with no retries or dropped attempts; its job took 356 seconds, browser step 291 seconds. This diagnostic run has no corresponding main publication and is not a new paired acceptance sample. Local scalar batching (22.5s versus 22.8s) showed no useful gain and was excluded, with the prototype/review retained. Six-worker same-job experiment 37270362546 is running at head 77fbf61; no added runner/job, coverage or motion changes. Both independent reviewers found no isolation blocker to the experiment; adoption and efficiency verdicts remain pending. Final uninstrumented full gate and matching publication pair are required. Evidence: docs/qa/ci-efficiency-2026-10-05/.\n\nCurrent experiment result: six-worker CI 37270362546 is rejected (419-second job versus the instrumented four-worker control's 356 seconds). It completed with 259 attempts across 258 unique scenarios: one failed iPhone rollback attempt followed by a passing retry, plus nine capability skips. Four workers are restored. The green workflow conclusion was initially misreported as retry-free; original evidence and a separate correction are retained. Draft PR #37 now evaluates optional timing, successful-reuse publishing in one job with the full fallback retained, and bounded timezone virtualization. No efficiency target or final adoption is claimed. A mobile test precondition is being strengthened with a real field click and explicit automatic-open proof; actual frozen-origin identity is required because the WebKit fixture overrides config.baseURL.\n\nSuperseding progress: virtualization is fully removed; every web source file matches baseline main 7059. Its complete gate passed without retries but took 431s, and a bounded keyboard/scroll review blocker remained. Two-worker same-job run 37273144333 also passed 258 cases/116 units/subpath without retries but took 464s, so that setting is rejected. Actual resource metadata reports four CPUs and no own-cgroup throttling/OOM; it does not prove an optimal worker setting. Current candidate 52e8d9c restores four workers and measures standard ubuntu-24.04-arm using the identical cryptographically verified official multi-platform browser image. Full case identities, profiles, normal motion, expectations, integrity and retention stay unchanged. Trusted main static publishing uses a consolidated Ubuntu Slim job; complete fallback remains. Independent exact-source reviews, ARM full gate, actual fast/manual-fallback publishing and final paired metrics remain required. No quota target completion claim.",
+    "projectMilestone": {
+      "id": "dd4052cc-9fd3-4bc9-8366-d9921b9f7f19",
+      "name": "Web release candidate"
+    },
+    "priority": {
+      "value": 2,
+      "name": "High"
+    },
+    "url": "https://linear.app/tienlam/issue/TIE-375/restore-the-ci-usage-target-for-the-expanded-browser-suite",
+    "gitBranchName": "tien/tie-375-restore-the-ci-usage-target-for-the-expanded-browser-suite",
+    "createdAt": "2026-10-05T05:40:38.662Z",
+    "updatedAt": "2026-10-05T08:10:34.650Z",
+    "archivedAt": null,
+    "completedAt": null,
+    "startedAt": "2026-10-05T05:40:38.731Z",
+    "canceledAt": null,
+    "dueDate": null,
+    "slaStartedAt": null,
+    "slaMediumRiskAt": null,
+    "slaHighRiskAt": null,
+    "slaBreachesAt": null,
+    "status": "In Progress",
+    "statusType": "started",
+    "labels": [],
+    "attachments": [
+      {
+        "id": "759d976d-1994-4cf7-81bc-ffdaa6387a8c",
+        "title": "CI efficiency investigation and implementation",
+        "subtitle": null,
+        "url": "https://github.com/Tien-Lam/ChronoShift/pull/37"
+      }
+    ],
+    "documents": [],
+    "stateHistory": [
+      {
+        "state": {
+          "id": "e62e2ad1-26d7-47fb-8795-11f0cece1dd1",
+          "name": "In Progress",
+          "type": "started"
+        },
+        "startedAt": "2026-10-05T05:40:38.662Z",
+        "endedAt": null
+      }
+    ],
+    "createdBy": "Tien Long Lam",
+    "createdById": "9eae46f7-c527-49bc-8d6a-465118651013",
+    "assignee": "Tien Long Lam",
+    "assigneeId": "9eae46f7-c527-49bc-8d6a-465118651013",
+    "project": "ChronoShift — Web Delivery",
+    "projectId": "302fdd5f-a683-490b-9c4b-71073e0dd834",
+    "team": "Tien's Team",
+    "teamId": "7a88d71d-eac6-404e-a83d-f3b37d5c6efa"
+  }
+}
