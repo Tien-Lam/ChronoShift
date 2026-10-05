@@ -1,0 +1,11 @@
+# Same-job concurrency experiment
+
+Unchanged instrumented control: head2d94136249cf67b7ab37efe44401180a976692ad, Web37269816926, four workers. All116units,249first-attempt browser passes/nineCDPskips/subpath pass. Job05:54:04–06:00:00UTC356seconds; browserstep291seconds; reporter290306.86ms and1111545 summed concurrent test-ms. All258attempts retained, none dropped, no retries. This is one instrumented Linux sample; profiling overhead versus runner variability is not isolated. No main publication paired with this draft control, so no new whole-pair acceptance claim.
+
+Next change measures six browser workers in the same job/runner, preserving258cases, all profiles/raster/viewports, native motion, exact expectations and all failure/upload/source-trust paths. Earlier smaller-suite four-worker optimum may be workload-specific; no assumption of a win. Compare fulljob, actualattempt/retry durations, errors and final uninstrumented gate. No added charged job or faster paid runner. Final default remains provisional until measured and reviewed.
+
+The scalar-batching prototype passed allfiveprofiles locally22.5seconds versus22.8control. Source review caught a missing-layout guard; corrected guard typechecked but was not benchmarked. Patch/rawcomparison/review preserved; prototype excluded from candidate because saving is not established. DOM probe manual buttons open full454/479-row collections regardless of typed-query kind; labels indicate preceding input, not a filtered collection. LocalDOM/timing is not LinuxCPU evidence.
+
+Native browser installation is not pursued now: prior same-version cold setup52seconds versus current container35/37seconds offers no demonstrated saving. OfficialPlaywrightdocs caution that browsercache restore may cost as much as download and OS libraries still need installation. Preserve pinnedofficialimage; see https://playwright.dev/docs/ci and https://playwright.dev/docs/browsers.
+
+Reviewer briefing: code and adversarial independently review exact final settings/coverage/cost, implementation versus efficiency-report verdicts, all258 identities/no masked retries, and matching main publication. Existing metadata artifact is1day; failurebundle includesmetadata3days. Locations relativeconfiguredtestroot. Original reporter report wording retained with this separate clarification.

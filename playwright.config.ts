@@ -19,8 +19,9 @@ export default defineConfig({
   timeout: 30000,
   expect: { timeout: 10000 },
   fullyParallel: true,
-  // Four workers outperform oversubscription on the measured Linux runner.
-  workers: process.env.CI ? 4 : 3,
+  // Measure six workers against the unchanged four-worker expanded suite.
+  // This uses the same runner/job; final settings require complete cost evidence.
+  workers: process.env.CI ? 6 : 3,
   retries: process.env.CI ? 1 : 0,
   reporter: [
     ["list"],

@@ -1,0 +1,1337 @@
+{
+  "duration": 290306.86,
+  "workers": 4,
+  "status": "passed",
+  "count": 258,
+  "drop": 0,
+  "totalTestMs": 1111545,
+  "operations": {
+    "pw:api/browser-launch": {
+      "count": 23,
+      "leafTotalMs": 5630,
+      "totalMs": 5630
+    },
+    "fixture/fixture": {
+      "count": 2249,
+      "leafTotalMs": 11022,
+      "totalMs": 114956
+    },
+    "pw:api/context-create": {
+      "count": 249,
+      "leafTotalMs": 3139,
+      "totalMs": 3139
+    },
+    "pw:api/page-create": {
+      "count": 332,
+      "leafTotalMs": 81039,
+      "totalMs": 81039
+    },
+    "hook/hook": {
+      "count": 540,
+      "leafTotalMs": 8,
+      "totalMs": 127350
+    },
+    "pw:api/viewport": {
+      "count": 112,
+      "leafTotalMs": 2014,
+      "totalMs": 2014
+    },
+    "pw:api/navigate": {
+      "count": 360,
+      "leafTotalMs": 91251,
+      "totalMs": 91251
+    },
+    "pw:api/other-api": {
+      "count": 893,
+      "leafTotalMs": 20999,
+      "totalMs": 20999
+    },
+    "expect/expect": {
+      "count": 10501,
+      "leafTotalMs": 455357,
+      "totalMs": 476209
+    },
+    "pw:api/evaluate": {
+      "count": 1163,
+      "leafTotalMs": 39036,
+      "totalMs": 39036
+    },
+    "pw:api/context-close": {
+      "count": 249,
+      "leafTotalMs": 5977,
+      "totalMs": 5977
+    },
+    "pw:api/fill": {
+      "count": 734,
+      "leafTotalMs": 56081,
+      "totalMs": 56081
+    },
+    "pw:api/scroll": {
+      "count": 66,
+      "leafTotalMs": 6961,
+      "totalMs": 6961
+    },
+    "pw:api/press": {
+      "count": 649,
+      "leafTotalMs": 31624,
+      "totalMs": 31624
+    },
+    "pw:api/click": {
+      "count": 717,
+      "leafTotalMs": 138018,
+      "totalMs": 138018
+    },
+    "pw:api/reload": {
+      "count": 105,
+      "leafTotalMs": 14337,
+      "totalMs": 14337
+    },
+    "pw:api/page-close": {
+      "count": 68,
+      "leafTotalMs": 359,
+      "totalMs": 359
+    },
+    "pw:api/offline": {
+      "count": 9,
+      "leafTotalMs": 83,
+      "totalMs": 83
+    },
+    "pw:api/screenshot": {
+      "count": 23,
+      "leafTotalMs": 1616,
+      "totalMs": 1616
+    },
+    "pw:api/request": {
+      "count": 206,
+      "leafTotalMs": 1531,
+      "totalMs": 1531
+    },
+    "pw:api/wait": {
+      "count": 144,
+      "leafTotalMs": 104855,
+      "totalMs": 104855
+    },
+    "pw:api/pointer": {
+      "count": 10,
+      "leafTotalMs": 386,
+      "totalMs": 386
+    },
+    "pw:api/hover": {
+      "count": 10,
+      "leafTotalMs": 1346,
+      "totalMs": 1346
+    },
+    "pw:api/focus": {
+      "count": 10,
+      "leafTotalMs": 199,
+      "totalMs": 199
+    },
+    "test.step/test.step": {
+      "count": 80,
+      "leafTotalMs": 0,
+      "totalMs": 103565
+    },
+    "pw:api/type": {
+      "count": 5,
+      "leafTotalMs": 6499,
+      "totalMs": 6499
+    },
+    "pw:api/tap": {
+      "count": 2,
+      "leafTotalMs": 115,
+      "totalMs": 115
+    }
+  },
+  "slowest": [
+    {
+      "project": "webkit",
+      "location": {
+        "file": "controls.spec.ts",
+        "line": 55,
+        "column": 0
+      },
+      "duration": 37462,
+      "ops": {
+        "fixture/fixture": {
+          "count": 9,
+          "totalMs": 1031,
+          "maxMs": 472,
+          "leafCount": 6,
+          "leafTotalMs": 100,
+          "failedCount": 0
+        },
+        "pw:api/context-create": {
+          "count": 1,
+          "totalMs": 15,
+          "maxMs": 15,
+          "leafCount": 1,
+          "leafTotalMs": 15,
+          "failedCount": 0
+        },
+        "pw:api/page-create": {
+          "count": 1,
+          "totalMs": 471,
+          "maxMs": 471,
+          "leafCount": 1,
+          "leafTotalMs": 471,
+          "failedCount": 0
+        },
+        "hook/hook": {
+          "count": 2,
+          "totalMs": 1043,
+          "maxMs": 593,
+          "leafCount": 0,
+          "leafTotalMs": 0,
+          "failedCount": 0
+        },
+        "pw:api/navigate": {
+          "count": 1,
+          "totalMs": 549,
+          "maxMs": 549,
+          "leafCount": 1,
+          "leafTotalMs": 549,
+          "failedCount": 0
+        },
+        "pw:api/fill": {
+          "count": 2,
+          "totalMs": 304,
+          "maxMs": 171,
+          "leafCount": 2,
+          "leafTotalMs": 304,
+          "failedCount": 0
+        },
+        "pw:api/press": {
+          "count": 37,
+          "totalMs": 3253,
+          "maxMs": 332,
+          "leafCount": 37,
+          "leafTotalMs": 3253,
+          "failedCount": 0
+        },
+        "expect/expect": {
+          "count": 886,
+          "totalMs": 7369,
+          "maxMs": 585,
+          "leafCount": 850,
+          "leafTotalMs": 6697,
+          "failedCount": 0
+        },
+        "pw:api/click": {
+          "count": 42,
+          "totalMs": 21556,
+          "maxMs": 1166,
+          "leafCount": 42,
+          "leafTotalMs": 21556,
+          "failedCount": 0
+        },
+        "pw:api/viewport": {
+          "count": 6,
+          "totalMs": 50,
+          "maxMs": 12,
+          "leafCount": 6,
+          "leafTotalMs": 50,
+          "failedCount": 0
+        },
+        "pw:api/evaluate": {
+          "count": 68,
+          "totalMs": 1040,
+          "maxMs": 87,
+          "leafCount": 68,
+          "leafTotalMs": 1040,
+          "failedCount": 0
+        },
+        "pw:api/other-api": {
+          "count": 132,
+          "totalMs": 2518,
+          "maxMs": 75,
+          "leafCount": 132,
+          "leafTotalMs": 2518,
+          "failedCount": 0
+        },
+        "test.step/test.step": {
+          "count": 6,
+          "totalMs": 32486,
+          "maxMs": 6676,
+          "leafCount": 0,
+          "leafTotalMs": 0,
+          "failedCount": 0
+        },
+        "pw:api/context-close": {
+          "count": 1,
+          "totalMs": 4,
+          "maxMs": 4,
+          "leafCount": 1,
+          "leafTotalMs": 4,
+          "failedCount": 0
+        }
+      }
+    },
+    {
+      "project": "iphone-emulation",
+      "location": {
+        "file": "controls.spec.ts",
+        "line": 55,
+        "column": 0
+      },
+      "duration": 22548,
+      "ops": {
+        "fixture/fixture": {
+          "count": 9,
+          "totalMs": 671,
+          "maxMs": 473,
+          "leafCount": 6,
+          "leafTotalMs": 58,
+          "failedCount": 0
+        },
+        "pw:api/context-create": {
+          "count": 1,
+          "totalMs": 13,
+          "maxMs": 13,
+          "leafCount": 1,
+          "leafTotalMs": 13,
+          "failedCount": 0
+        },
+        "pw:api/page-create": {
+          "count": 1,
+          "totalMs": 469,
+          "maxMs": 469,
+          "leafCount": 1,
+          "leafTotalMs": 469,
+          "failedCount": 0
+        },
+        "hook/hook": {
+          "count": 2,
+          "totalMs": 691,
+          "maxMs": 551,
+          "leafCount": 0,
+          "leafTotalMs": 0,
+          "failedCount": 0
+        },
+        "pw:api/navigate": {
+          "count": 1,
+          "totalMs": 308,
+          "maxMs": 308,
+          "leafCount": 1,
+          "leafTotalMs": 308,
+          "failedCount": 0
+        },
+        "pw:api/fill": {
+          "count": 2,
+          "totalMs": 366,
+          "maxMs": 211,
+          "leafCount": 2,
+          "leafTotalMs": 366,
+          "failedCount": 0
+        },
+        "pw:api/press": {
+          "count": 37,
+          "totalMs": 2355,
+          "maxMs": 199,
+          "leafCount": 37,
+          "leafTotalMs": 2355,
+          "failedCount": 0
+        },
+        "expect/expect": {
+          "count": 886,
+          "totalMs": 3899,
+          "maxMs": 477,
+          "leafCount": 850,
+          "leafTotalMs": 3264,
+          "failedCount": 0
+        },
+        "pw:api/click": {
+          "count": 42,
+          "totalMs": 12009,
+          "maxMs": 676,
+          "leafCount": 42,
+          "leafTotalMs": 12009,
+          "failedCount": 0
+        },
+        "pw:api/viewport": {
+          "count": 6,
+          "totalMs": 50,
+          "maxMs": 20,
+          "leafCount": 6,
+          "leafTotalMs": 50,
+          "failedCount": 0
+        },
+        "pw:api/evaluate": {
+          "count": 68,
+          "totalMs": 933,
+          "maxMs": 63,
+          "leafCount": 68,
+          "leafTotalMs": 933,
+          "failedCount": 0
+        },
+        "pw:api/other-api": {
+          "count": 132,
+          "totalMs": 2120,
+          "maxMs": 70,
+          "leafCount": 132,
+          "leafTotalMs": 2120,
+          "failedCount": 0
+        },
+        "test.step/test.step": {
+          "count": 6,
+          "totalMs": 19162,
+          "maxMs": 3695,
+          "leafCount": 0,
+          "leafTotalMs": 0,
+          "failedCount": 0
+        },
+        "pw:api/context-close": {
+          "count": 1,
+          "totalMs": 5,
+          "maxMs": 5,
+          "leafCount": 1,
+          "leafTotalMs": 5,
+          "failedCount": 0
+        }
+      }
+    },
+    {
+      "project": "firefox",
+      "location": {
+        "file": "controls.spec.ts",
+        "line": 55,
+        "column": 0
+      },
+      "duration": 22379,
+      "ops": {
+        "fixture/fixture": {
+          "count": 9,
+          "totalMs": 512,
+          "maxMs": 338,
+          "leafCount": 6,
+          "leafTotalMs": 4,
+          "failedCount": 0
+        },
+        "pw:api/context-create": {
+          "count": 1,
+          "totalMs": 21,
+          "maxMs": 21,
+          "leafCount": 1,
+          "leafTotalMs": 21,
+          "failedCount": 0
+        },
+        "pw:api/page-create": {
+          "count": 1,
+          "totalMs": 330,
+          "maxMs": 330,
+          "leafCount": 1,
+          "leafTotalMs": 330,
+          "failedCount": 0
+        },
+        "hook/hook": {
+          "count": 2,
+          "totalMs": 534,
+          "maxMs": 376,
+          "leafCount": 0,
+          "leafTotalMs": 0,
+          "failedCount": 0
+        },
+        "pw:api/navigate": {
+          "count": 1,
+          "totalMs": 366,
+          "maxMs": 366,
+          "leafCount": 1,
+          "leafTotalMs": 366,
+          "failedCount": 0
+        },
+        "pw:api/fill": {
+          "count": 2,
+          "totalMs": 273,
+          "maxMs": 159,
+          "leafCount": 2,
+          "leafTotalMs": 273,
+          "failedCount": 0
+        },
+        "pw:api/press": {
+          "count": 37,
+          "totalMs": 2987,
+          "maxMs": 289,
+          "leafCount": 37,
+          "leafTotalMs": 2987,
+          "failedCount": 0
+        },
+        "expect/expect": {
+          "count": 886,
+          "totalMs": 4203,
+          "maxMs": 357,
+          "leafCount": 850,
+          "leafTotalMs": 3323,
+          "failedCount": 0
+        },
+        "pw:api/click": {
+          "count": 42,
+          "totalMs": 9777,
+          "maxMs": 839,
+          "leafCount": 42,
+          "leafTotalMs": 9777,
+          "failedCount": 0
+        },
+        "pw:api/viewport": {
+          "count": 6,
+          "totalMs": 276,
+          "maxMs": 64,
+          "leafCount": 6,
+          "leafTotalMs": 276,
+          "failedCount": 0
+        },
+        "pw:api/evaluate": {
+          "count": 68,
+          "totalMs": 1204,
+          "maxMs": 68,
+          "leafCount": 68,
+          "leafTotalMs": 1204,
+          "failedCount": 0
+        },
+        "pw:api/other-api": {
+          "count": 132,
+          "totalMs": 2932,
+          "maxMs": 99,
+          "leafCount": 132,
+          "leafTotalMs": 2932,
+          "failedCount": 0
+        },
+        "pw:api/screenshot": {
+          "count": 6,
+          "totalMs": 335,
+          "maxMs": 70,
+          "leafCount": 6,
+          "leafTotalMs": 335,
+          "failedCount": 0
+        },
+        "test.step/test.step": {
+          "count": 6,
+          "totalMs": 19696,
+          "maxMs": 3472,
+          "leafCount": 0,
+          "leafTotalMs": 0,
+          "failedCount": 0
+        },
+        "pw:api/context-close": {
+          "count": 1,
+          "totalMs": 18,
+          "maxMs": 18,
+          "leafCount": 1,
+          "leafTotalMs": 18,
+          "failedCount": 0
+        }
+      }
+    },
+    {
+      "project": "webkit",
+      "location": {
+        "file": "controls.spec.ts",
+        "line": 232,
+        "column": 0
+      },
+      "duration": 14771,
+      "ops": {
+        "fixture/fixture": {
+          "count": 9,
+          "totalMs": 942,
+          "maxMs": 528,
+          "leafCount": 6,
+          "leafTotalMs": 81,
+          "failedCount": 0
+        },
+        "pw:api/context-create": {
+          "count": 1,
+          "totalMs": 14,
+          "maxMs": 14,
+          "leafCount": 1,
+          "leafTotalMs": 14,
+          "failedCount": 0
+        },
+        "pw:api/page-create": {
+          "count": 1,
+          "totalMs": 527,
+          "maxMs": 527,
+          "leafCount": 1,
+          "leafTotalMs": 527,
+          "failedCount": 0
+        },
+        "hook/hook": {
+          "count": 2,
+          "totalMs": 952,
+          "maxMs": 622,
+          "leafCount": 0,
+          "leafTotalMs": 0,
+          "failedCount": 0
+        },
+        "pw:api/navigate": {
+          "count": 1,
+          "totalMs": 431,
+          "maxMs": 431,
+          "leafCount": 1,
+          "leafTotalMs": 431,
+          "failedCount": 0
+        },
+        "pw:api/click": {
+          "count": 20,
+          "totalMs": 5129,
+          "maxMs": 670,
+          "leafCount": 20,
+          "leafTotalMs": 5129,
+          "failedCount": 0
+        },
+        "pw:api/focus": {
+          "count": 2,
+          "totalMs": 54,
+          "maxMs": 33,
+          "leafCount": 2,
+          "leafTotalMs": 54,
+          "failedCount": 0
+        },
+        "pw:api/press": {
+          "count": 38,
+          "totalMs": 1646,
+          "maxMs": 148,
+          "leafCount": 38,
+          "leafTotalMs": 1646,
+          "failedCount": 0
+        },
+        "expect/expect": {
+          "count": 45,
+          "totalMs": 6126,
+          "maxMs": 1017,
+          "leafCount": 45,
+          "leafTotalMs": 6126,
+          "failedCount": 0
+        },
+        "pw:api/fill": {
+          "count": 4,
+          "totalMs": 295,
+          "maxMs": 91,
+          "leafCount": 4,
+          "leafTotalMs": 295,
+          "failedCount": 0
+        },
+        "pw:api/context-close": {
+          "count": 1,
+          "totalMs": 1,
+          "maxMs": 1,
+          "leafCount": 1,
+          "leafTotalMs": 1,
+          "failedCount": 0
+        }
+      }
+    },
+    {
+      "project": "chromium",
+      "location": {
+        "file": "controls.spec.ts",
+        "line": 55,
+        "column": 0
+      },
+      "duration": 14166,
+      "ops": {
+        "fixture/fixture": {
+          "count": 9,
+          "totalMs": 141,
+          "maxMs": 91,
+          "leafCount": 6,
+          "leafTotalMs": 0,
+          "failedCount": 0
+        },
+        "pw:api/context-create": {
+          "count": 1,
+          "totalMs": 5,
+          "maxMs": 5,
+          "leafCount": 1,
+          "leafTotalMs": 5,
+          "failedCount": 0
+        },
+        "pw:api/page-create": {
+          "count": 1,
+          "totalMs": 42,
+          "maxMs": 42,
+          "leafCount": 1,
+          "leafTotalMs": 42,
+          "failedCount": 0
+        },
+        "hook/hook": {
+          "count": 2,
+          "totalMs": 148,
+          "maxMs": 95,
+          "leafCount": 0,
+          "leafTotalMs": 0,
+          "failedCount": 0
+        },
+        "pw:api/navigate": {
+          "count": 1,
+          "totalMs": 144,
+          "maxMs": 144,
+          "leafCount": 1,
+          "leafTotalMs": 144,
+          "failedCount": 0
+        },
+        "pw:api/fill": {
+          "count": 2,
+          "totalMs": 447,
+          "maxMs": 362,
+          "leafCount": 2,
+          "leafTotalMs": 447,
+          "failedCount": 0
+        },
+        "pw:api/press": {
+          "count": 37,
+          "totalMs": 1450,
+          "maxMs": 138,
+          "leafCount": 37,
+          "leafTotalMs": 1450,
+          "failedCount": 0
+        },
+        "expect/expect": {
+          "count": 886,
+          "totalMs": 4421,
+          "maxMs": 352,
+          "leafCount": 850,
+          "leafTotalMs": 4005,
+          "failedCount": 0
+        },
+        "pw:api/click": {
+          "count": 42,
+          "totalMs": 5377,
+          "maxMs": 381,
+          "leafCount": 42,
+          "leafTotalMs": 5377,
+          "failedCount": 0
+        },
+        "pw:api/viewport": {
+          "count": 6,
+          "totalMs": 84,
+          "maxMs": 25,
+          "leafCount": 6,
+          "leafTotalMs": 84,
+          "failedCount": 0
+        },
+        "pw:api/evaluate": {
+          "count": 68,
+          "totalMs": 500,
+          "maxMs": 21,
+          "leafCount": 68,
+          "leafTotalMs": 500,
+          "failedCount": 0
+        },
+        "pw:api/other-api": {
+          "count": 132,
+          "totalMs": 1322,
+          "maxMs": 41,
+          "leafCount": 132,
+          "leafTotalMs": 1322,
+          "failedCount": 0
+        },
+        "pw:api/screenshot": {
+          "count": 6,
+          "totalMs": 354,
+          "maxMs": 72,
+          "leafCount": 6,
+          "leafTotalMs": 354,
+          "failedCount": 0
+        },
+        "test.step/test.step": {
+          "count": 6,
+          "totalMs": 12021,
+          "maxMs": 2103,
+          "leafCount": 0,
+          "leafTotalMs": 0,
+          "failedCount": 0
+        },
+        "pw:api/context-close": {
+          "count": 1,
+          "totalMs": 6,
+          "maxMs": 6,
+          "leafCount": 1,
+          "leafTotalMs": 6,
+          "failedCount": 0
+        }
+      }
+    },
+    {
+      "project": "android-emulation",
+      "location": {
+        "file": "controls.spec.ts",
+        "line": 55,
+        "column": 0
+      },
+      "duration": 13292,
+      "ops": {
+        "fixture/fixture": {
+          "count": 9,
+          "totalMs": 186,
+          "maxMs": 96,
+          "leafCount": 6,
+          "leafTotalMs": 1,
+          "failedCount": 0
+        },
+        "pw:api/context-create": {
+          "count": 1,
+          "totalMs": 5,
+          "maxMs": 5,
+          "leafCount": 1,
+          "leafTotalMs": 5,
+          "failedCount": 0
+        },
+        "pw:api/page-create": {
+          "count": 1,
+          "totalMs": 79,
+          "maxMs": 79,
+          "leafCount": 1,
+          "leafTotalMs": 79,
+          "failedCount": 0
+        },
+        "hook/hook": {
+          "count": 2,
+          "totalMs": 191,
+          "maxMs": 100,
+          "leafCount": 0,
+          "leafTotalMs": 0,
+          "failedCount": 0
+        },
+        "pw:api/navigate": {
+          "count": 1,
+          "totalMs": 199,
+          "maxMs": 199,
+          "leafCount": 1,
+          "leafTotalMs": 199,
+          "failedCount": 0
+        },
+        "pw:api/fill": {
+          "count": 2,
+          "totalMs": 407,
+          "maxMs": 326,
+          "leafCount": 2,
+          "leafTotalMs": 407,
+          "failedCount": 0
+        },
+        "pw:api/press": {
+          "count": 37,
+          "totalMs": 1441,
+          "maxMs": 138,
+          "leafCount": 37,
+          "leafTotalMs": 1441,
+          "failedCount": 0
+        },
+        "expect/expect": {
+          "count": 886,
+          "totalMs": 4590,
+          "maxMs": 291,
+          "leafCount": 850,
+          "leafTotalMs": 4291,
+          "failedCount": 0
+        },
+        "pw:api/click": {
+          "count": 42,
+          "totalMs": 4518,
+          "maxMs": 281,
+          "leafCount": 42,
+          "leafTotalMs": 4518,
+          "failedCount": 0
+        },
+        "pw:api/viewport": {
+          "count": 6,
+          "totalMs": 72,
+          "maxMs": 20,
+          "leafCount": 6,
+          "leafTotalMs": 72,
+          "failedCount": 0
+        },
+        "pw:api/evaluate": {
+          "count": 68,
+          "totalMs": 501,
+          "maxMs": 36,
+          "leafCount": 68,
+          "leafTotalMs": 501,
+          "failedCount": 0
+        },
+        "pw:api/other-api": {
+          "count": 132,
+          "totalMs": 976,
+          "maxMs": 22,
+          "leafCount": 132,
+          "leafTotalMs": 976,
+          "failedCount": 0
+        },
+        "pw:api/screenshot": {
+          "count": 6,
+          "totalMs": 370,
+          "maxMs": 95,
+          "leafCount": 6,
+          "leafTotalMs": 370,
+          "failedCount": 0
+        },
+        "test.step/test.step": {
+          "count": 6,
+          "totalMs": 11255,
+          "maxMs": 1969,
+          "leafCount": 0,
+          "leafTotalMs": 0,
+          "failedCount": 0
+        },
+        "pw:api/context-close": {
+          "count": 1,
+          "totalMs": 6,
+          "maxMs": 6,
+          "leafCount": 1,
+          "leafTotalMs": 6,
+          "failedCount": 0
+        }
+      }
+    },
+    {
+      "project": "firefox",
+      "location": {
+        "file": "updates.spec.ts",
+        "line": 209,
+        "column": 0
+      },
+      "duration": 12465,
+      "ops": {
+        "fixture/fixture": {
+          "count": 9,
+          "totalMs": 840,
+          "maxMs": 506,
+          "leafCount": 6,
+          "leafTotalMs": 60,
+          "failedCount": 0
+        },
+        "pw:api/context-create": {
+          "count": 1,
+          "totalMs": 9,
+          "maxMs": 9,
+          "leafCount": 1,
+          "leafTotalMs": 9,
+          "failedCount": 0
+        },
+        "pw:api/page-create": {
+          "count": 4,
+          "totalMs": 1473,
+          "maxMs": 505,
+          "leafCount": 4,
+          "leafTotalMs": 1473,
+          "failedCount": 0
+        },
+        "hook/hook": {
+          "count": 2,
+          "totalMs": 848,
+          "maxMs": 579,
+          "leafCount": 0,
+          "leafTotalMs": 0,
+          "failedCount": 0
+        },
+        "pw:api/request": {
+          "count": 4,
+          "totalMs": 22,
+          "maxMs": 9,
+          "leafCount": 4,
+          "leafTotalMs": 22,
+          "failedCount": 1
+        },
+        "expect/expect": {
+          "count": 45,
+          "totalMs": 2729,
+          "maxMs": 931,
+          "leafCount": 45,
+          "leafTotalMs": 2729,
+          "failedCount": 0
+        },
+        "pw:api/navigate": {
+          "count": 4,
+          "totalMs": 2005,
+          "maxMs": 593,
+          "leafCount": 4,
+          "leafTotalMs": 2005,
+          "failedCount": 0
+        },
+        "pw:api/fill": {
+          "count": 13,
+          "totalMs": 723,
+          "maxMs": 133,
+          "leafCount": 13,
+          "leafTotalMs": 723,
+          "failedCount": 0
+        },
+        "pw:api/evaluate": {
+          "count": 7,
+          "totalMs": 2341,
+          "maxMs": 1079,
+          "leafCount": 7,
+          "leafTotalMs": 2341,
+          "failedCount": 0
+        },
+        "pw:api/click": {
+          "count": 2,
+          "totalMs": 212,
+          "maxMs": 151,
+          "leafCount": 2,
+          "leafTotalMs": 212,
+          "failedCount": 0
+        },
+        "pw:api/wait": {
+          "count": 8,
+          "totalMs": 3092,
+          "maxMs": 683,
+          "leafCount": 8,
+          "leafTotalMs": 3092,
+          "failedCount": 0
+        },
+        "pw:api/page-close": {
+          "count": 1,
+          "totalMs": 9,
+          "maxMs": 9,
+          "leafCount": 1,
+          "leafTotalMs": 9,
+          "failedCount": 0
+        },
+        "pw:api/context-close": {
+          "count": 1,
+          "totalMs": 78,
+          "maxMs": 78,
+          "leafCount": 1,
+          "leafTotalMs": 78,
+          "failedCount": 0
+        }
+      }
+    },
+    {
+      "project": "webkit",
+      "location": {
+        "file": "updates.spec.ts",
+        "line": 209,
+        "column": 0
+      },
+      "duration": 11259,
+      "ops": {
+        "fixture/fixture": {
+          "count": 9,
+          "totalMs": 971,
+          "maxMs": 556,
+          "leafCount": 6,
+          "leafTotalMs": 76,
+          "failedCount": 0
+        },
+        "pw:api/context-create": {
+          "count": 1,
+          "totalMs": 28,
+          "maxMs": 28,
+          "leafCount": 1,
+          "leafTotalMs": 28,
+          "failedCount": 0
+        },
+        "pw:api/page-create": {
+          "count": 4,
+          "totalMs": 1768,
+          "maxMs": 558,
+          "leafCount": 4,
+          "leafTotalMs": 1768,
+          "failedCount": 0
+        },
+        "hook/hook": {
+          "count": 2,
+          "totalMs": 976,
+          "maxMs": 663,
+          "leafCount": 0,
+          "leafTotalMs": 0,
+          "failedCount": 0
+        },
+        "pw:api/request": {
+          "count": 4,
+          "totalMs": 32,
+          "maxMs": 15,
+          "leafCount": 4,
+          "leafTotalMs": 32,
+          "failedCount": 1
+        },
+        "expect/expect": {
+          "count": 45,
+          "totalMs": 3521,
+          "maxMs": 617,
+          "leafCount": 45,
+          "leafTotalMs": 3521,
+          "failedCount": 0
+        },
+        "pw:api/navigate": {
+          "count": 4,
+          "totalMs": 1333,
+          "maxMs": 412,
+          "leafCount": 4,
+          "leafTotalMs": 1333,
+          "failedCount": 0
+        },
+        "pw:api/fill": {
+          "count": 13,
+          "totalMs": 890,
+          "maxMs": 118,
+          "leafCount": 13,
+          "leafTotalMs": 890,
+          "failedCount": 0
+        },
+        "pw:api/evaluate": {
+          "count": 7,
+          "totalMs": 390,
+          "maxMs": 229,
+          "leafCount": 7,
+          "leafTotalMs": 390,
+          "failedCount": 0
+        },
+        "pw:api/click": {
+          "count": 2,
+          "totalMs": 439,
+          "maxMs": 229,
+          "leafCount": 2,
+          "leafTotalMs": 439,
+          "failedCount": 0
+        },
+        "pw:api/wait": {
+          "count": 8,
+          "totalMs": 3318,
+          "maxMs": 604,
+          "leafCount": 8,
+          "leafTotalMs": 3318,
+          "failedCount": 0
+        },
+        "pw:api/page-close": {
+          "count": 1,
+          "totalMs": 1,
+          "maxMs": 1,
+          "leafCount": 1,
+          "leafTotalMs": 1,
+          "failedCount": 0
+        },
+        "pw:api/context-close": {
+          "count": 1,
+          "totalMs": 9,
+          "maxMs": 9,
+          "leafCount": 1,
+          "leafTotalMs": 9,
+          "failedCount": 0
+        }
+      }
+    },
+    {
+      "project": "firefox",
+      "location": {
+        "file": "updates.spec.ts",
+        "line": 270,
+        "column": 0
+      },
+      "duration": 10885,
+      "ops": {
+        "fixture/fixture": {
+          "count": 9,
+          "totalMs": 393,
+          "maxMs": 207,
+          "leafCount": 6,
+          "leafTotalMs": 72,
+          "failedCount": 0
+        },
+        "pw:api/context-create": {
+          "count": 1,
+          "totalMs": 7,
+          "maxMs": 7,
+          "leafCount": 1,
+          "leafTotalMs": 7,
+          "failedCount": 0
+        },
+        "pw:api/page-create": {
+          "count": 2,
+          "totalMs": 586,
+          "maxMs": 379,
+          "leafCount": 2,
+          "leafTotalMs": 586,
+          "failedCount": 0
+        },
+        "hook/hook": {
+          "count": 2,
+          "totalMs": 400,
+          "maxMs": 289,
+          "leafCount": 0,
+          "leafTotalMs": 0,
+          "failedCount": 0
+        },
+        "pw:api/request": {
+          "count": 5,
+          "totalMs": 14,
+          "maxMs": 4,
+          "leafCount": 5,
+          "leafTotalMs": 14,
+          "failedCount": 1
+        },
+        "expect/expect": {
+          "count": 46,
+          "totalMs": 2355,
+          "maxMs": 479,
+          "leafCount": 45,
+          "leafTotalMs": 2353,
+          "failedCount": 0
+        },
+        "pw:api/navigate": {
+          "count": 2,
+          "totalMs": 688,
+          "maxMs": 416,
+          "leafCount": 2,
+          "leafTotalMs": 688,
+          "failedCount": 0
+        },
+        "pw:api/click": {
+          "count": 7,
+          "totalMs": 918,
+          "maxMs": 309,
+          "leafCount": 7,
+          "leafTotalMs": 918,
+          "failedCount": 0
+        },
+        "pw:api/fill": {
+          "count": 7,
+          "totalMs": 481,
+          "maxMs": 185,
+          "leafCount": 7,
+          "leafTotalMs": 481,
+          "failedCount": 0
+        },
+        "pw:api/evaluate": {
+          "count": 14,
+          "totalMs": 3483,
+          "maxMs": 1135,
+          "leafCount": 14,
+          "leafTotalMs": 3483,
+          "failedCount": 0
+        },
+        "pw:api/wait": {
+          "count": 5,
+          "totalMs": 2521,
+          "maxMs": 798,
+          "leafCount": 5,
+          "leafTotalMs": 2521,
+          "failedCount": 0
+        },
+        "pw:api/page-close": {
+          "count": 1,
+          "totalMs": 16,
+          "maxMs": 16,
+          "leafCount": 1,
+          "leafTotalMs": 16,
+          "failedCount": 0
+        },
+        "pw:api/context-close": {
+          "count": 1,
+          "totalMs": 20,
+          "maxMs": 20,
+          "leafCount": 1,
+          "leafTotalMs": 20,
+          "failedCount": 0
+        }
+      }
+    },
+    {
+      "project": "webkit",
+      "location": {
+        "file": "imports.spec.ts",
+        "line": 5,
+        "column": 2
+      },
+      "duration": 10792,
+      "ops": {
+        "fixture/fixture": {
+          "count": 9,
+          "totalMs": 771,
+          "maxMs": 373,
+          "leafCount": 6,
+          "leafTotalMs": 95,
+          "failedCount": 0
+        },
+        "pw:api/context-create": {
+          "count": 1,
+          "totalMs": 13,
+          "maxMs": 13,
+          "leafCount": 1,
+          "leafTotalMs": 13,
+          "failedCount": 0
+        },
+        "pw:api/page-create": {
+          "count": 4,
+          "totalMs": 1782,
+          "maxMs": 555,
+          "leafCount": 4,
+          "leafTotalMs": 1782,
+          "failedCount": 0
+        },
+        "hook/hook": {
+          "count": 2,
+          "totalMs": 778,
+          "maxMs": 481,
+          "leafCount": 0,
+          "leafTotalMs": 0,
+          "failedCount": 0
+        },
+        "pw:api/navigate": {
+          "count": 7,
+          "totalMs": 2522,
+          "maxMs": 516,
+          "leafCount": 7,
+          "leafTotalMs": 2522,
+          "failedCount": 0
+        },
+        "expect/expect": {
+          "count": 39,
+          "totalMs": 3700,
+          "maxMs": 1144,
+          "leafCount": 36,
+          "leafTotalMs": 3172,
+          "failedCount": 1
+        },
+        "pw:api/evaluate": {
+          "count": 14,
+          "totalMs": 488,
+          "maxMs": 202,
+          "leafCount": 14,
+          "leafTotalMs": 488,
+          "failedCount": 0
+        },
+        "pw:api/page-close": {
+          "count": 3,
+          "totalMs": 9,
+          "maxMs": 6,
+          "leafCount": 3,
+          "leafTotalMs": 9,
+          "failedCount": 0
+        },
+        "pw:api/fill": {
+          "count": 5,
+          "totalMs": 951,
+          "maxMs": 389,
+          "leafCount": 5,
+          "leafTotalMs": 951,
+          "failedCount": 0
+        },
+        "pw:api/press": {
+          "count": 3,
+          "totalMs": 185,
+          "maxMs": 142,
+          "leafCount": 3,
+          "leafTotalMs": 185,
+          "failedCount": 0
+        },
+        "pw:api/click": {
+          "count": 4,
+          "totalMs": 1140,
+          "maxMs": 336,
+          "leafCount": 4,
+          "leafTotalMs": 1140,
+          "failedCount": 0
+        },
+        "pw:api/context-close": {
+          "count": 1,
+          "totalMs": 8,
+          "maxMs": 8,
+          "leafCount": 1,
+          "leafTotalMs": 8,
+          "failedCount": 0
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "at": "2026-10-05T05:59:17.085Z",
+  "control": {
+    "durationMs": 22791.16,
+    "attempts": [
+      {
+        "project": "chromium",
+        "durationMs": 9944,
+        "expect": {
+          "count": 886,
+          "totalMs": 6420,
+          "maxMs": 290,
+          "leafCount": 850,
+          "leafTotalMs": 6281,
+          "failedCount": 0
+        }
+      },
+      {
+        "project": "webkit",
+        "durationMs": 10907,
+        "expect": {
+          "count": 886,
+          "totalMs": 6691,
+          "maxMs": 294,
+          "leafCount": 850,
+          "leafTotalMs": 6496,
+          "failedCount": 0
+        }
+      },
+      {
+        "project": "firefox",
+        "durationMs": 12516,
+        "expect": {
+          "count": 886,
+          "totalMs": 6193,
+          "maxMs": 314,
+          "leafCount": 850,
+          "leafTotalMs": 5955,
+          "failedCount": 0
+        }
+      },
+      {
+        "project": "android-emulation",
+        "durationMs": 9778,
+        "expect": {
+          "count": 886,
+          "totalMs": 5779,
+          "maxMs": 287,
+          "leafCount": 850,
+          "leafTotalMs": 5659,
+          "failedCount": 0
+        }
+      },
+      {
+        "project": "iphone-emulation",
+        "durationMs": 11076,
+        "expect": {
+          "count": 886,
+          "totalMs": 6889,
+          "maxMs": 302,
+          "leafCount": 850,
+          "leafTotalMs": 6701,
+          "failedCount": 0
+        }
+      }
+    ],
+    "totalTestMs": 54221
+  },
+  "prototype": {
+    "durationMs": 22514.411,
+    "attempts": [
+      {
+        "project": "chromium",
+        "durationMs": 9838,
+        "expect": {
+          "count": 376,
+          "totalMs": 6371,
+          "maxMs": 288,
+          "leafCount": 340,
+          "leafTotalMs": 6250,
+          "failedCount": 0
+        }
+      },
+      {
+        "project": "webkit",
+        "durationMs": 10748,
+        "expect": {
+          "count": 376,
+          "totalMs": 6701,
+          "maxMs": 310,
+          "leafCount": 340,
+          "leafTotalMs": 6526,
+          "failedCount": 0
+        }
+      },
+      {
+        "project": "firefox",
+        "durationMs": 12304,
+        "expect": {
+          "count": 376,
+          "totalMs": 6198,
+          "maxMs": 312,
+          "leafCount": 340,
+          "leafTotalMs": 5970,
+          "failedCount": 0
+        }
+      },
+      {
+        "project": "android-emulation",
+        "durationMs": 9782,
+        "expect": {
+          "count": 376,
+          "totalMs": 5897,
+          "maxMs": 289,
+          "leafCount": 340,
+          "leafTotalMs": 5774,
+          "failedCount": 0
+        }
+      },
+      {
+        "project": "iphone-emulation",
+        "durationMs": 10896,
+        "expect": {
+          "count": 376,
+          "totalMs": 6802,
+          "maxMs": 299,
+          "leafCount": 340,
+          "leafTotalMs": 6646,
+          "failedCount": 0
+        }
+      }
+    ],
+    "totalTestMs": 53568
+  },
+  "limits": [
+    "Sequential local macOS samples, three workers, same frozen root runtime; not Linux or repeated statistical measurement",
+    "Prototype inspected before layout guard fix; corrected guard was typechecked but not benchmarked",
+    "Overall run timing difference is too small to establish useful savings; prototype excluded from candidate"
+  ]
+}
