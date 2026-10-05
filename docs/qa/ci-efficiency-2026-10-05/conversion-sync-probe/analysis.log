@@ -1,0 +1,241 @@
+{
+  "analyzedAt": "2026-10-05T07:55:16.169Z",
+  "began": "2026-10-05T07:54:25.758Z",
+  "ended": "2026-10-05T07:54:47.673Z",
+  "serverStoppedAt": "2026-10-05T07:54:47.673Z",
+  "serverExitCode": null,
+  "head": "e66c6449c97fd97e72205aba4815b4225da105be",
+  "origin": "http://127.0.0.1:54093/",
+  "environment": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "osRelease": "27.0.0",
+    "bun": "1.4.0",
+    "cpus": 14,
+    "cpuModel": "Apple M4 Pro",
+    "memoryBytes": 51539607552,
+    "CI": null,
+    "viewport": {
+      "width": 900,
+      "height": 640
+    },
+    "deviceScaleFactor": 1,
+    "locale": "en-AU",
+    "timezoneId": "Australia/Sydney",
+    "reducedMotion": "no-preference",
+    "colorScheme": "dark",
+    "concurrency": 1
+  },
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "153.0.8010.12",
+      "executable": "/Users/tien/Library/Caches/ms-playwright/chromium-1243/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+    },
+    {
+      "name": "firefox",
+      "version": "155.0",
+      "executable": "/Users/tien/Library/Caches/ms-playwright/firefox-1543/firefox/Nightly.app/Contents/MacOS/firefox"
+    },
+    {
+      "name": "webkit",
+      "version": "26.6",
+      "executable": "/Users/tien/Library/Caches/ms-playwright/webkit-2359/pw_run.sh"
+    }
+  ],
+  "measuredRows": 36,
+  "errors": [],
+  "assetsStable": true,
+  "allIdentitiesMatch": true,
+  "allPendingThenSettled": true,
+  "allNormalMotion": true,
+  "profiles": [
+    {
+      "profile": "chromium",
+      "A": {
+        "count": 6,
+        "meanTotalMs": 633.6215834999999,
+        "meanFillMs": 5.757138833333443,
+        "meanObserverWaitMs": 0.00047233333316398785,
+        "meanAssertionMs": 627.8639723333334,
+        "meanPostSettleObservationMs": 333.9166666716337,
+        "meanPendingToSettledMs": 294.81666666766006,
+        "totalsMs": [
+          813.3532920000002,
+          291.8325420000001,
+          294.5967919999998,
+          801.4382500000002,
+          797.5287499999995,
+          802.979875
+        ]
+      },
+      "B": {
+        "count": 6,
+        "meanTotalMs": 308.5936526666669,
+        "meanFillMs": 6.767583333333657,
+        "meanObserverWaitMs": 297.31274299999995,
+        "meanAssertionMs": 4.513326333333301,
+        "meanPostSettleObservationMs": 5.133333335320155,
+        "meanPendingToSettledMs": 297.5333333313465,
+        "totalsMs": [
+          316.55387500000006,
+          302.0790420000003,
+          304.4031249999998,
+          309.3554170000002,
+          310.5939160000007,
+          308.57654100000036
+        ]
+      },
+      "meanTotalReductionMs": 325.027930833333,
+      "relativeLocalReductionPercent": 51.29685277416581,
+      "blocks": [
+        {
+          "block": 0,
+          "order": "ABBA",
+          "meanARowTotalMs": 552.5929170000002,
+          "meanBRowTotalMs": 309.3164585000002
+        },
+        {
+          "block": 1,
+          "order": "ABBA",
+          "meanARowTotalMs": 548.017521,
+          "meanBRowTotalMs": 306.879271
+        },
+        {
+          "block": 2,
+          "order": "ABBA",
+          "meanARowTotalMs": 800.2543124999997,
+          "meanBRowTotalMs": 309.58522850000054
+        }
+      ]
+    },
+    {
+      "profile": "firefox",
+      "A": {
+        "count": 6,
+        "meanTotalMs": 578.5939721666664,
+        "meanFillMs": 10.141833499999848,
+        "meanObserverWaitMs": 0.00040966666680712177,
+        "meanAssertionMs": 568.4517289999998,
+        "meanPostSettleObservationMs": 253.83333333333334,
+        "meanPendingToSettledMs": 315.1666666666667,
+        "totalsMs": [
+          837.2713750000003,
+          320.77958299999955,
+          322.8235000000004,
+          835.4252079999987,
+          333.4277089999996,
+          821.8364579999998
+        ]
+      },
+      "B": {
+        "count": 6,
+        "meanTotalMs": 334.80859716666663,
+        "meanFillMs": 10.604992999999922,
+        "meanObserverWaitMs": 318.9245763333338,
+        "meanAssertionMs": 5.2790278333329,
+        "meanPostSettleObservationMs": 6,
+        "meanPendingToSettledMs": 318.3333333333333,
+        "totalsMs": [
+          342.19745899999907,
+          337.7546249999996,
+          326.38283299999966,
+          338.408958,
+          332.3780000000006,
+          331.72970800000076
+        ]
+      },
+      "meanTotalReductionMs": 243.78537499999976,
+      "relativeLocalReductionPercent": 42.134102103949395,
+      "blocks": [
+        {
+          "block": 0,
+          "order": "ABBA",
+          "meanARowTotalMs": 579.0254789999999,
+          "meanBRowTotalMs": 339.9760419999993
+        },
+        {
+          "block": 1,
+          "order": "ABBA",
+          "meanARowTotalMs": 579.1243539999996,
+          "meanBRowTotalMs": 332.3958954999998
+        },
+        {
+          "block": 2,
+          "order": "ABBA",
+          "meanARowTotalMs": 577.6320834999997,
+          "meanBRowTotalMs": 332.0538540000007
+        }
+      ]
+    },
+    {
+      "profile": "webkit",
+      "A": {
+        "count": 6,
+        "meanTotalMs": 638.4109168333331,
+        "meanFillMs": 7.015597333333669,
+        "meanObserverWaitMs": 0.0003678333332572947,
+        "meanAssertionMs": 631.3949516666662,
+        "meanPostSettleObservationMs": 340.3333333333333,
+        "meanPendingToSettledMs": 291.8333333333333,
+        "totalsMs": [
+          814.7322920000006,
+          299.7985840000001,
+          805.5329999999994,
+          297.2431250000009,
+          807.6790839999994,
+          805.4794159999983
+        ]
+      },
+      "B": {
+        "count": 6,
+        "meanTotalMs": 305.19863216666636,
+        "meanFillMs": 10.043569499999649,
+        "meanObserverWaitMs": 290.3197360000013,
+        "meanAssertionMs": 4.8353266666654235,
+        "meanPostSettleObservationMs": 5.666666666666667,
+        "meanPendingToSettledMs": 291.6666666666667,
+        "totalsMs": [
+          304.7105420000007,
+          305.07687499999884,
+          314.59999999999854,
+          298.7958749999998,
+          306.53433399999994,
+          301.4741670000003
+        ]
+      },
+      "meanTotalReductionMs": 333.21228466666673,
+      "relativeLocalReductionPercent": 52.19401421258229,
+      "blocks": [
+        {
+          "block": 0,
+          "order": "ABBA",
+          "meanARowTotalMs": 557.2654380000004,
+          "meanBRowTotalMs": 304.8937084999998
+        },
+        {
+          "block": 1,
+          "order": "ABBA",
+          "meanARowTotalMs": 551.3880625000002,
+          "meanBRowTotalMs": 306.69793749999917
+        },
+        {
+          "block": 2,
+          "order": "ABBA",
+          "meanARowTotalMs": 806.5792499999989,
+          "meanBRowTotalMs": 304.0042505000001
+        }
+      ]
+    }
+  ],
+  "verdict": "Useful local observation-delay reduction reproduced; retain as test-only candidate. No complete-suite/Linux/rounded-minute acceptance claim.",
+  "limitations": [
+    "One serial local ARM process, three repetitions of ABBA per desktop engine; CI viewport/raster matches, concurrency and hardware do not.",
+    "Baseline and observer paths both include the same DOM-recording observer and four exact locator assertions. This is an instrumented local comparison, not the unchanged full suite.",
+    "postSettleObservationMs includes protocol readback after assertions; no subtraction across clock domains.",
+    "Times are sequential new-text conversions with warmed contexts/workers/assets, not independent cold contexts or phone profiles.",
+    "Fixed input minute advances by sequence so old ready text cannot satisfy the new assertion; no replay/race/error/partial-result acceptance is established.",
+    "Initial zero-row date-oracle setup failure is retained under initial-probe; browser Intl formats a fixed known UTC date as oracle, not app result DOM.",
+    "No expected result/zone/input is exported by the production timing reporter; this QA probe deliberately uses saved synthetic text."
+  ]
+}

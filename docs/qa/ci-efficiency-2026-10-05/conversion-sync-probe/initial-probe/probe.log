@@ -1,0 +1,38 @@
+8583 | 
+8584 | // packages/utils/stackTrace.ts
+8585 | function captureRawStack() {
+8586 |   const stackTraceLimit = Error.stackTraceLimit;
+8587 |   Error.stackTraceLimit = 50;
+8588 |   const error = new Error();
+                           ^
+error: expect(locator).toHaveText(expected) failed
+
+Locator:  locator('.result-date')
+Expected: "Thu, 18 Jun 2026"
+Received: "Thu, 18 June 2026"
+Timeout:  10000ms
+
+Call log:
+  - Expect "toHaveText" locator('.result-date') with timeout 10000ms
+  - waiting for locator('.result-date')
+    24 × locator resolved to <p class="result-date">Thu, 18 June 2026</p>
+       - unexpected value "Thu, 18 June 2026"
+
+ matcherResult: {
+  name: "toHaveText",
+  expected: "Thu, 18 Jun 2026",
+  message: "expect(locator).toHaveText(expected) failed\n\nLocator:  locator('.result-date')\nExpected: \"Thu, 18 Jun 2026\"\nReceived: \"Thu, 18 June 2026\"\nTimeout:  10000ms\n\nCall log:\n  - Expect \"toHaveText\" locator('.result-date') with timeout 10000ms\n  - waiting for locator('.result-date')\n    24 × locator resolved to <p class=\"result-date\">Thu, 18 June 2026</p>\n       - unexpected value \"Thu, 18 June 2026\"\n",
+  pass: false,
+  actual: "Thu, 18 June 2026",
+  log: [ "  - Expect \"toHaveText\" locator('.result-date') with timeout 10000ms", "  - waiting for locator('.result-date')",
+    "    24 × locator resolved to <p class=\"result-date\">Thu, 18 June 2026</p>", "       - unexpected value \"Thu, 18 June 2026\""
+  ],
+  timeout: 10000,
+  ariaSnapshot: "- paragraph: Thu, 18 June 2026",
+},
+
+      at captureRawStack (/Users/tien/Developer/ChronoShift/node_modules/playwright-core/lib/coreBundle.js:8588:21)
+      at callMatcherAsStep (/Users/tien/Developer/ChronoShift/node_modules/playwright/lib/matchers/expect.js:13310:57)
+      at assertResult (/Users/tien/Developer/ChronoShift/docs/qa/ci-efficiency-2026-10-05/conversion-sync-probe/probe.ts:25:46)
+      at processTicksAndRejections (native:7:39)
+

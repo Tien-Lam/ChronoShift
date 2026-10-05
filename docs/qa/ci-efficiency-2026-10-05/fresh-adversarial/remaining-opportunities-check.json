@@ -1,0 +1,214 @@
+{
+  "began": "2026-10-05T07:50:32.483Z",
+  "ended": "2026-10-05T07:50:32.485Z",
+  "environment": {
+    "bun": "1.4.0",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "inputSHA256": "efeedddcf7a93cd816f9fe4d3bb5d454039e6e06f8993a903a7b64392e050ba5",
+  "sourceCapture": "2026-10-05T05:54:59.198Z",
+  "status": "passed",
+  "workers": 4,
+  "dropped": 0,
+  "count": 258,
+  "distinctIds": 258,
+  "passed": 249,
+  "skipped": 9,
+  "nonZeroRetries": 0,
+  "invalidDurations": 0,
+  "suiteDurationMs": 290306.86,
+  "totalTestMs": 1118060,
+  "idealFourSlotFloorMs": 279515,
+  "idealizedGapMs": 10791.859999999986,
+  "observedAttemptSpanMs": 289140,
+  "occupiedByConcurrency": {
+    "0": 0,
+    "1": 975,
+    "2": 5904,
+    "3": 23767,
+    "4": 258494
+  },
+  "slotOccupancy": 0.9667116275852529,
+  "groups": [
+    {
+      "project": "foldable",
+      "count": 3,
+      "startFromSuiteMs": 1072,
+      "endFromSuiteMs": 3476,
+      "sumTestMs": 5609
+    },
+    {
+      "project": "chromium",
+      "count": 51,
+      "startFromSuiteMs": 1327,
+      "endFromSuiteMs": 55364,
+      "sumTestMs": 186046
+    },
+    {
+      "project": "firefox",
+      "count": 51,
+      "startFromSuiteMs": 45745,
+      "endFromSuiteMs": 117422,
+      "sumTestMs": 246563
+    },
+    {
+      "project": "webkit",
+      "count": 51,
+      "startFromSuiteMs": 109301,
+      "endFromSuiteMs": 193721,
+      "sumTestMs": 295709
+    },
+    {
+      "project": "android-emulation",
+      "count": 51,
+      "startFromSuiteMs": 185234,
+      "endFromSuiteMs": 239663,
+      "sumTestMs": 179258
+    },
+    {
+      "project": "iphone-emulation",
+      "count": 51,
+      "startFromSuiteMs": 231499,
+      "endFromSuiteMs": 290212,
+      "sumTestMs": 204875
+    }
+  ],
+  "operationTotals": {
+    "pw:api/browser-launch": {
+      "count": 23,
+      "leafTotalMs": 5630,
+      "totalMs": 5630
+    },
+    "fixture/fixture": {
+      "count": 2330,
+      "leafTotalMs": 12072,
+      "totalMs": 121470
+    },
+    "pw:api/context-create": {
+      "count": 258,
+      "leafTotalMs": 3274,
+      "totalMs": 3274
+    },
+    "pw:api/page-create": {
+      "count": 341,
+      "leafTotalMs": 84903,
+      "totalMs": 84903
+    },
+    "hook/hook": {
+      "count": 576,
+      "leafTotalMs": 29,
+      "totalMs": 139042
+    },
+    "pw:api/viewport": {
+      "count": 112,
+      "leafTotalMs": 2014,
+      "totalMs": 2014
+    },
+    "pw:api/navigate": {
+      "count": 360,
+      "leafTotalMs": 91251,
+      "totalMs": 91251
+    },
+    "pw:api/other-api": {
+      "count": 893,
+      "leafTotalMs": 20999,
+      "totalMs": 20999
+    },
+    "expect/expect": {
+      "count": 10501,
+      "leafTotalMs": 455357,
+      "totalMs": 476209
+    },
+    "pw:api/evaluate": {
+      "count": 1163,
+      "leafTotalMs": 39036,
+      "totalMs": 39036
+    },
+    "pw:api/context-close": {
+      "count": 258,
+      "leafTotalMs": 6056,
+      "totalMs": 6056
+    },
+    "pw:api/fill": {
+      "count": 734,
+      "leafTotalMs": 56081,
+      "totalMs": 56081
+    },
+    "pw:api/scroll": {
+      "count": 66,
+      "leafTotalMs": 6961,
+      "totalMs": 6961
+    },
+    "pw:api/press": {
+      "count": 649,
+      "leafTotalMs": 31624,
+      "totalMs": 31624
+    },
+    "pw:api/click": {
+      "count": 717,
+      "leafTotalMs": 138018,
+      "totalMs": 138018
+    },
+    "pw:api/reload": {
+      "count": 105,
+      "leafTotalMs": 14337,
+      "totalMs": 14337
+    },
+    "pw:api/page-close": {
+      "count": 68,
+      "leafTotalMs": 359,
+      "totalMs": 359
+    },
+    "pw:api/offline": {
+      "count": 9,
+      "leafTotalMs": 83,
+      "totalMs": 83
+    },
+    "pw:api/screenshot": {
+      "count": 23,
+      "leafTotalMs": 1616,
+      "totalMs": 1616
+    },
+    "pw:api/request": {
+      "count": 206,
+      "leafTotalMs": 1531,
+      "totalMs": 1531
+    },
+    "pw:api/wait": {
+      "count": 144,
+      "leafTotalMs": 104855,
+      "totalMs": 104855
+    },
+    "pw:api/pointer": {
+      "count": 10,
+      "leafTotalMs": 386,
+      "totalMs": 386
+    },
+    "pw:api/hover": {
+      "count": 10,
+      "leafTotalMs": 1346,
+      "totalMs": 1346
+    },
+    "pw:api/focus": {
+      "count": 10,
+      "leafTotalMs": 199,
+      "totalMs": 199
+    },
+    "test.step/test.step": {
+      "count": 80,
+      "leafTotalMs": 0,
+      "totalMs": 103565
+    },
+    "pw:api/type": {
+      "count": 5,
+      "leafTotalMs": 6499,
+      "totalMs": 6499
+    },
+    "pw:api/tap": {
+      "count": 2,
+      "leafTotalMs": 115,
+      "totalMs": 115
+    }
+  }
+}
