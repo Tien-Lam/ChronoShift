@@ -1,0 +1,1055 @@
+web	Set up job	﻿2026-10-05T10:58:53.3000867Z Current runner version: '2.337.0'
+web	Set up job	2026-10-05T10:58:53.3022374Z ##[group]Runner Image Provisioner
+web	Set up job	2026-10-05T10:58:53.3023095Z Hosted Compute Agent
+web	Set up job	2026-10-05T10:58:53.3023662Z Version: 20260901.588
+web	Set up job	2026-10-05T10:58:53.3024222Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+web	Set up job	2026-10-05T10:58:53.3024846Z Build Date: 2026-09-01T19:56:44Z
+web	Set up job	2026-10-05T10:58:53.3025464Z Worker ID: {7225dedd-5a94-476d-a520-e6cca438cc6d}
+web	Set up job	2026-10-05T10:58:53.3026084Z Azure Region: westus3
+web	Set up job	2026-10-05T10:58:53.3026599Z ##[endgroup]
+web	Set up job	2026-10-05T10:58:53.3027692Z ##[group]Operating System
+web	Set up job	2026-10-05T10:58:53.3028189Z Ubuntu
+web	Set up job	2026-10-05T10:58:53.3028693Z 24.04.5
+web	Set up job	2026-10-05T10:58:53.3029121Z LTS
+web	Set up job	2026-10-05T10:58:53.3029570Z ##[endgroup]
+web	Set up job	2026-10-05T10:58:53.3030071Z ##[group]Runner Image
+web	Set up job	2026-10-05T10:58:53.3030709Z Image: ubuntu-24.04
+web	Set up job	2026-10-05T10:58:53.3031245Z Version: 20260927.320.1
+web	Set up job	2026-10-05T10:58:53.3032090Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+web	Set up job	2026-10-05T10:58:53.3033517Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+web	Set up job	2026-10-05T10:58:53.3034293Z ##[endgroup]
+web	Set up job	2026-10-05T10:58:53.3035279Z ##[group]GITHUB_TOKEN Permissions
+web	Set up job	2026-10-05T10:58:53.3036761Z Contents: read
+web	Set up job	2026-10-05T10:58:53.3037364Z Metadata: read
+web	Set up job	2026-10-05T10:58:53.3037828Z Pages: read
+web	Set up job	2026-10-05T10:58:53.3038293Z ##[endgroup]
+web	Set up job	2026-10-05T10:58:53.3040286Z Secret source: Actions
+web	Set up job	2026-10-05T10:58:53.3041301Z Cache mode: write
+web	Set up job	2026-10-05T10:58:53.3041938Z Prepare workflow directory
+web	Set up job	2026-10-05T10:58:53.3543287Z Prepare all required actions
+web	Set up job	2026-10-05T10:58:53.3583587Z Getting action download info
+web	Set up job	2026-10-05T10:58:53.6806510Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+web	Set up job	2026-10-05T10:58:53.7925177Z Download action repository 'jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492' (SHA:7a4e45a543138629540c9a1616d08632b893e492)
+web	Set up job	2026-10-05T10:58:54.7009315Z Download action repository 'actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a' (SHA:043fb46d1a93c77aae656e7c1c64a875d1fc6a0a)
+web	Set up job	2026-10-05T10:58:54.8057476Z Download action repository 'actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d' (SHA:45bfe0192ca1faeb007ade9deae92b16b8254a0d)
+web	Set up job	2026-10-05T10:58:55.4297903Z Download action repository 'actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9' (SHA:fc324d3547104276b827a68afc52ff2a11cc49c9)
+web	Set up job	2026-10-05T10:58:55.7296002Z Getting action download info
+web	Set up job	2026-10-05T10:58:55.8763543Z Download action repository 'actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f' (SHA:bbbca2ddaa5d8feaa63e36b76fdaad77386f024f)
+web	Set up job	2026-10-05T10:58:56.0393188Z Complete job name: web
+web	Initialize containers	﻿2026-10-05T10:58:56.0765788Z ##[group]Checking docker version
+web	Initialize containers	2026-10-05T10:58:56.0776655Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+web	Initialize containers	2026-10-05T10:58:56.1352634Z '1.48'
+web	Initialize containers	2026-10-05T10:58:56.1359114Z Docker daemon API version: '1.48'
+web	Initialize containers	2026-10-05T10:58:56.1359536Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+web	Initialize containers	2026-10-05T10:58:56.1492638Z '1.48'
+web	Initialize containers	2026-10-05T10:58:56.1502913Z Docker client API version: '1.48'
+web	Initialize containers	2026-10-05T10:58:56.1507459Z ##[endgroup]
+web	Initialize containers	2026-10-05T10:58:56.1509732Z ##[group]Clean up resources from previous jobs
+web	Initialize containers	2026-10-05T10:58:56.1514353Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=6e6d67"
+web	Initialize containers	2026-10-05T10:58:56.1701245Z ##[command]/usr/bin/docker network prune --force --filter "label=6e6d67"
+web	Initialize containers	2026-10-05T10:58:56.1806001Z ##[endgroup]
+web	Initialize containers	2026-10-05T10:58:56.1806285Z ##[group]Create local container network
+web	Initialize containers	2026-10-05T10:58:56.1814132Z ##[command]/usr/bin/docker network create --label 6e6d67 github_network_0130c9b564eb45e988e08aae6506efa7
+web	Initialize containers	2026-10-05T10:58:56.2290731Z 859a3da46e8f3908cf1d20c8cb241e0e2ac76b79b9fa2e342144ab4c06ab788a
+web	Initialize containers	2026-10-05T10:58:56.2303450Z ##[endgroup]
+web	Initialize containers	2026-10-05T10:58:56.2323128Z ##[group]Starting job container
+web	Initialize containers	2026-10-05T10:58:56.2341206Z ##[command]/usr/bin/docker pull mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
+web	Initialize containers	2026-10-05T10:58:56.4674267Z mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27: Pulling from playwright
+web	Initialize containers	2026-10-05T10:58:56.5634001Z 0926a8eb0e60: Pulling fs layer
+web	Initialize containers	2026-10-05T10:58:56.5634819Z e2bfec3c8017: Pulling fs layer
+web	Initialize containers	2026-10-05T10:58:56.5635233Z 74c72610aa2d: Pulling fs layer
+web	Initialize containers	2026-10-05T10:58:56.5635548Z d8cf7dc1ff62: Pulling fs layer
+web	Initialize containers	2026-10-05T10:58:56.5635883Z b4dfe9b5d621: Pulling fs layer
+web	Initialize containers	2026-10-05T10:58:56.5636225Z a2ac83a9a562: Pulling fs layer
+web	Initialize containers	2026-10-05T10:58:56.5636427Z 1b189482e65c: Pulling fs layer
+web	Initialize containers	2026-10-05T10:58:56.5636626Z b4dfe9b5d621: Waiting
+web	Initialize containers	2026-10-05T10:58:56.5636816Z a2ac83a9a562: Waiting
+web	Initialize containers	2026-10-05T10:58:56.5637099Z 1b189482e65c: Waiting
+web	Initialize containers	2026-10-05T10:58:56.5637277Z d8cf7dc1ff62: Waiting
+web	Initialize containers	2026-10-05T10:58:56.8771915Z 0926a8eb0e60: Verifying Checksum
+web	Initialize containers	2026-10-05T10:58:56.8773527Z 0926a8eb0e60: Download complete
+web	Initialize containers	2026-10-05T10:58:56.9797910Z 74c72610aa2d: Verifying Checksum
+web	Initialize containers	2026-10-05T10:58:56.9816582Z 74c72610aa2d: Download complete
+web	Initialize containers	2026-10-05T10:58:57.1802659Z e2bfec3c8017: Verifying Checksum
+web	Initialize containers	2026-10-05T10:58:57.1803848Z e2bfec3c8017: Download complete
+web	Initialize containers	2026-10-05T10:58:57.8151468Z a2ac83a9a562: Verifying Checksum
+web	Initialize containers	2026-10-05T10:58:57.8153484Z a2ac83a9a562: Download complete
+web	Initialize containers	2026-10-05T10:58:58.0841783Z 0926a8eb0e60: Pull complete
+web	Initialize containers	2026-10-05T10:58:58.1733943Z d8cf7dc1ff62: Verifying Checksum
+web	Initialize containers	2026-10-05T10:58:58.1734421Z d8cf7dc1ff62: Download complete
+web	Initialize containers	2026-10-05T10:58:58.6028175Z b4dfe9b5d621: Verifying Checksum
+web	Initialize containers	2026-10-05T10:58:58.6033834Z b4dfe9b5d621: Download complete
+web	Initialize containers	2026-10-05T10:58:59.5045233Z 1b189482e65c: Verifying Checksum
+web	Initialize containers	2026-10-05T10:58:59.5045818Z 1b189482e65c: Download complete
+web	Initialize containers	2026-10-05T10:59:08.3587898Z e2bfec3c8017: Pull complete
+web	Initialize containers	2026-10-05T10:59:08.3980196Z 74c72610aa2d: Pull complete
+web	Initialize containers	2026-10-05T10:59:18.1952099Z d8cf7dc1ff62: Pull complete
+web	Initialize containers	2026-10-05T10:59:24.5184914Z b4dfe9b5d621: Pull complete
+web	Initialize containers	2026-10-05T10:59:26.0101930Z a2ac83a9a562: Pull complete
+web	Initialize containers	2026-10-05T10:59:29.0252325Z 1b189482e65c: Pull complete
+web	Initialize containers	2026-10-05T10:59:29.0838900Z Digest: sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
+web	Initialize containers	2026-10-05T10:59:29.0843612Z Status: Downloaded newer image for mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
+web	Initialize containers	2026-10-05T10:59:29.0851827Z mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27
+web	Initialize containers	2026-10-05T10:59:29.0925422Z ##[command]/usr/bin/docker create --name 60b78b9421194f69b0331cb005576d1b_mcrmicrosoftcomplaywrightsha256eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27_28bd92 --label 6e6d67 --workdir /__w/ChronoShift/ChronoShift --network github_network_0130c9b564eb45e988e08aae6506efa7 --user 1001:1001 --ipc=host --init -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.337.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" mcr.microsoft.com/playwright@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27 "-f" "/dev/null"
+web	Initialize containers	2026-10-05T10:59:29.1171757Z d84903463cd5abbebc288d952d358de0ebad5a2a0505229b319ac2267ca3a816
+web	Initialize containers	2026-10-05T10:59:29.1191700Z ##[command]/usr/bin/docker start d84903463cd5abbebc288d952d358de0ebad5a2a0505229b319ac2267ca3a816
+web	Initialize containers	2026-10-05T10:59:29.4551901Z d84903463cd5abbebc288d952d358de0ebad5a2a0505229b319ac2267ca3a816
+web	Initialize containers	2026-10-05T10:59:29.4568774Z ##[command]/usr/bin/docker ps --all --filter id=d84903463cd5abbebc288d952d358de0ebad5a2a0505229b319ac2267ca3a816 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+web	Initialize containers	2026-10-05T10:59:29.4672718Z d84903463cd5abbebc288d952d358de0ebad5a2a0505229b319ac2267ca3a816 Up Less than a second
+web	Initialize containers	2026-10-05T10:59:29.4690148Z ##[command]/usr/bin/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" d84903463cd5abbebc288d952d358de0ebad5a2a0505229b319ac2267ca3a816
+web	Initialize containers	2026-10-05T10:59:29.4788930Z CI=true
+web	Initialize containers	2026-10-05T10:59:29.4789269Z HOME=/github/home
+web	Initialize containers	2026-10-05T10:59:29.4789551Z GITHUB_ACTIONS=true
+web	Initialize containers	2026-10-05T10:59:29.4789859Z PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+web	Initialize containers	2026-10-05T10:59:29.4800124Z LANG=C.UTF-8
+web	Initialize containers	2026-10-05T10:59:29.4800561Z LC_ALL=C.UTF-8
+web	Initialize containers	2026-10-05T10:59:29.4800852Z PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+web	Initialize containers	2026-10-05T10:59:29.4808226Z ##[endgroup]
+web	Initialize containers	2026-10-05T10:59:29.4816306Z ##[group]Waiting for all services to be ready
+web	Initialize containers	2026-10-05T10:59:29.4817710Z ##[endgroup]
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-10-05T10:59:29.5046880Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5047406Z with:
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5047594Z   sparse-checkout: /*
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	!/docs/qa/
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5047828Z   sparse-checkout-cone-mode: false
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5048077Z   repository: Tien-Lam/ChronoShift
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5050575Z   token: ***
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5050831Z   ssh-strict: true
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5051010Z   ssh-user: git
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5051184Z   persist-credentials: true
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5051376Z   clean: true
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5051533Z   fetch-depth: 1
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5051698Z   fetch-tags: false
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5051870Z   show-progress: true
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5052037Z   lfs: false
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5052189Z   submodules: false
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5052360Z   set-safe-directory: true
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5052560Z   allow-unsafe-pr-checkout: false
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5053000Z env:
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5053186Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5053430Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5053698Z   CHRONOSHIFT_CI_TIMING: 0
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5053884Z   PUBLISH_PAGES: true
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5054061Z ##[endgroup]
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.5104555Z ##[command]/usr/bin/docker exec  d84903463cd5abbebc288d952d358de0ebad5a2a0505229b319ac2267ca3a816 sh -c "cat /etc/*release | grep ^ID"
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6759646Z Syncing repository: Tien-Lam/ChronoShift
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6762235Z ##[group]Getting Git version info
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6762723Z Working directory is '/__w/ChronoShift/ChronoShift'
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6763431Z [command]/usr/bin/git version
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6763750Z git version 2.43.0
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6764827Z ##[endgroup]
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6771370Z Temporarily overriding HOME='/__w/_temp/d13846a6-fad7-4ebd-8b51-62ce694c0b34' before making global git config changes
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6772302Z Adding repository directory to the temporary git global config as a safe directory
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6773046Z [command]/usr/bin/git config --global --add safe.directory /__w/ChronoShift/ChronoShift
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6775871Z Deleting the contents of '/__w/ChronoShift/ChronoShift'
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6776631Z ##[group]Determining repository object format
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6777210Z ##[endgroup]
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6777660Z ##[group]Initializing the repository
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6778082Z [command]/usr/bin/git init /__w/ChronoShift/ChronoShift
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6812321Z Initialized empty Git repository in /__w/ChronoShift/ChronoShift/.git/
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6821648Z hint: Using 'master' as the name for the initial branch. This default branch name
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6827724Z hint: is subject to change. To configure the initial branch name to use in all
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6828380Z hint: of your new repositories, which will suppress this warning, call:
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6828837Z hint: 
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6829215Z hint: 	git config --global init.defaultBranch <name>
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6829617Z hint: 
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6829989Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6830830Z hint: 'development'. The just-created branch can be renamed via this command:
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6831311Z hint: 
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6831575Z hint: 	git branch -m <name>
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6833021Z [command]/usr/bin/git remote add origin https://github.com/Tien-Lam/ChronoShift
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6855750Z ##[endgroup]
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6856262Z ##[group]Disabling automatic garbage collection
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6861062Z [command]/usr/bin/git config --local gc.auto 0
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6901250Z ##[endgroup]
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6901599Z ##[group]Setting up auth
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6901841Z Removing SSH command configuration
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6902196Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.6925400Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.7157079Z Removing HTTP extra header
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.7157888Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.7186531Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.7408222Z Removing includeIf entries pointing to credentials config files
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.7413290Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.7447403Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.7657804Z [command]/usr/bin/git config --file /__w/_temp/git-credentials-0e1172c5-2ac2-443a-ad87-de8647ba5a2e.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.7693632Z [command]/usr/bin/git config --local includeIf.gitdir:/__w/ChronoShift/ChronoShift/.git.path /__w/_temp/git-credentials-0e1172c5-2ac2-443a-ad87-de8647ba5a2e.config
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.7721479Z [command]/usr/bin/git config --local includeIf.gitdir:/__w/ChronoShift/ChronoShift/.git/worktrees/*.path /__w/_temp/git-credentials-0e1172c5-2ac2-443a-ad87-de8647ba5a2e.config
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.7750182Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-0e1172c5-2ac2-443a-ad87-de8647ba5a2e.config
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.7779593Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-0e1172c5-2ac2-443a-ad87-de8647ba5a2e.config
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.7806478Z ##[endgroup]
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.7806898Z ##[group]Fetching the repository
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:29.7812568Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin +8fd325dd79afdd6dcf33e77503aca7f97541d25c:refs/remotes/pull/41/merge
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:30.3624271Z From https://github.com/Tien-Lam/ChronoShift
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:30.3624763Z  * [new ref]         8fd325dd79afdd6dcf33e77503aca7f97541d25c -> pull/41/merge
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:30.3643111Z ##[endgroup]
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:30.3643858Z ##[group]Determining the checkout info
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:30.3644506Z ##[endgroup]
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:30.3645069Z ##[group]Setting up sparse checkout
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:30.3647161Z [command]/usr/bin/git config core.sparseCheckout true
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:30.3678775Z [command]/usr/bin/git rev-parse --git-path info/sparse-checkout
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:30.3702372Z .git/info/sparse-checkout
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:30.3707120Z ##[endgroup]
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:30.3707576Z ##[group]Checking out the ref
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:30.3710200Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/41/merge
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0674773Z Note: switching to 'refs/remotes/pull/41/merge'.
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0675178Z 
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0675461Z You are in 'detached HEAD' state. You can look around, make experimental
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0676010Z changes and commit them, and you can discard any commits you make in this
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0676924Z state without impacting any branches by switching back to a branch.
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0677278Z 
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0677501Z If you want to create a new branch to retain commits you create, you may
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0678020Z do so (now or later) by using -c with the switch command. Example:
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0678304Z 
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0678429Z   git switch -c <new-branch-name>
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0678646Z 
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0678788Z Or undo this operation with:
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0678983Z 
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0679084Z   git switch -
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0679241Z 
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0679504Z Turn off this advice by setting config variable advice.detachedHead to false
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0679862Z 
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0680250Z HEAD is now at 8fd325d Merge cb8206c280494341632821d13b4e90f8f1c3a3e9 into f8c073a289f2c4af1f369a4588d5e0e74daf392c
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0682172Z ##[endgroup]
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0720316Z [command]/usr/bin/git log -1 --format=%H
+web	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T10:59:31.0746451Z 8fd325dd79afdd6dcf33e77503aca7f97541d25c
+web	Capture the checked-in corpus audit	﻿2026-10-05T10:59:31.0933944Z ##[group]Run cp -f docs/planning/corpus-audit.json "$RUNNER_TEMP/chronoshift-corpus-audit.json"
+web	Capture the checked-in corpus audit	2026-10-05T10:59:31.0934576Z ^[[36;1mcp -f docs/planning/corpus-audit.json "$RUNNER_TEMP/chronoshift-corpus-audit.json"^[[0m
+web	Capture the checked-in corpus audit	2026-10-05T10:59:31.0938259Z shell: bash --noprofile --norc -e -o pipefail {0}
+web	Capture the checked-in corpus audit	2026-10-05T10:59:31.0938537Z env:
+web	Capture the checked-in corpus audit	2026-10-05T10:59:31.0938734Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+web	Capture the checked-in corpus audit	2026-10-05T10:59:31.0938984Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+web	Capture the checked-in corpus audit	2026-10-05T10:59:31.0939207Z   CHRONOSHIFT_CI_TIMING: 0
+web	Capture the checked-in corpus audit	2026-10-05T10:59:31.0939398Z   PUBLISH_PAGES: true
+web	Capture the checked-in corpus audit	2026-10-05T10:59:31.0939573Z ##[endgroup]
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	﻿2026-10-05T10:59:31.2179316Z ##[group]Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2179616Z with:
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2179784Z   minimum_release_age: 24h
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2179976Z   install: true
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2180145Z   bootstrap: false
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2180315Z   cache: true
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2180667Z   cache_save: true
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2180836Z   cache_key_prefix: mise-v1
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2181029Z   experimental: false
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2181203Z   log_level: info
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2181363Z   reshim: false
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2181530Z   add_shims_to_path: true
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2183733Z   github_token: ***
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2183916Z   fetch_from_github: true
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2184092Z   env: true
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2184244Z   export_path: true
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2184409Z   wings_enabled: false
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2184585Z env:
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2184766Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2184998Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2185236Z   CHRONOSHIFT_CI_TIMING: 0
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2185420Z   PUBLISH_PAGES: true
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2185592Z ##[endgroup]
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.2193068Z ##[command]/usr/bin/docker exec  d84903463cd5abbebc288d952d358de0ebad5a2a0505229b319ac2267ca3a816 sh -c "cat /etc/*release | grep ^ID"
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.3962912Z ##[group]Restoring mise cache
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.3994414Z [command]/usr/bin/ldd --version
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.4029377Z ldd (Ubuntu GLIBC 2.39-0ubuntu8.8) 2.39
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.4043697Z Copyright (C) 2024 Free Software Foundation, Inc.
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.4044858Z This is free software; see the source for copying conditions.  There is NO
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.4045907Z warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.4046690Z Written by Roland McGrath and Ulrich Drepper.
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:31.6854912Z Cache hit for: mise-v1-linux-x64-self-hosted-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:32.8915387Z Received 33554432 of 166324995 (20.2%), 32.0 MBs/sec
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:33.7032775Z Received 166324995 of 166324995 (100.0%), 87.6 MBs/sec
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:33.7033291Z Cache Size: ~159 MB (166324995 B)
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:33.7068567Z [command]/usr/bin/tar -xf /__w/_temp/09896f4f-edf5-4d66-aa64-e88ad68cb885/cache.tgz -P -C /__w/ChronoShift/ChronoShift -z
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:36.4482105Z Cache restored successfully
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:36.4561122Z mise cache restored from key: mise-v1-linux-x64-self-hosted-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:36.4573702Z Using curl to download mise
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:36.6026050Z Selected mise 2026.10.1, released 2026-10-03T14:12:48.000Z, with minimum_release_age=24h
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:36.6030980Z [command]/usr/bin/ldd --version
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:36.6072355Z ldd (Ubuntu GLIBC 2.39-0ubuntu8.8) 2.39
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:36.6072793Z Copyright (C) 2024 Free Software Foundation, Inc.
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:36.6073197Z This is free software; see the source for copying conditions.  There is NO
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:36.6073857Z warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:36.6074368Z Written by Roland McGrath and Ulrich Drepper.
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1227462Z Verified existing mise-v2026.10.1-linux-x64 against signed checksums
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1228088Z Verified existing mise@2026.10.1
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1230287Z ##[group]Setting env vars
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1231425Z Setting MISE_LOG_LEVEL=info
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1237128Z Setting MISE_GITHUB_TOKEN=***
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1237585Z Setting MISE_TRUSTED_CONFIG_PATHS=/__w/ChronoShift/ChronoShift
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1238019Z Setting MISE_YES=1
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1238349Z Adding /github/home/.local/share/mise/shims to PATH
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1238972Z ##[group]Running mise --version
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1245027Z [command]/github/home/.local/share/mise/bin/mise --version
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1303487Z 2026.10.1 linux-x64 (2026-10-03)
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1311897Z ##[endgroup]
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1391059Z ##[group]Running mise install
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1399281Z [command]/github/home/.local/share/mise/bin/mise install
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1474511Z ^[[2mmise^[[0m ^[[2mby @jdx^[[0m – installing 3 tools
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1479126Z ^[[2mmise^[[0m ^[[38;5;11m⇢^[[0m bun@1.4.0    0ms · already installed
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1481554Z ^[[2mmise^[[0m ^[[38;5;11m⇢^[[0m node@26.8.1  0ms · already installed
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1491069Z ^[[2mmise^[[0m ^[[38;5;11m⇢^[[0m gh@2.100.0   0ms · already installed
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1492059Z ^[[2mmise^[[0m ^[[36m████████████████^[[0m^[[31m^[[0m^[[2m^[[0m 3/3 · installed 0 tools · 3 already installed in 1ms
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1492707Z ^[[2mmise^[[0m all tools are installed
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1551057Z ##[endgroup]
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1551419Z ##[group]Running mise ls
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1558917Z [command]/github/home/.local/share/mise/bin/mise ls
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1645617Z bun   1.4.0    /__w/ChronoShift/ChronoShift/mise.toml  1.4.0
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1646149Z gh    2.100.0  /__w/ChronoShift/ChronoShift/mise.toml  2.100.0
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1646670Z node  26.8.1   /__w/ChronoShift/ChronoShift/mise.toml  26.8.1
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1657032Z ##[endgroup]
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1658783Z ##[group]Exporting mise environment variables
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1772002Z [command]/github/home/.local/share/mise/bin/mise env --json
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1860712Z {
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1861681Z   "PATH": "/github/home/.local/share/mise/installs/bun/1.4.0/bin:/github/home/.local/share/mise/installs/node/26.8.1/bin:/github/home/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin:/github/home/.local/share/mise/shims:/github/home/.local/share/mise/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1862642Z }
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1875962Z Adding /github/home/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin to PATH
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1876975Z Adding /github/home/.local/share/mise/installs/node/26.8.1/bin to PATH
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1877966Z Adding /github/home/.local/share/mise/installs/bun/1.4.0/bin to PATH
+web	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T10:59:37.1878888Z ##[endgroup]
+web	Run bun install --frozen-lockfile	﻿2026-10-05T10:59:37.2044941Z ##[group]Run bun install --frozen-lockfile
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:37.2045247Z ^[[36;1mbun install --frozen-lockfile^[[0m
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:37.2045893Z shell: bash --noprofile --norc -e -o pipefail {0}
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:37.2046274Z env:
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:37.2046461Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:37.2046711Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:37.2046929Z   CHRONOSHIFT_CI_TIMING: 0
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:37.2047125Z   PUBLISH_PAGES: true
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:37.2047307Z   MISE_LOG_LEVEL: info
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:37.2049653Z   MISE_GITHUB_TOKEN: ***
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:37.2049911Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:37.2050177Z   MISE_YES: 1
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:37.2050964Z ##[endgroup]
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:37.2526668Z bun install v1.4.0 (34cbb9a40)
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:38.1583636Z 
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:38.1584189Z + @axe-core/playwright@4.13.0
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:38.1584596Z + @playwright/test@1.63.0
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:38.1584848Z + @types/bun@1.4.2
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:38.1585115Z + @types/react@19.3.0
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:38.1585295Z + @types/react-dom@19.3.0
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:38.1585476Z + prettier@3.9.9
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:38.1585647Z + typescript@7.0.2
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:38.1585837Z + vite@8.3.2
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:38.1586015Z + @internationalized/date@3.12.4
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:38.1586232Z + @js-temporal/polyfill@0.5.1
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:38.1586448Z + chrono-node@2.10.2
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:38.1586638Z + react@19.3.0
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:38.1586822Z + react-aria-components@1.21.1
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:38.1587157Z + react-dom@19.3.0
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:38.1587259Z 
+web	Run bun install --frozen-lockfile	2026-10-05T10:59:38.1587342Z 51 packages installed [906.00ms]
+web	Verify the pinned browser image matches the dependency	﻿2026-10-05T10:59:38.1666834Z ##[group]Run bun -e 'const pkg = await Bun.file("node_modules/playwright/package.json").json(); if (pkg.version !== process.env.PLAYWRIGHT_IMAGE_VERSION) throw new Error("Update the pinned Playwright image and version guard with the dependency"); const { chromium, firefox, webkit } = await import("@playwright/test"); for (const browser of [chromium, firefox, webkit]) if (!(await Bun.file(browser.executablePath()).exists())) throw new Error("The pinned image is missing " + browser.name());'
+web	Verify the pinned browser image matches the dependency	2026-10-05T10:59:38.1669269Z ^[[36;1mbun -e 'const pkg = await Bun.file("node_modules/playwright/package.json").json(); if (pkg.version !== process.env.PLAYWRIGHT_IMAGE_VERSION) throw new Error("Update the pinned Playwright image and version guard with the dependency"); const { chromium, firefox, webkit } = await import("@playwright/test"); for (const browser of [chromium, firefox, webkit]) if (!(await Bun.file(browser.executablePath()).exists())) throw new Error("The pinned image is missing " + browser.name());'^[[0m
+web	Verify the pinned browser image matches the dependency	2026-10-05T10:59:38.1671022Z shell: bash --noprofile --norc -e -o pipefail {0}
+web	Verify the pinned browser image matches the dependency	2026-10-05T10:59:38.1671276Z env:
+web	Verify the pinned browser image matches the dependency	2026-10-05T10:59:38.1671466Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+web	Verify the pinned browser image matches the dependency	2026-10-05T10:59:38.1671712Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+web	Verify the pinned browser image matches the dependency	2026-10-05T10:59:38.1671926Z   CHRONOSHIFT_CI_TIMING: 0
+web	Verify the pinned browser image matches the dependency	2026-10-05T10:59:38.1672133Z   PUBLISH_PAGES: true
+web	Verify the pinned browser image matches the dependency	2026-10-05T10:59:38.1672312Z   MISE_LOG_LEVEL: info
+web	Verify the pinned browser image matches the dependency	2026-10-05T10:59:38.1674614Z   MISE_GITHUB_TOKEN: ***
+web	Verify the pinned browser image matches the dependency	2026-10-05T10:59:38.1674880Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+web	Verify the pinned browser image matches the dependency	2026-10-05T10:59:38.1675145Z   MISE_YES: 1
+web	Verify the pinned browser image matches the dependency	2026-10-05T10:59:38.1675324Z ##[endgroup]
+web	Run bun run format:check	﻿2026-10-05T10:59:38.6620660Z ##[group]Run bun run format:check
+web	Run bun run format:check	2026-10-05T10:59:38.6620963Z ^[[36;1mbun run format:check^[[0m
+web	Run bun run format:check	2026-10-05T10:59:38.6621555Z shell: bash --noprofile --norc -e -o pipefail {0}
+web	Run bun run format:check	2026-10-05T10:59:38.6621796Z env:
+web	Run bun run format:check	2026-10-05T10:59:38.6621988Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+web	Run bun run format:check	2026-10-05T10:59:38.6622231Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+web	Run bun run format:check	2026-10-05T10:59:38.6622447Z   CHRONOSHIFT_CI_TIMING: 0
+web	Run bun run format:check	2026-10-05T10:59:38.6622646Z   PUBLISH_PAGES: true
+web	Run bun run format:check	2026-10-05T10:59:38.6622859Z   MISE_LOG_LEVEL: info
+web	Run bun run format:check	2026-10-05T10:59:38.6625259Z   MISE_GITHUB_TOKEN: ***
+web	Run bun run format:check	2026-10-05T10:59:38.6625526Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+web	Run bun run format:check	2026-10-05T10:59:38.6625787Z   MISE_YES: 1
+web	Run bun run format:check	2026-10-05T10:59:38.6625954Z ##[endgroup]
+web	Run bun run format:check	2026-10-05T10:59:38.7085937Z $ bunx --bun prettier --check web scripts/*.ts tests e2e *.ts
+web	Run bun run format:check	2026-10-05T10:59:38.7899342Z Checking formatting...
+web	Run bun run format:check	2026-10-05T10:59:40.1133695Z All matched files use Prettier code style!
+web	Unit tests and production build	﻿2026-10-05T10:59:40.1330799Z ##[group]Run bun run test
+web	Unit tests and production build	2026-10-05T10:59:40.1331084Z ^[[36;1mbun run test^[[0m
+web	Unit tests and production build	2026-10-05T10:59:40.1331271Z ^[[36;1mbun run build^[[0m
+web	Unit tests and production build	2026-10-05T10:59:40.1331665Z shell: bash --noprofile --norc -e -o pipefail {0}
+web	Unit tests and production build	2026-10-05T10:59:40.1331913Z env:
+web	Unit tests and production build	2026-10-05T10:59:40.1332107Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+web	Unit tests and production build	2026-10-05T10:59:40.1332358Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+web	Unit tests and production build	2026-10-05T10:59:40.1332584Z   CHRONOSHIFT_CI_TIMING: 0
+web	Unit tests and production build	2026-10-05T10:59:40.1332788Z   PUBLISH_PAGES: true
+web	Unit tests and production build	2026-10-05T10:59:40.1332974Z   MISE_LOG_LEVEL: info
+web	Unit tests and production build	2026-10-05T10:59:40.1335296Z   MISE_GITHUB_TOKEN: ***
+web	Unit tests and production build	2026-10-05T10:59:40.1335556Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+web	Unit tests and production build	2026-10-05T10:59:40.1335824Z   MISE_YES: 1
+web	Unit tests and production build	2026-10-05T10:59:40.1335995Z ##[endgroup]
+web	Unit tests and production build	2026-10-05T10:59:40.2364837Z $ bun test tests
+web	Unit tests and production build	2026-10-05T10:59:40.2390912Z bun test v1.4.0 (34cbb9a40)
+web	Unit tests and production build	2026-10-05T10:59:40.2419444Z 
+web	Unit tests and production build	2026-10-05T10:59:40.2421204Z ##[group]tests/console-capture.test.ts:
+web	Unit tests and production build	2026-10-05T10:59:40.2440668Z (pass) navigation-lost console payload retains a stable event and flush waits for full metadata [0.77ms]
+web	Unit tests and production build	2026-10-05T10:59:40.2442674Z (pass) unexpected capture failure is surfaced by flush instead of being swallowed [0.18ms]
+web	Unit tests and production build	2026-10-05T10:59:40.2443137Z 
+web	Unit tests and production build	2026-10-05T10:59:40.2443539Z ##[endgroup]
+web	Unit tests and production build	2026-10-05T10:59:40.2443684Z 
+web	Unit tests and production build	2026-10-05T10:59:40.2444002Z ##[group]tests/offline.test.ts:
+web	Unit tests and production build	2026-10-05T10:59:40.2742995Z (pass) first installation reports safe asset/release identity before a controller exists [2.31ms]
+web	Unit tests and production build	2026-10-05T10:59:40.2750734Z (pass) embedded navigation shell installs exact HTML without a network document [1.32ms]
+web	Unit tests and production build	2026-10-05T10:59:40.2762668Z (pass) embedded navigation shell rejects inconsistent build bytes [1.20ms]
+web	Unit tests and production build	2026-10-05T10:59:40.2773018Z (pass) claim requires a verified cache and scoped window: complete=true, inside=true [1.00ms]
+web	Unit tests and production build	2026-10-05T10:59:40.2774006Z (pass) claim requires a verified cache and scoped window: complete=false, inside=true [0.11ms]
+web	Unit tests and production build	2026-10-05T10:59:40.2776357Z (pass) claim requires a verified cache and scoped window: complete=true, inside=false [0.15ms]
+web	Unit tests and production build	2026-10-05T10:59:40.2776930Z 
+web	Unit tests and production build	2026-10-05T10:59:40.2777464Z ##[endgroup]
+web	Unit tests and production build	2026-10-05T10:59:40.2777612Z 
+web	Unit tests and production build	2026-10-05T10:59:40.2777941Z ##[group]tests/publishing.test.ts:
+web	Unit tests and production build	2026-10-05T10:59:40.2799212Z (pass) publication reuse requires a trusted complete PR verification and exact tree [0.36ms]
+web	Unit tests and production build	2026-10-05T10:59:40.2799707Z 
+web	Unit tests and production build	2026-10-05T10:59:40.2800088Z ##[endgroup]
+web	Unit tests and production build	2026-10-05T10:59:40.2800233Z 
+web	Unit tests and production build	2026-10-05T10:59:40.2800695Z ##[group]tests/corpus.test.ts:
+web	Unit tests and production build	2026-10-05T10:59:40.5036566Z (pass) all resilience corpus inputs execute the browser engine without crashing [163.99ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5037071Z 
+web	Unit tests and production build	2026-10-05T10:59:40.5037421Z ##[endgroup]
+web	Unit tests and production build	2026-10-05T10:59:40.5037538Z 
+web	Unit tests and production build	2026-10-05T10:59:40.5037767Z ##[group]tests/conversion.test.ts:
+web	Unit tests and production build	2026-10-05T10:59:40.5042147Z (pass) independently specified temporal fixtures > fixed EST in spring [0.69ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5045524Z (pass) independently specified temporal fixtures > fixed PST in summer [0.38ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5052114Z (pass) independently specified temporal fixtures > regional PT summer [0.35ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5053088Z (pass) independently specified temporal fixtures > regional PT winter [0.42ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5068272Z (pass) independently specified temporal fixtures > regional ET [0.40ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5069161Z (pass) independently specified temporal fixtures > CST ambiguity [0.51ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5069947Z (pass) independently specified temporal fixtures > IST ambiguity [0.50ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5073490Z (pass) independently specified temporal fixtures > BST ambiguity [0.51ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5078052Z (pass) independently specified temporal fixtures > AST ambiguity [0.49ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5082375Z (pass) independently specified temporal fixtures > quarter hour offset [0.36ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5085539Z (pass) independently specified temporal fixtures > negative half hour offset [0.36ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5087469Z (pass) independently specified temporal fixtures > invalid minutes [0.20ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5089526Z (pass) independently specified temporal fixtures > invalid offset bound [0.13ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5106285Z (pass) independently specified temporal fixtures > ISO offset [1.65ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5111000Z (pass) independently specified temporal fixtures > relative tomorrow [0.48ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5114133Z (pass) independently specified temporal fixtures > relative in Tokyo [0.36ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5142570Z (pass) independently specified temporal fixtures > source date across midnight [0.49ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5143237Z (pass) independently specified temporal fixtures > city Tokyo [0.38ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5143881Z (pass) independently specified temporal fixtures > city Mumbai [0.32ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5144504Z (pass) independently specified temporal fixtures > city Berlin summer [0.43ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5145094Z (pass) independently specified temporal fixtures > accented city [0.40ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5145913Z (pass) independently specified temporal fixtures > unique typo disclosure [0.79ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5148654Z (pass) independently specified temporal fixtures > unknown city [0.60ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5150460Z (pass) independently specified temporal fixtures > unknown abbreviation [0.17ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5155617Z (pass) independently specified temporal fixtures > IANA identity [0.50ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5164413Z (pass) independently specified temporal fixtures > spring gap [0.86ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5168403Z (pass) independently specified temporal fixtures > autumn fold [0.40ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5173602Z (pass) independently specified temporal fixtures > Sydney spring gap [0.47ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5177636Z (pass) independently specified temporal fixtures > Sydney autumn fold [0.37ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5178507Z (pass) independently specified temporal fixtures > date only [0.15ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5182137Z (pass) independently specified temporal fixtures > month day convention [0.32ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5187333Z (pass) independently specified temporal fixtures > day month convention [0.45ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5194069Z (pass) independently specified temporal fixtures > header date context [0.60ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5198479Z (pass) independently specified temporal fixtures > paragraph isolation [0.45ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5203879Z (pass) independently specified temporal fixtures > second explicit date [0.51ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5212750Z (pass) independently specified temporal fixtures > same date range [0.44ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5213405Z (pass) independently specified temporal fixtures > overnight range [0.44ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5216808Z (pass) independently specified temporal fixtures > Unix seconds [0.23ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5218829Z (pass) independently specified temporal fixtures > Unix text order [0.38ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5223424Z (pass) independently specified temporal fixtures > duplicate mentions [0.45ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5227736Z (pass) independently specified temporal fixtures > distinct dates retained [0.42ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5232725Z (pass) independently specified temporal fixtures > missing timezone source default [0.34ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5233512Z (pass) independently specified temporal fixtures > no matching time [0.08ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5235944Z (pass) independently specified temporal fixtures > HTML remains text [0.31ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5239176Z (pass) independently specified temporal fixtures > relative source date at UTC midnight [0.32ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5245223Z (pass) independently specified temporal fixtures > relative header in source zone [0.30ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5246974Z (pass) independently specified temporal fixtures > unrelated sentence date reset [0.44ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5250683Z (pass) independently specified temporal fixtures > military time with fixed zone [0.34ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5252612Z (pass) independently specified temporal fixtures > military Zulu [0.23ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5256591Z (pass) independently specified temporal fixtures > shorthand meridiem [0.35ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5263333Z (pass) independently specified temporal fixtures > between range [0.66ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5265902Z (pass) independently specified temporal fixtures > unknown IANA wins over adjacent UTC token [0.25ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5268930Z (pass) independently specified temporal fixtures > leap day retained [0.31ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5273196Z (pass) independently specified temporal fixtures > bare city summer rules [0.41ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5276205Z (pass) independently specified temporal fixtures > city before prose [0.32ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5279390Z (pass) independently specified temporal fixtures > NYC alias [0.29ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5283913Z (pass) independently specified temporal fixtures > Melbourne alias [0.45ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5291997Z (pass) independently specified temporal fixtures > 2015 Unix boundary [0.11ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5292690Z (pass) independently specified temporal fixtures > 2035 Unix boundary [0.07ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5293476Z (pass) independently specified temporal fixtures > explicit zone upgrades default duplicate [0.36ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5294255Z (pass) independently specified temporal fixtures > ISO fractional seconds [0.37ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5295494Z (pass) independently specified temporal fixtures > partial colloquial match must not convert wrong time [0.13ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5296760Z (pass) independently specified temporal fixtures > vague approximate hour [0.08ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5297542Z (pass) independently specified temporal fixtures > no invented end of business hour [0.06ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5300024Z (pass) independently specified temporal fixtures > city before target-zone sentence [0.31ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5303601Z (pass) independently specified temporal fixtures > city before colleague timezone [0.33ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5311370Z (pass) independently specified temporal fixtures > city-qualified endpoint range [0.78ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5316186Z (pass) independently specified temporal fixtures > numeric offset endpoint range [0.47ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5323029Z (pass) independently specified temporal fixtures > repeated-zone overnight range [0.62ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5327155Z (pass) independently specified temporal fixtures > distinct endpoint zone clocks [0.45ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5334944Z (pass) independently specified temporal fixtures > regional repeated-zone overnight range [0.63ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5336640Z (pass) independently specified temporal fixtures > malformed three-digit offset minutes [0.13ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5343322Z (pass) independently specified temporal fixtures > malformed one-digit offset minutes [0.12ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5344148Z (pass) independently specified temporal fixtures > unsupported unicode offset minus [0.12ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5344904Z (pass) independently specified temporal fixtures > IANA numeric suffix identity [0.64ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5347510Z (pass) independently specified temporal fixtures > lowercase fixed zone [0.30ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5350513Z (pass) independently specified temporal fixtures > mixed-case fixed zone [0.31ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5354327Z (pass) independently specified temporal fixtures > lowercase numeric zone [0.35ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5392555Z (pass) independently specified temporal fixtures > range before colleague zone prose [3.74ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5399072Z (pass) independently specified temporal fixtures > range before format zone prose [0.66ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5412031Z (pass) independently specified temporal fixtures > dotted meridiem overnight range [0.77ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5413274Z (pass) independently specified temporal fixtures > military endpoint zone range [0.49ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5436790Z (pass) independently specified temporal fixtures > IANA qualified overnight range [1.27ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5438754Z (pass) independently specified temporal fixtures > city qualified overnight range [0.82ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5440216Z (pass) independently specified temporal fixtures > reject complete malformed offset UTC+05foo [0.15ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5442471Z (pass) independently specified temporal fixtures > reject complete malformed offset UTC+05:30abc [0.13ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5443354Z (pass) independently specified temporal fixtures > reject complete malformed offset UTC+5.5 [0.13ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5444207Z (pass) independently specified temporal fixtures > reject complete malformed offset GMT+2.5 [0.12ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5446526Z (pass) independently specified temporal fixtures > range propagates trailing explicit date [0.63ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5453784Z (pass) independently specified temporal fixtures > range infers trailing next year [0.72ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5460672Z (pass) independently specified temporal fixtures > range second precision rollover [0.63ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5468541Z (pass) independently specified temporal fixtures > cross-city civil overnight range [0.76ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5476315Z (pass) independently specified temporal fixtures > bare city overnight range [0.79ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5483445Z (pass) independently specified temporal fixtures > qualified until city range [0.73ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5486125Z (pass) independently specified temporal fixtures > reject repeated offset sign [0.14ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5486991Z (pass) independently specified temporal fixtures > reject malformed sign UTC++5 [0.12ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5492201Z (pass) independently specified temporal fixtures > reject malformed sign UTC+-5 [0.11ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5493144Z (pass) independently specified temporal fixtures > reject malformed sign UTC+ [0.10ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5509090Z (pass) formatting rolls into next day and copy includes full context [2.00ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5514754Z (pass) negative fractional offset never invents a location [0.58ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5524695Z (pass) short fuzzy city and unknown guesses are rejected [0.98ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5534925Z (pass) valid input at limit converts; arbitrary numbers and milliseconds stay unparsed [1.03ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5540466Z (pass) range keeps textual identities and both endpoints [0.59ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5544786Z (pass) input limit and invalid target give actionable errors [0.14ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5553571Z (pass) reference date override leaves source zone independent of target [1.04ms]
+web	Unit tests and production build	2026-10-05T10:59:40.5554526Z 
+web	Unit tests and production build	2026-10-05T10:59:40.5555266Z ##[endgroup]
+web	Unit tests and production build	2026-10-05T10:59:40.5555591Z 
+web	Unit tests and production build	2026-10-05T10:59:40.5556030Z ##[group]tests/preview.test.ts:
+web	Unit tests and production build	2026-10-05T10:59:40.8600196Z (pass) preview publication accepts identical trees and rejects merged content differences [303.92ms]
+web	Unit tests and production build	2026-10-05T10:59:40.8600973Z 
+web	Unit tests and production build	2026-10-05T10:59:40.8601437Z ##[endgroup]
+web	Unit tests and production build	2026-10-05T10:59:40.8601585Z 
+web	Unit tests and production build	2026-10-05T10:59:40.8601700Z  116 pass
+web	Unit tests and production build	2026-10-05T10:59:40.8601932Z  0 fail
+web	Unit tests and production build	2026-10-05T10:59:40.8602163Z  727 expect() calls
+web	Unit tests and production build	2026-10-05T10:59:40.8602456Z Ran 116 tests across 6 files. [620.00ms]
+web	Unit tests and production build	2026-10-05T10:59:40.8672434Z $ bun run typecheck && bun scripts/third-party-notices.ts && bunx --bun vite build && bun scripts/build-offline.ts
+web	Unit tests and production build	2026-10-05T10:59:40.8703430Z $ bunx --bun tsc --noEmit
+web	Unit tests and production build	2026-10-05T10:59:41.2343292Z Included notices for 19 production packages.
+web	Unit tests and production build	2026-10-05T10:59:41.4266474Z ^[[36mvite v8.3.2 ^[[32mbuilding client environment for production...^[[36m^[[39m
+web	Unit tests and production build	2026-10-05T10:59:41.4331186Z transforming...
+web	Unit tests and production build	2026-10-05T10:59:41.6138023Z ✓ 644 modules transformed.
+web	Unit tests and production build	2026-10-05T10:59:41.6556712Z rendering chunks...
+web	Unit tests and production build	2026-10-05T10:59:41.7364470Z computing gzip size...
+web	Unit tests and production build	2026-10-05T10:59:41.7467116Z dist/index.html                                    0.80 kB │ gzip:   0.44 kB
+web	Unit tests and production build	2026-10-05T10:59:41.7467635Z dist/assets/geist-latin-variable-Dm3htQBi.woff2   28.40 kB
+web	Unit tests and production build	2026-10-05T10:59:41.7467969Z dist/assets/worker-C690IjaR.js                   221.14 kB
+web	Unit tests and production build	2026-10-05T10:59:41.7468362Z dist/assets/index-Bst_xchV.css                    20.74 kB │ gzip:   4.83 kB
+web	Unit tests and production build	2026-10-05T10:59:41.7468993Z dist/assets/index-B3d9YDa-.js                    775.64 kB │ gzip: 235.35 kB
+web	Unit tests and production build	2026-10-05T10:59:41.7469913Z 
+web	Unit tests and production build	2026-10-05T10:59:41.7470979Z ^[[32m✓ built in 319ms^[[39m
+web	Unit tests and production build	2026-10-05T10:59:41.7475093Z ^[[33m[plugin builtin:vite-reporter] 
+web	Unit tests and production build	2026-10-05T10:59:41.7475426Z (!) Some chunks are larger than 500 kB after minification. Consider:
+web	Unit tests and production build	2026-10-05T10:59:41.7475759Z - Using dynamic import() to code-split the application
+web	Unit tests and production build	2026-10-05T10:59:41.7476312Z - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+web	Unit tests and production build	2026-10-05T10:59:41.7477195Z - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.^[[39m
+web	Unit tests and production build	2026-10-05T10:59:41.7756597Z Offline version c19dfd7448cca9e2: 13 local assets, /
+web	Verify the standalone conversion corpus audit	﻿2026-10-05T10:59:41.7825699Z ##[group]Run bun run corpus:audit
+web	Verify the standalone conversion corpus audit	2026-10-05T10:59:41.7825974Z ^[[36;1mbun run corpus:audit^[[0m
+web	Verify the standalone conversion corpus audit	2026-10-05T10:59:41.7826337Z ^[[36;1mdiff -u "$RUNNER_TEMP/chronoshift-corpus-audit.json" docs/planning/corpus-audit.json^[[0m
+web	Verify the standalone conversion corpus audit	2026-10-05T10:59:41.7826998Z shell: bash --noprofile --norc -e -o pipefail {0}
+web	Verify the standalone conversion corpus audit	2026-10-05T10:59:41.7827259Z env:
+web	Verify the standalone conversion corpus audit	2026-10-05T10:59:41.7827448Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+web	Verify the standalone conversion corpus audit	2026-10-05T10:59:41.7827699Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+web	Verify the standalone conversion corpus audit	2026-10-05T10:59:41.7827915Z   CHRONOSHIFT_CI_TIMING: 0
+web	Verify the standalone conversion corpus audit	2026-10-05T10:59:41.7828109Z   PUBLISH_PAGES: true
+web	Verify the standalone conversion corpus audit	2026-10-05T10:59:41.7828287Z   MISE_LOG_LEVEL: info
+web	Verify the standalone conversion corpus audit	2026-10-05T10:59:41.7830834Z   MISE_GITHUB_TOKEN: ***
+web	Verify the standalone conversion corpus audit	2026-10-05T10:59:41.7831091Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+web	Verify the standalone conversion corpus audit	2026-10-05T10:59:41.7831354Z   MISE_YES: 1
+web	Verify the standalone conversion corpus audit	2026-10-05T10:59:41.7831529Z ##[endgroup]
+web	Verify the standalone conversion corpus audit	2026-10-05T10:59:41.8312780Z $ bun scripts/audit-corpus.ts
+web	Verify the standalone conversion corpus audit	2026-10-05T10:59:42.0472900Z 353 real inputs exercised; 0 crashes; 29 cases need review of legacy expectations or parser gaps.
+web	Run bun run test:browser	﻿2026-10-05T10:59:42.0590916Z ##[group]Run bun scripts/ci-environment.ts before
+web	Run bun run test:browser	2026-10-05T10:59:42.0591287Z ^[[36;1mbun scripts/ci-environment.ts before^[[0m
+web	Run bun run test:browser	2026-10-05T10:59:42.0591555Z ^[[36;1mbun run test:browser^[[0m
+web	Run bun run test:browser	2026-10-05T10:59:42.0591943Z shell: bash --noprofile --norc -e -o pipefail {0}
+web	Run bun run test:browser	2026-10-05T10:59:42.0592205Z env:
+web	Run bun run test:browser	2026-10-05T10:59:42.0592397Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+web	Run bun run test:browser	2026-10-05T10:59:42.0592652Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+web	Run bun run test:browser	2026-10-05T10:59:42.0592871Z   CHRONOSHIFT_CI_TIMING: 0
+web	Run bun run test:browser	2026-10-05T10:59:42.0593069Z   PUBLISH_PAGES: true
+web	Run bun run test:browser	2026-10-05T10:59:42.0593258Z   MISE_LOG_LEVEL: info
+web	Run bun run test:browser	2026-10-05T10:59:42.0595581Z   MISE_GITHUB_TOKEN: ***
+web	Run bun run test:browser	2026-10-05T10:59:42.0595839Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+web	Run bun run test:browser	2026-10-05T10:59:42.0596106Z   MISE_YES: 1
+web	Run bun run test:browser	2026-10-05T10:59:42.0596283Z ##[endgroup]
+web	Run bun run test:browser	2026-10-05T10:59:42.1117541Z [ci-environment] {"at":"2026-10-05T10:59:42.110Z","phase":"before","platform":"linux","architecture":"x64","osRelease":"6.17.0-1022-azure","availableParallelism":4,"logicalCpus":4,"cpuModel":"AMD EPYC 9V74 80-Core Processor","totalMemoryBytes":16766414848,"cgroup":{"cpu.max":"max 100000","cpu.stat":"usage_usec 14254498\nuser_usec 11145012\nsystem_usec 3109486\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0","memory.max":"max","memory.peak":"1397362688","memory.events":"low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"}}
+web	Run bun run test:browser	2026-10-05T10:59:42.1151937Z $ bunx --bun playwright test
+web	Run bun run test:browser	2026-10-05T10:59:44.9741745Z 
+web	Run bun run test:browser	2026-10-05T10:59:44.9742289Z Running 273 tests using 4 workers
+web	Run bun run test:browser	2026-10-05T10:59:44.9742580Z 
+web	Run bun run test:browser	2026-10-05T10:59:46.9872293Z   ✓    2 [foldable] › e2e/foldable.spec.ts:112:0 › notch and home-indicator safe areas inset the task (1.3s)
+web	Run bun run test:browser	2026-10-05T10:59:47.8393649Z   ✓    3 [foldable] › e2e/foldable.spec.ts:70:0 › tabletop posture confines the scrollable task to the upper screen (2.2s)
+web	Run bun run test:browser	2026-10-05T10:59:47.9992601Z   ✓    1 [foldable] › e2e/foldable.spec.ts:4:0 › input and results avoid a vertical hinge and survive folding (2.3s)
+web	Run bun run test:browser	2026-10-05T10:59:49.6580543Z   ✓    4 [chromium] › e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (3.9s)
+web	Run bun run test:browser	2026-10-05T10:59:50.6724760Z   ✓    6 [chromium] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (2.2s)
+web	Run bun run test:browser	2026-10-05T10:59:50.7040262Z   ✓    5 [chromium] › e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (3.1s)
+web	Run bun run test:browser	2026-10-05T10:59:51.1219594Z   ✓    7 [chromium] › e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (2.4s)
+web	Run bun run test:browser	2026-10-05T10:59:51.2904320Z   ✓    8 [chromium] › e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (1.6s)
+web	Run bun run test:browser	2026-10-05T10:59:52.4211523Z   ✓    9 [chromium] › e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (1.7s)
+web	Run bun run test:browser	2026-10-05T10:59:53.2187655Z   ✓   10 [chromium] › e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (2.5s)
+web	Run bun run test:browser	2026-10-05T10:59:54.2587173Z   ✓   14 [chromium] › e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (1.0s)
+web	Run bun run test:browser	2026-10-05T10:59:54.5182158Z   ✓   11 [chromium] › e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (3.4s)
+web	Run bun run test:browser	2026-10-05T10:59:54.7155627Z   ✓   12 [chromium] › e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (3.4s)
+web	Run bun run test:browser	2026-10-05T10:59:56.4927347Z   ✓   13 [chromium] › e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (4.1s)
+web	Run bun run test:browser	2026-10-05T10:59:58.5924508Z   ✓   15 [chromium] › e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (4.3s)
+web	Run bun run test:browser	2026-10-05T11:00:01.4228894Z   ✓   18 [chromium] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (4.9s)
+web	Run bun run test:browser	2026-10-05T11:00:01.8192341Z   ✓   19 [chromium] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (3.2s)
+web	Run bun run test:browser	2026-10-05T11:00:02.3512078Z   ✓   17 [chromium] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (7.6s)
+web	Run bun run test:browser	2026-10-05T11:00:03.6486726Z   ✓   21 [chromium] › e2e/copy-focus.spec.ts:296:0 › an unchanged copy owner still receives selected manual fallback text (1.8s)
+web	Run bun run test:browser	2026-10-05T11:00:04.1919384Z   ✓   22 [chromium] › e2e/copy-focus.spec.ts:317:0 › same-owner keyboard intent keeps the newer owner (1.8s)
+web	Run bun run test:browser	2026-10-05T11:00:05.1946821Z   ✓   20 [chromium] › e2e/copy-focus.spec.ts:262:0 › a deferred manual-copy focus frame cannot steal a new target keyboard edit (3.8s)
+web	Run bun run test:browser	2026-10-05T11:00:05.9845218Z   ✓   24 [chromium] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (1.8s)
+web	Run bun run test:browser	2026-10-05T11:00:06.5736919Z   ✓   25 [chromium] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (1.4s)
+web	Run bun run test:browser	2026-10-05T11:00:06.7612481Z   ✓   23 [chromium] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (3.1s)
+web	Run bun run test:browser	2026-10-05T11:00:07.8895014Z   ✓   26 [chromium] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (1.9s)
+web	Run bun run test:browser	2026-10-05T11:00:08.5578918Z   ✓   27 [chromium] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (2.0s)
+web	Run bun run test:browser	2026-10-05T11:00:08.8637892Z   ✓   29 [chromium] › e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (951ms)
+web	Run bun run test:browser	2026-10-05T11:00:09.5217692Z   ✓   16 [chromium] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (15.0s)
+web	Run bun run test:browser	2026-10-05T11:00:11.3946358Z   ✓   28 [chromium] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (4.6s)
+web	Run bun run test:browser	2026-10-05T11:00:12.5479288Z   ✓   32 [chromium] › e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (3.0s)
+web	Run bun run test:browser	2026-10-05T11:00:13.8564967Z   ✓   30 [chromium] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (5.3s)
+web	Run bun run test:browser	2026-10-05T11:00:14.2702258Z   ✓   31 [chromium] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (5.4s)
+web	Run bun run test:browser	2026-10-05T11:00:15.0247027Z   ✓   33 [chromium] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (3.6s)
+web	Run bun run test:browser	2026-10-05T11:00:15.2702501Z   ✓   36 [chromium] › e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (983ms)
+web	Run bun run test:browser	2026-10-05T11:00:17.0553677Z   ✓   34 [chromium] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (4.5s)
+web	Run bun run test:browser	2026-10-05T11:00:17.1019018Z   ✓   37 [chromium] › e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (2.1s)
+web	Run bun run test:browser	2026-10-05T11:00:17.1143699Z   ✓   38 [chromium] › e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (1.8s)
+web	Run bun run test:browser	2026-10-05T11:00:18.3547652Z   ✓   39 [chromium] › e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (1.3s)
+web	Run bun run test:browser	2026-10-05T11:00:19.3798029Z   ✓   35 [chromium] › e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (5.5s)
+web	Run bun run test:browser	2026-10-05T11:00:19.6137882Z   ✓   40 [chromium] › e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (2.5s)
+web	Run bun run test:browser	2026-10-05T11:00:20.4782481Z   ✓   42 [chromium] › e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (2.1s)
+web	Run bun run test:browser	2026-10-05T11:00:21.6003405Z   ✓   43 [chromium] › e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (2.2s)
+web	Run bun run test:browser	2026-10-05T11:00:21.8243476Z   ✓   44 [chromium] › e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (2.2s)
+web	Run bun run test:browser	2026-10-05T11:00:22.0923760Z   ✓   45 [chromium] › e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (1.6s)
+web	Run bun run test:browser	2026-10-05T11:00:23.3397675Z   ✓   41 [chromium] › e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (6.2s)
+web	Run bun run test:browser	2026-10-05T11:00:23.5780715Z   ✓   46 [chromium] › e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (2.0s)
+web	Run bun run test:browser	2026-10-05T11:00:24.6550822Z   ✓   49 [chromium] › e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (1.3s)
+web	Run bun run test:browser	2026-10-05T11:00:25.3060491Z   ✓   48 [chromium] › e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (3.2s)
+web	Run bun run test:browser	2026-10-05T11:00:25.4672333Z   ✓   47 [chromium] › e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (3.6s)
+web	Run bun run test:browser	2026-10-05T11:00:26.4130876Z   ✓   50 [chromium] › e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft (2.8s)
+web	Run bun run test:browser	2026-10-05T11:00:27.4798650Z   ✓   53 [chromium] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (2.0s)
+web	Run bun run test:browser	2026-10-05T11:00:30.3955495Z   ✓   54 [chromium] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (4.0s)
+web	Run bun run test:browser	2026-10-05T11:00:30.7449736Z   ✓   55 [chromium] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (3.3s)
+web	Run bun run test:browser	2026-10-05T11:00:30.7715838Z   ✓   52 [chromium] › e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update (5.4s)
+web	Run bun run test:browser	2026-10-05T11:00:31.0259826Z   ✓   51 [chromium] › e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload (6.4s)
+web	Run bun run test:browser	2026-10-05T11:00:36.8348843Z   ✓   58 [firefox] › e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (4.8s)
+web	Run bun run test:browser	2026-10-05T11:00:37.0156886Z   ✓   59 [firefox] › e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (4.4s)
+web	Run bun run test:browser	2026-10-05T11:00:39.4459271Z   ✓   60 [firefox] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (2.6s)
+web	Run bun run test:browser	2026-10-05T11:00:39.6948883Z   ✓   56 [chromium] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (9.3s)
+web	Run bun run test:browser	2026-10-05T11:00:39.9250640Z   ✓   61 [firefox] › e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (2.9s)
+web	Run bun run test:browser	2026-10-05T11:00:41.4128727Z   ✓   57 [chromium] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (10.7s)
+web	Run bun run test:browser	2026-10-05T11:00:41.7074012Z   ✓   62 [firefox] › e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (2.2s)
+web	Run bun run test:browser	2026-10-05T11:00:43.8496123Z   ✓   63 [firefox] › e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (3.9s)
+web	Run bun run test:browser	2026-10-05T11:00:44.9444469Z   ✓   64 [firefox] › e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (3.9s)
+web	Run bun run test:browser	2026-10-05T11:00:46.5944617Z   ✓   65 [firefox] › e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (4.9s)
+web	Run bun run test:browser	2026-10-05T11:00:46.8326754Z   ✓   68 [firefox] › e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (1.9s)
+web	Run bun run test:browser	2026-10-05T11:00:48.6768783Z   ✓   67 [firefox] › e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (4.8s)
+web	Run bun run test:browser	2026-10-05T11:00:49.2664713Z   ✓   66 [firefox] › e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (6.4s)
+web	Run bun run test:browser	2026-10-05T11:00:53.9201228Z   ✓   69 [firefox] › e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (7.3s)
+web	Run bun run test:browser	2026-10-05T11:00:56.9535396Z   ✓   71 [firefox] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (8.3s)
+web	Run bun run test:browser	2026-10-05T11:00:56.9771936Z   ✓   72 [firefox] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (7.7s)
+web	Run bun run test:browser	2026-10-05T11:00:58.2328584Z   ✓   73 [firefox] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (4.3s)
+web	Run bun run test:browser	2026-10-05T11:01:00.2735578Z   ✓   76 [firefox] › e2e/copy-focus.spec.ts:317:0 › same-owner keyboard intent keeps the newer owner (2.0s)
+web	Run bun run test:browser	2026-10-05T11:01:00.2835936Z   ✓   75 [firefox] › e2e/copy-focus.spec.ts:296:0 › an unchanged copy owner still receives selected manual fallback text (3.3s)
+web	Run bun run test:browser	2026-10-05T11:01:01.4188731Z   ✓   74 [firefox] › e2e/copy-focus.spec.ts:262:0 › a deferred manual-copy focus frame cannot steal a new target keyboard edit (4.5s)
+web	Run bun run test:browser	2026-10-05T11:01:02.9918379Z   ✓   78 [firefox] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (2.7s)
+web	Run bun run test:browser	2026-10-05T11:01:03.4683576Z   ✓   79 [firefox] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (2.0s)
+web	Run bun run test:browser	2026-10-05T11:01:04.8522575Z   ✓   80 [firefox] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (1.8s)
+web	Run bun run test:browser	2026-10-05T11:01:05.0582095Z   ✓   81 [firefox] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (1.6s)
+web	Run bun run test:browser	2026-10-05T11:01:05.1777880Z   ✓   77 [firefox] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (4.9s)
+web	Run bun run test:browser	2026-10-05T11:01:07.3047247Z   ✓   83 [firefox] › e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (2.2s)
+web	Run bun run test:browser	2026-10-05T11:01:08.9923727Z   ✓   70 [firefox] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (22.1s)
+web	Run bun run test:browser	2026-10-05T11:01:11.3167288Z   ✓   84 [firefox] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (6.1s)
+web	Run bun run test:browser	2026-10-05T11:01:11.9259117Z   ✓   82 [firefox] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (7.1s)
+web	Run bun run test:browser	2026-10-05T11:01:13.1025439Z   ✓   86 [firefox] › e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (4.1s)
+web	Run bun run test:browser	2026-10-05T11:01:16.1340098Z   ✓   85 [firefox] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (8.8s)
+web	Run bun run test:browser	2026-10-05T11:01:17.4456408Z   ✓   88 [firefox] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (5.5s)
+web	Run bun run test:browser	2026-10-05T11:01:17.5165105Z   ✓   87 [firefox] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (6.2s)
+web	Run bun run test:browser	2026-10-05T11:01:18.1491188Z   ✓   90 [firefox] › e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (2.0s)
+web	Run bun run test:browser	2026-10-05T11:01:19.3631027Z   ✓   89 [firefox] › e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (6.2s)
+web	Run bun run test:browser	2026-10-05T11:01:19.7823777Z   ✓   91 [firefox] › e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (2.3s)
+web	Run bun run test:browser	2026-10-05T11:01:19.9817483Z   ✓   93 [firefox] › e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (1.8s)
+web	Run bun run test:browser	2026-10-05T11:01:20.7237471Z   ✓   92 [firefox] › e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (3.2s)
+web	Run bun run test:browser	2026-10-05T11:01:22.3135554Z   ✓   94 [firefox] › e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (2.9s)
+web	Run bun run test:browser	2026-10-05T11:01:23.6277754Z   ✓   96 [firefox] › e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (3.6s)
+web	Run bun run test:browser	2026-10-05T11:01:24.9441780Z   ✓   97 [firefox] › e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (4.2s)
+web	Run bun run test:browser	2026-10-05T11:01:25.7170146Z   ✓   99 [firefox] › e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (2.1s)
+web	Run bun run test:browser	2026-10-05T11:01:26.1989672Z   ✓   98 [firefox] › e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (3.9s)
+web	Run bun run test:browser	2026-10-05T11:01:26.8419933Z   ✓   95 [firefox] › e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (7.0s)
+web	Run bun run test:browser	2026-10-05T11:01:28.9473885Z   ✓  101 [firefox] › e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (3.2s)
+web	Run bun run test:browser	2026-10-05T11:01:29.4652158Z   ✓  100 [firefox] › e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (4.5s)
+web	Run bun run test:browser	2026-10-05T11:01:29.6637098Z   -  104 [firefox] › e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft
+web	Run bun run test:browser	2026-10-05T11:01:30.0722588Z   -  105 [firefox] › e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload
+web	Run bun run test:browser	2026-10-05T11:01:30.1426775Z   -  106 [firefox] › e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update
+web	Run bun run test:browser	2026-10-05T11:01:30.1994712Z   ✓  103 [firefox] › e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (3.3s)
+web	Run bun run test:browser	2026-10-05T11:01:31.4221558Z   ✓  102 [firefox] › e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (5.2s)
+web	Run bun run test:browser	2026-10-05T11:01:32.5991518Z   ✓  107 [firefox] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (2.5s)
+web	Run bun run test:browser	2026-10-05T11:01:34.3938532Z   ✓  109 [firefox] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (4.2s)
+web	Run bun run test:browser	2026-10-05T11:01:36.4734635Z   ✓  108 [firefox] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (6.3s)
+web	Run bun run test:browser	2026-10-05T11:01:40.5942411Z   ✓  112 [webkit] › e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (4.6s)
+web	Run bun run test:browser	2026-10-05T11:01:41.9467752Z   ✓  113 [webkit] › e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (4.1s)
+web	Run bun run test:browser	2026-10-05T11:01:43.2301968Z   ✓  111 [firefox] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (10.6s)
+web	Run bun run test:browser	2026-10-05T11:01:43.6370516Z   ✓  114 [webkit] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (3.0s)
+web	Run bun run test:browser	2026-10-05T11:01:43.8922140Z   ✓  110 [firefox] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (12.4s)
+web	Run bun run test:browser	2026-10-05T11:01:45.6569206Z   ✓  115 [webkit] › e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (3.7s)
+web	Run bun run test:browser	2026-10-05T11:01:46.6559872Z   ✓  116 [webkit] › e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (3.0s)
+web	Run bun run test:browser	2026-10-05T11:01:47.4877161Z   ✓  117 [webkit] › e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (2.5s)
+web	Run bun run test:browser	2026-10-05T11:01:51.0252858Z   ✓  119 [webkit] › e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (5.4s)
+web	Run bun run test:browser	2026-10-05T11:01:51.2124344Z   ✓  118 [webkit] › e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (5.7s)
+web	Run bun run test:browser	2026-10-05T11:01:51.4233826Z   ✓  120 [webkit] › e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (4.7s)
+web	Run bun run test:browser	2026-10-05T11:01:53.9436594Z   ✓  121 [webkit] › e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (6.4s)
+web	Run bun run test:browser	2026-10-05T11:01:54.0402836Z   ✓  122 [webkit] › e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (3.0s)
+web	Run bun run test:browser	2026-10-05T11:01:57.1844908Z   ✓  123 [webkit] › e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (6.0s)
+web	Run bun run test:browser	2026-10-05T11:02:04.4417762Z   ✓  126 [webkit] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (10.4s)
+web	Run bun run test:browser	2026-10-05T11:02:04.8810570Z   ✓  127 [webkit] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (7.7s)
+web	Run bun run test:browser	2026-10-05T11:02:08.6728851Z   ✓  129 [webkit] › e2e/copy-focus.spec.ts:296:0 › an unchanged copy owner still receives selected manual fallback text (3.7s)
+web	Run bun run test:browser	2026-10-05T11:02:09.2406282Z   ✓  128 [webkit] › e2e/copy-focus.spec.ts:262:0 › a deferred manual-copy focus frame cannot steal a new target keyboard edit (4.8s)
+web	Run bun run test:browser	2026-10-05T11:02:09.3663135Z   ✓  125 [webkit] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (15.4s)
+web	Run bun run test:browser	2026-10-05T11:02:11.5574359Z   ✓  130 [webkit] › e2e/copy-focus.spec.ts:317:0 › same-owner keyboard intent keeps the newer owner (2.9s)
+web	Run bun run test:browser	2026-10-05T11:02:13.9419034Z   ✓  132 [webkit] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (4.6s)
+web	Run bun run test:browser	2026-10-05T11:02:14.4269891Z   ✓  133 [webkit] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (2.8s)
+web	Run bun run test:browser	2026-10-05T11:02:14.9939965Z   ✓  131 [webkit] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (5.7s)
+web	Run bun run test:browser	2026-10-05T11:02:16.6332485Z   ✓  134 [webkit] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (2.7s)
+web	Run bun run test:browser	2026-10-05T11:02:17.1843304Z   ✓  135 [webkit] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (2.7s)
+web	Run bun run test:browser	2026-10-05T11:02:18.8436789Z   ✓  137 [webkit] › e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (2.2s)
+web	Run bun run test:browser	2026-10-05T11:02:20.1449300Z   ✓  136 [webkit] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (5.1s)
+web	Run bun run test:browser	2026-10-05T11:02:24.9718821Z   ✓  138 [webkit] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (7.8s)
+web	Run bun run test:browser	2026-10-05T11:02:25.3960011Z   ✓  140 [webkit] › e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (5.2s)
+web	Run bun run test:browser	2026-10-05T11:02:29.3914263Z   ✓  139 [webkit] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (10.5s)
+web	Run bun run test:browser	2026-10-05T11:02:29.6471125Z   ✓  124 [webkit] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (38.2s)
+web	Run bun run test:browser	2026-10-05T11:02:31.5087604Z   ✓  142 [webkit] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (6.1s)
+web	Run bun run test:browser	2026-10-05T11:02:32.1585119Z   ✓  144 [webkit] › e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (2.5s)
+web	Run bun run test:browser	2026-10-05T11:02:32.1947317Z   ✓  141 [webkit] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (7.2s)
+web	Run bun run test:browser	2026-10-05T11:02:34.4416426Z   ✓  145 [webkit] › e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (2.9s)
+web	Run bun run test:browser	2026-10-05T11:02:34.4678994Z   ✓  147 [webkit] › e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (2.3s)
+web	Run bun run test:browser	2026-10-05T11:02:36.6180040Z   ✓  146 [webkit] › e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (4.4s)
+web	Run bun run test:browser	2026-10-05T11:02:36.7980114Z   ✓  143 [webkit] › e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (7.4s)
+web	Run bun run test:browser	2026-10-05T11:02:37.4782401Z   ✓  148 [webkit] › e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (3.0s)
+web	Run bun run test:browser	2026-10-05T11:02:40.2027577Z   ✓  150 [webkit] › e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (3.6s)
+web	Run bun run test:browser	2026-10-05T11:02:41.1516125Z   ✓  151 [webkit] › e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (4.3s)
+web	Run bun run test:browser	2026-10-05T11:02:42.0830727Z   ✓  149 [webkit] › e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (7.6s)
+web	Run bun run test:browser	2026-10-05T11:02:42.5886818Z   ✓  153 [webkit] › e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (2.4s)
+web	Run bun run test:browser	2026-10-05T11:02:42.6601855Z   ✓  152 [webkit] › e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (5.2s)
+web	Run bun run test:browser	2026-10-05T11:02:45.4554291Z   ✓  157 [webkit] › e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (2.8s)
+web	Run bun run test:browser	2026-10-05T11:02:46.2467774Z   -  158 [webkit] › e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft
+web	Run bun run test:browser	2026-10-05T11:02:46.9477153Z   ✓  154 [webkit] › e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (5.8s)
+web	Run bun run test:browser	2026-10-05T11:02:46.9778347Z   -  159 [webkit] › e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload
+web	Run bun run test:browser	2026-10-05T11:02:47.1216755Z   ✓  155 [webkit] › e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (5.0s)
+web	Run bun run test:browser	2026-10-05T11:02:47.8423409Z   -  160 [webkit] › e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update
+web	Run bun run test:browser	2026-10-05T11:02:49.9432873Z   ✓  161 [webkit] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (2.9s)
+web	Run bun run test:browser	2026-10-05T11:02:51.9235073Z   ✓  156 [webkit] › e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (9.3s)
+web	Run bun run test:browser	2026-10-05T11:02:53.5360175Z   ✓  163 [webkit] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (5.7s)
+web	Run bun run test:browser	2026-10-05T11:02:53.6526457Z   ✓  162 [webkit] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (6.5s)
+web	Run bun run test:browser	2026-10-05T11:02:58.9949024Z   ✓  166 [android-emulation] › e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (4.3s)
+web	Run bun run test:browser	2026-10-05T11:02:59.2328972Z   ✓  167 [android-emulation] › e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (4.3s)
+web	Run bun run test:browser	2026-10-05T11:03:01.0566826Z   ✓  168 [android-emulation] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (2.0s)
+web	Run bun run test:browser	2026-10-05T11:03:01.5646479Z   ✓  164 [webkit] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (11.6s)
+web	Run bun run test:browser	2026-10-05T11:03:01.5958822Z   ✓  165 [webkit] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (9.7s)
+web	Run bun run test:browser	2026-10-05T11:03:02.0792369Z   ✓  169 [android-emulation] › e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (2.8s)
+web	Run bun run test:browser	2026-10-05T11:03:03.0439024Z   ✓  170 [android-emulation] › e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (1.9s)
+web	Run bun run test:browser	2026-10-05T11:03:04.3714061Z   ✓  172 [android-emulation] › e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (2.1s)
+web	Run bun run test:browser	2026-10-05T11:03:05.1883355Z   ✓  171 [android-emulation] › e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (3.1s)
+web	Run bun run test:browser	2026-10-05T11:03:05.2585779Z   ✓  173 [android-emulation] › e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (2.8s)
+web	Run bun run test:browser	2026-10-05T11:03:06.4573666Z   ✓  176 [android-emulation] › e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (1.3s)
+web	Run bun run test:browser	2026-10-05T11:03:06.9671410Z   ✓  174 [android-emulation] › e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (3.9s)
+web	Run bun run test:browser	2026-10-05T11:03:07.5130750Z   ✓  175 [android-emulation] › e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (3.1s)
+web	Run bun run test:browser	2026-10-05T11:03:09.5943635Z   ✓  177 [android-emulation] › e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (4.3s)
+web	Run bun run test:browser	2026-10-05T11:03:11.6330749Z   ✓  180 [android-emulation] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (4.1s)
+web	Run bun run test:browser	2026-10-05T11:03:12.3409429Z   ✓  181 [android-emulation] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (2.7s)
+web	Run bun run test:browser	2026-10-05T11:03:12.9633032Z   ✓  179 [android-emulation] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (6.0s)
+web	Run bun run test:browser	2026-10-05T11:03:14.0354230Z   ✓  183 [android-emulation] › e2e/copy-focus.spec.ts:296:0 › an unchanged copy owner still receives selected manual fallback text (1.7s)
+web	Run bun run test:browser	2026-10-05T11:03:14.6145661Z   ✓  184 [android-emulation] › e2e/copy-focus.spec.ts:317:0 › same-owner keyboard intent keeps the newer owner (1.6s)
+web	Run bun run test:browser	2026-10-05T11:03:14.6873443Z   ✓  182 [android-emulation] › e2e/copy-focus.spec.ts:262:0 › a deferred manual-copy focus frame cannot steal a new target keyboard edit (3.0s)
+web	Run bun run test:browser	2026-10-05T11:03:16.0783207Z   ✓  187 [android-emulation] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (1.4s)
+web	Run bun run test:browser	2026-10-05T11:03:16.2646081Z   ✓  186 [android-emulation] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (1.6s)
+web	Run bun run test:browser	2026-10-05T11:03:16.7716363Z   ✓  185 [android-emulation] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (2.7s)
+web	Run bun run test:browser	2026-10-05T11:03:17.9579888Z   ✓  188 [android-emulation] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (1.9s)
+web	Run bun run test:browser	2026-10-05T11:03:18.0624261Z   ✓  189 [android-emulation] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (1.8s)
+web	Run bun run test:browser	2026-10-05T11:03:18.8613845Z   ✓  191 [android-emulation] › e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (884ms)
+web	Run bun run test:browser	2026-10-05T11:03:19.8244787Z   ✓  178 [android-emulation] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (13.4s)
+web	Run bun run test:browser	2026-10-05T11:03:21.2669447Z   ✓  190 [android-emulation] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (4.5s)
+web	Run bun run test:browser	2026-10-05T11:03:22.0274157Z   ✓  192 [android-emulation] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (4.0s)
+web	Run bun run test:browser	2026-10-05T11:03:22.5775130Z   ✓  194 [android-emulation] › e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (2.7s)
+web	Run bun run test:browser	2026-10-05T11:03:23.5035197Z   ✓  193 [android-emulation] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (4.6s)
+web	Run bun run test:browser	2026-10-05T11:03:24.3723473Z   ✓  198 [android-emulation] › e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (859ms)
+web	Run bun run test:browser	2026-10-05T11:03:24.7147963Z   ✓  195 [android-emulation] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (3.4s)
+web	Run bun run test:browser	2026-10-05T11:03:26.4084973Z   ✓  199 [android-emulation] › e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (2.0s)
+web	Run bun run test:browser	2026-10-05T11:03:26.5044510Z   ✓  196 [android-emulation] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (4.5s)
+web	Run bun run test:browser	2026-10-05T11:03:26.5244263Z   ✓  200 [android-emulation] › e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (1.8s)
+web	Run bun run test:browser	2026-10-05T11:03:28.1217176Z   ✓  201 [android-emulation] › e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (1.7s)
+web	Run bun run test:browser	2026-10-05T11:03:28.2761709Z   ✓  197 [android-emulation] › e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (5.7s)
+web	Run bun run test:browser	2026-10-05T11:03:29.0397535Z   ✓  202 [android-emulation] › e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (2.5s)
+web	Run bun run test:browser	2026-10-05T11:03:30.3221387Z   ✓  204 [android-emulation] › e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (2.2s)
+web	Run bun run test:browser	2026-10-05T11:03:30.3612765Z   ✓  205 [android-emulation] › e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (2.1s)
+web	Run bun run test:browser	2026-10-05T11:03:31.0622872Z   ✓  206 [android-emulation] › e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (2.0s)
+web	Run bun run test:browser	2026-10-05T11:03:31.9009234Z   ✓  207 [android-emulation] › e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (1.6s)
+web	Run bun run test:browser	2026-10-05T11:03:32.2822616Z   ✓  208 [android-emulation] › e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (1.9s)
+web	Run bun run test:browser	2026-10-05T11:03:32.6882398Z   ✓  203 [android-emulation] › e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (6.2s)
+web	Run bun run test:browser	2026-10-05T11:03:33.4881851Z   ✓  211 [android-emulation] › e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (1.2s)
+web	Run bun run test:browser	2026-10-05T11:03:34.0221493Z   ✓  209 [android-emulation] › e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (3.0s)
+web	Run bun run test:browser	2026-10-05T11:03:35.0426651Z   ✓  210 [android-emulation] › e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (3.1s)
+web	Run bun run test:browser	2026-10-05T11:03:35.2114750Z   ✓  212 [android-emulation] › e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft (2.5s)
+web	Run bun run test:browser	2026-10-05T11:03:36.5415392Z   ✓  215 [android-emulation] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (1.5s)
+web	Run bun run test:browser	2026-10-05T11:03:38.9583001Z   ✓  216 [android-emulation] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (3.7s)
+web	Run bun run test:browser	2026-10-05T11:03:39.3159458Z   ✓  217 [android-emulation] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (2.8s)
+web	Run bun run test:browser	2026-10-05T11:03:39.5712109Z   ✓  214 [android-emulation] › e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update (5.5s)
+web	Run bun run test:browser	2026-10-05T11:03:40.1676894Z   ✓  213 [android-emulation] › e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload (6.7s)
+web	Run bun run test:browser	2026-10-05T11:03:43.5186182Z   ✓  220 [iphone-emulation] › e2e/app.spec.ts:6:0 › worker failure recovers and a late response cannot resurrect cleared input (3.2s)
+web	Run bun run test:browser	2026-10-05T11:03:43.8843148Z   ✓  221 [iphone-emulation] › e2e/app.spec.ts:67:0 › an intact offline app survives a failed registration check while changing target zones (2.8s)
+web	Run bun run test:browser	2026-10-05T11:03:45.5574327Z   ✓  222 [iphone-emulation] › e2e/app.spec.ts:90:0 › a delayed failed readiness probe cannot overwrite a newer successful check (2.0s)
+web	Run bun run test:browser	2026-10-05T11:03:46.6755466Z   ✓  223 [iphone-emulation] › e2e/app.spec.ts:130:0 › missing cache reports incomplete and reconnect repairs the complete offline app (2.8s)
+web	Run bun run test:browser	2026-10-05T11:03:47.2820222Z   ✓  224 [iphone-emulation] › e2e/app.spec.ts:162:0 › pasted HTML cannot execute or fetch its URL (1.7s)
+web	Run bun run test:browser	2026-10-05T11:03:48.2739550Z   ✓  218 [android-emulation] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (9.3s)
+web	Run bun run test:browser	2026-10-05T11:03:48.4424099Z   ✓  219 [android-emulation] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (9.1s)
+web	Run bun run test:browser	2026-10-05T11:03:48.7219269Z   ✓  225 [iphone-emulation] › e2e/app.spec.ts:182:0 › convert, inspect ambiguity, copy manually and protect privacy (2.0s)
+web	Run bun run test:browser	2026-10-05T11:03:50.8936180Z   ✓  226 [iphone-emulation] › e2e/app.spec.ts:215:0 › close and reopen offline, then convert previously unseen input (3.6s)
+web	Run bun run test:browser	2026-10-05T11:03:52.7259067Z   ✓  230 [iphone-emulation] › e2e/app.spec.ts:340:0 › offline POST share is single-use and never places message in URL (1.8s)
+web	Run bun run test:browser	2026-10-05T11:03:53.3969794Z   ✓  227 [iphone-emulation] › e2e/app.spec.ts:286:0 › readable at 320px, dark mode, with no serious accessibility violations (4.7s)
+web	Run bun run test:browser	2026-10-05T11:03:53.4714410Z   ✓  229 [iphone-emulation] › e2e/app.spec.ts:267:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (4.1s)
+web	Run bun run test:browser	2026-10-05T11:03:53.7943776Z   ✓  228 [iphone-emulation] › e2e/app.spec.ts:239:0 › preferences persist, input does not; denied storage still converts (4.8s)
+web	Run bun run test:browser	2026-10-05T11:03:56.9027772Z   ✓  231 [iphone-emulation] › e2e/app.spec.ts:378:0 › an update waits, preserves draft on opt-in, and survives a partial next update (4.2s)
+web	Run bun run test:browser	2026-10-05T11:04:01.0685285Z   ✓  235 [iphone-emulation] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (4.2s)
+web	Run bun run test:browser	2026-10-05T11:04:01.5905088Z   ✓  234 [iphone-emulation] › e2e/controls.spec.ts:339:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (7.8s)
+web	Run bun run test:browser	2026-10-05T11:04:03.7387325Z   ✓  233 [iphone-emulation] › e2e/controls.spec.ts:232:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (10.3s)
+web	Run bun run test:browser	2026-10-05T11:04:04.0032684Z   ✓  237 [iphone-emulation] › e2e/copy-focus.spec.ts:296:0 › an unchanged copy owner still receives selected manual fallback text (2.4s)
+web	Run bun run test:browser	2026-10-05T11:04:04.6307846Z   ✓  236 [iphone-emulation] › e2e/copy-focus.spec.ts:262:0 › a deferred manual-copy focus frame cannot steal a new target keyboard edit (3.5s)
+web	Run bun run test:browser	2026-10-05T11:04:06.3518358Z   ✓  238 [iphone-emulation] › e2e/copy-focus.spec.ts:317:0 › same-owner keyboard intent keeps the newer owner (2.6s)
+web	Run bun run test:browser	2026-10-05T11:04:07.2815783Z   ✓  240 [iphone-emulation] › e2e/diagnostics.spec.ts:84:0 › detailed logging survives a tab reload and reset preferences disables it (2.6s)
+web	Run bun run test:browser	2026-10-05T11:04:07.9563486Z   ✓  239 [iphone-emulation] › e2e/diagnostics.spec.ts:12:0 › detailed logs are opt-in, local, exclude message and selected zones, and stop when disabled (3.9s)
+web	Run bun run test:browser	2026-10-05T11:04:08.2359410Z   ✓  241 [iphone-emulation] › e2e/diagnostics.spec.ts:114:0 › detailed logs still work in memory when session storage is denied (1.9s)
+web	Run bun run test:browser	2026-10-05T11:04:09.2396601Z   ✓  242 [iphone-emulation] › e2e/diagnostics.spec.ts:145:0 › a retired release repairs only missing files using its intact cached assets (1.9s)
+web	Run bun run test:browser	2026-10-05T11:04:09.7965083Z   ✓  243 [iphone-emulation] › e2e/diagnostics.spec.ts:191:0 › corrupt cached files fail integrity checks and detailed logs identify bounded repair failure (1.8s)
+web	Run bun run test:browser	2026-10-05T11:04:10.9837792Z   ✓  245 [iphone-emulation] › e2e/engine.spec.ts:4:0 › independent exact fixture expectations run in the production browser worker (1.7s)
+web	Run bun run test:browser	2026-10-05T11:04:12.8300599Z   ✓  244 [iphone-emulation] › e2e/diagnostics.spec.ts:232:0 › waiting updates remain actionable when a current cache probe times out (4.6s)
+web	Run bun run test:browser	2026-10-05T11:04:15.0187204Z   ✓  246 [iphone-emulation] › e2e/imports.spec.ts:5:2 › delayed clipboard offers replacement instead of overwriting edited or cleared work (5.2s)
+web	Run bun run test:browser	2026-10-05T11:04:16.7657499Z   ✓  248 [iphone-emulation] › e2e/imports.spec.ts:173:0 › an unresolved target hides copyable fallback results and correction restores the source interpretation (3.9s)
+web	Run bun run test:browser	2026-10-05T11:04:17.3645574Z   ✓  232 [iphone-emulation] › e2e/controls.spec.ts:55:0 › themed choices align and their opened menus fit every breakpoint without losing work (24.0s)
+web	Run bun run test:browser	2026-10-05T11:04:18.8644796Z   ✓  247 [iphone-emulation] › e2e/imports.spec.ts:5:2 › delayed share offers replacement instead of overwriting edited or cleared work (7.9s)
+web	Run bun run test:browser	2026-10-05T11:04:19.6832638Z   ✓  249 [iphone-emulation] › e2e/live.spec.ts:4:0 › typing, pasted text and conversion settings update without submission (4.7s)
+web	Run bun run test:browser	2026-10-05T11:04:20.5643571Z   ✓  252 [iphone-emulation] › e2e/motion.spec.ts:61:0 › reduced motion keeps live feedback and usable results without animation (1.7s)
+web	Run bun run test:browser	2026-10-05T11:04:21.4297779Z   ✓  253 [iphone-emulation] › e2e/offline-install.spec.ts:31:0 › a transient initial registration failure retries before any controller exists (1.7s)
+web	Run bun run test:browser	2026-10-05T11:04:22.4333384Z   ✓  250 [iphone-emulation] › e2e/live.spec.ts:30:0 › composition defers conversion and queued work cannot overwrite a newer draft (5.7s)
+web	Run bun run test:browser	2026-10-05T11:04:22.7942844Z   ✓  255 [iphone-emulation] › e2e/offline-install.spec.ts:82:0 › a stale mutable release marker is refetched and checked before offline readiness (1.3s)
+web	Run bun run test:browser	2026-10-05T11:04:23.0034353Z   ✓  254 [iphone-emulation] › e2e/offline-install.spec.ts:59:0 › slow first installation clears its expired warning without losing conversion (2.4s)
+web	Run bun run test:browser	2026-10-05T11:04:24.1076544Z   ✓  251 [iphone-emulation] › e2e/motion.spec.ts:4:0 › live feedback covers debounce and worker completion, then settles or cancels (6.7s)
+web	Run bun run test:browser	2026-10-05T11:04:25.1484224Z   ✓  256 [iphone-emulation] › e2e/offline-install.spec.ts:106:0 › a rejected first installation retries without reloading or clearing input (2.7s)
+web	Run bun run test:browser	2026-10-05T11:04:26.2930208Z   ✓  258 [iphone-emulation] › e2e/offline-install.spec.ts:155:0 › HTML response rewriting cannot break first installation or offline navigation (3.3s)
+web	Run bun run test:browser	2026-10-05T11:04:27.5093378Z   ✓  259 [iphone-emulation] › e2e/privacy.spec.ts:6:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (3.4s)
+web	Run bun run test:browser	2026-10-05T11:04:28.1018783Z   ✓  261 [iphone-emulation] › e2e/privacy.spec.ts:85:0 › invalid and oversized local shares return a paste fallback without storing text (1.8s)
+web	Run bun run test:browser	2026-10-05T11:04:28.2018700Z   ✓  260 [iphone-emulation] › e2e/privacy.spec.ts:6:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (3.0s)
+web	Run bun run test:browser	2026-10-05T11:04:29.4133907Z   ✓  257 [iphone-emulation] › e2e/offline-install.spec.ts:126:0 › persistently wrong release bytes never activate or claim offline readiness (6.6s)
+web	Run bun run test:browser	2026-10-05T11:04:31.0823606Z   ✓  263 [iphone-emulation] › e2e/privacy.spec.ts:223:0 › denied update storage keeps the draft active and requires clearing before reload (3.0s)
+web	Run bun run test:browser	2026-10-05T11:04:31.5706513Z   -  266 [iphone-emulation] › e2e/uncontrolled.spec.ts:102:0 › an activated worker reclaims a hard-refreshed tab without reloading its draft
+web	Run bun run test:browser	2026-10-05T11:04:31.7911979Z   ✓  262 [iphone-emulation] › e2e/privacy.spec.ts:119:0 › expired and invalid temporary text is consumed and erased without restoring it (4.3s)
+web	Run bun run test:browser	2026-10-05T11:04:32.0418043Z   ✓  265 [iphone-emulation] › e2e/responsive.spec.ts:83:0 › touch-sized controls and keyboard navigation remain usable in a short viewport (2.6s)
+web	Run bun run test:browser	2026-10-05T11:04:32.1056011Z   -  267 [iphone-emulation] › e2e/uncontrolled.spec.ts:135:0 › an explicit update recovers a timed-out readiness probe without another reload
+web	Run bun run test:browser	2026-10-05T11:04:32.4487157Z   -  268 [iphone-emulation] › e2e/uncontrolled.spec.ts:227:0 › an older active worker cannot mark an uncontrolled tab ready or activate its waiting update
+web	Run bun run test:browser	2026-10-05T11:04:33.4585537Z   ✓  264 [iphone-emulation] › e2e/responsive.spec.ts:4:0 › reflows across cover screens, phones, tablets and desktops without losing work (5.2s)
+web	Run bun run test:browser	2026-10-05T11:04:34.7821428Z   ✓  269 [iphone-emulation] › e2e/updates.spec.ts:6:0 › repair refuses another release and leaves the existing offline shell intact (2.7s)
+web	Run bun run test:browser	2026-10-05T11:04:35.3976941Z   ✓  271 [iphone-emulation] › e2e/updates.spec.ts:93:0 › oversized drafts block an update until they can be safely preserved (2.9s)
+web	Run bun run test:browser	2026-10-05T11:04:36.6416627Z   ✓  270 [iphone-emulation] › e2e/updates.spec.ts:45:0 › an interrupted rollback preserves a retained cache and its old tab worker (4.5s)
+web	Run bun run test:browser	2026-10-05T11:04:40.3377156Z   ✓  273 [iphone-emulation] › e2e/updates.spec.ts:270:0 › rollback preserves draft and preferences and removes obsolete caches with one remaining tab (5.5s)
+web	Run bun run test:browser	2026-10-05T11:04:40.8850607Z   ✓  272 [iphone-emulation] › e2e/updates.spec.ts:209:0 › old and new tabs retain their own workers across successive releases and offline restart (7.4s)
+web	Run bun run test:browser	2026-10-05T11:04:40.9689085Z 
+web	Run bun run test:browser	2026-10-05T11:04:40.9694324Z   9 skipped
+web	Run bun run test:browser	2026-10-05T11:04:40.9694666Z   264 passed (5.0m)
+web	Record browser resource usage	﻿2026-10-05T11:04:41.2302866Z ##[group]Run bun scripts/ci-environment.ts after
+web	Record browser resource usage	2026-10-05T11:04:41.2303206Z ^[[36;1mbun scripts/ci-environment.ts after^[[0m
+web	Record browser resource usage	2026-10-05T11:04:41.2303613Z shell: bash --noprofile --norc -e -o pipefail {0}
+web	Record browser resource usage	2026-10-05T11:04:41.2303879Z env:
+web	Record browser resource usage	2026-10-05T11:04:41.2304064Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+web	Record browser resource usage	2026-10-05T11:04:41.2304307Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+web	Record browser resource usage	2026-10-05T11:04:41.2304528Z   CHRONOSHIFT_CI_TIMING: 0
+web	Record browser resource usage	2026-10-05T11:04:41.2304718Z   PUBLISH_PAGES: true
+web	Record browser resource usage	2026-10-05T11:04:41.2304894Z   MISE_LOG_LEVEL: info
+web	Record browser resource usage	2026-10-05T11:04:41.2307236Z   MISE_GITHUB_TOKEN: ***
+web	Record browser resource usage	2026-10-05T11:04:41.2307493Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+web	Record browser resource usage	2026-10-05T11:04:41.2307750Z   MISE_YES: 1
+web	Record browser resource usage	2026-10-05T11:04:41.2307928Z ##[endgroup]
+web	Record browser resource usage	2026-10-05T11:04:41.2822215Z [ci-environment] {"at":"2026-10-05T11:04:41.281Z","phase":"after","platform":"linux","architecture":"x64","osRelease":"6.17.0-1022-azure","availableParallelism":4,"logicalCpus":4,"cpuModel":"AMD EPYC 9V74 80-Core Processor","totalMemoryBytes":16766414848,"cgroup":{"cpu.max":"max 100000","cpu.stat":"usage_usec 1010595346\nuser_usec 849766175\nsystem_usec 160829170\nnice_usec 53826000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0","memory.max":"max","memory.peak":"7229059072","memory.events":"low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"}}
+web	Verify repository-subpath deployment	﻿2026-10-05T11:04:41.2897716Z ##[group]Run bun run build
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.2897974Z ^[[36;1mbun run build^[[0m
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.2898254Z ^[[36;1m# Keep browser first-attempt evidence when the separate subpath^[[0m
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.2898599Z ^[[36;1m# runner clears its own output before starting.^[[0m
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.2899034Z ^[[36;1mbunx --bun playwright test --config=playwright.subpath.config.ts --output=test-results/subpath^[[0m
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.2899605Z shell: bash --noprofile --norc -e -o pipefail {0}
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.2899842Z env:
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.2900028Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.2900286Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.2901045Z   CHRONOSHIFT_CI_TIMING: 0
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.2901243Z   PUBLISH_PAGES: true
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.2901420Z   MISE_LOG_LEVEL: info
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.2903810Z   MISE_GITHUB_TOKEN: ***
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.2904068Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.2904328Z   MISE_YES: 1
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.2904534Z   BASE_PATH: /ChronoShift/
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.2904723Z ##[endgroup]
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.3383013Z $ bun run typecheck && bun scripts/third-party-notices.ts && bunx --bun vite build && bun scripts/build-offline.ts
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.3409468Z $ bunx --bun tsc --noEmit
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.7422012Z Included notices for 19 production packages.
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.8676621Z ^[[36mvite v8.3.2 ^[[32mbuilding client environment for production...^[[36m^[[39m
+web	Verify repository-subpath deployment	2026-10-05T11:04:41.8739591Z transforming...
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.0433244Z ✓ 644 modules transformed.
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.0887893Z rendering chunks...
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.1648332Z computing gzip size...
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.1751209Z dist/index.html                                    0.84 kB │ gzip:   0.45 kB
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.1751762Z dist/assets/geist-latin-variable-Dm3htQBi.woff2   28.40 kB
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.1752709Z dist/assets/worker-C690IjaR.js                   221.14 kB
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.1753425Z dist/assets/index-CQJea-JE.css                    20.76 kB │ gzip:   4.84 kB
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.1754164Z dist/assets/index-1VRzNw7L.js                    775.67 kB │ gzip: 235.36 kB
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.1754515Z 
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.1754903Z ^[[32m✓ built in 307ms^[[39m
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.1759172Z ^[[33m[plugin builtin:vite-reporter] 
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.1759592Z (!) Some chunks are larger than 500 kB after minification. Consider:
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.1760082Z - Using dynamic import() to code-split the application
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.1761063Z - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.1762021Z - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.^[[39m
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.2042497Z Offline version ef21e9409fdcd4bf: 13 local assets, /ChronoShift/
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.7227562Z 
+web	Verify repository-subpath deployment	2026-10-05T11:04:42.7228107Z Running 1 test using 1 worker
+web	Verify repository-subpath deployment	2026-10-05T11:04:44.2933097Z ·
+web	Verify repository-subpath deployment	2026-10-05T11:04:44.2935832Z   1 passed (1.8s)
+web	Upload the verified Pages build	﻿2026-10-05T11:04:44.3133898Z ##[group]Run actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9
+web	Upload the verified Pages build	2026-10-05T11:04:44.3134251Z with:
+web	Upload the verified Pages build	2026-10-05T11:04:44.3134417Z   path: dist
+web	Upload the verified Pages build	2026-10-05T11:04:44.3134586Z   retention-days: 1
+web	Upload the verified Pages build	2026-10-05T11:04:44.3134760Z   name: github-pages
+web	Upload the verified Pages build	2026-10-05T11:04:44.3134962Z   include-hidden-files: false
+web	Upload the verified Pages build	2026-10-05T11:04:44.3135156Z env:
+web	Upload the verified Pages build	2026-10-05T11:04:44.3135334Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+web	Upload the verified Pages build	2026-10-05T11:04:44.3135580Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+web	Upload the verified Pages build	2026-10-05T11:04:44.3135793Z   CHRONOSHIFT_CI_TIMING: 0
+web	Upload the verified Pages build	2026-10-05T11:04:44.3135987Z   PUBLISH_PAGES: true
+web	Upload the verified Pages build	2026-10-05T11:04:44.3136162Z   MISE_LOG_LEVEL: info
+web	Upload the verified Pages build	2026-10-05T11:04:44.3138526Z   MISE_GITHUB_TOKEN: ***
+web	Upload the verified Pages build	2026-10-05T11:04:44.3138787Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+web	Upload the verified Pages build	2026-10-05T11:04:44.3139049Z   MISE_YES: 1
+web	Upload the verified Pages build	2026-10-05T11:04:44.3139232Z ##[endgroup]
+web	Upload the verified Pages build	2026-10-05T11:04:44.3185963Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run]
+web	Upload the verified Pages build	2026-10-05T11:04:44.3222696Z ##[group]Run echo ::group::Archive artifact
+web	Upload the verified Pages build	2026-10-05T11:04:44.3223022Z ^[[36;1mecho ::group::Archive artifact^[[0m
+web	Upload the verified Pages build	2026-10-05T11:04:44.3223236Z ^[[36;1mtar \^[[0m
+web	Upload the verified Pages build	2026-10-05T11:04:44.3223464Z ^[[36;1m  --dereference --hard-dereference \^[[0m
+web	Upload the verified Pages build	2026-10-05T11:04:44.3223711Z ^[[36;1m  --directory "$INPUT_PATH" \^[[0m
+web	Upload the verified Pages build	2026-10-05T11:04:44.3223955Z ^[[36;1m  -cvf "$RUNNER_TEMP/artifact.tar" \^[[0m
+web	Upload the verified Pages build	2026-10-05T11:04:44.3224181Z ^[[36;1m  --exclude=.git \^[[0m
+web	Upload the verified Pages build	2026-10-05T11:04:44.3224383Z ^[[36;1m  --exclude=.github \^[[0m
+web	Upload the verified Pages build	2026-10-05T11:04:44.3224579Z ^[[36;1m  --exclude=.[^/]* \^[[0m
+web	Upload the verified Pages build	2026-10-05T11:04:44.3224762Z ^[[36;1m  .^[[0m
+web	Upload the verified Pages build	2026-10-05T11:04:44.3224926Z ^[[36;1mecho ::endgroup::^[[0m
+web	Upload the verified Pages build	2026-10-05T11:04:44.3225203Z shell: sh -e {0}
+web	Upload the verified Pages build	2026-10-05T11:04:44.3225363Z env:
+web	Upload the verified Pages build	2026-10-05T11:04:44.3225549Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+web	Upload the verified Pages build	2026-10-05T11:04:44.3225798Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+web	Upload the verified Pages build	2026-10-05T11:04:44.3226014Z   CHRONOSHIFT_CI_TIMING: 0
+web	Upload the verified Pages build	2026-10-05T11:04:44.3226204Z   PUBLISH_PAGES: true
+web	Upload the verified Pages build	2026-10-05T11:04:44.3226382Z   MISE_LOG_LEVEL: info
+web	Upload the verified Pages build	2026-10-05T11:04:44.3228633Z   MISE_GITHUB_TOKEN: ***
+web	Upload the verified Pages build	2026-10-05T11:04:44.3228894Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+web	Upload the verified Pages build	2026-10-05T11:04:44.3229151Z   MISE_YES: 1
+web	Upload the verified Pages build	2026-10-05T11:04:44.3229317Z   INPUT_PATH: dist
+web	Upload the verified Pages build	2026-10-05T11:04:44.3229491Z ##[endgroup]
+web	Upload the verified Pages build	2026-10-05T11:04:44.3636524Z ##[group]Archive artifact
+web	Upload the verified Pages build	2026-10-05T11:04:44.3650800Z ./
+web	Upload the verified Pages build	2026-10-05T11:04:44.3651093Z ./third-party-notices.txt
+web	Upload the verified Pages build	2026-10-05T11:04:44.3651940Z ./manifest.webmanifest
+web	Upload the verified Pages build	2026-10-05T11:04:44.3652379Z ./assets/
+web	Upload the verified Pages build	2026-10-05T11:04:44.3652614Z ./assets/worker-C690IjaR.js
+web	Upload the verified Pages build	2026-10-05T11:04:44.3654401Z ./assets/index-CQJea-JE.css
+web	Upload the verified Pages build	2026-10-05T11:04:44.3655513Z ./assets/index-1VRzNw7L.js
+web	Upload the verified Pages build	2026-10-05T11:04:44.3661758Z ./assets/geist-latin-variable-Dm3htQBi.woff2
+web	Upload the verified Pages build	2026-10-05T11:04:44.3663176Z ./index.html
+web	Upload the verified Pages build	2026-10-05T11:04:44.3663788Z ./release.json
+web	Upload the verified Pages build	2026-10-05T11:04:44.3663993Z ./sw.js
+web	Upload the verified Pages build	2026-10-05T11:04:44.3664217Z ./icon.svg
+web	Upload the verified Pages build	2026-10-05T11:04:44.3664383Z ./icon-512.png
+web	Upload the verified Pages build	2026-10-05T11:04:44.3664599Z ./icon-192.png
+web	Upload the verified Pages build	2026-10-05T11:04:44.3664775Z ./fonts/
+web	Upload the verified Pages build	2026-10-05T11:04:44.3664948Z ./fonts/geist-OFL.txt
+web	Upload the verified Pages build	2026-10-05T11:04:44.3665175Z ./fonts/README.txt
+web	Upload the verified Pages build	2026-10-05T11:04:44.3666764Z ##[endgroup]
+web	Upload the verified Pages build	2026-10-05T11:04:44.3701627Z ##[end-action id=__actions_upload-pages-artifact.__run;outcome=success;conclusion=success;duration_ms=51]
+web	Upload the verified Pages build	2026-10-05T11:04:44.3704710Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run_2]
+web	Upload the verified Pages build	2026-10-05T11:04:44.3708870Z ##[end-action id=__actions_upload-pages-artifact.__run_2;outcome=skipped;conclusion=skipped;duration_ms=0]
+web	Upload the verified Pages build	2026-10-05T11:04:44.3711105Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run_3]
+web	Upload the verified Pages build	2026-10-05T11:04:44.3713791Z ##[end-action id=__actions_upload-pages-artifact.__run_3;outcome=skipped;conclusion=skipped;duration_ms=0]
+web	Upload the verified Pages build	2026-10-05T11:04:44.3715268Z ##[start-action display=Upload artifact;id=__actions_upload-pages-artifact.upload-artifact]
+web	Upload the verified Pages build	2026-10-05T11:04:44.3745294Z ##[group]Run actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+web	Upload the verified Pages build	2026-10-05T11:04:44.3745782Z with:
+web	Upload the verified Pages build	2026-10-05T11:04:44.3745952Z   name: github-pages
+web	Upload the verified Pages build	2026-10-05T11:04:44.3746160Z   path: /home/runner/work/_temp/artifact.tar
+web	Upload the verified Pages build	2026-10-05T11:04:44.3746391Z   retention-days: 1
+web	Upload the verified Pages build	2026-10-05T11:04:44.3746574Z   if-no-files-found: error
+web	Upload the verified Pages build	2026-10-05T11:04:44.3746767Z   compression-level: 6
+web	Upload the verified Pages build	2026-10-05T11:04:44.3746949Z   overwrite: false
+web	Upload the verified Pages build	2026-10-05T11:04:44.3747127Z   include-hidden-files: false
+web	Upload the verified Pages build	2026-10-05T11:04:44.3747329Z   archive: true
+web	Upload the verified Pages build	2026-10-05T11:04:44.3747490Z env:
+web	Upload the verified Pages build	2026-10-05T11:04:44.3747665Z   PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+web	Upload the verified Pages build	2026-10-05T11:04:44.3747899Z   PLAYWRIGHT_IMAGE_VERSION: 1.63.0
+web	Upload the verified Pages build	2026-10-05T11:04:44.3748116Z   CHRONOSHIFT_CI_TIMING: 0
+web	Upload the verified Pages build	2026-10-05T11:04:44.3748304Z   PUBLISH_PAGES: true
+web	Upload the verified Pages build	2026-10-05T11:04:44.3748478Z   MISE_LOG_LEVEL: info
+web	Upload the verified Pages build	2026-10-05T11:04:44.3751137Z   MISE_GITHUB_TOKEN: ***
+web	Upload the verified Pages build	2026-10-05T11:04:44.3751404Z   MISE_TRUSTED_CONFIG_PATHS: /__w/ChronoShift/ChronoShift
+web	Upload the verified Pages build	2026-10-05T11:04:44.3751663Z   MISE_YES: 1
+web	Upload the verified Pages build	2026-10-05T11:04:44.3751831Z ##[endgroup]
+web	Upload the verified Pages build	2026-10-05T11:04:44.3754984Z ##[command]/usr/bin/docker exec  d84903463cd5abbebc288d952d358de0ebad5a2a0505229b319ac2267ca3a816 sh -c "cat /etc/*release | grep ^ID"
+web	Upload the verified Pages build	2026-10-05T11:04:44.5671683Z With the provided path, there will be 1 file uploaded
+web	Upload the verified Pages build	2026-10-05T11:04:44.5673082Z Artifact name is valid!
+web	Upload the verified Pages build	2026-10-05T11:04:44.5679469Z Root directory input is valid!
+web	Upload the verified Pages build	2026-10-05T11:04:44.9083711Z Uploading artifact: github-pages.zip
+web	Upload the verified Pages build	2026-10-05T11:04:44.9117747Z Beginning upload of artifact content to blob storage
+web	Upload the verified Pages build	2026-10-05T11:04:45.3964225Z Uploaded bytes 374910
+web	Upload the verified Pages build	2026-10-05T11:04:45.4576121Z Finished uploading artifact content to blob storage!
+web	Upload the verified Pages build	2026-10-05T11:04:45.4576722Z SHA256 digest of uploaded artifact is e7d9eca8b9fe91f78c3a4034b7dc5a384fafb22c308b997a8c63f7f58056172a
+web	Upload the verified Pages build	2026-10-05T11:04:45.4577367Z Finalizing artifact upload
+web	Upload the verified Pages build	2026-10-05T11:04:45.8488650Z Artifact github-pages successfully finalized. Artifact ID 11341036869
+web	Upload the verified Pages build	2026-10-05T11:04:45.8489472Z Artifact github-pages has been successfully uploaded! Final size is 374910 bytes. Artifact ID is 11341036869
+web	Upload the verified Pages build	2026-10-05T11:04:45.8493375Z Artifact download URL: https://github.com/Tien-Lam/ChronoShift/actions/runs/37299989506/artifacts/11341036869
+web	Upload the verified Pages build	2026-10-05T11:04:45.8616633Z ##[end-action id=__actions_upload-pages-artifact.upload-artifact;outcome=success;conclusion=success;duration_ms=1490]
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-10-05T11:04:45.9152035Z Post job cleanup.
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:45.9158624Z ##[command]/usr/bin/docker exec  d84903463cd5abbebc288d952d358de0ebad5a2a0505229b319ac2267ca3a816 sh -c "cat /etc/*release | grep ^ID"
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.0579279Z [command]/usr/bin/git version
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.0621100Z git version 2.43.0
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.0662932Z Temporarily overriding HOME='/__w/_temp/5e969cf1-e861-40f8-9a82-2e30b7499b4c' before making global git config changes
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.0664659Z Adding repository directory to the temporary git global config as a safe directory
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.0667922Z [command]/usr/bin/git config --global --add safe.directory /__w/ChronoShift/ChronoShift
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.0702265Z Removing SSH command configuration
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.0707042Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.0746998Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.0981972Z Removing HTTP extra header
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.0982675Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1014145Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1241437Z Removing includeIf entries pointing to credentials config files
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1246400Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1277544Z includeif.gitdir:/__w/ChronoShift/ChronoShift/.git.path
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1277972Z includeif.gitdir:/__w/ChronoShift/ChronoShift/.git/worktrees/*.path
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1278677Z includeif.gitdir:/github/workspace/.git.path
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1279076Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1286289Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/__w/ChronoShift/ChronoShift/.git.path
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1318983Z /__w/_temp/git-credentials-0e1172c5-2ac2-443a-ad87-de8647ba5a2e.config
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1320663Z [command]/usr/bin/git config --local --unset includeif.gitdir:/__w/ChronoShift/ChronoShift/.git.path \/__w\/_temp\/git\-credentials\-0e1172c5\-2ac2\-443a\-ad87\-de8647ba5a2e\.config
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1355877Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/__w/ChronoShift/ChronoShift/.git/worktrees/*.path
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1378635Z /__w/_temp/git-credentials-0e1172c5-2ac2-443a-ad87-de8647ba5a2e.config
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1386405Z [command]/usr/bin/git config --local --unset includeif.gitdir:/__w/ChronoShift/ChronoShift/.git/worktrees/*.path \/__w\/_temp\/git\-credentials\-0e1172c5\-2ac2\-443a\-ad87\-de8647ba5a2e\.config
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1423986Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1453160Z /github/runner_temp/git-credentials-0e1172c5-2ac2-443a-ad87-de8647ba5a2e.config
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1458964Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-0e1172c5\-2ac2\-443a\-ad87\-de8647ba5a2e\.config
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1491954Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1514447Z /github/runner_temp/git-credentials-0e1172c5-2ac2-443a-ad87-de8647ba5a2e.config
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1520981Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-0e1172c5\-2ac2\-443a\-ad87\-de8647ba5a2e\.config
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1561221Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+web	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:04:46.1775070Z Removing credentials config '/__w/_temp/git-credentials-0e1172c5-2ac2-443a-ad87-de8647ba5a2e.config'
+web	Stop containers	﻿2026-10-05T11:04:46.1898662Z Stop and remove container: 60b78b9421194f69b0331cb005576d1b_mcrmicrosoftcomplaywrightsha256eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27_28bd92
+web	Stop containers	2026-10-05T11:04:46.1902877Z ##[command]/usr/bin/docker rm --force d84903463cd5abbebc288d952d358de0ebad5a2a0505229b319ac2267ca3a816
+web	Stop containers	2026-10-05T11:04:46.5763471Z d84903463cd5abbebc288d952d358de0ebad5a2a0505229b319ac2267ca3a816
+web	Stop containers	2026-10-05T11:04:46.5790683Z Remove container network: github_network_0130c9b564eb45e988e08aae6506efa7
+web	Stop containers	2026-10-05T11:04:46.5794192Z ##[command]/usr/bin/docker network rm github_network_0130c9b564eb45e988e08aae6506efa7
+web	Stop containers	2026-10-05T11:04:46.7508942Z github_network_0130c9b564eb45e988e08aae6506efa7
+web	Complete job	﻿2026-10-05T11:04:46.7569860Z Cleaning up orphan processes

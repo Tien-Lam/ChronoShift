@@ -1,0 +1,1185 @@
+{
+  "began": "2026-10-05T11:05:42.493Z",
+  "ended": "2026-10-05T11:05:42.496Z",
+  "sourceHead": "cb8206c280494341632821d13b4e90f8f1c3a3e9",
+  "configured": 273,
+  "attemptCount": 273,
+  "uniqueScenarioCount": 273,
+  "passed": 264,
+  "skipped": [
+    {
+      "project": "firefox",
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft"
+    },
+    {
+      "project": "firefox",
+      "title": "an explicit update recovers a timed-out readiness probe without another reload"
+    },
+    {
+      "project": "firefox",
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update"
+    },
+    {
+      "project": "webkit",
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft"
+    },
+    {
+      "project": "webkit",
+      "title": "an explicit update recovers a timed-out readiness probe without another reload"
+    },
+    {
+      "project": "webkit",
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update"
+    },
+    {
+      "project": "iphone-emulation",
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft"
+    },
+    {
+      "project": "iphone-emulation",
+      "title": "an explicit update recovers a timed-out readiness probe without another reload"
+    },
+    {
+      "project": "iphone-emulation",
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update"
+    }
+  ],
+  "skipsMatchIndependentList": true,
+  "retryRows": [],
+  "browserRetryLines": [],
+  "runnerSeconds": 358,
+  "roundedMinutes": 6,
+  "stepTimes": [
+    {
+      "name": "Set up job",
+      "conclusion": "success",
+      "seconds": 3
+    },
+    {
+      "name": "Initialize containers",
+      "conclusion": "success",
+      "seconds": 33
+    },
+    {
+      "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "conclusion": "success",
+      "seconds": 2
+    },
+    {
+      "name": "Capture the checked-in corpus audit",
+      "conclusion": "success",
+      "seconds": 0
+    },
+    {
+      "name": "Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492",
+      "conclusion": "success",
+      "seconds": 6
+    },
+    {
+      "name": "Run bun install --frozen-lockfile",
+      "conclusion": "success",
+      "seconds": 1
+    },
+    {
+      "name": "Verify the pinned browser image matches the dependency",
+      "conclusion": "success",
+      "seconds": 0
+    },
+    {
+      "name": "Run bun run format:check",
+      "conclusion": "success",
+      "seconds": 2
+    },
+    {
+      "name": "Unit tests and production build",
+      "conclusion": "success",
+      "seconds": 1
+    },
+    {
+      "name": "Verify the standalone conversion corpus audit",
+      "conclusion": "success",
+      "seconds": 1
+    },
+    {
+      "name": "Run bun run test:browser",
+      "conclusion": "success",
+      "seconds": 299
+    },
+    {
+      "name": "Record browser resource usage",
+      "conclusion": "success",
+      "seconds": 0
+    },
+    {
+      "name": "Retain bounded browser timing metadata",
+      "conclusion": "skipped",
+      "seconds": 0
+    },
+    {
+      "name": "Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+      "conclusion": "skipped",
+      "seconds": 0
+    },
+    {
+      "name": "Verify repository-subpath deployment",
+      "conclusion": "success",
+      "seconds": 3
+    },
+    {
+      "name": "Upload the verified Pages build",
+      "conclusion": "success",
+      "seconds": 1
+    },
+    {
+      "name": "Publish failed-attempt diagnostics",
+      "conclusion": "skipped",
+      "seconds": 0
+    },
+    {
+      "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "conclusion": "success",
+      "seconds": 1
+    },
+    {
+      "name": "Stop containers",
+      "conclusion": "success",
+      "seconds": 0
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success",
+      "seconds": 0
+    }
+  ],
+  "resource": {
+    "valid": true,
+    "bracketSeconds": 299.171,
+    "cpuProcessorSeconds": 996.340848,
+    "averageProcessors": 3.33033899676105,
+    "before": {
+      "at": "2026-10-05T10:59:42.110Z",
+      "phase": "before",
+      "platform": "linux",
+      "architecture": "x64",
+      "osRelease": "6.17.0-1022-azure",
+      "availableParallelism": 4,
+      "logicalCpus": 4,
+      "cpuModel": "AMD EPYC 9V74 80-Core Processor",
+      "totalMemoryBytes": 16766414848,
+      "cgroup": {
+        "cpu.max": "max 100000",
+        "cpu.stat": "usage_usec 14254498\nuser_usec 11145012\nsystem_usec 3109486\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+        "memory.max": "max",
+        "memory.peak": "1397362688",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+      }
+    },
+    "after": {
+      "at": "2026-10-05T11:04:41.281Z",
+      "phase": "after",
+      "platform": "linux",
+      "architecture": "x64",
+      "osRelease": "6.17.0-1022-azure",
+      "availableParallelism": 4,
+      "logicalCpus": 4,
+      "cpuModel": "AMD EPYC 9V74 80-Core Processor",
+      "totalMemoryBytes": 16766414848,
+      "cgroup": {
+        "cpu.max": "max 100000",
+        "cpu.stat": "usage_usec 1010595346\nuser_usec 849766175\nsystem_usec 160829170\nnice_usec 53826000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+        "memory.max": "max",
+        "memory.peak": "7229059072",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+      }
+    }
+  },
+  "checkoutEvidence": [
+    {
+      "job": "web",
+      "step": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "at": "2026-10-05T10:59:29.5046880Z",
+      "text": "##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "raw": "web\tRun actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\t2026-10-05T10:59:29.5046880Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1"
+    },
+    {
+      "job": "web",
+      "step": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "at": "2026-10-05T10:59:29.5047594Z",
+      "text": "sparse-checkout: /*",
+      "raw": "web\tRun actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\t2026-10-05T10:59:29.5047594Z   sparse-checkout: /*"
+    },
+    {
+      "job": "web",
+      "step": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "at": "2026-10-05T10:59:29.5047828Z",
+      "text": "sparse-checkout-cone-mode: false",
+      "raw": "web\tRun actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\t2026-10-05T10:59:29.5047828Z   sparse-checkout-cone-mode: false"
+    },
+    {
+      "job": "web",
+      "step": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "at": "2026-10-05T10:59:29.5052560Z",
+      "text": "allow-unsafe-pr-checkout: false",
+      "raw": "web\tRun actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\t2026-10-05T10:59:29.5052560Z   allow-unsafe-pr-checkout: false"
+    },
+    {
+      "job": "web",
+      "step": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "at": "2026-10-05T10:59:29.6763431Z",
+      "text": "[command]/usr/bin/git version",
+      "raw": "web\tRun actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\t2026-10-05T10:59:29.6763431Z [command]/usr/bin/git version"
+    },
+    {
+      "job": "web",
+      "step": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "at": "2026-10-05T10:59:29.6763750Z",
+      "text": "git version 2.43.0",
+      "raw": "web\tRun actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\t2026-10-05T10:59:29.6763750Z git version 2.43.0"
+    },
+    {
+      "job": "web",
+      "step": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "at": "2026-10-05T10:59:29.7812568Z",
+      "text": "[command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin +8fd325dd79afdd6dcf33e77503aca7f97541d25c:refs/remotes/pull/41/merge",
+      "raw": "web\tRun actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\t2026-10-05T10:59:29.7812568Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin +8fd325dd79afdd6dcf33e77503aca7f97541d25c:refs/remotes/pull/41/merge"
+    },
+    {
+      "job": "web",
+      "step": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "at": "2026-10-05T10:59:30.3643858Z",
+      "text": "##[group]Determining the checkout info",
+      "raw": "web\tRun actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\t2026-10-05T10:59:30.3643858Z ##[group]Determining the checkout info"
+    },
+    {
+      "job": "web",
+      "step": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "at": "2026-10-05T10:59:30.3645069Z",
+      "text": "##[group]Setting up sparse checkout",
+      "raw": "web\tRun actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\t2026-10-05T10:59:30.3645069Z ##[group]Setting up sparse checkout"
+    },
+    {
+      "job": "web",
+      "step": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "at": "2026-10-05T10:59:30.3647161Z",
+      "text": "[command]/usr/bin/git config core.sparseCheckout true",
+      "raw": "web\tRun actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\t2026-10-05T10:59:30.3647161Z [command]/usr/bin/git config core.sparseCheckout true"
+    },
+    {
+      "job": "web",
+      "step": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "at": "2026-10-05T10:59:30.3678775Z",
+      "text": "[command]/usr/bin/git rev-parse --git-path info/sparse-checkout",
+      "raw": "web\tRun actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\t2026-10-05T10:59:30.3678775Z [command]/usr/bin/git rev-parse --git-path info/sparse-checkout"
+    },
+    {
+      "job": "web",
+      "step": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "at": "2026-10-05T10:59:30.3702372Z",
+      "text": ".git/info/sparse-checkout",
+      "raw": "web\tRun actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\t2026-10-05T10:59:30.3702372Z .git/info/sparse-checkout"
+    },
+    {
+      "job": "web",
+      "step": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "at": "2026-10-05T10:59:30.3707576Z",
+      "text": "##[group]Checking out the ref",
+      "raw": "web\tRun actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\t2026-10-05T10:59:30.3707576Z ##[group]Checking out the ref"
+    },
+    {
+      "job": "web",
+      "step": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "at": "2026-10-05T10:59:30.3710200Z",
+      "text": "[command]/usr/bin/git checkout --progress --force refs/remotes/pull/41/merge",
+      "raw": "web\tRun actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\t2026-10-05T10:59:30.3710200Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/41/merge"
+    }
+  ],
+  "unitSummaries": [
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.1331665Z",
+      "text": "shell: bash --noprofile --norc -e -o pipefail {0}",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.1331665Z shell: bash --noprofile --norc -e -o pipefail {0}"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.2440668Z",
+      "text": "(pass) navigation-lost console payload retains a stable event and flush waits for full metadata [0.77ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.2440668Z (pass) navigation-lost console payload retains a stable event and flush waits for full metadata [0.77ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.2442674Z",
+      "text": "(pass) unexpected capture failure is surfaced by flush instead of being swallowed [0.18ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.2442674Z (pass) unexpected capture failure is surfaced by flush instead of being swallowed [0.18ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.2742995Z",
+      "text": "(pass) first installation reports safe asset/release identity before a controller exists [2.31ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.2742995Z (pass) first installation reports safe asset/release identity before a controller exists [2.31ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.2750734Z",
+      "text": "(pass) embedded navigation shell installs exact HTML without a network document [1.32ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.2750734Z (pass) embedded navigation shell installs exact HTML without a network document [1.32ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.2762668Z",
+      "text": "(pass) embedded navigation shell rejects inconsistent build bytes [1.20ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.2762668Z (pass) embedded navigation shell rejects inconsistent build bytes [1.20ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.2773018Z",
+      "text": "(pass) claim requires a verified cache and scoped window: complete=true, inside=true [1.00ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.2773018Z (pass) claim requires a verified cache and scoped window: complete=true, inside=true [1.00ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.2774006Z",
+      "text": "(pass) claim requires a verified cache and scoped window: complete=false, inside=true [0.11ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.2774006Z (pass) claim requires a verified cache and scoped window: complete=false, inside=true [0.11ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.2776357Z",
+      "text": "(pass) claim requires a verified cache and scoped window: complete=true, inside=false [0.15ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.2776357Z (pass) claim requires a verified cache and scoped window: complete=true, inside=false [0.15ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.2799212Z",
+      "text": "(pass) publication reuse requires a trusted complete PR verification and exact tree [0.36ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.2799212Z (pass) publication reuse requires a trusted complete PR verification and exact tree [0.36ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5036566Z",
+      "text": "(pass) all resilience corpus inputs execute the browser engine without crashing [163.99ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5036566Z (pass) all resilience corpus inputs execute the browser engine without crashing [163.99ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5042147Z",
+      "text": "(pass) independently specified temporal fixtures > fixed EST in spring [0.69ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5042147Z (pass) independently specified temporal fixtures > fixed EST in spring [0.69ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5045524Z",
+      "text": "(pass) independently specified temporal fixtures > fixed PST in summer [0.38ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5045524Z (pass) independently specified temporal fixtures > fixed PST in summer [0.38ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5052114Z",
+      "text": "(pass) independently specified temporal fixtures > regional PT summer [0.35ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5052114Z (pass) independently specified temporal fixtures > regional PT summer [0.35ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5053088Z",
+      "text": "(pass) independently specified temporal fixtures > regional PT winter [0.42ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5053088Z (pass) independently specified temporal fixtures > regional PT winter [0.42ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5068272Z",
+      "text": "(pass) independently specified temporal fixtures > regional ET [0.40ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5068272Z (pass) independently specified temporal fixtures > regional ET [0.40ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5069161Z",
+      "text": "(pass) independently specified temporal fixtures > CST ambiguity [0.51ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5069161Z (pass) independently specified temporal fixtures > CST ambiguity [0.51ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5069947Z",
+      "text": "(pass) independently specified temporal fixtures > IST ambiguity [0.50ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5069947Z (pass) independently specified temporal fixtures > IST ambiguity [0.50ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5073490Z",
+      "text": "(pass) independently specified temporal fixtures > BST ambiguity [0.51ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5073490Z (pass) independently specified temporal fixtures > BST ambiguity [0.51ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5078052Z",
+      "text": "(pass) independently specified temporal fixtures > AST ambiguity [0.49ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5078052Z (pass) independently specified temporal fixtures > AST ambiguity [0.49ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5082375Z",
+      "text": "(pass) independently specified temporal fixtures > quarter hour offset [0.36ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5082375Z (pass) independently specified temporal fixtures > quarter hour offset [0.36ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5085539Z",
+      "text": "(pass) independently specified temporal fixtures > negative half hour offset [0.36ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5085539Z (pass) independently specified temporal fixtures > negative half hour offset [0.36ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5087469Z",
+      "text": "(pass) independently specified temporal fixtures > invalid minutes [0.20ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5087469Z (pass) independently specified temporal fixtures > invalid minutes [0.20ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5089526Z",
+      "text": "(pass) independently specified temporal fixtures > invalid offset bound [0.13ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5089526Z (pass) independently specified temporal fixtures > invalid offset bound [0.13ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5106285Z",
+      "text": "(pass) independently specified temporal fixtures > ISO offset [1.65ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5106285Z (pass) independently specified temporal fixtures > ISO offset [1.65ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5111000Z",
+      "text": "(pass) independently specified temporal fixtures > relative tomorrow [0.48ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5111000Z (pass) independently specified temporal fixtures > relative tomorrow [0.48ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5114133Z",
+      "text": "(pass) independently specified temporal fixtures > relative in Tokyo [0.36ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5114133Z (pass) independently specified temporal fixtures > relative in Tokyo [0.36ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5142570Z",
+      "text": "(pass) independently specified temporal fixtures > source date across midnight [0.49ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5142570Z (pass) independently specified temporal fixtures > source date across midnight [0.49ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5143237Z",
+      "text": "(pass) independently specified temporal fixtures > city Tokyo [0.38ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5143237Z (pass) independently specified temporal fixtures > city Tokyo [0.38ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5143881Z",
+      "text": "(pass) independently specified temporal fixtures > city Mumbai [0.32ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5143881Z (pass) independently specified temporal fixtures > city Mumbai [0.32ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5144504Z",
+      "text": "(pass) independently specified temporal fixtures > city Berlin summer [0.43ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5144504Z (pass) independently specified temporal fixtures > city Berlin summer [0.43ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5145094Z",
+      "text": "(pass) independently specified temporal fixtures > accented city [0.40ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5145094Z (pass) independently specified temporal fixtures > accented city [0.40ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5145913Z",
+      "text": "(pass) independently specified temporal fixtures > unique typo disclosure [0.79ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5145913Z (pass) independently specified temporal fixtures > unique typo disclosure [0.79ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5148654Z",
+      "text": "(pass) independently specified temporal fixtures > unknown city [0.60ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5148654Z (pass) independently specified temporal fixtures > unknown city [0.60ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5150460Z",
+      "text": "(pass) independently specified temporal fixtures > unknown abbreviation [0.17ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5150460Z (pass) independently specified temporal fixtures > unknown abbreviation [0.17ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5155617Z",
+      "text": "(pass) independently specified temporal fixtures > IANA identity [0.50ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5155617Z (pass) independently specified temporal fixtures > IANA identity [0.50ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5164413Z",
+      "text": "(pass) independently specified temporal fixtures > spring gap [0.86ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5164413Z (pass) independently specified temporal fixtures > spring gap [0.86ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5168403Z",
+      "text": "(pass) independently specified temporal fixtures > autumn fold [0.40ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5168403Z (pass) independently specified temporal fixtures > autumn fold [0.40ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5173602Z",
+      "text": "(pass) independently specified temporal fixtures > Sydney spring gap [0.47ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5173602Z (pass) independently specified temporal fixtures > Sydney spring gap [0.47ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5177636Z",
+      "text": "(pass) independently specified temporal fixtures > Sydney autumn fold [0.37ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5177636Z (pass) independently specified temporal fixtures > Sydney autumn fold [0.37ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5178507Z",
+      "text": "(pass) independently specified temporal fixtures > date only [0.15ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5178507Z (pass) independently specified temporal fixtures > date only [0.15ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5182137Z",
+      "text": "(pass) independently specified temporal fixtures > month day convention [0.32ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5182137Z (pass) independently specified temporal fixtures > month day convention [0.32ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5187333Z",
+      "text": "(pass) independently specified temporal fixtures > day month convention [0.45ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5187333Z (pass) independently specified temporal fixtures > day month convention [0.45ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5194069Z",
+      "text": "(pass) independently specified temporal fixtures > header date context [0.60ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5194069Z (pass) independently specified temporal fixtures > header date context [0.60ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5198479Z",
+      "text": "(pass) independently specified temporal fixtures > paragraph isolation [0.45ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5198479Z (pass) independently specified temporal fixtures > paragraph isolation [0.45ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5203879Z",
+      "text": "(pass) independently specified temporal fixtures > second explicit date [0.51ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5203879Z (pass) independently specified temporal fixtures > second explicit date [0.51ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5212750Z",
+      "text": "(pass) independently specified temporal fixtures > same date range [0.44ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5212750Z (pass) independently specified temporal fixtures > same date range [0.44ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5213405Z",
+      "text": "(pass) independently specified temporal fixtures > overnight range [0.44ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5213405Z (pass) independently specified temporal fixtures > overnight range [0.44ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5216808Z",
+      "text": "(pass) independently specified temporal fixtures > Unix seconds [0.23ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5216808Z (pass) independently specified temporal fixtures > Unix seconds [0.23ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5218829Z",
+      "text": "(pass) independently specified temporal fixtures > Unix text order [0.38ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5218829Z (pass) independently specified temporal fixtures > Unix text order [0.38ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5223424Z",
+      "text": "(pass) independently specified temporal fixtures > duplicate mentions [0.45ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5223424Z (pass) independently specified temporal fixtures > duplicate mentions [0.45ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5227736Z",
+      "text": "(pass) independently specified temporal fixtures > distinct dates retained [0.42ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5227736Z (pass) independently specified temporal fixtures > distinct dates retained [0.42ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5232725Z",
+      "text": "(pass) independently specified temporal fixtures > missing timezone source default [0.34ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5232725Z (pass) independently specified temporal fixtures > missing timezone source default [0.34ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5233512Z",
+      "text": "(pass) independently specified temporal fixtures > no matching time [0.08ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5233512Z (pass) independently specified temporal fixtures > no matching time [0.08ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5235944Z",
+      "text": "(pass) independently specified temporal fixtures > HTML remains text [0.31ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5235944Z (pass) independently specified temporal fixtures > HTML remains text [0.31ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5239176Z",
+      "text": "(pass) independently specified temporal fixtures > relative source date at UTC midnight [0.32ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5239176Z (pass) independently specified temporal fixtures > relative source date at UTC midnight [0.32ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5245223Z",
+      "text": "(pass) independently specified temporal fixtures > relative header in source zone [0.30ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5245223Z (pass) independently specified temporal fixtures > relative header in source zone [0.30ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5246974Z",
+      "text": "(pass) independently specified temporal fixtures > unrelated sentence date reset [0.44ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5246974Z (pass) independently specified temporal fixtures > unrelated sentence date reset [0.44ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5250683Z",
+      "text": "(pass) independently specified temporal fixtures > military time with fixed zone [0.34ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5250683Z (pass) independently specified temporal fixtures > military time with fixed zone [0.34ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5252612Z",
+      "text": "(pass) independently specified temporal fixtures > military Zulu [0.23ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5252612Z (pass) independently specified temporal fixtures > military Zulu [0.23ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5256591Z",
+      "text": "(pass) independently specified temporal fixtures > shorthand meridiem [0.35ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5256591Z (pass) independently specified temporal fixtures > shorthand meridiem [0.35ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5263333Z",
+      "text": "(pass) independently specified temporal fixtures > between range [0.66ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5263333Z (pass) independently specified temporal fixtures > between range [0.66ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5265902Z",
+      "text": "(pass) independently specified temporal fixtures > unknown IANA wins over adjacent UTC token [0.25ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5265902Z (pass) independently specified temporal fixtures > unknown IANA wins over adjacent UTC token [0.25ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5268930Z",
+      "text": "(pass) independently specified temporal fixtures > leap day retained [0.31ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5268930Z (pass) independently specified temporal fixtures > leap day retained [0.31ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5273196Z",
+      "text": "(pass) independently specified temporal fixtures > bare city summer rules [0.41ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5273196Z (pass) independently specified temporal fixtures > bare city summer rules [0.41ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5276205Z",
+      "text": "(pass) independently specified temporal fixtures > city before prose [0.32ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5276205Z (pass) independently specified temporal fixtures > city before prose [0.32ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5279390Z",
+      "text": "(pass) independently specified temporal fixtures > NYC alias [0.29ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5279390Z (pass) independently specified temporal fixtures > NYC alias [0.29ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5283913Z",
+      "text": "(pass) independently specified temporal fixtures > Melbourne alias [0.45ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5283913Z (pass) independently specified temporal fixtures > Melbourne alias [0.45ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5291997Z",
+      "text": "(pass) independently specified temporal fixtures > 2015 Unix boundary [0.11ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5291997Z (pass) independently specified temporal fixtures > 2015 Unix boundary [0.11ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5292690Z",
+      "text": "(pass) independently specified temporal fixtures > 2035 Unix boundary [0.07ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5292690Z (pass) independently specified temporal fixtures > 2035 Unix boundary [0.07ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5293476Z",
+      "text": "(pass) independently specified temporal fixtures > explicit zone upgrades default duplicate [0.36ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5293476Z (pass) independently specified temporal fixtures > explicit zone upgrades default duplicate [0.36ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5294255Z",
+      "text": "(pass) independently specified temporal fixtures > ISO fractional seconds [0.37ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5294255Z (pass) independently specified temporal fixtures > ISO fractional seconds [0.37ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5295494Z",
+      "text": "(pass) independently specified temporal fixtures > partial colloquial match must not convert wrong time [0.13ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5295494Z (pass) independently specified temporal fixtures > partial colloquial match must not convert wrong time [0.13ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5296760Z",
+      "text": "(pass) independently specified temporal fixtures > vague approximate hour [0.08ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5296760Z (pass) independently specified temporal fixtures > vague approximate hour [0.08ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5297542Z",
+      "text": "(pass) independently specified temporal fixtures > no invented end of business hour [0.06ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5297542Z (pass) independently specified temporal fixtures > no invented end of business hour [0.06ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5300024Z",
+      "text": "(pass) independently specified temporal fixtures > city before target-zone sentence [0.31ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5300024Z (pass) independently specified temporal fixtures > city before target-zone sentence [0.31ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5303601Z",
+      "text": "(pass) independently specified temporal fixtures > city before colleague timezone [0.33ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5303601Z (pass) independently specified temporal fixtures > city before colleague timezone [0.33ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5311370Z",
+      "text": "(pass) independently specified temporal fixtures > city-qualified endpoint range [0.78ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5311370Z (pass) independently specified temporal fixtures > city-qualified endpoint range [0.78ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5316186Z",
+      "text": "(pass) independently specified temporal fixtures > numeric offset endpoint range [0.47ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5316186Z (pass) independently specified temporal fixtures > numeric offset endpoint range [0.47ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5323029Z",
+      "text": "(pass) independently specified temporal fixtures > repeated-zone overnight range [0.62ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5323029Z (pass) independently specified temporal fixtures > repeated-zone overnight range [0.62ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5327155Z",
+      "text": "(pass) independently specified temporal fixtures > distinct endpoint zone clocks [0.45ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5327155Z (pass) independently specified temporal fixtures > distinct endpoint zone clocks [0.45ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5334944Z",
+      "text": "(pass) independently specified temporal fixtures > regional repeated-zone overnight range [0.63ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5334944Z (pass) independently specified temporal fixtures > regional repeated-zone overnight range [0.63ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5336640Z",
+      "text": "(pass) independently specified temporal fixtures > malformed three-digit offset minutes [0.13ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5336640Z (pass) independently specified temporal fixtures > malformed three-digit offset minutes [0.13ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5343322Z",
+      "text": "(pass) independently specified temporal fixtures > malformed one-digit offset minutes [0.12ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5343322Z (pass) independently specified temporal fixtures > malformed one-digit offset minutes [0.12ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5344148Z",
+      "text": "(pass) independently specified temporal fixtures > unsupported unicode offset minus [0.12ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5344148Z (pass) independently specified temporal fixtures > unsupported unicode offset minus [0.12ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5344904Z",
+      "text": "(pass) independently specified temporal fixtures > IANA numeric suffix identity [0.64ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5344904Z (pass) independently specified temporal fixtures > IANA numeric suffix identity [0.64ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5347510Z",
+      "text": "(pass) independently specified temporal fixtures > lowercase fixed zone [0.30ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5347510Z (pass) independently specified temporal fixtures > lowercase fixed zone [0.30ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5350513Z",
+      "text": "(pass) independently specified temporal fixtures > mixed-case fixed zone [0.31ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5350513Z (pass) independently specified temporal fixtures > mixed-case fixed zone [0.31ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5354327Z",
+      "text": "(pass) independently specified temporal fixtures > lowercase numeric zone [0.35ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5354327Z (pass) independently specified temporal fixtures > lowercase numeric zone [0.35ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5392555Z",
+      "text": "(pass) independently specified temporal fixtures > range before colleague zone prose [3.74ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5392555Z (pass) independently specified temporal fixtures > range before colleague zone prose [3.74ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5399072Z",
+      "text": "(pass) independently specified temporal fixtures > range before format zone prose [0.66ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5399072Z (pass) independently specified temporal fixtures > range before format zone prose [0.66ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5412031Z",
+      "text": "(pass) independently specified temporal fixtures > dotted meridiem overnight range [0.77ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5412031Z (pass) independently specified temporal fixtures > dotted meridiem overnight range [0.77ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5413274Z",
+      "text": "(pass) independently specified temporal fixtures > military endpoint zone range [0.49ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5413274Z (pass) independently specified temporal fixtures > military endpoint zone range [0.49ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5436790Z",
+      "text": "(pass) independently specified temporal fixtures > IANA qualified overnight range [1.27ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5436790Z (pass) independently specified temporal fixtures > IANA qualified overnight range [1.27ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5438754Z",
+      "text": "(pass) independently specified temporal fixtures > city qualified overnight range [0.82ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5438754Z (pass) independently specified temporal fixtures > city qualified overnight range [0.82ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5440216Z",
+      "text": "(pass) independently specified temporal fixtures > reject complete malformed offset UTC+05foo [0.15ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5440216Z (pass) independently specified temporal fixtures > reject complete malformed offset UTC+05foo [0.15ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5442471Z",
+      "text": "(pass) independently specified temporal fixtures > reject complete malformed offset UTC+05:30abc [0.13ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5442471Z (pass) independently specified temporal fixtures > reject complete malformed offset UTC+05:30abc [0.13ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5443354Z",
+      "text": "(pass) independently specified temporal fixtures > reject complete malformed offset UTC+5.5 [0.13ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5443354Z (pass) independently specified temporal fixtures > reject complete malformed offset UTC+5.5 [0.13ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5444207Z",
+      "text": "(pass) independently specified temporal fixtures > reject complete malformed offset GMT+2.5 [0.12ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5444207Z (pass) independently specified temporal fixtures > reject complete malformed offset GMT+2.5 [0.12ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5446526Z",
+      "text": "(pass) independently specified temporal fixtures > range propagates trailing explicit date [0.63ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5446526Z (pass) independently specified temporal fixtures > range propagates trailing explicit date [0.63ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5453784Z",
+      "text": "(pass) independently specified temporal fixtures > range infers trailing next year [0.72ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5453784Z (pass) independently specified temporal fixtures > range infers trailing next year [0.72ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5460672Z",
+      "text": "(pass) independently specified temporal fixtures > range second precision rollover [0.63ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5460672Z (pass) independently specified temporal fixtures > range second precision rollover [0.63ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5468541Z",
+      "text": "(pass) independently specified temporal fixtures > cross-city civil overnight range [0.76ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5468541Z (pass) independently specified temporal fixtures > cross-city civil overnight range [0.76ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5476315Z",
+      "text": "(pass) independently specified temporal fixtures > bare city overnight range [0.79ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5476315Z (pass) independently specified temporal fixtures > bare city overnight range [0.79ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5483445Z",
+      "text": "(pass) independently specified temporal fixtures > qualified until city range [0.73ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5483445Z (pass) independently specified temporal fixtures > qualified until city range [0.73ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5486125Z",
+      "text": "(pass) independently specified temporal fixtures > reject repeated offset sign [0.14ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5486125Z (pass) independently specified temporal fixtures > reject repeated offset sign [0.14ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5486991Z",
+      "text": "(pass) independently specified temporal fixtures > reject malformed sign UTC++5 [0.12ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5486991Z (pass) independently specified temporal fixtures > reject malformed sign UTC++5 [0.12ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5492201Z",
+      "text": "(pass) independently specified temporal fixtures > reject malformed sign UTC+-5 [0.11ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5492201Z (pass) independently specified temporal fixtures > reject malformed sign UTC+-5 [0.11ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5493144Z",
+      "text": "(pass) independently specified temporal fixtures > reject malformed sign UTC+ [0.10ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5493144Z (pass) independently specified temporal fixtures > reject malformed sign UTC+ [0.10ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5509090Z",
+      "text": "(pass) formatting rolls into next day and copy includes full context [2.00ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5509090Z (pass) formatting rolls into next day and copy includes full context [2.00ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5514754Z",
+      "text": "(pass) negative fractional offset never invents a location [0.58ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5514754Z (pass) negative fractional offset never invents a location [0.58ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5524695Z",
+      "text": "(pass) short fuzzy city and unknown guesses are rejected [0.98ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5524695Z (pass) short fuzzy city and unknown guesses are rejected [0.98ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5534925Z",
+      "text": "(pass) valid input at limit converts; arbitrary numbers and milliseconds stay unparsed [1.03ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5534925Z (pass) valid input at limit converts; arbitrary numbers and milliseconds stay unparsed [1.03ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5540466Z",
+      "text": "(pass) range keeps textual identities and both endpoints [0.59ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5540466Z (pass) range keeps textual identities and both endpoints [0.59ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5544786Z",
+      "text": "(pass) input limit and invalid target give actionable errors [0.14ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5544786Z (pass) input limit and invalid target give actionable errors [0.14ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.5553571Z",
+      "text": "(pass) reference date override leaves source zone independent of target [1.04ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.5553571Z (pass) reference date override leaves source zone independent of target [1.04ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.8600196Z",
+      "text": "(pass) preview publication accepts identical trees and rejects merged content differences [303.92ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.8600196Z (pass) preview publication accepts identical trees and rejects merged content differences [303.92ms]"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.8601700Z",
+      "text": "116 pass",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.8601700Z  116 pass"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.8601932Z",
+      "text": "0 fail",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.8601932Z  0 fail"
+    },
+    {
+      "job": "web",
+      "step": "Unit tests and production build",
+      "at": "2026-10-05T10:59:40.8602456Z",
+      "text": "Ran 116 tests across 6 files. [620.00ms]",
+      "raw": "web\tUnit tests and production build\t2026-10-05T10:59:40.8602456Z Ran 116 tests across 6 files. [620.00ms]"
+    }
+  ],
+  "subpathSummaries": [
+    {
+      "job": "web",
+      "step": "Verify repository-subpath deployment",
+      "at": "2026-10-05T11:04:44.2935832Z",
+      "text": "1 passed (1.8s)",
+      "raw": "web\tVerify repository-subpath deployment\t2026-10-05T11:04:44.2935832Z   1 passed (1.8s)"
+    }
+  ],
+  "failureDiagnosticStep": {
+    "name": "Publish failed-attempt diagnostics",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 17,
+    "started_at": "2026-10-05T11:04:45Z",
+    "completed_at": "2026-10-05T11:04:45Z"
+  },
+  "artifacts": [
+    {
+      "id": 11341036869,
+      "node_id": "MDg6QXJ0aWZhY3QxMTM0MTAzNjg2OQ==",
+      "name": "github-pages",
+      "size_in_bytes": 374910,
+      "url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11341036869",
+      "archive_download_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11341036869/zip",
+      "expired": false,
+      "digest": "sha256:e7d9eca8b9fe91f78c3a4034b7dc5a384fafb22c308b997a8c63f7f58056172a",
+      "created_at": "2026-10-05T11:04:45Z",
+      "updated_at": "2026-10-05T11:04:45Z",
+      "expires_at": "2026-10-06T11:04:44Z",
+      "workflow_run": {
+        "id": 37299989506,
+        "repository_id": 1206473449,
+        "head_repository_id": 1206473449,
+        "head_branch": "codex/ci-control-rendering",
+        "head_sha": "cb8206c280494341632821d13b4e90f8f1c3a3e9"
+      }
+    }
+  ],
+  "failures": [],
+  "limits": [
+    "Whole-second API job/step durations are runner-cost observations, not exact command CPU attribution.",
+    "Resource bracket is browser-step before/after counters, not a profiler of individual tests; no invalid weighted samples are used.",
+    "No timing reporter was requested by ready-for-review; structured first-attempt details derive from the full retained list log, marker upload step and artifact list.",
+    "Failure marker absence is inferred from the skipped conditional upload and absence of failure artifacts; raw successful test-results files are not uploaded.",
+    "No pair/monthly/20% claim is made; additional canceled investigations are accounted separately."
+  ]
+}

@@ -1,0 +1,374 @@
+prepare	Set up job	﻿2026-10-05T11:06:15.8159566Z Current runner version: '2.337.0'
+prepare	Set up job	2026-10-05T11:06:15.8347012Z ##[group]Runner Image Provisioner
+prepare	Set up job	2026-10-05T11:06:15.8348300Z Hosted Compute Agent
+prepare	Set up job	2026-10-05T11:06:15.8348929Z Version: 20260901.588
+prepare	Set up job	2026-10-05T11:06:15.8349762Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+prepare	Set up job	2026-10-05T11:06:15.8350540Z Build Date: 2026-09-01T19:56:44Z
+prepare	Set up job	2026-10-05T11:06:15.8351354Z Worker ID: {6517b6e9-c937-493c-9808-609d830ef048}
+prepare	Set up job	2026-10-05T11:06:15.8352114Z Azure Region: eastus
+prepare	Set up job	2026-10-05T11:06:15.8352705Z ##[endgroup]
+prepare	Set up job	2026-10-05T11:06:15.8354396Z ##[group]VM Image
+prepare	Set up job	2026-10-05T11:06:15.8355041Z - OS: Linux (x64)
+prepare	Set up job	2026-10-05T11:06:15.8355714Z - Source: Docker
+prepare	Set up job	2026-10-05T11:06:15.8356670Z - Name: ubuntu:24.04
+prepare	Set up job	2026-10-05T11:06:15.8357332Z - Version: 20260925.9.1
+prepare	Set up job	2026-10-05T11:06:15.8358011Z ##[endgroup]
+prepare	Set up job	2026-10-05T11:06:15.8359348Z ##[group]GITHUB_TOKEN Permissions
+prepare	Set up job	2026-10-05T11:06:15.8361846Z Actions: read
+prepare	Set up job	2026-10-05T11:06:15.8362509Z Contents: read
+prepare	Set up job	2026-10-05T11:06:15.8363184Z Metadata: read
+prepare	Set up job	2026-10-05T11:06:15.8363782Z Pages: write
+prepare	Set up job	2026-10-05T11:06:15.8364774Z ##[endgroup]
+prepare	Set up job	2026-10-05T11:06:15.8367788Z Secret source: Actions
+prepare	Set up job	2026-10-05T11:06:15.8368905Z Cache mode: write
+prepare	Set up job	2026-10-05T11:06:15.8369713Z Prepare workflow directory
+prepare	Set up job	2026-10-05T11:06:15.9175129Z Prepare all required actions
+prepare	Set up job	2026-10-05T11:06:15.9372937Z Getting action download info
+prepare	Set up job	2026-10-05T11:06:16.2156592Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+prepare	Set up job	2026-10-05T11:06:16.4644815Z Download action repository 'jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492' (SHA:7a4e45a543138629540c9a1616d08632b893e492)
+prepare	Set up job	2026-10-05T11:06:16.7273280Z Download action repository 'actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d' (SHA:45bfe0192ca1faeb007ade9deae92b16b8254a0d)
+prepare	Set up job	2026-10-05T11:06:17.0713435Z Download action repository 'actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9' (SHA:fc324d3547104276b827a68afc52ff2a11cc49c9)
+prepare	Set up job	2026-10-05T11:06:17.1675614Z Download action repository 'actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346' (SHA:368f82528645a54fb793d4d04e342629a3f51346)
+prepare	Set up job	2026-10-05T11:06:17.5254320Z Getting action download info
+prepare	Set up job	2026-10-05T11:06:17.6178222Z Download action repository 'actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f' (SHA:bbbca2ddaa5d8feaa63e36b76fdaad77386f024f)
+prepare	Set up job	2026-10-05T11:06:17.7448478Z Complete job name: prepare
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-10-05T11:06:17.8438694Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:17.8439923Z with:
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:17.8440558Z   sparse-checkout: /*
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	!/docs/qa/
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:17.8441249Z   sparse-checkout-cone-mode: false
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:17.8441888Z   repository: Tien-Lam/ChronoShift
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:17.8445775Z   token: ***
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:17.8446636Z   ssh-strict: true
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:17.8447249Z   ssh-user: git
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:17.8447828Z   persist-credentials: true
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:17.8448397Z   clean: true
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:17.8448927Z   fetch-depth: 1
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:17.8449479Z   fetch-tags: false
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:17.8450018Z   show-progress: true
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:17.8450551Z   lfs: false
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:17.8451045Z   submodules: false
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:17.8451593Z   set-safe-directory: true
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:17.8452181Z   allow-unsafe-pr-checkout: false
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:17.8453112Z ##[endgroup]
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.2388095Z Syncing repository: Tien-Lam/ChronoShift
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.2420761Z ##[group]Getting Git version info
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.2421871Z Working directory is '/home/runner/work/ChronoShift/ChronoShift'
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.2423211Z [command]/usr/bin/git version
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.2597327Z git version 2.55.0
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.2640372Z ##[endgroup]
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.2662631Z Temporarily overriding HOME='/home/runner/work/_temp/21280040-1638-4ba1-a361-9cf9db1f4a32' before making global git config changes
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.2667361Z Adding repository directory to the temporary git global config as a safe directory
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.2677278Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChronoShift/ChronoShift
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.2735073Z Deleting the contents of '/home/runner/work/ChronoShift/ChronoShift'
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.2746017Z ##[group]Determining repository object format
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.2748432Z ##[endgroup]
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.2750569Z ##[group]Initializing the repository
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.2758681Z [command]/usr/bin/git init /home/runner/work/ChronoShift/ChronoShift
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.2998129Z hint: Using 'master' as the name for the initial branch. This default branch name
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3005076Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3011815Z hint: to use in all of your new repositories, which will suppress this warning,
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3017252Z hint: call:
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3021612Z hint:
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3027125Z hint: 	git config --global init.defaultBranch <name>
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3031413Z hint:
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3035460Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3039018Z hint: 'development'. The just-created branch can be renamed via this command:
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3041474Z hint:
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3043607Z hint: 	git branch -m <name>
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3045685Z hint:
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3048766Z hint: Disable this message with "git config set advice.defaultBranchName false"
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3063678Z Initialized empty Git repository in /home/runner/work/ChronoShift/ChronoShift/.git/
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3185630Z [command]/usr/bin/git remote add origin https://github.com/Tien-Lam/ChronoShift
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3241760Z ##[endgroup]
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3242643Z ##[group]Disabling automatic garbage collection
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3243369Z [command]/usr/bin/git config --local gc.auto 0
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3268520Z ##[endgroup]
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3269629Z ##[group]Setting up auth
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3278884Z Removing SSH command configuration
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3284567Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:18.3322401Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.1963109Z Removing HTTP extra header
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2081265Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2084291Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2087073Z Removing includeIf entries pointing to credentials config files
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2088030Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2089861Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2092576Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-ece7da34-657e-4562-9aad-f768ae7a7535.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2095345Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/ChronoShift/ChronoShift/.git.path /home/runner/work/_temp/git-credentials-ece7da34-657e-4562-9aad-f768ae7a7535.config
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2098520Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/ChronoShift/ChronoShift/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-ece7da34-657e-4562-9aad-f768ae7a7535.config
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2101227Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-ece7da34-657e-4562-9aad-f768ae7a7535.config
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2103762Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-ece7da34-657e-4562-9aad-f768ae7a7535.config
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2106101Z ##[endgroup]
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2107113Z ##[group]Fetching the repository
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2108534Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin +cf4d5b9244278da591a33c1952283e76acb6116c:refs/remotes/origin/main
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2110008Z From https://github.com/Tien-Lam/ChronoShift
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2110754Z  * [new ref]         cf4d5b9244278da591a33c1952283e76acb6116c -> origin/main
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2112119Z [command]/usr/bin/git branch --list --remote origin/main
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2112759Z   origin/main
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2113867Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2114540Z cf4d5b9244278da591a33c1952283e76acb6116c
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2115931Z ##[endgroup]
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2116844Z ##[group]Determining the checkout info
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2117708Z ##[endgroup]
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2118439Z ##[group]Setting up sparse checkout
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2119070Z [command]/usr/bin/git config core.sparseCheckout true
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2120395Z [command]/usr/bin/git rev-parse --git-path info/sparse-checkout
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2121146Z .git/info/sparse-checkout
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2122457Z ##[endgroup]
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2123179Z ##[group]Checking out the ref
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2123947Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2124765Z Switched to a new branch 'main'
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2125336Z branch 'main' set up to track 'origin/main'.
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2126897Z ##[endgroup]
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2127931Z [command]/usr/bin/git log -1 --format=%H
+prepare	Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:19.2128531Z cf4d5b9244278da591a33c1952283e76acb6116c
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	﻿2026-10-05T11:06:19.2352432Z ##[group]Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2353229Z with:
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2353658Z   install_args: bun gh
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2354179Z   minimum_release_age: 24h
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2354663Z   install: true
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2355099Z   bootstrap: false
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2356714Z   cache: true
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2357195Z   cache_save: true
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2357664Z   cache_key_prefix: mise-v1
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2358181Z   experimental: false
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2358651Z   log_level: info
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2359090Z   reshim: false
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2359534Z   add_shims_to_path: true
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2363153Z   github_token: ***
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2363632Z   fetch_from_github: true
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2364119Z   env: true
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2364546Z   export_path: true
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2365009Z   wings_enabled: false
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.2365475Z ##[endgroup]
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.6116725Z ##[group]Restoring mise cache
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.6117493Z [command]/usr/bin/ldd --version
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.6118077Z ldd (Ubuntu GLIBC 2.39-0ubuntu8.9) 2.39
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.6118739Z Copyright (C) 2024 Free Software Foundation, Inc.
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.6119608Z This is free software; see the source for copying conditions.  There is NO
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.6120584Z warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.6121435Z Written by Roland McGrath and Ulrich Drepper.
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:19.6998129Z Cache hit for: mise-v1-linux-x64-self-hosted-2305be90c13f881679c43eb7a3161dbe861cfa851aeeb7d15526c7f0cad4f5b1-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:21.2053329Z Received 98734590 of 98734590 (100.0%), 109.4 MBs/sec
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:21.2067116Z Cache Size: ~94 MB (98734590 B)
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:21.2068527Z [command]/usr/bin/tar -xf /home/runner/work/_temp/9d7e4a5d-002e-44a3-b47c-96348bb438b9/cache.tzst -P -C /home/runner/work/ChronoShift/ChronoShift --use-compress-program unzstd
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:21.3450042Z Cache restored successfully
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:21.3547908Z mise cache restored from key: mise-v1-linux-x64-self-hosted-2305be90c13f881679c43eb7a3161dbe861cfa851aeeb7d15526c7f0cad4f5b1-c431b670824c497264adda817284eefbf26de4a6a9a9aa17ee83e04238eaee3d
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:21.3564432Z Using curl to download mise
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:21.7374473Z Selected mise 2026.10.1, released 2026-10-03T14:12:48.000Z, with minimum_release_age=24h
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:21.7386877Z [command]/usr/bin/ldd --version
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:21.7420297Z ldd (Ubuntu GLIBC 2.39-0ubuntu8.9) 2.39
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:21.7422609Z Copyright (C) 2024 Free Software Foundation, Inc.
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:21.7424755Z This is free software; see the source for copying conditions.  There is NO
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:21.7427524Z warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:21.7429878Z Written by Roland McGrath and Ulrich Drepper.
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.1249930Z Verified existing mise-v2026.10.1-linux-x64 against signed checksums
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.1254639Z Verified existing mise@2026.10.1
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.1264816Z ##[group]Setting env vars
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.1271665Z Setting MISE_LOG_LEVEL=info
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.1281063Z Setting MISE_GITHUB_TOKEN=***
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.1286081Z Setting MISE_TRUSTED_CONFIG_PATHS=/home/runner/work/ChronoShift/ChronoShift
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.1289938Z Setting MISE_YES=1
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.1292929Z Adding /home/runner/.local/share/mise/shims to PATH
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.1299016Z ##[group]Running mise --version
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.1319535Z [command]/home/runner/.local/share/mise/bin/mise --version
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.1396964Z 2026.10.1 linux-x64 (2026-10-03)
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.1428734Z ##[endgroup]
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.1501443Z ##[group]Running mise install bun gh
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.1515333Z [command]/home/runner/.local/share/mise/bin/mise install bun gh
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.1683946Z ^[[2mmise^[[0m ^[[2mby @jdx^[[0m – installing 2 tools
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.2714331Z ^[[2mmise^[[0m ^[[38;5;11m⇢^[[0m ^[[34mbun^[[0m@1.4.0   100ms · already installed
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.2755879Z ^[[2mmise^[[0m ^[[38;5;11m⇢^[[0m ^[[34mgh^[[0m@2.100.0  105ms · already installed
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.2768688Z ^[[2mmise^[[0m ^[[36m████████████████^[[0m^[[31m^[[0m^[[2m^[[0m 2/2 · installed 0 tools · 2 already installed in 108ms
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.3070389Z ##[endgroup]
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.3071651Z ##[group]Running mise ls
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.3090409Z [command]/home/runner/.local/share/mise/bin/mise ls
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.3193043Z bun   1.4.0             ~/work/ChronoShift/ChronoShift/mise.toml  1.4.0
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.3197686Z gh    2.100.0           ~/work/ChronoShift/ChronoShift/mise.toml  2.100.0
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.3201374Z node  26.8.1 (missing)  ~/work/ChronoShift/ChronoShift/mise.toml  26.8.1
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.3219321Z ##[endgroup]
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.3220544Z ##[group]Exporting mise environment variables
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.3338840Z [command]/home/runner/.local/share/mise/bin/mise env --json
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.3425781Z {
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.3431092Z   "PATH": "/home/runner/.local/share/mise/installs/bun/1.4.0/bin:/home/runner/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin:/home/runner/.local/share/mise/shims:/home/runner/.local/share/mise/bin:/home/runner/.local/bin:/opt/pipx_bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.3434712Z }
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.3458793Z Adding /home/runner/.local/share/mise/installs/gh/2.100.0/gh_2.100.0_linux_amd64/bin to PATH
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.3460285Z Adding /home/runner/.local/share/mise/installs/bun/1.4.0/bin to PATH
+prepare	Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492	2026-10-05T11:06:22.3461865Z ##[endgroup]
+prepare	Reuse the exact verified PR artifact	﻿2026-10-05T11:06:22.3657205Z ##[group]Run bun scripts/reuse-pages-artifact.ts
+prepare	Reuse the exact verified PR artifact	2026-10-05T11:06:22.3658170Z ^[[36;1mbun scripts/reuse-pages-artifact.ts^[[0m
+prepare	Reuse the exact verified PR artifact	2026-10-05T11:06:22.3670062Z shell: /usr/bin/bash -e {0}
+prepare	Reuse the exact verified PR artifact	2026-10-05T11:06:22.3670708Z env:
+prepare	Reuse the exact verified PR artifact	2026-10-05T11:06:22.3671204Z   MISE_LOG_LEVEL: info
+prepare	Reuse the exact verified PR artifact	2026-10-05T11:06:22.3675286Z   MISE_GITHUB_TOKEN: ***
+prepare	Reuse the exact verified PR artifact	2026-10-05T11:06:22.3676049Z   MISE_TRUSTED_CONFIG_PATHS: /home/runner/work/ChronoShift/ChronoShift
+prepare	Reuse the exact verified PR artifact	2026-10-05T11:06:22.3677231Z   MISE_YES: 1
+prepare	Reuse the exact verified PR artifact	2026-10-05T11:06:22.3682254Z   GH_TOKEN: ***
+prepare	Reuse the exact verified PR artifact	2026-10-05T11:06:22.3682817Z ##[endgroup]
+prepare	Reuse the exact verified PR artifact	2026-10-05T11:06:26.4077726Z Reusing verified Web run 37299989506, source 8fd325dd79afdd6dcf33e77503aca7f97541d25c, tree e42d8c81cc83befed6ff9d57dbf56066c7238d07
+prepare	Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d	﻿2026-10-05T11:06:26.4281851Z ##[group]Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d
+prepare	Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d	2026-10-05T11:06:26.4283830Z with:
+prepare	Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d	2026-10-05T11:06:26.4294011Z   token: ***
+prepare	Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d	2026-10-05T11:06:26.4295166Z   enablement: false
+prepare	Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d	2026-10-05T11:06:26.4296424Z env:
+prepare	Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d	2026-10-05T11:06:26.4297419Z   MISE_LOG_LEVEL: info
+prepare	Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d	2026-10-05T11:06:26.4309012Z   MISE_GITHUB_TOKEN: ***
+prepare	Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d	2026-10-05T11:06:26.4310680Z   MISE_TRUSTED_CONFIG_PATHS: /home/runner/work/ChronoShift/ChronoShift
+prepare	Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d	2026-10-05T11:06:26.4312492Z   MISE_YES: 1
+prepare	Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d	2026-10-05T11:06:26.4313509Z ##[endgroup]
+prepare	Upload the verified Pages build	﻿2026-10-05T11:06:26.8080799Z ##[group]Run actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8082672Z with:
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8083595Z   path: dist
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8084552Z   retention-days: 14
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8085592Z   name: github-pages
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8086993Z   include-hidden-files: false
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8088107Z env:
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8088976Z   MISE_LOG_LEVEL: info
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8098213Z   MISE_GITHUB_TOKEN: ***
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8099709Z   MISE_TRUSTED_CONFIG_PATHS: /home/runner/work/ChronoShift/ChronoShift
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8101327Z   MISE_YES: 1
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8102259Z   GITHUB_PAGES: true
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8103228Z ##[endgroup]
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8193913Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run]
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8368331Z ##[group]Run echo ::group::Archive artifact
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8369783Z ^[[36;1mecho ::group::Archive artifact^[[0m
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8371027Z ^[[36;1mtar \^[[0m
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8372191Z ^[[36;1m  --dereference --hard-dereference \^[[0m
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8373552Z ^[[36;1m  --directory "$INPUT_PATH" \^[[0m
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8374885Z ^[[36;1m  -cvf "$RUNNER_TEMP/artifact.tar" \^[[0m
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8376426Z ^[[36;1m  --exclude=.git \^[[0m
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8377561Z ^[[36;1m  --exclude=.github \^[[0m
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8378704Z ^[[36;1m  --exclude=.[^/]* \^[[0m
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8379781Z ^[[36;1m  .^[[0m
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8380716Z ^[[36;1mecho ::endgroup::^[[0m
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8393239Z shell: /usr/bin/sh -e {0}
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8394300Z env:
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8395156Z   MISE_LOG_LEVEL: info
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8404547Z   MISE_GITHUB_TOKEN: ***
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8405995Z   MISE_TRUSTED_CONFIG_PATHS: /home/runner/work/ChronoShift/ChronoShift
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8407846Z   MISE_YES: 1
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8408779Z   GITHUB_PAGES: true
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8409766Z   INPUT_PATH: dist
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8410708Z ##[endgroup]
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8467150Z ##[group]Archive artifact
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8481419Z ./
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8484562Z ./index.html
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8488280Z ./third-party-notices.txt
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8493417Z ./manifest.webmanifest
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8497205Z ./icon-192.png
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8500905Z ./release.json
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8504626Z ./assets/
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8508238Z ./assets/index-1VRzNw7L.js
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8517977Z ./assets/worker-C690IjaR.js
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8521680Z ./assets/index-CQJea-JE.css
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8524568Z ./assets/geist-latin-variable-Dm3htQBi.woff2
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8527611Z ./icon-512.png
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8529902Z ./icon.svg
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8532131Z ./fonts/
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8534249Z ./fonts/geist-OFL.txt
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8536851Z ./fonts/README.txt
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8539039Z ./sw.js
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8543539Z ##[endgroup]
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8565826Z ##[end-action id=__actions_upload-pages-artifact.__run;outcome=success;conclusion=success;duration_ms=36]
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8577243Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run_2]
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8592127Z ##[end-action id=__actions_upload-pages-artifact.__run_2;outcome=skipped;conclusion=skipped;duration_ms=0]
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8600935Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run_3]
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8614022Z ##[end-action id=__actions_upload-pages-artifact.__run_3;outcome=skipped;conclusion=skipped;duration_ms=0]
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8621508Z ##[start-action display=Upload artifact;id=__actions_upload-pages-artifact.upload-artifact]
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8741204Z ##[group]Run actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8742931Z with:
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8743854Z   name: github-pages
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8744964Z   path: /home/runner/work/_temp/artifact.tar
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8746452Z   retention-days: 14
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8747454Z   if-no-files-found: error
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8748516Z   compression-level: 6
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8749758Z   overwrite: false
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8750741Z   include-hidden-files: false
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8751786Z   archive: true
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8752662Z env:
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8753513Z   MISE_LOG_LEVEL: info
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8762508Z   MISE_GITHUB_TOKEN: ***
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8763937Z   MISE_TRUSTED_CONFIG_PATHS: /home/runner/work/ChronoShift/ChronoShift
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8765478Z   MISE_YES: 1
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8766553Z   GITHUB_PAGES: true
+prepare	Upload the verified Pages build	2026-10-05T11:06:26.8767506Z ##[endgroup]
+prepare	Upload the verified Pages build	2026-10-05T11:06:27.0658623Z With the provided path, there will be 1 file uploaded
+prepare	Upload the verified Pages build	2026-10-05T11:06:27.0670960Z Artifact name is valid!
+prepare	Upload the verified Pages build	2026-10-05T11:06:27.0675457Z Root directory input is valid!
+prepare	Upload the verified Pages build	2026-10-05T11:06:27.2879400Z Uploading artifact: github-pages.zip
+prepare	Upload the verified Pages build	2026-10-05T11:06:27.2951312Z Beginning upload of artifact content to blob storage
+prepare	Upload the verified Pages build	2026-10-05T11:06:27.4759730Z Uploaded bytes 376724
+prepare	Upload the verified Pages build	2026-10-05T11:06:27.4963023Z Finished uploading artifact content to blob storage!
+prepare	Upload the verified Pages build	2026-10-05T11:06:27.4968794Z SHA256 digest of uploaded artifact is be13cd0d4e4cda6a26252d93c1a18ca9087ce1685881d38c1fe547893dd87386
+prepare	Upload the verified Pages build	2026-10-05T11:06:27.4974710Z Finalizing artifact upload
+prepare	Upload the verified Pages build	2026-10-05T11:06:27.7633386Z Artifact github-pages successfully finalized. Artifact ID 11341941885
+prepare	Upload the verified Pages build	2026-10-05T11:06:27.7637317Z Artifact github-pages has been successfully uploaded! Final size is 376724 bytes. Artifact ID is 11341941885
+prepare	Upload the verified Pages build	2026-10-05T11:06:27.7640339Z Artifact download URL: https://github.com/Tien-Lam/ChronoShift/actions/runs/37300768198/artifacts/11341941885
+prepare	Upload the verified Pages build	2026-10-05T11:06:27.7718556Z ##[end-action id=__actions_upload-pages-artifact.upload-artifact;outcome=success;conclusion=success;duration_ms=909]
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	﻿2026-10-05T11:06:27.7905687Z ##[group]Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:27.7907634Z with:
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:27.7915729Z   token: ***
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:27.7916880Z   timeout: 600000
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:27.7917818Z   error_count: 10
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:27.7918778Z   reporting_interval: 5000
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:27.7919891Z   artifact_name: github-pages
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:27.7923459Z   preview: false
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:27.7924408Z env:
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:27.7925300Z   MISE_LOG_LEVEL: info
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:27.7933902Z   MISE_GITHUB_TOKEN: ***
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:27.7935327Z   MISE_TRUSTED_CONFIG_PATHS: /home/runner/work/ChronoShift/ChronoShift
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:27.7937021Z   MISE_YES: 1
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:27.7937931Z   GITHUB_PAGES: true
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:27.7938883Z ##[endgroup]
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:28.0371032Z (node:380) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:28.0374201Z (Use `node --trace-deprecation ...` to show where the warning was created)
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:28.1027112Z Fetching artifact metadata for "github-pages" in this workflow run
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:28.2017224Z Found 1 artifact(s)
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:28.2043428Z Creating Pages deployment with payload:
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:28.2044984Z {
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:28.2046115Z 	"artifact_id": 11341941885,
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:28.2091181Z 	"pages_build_version": "cf4d5b9244278da591a33c1952283e76acb6116c",
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:28.2280504Z 	"oidc_token": "***"
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:28.2281646Z }
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:29.0684794Z Created deployment for cf4d5b9244278da591a33c1952283e76acb6116c, ID: cf4d5b9244278da591a33c1952283e76acb6116c
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:34.2027030Z Getting Pages deployment status...
+prepare	Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346	2026-10-05T11:06:34.3942932Z Reported success!
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	﻿2026-10-05T11:06:34.4200698Z Post job cleanup.
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.5293266Z [command]/usr/bin/git version
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.5384162Z git version 2.55.0
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.5451838Z Temporarily overriding HOME='/home/runner/work/_temp/e2c37a9c-52c9-4fe3-a3ee-c2cdc9a57706' before making global git config changes
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.5455368Z Adding repository directory to the temporary git global config as a safe directory
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.5472020Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChronoShift/ChronoShift
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.5518984Z Removing SSH command configuration
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.5527219Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.5568721Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.5774655Z Removing HTTP extra header
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.5780119Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.5820284Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6019442Z Removing includeIf entries pointing to credentials config files
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6033939Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6056161Z includeif.gitdir:/home/runner/work/ChronoShift/ChronoShift/.git.path
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6058882Z includeif.gitdir:/home/runner/work/ChronoShift/ChronoShift/.git/worktrees/*.path
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6059507Z includeif.gitdir:/github/workspace/.git.path
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6059927Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6073192Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/ChronoShift/ChronoShift/.git.path
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6096666Z /home/runner/work/_temp/git-credentials-ece7da34-657e-4562-9aad-f768ae7a7535.config
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6121988Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/ChronoShift/ChronoShift/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-ece7da34\-657e\-4562\-9aad\-f768ae7a7535\.config
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6164383Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/ChronoShift/ChronoShift/.git/worktrees/*.path
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6184146Z /home/runner/work/_temp/git-credentials-ece7da34-657e-4562-9aad-f768ae7a7535.config
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6208209Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/ChronoShift/ChronoShift/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-ece7da34\-657e\-4562\-9aad\-f768ae7a7535\.config
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6585033Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6610700Z /github/runner_temp/git-credentials-ece7da34-657e-4562-9aad-f768ae7a7535.config
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6624781Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-ece7da34\-657e\-4562\-9aad\-f768ae7a7535\.config
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6660240Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6679497Z /github/runner_temp/git-credentials-ece7da34-657e-4562-9aad-f768ae7a7535.config
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.6695400Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-ece7da34\-657e\-4562\-9aad\-f768ae7a7535\.config
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.7060416Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+prepare	Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1	2026-10-05T11:06:34.7299581Z Removing credentials config '/home/runner/work/_temp/git-credentials-ece7da34-657e-4562-9aad-f768ae7a7535.config'
+prepare	Complete job	﻿2026-10-05T11:06:34.7437934Z Evaluate and set job outputs
+prepare	Complete job	2026-10-05T11:06:34.7443750Z Set output 'reused'
+prepare	Complete job	2026-10-05T11:06:34.7445991Z Evaluate and set environment url
+prepare	Complete job	2026-10-05T11:06:34.7449751Z Evaluated environment url: https://tien-lam.github.io/ChronoShift/
+prepare	Complete job	2026-10-05T11:06:34.7450767Z Cleaning up orphan processes

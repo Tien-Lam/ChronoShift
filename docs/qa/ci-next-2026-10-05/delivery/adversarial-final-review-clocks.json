@@ -1,0 +1,27 @@
+{
+  "reviewer": "adversarial",
+  "scope": "bounded additive post-delivery documentation and retained evidence",
+  "observationStarted": "2026-10-05 11:24:50 UTC",
+  "initialObservationEnded": "2026-10-05 11:28:41 UTC",
+  "reportPreparationStarted": "2026-10-05 11:28:41 UTC",
+  "initialReportSavedObserved": "2026-10-05 11:29:25 UTC",
+  "originalReportBlob": "c7f709a033d418bcdc6fb0bb0b595afe1f5912b2",
+  "reviewedReadmeBlob": "a46b6fb1df64a0e9e2c696c6af9e89b2703f70c0",
+  "baseMain": "cf4d5b9244278da591a33c1952283e76acb6116c",
+  "reviewedHead": "cb8206c280494341632821d13b4e90f8f1c3a3e9",
+  "testedMerge": "8fd325dd79afdd6dcf33e77503aca7f97541d25c",
+  "tree": "e42d8c81cc83befed6ff9d57dbf56066c7238d07",
+  "environment": {"platform":"Darwin", "arch":"arm64", "miseManagedBun":"1.4.0", "gh":"2.100.0"},
+  "methods": ["read retained files", "mise-managed jq JSON parsing", "independent inline Bun raw-log parsing", "git rev-parse/hash-object", "archive shasum SHA-256"],
+  "noOtherFinalReviewerReportRead": true,
+  "noRuntimeSuiteBuildBrowserActionsOrNetworkExecution": true,
+  "documentationVerdict": "approved; no remaining blockers after additive provenance corrections",
+  "originalGoalVerdict": "20% CI usage target unresolved; historical and device acceptance gaps remain open",
+  "additivePreservationObservation": {
+    "archiveHashObservationEnded": "2026-10-05 11:29:34 UTC",
+    "retainedAuditHashMatchObservationEnded": "2026-10-05 11:29:52 UTC",
+    "note": "After original report save, independently SHA-256 hashed the root's newly retained manual fallback ZIP/TAR. Exact matches to preservation manifest and existing publication-fallback audit; no verdict change and original report unchanged.",
+    "zipSha256": "2676a9e05004bfdda293d70e69ca6cfe94dd717b23cf5a5a92ef229253775984",
+    "tarSha256": "a8d5783ed66b19dc626b3dc6c189a254eaa93eeb1fd7fc3c0dcd0b889edd9a93"
+  }
+}

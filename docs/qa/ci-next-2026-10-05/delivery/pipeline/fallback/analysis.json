@@ -1,0 +1,487 @@
+{
+  "began": "2026-10-05T11:20:16.388Z",
+  "ended": "2026-10-05T11:20:16.392Z",
+  "source": "cf4d5b9244278da591a33c1952283e76acb6116c",
+  "runId": 37301135549,
+  "event": "workflow_dispatch",
+  "conclusion": "success",
+  "configured": 273,
+  "firstAttempts": 273,
+  "distinctOrdinals": 273,
+  "distinctCases": 273,
+  "passes": 264,
+  "skips": [
+    {
+      "project": "firefox",
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft"
+    },
+    {
+      "project": "firefox",
+      "title": "an explicit update recovers a timed-out readiness probe without another reload"
+    },
+    {
+      "project": "firefox",
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update"
+    },
+    {
+      "project": "webkit",
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft"
+    },
+    {
+      "project": "webkit",
+      "title": "an explicit update recovers a timed-out readiness probe without another reload"
+    },
+    {
+      "project": "webkit",
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update"
+    },
+    {
+      "project": "iphone-emulation",
+      "title": "an activated worker reclaims a hard-refreshed tab without reloading its draft"
+    },
+    {
+      "project": "iphone-emulation",
+      "title": "an explicit update recovers a timed-out readiness probe without another reload"
+    },
+    {
+      "project": "iphone-emulation",
+      "title": "an older active worker cannot mark an uncontrolled tab ready or activate its waiting update"
+    }
+  ],
+  "sameCapabilitySkips": true,
+  "retryErrors": [],
+  "unknownStepRows": 1068,
+  "browserBlock": {
+    "begin": {
+      "job": "verify / web",
+      "step": "UNKNOWN STEP",
+      "at": "2026-10-05T11:10:52.0408034Z",
+      "text": "Running 273 tests using 4 workers",
+      "raw": "verify / web\tUNKNOWN STEP\t2026-10-05T11:10:52.0408034Z Running 273 tests using 4 workers"
+    },
+    "end": {
+      "job": "verify / web",
+      "step": "UNKNOWN STEP",
+      "at": "2026-10-05T11:17:01.0209301Z",
+      "text": "264 passed (6.2m)",
+      "raw": "verify / web\tUNKNOWN STEP\t2026-10-05T11:17:01.0209301Z   264 passed (6.2m)"
+    }
+  },
+  "unitSummaries": [
+    {
+      "job": "verify / web",
+      "step": "UNKNOWN STEP",
+      "at": "2026-10-05T11:10:49.0881996Z",
+      "text": "116 pass",
+      "raw": "verify / web\tUNKNOWN STEP\t2026-10-05T11:10:49.0881996Z  116 pass"
+    },
+    {
+      "job": "verify / web",
+      "step": "UNKNOWN STEP",
+      "at": "2026-10-05T11:10:49.0882328Z",
+      "text": "0 fail",
+      "raw": "verify / web\tUNKNOWN STEP\t2026-10-05T11:10:49.0882328Z  0 fail"
+    },
+    {
+      "job": "verify / web",
+      "step": "UNKNOWN STEP",
+      "at": "2026-10-05T11:10:49.0883048Z",
+      "text": "Ran 116 tests across 6 files. [496.00ms]",
+      "raw": "verify / web\tUNKNOWN STEP\t2026-10-05T11:10:49.0883048Z Ran 116 tests across 6 files. [496.00ms]"
+    }
+  ],
+  "subpathSummaries": [
+    {
+      "job": "verify / web",
+      "step": "UNKNOWN STEP",
+      "at": "2026-10-05T11:17:05.5085124Z",
+      "text": "1 passed (2.0s)",
+      "raw": "verify / web\tUNKNOWN STEP\t2026-10-05T11:17:05.5085124Z   1 passed (2.0s)"
+    }
+  ],
+  "diagnostics": {
+    "name": "Publish failed-attempt diagnostics",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 17,
+    "started_at": "2026-10-05T11:17:07Z",
+    "completed_at": "2026-10-05T11:17:07Z"
+  },
+  "artifacts": {
+    "total_count": 1,
+    "artifacts": [
+      {
+        "id": 11341138658,
+        "node_id": "MDg6QXJ0aWZhY3QxMTM0MTEzODY1OA==",
+        "name": "github-pages",
+        "size_in_bytes": 374915,
+        "url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11341138658",
+        "archive_download_url": "https://api.github.com/repos/Tien-Lam/ChronoShift/actions/artifacts/11341138658/zip",
+        "expired": false,
+        "digest": "sha256:2676a9e05004bfdda293d70e69ca6cfe94dd717b23cf5a5a92ef229253775984",
+        "created_at": "2026-10-05T11:17:07Z",
+        "updated_at": "2026-10-05T11:17:07Z",
+        "expires_at": "2026-10-19T11:17:05Z",
+        "workflow_run": {
+          "id": 37301135549,
+          "repository_id": 1206473449,
+          "head_repository_id": 1206473449,
+          "head_branch": "main",
+          "head_sha": "cf4d5b9244278da591a33c1952283e76acb6116c"
+        }
+      }
+    ]
+  },
+  "resource": {
+    "before": {
+      "at": "2026-10-05T11:10:51.016Z",
+      "phase": "before",
+      "platform": "linux",
+      "architecture": "x64",
+      "osRelease": "6.17.0-1022-azure",
+      "availableParallelism": 4,
+      "logicalCpus": 4,
+      "cpuModel": "AMD EPYC 7763 64-Core Processor",
+      "totalMemoryBytes": 16766414848,
+      "cgroup": {
+        "cpu.max": "max 100000",
+        "cpu.stat": "usage_usec 18776197\nuser_usec 15213738\nsystem_usec 3562459\nnice_usec 0\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+        "memory.max": "max",
+        "memory.peak": "1400320000",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+      }
+    },
+    "after": {
+      "at": "2026-10-05T11:17:01.373Z",
+      "phase": "after",
+      "platform": "linux",
+      "architecture": "x64",
+      "osRelease": "6.17.0-1022-azure",
+      "availableParallelism": 4,
+      "logicalCpus": 4,
+      "cpuModel": "AMD EPYC 7763 64-Core Processor",
+      "totalMemoryBytes": 16766414848,
+      "cgroup": {
+        "cpu.max": "max 100000",
+        "cpu.stat": "usage_usec 1301575638\nuser_usec 1105787210\nsystem_usec 195788427\nnice_usec 71213000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+        "memory.max": "max",
+        "memory.peak": "6639894528",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+      }
+    },
+    "bracketSeconds": 370.357,
+    "processorSeconds": 1282.799441,
+    "averageProcessors": 3.463683529675421
+  },
+  "noncausalRunnerComparison": {
+    "readyCpuModel": "AMD EPYC 9V74 80-Core Processor",
+    "readyBrowserStepSeconds": 299,
+    "manualCpuModel": "AMD EPYC 7763 64-Core Processor",
+    "manualBrowserStepSeconds": 371
+  },
+  "separateValidationLedger": {
+    "jobs": [
+      {
+        "id": 111733868171,
+        "name": "prepare",
+        "started_at": "2026-10-05T11:09:45Z",
+        "completed_at": "2026-10-05T11:10:01Z",
+        "conclusion": "success",
+        "seconds": 16,
+        "roundedMinutesProxy": 1,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-05T11:09:46Z",
+            "completed_at": "2026-10-05T11:09:49Z"
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-05T11:09:49Z",
+            "completed_at": "2026-10-05T11:09:53Z"
+          },
+          {
+            "name": "Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-05T11:09:53Z",
+            "completed_at": "2026-10-05T11:09:59Z"
+          },
+          {
+            "name": "Reuse the exact verified PR artifact",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 4,
+            "started_at": "2026-10-05T11:09:59Z",
+            "completed_at": "2026-10-05T11:09:59Z"
+          },
+          {
+            "name": "Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 5,
+            "started_at": "2026-10-05T11:09:59Z",
+            "completed_at": "2026-10-05T11:09:59Z"
+          },
+          {
+            "name": "Upload the verified Pages build",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 6,
+            "started_at": "2026-10-05T11:09:59Z",
+            "completed_at": "2026-10-05T11:09:59Z"
+          },
+          {
+            "name": "Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 7,
+            "started_at": "2026-10-05T11:09:59Z",
+            "completed_at": "2026-10-05T11:09:59Z"
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14,
+            "started_at": "2026-10-05T11:09:59Z",
+            "completed_at": "2026-10-05T11:09:59Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15,
+            "started_at": "2026-10-05T11:09:59Z",
+            "completed_at": "2026-10-05T11:09:59Z"
+          }
+        ]
+      },
+      {
+        "id": 111733996491,
+        "name": "verify / web",
+        "started_at": "2026-10-05T11:10:06Z",
+        "completed_at": "2026-10-05T11:17:11Z",
+        "conclusion": "success",
+        "seconds": 425,
+        "roundedMinutesProxy": 8,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-05T11:10:07Z",
+            "completed_at": "2026-10-05T11:10:09Z"
+          },
+          {
+            "name": "Initialize containers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-05T11:10:09Z",
+            "completed_at": "2026-10-05T11:10:35Z"
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-05T11:10:35Z",
+            "completed_at": "2026-10-05T11:10:37Z"
+          },
+          {
+            "name": "Capture the checked-in corpus audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-10-05T11:10:37Z",
+            "completed_at": "2026-10-05T11:10:37Z"
+          },
+          {
+            "name": "Run jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-10-05T11:10:37Z",
+            "completed_at": "2026-10-05T11:10:44Z"
+          },
+          {
+            "name": "Run bun install --frozen-lockfile",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-10-05T11:10:44Z",
+            "completed_at": "2026-10-05T11:10:45Z"
+          },
+          {
+            "name": "Verify the pinned browser image matches the dependency",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-10-05T11:10:45Z",
+            "completed_at": "2026-10-05T11:10:46Z"
+          },
+          {
+            "name": "Run bun run format:check",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8,
+            "started_at": "2026-10-05T11:10:46Z",
+            "completed_at": "2026-10-05T11:10:48Z"
+          },
+          {
+            "name": "Unit tests and production build",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-10-05T11:10:48Z",
+            "completed_at": "2026-10-05T11:10:50Z"
+          },
+          {
+            "name": "Verify the standalone conversion corpus audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-10-05T11:10:50Z",
+            "completed_at": "2026-10-05T11:10:50Z"
+          },
+          {
+            "name": "Run bun run test:browser",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-10-05T11:10:50Z",
+            "completed_at": "2026-10-05T11:17:01Z"
+          },
+          {
+            "name": "Record browser resource usage",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-10-05T11:17:01Z",
+            "completed_at": "2026-10-05T11:17:01Z"
+          },
+          {
+            "name": "Retain bounded browser timing metadata",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 13,
+            "started_at": "2026-10-05T11:17:01Z",
+            "completed_at": "2026-10-05T11:17:01Z"
+          },
+          {
+            "name": "Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14,
+            "started_at": "2026-10-05T11:17:01Z",
+            "completed_at": "2026-10-05T11:17:01Z"
+          },
+          {
+            "name": "Verify repository-subpath deployment",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15,
+            "started_at": "2026-10-05T11:17:01Z",
+            "completed_at": "2026-10-05T11:17:05Z"
+          },
+          {
+            "name": "Upload the verified Pages build",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16,
+            "started_at": "2026-10-05T11:17:05Z",
+            "completed_at": "2026-10-05T11:17:07Z"
+          },
+          {
+            "name": "Publish failed-attempt diagnostics",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 17,
+            "started_at": "2026-10-05T11:17:07Z",
+            "completed_at": "2026-10-05T11:17:07Z"
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 33,
+            "started_at": "2026-10-05T11:17:07Z",
+            "completed_at": "2026-10-05T11:17:07Z"
+          },
+          {
+            "name": "Stop containers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 34,
+            "started_at": "2026-10-05T11:17:07Z",
+            "completed_at": "2026-10-05T11:17:08Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 35,
+            "started_at": "2026-10-05T11:17:08Z",
+            "completed_at": "2026-10-05T11:17:08Z"
+          }
+        ]
+      },
+      {
+        "id": 111736521757,
+        "name": "deploy",
+        "started_at": "2026-10-05T11:17:15Z",
+        "completed_at": "2026-10-05T11:17:26Z",
+        "conclusion": "success",
+        "seconds": 11,
+        "roundedMinutesProxy": 1,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-10-05T11:17:15Z",
+            "completed_at": "2026-10-05T11:17:17Z"
+          },
+          {
+            "name": "Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-10-05T11:17:17Z",
+            "completed_at": "2026-10-05T11:17:24Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-10-05T11:17:24Z",
+            "completed_at": "2026-10-05T11:17:24Z"
+          }
+        ]
+      }
+    ],
+    "runnerSeconds": 452,
+    "roundedMinutesProxy": 10,
+    "ordinaryPairUnchanged": true
+  },
+  "failures": [],
+  "limits": [
+    "UNKNOWN STEP rows are parsed by job plus the actual Running 273 header/264 passed summary; labels are not invented.",
+    "No timing reporter requested; list output supplies first attempts. Successful raw marker files are not uploaded. Marker absence inferred from skipped diagnostics and no failure artifact.",
+    "Manual fallback is additional validation cost, not part of the ordinary Web/Pages pair. Per-job API seconds/minute rounding are not billing records.",
+    "CPU model differs from ready gate; single samples cannot establish causal CPU-model or source performance effects.",
+    "Artifact binary digest/tree/publication audit is owned by root; this audit reads metadata without duplicate binary download or executing artifacts.",
+    "Hosted browser results are independently owned by root; no browser checks performed here."
+  ]
+}

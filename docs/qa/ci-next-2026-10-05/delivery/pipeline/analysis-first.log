@@ -1,0 +1,13 @@
+63 | const failureStep = job?.steps.find((s: any) => s.name === "Publish failed-attempt diagnostics");
+64 | require(failureStep?.conclusion === "skipped", "Failure/retry marker upload did not remain skipped");
+65 | require(artifacts.total_count === artifacts.artifacts.length && artifacts.artifacts.some((a: any) => a.name === "github-pages" && !a.expired), "Missing/incomplete Pages artifacts");
+66 | require(!artifacts.artifacts.some((a: any) => /^chronoshift-web-failure-/.test(a.name)), "Unexpected failure artifact");
+67 | require(validResource, "Invalid/unavailable CPU bracket");
+68 | const checkout = lines.filter((line) => line.step.startsWith("Run actions/checkout@"));
+                                                  ^
+TypeError: undefined is not an object (evaluating 'line.step.startsWith')
+      at <anonymous> (/private/tmp/chronoshift-ci-next-delivery/pipeline/analyze.ts:68:46)
+      at filter (1:11)
+      at /private/tmp/chronoshift-ci-next-delivery/pipeline/analyze.ts:68:24
+
+Bun v1.4.0 (macOS arm64)

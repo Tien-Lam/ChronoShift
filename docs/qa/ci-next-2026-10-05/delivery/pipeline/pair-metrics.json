@@ -1,0 +1,209 @@
+{
+  "began": "2026-10-05T11:09:36.881Z",
+  "ended": "2026-10-05T11:09:36.882Z",
+  "baseline": {
+    "web": {
+      "id": 37131752983,
+      "event": "pull_request",
+      "head": "c31b8656bc4ef0fce84d5767b0d9c39f89a00f0f",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 111228066955,
+          "name": "web",
+          "conclusion": "success",
+          "start": "2026-10-03T15:01:24Z",
+          "end": "2026-10-03T15:04:00Z",
+          "stepCount": 13,
+          "rawSeconds": 156,
+          "runnerSecondsProxy": 156,
+          "roundedMinutesProxy": 3,
+          "excluded": false
+        }
+      ],
+      "seconds": 156,
+      "roundedMinutes": 3
+    },
+    "pages": {
+      "id": 37131749773,
+      "event": "push",
+      "head": "c31b8656bc4ef0fce84d5767b0d9c39f89a00f0f",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 111228431934,
+          "name": "verify / web",
+          "conclusion": "success",
+          "start": "2026-10-03T15:03:26Z",
+          "end": "2026-10-03T15:05:38Z",
+          "stepCount": 13,
+          "rawSeconds": 132,
+          "runnerSecondsProxy": 132,
+          "roundedMinutesProxy": 3,
+          "excluded": false
+        },
+        {
+          "id": 111228817087,
+          "name": "build",
+          "conclusion": "success",
+          "start": "2026-10-03T15:05:40Z",
+          "end": "2026-10-03T15:05:48Z",
+          "stepCount": 9,
+          "rawSeconds": 8,
+          "runnerSecondsProxy": 8,
+          "roundedMinutesProxy": 1,
+          "excluded": false
+        },
+        {
+          "id": 111228850179,
+          "name": "deploy",
+          "conclusion": "success",
+          "start": "2026-10-03T15:05:52Z",
+          "end": "2026-10-03T15:06:03Z",
+          "stepCount": 3,
+          "rawSeconds": 11,
+          "runnerSecondsProxy": 11,
+          "roundedMinutesProxy": 1,
+          "excluded": false
+        }
+      ],
+      "seconds": 151,
+      "roundedMinutes": 5
+    },
+    "seconds": 307,
+    "roundedMinutes": 8
+  },
+  "ordinary": {
+    "web": {
+      "id": 37299989506,
+      "event": "pull_request",
+      "head": "cb8206c280494341632821d13b4e90f8f1c3a3e9",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 111730170467,
+          "name": "web",
+          "conclusion": "success",
+          "start": "2026-10-05T10:58:52Z",
+          "end": "2026-10-05T11:04:50Z",
+          "stepCount": 20,
+          "rawSeconds": 358,
+          "runnerSecondsProxy": 358,
+          "roundedMinutesProxy": 6,
+          "excluded": false
+        }
+      ],
+      "seconds": 358,
+      "roundedMinutes": 6
+    },
+    "pages": {
+      "id": 37300768198,
+      "event": "push",
+      "head": "cf4d5b9244278da591a33c1952283e76acb6116c",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 111732679819,
+          "name": "prepare",
+          "conclusion": "success",
+          "start": "2026-10-05T11:06:14Z",
+          "end": "2026-10-05T11:06:36Z",
+          "stepCount": 9,
+          "rawSeconds": 22,
+          "runnerSecondsProxy": 22,
+          "roundedMinutesProxy": 1,
+          "excluded": false
+        },
+        {
+          "id": 111732824202,
+          "name": "verify",
+          "conclusion": "skipped",
+          "start": "2026-10-05T11:06:36Z",
+          "end": "2026-10-05T11:06:36Z",
+          "stepCount": 0,
+          "rawSeconds": 0,
+          "runnerSecondsProxy": 0,
+          "roundedMinutesProxy": 0,
+          "excluded": true
+        },
+        {
+          "id": 111732825442,
+          "name": "deploy",
+          "conclusion": "skipped",
+          "start": "2026-10-05T11:06:37Z",
+          "end": "2026-10-05T11:06:36Z",
+          "stepCount": 0,
+          "rawSeconds": -1,
+          "runnerSecondsProxy": 0,
+          "roundedMinutesProxy": 0,
+          "excluded": true
+        }
+      ],
+      "seconds": 22,
+      "roundedMinutes": 1
+    },
+    "seconds": 380,
+    "roundedMinutes": 7
+  },
+  "comparison": {
+    "runnerSecondsChangePercent": 23.778501628664497,
+    "roundedMinutesReductionPercent": 12.5,
+    "meets20PercentRoundedTarget": false,
+    "meets20PercentSecondsTarget": false,
+    "pagesSecondsReductionPercent": 85.43046357615894
+  },
+  "separateValidationLedger": {
+    "canceledLabelRequest": {
+      "id": 37299640175,
+      "event": "pull_request",
+      "head": "af28e0739c7c7d8de2dfa77c508ee2e08be1c539",
+      "conclusion": "cancelled",
+      "jobs": [
+        {
+          "id": 111729038111,
+          "name": "web",
+          "conclusion": "cancelled",
+          "start": "2026-10-05T10:55:30Z",
+          "end": "2026-10-05T10:55:56Z",
+          "stepCount": 19,
+          "rawSeconds": 26,
+          "runnerSecondsProxy": 26,
+          "roundedMinutesProxy": 1,
+          "excluded": false
+        }
+      ],
+      "seconds": 26,
+      "roundedMinutes": 1
+    },
+    "stickyDraftSourcePush": {
+      "id": 37299950927,
+      "event": "pull_request",
+      "head": "cb8206c280494341632821d13b4e90f8f1c3a3e9",
+      "conclusion": "skipped",
+      "jobs": [
+        {
+          "id": 111730041849,
+          "name": "(github.event_name != 'pull_request' || (github.event.action != 'labeled' && !github.event.pull_request.draft) || (github.event.action == 'labeled' && (github.event.label.name == 'ci-run' || github.event.label.name == 'ci-timing'))) && 'web' || 'web-deferred'",
+          "conclusion": "skipped",
+          "start": "2026-10-05T10:58:26Z",
+          "end": "2026-10-05T10:58:26Z",
+          "stepCount": 0,
+          "rawSeconds": 0,
+          "runnerSecondsProxy": 0,
+          "roundedMinutesProxy": 0,
+          "excluded": true
+        }
+      ],
+      "seconds": 0,
+      "roundedMinutes": 0
+    }
+  },
+  "limits": [
+    "Per-job whole-second API durations and upward minute rounding are an observational proxy, not GitHub billing records.",
+    "One ordinary before/after pair cannot establish monthly savings, causal performance improvement, or stable runner variance.",
+    "The prior source revision and workflow differ; no hypothetical avoided draft runs are added.",
+    "Zero-step skipped jobs are excluded, including hosted Pages deploy whose completed timestamp precedes started timestamp by one second.",
+    "The canceled 26-second request is additional investigation cost, excluded from the ordinary pair.",
+    "Other validation costs are owned by the root ledger; this is not an exhaustive cost total for the project or task."
+  ]
+}
