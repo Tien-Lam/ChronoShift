@@ -1,0 +1,173 @@
+diff --git a/e2e/controls.spec.ts b/e2e/controls.spec.ts
+index fec9bee..9ffc8e3 100644
+--- a/e2e/controls.spec.ts
++++ b/e2e/controls.spec.ts
+@@ -21,30 +21,63 @@ async function expectPopup(
+       return !!bounds && bounds.x >= 0 && bounds.x + bounds.width <= width + 1;
+     })
+     .toBe(true);
+-  const bounds = (await popup.boundingBox())!;
+-  const control = (await trigger.boundingBox())!;
+-  expect(bounds.x).toBeGreaterThanOrEqual(0);
+-  expect(bounds.x + bounds.width).toBeLessThanOrEqual(width + 1);
+-  expect(bounds.y).toBeGreaterThanOrEqual(0);
+-  expect(bounds.y + bounds.height).toBeLessThanOrEqual(961);
+-  if (matchesTrigger)
+-    expect(bounds.width).toBeGreaterThanOrEqual(
+-      Math.min(control.width, width - 24) - 1,
+-    );
+-  const style = await popup.evaluate((element) => {
+-    const css = getComputedStyle(element);
+-    return {
+-      background: css.backgroundColor,
+-      border: css.borderTopWidth,
+-      radius: css.borderTopLeftRadius,
+-      overflow: element.scrollWidth > element.clientWidth,
+-    };
++  const snapshot = await popup.evaluate(
++    (element, controlElement) => {
++      const bounds = element.getBoundingClientRect();
++      const control = controlElement!.getBoundingClientRect();
++      const css = getComputedStyle(element);
++      return {
++        popupHasLayout: element.getClientRects().length > 0,
++        controlHasLayout: controlElement!.getClientRects().length > 0,
++        bounds: {
++          x: bounds.x,
++          y: bounds.y,
++          width: bounds.width,
++          height: bounds.height,
++        },
++        controlWidth: control.width,
++        background: css.backgroundColor,
++        border: css.borderTopWidth,
++        radius: Number.parseFloat(css.borderTopLeftRadius),
++        overflow: element.scrollWidth > element.clientWidth,
++      };
++    },
++    await trigger.elementHandle(),
++  );
++  const { bounds } = snapshot;
++  // Keep every original inequality/style expectation while emitting one
++  // assertion step for this coherent browser snapshot, with raw failure data.
++  expect(
++    {
++      leftFits: bounds.x >= 0,
++      popupHasLayout: snapshot.popupHasLayout,
++      controlHasLayout: snapshot.controlHasLayout,
++      rightFits: bounds.x + bounds.width <= width + 1,
++      topFits: bounds.y >= 0,
++      bottomFits: bounds.y + bounds.height <= 961,
++      triggerFits:
++        !matchesTrigger ||
++        bounds.width >= Math.min(snapshot.controlWidth, width - 24) - 1,
++      opaque: snapshot.background !== "rgba(0, 0, 0, 0)",
++      border: snapshot.border,
++      rounded: snapshot.radius >= 8,
++      overflow: snapshot.overflow,
++    },
++    JSON.stringify(snapshot),
++  ).toEqual({
++    leftFits: true,
++    popupHasLayout: true,
++    controlHasLayout: true,
++    rightFits: true,
++    topFits: true,
++    bottomFits: true,
++    triggerFits: true,
++    opaque: true,
++    border: "1px",
++    rounded: true,
++    overflow: false,
+   });
+-  expect(style.background).not.toBe("rgba(0, 0, 0, 0)");
+-  expect(style.border).toBe("1px");
+-  expect(Number.parseFloat(style.radius)).toBeGreaterThanOrEqual(8);
+-  expect(style.overflow).toBe(false);
+-  return style.background;
++  return snapshot.background;
+ }
+ 
+ async function dismissMenu(page: Page) {
+@@ -112,24 +145,45 @@ test("themed choices align and their opened menus fit every breakpoint without l
+             };
+           });
+         });
+-        for (const control of dimensions) {
+-          expect(control.height, control.id).toBe(44);
+-          expect(control.inset, control.id).toBe("12px");
+-          expect(control.font, control.id).toBe("16px");
+-          expect(control.lineHeight, control.id).toBe("24px");
+-          expect(control.labelDelta, control.id).toBe(0);
+-        }
++        expect(dimensions).toEqual(
++          [
++            "theme",
++            "target-zone",
++            "source-zone",
++            "reference-date",
++            "date-order",
++            "time-format",
++          ].map((id) => ({
++            id,
++            height: 44,
++            inset: "12px",
++            font: "16px",
++            lineHeight: "24px",
++            labelDelta: 0,
++          })),
++        );
+         const appearance = (await page
+           .locator(".appearance summary")
+           .boundingBox())!;
+         const panel = (await page.locator(".appearance-fields").boundingBox())!;
+-        expect(panel.x + panel.width).toBeCloseTo(
+-          appearance.x + appearance.width,
+-          1,
+-        );
+-        expect(panel.y - appearance.y - appearance.height).toBeCloseTo(8, 1);
+-        expect(panel.x).toBeGreaterThanOrEqual(0);
+-        expect(panel.x + panel.width).toBeLessThanOrEqual(width);
++        expect(
++          {
++            rightAligned:
++              Math.abs(
++                panel.x + panel.width - (appearance.x + appearance.width),
++              ) < 0.05,
++            gapAligned:
++              Math.abs(panel.y - appearance.y - appearance.height - 8) < 0.05,
++            leftFits: panel.x >= 0,
++            rightFits: panel.x + panel.width <= width,
++          },
++          JSON.stringify({ panel, appearance }),
++        ).toEqual({
++          rightAligned: true,
++          gapAligned: true,
++          leftFits: true,
++          rightFits: true,
++        });
+         for (const label of ["Theme", "Numeric dates", "Time display"]) {
+           const trigger = choiceTrigger(page, label);
+           await trigger.click();
+@@ -158,9 +212,18 @@ test("themed choices align and their opened menus fit every breakpoint without l
+               lineHeight: css.lineHeight,
+             };
+           });
+-          expect(optionStyle.height).toBeGreaterThanOrEqual(44);
+-          expect(optionStyle.font).toBe("16px");
+-          expect(optionStyle.lineHeight).toBe("24px");
++          expect(
++            {
++              tallEnough: optionStyle.height >= 44,
++              font: optionStyle.font,
++              lineHeight: optionStyle.lineHeight,
++            },
++            JSON.stringify(optionStyle),
++          ).toEqual({
++            tallEnough: true,
++            font: "16px",
++            lineHeight: "24px",
++          });
+           await dismissMenu(page);
+           await expect(trigger).toBeFocused();
+         }

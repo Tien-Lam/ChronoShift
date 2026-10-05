@@ -1,0 +1,30 @@
+
+Running 1 test using 1 worker
+
+  ✘  1 [iphone-emulation] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit (30.0s)
+
+
+  1) [iphone-emulation] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[id="react-aria2558629609-_r_b_"]').getByRole('option', { name: 'Tokyo', exact: true })
+
+
+      456 |     await suggestions
+      457 |       .getByRole("option", { name: "Tokyo", exact: true })
+    > 458 |       .click();
+          |       ^
+      459 |     await expect(input).toHaveValue("Asia/Tokyo");
+      460 |     await expect(other).toHaveValue(otherValue);
+      461 |   }
+        at /Users/tien/Developer/ChronoShift/e2e/controls.spec.ts:458:7
+
+    Error Context: docs/qa/ci-efficiency-2026-10-05/adversarial/virtualization/matched-prototype/controls-hovering-timezone-df152-cit-selections-still-commit-iphone-emulation/error-context.md
+
+  1 failed
+    [iphone-emulation] › e2e/controls.spec.ts:407:0 › hovering timezone suggestions preserves typed values while explicit selections still commit 
+(node:74261) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)

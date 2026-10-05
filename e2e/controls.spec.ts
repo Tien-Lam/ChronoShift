@@ -452,8 +452,19 @@ test("hovering timezone suggestions preserves typed values while explicit select
     await input.press("Tab");
     await expect(input).toHaveValue("osaka");
     await expect(page.getByRole("listbox")).toHaveCount(0);
+    // A real pointer interaction brings the field into view before typing.
+    // Focusing an offscreen input with fill() can scroll its ancestor after
+    // opening the popup; React Aria intentionally dismisses on that scroll.
+    await input.scrollIntoViewIfNeeded();
+    await input.click();
+    await expect(input).toHaveAttribute("aria-expanded", "false");
     await input.fill("Tokyo");
-    await suggestions
+    await expect(input).toHaveAttribute("aria-expanded", "true");
+    const reopenedSuggestions = page.locator(
+      `[id="${await input.getAttribute("aria-controls")}"]`,
+    );
+    await expect(reopenedSuggestions).toBeVisible();
+    await reopenedSuggestions
       .getByRole("option", { name: "Tokyo", exact: true })
       .click();
     await expect(input).toHaveValue("Asia/Tokyo");

@@ -1,0 +1,94 @@
+{
+  "capturedAt": "2026-10-05T06:01:51.426Z",
+  "control": {
+    "status": "passed",
+    "workers": 4,
+    "attempts": 258,
+    "dropped": 0,
+    "retries": 0,
+    "unexpected": 0,
+    "durationMs": 290306.86,
+    "totalTestMs": 1118060,
+    "byProject": {
+      "foldable": {
+        "total": 3,
+        "passed": 3,
+        "skipped": 0,
+        "retries": 0
+      },
+      "chromium": {
+        "total": 51,
+        "passed": 51,
+        "skipped": 0,
+        "retries": 0
+      },
+      "firefox": {
+        "total": 51,
+        "passed": 48,
+        "skipped": 3,
+        "retries": 0
+      },
+      "webkit": {
+        "total": 51,
+        "passed": 48,
+        "skipped": 3,
+        "retries": 0
+      },
+      "android-emulation": {
+        "total": 51,
+        "passed": 51,
+        "skipped": 0,
+        "retries": 0
+      },
+      "iphone-emulation": {
+        "total": 51,
+        "passed": 48,
+        "skipped": 3,
+        "retries": 0
+      }
+    },
+    "duplicateIdentities": [],
+    "identitySetSha256": "378707e85d73075838a81295c5896eaca5a2776c4351de87a270d251e2d80616"
+  },
+  "jobs": [
+    {
+      "name": "web",
+      "status": "success",
+      "startedAt": "2026-10-05T05:54:04Z",
+      "completedAt": "2026-10-05T06:00:00Z",
+      "browser": [
+        {
+          "start": "2026-10-05T05:54:58Z",
+          "end": "2026-10-05T05:59:49Z",
+          "status": "success"
+        }
+      ]
+    }
+  ],
+  "source": [
+    {
+      "file": "playwright.config.ts",
+      "sha256": "5ed235a54a5fdac0b8c686fa1d3bdb613ce1073cbd7e9a666b0838df6c262dcf"
+    },
+    {
+      "file": ".github/workflows/web.yml",
+      "sha256": "9e0f16a21379a5297df9cf72738d5e613a36077e0153367933b15ec43ce32311"
+    },
+    {
+      "file": "e2e/fixtures.ts",
+      "sha256": "f2fae8b63aa63efd8a76b15e8b4ef8e75a553f8c2ee49b5dadaa45bfea583f1f"
+    },
+    {
+      "file": "e2e/timing-reporter.ts",
+      "sha256": "d9523adbebaa5e558d315226fd67155e57af4bd3b4d1ae27d9fe78efc7542dbf"
+    },
+    {
+      "file": "e2e/attempt-reporter.ts",
+      "sha256": "f6782d5a8009a278f6f9e684d35cbf08cc74ea371efb03b8f83ca823945ffe01"
+    },
+    {
+      "file": "e2e/controls.spec.ts",
+      "sha256": "afcf4c29451a39135336483bc20f35a74f07e28cace1a2643d076a15f8b010cd"
+    }
+  ]
+}

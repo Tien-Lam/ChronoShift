@@ -1,0 +1,11 @@
+# Independent supplement: real keyboard typing boundary
+
+Requested follow-up to preserved fill-only keyboard-return evidence. Actual runs06:27:16.110–06:27:20.040Z, Darwin arm64, fresh iPhone13 WebKit emulation, native motion, no trace/screenshot/force/delay. Reused reviewer context; no peer verdict read. Own direct-browser script explicitly navigates frozen4276 before and4278 prototype, without custom test fixtures. Frozen origin/source identity is independently established by prior HAR/trace checks and served-file hashes; this follow-up does not claim new per-run response hashing.
+
+After hover-only Tab preservation, explicit ArrowDown/End/Tab alias commit and actual page.keyboard Shift+Tab, the input is focused and expanded=false. Actual ControlOrMeta+A then pressSequentially('Tokyo') opens suggestions automatically. The fresh owned Tokyo option pointer-selects Asia/Tokyo, preserving the other field, for both target/source loops on BOTH builds. Raw `adversarial/virtualization/keyboard-typing-results.json` and script preserve commands/steps/events.
+
+This qualifies `keyboard-return-results.json`: its rapid programmatic fill-only failure is automation timing evidence and does not establish a real keyboard typing bug. No separate human keyboard defect should be claimed or closed from fill-alone. Actual physical keyboard/OS/software-keyboard acceptance remains untested, as does real assistive technology.
+
+Each real-typing run emitted one `ResizeObserver loop completed with undelivered notifications.` error; no application CSP violation, functional selection failure or recurring hang occurred. This proves the warning can occur on the baseline too, with capture disabled. It is not uniquely introduced by virtualization; preserve the normal-use error rather than dismiss it as screenshot injection or filtering it. The root cause/impact beyond this bounded successful journey remains unproven.
+
+Implementation test-precondition approval remains bounded: realistic pointer return followed by false→true opening asserts automatic input behavior; this independent actual-keyboard control does not require pre-scroll/click. Original goal/report verdict remains unresolved pending final gate/publication measurements. No source/build/server/CI/publish changes performed.

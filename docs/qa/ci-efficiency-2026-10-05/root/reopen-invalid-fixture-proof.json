@@ -1,0 +1,34 @@
+[
+  {
+    "variant": "before",
+    "port": "4276",
+    "start": "2026-10-05T06:22:49.953Z",
+    "end": "2026-10-05T06:22:50.537Z",
+    "cmd": [
+      "bunx",
+      "--bun",
+      "playwright",
+      "test",
+      "--config=docs/qa/ci-efficiency-2026-10-05/root/reopen.config.ts",
+      "--grep",
+      "hovering timezone suggestions"
+    ],
+    "code": 1
+  },
+  {
+    "variant": "prototype",
+    "port": "4278",
+    "start": "2026-10-05T06:22:50.537Z",
+    "end": "2026-10-05T06:22:51.117Z",
+    "cmd": [
+      "bunx",
+      "--bun",
+      "playwright",
+      "test",
+      "--config=docs/qa/ci-efficiency-2026-10-05/root/reopen.config.ts",
+      "--grep",
+      "hovering timezone suggestions"
+    ],
+    "code": 1
+  }
+]

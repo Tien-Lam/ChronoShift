@@ -21,12 +21,22 @@ concurrency:
 jobs:
   prepare:
     if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    # Static artifact validation/publication needs no browser or Docker host.
+    runs-on: ubuntu-slim
     timeout-minutes: 5
     permissions:
       contents: read
       actions: read
-      pages: read
+      pages: write
+      id-token: write
+    # Only trusted main source and the bounded verifier execute here. Extracted
+    # artifact files are served as static content; never execute their code.
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
     outputs:
       reused: ${{ steps.reuse.outputs.reused }}
     steps:
@@ -48,9 +58,12 @@ jobs:
         with:
           path: dist
           retention-days: 14
+      - id: deployment
+        if: steps.reuse.outputs.reused == 'true'
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
   verify:
     needs: prepare
-    if: needs.prepare.outputs.reused != 'true'
+    if: needs.prepare.result == 'success' && needs.prepare.outputs.reused != 'true'
     permissions:
       contents: read
       pages: read
@@ -59,7 +72,8 @@ jobs:
       publish-pages: true
   deploy:
     needs: [prepare, verify]
-    if: always() && needs.prepare.result == 'success' && (needs.prepare.outputs.reused == 'true' || needs.verify.result == 'success')
+    # A failed reuse/upload/deployment must not start a second publication.
+    if: always() && !cancelled() && needs.prepare.result == 'success' && needs.prepare.outputs.reused != 'true' && needs.verify.result == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     concurrency:

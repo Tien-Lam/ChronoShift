@@ -6,6 +6,10 @@ on:
         description: Upload the verified repository-path build for deployment
         type: boolean
         default: false
+      ci-timing:
+        description: Record bounded browser timing for an investigation
+        type: boolean
+        default: false
   # Same-repository PRs retain their tested artifact for main-only publication.
   pull_request:
     branches: [main]
@@ -34,6 +38,7 @@ jobs:
     env:
       PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
       PLAYWRIGHT_IMAGE_VERSION: "1.63.0"
+      CHRONOSHIFT_CI_TIMING: ${{ (inputs.ci-timing || (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'ci-timing'))) && '1' || '0' }}
       PUBLISH_PAGES: ${{ inputs.publish-pages || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) }}
     timeout-minutes: 20
     permissions:
@@ -66,7 +71,20 @@ jobs:
         run: |
           bun run corpus:audit
           diff -u "$RUNNER_TEMP/chronoshift-corpus-audit.json" docs/planning/corpus-audit.json
-      - run: bun run test:browser
+      - name: Run bun run test:browser
+        run: |
+          bun scripts/ci-environment.ts before
+          bun run test:browser
+      - name: Record browser resource usage
+        if: ${{ !cancelled() }}
+        run: bun scripts/ci-environment.ts after
+      - name: Retain bounded browser timing metadata
+        if: ${{ !cancelled() && env.CHRONOSHIFT_CI_TIMING == '1' && hashFiles('test-results/ci-timing.json') != '' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: chronoshift-ci-timing-${{ github.run_id }}-${{ github.run_attempt }}
+          path: test-results/ci-timing.json
+          retention-days: 1
       - id: pages
         if: inputs.publish-pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5

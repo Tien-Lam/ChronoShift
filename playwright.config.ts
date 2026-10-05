@@ -19,13 +19,17 @@ export default defineConfig({
   timeout: 30000,
   expect: { timeout: 10000 },
   fullyParallel: true,
-  // Four workers outperform oversubscription on the measured Linux runner.
+  // The measured two/six-worker and ARM alternatives were slower.
+  // Keep the established four workers and complete browser coverage.
   workers: process.env.CI ? 4 : 3,
   retries: process.env.CI ? 1 : 0,
   reporter: [
     ["list"],
     ["html", { open: "never" }],
     ["./e2e/attempt-reporter.ts"],
+    ...(process.env.CHRONOSHIFT_CI_TIMING === "1"
+      ? ([["./e2e/timing-reporter.ts"]] as [string][])
+      : []),
   ],
   use: {
     baseURL: `http://127.0.0.1:${port}`,

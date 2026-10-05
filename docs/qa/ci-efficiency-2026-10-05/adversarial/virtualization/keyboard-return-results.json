@@ -1,0 +1,44 @@
+[
+  {
+    "which": "before",
+    "repeat": 0,
+    "start": "2026-10-05T06:25:14.823Z",
+    "end": "2026-10-05T06:25:21.030Z",
+    "stage": "Convert to automatic open",
+    "passed": false,
+    "error": "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator: getByLabel('Convert to', { exact: true })\nExpected pattern: /.+/\nReceived string:  \"\"\nTimeout: 5000ms\n\nCall log:\n  - Expect \"toHaveAttribute\" getByLabel('Convert to', { exact: true }) with timeout 5000ms\n  - waiting for getByLabel('Convert to', { exact: true })\n    14 × locator resolved to <input data-rac=\"\" type=\"text\" tabindex=\"0\" value=\"Tokyo\" role=\"combobox\" id=\"target-zone\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" data-focused=\"true\" aria-expanded=\"false\" aria-label=\"Convert to\" aria-autocomplete=\"list\" class=\"react-aria-Input\" data-focus-visible=\"true\" aria-describedby=\"target-zone-help\" placeholder=\"Your timezone · Sydney\"/>\n       - unexpected value \"null\"\n",
+    "events": [],
+    "states": [
+      {
+        "at": "2026-10-05T06:25:15.982Z",
+        "label": "Convert to",
+        "beforeFill": {
+          "value": "osaka",
+          "expanded": "false",
+          "scrollY": 572
+        }
+      }
+    ]
+  },
+  {
+    "which": "prototype",
+    "repeat": 0,
+    "start": "2026-10-05T06:25:21.030Z",
+    "end": "2026-10-05T06:25:27.208Z",
+    "stage": "Convert to automatic open",
+    "passed": false,
+    "error": "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  getByLabel('Convert to', { exact: true })\nExpected: \"true\"\nReceived: \"false\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveAttribute\" getByLabel('Convert to', { exact: true }) with timeout 5000ms\n  - waiting for getByLabel('Convert to', { exact: true })\n    14 × locator resolved to <input data-rac=\"\" type=\"text\" tabindex=\"0\" value=\"Tokyo\" role=\"combobox\" id=\"target-zone\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" data-focused=\"true\" aria-expanded=\"false\" aria-label=\"Convert to\" aria-autocomplete=\"list\" class=\"react-aria-Input\" data-focus-visible=\"true\" aria-describedby=\"target-zone-help\" placeholder=\"Your timezone · Sydney\"/>\n       - unexpected value \"false\"\n",
+    "events": [],
+    "states": [
+      {
+        "at": "2026-10-05T06:25:22.165Z",
+        "label": "Convert to",
+        "beforeFill": {
+          "value": "osaka",
+          "expanded": "false",
+          "scrollY": 572
+        }
+      }
+    ]
+  }
+]
