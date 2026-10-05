@@ -1,0 +1,161 @@
+$ bun run typecheck && bun run test && bun run build
+$ bunx --bun tsc --noEmit
+$ bun test tests
+bun test v1.4.0 (34cbb9a40)
+
+tests/publishing.test.ts:
+(pass) publication reuse requires a trusted complete PR verification and exact tree [0.27ms]
+
+tests/console-capture.test.ts:
+(pass) navigation-lost console payload retains a stable event and flush waits for full metadata [0.28ms]
+(pass) unexpected capture failure is surfaced by flush instead of being swallowed [0.07ms]
+
+tests/preview.test.ts:
+(pass) preview publication accepts identical trees and rejects merged content differences [137.67ms]
+
+tests/conversion.test.ts:
+(pass) independently specified temporal fixtures > fixed EST in spring [6.98ms]
+(pass) independently specified temporal fixtures > fixed PST in summer [0.56ms]
+(pass) independently specified temporal fixtures > regional PT summer [0.77ms]
+(pass) independently specified temporal fixtures > regional PT winter [0.44ms]
+(pass) independently specified temporal fixtures > regional ET [0.46ms]
+(pass) independently specified temporal fixtures > CST ambiguity [0.51ms]
+(pass) independently specified temporal fixtures > IST ambiguity [0.43ms]
+(pass) independently specified temporal fixtures > BST ambiguity [0.42ms]
+(pass) independently specified temporal fixtures > AST ambiguity [0.32ms]
+(pass) independently specified temporal fixtures > quarter hour offset [0.68ms]
+(pass) independently specified temporal fixtures > negative half hour offset [0.17ms]
+(pass) independently specified temporal fixtures > invalid minutes [0.08ms]
+(pass) independently specified temporal fixtures > invalid offset bound [0.04ms]
+(pass) independently specified temporal fixtures > ISO offset [0.23ms]
+(pass) independently specified temporal fixtures > relative tomorrow [0.26ms]
+(pass) independently specified temporal fixtures > relative in Tokyo [0.69ms]
+(pass) independently specified temporal fixtures > source date across midnight [2.42ms]
+(pass) independently specified temporal fixtures > city Tokyo [0.41ms]
+(pass) independently specified temporal fixtures > city Mumbai [0.45ms]
+(pass) independently specified temporal fixtures > city Berlin summer [0.22ms]
+(pass) independently specified temporal fixtures > accented city [0.27ms]
+(pass) independently specified temporal fixtures > unique typo disclosure [0.90ms]
+(pass) independently specified temporal fixtures > unknown city [1.86ms]
+(pass) independently specified temporal fixtures > unknown abbreviation [0.63ms]
+(pass) independently specified temporal fixtures > IANA identity [0.29ms]
+(pass) independently specified temporal fixtures > spring gap [0.44ms]
+(pass) independently specified temporal fixtures > autumn fold [0.18ms]
+(pass) independently specified temporal fixtures > Sydney spring gap [0.32ms]
+(pass) independently specified temporal fixtures > Sydney autumn fold [0.13ms]
+(pass) independently specified temporal fixtures > date only [0.10ms]
+(pass) independently specified temporal fixtures > month day convention [0.17ms]
+(pass) independently specified temporal fixtures > day month convention [0.16ms]
+(pass) independently specified temporal fixtures > header date context [0.81ms]
+(pass) independently specified temporal fixtures > paragraph isolation [0.46ms]
+(pass) independently specified temporal fixtures > second explicit date [0.18ms]
+(pass) independently specified temporal fixtures > same date range [0.18ms]
+(pass) independently specified temporal fixtures > overnight range [0.15ms]
+(pass) independently specified temporal fixtures > Unix seconds [0.07ms]
+(pass) independently specified temporal fixtures > Unix text order [0.10ms]
+(pass) independently specified temporal fixtures > duplicate mentions [0.14ms]
+(pass) independently specified temporal fixtures > distinct dates retained [0.12ms]
+(pass) independently specified temporal fixtures > missing timezone source default [0.22ms]
+(pass) independently specified temporal fixtures > no matching time [0.02ms]
+(pass) independently specified temporal fixtures > HTML remains text [0.09ms]
+(pass) independently specified temporal fixtures > relative source date at UTC midnight [0.10ms]
+(pass) independently specified temporal fixtures > relative header in source zone [0.08ms]
+(pass) independently specified temporal fixtures > unrelated sentence date reset [0.18ms]
+(pass) independently specified temporal fixtures > military time with fixed zone [0.12ms]
+(pass) independently specified temporal fixtures > military Zulu [0.08ms]
+(pass) independently specified temporal fixtures > shorthand meridiem [0.16ms]
+(pass) independently specified temporal fixtures > between range [0.23ms]
+(pass) independently specified temporal fixtures > unknown IANA wins over adjacent UTC token [0.07ms]
+(pass) independently specified temporal fixtures > leap day retained [0.08ms]
+(pass) independently specified temporal fixtures > bare city summer rules [0.13ms]
+(pass) independently specified temporal fixtures > city before prose [0.10ms]
+(pass) independently specified temporal fixtures > NYC alias [0.09ms]
+(pass) independently specified temporal fixtures > Melbourne alias [0.15ms]
+(pass) independently specified temporal fixtures > 2015 Unix boundary [0.03ms]
+(pass) independently specified temporal fixtures > 2035 Unix boundary [0.03ms]
+(pass) independently specified temporal fixtures > explicit zone upgrades default duplicate [0.14ms]
+(pass) independently specified temporal fixtures > ISO fractional seconds [0.09ms]
+(pass) independently specified temporal fixtures > partial colloquial match must not convert wrong time [0.07ms]
+(pass) independently specified temporal fixtures > vague approximate hour [0.02ms]
+(pass) independently specified temporal fixtures > no invented end of business hour [0.01ms]
+(pass) independently specified temporal fixtures > city before target-zone sentence [0.10ms]
+(pass) independently specified temporal fixtures > city before colleague timezone [0.09ms]
+(pass) independently specified temporal fixtures > city-qualified endpoint range [0.28ms]
+(pass) independently specified temporal fixtures > numeric offset endpoint range [0.17ms]
+(pass) independently specified temporal fixtures > repeated-zone overnight range [0.29ms]
+(pass) independently specified temporal fixtures > distinct endpoint zone clocks [0.17ms]
+(pass) independently specified temporal fixtures > regional repeated-zone overnight range [0.25ms]
+(pass) independently specified temporal fixtures > malformed three-digit offset minutes [0.03ms]
+(pass) independently specified temporal fixtures > malformed one-digit offset minutes [0.03ms]
+(pass) independently specified temporal fixtures > unsupported unicode offset minus [0.02ms]
+(pass) independently specified temporal fixtures > IANA numeric suffix identity [0.15ms]
+(pass) independently specified temporal fixtures > lowercase fixed zone [0.12ms]
+(pass) independently specified temporal fixtures > mixed-case fixed zone [0.10ms]
+(pass) independently specified temporal fixtures > lowercase numeric zone [0.08ms]
+(pass) independently specified temporal fixtures > range before colleague zone prose [0.33ms]
+(pass) independently specified temporal fixtures > range before format zone prose [0.29ms]
+(pass) independently specified temporal fixtures > dotted meridiem overnight range [0.20ms]
+(pass) independently specified temporal fixtures > military endpoint zone range [0.19ms]
+(pass) independently specified temporal fixtures > IANA qualified overnight range [0.41ms]
+(pass) independently specified temporal fixtures > city qualified overnight range [0.42ms]
+(pass) independently specified temporal fixtures > reject complete malformed offset UTC+05foo [0.06ms]
+(pass) independently specified temporal fixtures > reject complete malformed offset UTC+05:30abc [0.04ms]
+(pass) independently specified temporal fixtures > reject complete malformed offset UTC+5.5 [0.02ms]
+(pass) independently specified temporal fixtures > reject complete malformed offset GMT+2.5 [0.02ms]
+(pass) independently specified temporal fixtures > range propagates trailing explicit date [0.26ms]
+(pass) independently specified temporal fixtures > range infers trailing next year [0.40ms]
+(pass) independently specified temporal fixtures > range second precision rollover [0.23ms]
+(pass) independently specified temporal fixtures > cross-city civil overnight range [0.27ms]
+(pass) independently specified temporal fixtures > bare city overnight range [0.25ms]
+(pass) independently specified temporal fixtures > qualified until city range [0.20ms]
+(pass) independently specified temporal fixtures > reject repeated offset sign [0.03ms]
+(pass) independently specified temporal fixtures > reject malformed sign UTC++5 [0.02ms]
+(pass) independently specified temporal fixtures > reject malformed sign UTC+-5 [0.02ms]
+(pass) independently specified temporal fixtures > reject malformed sign UTC+ [0.02ms]
+(pass) formatting rolls into next day and copy includes full context [2.01ms]
+(pass) negative fractional offset never invents a location [0.43ms]
+(pass) short fuzzy city and unknown guesses are rejected [0.58ms]
+(pass) valid input at limit converts; arbitrary numbers and milliseconds stay unparsed [0.54ms]
+(pass) range keeps textual identities and both endpoints [0.23ms]
+(pass) input limit and invalid target give actionable errors [0.06ms]
+(pass) reference date override leaves source zone independent of target [0.38ms]
+
+tests/corpus.test.ts:
+(pass) all resilience corpus inputs execute the browser engine without crashing [36.31ms]
+
+tests/offline.test.ts:
+(pass) first installation reports safe asset/release identity before a controller exists [1.00ms]
+(pass) embedded navigation shell installs exact HTML without a network document [0.55ms]
+(pass) embedded navigation shell rejects inconsistent build bytes [0.49ms]
+(pass) claim requires a verified cache and scoped window: complete=true, inside=true [0.43ms]
+(pass) claim requires a verified cache and scoped window: complete=false, inside=true [0.04ms]
+(pass) claim requires a verified cache and scoped window: complete=true, inside=false [0.06ms]
+
+ 116 pass
+ 0 fail
+ 725 expect() calls
+Ran 116 tests across 6 files. [250.00ms]
+$ bun run typecheck && bun scripts/third-party-notices.ts && bunx --bun vite build && bun scripts/build-offline.ts
+$ bunx --bun tsc --noEmit
+Included notices for 19 production packages.
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 791 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                    0.80 kB │ gzip:   0.44 kB
+dist/assets/geist-latin-variable-Dm3htQBi.woff2   28.40 kB
+dist/assets/worker-C690IjaR.js                   221.14 kB
+dist/assets/index-CK-q34-T.css                    20.80 kB │ gzip:   4.84 kB
+dist/assets/index-DbVCZBhP.js                    806.81 kB │ gzip: 244.11 kB
+
+✓ built in 169ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+Offline version 18545a2d408b19e8: 13 local assets, /
+$ bunx --bun prettier --check web scripts/*.ts tests e2e *.ts
+Checking formatting...
+All matched files use Prettier code style!

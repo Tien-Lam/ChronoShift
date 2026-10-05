@@ -56,6 +56,14 @@ metadata; distinguish them from report-writing time. If timing was not captured,
 mark it unknown rather than estimating a wall-clock timestamp. Preserve an
 already-posted report and add a separate correction when provenance is wrong.
 
+Before claiming zero retries or a first-attempt pass, reconcile the complete
+runner log, structured attempts, failed-attempt marker and uploaded artifacts.
+A green workflow conclusion does not establish that every first attempt passed.
+For before/candidate comparisons, record the actual served asset identity and
+origin, including custom fixtures that override configuration. Match capture,
+tracing, motion, viewport, raster and focus/scroll preconditions; preserve
+competing controls before attributing a newly introduced cause.
+
 - **Implementation:** approved within the stated scope, or blockers and required fixes.
 - **Original report:** reproduced and prevented/recovered as intended; bounded related failures verified; or still unverified. State which reported conditions match and what remains unknown. For a feature/documentation change, mark this not applicable.
 

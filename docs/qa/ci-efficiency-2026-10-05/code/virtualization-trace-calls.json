@@ -1,0 +1,254 @@
+{
+  "capturedAt": "2026-10-05T06:12:29.230Z",
+  "calls": [
+    {
+      "callId": "call@275",
+      "time": 32673.804,
+      "method": "fill",
+      "params": {
+        "selector": "internal:label=\"Message with a date or time\"i",
+        "strict": true,
+        "value": "April 9, 2026 3pm UTC"
+      },
+      "after": {
+        "type": "after",
+        "callId": "call@275",
+        "endTime": 32682.105
+      },
+      "logs": [
+        "waiting for getByLabel('Message with a date or time')",
+        "  locator resolved to <textarea id=\"message\" spellcheck=\"false\" aria-describedby=\"input-help\" placeholder=\"e.g. Let's meet tomorrow at 3pm PT\"></textarea>",
+        "  fill(\"April 9, 2026 3pm UTC\")",
+        "attempting fill action",
+        "  waiting for element to be visible, enabled and editable"
+      ]
+    },
+    {
+      "callId": "call@279",
+      "time": 32688.237,
+      "method": "fill",
+      "params": {
+        "selector": "internal:label=\"Convert to\"s",
+        "strict": true,
+        "value": "CST"
+      },
+      "after": {
+        "type": "after",
+        "callId": "call@279",
+        "endTime": 32701.706
+      },
+      "logs": [
+        "waiting for getByLabel('Convert to', { exact: true })",
+        "  locator resolved to <input data-rac=\"\" type=\"text\" value=\"UTC\" tabindex=\"0\" role=\"combobox\" id=\"target-zone\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" aria-expanded=\"false\" aria-label=\"Convert to\" aria-autocomplete=\"list\" class=\"react-aria-Input\" aria-describedby=\"target-zone-help\" placeholder=\"Your timezone · Sydney\"/>",
+        "  fill(\"CST\")",
+        "attempting fill action",
+        "  waiting for element to be visible, enabled and editable"
+      ]
+    },
+    {
+      "callId": "call@281",
+      "time": 32708.535,
+      "method": "press",
+      "params": {
+        "selector": "internal:label=\"Convert to\"s",
+        "strict": true,
+        "key": "Tab"
+      },
+      "after": {
+        "type": "after",
+        "callId": "call@281",
+        "endTime": 32715.617
+      },
+      "logs": [
+        "waiting for getByLabel('Convert to', { exact: true })",
+        "  locator resolved to <input data-rac=\"\" type=\"text\" value=\"CST\" tabindex=\"0\" role=\"combobox\" id=\"target-zone\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" data-focused=\"true\" aria-invalid=\"true\" data-invalid=\"true\" aria-expanded=\"true\" aria-label=\"Convert to\" aria-autocomplete=\"list\" class=\"react-aria-Input\" data-focus-visible=\"true\" aria-describedby=\"target-zone-help\" placeholder=\"Your timezone · Sydney\" aria-controls=\"react-aria6042184981-_r_b_\"/>",
+        "elementHandle.press(\"Tab\")"
+      ]
+    },
+    {
+      "callId": "call@285",
+      "time": 32719.821,
+      "method": "fill",
+      "params": {
+        "selector": "internal:label=\"Convert to\"s",
+        "strict": true,
+        "value": "Asia/Tokyo"
+      },
+      "after": {
+        "type": "after",
+        "callId": "call@285",
+        "endTime": 32730.536
+      },
+      "logs": [
+        "waiting for getByLabel('Convert to', { exact: true })",
+        "  locator resolved to <input data-rac=\"\" type=\"text\" value=\"CST\" tabindex=\"0\" role=\"combobox\" id=\"target-zone\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" aria-invalid=\"true\" data-invalid=\"true\" aria-expanded=\"false\" aria-label=\"Convert to\" aria-autocomplete=\"list\" class=\"react-aria-Input\" aria-describedby=\"target-zone-help\" placeholder=\"Your timezone · Sydney\"/>",
+        "  fill(\"Asia/Tokyo\")",
+        "attempting fill action",
+        "  waiting for element to be visible, enabled and editable"
+      ]
+    },
+    {
+      "callId": "call@293",
+      "time": 32757.205,
+      "method": "hover",
+      "params": {
+        "selector": "[id=\"react-aria6042184981-_r_b_\"] >> internal:role=option[name=\"Osaka\"s]",
+        "strict": true
+      },
+      "after": {
+        "type": "after",
+        "callId": "call@293",
+        "endTime": 32805.486
+      },
+      "logs": [
+        "waiting for locator('[id=\"react-aria6042184981-_r_b_\"]').getByRole('option', { name: 'Osaka', exact: true })",
+        "  locator resolved to <div data-rac=\"\" role=\"option\" aria-setsize=\"2\" data-key=\"osaka\" aria-posinset=\"2\" data-value=\"osaka\" class=\"choice-item\" aria-selected=\"false\" data-selection-mode=\"single\" data-react-aria-pressable=\"true\" id=\"react-aria6042184981-_r_b_-option-osaka\" aria-labelledby=\"react-aria6042184981-_r_36_\" data-collection=\"react-aria6042184981-_r_2q_\" aria-describedby=\"react-aria6042184981-_r_37_\">…</div>",
+        "attempting hover action",
+        "  waiting for element to be visible and stable",
+        "  element is visible and stable",
+        "  scrolling into view if needed",
+        "  done scrolling",
+        "  performing hover action",
+        "  hover action done",
+        "  waiting for scheduled navigations to finish",
+        "  navigations have finished"
+      ]
+    },
+    {
+      "callId": "call@297",
+      "time": 32809.66,
+      "method": "press",
+      "params": {
+        "selector": "internal:label=\"Convert to\"s",
+        "strict": true,
+        "key": "Tab"
+      },
+      "after": {
+        "type": "after",
+        "callId": "call@297",
+        "endTime": 32818.52
+      },
+      "logs": [
+        "waiting for getByLabel('Convert to', { exact: true })",
+        "  locator resolved to <input data-rac=\"\" type=\"text\" tabindex=\"0\" role=\"combobox\" id=\"target-zone\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" value=\"Asia/Tokyo\" data-focused=\"true\" aria-expanded=\"true\" aria-label=\"Convert to\" aria-autocomplete=\"list\" class=\"react-aria-Input\" data-focus-visible=\"true\" aria-describedby=\"target-zone-help\" placeholder=\"Your timezone · Sydney\" aria-controls=\"react-aria6042184981-_r_b_\"/>",
+        "elementHandle.press(\"Tab\")"
+      ]
+    },
+    {
+      "callId": "call@309",
+      "time": 33021.801,
+      "method": "fill",
+      "params": {
+        "selector": "internal:label=\"Convert to\"s",
+        "strict": true,
+        "value": "Asia/Toky"
+      },
+      "after": {
+        "type": "after",
+        "callId": "call@309",
+        "endTime": 33033.768
+      },
+      "logs": [
+        "waiting for getByLabel('Convert to', { exact: true })",
+        "  locator resolved to <input data-rac=\"\" type=\"text\" tabindex=\"0\" role=\"combobox\" id=\"target-zone\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" value=\"Asia/Tokyo\" aria-expanded=\"false\" aria-label=\"Convert to\" aria-autocomplete=\"list\" class=\"react-aria-Input\" aria-describedby=\"target-zone-help\" placeholder=\"Your timezone · Sydney\"/>",
+        "  fill(\"Asia/Toky\")",
+        "attempting fill action",
+        "  waiting for element to be visible, enabled and editable"
+      ]
+    },
+    {
+      "callId": "call@311",
+      "time": 33036.155,
+      "method": "press",
+      "params": {
+        "selector": "internal:label=\"Convert to\"s",
+        "strict": true,
+        "key": "ArrowDown"
+      },
+      "after": {
+        "type": "after",
+        "callId": "call@311",
+        "endTime": 33040.087
+      },
+      "logs": [
+        "waiting for getByLabel('Convert to', { exact: true })",
+        "  locator resolved to <input data-rac=\"\" type=\"text\" tabindex=\"0\" role=\"combobox\" id=\"target-zone\" autocorrect=\"off\" value=\"Asia/Toky\" autocomplete=\"off\" spellcheck=\"false\" data-focused=\"true\" aria-invalid=\"true\" data-invalid=\"true\" aria-expanded=\"true\" aria-label=\"Convert to\" aria-autocomplete=\"list\" class=\"react-aria-Input\" data-focus-visible=\"true\" aria-describedby=\"target-zone-help\" placeholder=\"Your timezone · Sydney\" aria-controls=\"react-aria6042184981-_r_b_\"/>",
+        "elementHandle.press(\"ArrowDown\")"
+      ]
+    },
+    {
+      "callId": "call@313",
+      "time": 33041.389,
+      "method": "press",
+      "params": {
+        "selector": "internal:label=\"Convert to\"s",
+        "strict": true,
+        "key": "End"
+      },
+      "after": {
+        "type": "after",
+        "callId": "call@313",
+        "endTime": 33045.321
+      },
+      "logs": [
+        "waiting for getByLabel('Convert to', { exact: true })",
+        "  locator resolved to <input data-rac=\"\" type=\"text\" tabindex=\"0\" role=\"combobox\" id=\"target-zone\" autocorrect=\"off\" value=\"Asia/Toky\" autocomplete=\"off\" spellcheck=\"false\" data-focused=\"true\" aria-invalid=\"true\" data-invalid=\"true\" aria-expanded=\"true\" aria-label=\"Convert to\" aria-autocomplete=\"list\" class=\"react-aria-Input\" data-focus-visible=\"true\" aria-describedby=\"target-zone-help\" placeholder=\"Your timezone · Sydney\" aria-controls=\"react-aria6042184981-_r_b_\" aria-activedescendant=\"react-aria6042184981-_r_b_-option-…/>",
+        "elementHandle.press(\"End\")"
+      ]
+    },
+    {
+      "callId": "call@317",
+      "time": 33047.748,
+      "method": "press",
+      "params": {
+        "selector": "internal:label=\"Convert to\"s",
+        "strict": true,
+        "key": "Tab"
+      },
+      "after": {
+        "type": "after",
+        "callId": "call@317",
+        "endTime": 33061.705
+      },
+      "logs": [
+        "waiting for getByLabel('Convert to', { exact: true })",
+        "  locator resolved to <input data-rac=\"\" type=\"text\" tabindex=\"0\" role=\"combobox\" id=\"target-zone\" autocorrect=\"off\" value=\"Asia/Toky\" autocomplete=\"off\" spellcheck=\"false\" data-focused=\"true\" aria-invalid=\"true\" data-invalid=\"true\" aria-expanded=\"true\" aria-label=\"Convert to\" aria-autocomplete=\"list\" class=\"react-aria-Input\" data-focus-visible=\"true\" aria-describedby=\"target-zone-help\" placeholder=\"Your timezone · Sydney\" aria-controls=\"react-aria6042184981-_r_b_\" aria-activedescendant=\"react-aria6042184981-_r_b_-option-…/>",
+        "elementHandle.press(\"Tab\")"
+      ]
+    },
+    {
+      "callId": "call@323",
+      "time": 33245.926,
+      "method": "fill",
+      "params": {
+        "selector": "internal:label=\"Convert to\"s",
+        "strict": true,
+        "value": "Tokyo"
+      },
+      "after": {
+        "type": "after",
+        "callId": "call@323",
+        "endTime": 33261.435
+      },
+      "logs": [
+        "waiting for getByLabel('Convert to', { exact: true })",
+        "  locator resolved to <input data-rac=\"\" type=\"text\" tabindex=\"0\" value=\"osaka\" role=\"combobox\" id=\"target-zone\" autocorrect=\"off\" autocomplete=\"off\" spellcheck=\"false\" aria-expanded=\"false\" aria-label=\"Convert to\" aria-autocomplete=\"list\" class=\"react-aria-Input\" aria-describedby=\"target-zone-help\" placeholder=\"Your timezone · Sydney\"/>",
+        "  fill(\"Tokyo\")",
+        "attempting fill action",
+        "  waiting for element to be visible, enabled and editable"
+      ]
+    },
+    {
+      "callId": "call@325",
+      "time": 33264.407,
+      "method": "click",
+      "params": {
+        "selector": "[id=\"react-aria6042184981-_r_b_\"] >> internal:role=option[name=\"Tokyo\"s]",
+        "strict": true
+      },
+      "logs": [
+        "waiting for locator('[id=\"react-aria6042184981-_r_b_\"]').getByRole('option', { name: 'Tokyo', exact: true })"
+      ]
+    }
+  ]
+}

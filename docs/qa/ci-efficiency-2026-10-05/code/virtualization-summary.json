@@ -1,0 +1,135 @@
+{
+  "capturedAt": "2026-10-05T06:17:49.928Z",
+  "runs": [
+    {
+      "kind": "initial",
+      "began": "2026-10-05T06:13:14.473Z",
+      "ended": "2026-10-05T06:14:01.736Z"
+    },
+    {
+      "kind": "corrected-filter-bounds",
+      "began": "2026-10-05T06:14:52.009Z",
+      "ended": "2026-10-05T06:14:55.441Z"
+    },
+    {
+      "kind": "scroll-control",
+      "began": "2026-10-05T06:16:34.962Z",
+      "ended": "2026-10-05T06:16:40.440Z"
+    }
+  ],
+  "validObservations": {
+    "hoverReopen": [
+      {
+        "profile": "chromium",
+        "candidate": false,
+        "passed": true
+      },
+      {
+        "profile": "chromium",
+        "candidate": true,
+        "passed": true
+      },
+      {
+        "profile": "webkit",
+        "candidate": false,
+        "passed": true
+      },
+      {
+        "profile": "webkit",
+        "candidate": true,
+        "passed": true
+      },
+      {
+        "profile": "iphone",
+        "candidate": false,
+        "passed": true
+      },
+      {
+        "profile": "iphone",
+        "candidate": true,
+        "passed": false
+      }
+    ],
+    "desktopFullKeyboard": [
+      {
+        "profile": "chromium",
+        "candidate": false,
+        "passed": true
+      },
+      {
+        "profile": "chromium",
+        "candidate": true,
+        "passed": true
+      },
+      {
+        "profile": "webkit",
+        "candidate": false,
+        "passed": true
+      },
+      {
+        "profile": "webkit",
+        "candidate": true,
+        "passed": true
+      }
+    ],
+    "filterBounds": [
+      {
+        "profile": "chromium",
+        "candidate": false,
+        "passed": true
+      },
+      {
+        "profile": "chromium",
+        "candidate": true,
+        "passed": true
+      },
+      {
+        "profile": "webkit",
+        "candidate": false,
+        "passed": true
+      },
+      {
+        "profile": "webkit",
+        "candidate": true,
+        "passed": true
+      },
+      {
+        "profile": "iphone",
+        "candidate": false,
+        "passed": true
+      },
+      {
+        "profile": "iphone",
+        "candidate": true,
+        "passed": true
+      }
+    ],
+    "scrollControl": [
+      {
+        "height": 664,
+        "candidate": false,
+        "passed": true
+      },
+      {
+        "height": 664,
+        "candidate": true,
+        "passed": false
+      },
+      {
+        "height": 1400,
+        "candidate": false,
+        "passed": true
+      },
+      {
+        "height": 1400,
+        "candidate": true,
+        "passed": true
+      }
+    ]
+  },
+  "excluded": [
+    "Initial getByRole(option) count0 included render-empty placeholder; six invalid probe failures retained.",
+    "Initial iPhone immediate Home/Enter reads not synchronized against focus updates and possible document-scroll close; not claimed candidate-only keyboard bug.",
+    "Failure screenshots in first script can inject CSP styles; their later CSP counts are not normal-use CSP evidence."
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "measuredAt": "2026-10-05T06:09:08.991Z",
+  "revision": "77fbf61b33d0b2752a3f90b20a261f30f0842b0f",
+  "platform": "darwin",
+  "arch": "arm64",
+  "bun": "1.4.0",
+  "results": [
+    {
+      "args": [
+        "bun",
+        "run",
+        "typecheck"
+      ],
+      "start": "2026-10-05T06:09:08.734Z",
+      "end": "2026-10-05T06:09:08.883Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "$ bunx --bun tsc --noEmit\n"
+    },
+    {
+      "args": [
+        "bunx",
+        "--bun",
+        "prettier",
+        "--check",
+        "web/src/components/Choices.tsx",
+        "web/src/style.css"
+      ],
+      "start": "2026-10-05T06:09:08.883Z",
+      "end": "2026-10-05T06:09:08.991Z",
+      "exitCode": 0,
+      "stdout": "Checking formatting...\nAll matched files use Prettier code style!\n",
+      "stderr": ""
+    }
+  ]
+}

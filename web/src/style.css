@@ -451,6 +451,11 @@ select {
   overflow: auto;
   outline: none;
 }
+.choice-list-virtual {
+  /* ListLayout positions rows; keep its viewport out of flex/grid layout. */
+  display: block;
+  overflow-x: hidden;
+}
 .choice-item {
   min-height: 44px;
   padding: 10px 8px;

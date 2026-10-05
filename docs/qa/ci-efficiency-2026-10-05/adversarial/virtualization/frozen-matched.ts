@@ -1,0 +1,4 @@
+import {writeFileSync} from 'node:fs';const results=[];
+for(const kind of ['original','focus'])for(const [which,port] of [['before','4276'],['prototype','4278']]){
+ const start=new Date().toISOString();const cmd=['bunx','--bun','playwright','test','--config=docs/qa/ci-efficiency-2026-10-05/adversarial/virtualization/frozen.config.ts','--grep','hovering timezone suggestions'];const p=Bun.spawn(cmd,{env:{...process.env,CI:'1',CHRONOSHIFT_CI_TIMING:'0',PLAYWRIGHT_PORT:port,REVIEW_VARIANT:which,REVIEW_KIND:kind},stdout:'pipe',stderr:'pipe'});const [out,err,code]=await Promise.all([new Response(p.stdout).text(),new Response(p.stderr).text(),p.exited]);writeFileSync(`${import.meta.dir}/frozen-${kind}-${which}.log`,out+err);const r={kind,which,port,start,end:new Date().toISOString(),cmd,code};results.push(r);writeFileSync(`${import.meta.dir}/frozen-matched-results.json`,JSON.stringify(results,null,2));console.log(JSON.stringify(r));
+}

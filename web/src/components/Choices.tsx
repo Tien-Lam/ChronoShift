@@ -10,6 +10,7 @@ import {
 } from "react-aria-components/Select";
 import { ComboBox, Input } from "react-aria-components/ComboBox";
 import { Group } from "react-aria-components/Group";
+import { Virtualizer, ListLayout } from "react-aria-components/Virtualizer";
 import { cityAliases, resolveCity, zoneIds, zoneName } from "../engine/zones";
 import { diagnostic } from "../platform/diagnostics";
 
@@ -42,9 +43,9 @@ function ChoiceItems({
   options: Option[];
   byValue?: boolean;
 }) {
-  return (
+  const list = (
     <ListBox
-      className="choice-list"
+      className={byValue ? "choice-list choice-list-virtual" : "choice-list"}
       items={options}
       // A suggestion appearing under the pointer must not become the value
       // committed by Tab. Arrow navigation and option presses still select.
@@ -79,6 +80,18 @@ function ChoiceItems({
         </ListBoxItem>
       )}
     </ListBox>
+  );
+  return byValue ? (
+    <Virtualizer
+      layout={ListLayout}
+      // Description rows start near 62px; measure their natural wrapped height.
+      layoutOptions={{ estimatedRowSize: 62 }}
+      shouldObserveItemSize
+    >
+      {list}
+    </Virtualizer>
+  ) : (
+    list
   );
 }
 export function ChoiceSelect({

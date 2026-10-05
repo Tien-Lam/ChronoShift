@@ -1,0 +1,34 @@
+[
+  {
+    "which": "before",
+    "port": "4276",
+    "start": "2026-10-05T06:15:47.363Z",
+    "end": "2026-10-05T06:16:17.901Z",
+    "cmd": [
+      "bunx",
+      "--bun",
+      "playwright",
+      "test",
+      "--config=docs/qa/ci-efficiency-2026-10-05/adversarial/virtualization/matched.config.ts",
+      "--grep",
+      "hovering timezone suggestions"
+    ],
+    "code": 1
+  },
+  {
+    "which": "prototype",
+    "port": "4278",
+    "start": "2026-10-05T06:16:17.902Z",
+    "end": "2026-10-05T06:16:48.438Z",
+    "cmd": [
+      "bunx",
+      "--bun",
+      "playwright",
+      "test",
+      "--config=docs/qa/ci-efficiency-2026-10-05/adversarial/virtualization/matched.config.ts",
+      "--grep",
+      "hovering timezone suggestions"
+    ],
+    "code": 1
+  }
+]

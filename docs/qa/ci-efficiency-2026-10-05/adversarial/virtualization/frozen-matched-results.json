@@ -1,0 +1,70 @@
+[
+  {
+    "kind": "original",
+    "which": "before",
+    "port": "4276",
+    "start": "2026-10-05T06:23:53.919Z",
+    "end": "2026-10-05T06:23:56.025Z",
+    "cmd": [
+      "bunx",
+      "--bun",
+      "playwright",
+      "test",
+      "--config=docs/qa/ci-efficiency-2026-10-05/adversarial/virtualization/frozen.config.ts",
+      "--grep",
+      "hovering timezone suggestions"
+    ],
+    "code": 0
+  },
+  {
+    "kind": "original",
+    "which": "prototype",
+    "port": "4278",
+    "start": "2026-10-05T06:23:56.025Z",
+    "end": "2026-10-05T06:24:26.557Z",
+    "cmd": [
+      "bunx",
+      "--bun",
+      "playwright",
+      "test",
+      "--config=docs/qa/ci-efficiency-2026-10-05/adversarial/virtualization/frozen.config.ts",
+      "--grep",
+      "hovering timezone suggestions"
+    ],
+    "code": 1
+  },
+  {
+    "kind": "focus",
+    "which": "before",
+    "port": "4276",
+    "start": "2026-10-05T06:24:26.557Z",
+    "end": "2026-10-05T06:24:28.943Z",
+    "cmd": [
+      "bunx",
+      "--bun",
+      "playwright",
+      "test",
+      "--config=docs/qa/ci-efficiency-2026-10-05/adversarial/virtualization/frozen.config.ts",
+      "--grep",
+      "hovering timezone suggestions"
+    ],
+    "code": 0
+  },
+  {
+    "kind": "focus",
+    "which": "prototype",
+    "port": "4278",
+    "start": "2026-10-05T06:24:28.943Z",
+    "end": "2026-10-05T06:24:31.300Z",
+    "cmd": [
+      "bunx",
+      "--bun",
+      "playwright",
+      "test",
+      "--config=docs/qa/ci-efficiency-2026-10-05/adversarial/virtualization/frozen.config.ts",
+      "--grep",
+      "hovering timezone suggestions"
+    ],
+    "code": 0
+  }
+]

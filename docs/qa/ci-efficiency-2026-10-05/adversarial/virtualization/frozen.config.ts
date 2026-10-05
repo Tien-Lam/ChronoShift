@@ -1,0 +1,2 @@
+import base from '/Users/tien/Developer/ChronoShift/playwright.config.ts';import {defineConfig} from '@playwright/test';
+export default defineConfig({...base,testDir:import.meta.dir,testMatch:`frozen-${process.env.REVIEW_KIND}.spec.ts`,testIgnore:[],workers:1,retries:0,webServer:undefined,reporter:'list',outputDir:`${import.meta.dir}/frozen-${process.env.REVIEW_KIND}-${process.env.REVIEW_VARIANT}`,projects:base.projects!.filter(p=>p.name==='iphone-emulation'),use:{...base.use,trace:'off',screenshot:'off'}});
