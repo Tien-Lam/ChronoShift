@@ -46,6 +46,9 @@ function ChoiceItems({
     <ListBox
       className="choice-list"
       items={options}
+      // A suggestion appearing under the pointer must not become the value
+      // committed by Tab. Arrow navigation and option presses still select.
+      shouldFocusOnHover={byValue ? false : undefined}
       renderEmptyState={() => <div className="choice-empty">No matches</div>}
     >
       {(item) => (
