@@ -86,6 +86,8 @@ export async function setupOffline(
     let installedUpdate: ServiceWorker | undefined;
     let cancelInspection = () => {};
     let retryTimer: ReturnType<typeof setTimeout> | undefined;
+    let probeRetryTimer: ReturnType<typeof setTimeout> | undefined;
+    let probeRetries = 0;
     // A slow or rejected first installation must not stop lifecycle observers.
     const readyTimer = setTimeout(() => {
       if (!signal.aborted && !confirmed) {
@@ -107,6 +109,7 @@ export async function setupOffline(
         cancelInspection();
         clearTimeout(readyTimer);
         clearTimeout(retryTimer);
+        clearTimeout(probeRetryTimer);
       },
       { once: true },
     );
@@ -150,10 +153,39 @@ export async function setupOffline(
       installedUpdate !== navigator.serviceWorker.controller
         ? installedUpdate
         : undefined);
+    const retryProbe = (controller: ServiceWorker) => {
+      if (
+        signal.aborted ||
+        confirmed ||
+        probeRetryTimer ||
+        probeRetries >= 2 ||
+        navigator.serviceWorker.controller !== controller
+      )
+        return;
+      probeRetryTimer = setTimeout(
+        () => {
+          probeRetryTimer = undefined;
+          if (
+            signal.aborted ||
+            navigator.serviceWorker.controller !== controller
+          )
+            return;
+          probeRetries++;
+          inspect("probe-retry");
+        },
+        probeRetries === 0 ? 1000 : 3000,
+      );
+    };
     const inspect = (reason = "lifecycle") => {
       if (signal.aborted) return;
+      if (reason !== "probe-retry") {
+        clearTimeout(probeRetryTimer);
+        probeRetryTimer = undefined;
+        probeRetries = 0;
+      }
       diagnostic("offline.probe-start", {
         reason,
+        attempt: probeRetries + 1,
         controlled: !!navigator.serviceWorker.controller,
         online: navigator.onLine,
         activeState: registration.active?.state || "absent",
@@ -210,6 +242,7 @@ export async function setupOffline(
             );
           }
           close();
+          retryProbe(controller);
         }, 15000);
         cancelInspection = close;
         const started = performance.now();
@@ -229,6 +262,7 @@ export async function setupOffline(
               navigator.serviceWorker.controller === controller;
             verifiedUncontrolled = event.data.ready === true && !confirmed;
             if (confirmed) clearTimeout(readyTimer);
+            if (confirmed) clearTimeout(probeRetryTimer);
             const update = pendingUpdate();
             publish(
               {
@@ -271,6 +305,7 @@ export async function setupOffline(
           }
           close();
           channel.port2.close();
+          retryProbe(controller);
         }
       } else {
         confirmed = false;

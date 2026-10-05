@@ -22,7 +22,11 @@ export default defineConfig({
   // Four workers outperform oversubscription on the measured Linux runner.
   workers: process.env.CI ? 4 : 3,
   retries: process.env.CI ? 1 : 0,
-  reporter: [["list"], ["html", { open: "never" }]],
+  reporter: [
+    ["list"],
+    ["html", { open: "never" }],
+    ["./e2e/attempt-reporter.ts"],
+  ],
   use: {
     baseURL: `http://127.0.0.1:${port}`,
     locale: "en-AU",

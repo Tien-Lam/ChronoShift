@@ -73,7 +73,9 @@ jobs:
       - name: Verify repository-subpath deployment
         run: |
           bun run build
-          bunx --bun playwright test --config=playwright.subpath.config.ts
+          # Keep browser first-attempt evidence when the separate subpath
+          # runner clears its own output before starting.
+          bunx --bun playwright test --config=playwright.subpath.config.ts --output=test-results/subpath
         env:
           BASE_PATH: /ChronoShift/
       - name: Upload the verified Pages build
@@ -82,8 +84,8 @@ jobs:
         with:
           path: dist
           retention-days: ${{ inputs.publish-pages && 14 || 1 }}
-      - name: Publish failure diagnostics
-        if: failure()
+      - name: Publish failed-attempt diagnostics
+        if: ${{ !cancelled() && (failure() || hashFiles('test-results/attempt-failures.json') != '') }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: chronoshift-web-failure-${{ github.run_id }}-${{ github.run_attempt }}
