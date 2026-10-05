@@ -1,0 +1,47 @@
+
+Running 24 tests using 3 workers
+
+(node:94916) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:94917) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:94915) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓   2 [chromium] › e2e/app.spec.ts:163:0 › pasted HTML cannot execute or fetch its URL (633ms)
+  ✓   3 [chromium] › e2e/app.spec.ts:226:0 › close and reopen offline, then convert previously unseen input (1.1s)
+  ✓   1 [chromium] › e2e/app.spec.ts:250:0 › preferences persist, input does not; denied storage still converts (1.4s)
+  ✓   4 [chromium] › e2e/app.spec.ts:278:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (2.0s)
+  ✓   7 [chromium] › e2e/privacy.spec.ts:7:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (1.1s)
+  ✓   6 [chromium] › e2e/controls.spec.ts:340:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (2.8s)
+(node:94960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓   8 [chromium] › e2e/privacy.spec.ts:7:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (1.1s)
+(node:94970) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓   5 [chromium] › e2e/controls.spec.ts:233:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (4.7s)
+  ✓   9 [firefox] › e2e/app.spec.ts:163:0 › pasted HTML cannot execute or fetch its URL (1.1s)
+(node:94987) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  10 [firefox] › e2e/app.spec.ts:226:0 › close and reopen offline, then convert previously unseen input (1.7s)
+  ✓  11 [firefox] › e2e/app.spec.ts:278:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (2.6s)
+  ✓  12 [firefox] › e2e/app.spec.ts:250:0 › preferences persist, input does not; denied storage still converts (2.1s)
+  ✓  15 [firefox] › e2e/privacy.spec.ts:7:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (1.6s)
+  ✓  16 [firefox] › e2e/privacy.spec.ts:7:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (1.6s)
+  ✓  14 [firefox] › e2e/controls.spec.ts:340:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (3.4s)
+  ✓  13 [firefox] › e2e/controls.spec.ts:233:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (4.7s)
+(node:95040) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:95051) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+(node:95052) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `bun --trace-warnings ...` to show where the warning was created)
+  ✓  17 [webkit] › e2e/app.spec.ts:163:0 › pasted HTML cannot execute or fetch its URL (770ms)
+  ✓  18 [webkit] › e2e/app.spec.ts:226:0 › close and reopen offline, then convert previously unseen input (1.5s)
+  ✓  19 [webkit] › e2e/app.spec.ts:250:0 › preferences persist, input does not; denied storage still converts (1.7s)
+  ✓  20 [webkit] › e2e/app.spec.ts:278:0 › input errors recover, edits invalidate results, keyboard keeps multiline input (1.6s)
+  ✓  23 [webkit] › e2e/privacy.spec.ts:7:2 › legacy lens preferences migrate, reset removes them and quota failures keep conversion usable (1.5s)
+  ✓  22 [webkit] › e2e/controls.spec.ts:340:0 › timezone search preserves freeform offsets and recovers from empty and invalid choices (3.0s)
+  ✓  24 [webkit] › e2e/privacy.spec.ts:7:2 › legacy command preferences migrate, reset removes them and quota failures keep conversion usable (1.5s)
+  ✓  21 [webkit] › e2e/controls.spec.ts:233:0 › choice menus support keyboard selection, nested Escape and pointer dismissal (4.5s)
+
+  24 passed (18.7s)

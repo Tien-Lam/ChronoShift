@@ -1,0 +1,3 @@
+# Preserved pre-candidate probe
+
+Actual run: 2026-10-05T08:03:46.355Z–08:03:51.422Z. This ran during implementation, before an exact candidate revision was provided. The synthetic script passed a timeout callback itself into Playwright's numeric `timeout` option, while the in-progress helper API provided a live remaining-time callback. All three positive coalesced rows therefore failed their probe assertion setup; 21 explicit failure/cleanup rows passed. All 24 rows had zero surviving tracked observers/timers and zero unhandled page errors. Preserve this original instead of using it as candidate acceptance. The script was corrected to invoke the live remaining-time callback; no application/helper source was changed by the reviewer.

@@ -1,0 +1,15 @@
+commit 0f0d9d3ec38b8b53cd42b8413e52c7a0d5067318
+Author:     Tien Long Lam <lamtienlong9@gmail.com>
+AuthorDate: Mon Oct 5 19:05:19 2026 +1100
+Commit:     Tien Long Lam <lamtienlong9@gmail.com>
+CommitDate: Mon Oct 5 19:05:19 2026 +1100
+
+    Observe completed conversions before exact browser assertions
+
+ docs/qa/ci-conversion-sync-2026-10-05/dispatch.md |  16 +++
+ e2e/app.spec.ts                                   |  31 +++--
+ e2e/controls.spec.ts                              |  20 +--
+ e2e/conversion.ts                                 | 153 ++++++++++++++++++++++
+ e2e/privacy.spec.ts                               |  28 ++--
+ e2e/responsive.spec.ts                            |  13 +-
+ 6 files changed, 224 insertions(+), 37 deletions(-)
