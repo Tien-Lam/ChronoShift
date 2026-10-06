@@ -581,5 +581,19 @@
     "referenceDate": "2026-04-09",
     "instants": ["2026-04-12T15:00:00Z"],
     "assumption": "Reference date used: 2026-04-09"
+  },
+  {
+    "name": "relative mixed zone range discloses reference date",
+    "text": "Tomorrow at 3pm UTC to 5pm JST",
+    "referenceDate": "2024-01-01",
+    "instants": ["2024-01-02T15:00:00Z", "2024-01-02T08:00:00Z"],
+    "assumption": "Reference date used: 2024-01-01"
+  },
+  {
+    "name": "incomplete mixed zone range uses reference year",
+    "text": "April 9 at 3pm UTC to 5pm JST",
+    "referenceDate": "2024-01-01",
+    "instants": ["2024-04-09T15:00:00Z", "2024-04-09T08:00:00Z"],
+    "assumption": "Reference date used: 2024-01-01"
   }
 ]

@@ -1,4 +1,4 @@
-import { dayFirst, monthFirst } from "./parser";
+import { dayFirst, monthFirst, usesReferenceDate } from "./parser";
 import type { ParsedComponents } from "chrono-node";
 import { Temporal } from "@js-temporal/polyfill";
 import {
@@ -32,17 +32,6 @@ function componentDate(c: ParsedComponents): Temporal.PlainDate {
   return Temporal.PlainDate.from(
     { year: c.get("year")!, month: c.get("month")!, day: c.get("day")! },
     { overflow: "reject" },
-  );
-}
-function usesReferenceDate(c: ParsedComponents): boolean {
-  return (
-    ["year", "month", "day"].some(
-      (part) => !c.isCertain(part as "year" | "month" | "day"),
-    ) ||
-    [...c.tags()].some(
-      (tag) =>
-        tag.startsWith("casualReference/") || tag === "result/relativeDate",
-    )
   );
 }
 function referenceAssumption(now: string, zone: string): string {

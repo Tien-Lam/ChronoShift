@@ -113,3 +113,62 @@ test("reference assumptions describe incomplete dates without claiming fully spe
     convert("April 9, 2026\nMeet at 3pm UTC", fixed).results[0].assumptions,
   ).toEqual(["Date from message context: 2026-04-09"]);
 });
+test("range reference annotations follow inherited date provenance instead of endpoint certainty", () => {
+  const fullRanges = [
+    {
+      text: "April 9, 2026 3pm UTC to 5pm JST",
+      instants: ["2026-04-09T15:00:00Z", "2026-04-09T08:00:00Z"],
+    },
+    {
+      text: "April 9, 2026 3pm UTC to 5pm UTC",
+      instants: ["2026-04-09T15:00:00Z", "2026-04-09T17:00:00Z"],
+    },
+    {
+      text: "3pm to April 9, 2026 5pm UTC",
+      instants: ["2026-04-09T15:00:00Z", "2026-04-09T17:00:00Z"],
+    },
+    {
+      text: "April 9, 2026 3pm UTC to April 10 at 5pm JST",
+      instants: ["2026-04-09T15:00:00Z", "2026-04-10T08:00:00Z"],
+    },
+  ];
+  for (const referenceDate of ["2024-01-01", "2030-12-31"])
+    for (const { text, instants } of fullRanges) {
+      const results = convert(text, { ...options, referenceDate }).results;
+      expect(results.map((r) => r.instant)).toEqual(instants);
+      for (const result of results)
+        expect(
+          result.assumptions.filter((a) =>
+            a.startsWith("Reference date used:"),
+          ),
+        ).toEqual([]);
+    }
+  for (const { text, instants, referenceEndpoints } of [
+    {
+      text: "Tomorrow at 3pm UTC to 5pm JST",
+      instants: ["2024-01-02T15:00:00Z", "2024-01-02T08:00:00Z"],
+      referenceEndpoints: [true, true],
+    },
+    {
+      text: "April 9 at 3pm UTC to 5pm JST",
+      instants: ["2024-04-09T15:00:00Z", "2024-04-09T08:00:00Z"],
+      referenceEndpoints: [true, true],
+    },
+    {
+      text: "April 9, 2026 3pm UTC to tomorrow at 5pm JST",
+      instants: ["2026-04-09T15:00:00Z", "2024-01-02T08:00:00Z"],
+      referenceEndpoints: [false, true],
+    },
+  ]) {
+    const results = convert(text, {
+      ...options,
+      referenceDate: "2024-01-01",
+    }).results;
+    expect(results.map((r) => r.instant)).toEqual(instants);
+    expect(
+      results.map((r) =>
+        r.assumptions.includes("Reference date used: 2024-01-01"),
+      ),
+    ).toEqual(referenceEndpoints);
+  }
+});
