@@ -25,7 +25,7 @@ export function Disclosure({
         ref={trigger}
         className="options-trigger"
         type="button"
-        aria-label="More options"
+        aria-label="Adjust interpretation & format (More options)"
         aria-expanded={open}
         aria-controls="interpretation-options"
         onClick={() => onOpenChange(!open)}

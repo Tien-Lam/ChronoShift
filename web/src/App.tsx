@@ -462,6 +462,8 @@ export default function App() {
   }
   async function copy(result: TimeResult) {
     if (!targetZone || !sourceZone) return;
+    clearTimeout(copyReset.current);
+    setCopyState(undefined);
     const copyId = ++copyRequest.current;
     const focusIntent = copyFocusIntent.current;
     const value = copyText(result, displayOptions);
@@ -881,7 +883,12 @@ export default function App() {
                     : "Converted time"
                 }
               >
-                {targetZone ? `In ${zoneName(targetZone)}` : "Converted time"}
+                <span className="destination-light" aria-hidden="true">
+                  {targetZone ? `In ${zoneName(targetZone)}` : "Converted time"}
+                </span>
+                <span className="destination-dark" aria-hidden="true">
+                  {targetZone ? `In ${zoneName(targetZone)}` : "Converted time"}
+                </span>
               </h2>
               <span className="live-indicator" data-state={liveState}>
                 {liveState === "pending"
@@ -918,7 +925,7 @@ export default function App() {
             {!conversion.results.length &&
               !visibleError &&
               !conversion.warnings.length && (
-                <div className="result-placeholder">
+                <div className="result-placeholder" key={liveState}>
                   <span className="large-clock" aria-hidden="true" />
                   <h3>
                     {busy
@@ -1014,7 +1021,7 @@ export default function App() {
                         </div>
                         <div className="result-context">
                           {index === 0 && entries.length > 1 && (
-                            <span className="ambiguity">
+                            <span className="ambiguity" key={entries.length}>
                               {entries.length} possible interpretations
                             </span>
                           )}

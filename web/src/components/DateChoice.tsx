@@ -122,6 +122,8 @@ export function DateChoice({
       </Group>
       <Popover
         className="choice-popover calendar-popover"
+        inert={!isOpen}
+        aria-hidden={!isOpen}
         placement="bottom start"
         offset={8}
         containerPadding={12}

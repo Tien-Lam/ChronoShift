@@ -177,6 +177,7 @@ a:focus-visible {
   z-index: 2;
 }
 .appearance summary {
+  width: 124px;
   cursor: pointer;
   list-style: none;
   display: flex;
@@ -1106,14 +1107,34 @@ footer p {
     transform: scale(1);
   }
 }
-:root[data-theme="light"] .result-heading h2 {
+/* Both typographic variants reserve the same heading geometry during a theme change. */
+.result-heading h2 {
+  display: grid;
+  min-width: 0;
+}
+.destination-light,
+.destination-dark {
+  grid-area: 1 / 1;
+}
+.destination-light {
   font-family: Georgia, serif;
   font-weight: 400;
   font-size: 32px;
+  visibility: hidden;
+}
+.destination-dark {
+  font-family: Geist, sans-serif;
+  font-weight: 590;
+  font-size: 24px;
+}
+:root[data-theme="light"] .destination-light {
+  visibility: visible;
+}
+:root[data-theme="light"] .destination-dark {
+  visibility: hidden;
 }
 :root[data-theme="dark"] .hero-time {
   color: var(--accent);
-  font-weight: 420;
 }
 :root[data-theme-changing],
 :root[data-theme-changing] .topbar,
@@ -1210,4 +1231,9 @@ footer p {
     background-color 200ms ease,
     color 200ms ease,
     border-color 200ms ease;
+}
+
+.result-placeholder,
+.ambiguity {
+  animation: surface-fade 180ms var(--motion-ease);
 }
