@@ -192,12 +192,12 @@ test("an unresolved target hides copyable fallback results and correction restor
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3pm UTC");
   await expect(page.locator(".hero-time")).toContainText(/3:00 pm/i);
-  await page.getByRole("button", { name: "Copy UTC", exact: true }).click();
+  await page.getByRole("button", { name: /^Copy .* · UTC$/ }).click();
   await expect(page.getByLabel("Text to copy")).toBeVisible();
   await enterZone(page, "CST");
   await expect(page.locator(".result")).toHaveCount(0);
   await expect(
-    page.getByRole("button", { name: "Copy UTC", exact: true }),
+    page.getByRole("button", { name: /^Copy .* · UTC$/ }),
   ).toHaveCount(0);
   await expect(page.getByLabel("Text to copy")).toHaveCount(0);
   await expect(page.getByRole("alert")).toContainText("Choose a timezone");
@@ -207,14 +207,14 @@ test("an unresolved target hides copyable fallback results and correction restor
   await expect(page.locator(".hero-time")).toContainText(/12:00 am/i);
   await expect(page.locator(".result-date")).toContainText(/10 Apr/);
   await expect(page.locator(".source-label")).toHaveText("UTC");
-  await page.getByRole("button", { name: "Copy UTC", exact: true }).click();
+  await page.getByRole("button", { name: /^Copy .* · UTC$/ }).click();
   await expect(page.getByLabel("Text to copy")).toHaveValue(
     /UTC\+09:00.*Tokyo/s,
   );
   await page.evaluate(() => {
     (window as any).delayCopy = true;
   });
-  await page.getByRole("button", { name: "Copy UTC", exact: true }).click();
+  await page.getByRole("button", { name: /^Copy .* · UTC$/ }).click();
   await enterZone(page, "CST");
   await page.evaluate(() =>
     (window as any).rejectCopy(new Error("Delayed clipboard rejection")),

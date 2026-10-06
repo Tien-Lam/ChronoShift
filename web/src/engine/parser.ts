@@ -1,11 +1,31 @@
 import { en } from "chrono-node";
 import type { Chrono } from "chrono-node";
 import type { ParsingResult } from "chrono-node";
+import type { ParsedComponents } from "chrono-node";
 import { Temporal } from "@js-temporal/polyfill";
 import { AMBIGUOUS, FIXED, REGIONAL } from "./zones";
 const abbreviations = Object.keys({ ...FIXED, ...AMBIGUOUS, ...REGIONAL }).join(
   "|",
 );
+const dateParts = ["year", "month", "day"] as const;
+function referenceDateParts(c: ParsedComponents) {
+  const tags = c.tags();
+  const relative = [...tags].some(
+    (tag) =>
+      tag.startsWith("casualReference/") || tag === "result/relativeDate",
+  );
+  return Object.fromEntries(
+    dateParts.map((part) => [
+      part,
+      tags.has("chronoshift/resolved-date")
+        ? tags.has(`chronoshift/reference-${part}`)
+        : relative || !c.isCertain(part),
+    ]),
+  ) as Record<(typeof dateParts)[number], boolean>;
+}
+export function usesReferenceDate(c: ParsedComponents): boolean {
+  return Object.values(referenceDateParts(c)).some(Boolean);
+}
 function extend(parser: Chrono): Chrono {
   // Chrono's range merger sorts endpoints by instant. Our contract preserves
   // textual clock/zone identity, and treats a lower end clock as overnight.
@@ -33,6 +53,16 @@ function extend(parser: Chrono): Chrono {
       return merge(between, from, to);
     const result = from.clone();
     result.end = to.start.clone();
+    // Chrono's clone drops tags. Preserve relative-date provenance before
+    // recording which date components the range inherits from either side.
+    result.start.addTags(
+      [...from.start.tags()].filter((tag) => !tag.startsWith("chronoshift/")),
+    );
+    result.end.addTags(
+      [...to.start.tags()].filter((tag) => !tag.startsWith("chronoshift/")),
+    );
+    let startReference = referenceDateParts(from.start);
+    let endReference = referenceDateParts(to.start);
     const clock = (c: typeof result.start) =>
       ((c.get("hour") || 0) * 3600 +
         (c.get("minute") || 0) * 60 +
@@ -55,11 +85,13 @@ function extend(parser: Chrono): Chrono {
       if (clock(result.start) > clock(result.end))
         date = date.subtract({ days: 1 });
       implyDate(result.start, date);
+      startReference = { ...endReference };
     } else if (
       !result.start.isCertain("year") &&
       result.end.isCertain("year")
     ) {
       result.start.imply("year", result.end.get("year")!);
+      startReference.year = endReference.year;
       if (
         Temporal.PlainDate.compare(dateOf(result.start), dateOf(result.end)) > 0
       )
@@ -69,12 +101,22 @@ function extend(parser: Chrono): Chrono {
       let date = dateOf(result.start);
       if (clock(result.end) < clock(result.start)) date = date.add({ days: 1 });
       implyDate(result.end, date);
+      endReference = { ...startReference };
     } else if (!result.end.isCertain("year")) {
       result.end.imply("year", result.start.get("year")!);
+      endReference.year = startReference.year;
       if (
         Temporal.PlainDate.compare(dateOf(result.end), dateOf(result.start)) < 0
       )
         result.end.imply("year", result.start.get("year")! + 1);
+    }
+    for (const [components, reference] of [
+      [result.start, startReference],
+      [result.end, endReference],
+    ] as const) {
+      components.addTag("chronoshift/resolved-date");
+      for (const part of dateParts)
+        if (reference[part]) components.addTag(`chronoshift/reference-${part}`);
     }
     result.text = from.text + between + to.text;
     return result;

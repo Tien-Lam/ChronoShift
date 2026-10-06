@@ -27,6 +27,10 @@ describe("independently specified temporal fixtures", () => {
       expect(
         result.results.flatMap((r) => (r.dateOnly ? [r.dateOnly] : [])),
       ).toEqual(("dates" in f ? f.dates : []) || []);
+      if (f.endpoints)
+        expect(result.results.map((r) => String(r.endpoint))).toEqual(
+          f.endpoints,
+        );
       if ("warning" in f)
         expect(result.warnings.join("\n")).toContain(f.warning!);
       else expect(result.warnings).toEqual([]);
@@ -96,4 +100,75 @@ test("reference date override leaves source zone independent of target", () => {
     targetZone: "Asia/Tokyo",
   });
   expect(result.results[0].instant).toBe("2026-07-02T09:00:00Z");
+});
+test("reference assumptions describe incomplete dates without claiming fully specified dates used the reference", () => {
+  const fixed = { ...options, referenceDate: "2026-04-09" };
+  for (const text of ["July 15, 2026 at 3pm UTC", "July 15, 2026"])
+    expect(convert(text, fixed).results[0].assumptions).toEqual([]);
+  expect(convert("July 15 at 3pm UTC", fixed).results[0].assumptions).toEqual([
+    "Year assumed: 2026",
+    "Reference date used: 2026-04-09",
+  ]);
+  expect(
+    convert("April 9, 2026\nMeet at 3pm UTC", fixed).results[0].assumptions,
+  ).toEqual(["Date from message context: 2026-04-09"]);
+});
+test("range reference annotations follow inherited date provenance instead of endpoint certainty", () => {
+  const fullRanges = [
+    {
+      text: "April 9, 2026 3pm UTC to 5pm JST",
+      instants: ["2026-04-09T15:00:00Z", "2026-04-09T08:00:00Z"],
+    },
+    {
+      text: "April 9, 2026 3pm UTC to 5pm UTC",
+      instants: ["2026-04-09T15:00:00Z", "2026-04-09T17:00:00Z"],
+    },
+    {
+      text: "3pm to April 9, 2026 5pm UTC",
+      instants: ["2026-04-09T15:00:00Z", "2026-04-09T17:00:00Z"],
+    },
+    {
+      text: "April 9, 2026 3pm UTC to April 10 at 5pm JST",
+      instants: ["2026-04-09T15:00:00Z", "2026-04-10T08:00:00Z"],
+    },
+  ];
+  for (const referenceDate of ["2024-01-01", "2030-12-31"])
+    for (const { text, instants } of fullRanges) {
+      const results = convert(text, { ...options, referenceDate }).results;
+      expect(results.map((r) => r.instant)).toEqual(instants);
+      for (const result of results)
+        expect(
+          result.assumptions.filter((a) =>
+            a.startsWith("Reference date used:"),
+          ),
+        ).toEqual([]);
+    }
+  for (const { text, instants, referenceEndpoints } of [
+    {
+      text: "Tomorrow at 3pm UTC to 5pm JST",
+      instants: ["2024-01-02T15:00:00Z", "2024-01-02T08:00:00Z"],
+      referenceEndpoints: [true, true],
+    },
+    {
+      text: "April 9 at 3pm UTC to 5pm JST",
+      instants: ["2024-04-09T15:00:00Z", "2024-04-09T08:00:00Z"],
+      referenceEndpoints: [true, true],
+    },
+    {
+      text: "April 9, 2026 3pm UTC to tomorrow at 5pm JST",
+      instants: ["2026-04-09T15:00:00Z", "2024-01-02T08:00:00Z"],
+      referenceEndpoints: [false, true],
+    },
+  ]) {
+    const results = convert(text, {
+      ...options,
+      referenceDate: "2024-01-01",
+    }).results;
+    expect(results.map((r) => r.instant)).toEqual(instants);
+    expect(
+      results.map((r) =>
+        r.assumptions.includes("Reference date used: 2024-01-01"),
+      ),
+    ).toEqual(referenceEndpoints);
+  }
 });

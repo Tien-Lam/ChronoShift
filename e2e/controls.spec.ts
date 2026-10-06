@@ -130,7 +130,7 @@ test("themed choices align and their opened menus fit every breakpoint without l
         expect(panel.y - appearance.y - appearance.height).toBeCloseTo(8, 1);
         expect(panel.x).toBeGreaterThanOrEqual(0);
         expect(panel.x + panel.width).toBeLessThanOrEqual(width);
-        for (const label of ["Theme", "Numeric dates", "Time display"]) {
+        for (const label of ["Theme", "Date format", "Time format"]) {
           const trigger = choiceTrigger(page, label);
           await trigger.click();
           const background = await expectPopup(page, trigger, width);
@@ -168,7 +168,15 @@ test("themed choices align and their opened menus fit every breakpoint without l
           ["target-zone", "Show target timezones"],
           ["source-zone", "Show source timezones"],
         ]) {
-          await page.getByRole("button", { name: button, exact: true }).click();
+          const toggle = page.getByRole("button", {
+            name: button,
+            exact: true,
+          });
+          // Reach the control before opening it, as a touch user would.
+          // Scrolling from a previously focused offscreen format field during
+          // the synthetic click can dismiss the newly opened combobox popup.
+          await toggle.scrollIntoViewIfNeeded();
+          await toggle.click();
           expect(await expectPopup(page, page.locator(`#${id}`), width)).toBe(
             backgrounds.get(theme),
           );
@@ -247,7 +255,7 @@ test("choice menus support keyboard selection, nested Escape and pointer dismiss
   await expect(page.getByLabel("Appearance", { exact: true })).toBeFocused();
 
   await page.getByText("More options", { exact: true }).click();
-  const time = choiceTrigger(page, "Time display");
+  const time = choiceTrigger(page, "Time format");
   await time.focus();
   await time.press("ArrowDown");
   await page.keyboard.press("End");
@@ -267,7 +275,7 @@ test("choice menus support keyboard selection, nested Escape and pointer dismiss
   await expect(page.getByRole("listbox")).toHaveCount(0);
   await expect(time).toHaveAttribute("data-value", "24");
 
-  await choose(page, "Numeric dates", "dmy");
+  await choose(page, "Date format", "dmy");
   await enterZone(page, "UTC");
   await page
     .getByLabel("Message with a date or time")
@@ -276,7 +284,7 @@ test("choice menus support keyboard selection, nested Escape and pointer dismiss
     /4 Sep(?:t(?:ember)?)? 2026/,
   );
   await expect(page.locator(".hero-time")).toHaveText("15:00");
-  await choose(page, "Numeric dates", "mdy");
+  await choose(page, "Date format", "mdy");
   await expect(page.locator(".result-date")).toHaveText(/9 Apr(?:il)? 2026/);
   await enterReferenceDate(page, "2026-04-09");
   await page
@@ -343,7 +351,7 @@ test("timezone search preserves freeform offsets and recovers from empty and inv
   await page.goto("/");
   await page.getByText("More options", { exact: true }).click();
   const target = page.getByLabel("Convert to", { exact: true });
-  const source = page.getByLabel("Source timezone when none is given", {
+  const source = page.getByLabel("Source timezone", {
     exact: true,
   });
   await source.fill("UTC");
@@ -406,24 +414,29 @@ test("timezone search preserves freeform offsets and recovers from empty and inv
 
 test("hovering timezone suggestions preserves typed values while explicit selections still commit", async ({
   page,
+  browserName,
+  isMobile,
 }) => {
   await page.goto("/");
   await page.getByText("More options", { exact: true }).click();
-  await enterZone(page, "UTC", "Source timezone when none is given");
+  await enterZone(page, "UTC", "Source timezone");
   await enterZone(page, "UTC");
   await page
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3pm UTC");
-  for (const label of ["Convert to", "Source timezone when none is given"]) {
+  for (const label of ["Convert to", "Source timezone"]) {
     const input = page.getByLabel(label, { exact: true });
     const other = page.getByLabel(
-      label === "Convert to"
-        ? "Source timezone when none is given"
-        : "Convert to",
+      label === "Convert to" ? "Source timezone" : "Convert to",
       { exact: true },
     );
     const otherValue = await other.inputValue();
     await enterZone(page, "CST", label);
+    // Bring the field back into view after Tab focused the next control.
+    // fill() can otherwise focus an offscreen field and dismiss the newly
+    // opened suggestions when the browser performs its delayed focus scroll.
+    await input.scrollIntoViewIfNeeded();
+    await input.click();
     await input.fill("Asia/Tokyo");
     await expect(input).toHaveAttribute("aria-controls", /.+/);
     const suggestions = page.locator(
@@ -445,6 +458,8 @@ test("hovering timezone suggestions preserves typed values while explicit select
     await expect(page.locator(".result-date")).toContainText("10 Apr");
 
     // Navigation and selection are deliberate actions, unlike mere hover.
+    await input.scrollIntoViewIfNeeded();
+    await input.click();
     await input.fill("Asia/Toky");
     await input.press("ArrowDown");
     await input.press("End");
@@ -470,4 +485,29 @@ test("hovering timezone suggestions preserves typed values while explicit select
     await expect(input).toHaveValue("Asia/Tokyo");
     await expect(other).toHaveValue(otherValue);
   }
+  // Summary reflow must preserve suggestions, while deliberate page scrolling
+  // still dismisses them without committing a hovered or focused suggestion.
+  const source = page.getByLabel("Source timezone", { exact: true });
+  await source.scrollIntoViewIfNeeded();
+  await source.click();
+  await source.press("ArrowDown");
+  await source.press("End");
+  await expect(page.getByRole("listbox")).toBeVisible();
+  if (browserName === "webkit" && isMobile) {
+    // Mobile WebKit emulation has no mouse-wheel capability. Exercise the
+    // resulting document scroll and dismissal without claiming a touch swipe.
+    await page.evaluate(() => window.scrollBy(0, 160));
+  } else {
+    await page.mouse.wheel(0, 160);
+  }
+  await expect(page.getByRole("listbox")).toHaveCount(0);
+  await expect(source).toHaveValue("Asia/Tokyo");
+  await expect(page.getByLabel("Convert to", { exact: true })).toHaveValue(
+    "Asia/Tokyo",
+  );
+  await expect(page.getByLabel("Message with a date or time")).toHaveValue(
+    "April 9, 2026 3pm UTC",
+  );
+  await expect(page.locator(".hero-time")).toHaveText(/12:00 am/i);
+  await expect(page.locator(".result-date")).toContainText("10 Apr");
 });

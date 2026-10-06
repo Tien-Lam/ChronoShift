@@ -187,12 +187,25 @@
   {
     "name": "same date range",
     "text": "April 9, 2026 9am-11am UTC",
+    "endpoints": ["start", "end"],
     "instants": ["2026-04-09T09:00:00Z", "2026-04-09T11:00:00Z"]
   },
   {
     "name": "overnight range",
     "text": "April 9, 2026 11pm-1am UTC",
+    "endpoints": ["start", "end"],
     "instants": ["2026-04-09T23:00:00Z", "2026-04-10T01:00:00Z"]
+  },
+  {
+    "name": "ambiguous range separates endpoint alternatives",
+    "text": "April 9, 2026 9am-11am CST",
+    "endpoints": ["start", "start", "end", "end"],
+    "instants": [
+      "2026-04-09T15:00:00Z",
+      "2026-04-09T01:00:00Z",
+      "2026-04-09T17:00:00Z",
+      "2026-04-09T03:00:00Z"
+    ]
   },
   {
     "name": "Unix seconds",
@@ -368,6 +381,7 @@
   {
     "name": "distinct endpoint zone clocks",
     "text": "April 9, 2026 3pm UTC to 5pm JST",
+    "endpoints": ["start", "end"],
     "instants": ["2026-04-09T15:00:00Z", "2026-04-09T08:00:00Z"]
   },
   {
@@ -520,5 +534,66 @@
     "text": "April 9, 2026 3pm UTC+",
     "instants": [],
     "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "zoneless time uses chosen source and reference date",
+    "text": "3pm",
+    "sourceZone": "America/Los_Angeles",
+    "referenceDate": "2026-04-09",
+    "instants": ["2026-04-09T22:00:00Z"],
+    "assumption": "Reference date used: 2026-04-09"
+  },
+  {
+    "name": "explicit Tokyo keeps its zone and source anchored reference instant",
+    "text": "3pm in Tokyo",
+    "sourceZone": "America/Los_Angeles",
+    "referenceDate": "2026-04-09",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "assumption": "Reference date used: 2026-04-10"
+  },
+  {
+    "name": "older message tomorrow uses reference date",
+    "text": "Tomorrow at 3pm",
+    "sourceZone": "America/Los_Angeles",
+    "referenceDate": "2026-04-09",
+    "instants": ["2026-04-10T22:00:00Z"],
+    "assumption": "Reference date used: 2026-04-09"
+  },
+  {
+    "name": "full explicit date ignores chosen reference and fallback zone",
+    "text": "July 15, 2026 at 3pm UTC",
+    "sourceZone": "America/Los_Angeles",
+    "referenceDate": "2026-04-09",
+    "instants": ["2026-07-15T15:00:00Z"]
+  },
+  {
+    "name": "relative date-only discloses reference date",
+    "text": "Tomorrow",
+    "sourceZone": "UTC",
+    "referenceDate": "2026-04-09",
+    "instants": [],
+    "dates": ["2026-04-10"],
+    "assumption": "Reference date used: 2026-04-09"
+  },
+  {
+    "name": "relative duration discloses reference date",
+    "text": "In 3 days at 3pm UTC",
+    "referenceDate": "2026-04-09",
+    "instants": ["2026-04-12T15:00:00Z"],
+    "assumption": "Reference date used: 2026-04-09"
+  },
+  {
+    "name": "relative mixed zone range discloses reference date",
+    "text": "Tomorrow at 3pm UTC to 5pm JST",
+    "referenceDate": "2024-01-01",
+    "instants": ["2024-01-02T15:00:00Z", "2024-01-02T08:00:00Z"],
+    "assumption": "Reference date used: 2024-01-01"
+  },
+  {
+    "name": "incomplete mixed zone range uses reference year",
+    "text": "April 9 at 3pm UTC to 5pm JST",
+    "referenceDate": "2024-01-01",
+    "instants": ["2024-04-09T15:00:00Z", "2024-04-09T08:00:00Z"],
+    "assumption": "Reference date used: 2024-01-01"
   }
 ]

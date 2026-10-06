@@ -58,6 +58,11 @@ test("independent exact fixture expectations run in the production browser worke
       ),
       f.name,
     ).toEqual(("dates" in f ? f.dates : []) || []);
+    if ("endpoints" in f)
+      expect(
+        output.conversion.results.map((r: any) => r.endpoint),
+        f.name,
+      ).toEqual(f.endpoints);
     if ("warning" in f)
       expect(output.conversion.warnings.join("\n"), f.name).toContain(
         f.warning!,

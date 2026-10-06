@@ -1,4 +1,4 @@
-import { dayFirst, monthFirst } from "./parser";
+import { dayFirst, monthFirst, usesReferenceDate } from "./parser";
 import type { ParsedComponents } from "chrono-node";
 import { Temporal } from "@js-temporal/polyfill";
 import {
@@ -33,6 +33,12 @@ function componentDate(c: ParsedComponents): Temporal.PlainDate {
     { year: c.get("year")!, month: c.get("month")!, day: c.get("day")! },
     { overflow: "reject" },
   );
+}
+function referenceAssumption(now: string, zone: string): string {
+  const date = Temporal.Instant.from(now)
+    .toZonedDateTimeISO(zone)
+    .toPlainDate();
+  return `Reference date used: ${date}`;
 }
 function paragraph(text: string, index: number): number {
   return (text.slice(0, index).match(/\n\s*\n/g) || []).length;
@@ -244,9 +250,14 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           dateOnly: date.toString(),
           sourceZone: options.sourceZone,
           sourceLabel: "Date only",
-          assumptions: r.start.isCertain("year")
-            ? []
-            : [`Year assumed: ${date.year}`],
+          assumptions: [
+            ...(!r.start.isCertain("year")
+              ? [`Year assumed: ${date.year}`]
+              : []),
+            ...(usesReferenceDate(r.start)
+              ? [referenceAssumption(now, options.sourceZone)]
+              : []),
+          ],
           occurrences: 1,
         });
       continue;
@@ -307,12 +318,16 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             : local.start
           : c;
         let selectedDate = componentDate(components),
-          assumptions = choice.assumption ? [choice.assumption] : [];
+          assumptions = choice.assumption ? [choice.assumption] : [],
+          referenceUsed = usesReferenceDate(components);
         if (!explicitDate && contextDate) {
           const header = parser.parse(contextText, zoneRef, {
             timezones: timezoneHints,
           })[0];
           const context = header ? componentDate(header.start) : contextDate;
+          referenceUsed = header
+            ? usesReferenceDate(header.start)
+            : referenceUsed;
           selectedDate = context.add({
             days: componentDate(local?.start || r.start).until(selectedDate)
               .days,
@@ -322,6 +337,8 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           assumptions.push(`Date assumed: ${selectedDate}`);
         } else if (!c.isCertain("year"))
           assumptions.push(`Year assumed: ${selectedDate.year}`);
+        if (referenceUsed)
+          assumptions.push(referenceAssumption(now, choice.zone));
         const dt = selectedDate.toPlainDateTime({
           hour: components.get("hour") || 0,
           minute: components.get("minute") || 0,
@@ -386,7 +403,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       sourceIndex: match.index!,
       instant: instant.toString(),
       sourceZone: "UTC",
-      sourceLabel: "Unix seconds · UTC",
+      sourceLabel: "UTC",
       assumptions: [],
       occurrences: 1,
     });
