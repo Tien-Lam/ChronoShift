@@ -31,6 +31,8 @@ import {
 } from "./platform/diagnostics";
 import { ChoiceSelect, ZoneChoice } from "./components/Choices";
 import { DateChoice } from "./components/DateChoice";
+import { Disclosure } from "./components/Disclosure";
+import { useRetainedOpen } from "./components/useRetainedOpen";
 
 const examples = [
   "April 9 at 9am PT / 12pm ET",
@@ -74,7 +76,19 @@ export default function App() {
   const [installHelp, setInstallHelp] = useState(false);
   const input = useRef<HTMLTextAreaElement>(null),
     copyField = useRef<HTMLTextAreaElement>(null);
-  const optionsPanel = useRef<HTMLDetailsElement>(null);
+  const [optionsOpen, setOptionsOpen] = useState(false);
+  const correctionFocus = useRef(false);
+  const [appearanceOpen, setAppearanceOpen] = useState(false);
+  const appearanceRetained = useRetainedOpen(appearanceOpen, 120);
+  const [copyState, setCopyState] = useState<{
+    id: string;
+    state: "success" | "failure";
+  }>();
+  const copyReset = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const themeReset = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const committedGroups = useRef(new Set<string>());
+  const [newGroups, setNewGroups] = useState(new Set<string>());
+  const appearance = useRef<HTMLDetailsElement>(null);
   const worker = useRef<Worker | null>(null),
     request = useRef(0);
   const importRequest = useRef(0);
@@ -189,14 +203,56 @@ export default function App() {
       document.documentElement.dataset.design = "command";
       document
         .querySelector('meta[name="theme-color"]')
-        ?.setAttribute("content", theme === "dark" ? "#0a0a0b" : "#fafafa");
+        ?.setAttribute("content", theme === "dark" ? "#0c120f" : "#f7f4ed");
     };
     apply();
-    media.addEventListener("change", apply);
-    return () => media.removeEventListener("change", apply);
+    const systemChanged = () => {
+      delete document.documentElement.dataset.themeChanging;
+      apply();
+    };
+    media.addEventListener("change", systemChanged);
+    return () => media.removeEventListener("change", systemChanged);
   }, [prefs.theme]);
 
+  useEffect(() => {
+    const dismiss = (event: PointerEvent) => {
+      const target = event.target;
+      if (
+        target instanceof Element &&
+        !appearance.current?.contains(target) &&
+        !target.closest(".choice-popover")
+      ) {
+        setAppearanceOpen(false);
+      }
+    };
+    document.addEventListener("pointerdown", dismiss);
+    return () => {
+      document.removeEventListener("pointerdown", dismiss);
+      clearTimeout(copyReset.current);
+      clearTimeout(themeReset.current);
+      delete document.documentElement.dataset.themeChanging;
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    if (optionsOpen && correctionFocus.current) {
+      correctionFocus.current = false;
+      document.getElementById("source-zone")?.focus();
+    }
+  }, [optionsOpen]);
+
+  function changeTheme(theme: "dark" | "light" | "system") {
+    if (theme === prefs.theme) return;
+    clearTimeout(themeReset.current);
+    document.documentElement.dataset.themeChanging = "true";
+    themeReset.current = setTimeout(() => {
+      delete document.documentElement.dataset.themeChanging;
+    }, 200);
+    setPrefs({ ...prefs, theme });
+  }
+
   function edit(value: string) {
+    if (!value.trim()) committedGroups.current.clear();
     draft.current = value;
     setText(value);
     invalidate();
@@ -207,6 +263,9 @@ export default function App() {
     interactionVersion.current++;
     copyRequest.current++;
     setManualCopy("");
+    setNewGroups(new Set());
+    clearTimeout(copyReset.current);
+    setCopyState(undefined);
     setNotice("");
   }
   function invalidate() {
@@ -297,6 +356,19 @@ export default function App() {
           setBusy(false);
           if (event.data.error) setError(event.data.error);
           else {
+            const next = new Set<string>(
+              event.data.conversion.results.map(
+                (result: TimeResult) => result.group,
+              ),
+            );
+            setNewGroups(
+              new Set(
+                [...next].filter(
+                  (group) => !committedGroups.current.has(group),
+                ),
+              ),
+            );
+            committedGroups.current = next;
             setConversion(event.data.conversion);
             if (
               !event.data.conversion.results.length &&
@@ -397,10 +469,17 @@ export default function App() {
     try {
       await navigator.clipboard.writeText(value);
       if (copyId !== copyRequest.current) return;
+      clearTimeout(copyReset.current);
+      setCopyState({ id: result.id, state: "success" });
+      copyReset.current = setTimeout(() => {
+        if (copyId === copyRequest.current) setCopyState(undefined);
+      }, 1500);
       setNotice("Copied with the date and timezone.");
       setManualCopy("");
     } catch {
       if (copyId !== copyRequest.current) return;
+      clearTimeout(copyReset.current);
+      setCopyState({ id: result.id, state: "failure" });
       setManualCopy(value);
       setNotice(
         "Select the text below and copy it using your keyboard or touch menu.",
@@ -480,17 +559,27 @@ export default function App() {
         <div className="header-tools">
           <details
             className="appearance"
+            ref={appearance}
+            open={appearanceRetained}
+            data-expanded={appearanceOpen}
             onKeyDown={(event) => {
               if (
                 event.key === "Escape" &&
                 !document.querySelector(".choice-popover")
               ) {
-                event.currentTarget.open = false;
+                setAppearanceOpen(false);
                 event.currentTarget.querySelector("summary")?.focus();
               }
             }}
           >
-            <summary aria-label="Appearance">
+            <summary
+              aria-label="Appearance"
+              aria-expanded={appearanceOpen}
+              onClick={(event) => {
+                event.preventDefault();
+                setAppearanceOpen(!appearanceOpen);
+              }}
+            >
               <svg
                 width="18"
                 height="18"
@@ -509,17 +598,18 @@ export default function App() {
               </svg>
               <span className="appearance-label">Appearance</span>
             </summary>
-            <div className="appearance-fields">
+            <div
+              className="appearance-fields"
+              inert={!appearanceOpen}
+              aria-hidden={!appearanceOpen}
+            >
               <label htmlFor="theme">Theme</label>
               <ChoiceSelect
                 id="theme"
                 label="Theme"
                 value={prefs.theme}
                 onChange={(theme) =>
-                  setPrefs({
-                    ...prefs,
-                    theme: theme as "dark" | "light" | "system",
-                  })
+                  changeTheme(theme as "dark" | "light" | "system")
                 }
                 options={[
                   { id: "dark", label: "Dark" },
@@ -538,9 +628,11 @@ export default function App() {
         >
           <section className="input-panel" aria-labelledby="input-title">
             <div className="panel-heading">
-              <h2 id="input-title">Time zone converter</h2>
+              <h2 id="input-title">Message</h2>
             </div>
-            <label htmlFor="message">Message with a date or time</label>
+            <label className="sr-only" htmlFor="message">
+              Message with a date or time
+            </label>
             <textarea
               ref={input}
               id="message"
@@ -561,6 +653,24 @@ export default function App() {
               aria-describedby="input-help"
             />
             <div className="input-tools">
+              <details className="examples">
+                <summary>Try an example</summary>
+                <div className="example-list">
+                  {examples.map((example) => (
+                    <button
+                      type="button"
+                      key={example}
+                      onClick={() => {
+                        edit(example);
+                        input.current?.focus();
+                      }}
+                    >
+                      {example}
+                      <span aria-hidden="true">↗</span>
+                    </button>
+                  ))}
+                </div>
+              </details>
               <div>
                 <button type="button" className="text-button" onClick={paste}>
                   Paste
@@ -580,7 +690,13 @@ export default function App() {
               </div>
               <span
                 id="input-help"
-                className={text.length > MAX_INPUT ? "limit exceeded" : "limit"}
+                className={
+                  text.length > MAX_INPUT
+                    ? "limit exceeded"
+                    : text.length > 8000
+                      ? "limit"
+                      : "sr-only"
+                }
               >
                 {text.length > 8000
                   ? `${text.length.toLocaleString()} / 10,000`
@@ -625,148 +741,131 @@ export default function App() {
                 type="button"
                 className="text-button"
                 onClick={() => {
-                  if (optionsPanel.current) optionsPanel.current.open = true;
-                  document.getElementById("source-zone")?.focus();
+                  if (optionsOpen)
+                    document.getElementById("source-zone")?.focus();
+                  else {
+                    correctionFocus.current = true;
+                    setOptionsOpen(true);
+                  }
                 }}
               >
                 Change message defaults
               </button>
             </div>
-            <details className="options" ref={optionsPanel}>
-              <summary>More options</summary>
-              <div className="option-fields">
-                <label htmlFor="source-zone">Source timezone</label>
-                <ZoneChoice
-                  id="source-zone"
-                  label="Source timezone"
-                  value={prefs.source}
-                  onChange={(source) => {
-                    setPrefs({ ...prefs, source });
-                    invalidate();
+            <Disclosure open={optionsOpen} onOpenChange={setOptionsOpen}>
+              <label htmlFor="source-zone">Source timezone</label>
+              <ZoneChoice
+                id="source-zone"
+                label="Source timezone"
+                value={prefs.source}
+                onChange={(source) => {
+                  setPrefs({ ...prefs, source });
+                  invalidate();
+                }}
+                placeholder={`Device timezone · ${device}`}
+                describedBy="source-zone-help"
+                invalid={!sourceZone}
+                triggerLabel="Show source timezones"
+              />
+              <span className="field-note" id="source-zone-help">
+                For “3pm” without a timezone. A timezone in the message takes
+                priority. Leave blank to use your device: {device}.
+              </span>
+              <DateChoice
+                key={referenceReset}
+                id="reference-date"
+                label="Reference date"
+                describedBy="reference-date-help"
+                value={referenceDate}
+                onChange={(date) => {
+                  setReferenceDate(date);
+                  invalidate();
+                }}
+                onValidityChange={referenceValidityChanged}
+              />
+              <span className="field-note" id="reference-date-help">
+                For relative or incomplete dates. If an older message says
+                “tomorrow”, choose its date here. Leave blank to use today. The
+                date is anchored in the source timezone; use a full date in the
+                message to avoid a day shift in a distant timezone.
+              </span>
+              <label htmlFor="date-order">Date format</label>
+              <ChoiceSelect
+                id="date-order"
+                label="Date format"
+                describedBy="date-order-help"
+                value={prefs.dateOrder}
+                onChange={(dateOrder) => {
+                  setPrefs({
+                    ...prefs,
+                    dateOrder: dateOrder as "mdy" | "dmy",
+                  });
+                  invalidate();
+                }}
+                options={[
+                  { id: "mdy", label: "Month/day (04/09 = April 9)" },
+                  { id: "dmy", label: "Day/month (04/09 = 4 September)" },
+                ]}
+              />
+              <span className="field-note" id="date-order-help">
+                How to read numeric dates in your message.
+              </span>
+              <label htmlFor="time-format">Time format</label>
+              <ChoiceSelect
+                id="time-format"
+                label="Time format"
+                describedBy="time-format-help"
+                value={prefs.hourCycle}
+                onChange={(hourCycle) => {
+                  setPrefs({
+                    ...prefs,
+                    hourCycle: hourCycle as "auto" | "12" | "24",
+                  });
+                  invalidateDisplay();
+                }}
+                options={[
+                  { id: "auto", label: "Device format" },
+                  { id: "12", label: "12-hour (3:00 PM)" },
+                  { id: "24", label: "24-hour (15:00)" },
+                ]}
+              />
+              <span className="field-note" id="time-format-help">
+                How to display and copy converted times.
+              </span>
+              <label className="diagnostic-toggle">
+                <input
+                  type="checkbox"
+                  checked={detailedLogs}
+                  onChange={(event) => {
+                    const enabled = event.target.checked;
+                    setDetailedLogsChecked(enabled);
+                    setDetailedLogs(enabled);
                   }}
-                  placeholder={`Device timezone · ${device}`}
-                  describedBy="source-zone-help"
-                  invalid={!sourceZone}
-                  triggerLabel="Show source timezones"
                 />
-                <span className="field-note" id="source-zone-help">
-                  For “3pm” without a timezone. A timezone in the message takes
-                  priority. Leave blank to use your device: {device}.
-                </span>
-                <DateChoice
-                  key={referenceReset}
-                  id="reference-date"
-                  label="Reference date"
-                  describedBy="reference-date-help"
-                  value={referenceDate}
-                  onChange={(date) => {
-                    setReferenceDate(date);
-                    invalidate();
-                  }}
-                  onValidityChange={referenceValidityChanged}
-                />
-                <span className="field-note" id="reference-date-help">
-                  For relative or incomplete dates. If an older message says
-                  “tomorrow”, choose its date here. Leave blank to use today.
-                  The date is anchored in the source timezone; use a full date
-                  in the message to avoid a day shift in a distant timezone.
-                </span>
-                <label htmlFor="date-order">Date format</label>
-                <ChoiceSelect
-                  id="date-order"
-                  label="Date format"
-                  describedBy="date-order-help"
-                  value={prefs.dateOrder}
-                  onChange={(dateOrder) => {
-                    setPrefs({
-                      ...prefs,
-                      dateOrder: dateOrder as "mdy" | "dmy",
-                    });
-                    invalidate();
-                  }}
-                  options={[
-                    { id: "mdy", label: "Month/day (04/09 = April 9)" },
-                    { id: "dmy", label: "Day/month (04/09 = 4 September)" },
-                  ]}
-                />
-                <span className="field-note" id="date-order-help">
-                  How to read numeric dates in your message.
-                </span>
-                <label htmlFor="time-format">Time format</label>
-                <ChoiceSelect
-                  id="time-format"
-                  label="Time format"
-                  describedBy="time-format-help"
-                  value={prefs.hourCycle}
-                  onChange={(hourCycle) => {
-                    setPrefs({
-                      ...prefs,
-                      hourCycle: hourCycle as "auto" | "12" | "24",
-                    });
-                    invalidateDisplay();
-                  }}
-                  options={[
-                    { id: "auto", label: "Device format" },
-                    { id: "12", label: "12-hour (3:00 PM)" },
-                    { id: "24", label: "24-hour (15:00)" },
-                  ]}
-                />
-                <span className="field-note" id="time-format-help">
-                  How to display and copy converted times.
-                </span>
-                <label className="diagnostic-toggle">
-                  <input
-                    type="checkbox"
-                    checked={detailedLogs}
-                    onChange={(event) => {
-                      const enabled = event.target.checked;
-                      setDetailedLogsChecked(enabled);
-                      setDetailedLogs(enabled);
-                    }}
-                  />
-                  <span>Enable detailed logs</span>
-                </label>
-                <span className="field-note">
-                  Console only. Message text excluded.
-                </span>
-                <button
-                  type="button"
-                  className="text-button"
-                  onClick={() => {
-                    setDetailedLogs(false);
-                    setDetailedLogsChecked(false);
-                    resetPreferences();
-                    setPrefs({ ...DEFAULTS });
-                    setReferenceDate("");
-                    referenceValidity.current = true;
-                    setReferenceValid(true);
-                    setReferenceReset((version) => version + 1);
-                    invalidate();
-                    setNotice("Preferences reset.");
-                  }}
-                >
-                  Reset preferences
-                </button>
-              </div>
-            </details>
-            {!text && (
-              <details className="examples">
-                <summary>Try an example</summary>
-                {examples.map((example) => (
-                  <button
-                    type="button"
-                    key={example}
-                    onClick={() => {
-                      edit(example);
-                      input.current?.focus();
-                    }}
-                  >
-                    {example}
-                    <span aria-hidden="true">↗</span>
-                  </button>
-                ))}
-              </details>
-            )}
+                <span>Enable detailed logs</span>
+              </label>
+              <span className="field-note">
+                Console only. Message text excluded.
+              </span>
+              <button
+                type="button"
+                className="text-button"
+                onClick={() => {
+                  setDetailedLogs(false);
+                  setDetailedLogsChecked(false);
+                  resetPreferences();
+                  setPrefs({ ...DEFAULTS });
+                  setReferenceDate("");
+                  referenceValidity.current = true;
+                  setReferenceValid(true);
+                  setReferenceReset((version) => version + 1);
+                  invalidate();
+                  setNotice("Preferences reset.");
+                }}
+              >
+                Reset preferences
+              </button>
+            </Disclosure>
           </section>
           <section
             className="result-panel"
@@ -774,20 +873,26 @@ export default function App() {
             aria-busy={busy}
           >
             <div className="panel-heading result-heading">
-              <h2 id="result-title">Converted time</h2>
+              <h2
+                id="result-title"
+                aria-label={
+                  targetZone
+                    ? `Converted time in ${zoneName(targetZone)}`
+                    : "Converted time"
+                }
+              >
+                {targetZone ? `In ${zoneName(targetZone)}` : "Converted time"}
+              </h2>
               <span className="live-indicator" data-state={liveState}>
-                <span className="live-dots" aria-hidden="true">
-                  <span />
-                  <span />
-                  <span />
-                </span>
                 {liveState === "pending"
                   ? "Updating"
                   : liveState === "paused"
                     ? "Paused"
                     : liveState === "error"
                       ? "Check input"
-                      : "Live"}
+                      : conversion.results.length
+                        ? `${conversion.results.length} time${conversion.results.length === 1 ? "" : "s"} converted`
+                        : "Ready"}
               </span>
             </div>
             <div role="status" className="sr-only">
@@ -825,12 +930,18 @@ export default function App() {
                   <p>Date, time and timezone appear here.</p>
                 </div>
               )}
-            {groups.map((group) => {
+            {groups.map((group, groupIndex) => {
               const entries = conversion.results.filter(
                 (r) => r.group === group,
               );
               return (
-                <article className="result-group" key={group}>
+                <article
+                  className={`result-group${newGroups.has(group) ? " is-new-group" : ""}`}
+                  key={group}
+                  style={{
+                    animationDelay: `${Math.min(groupIndex, 2) * 30}ms`,
+                  }}
+                >
                   {entries.map((result, index) => {
                     const d = formatResult(result, displayOptions);
                     const range = rangeLabel(result);
@@ -840,7 +951,23 @@ export default function App() {
                           <div className="result-output">
                             {range && <p className="range-label">{range}</p>}
                             {d.time && (
-                              <div className="hero-time">{d.time}</div>
+                              <div className="hero-time">
+                                {d.time
+                                  .split(/(\s+[ap]m)$/i)
+                                  .filter(Boolean)
+                                  .map((part, partIndex) => (
+                                    <span
+                                      className={
+                                        partIndex === 0
+                                          ? "time-number"
+                                          : "clock-suffix"
+                                      }
+                                      key={partIndex}
+                                    >
+                                      {part}
+                                    </span>
+                                  ))}
+                              </div>
                             )}
                             <p
                               className={`result-date${result.dateOnly ? " hero-date" : ""}`}
@@ -861,10 +988,28 @@ export default function App() {
                           <button
                             type="button"
                             className="copy-button"
+                            data-copy-state={
+                              copyState?.id === result.id
+                                ? copyState.state
+                                : "idle"
+                            }
                             onClick={() => copy(result)}
                             aria-label={`Copy ${range ? range + ": " : ""}${d.time ? d.time + " · " : ""}${d.date} · ${d.zone} · ${result.interpretation || result.sourceLabel}`}
                           >
-                            Copy
+                            {copyState?.id === result.id &&
+                            copyState.state === "success" ? (
+                              <>
+                                <span className="copy-check" aria-hidden="true">
+                                  ✓
+                                </span>{" "}
+                                Copied
+                              </>
+                            ) : copyState?.id === result.id &&
+                              copyState.state === "failure" ? (
+                              "Retry"
+                            ) : (
+                              "Copy"
+                            )}
                           </button>
                         </div>
                         <div className="result-context">
@@ -874,7 +1019,7 @@ export default function App() {
                             </span>
                           )}
                           <p>
-                            Source:{" "}
+                            From{" "}
                             <span className="source-label">
                               {result.interpretation || result.sourceLabel}
                             </span>
