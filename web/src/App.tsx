@@ -225,9 +225,21 @@ export default function App() {
         setAppearanceOpen(false);
       }
     };
+    const escape = (event: KeyboardEvent) => {
+      if (
+        event.key === "Escape" &&
+        appearance.current?.dataset.expanded === "true" &&
+        !document.querySelector(".choice-popover:not([data-exiting])")
+      ) {
+        setAppearanceOpen(false);
+        appearance.current.querySelector("summary")?.focus();
+      }
+    };
     document.addEventListener("pointerdown", dismiss);
+    document.addEventListener("keydown", escape);
     return () => {
       document.removeEventListener("pointerdown", dismiss);
+      document.removeEventListener("keydown", escape);
       clearTimeout(copyReset.current);
       clearTimeout(themeReset.current);
       delete document.documentElement.dataset.themeChanging;
@@ -564,15 +576,6 @@ export default function App() {
             ref={appearance}
             open={appearanceRetained}
             data-expanded={appearanceOpen}
-            onKeyDown={(event) => {
-              if (
-                event.key === "Escape" &&
-                !document.querySelector(".choice-popover")
-              ) {
-                setAppearanceOpen(false);
-                event.currentTarget.querySelector("summary")?.focus();
-              }
-            }}
           >
             <summary
               aria-label="Appearance"
