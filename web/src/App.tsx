@@ -229,17 +229,21 @@ export default function App() {
       if (
         event.key === "Escape" &&
         appearance.current?.dataset.expanded === "true" &&
-        !document.querySelector(".choice-popover:not([data-exiting])")
+        !document.querySelector(
+          ".choice-popover:not([data-exiting]):not([inert])",
+        )
       ) {
+        event.preventDefault();
+        event.stopPropagation();
         setAppearanceOpen(false);
         appearance.current.querySelector("summary")?.focus();
       }
     };
     document.addEventListener("pointerdown", dismiss);
-    document.addEventListener("keydown", escape);
+    document.addEventListener("keydown", escape, true);
     return () => {
       document.removeEventListener("pointerdown", dismiss);
-      document.removeEventListener("keydown", escape);
+      document.removeEventListener("keydown", escape, true);
       clearTimeout(copyReset.current);
       clearTimeout(themeReset.current);
       delete document.documentElement.dataset.themeChanging;

@@ -1251,3 +1251,7 @@ footer p {
   background: var(--soft);
   box-shadow: inset 0 0 0 1px var(--border);
 }
+/* Preserve the formatter's space even when its suffix moves to a new line. */
+.clock-suffix {
+  white-space: pre;
+}
