@@ -593,6 +593,12 @@ input::placeholder {
   line-height: 1.5;
   overflow-wrap: anywhere;
 }
+.workspace:has(.choice-combo:focus-within) {
+  /* Updating the source summary must not scroll the active timezone editor
+     through browser anchoring and dismiss its suggestions. User scrolling
+     still dismisses the popup through React Aria's normal scroll handling. */
+  overflow-anchor: none;
+}
 .message-defaults .text-button {
   min-height: 44px;
   text-align: left;

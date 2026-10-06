@@ -168,7 +168,15 @@ test("themed choices align and their opened menus fit every breakpoint without l
           ["target-zone", "Show target timezones"],
           ["source-zone", "Show source timezones"],
         ]) {
-          await page.getByRole("button", { name: button, exact: true }).click();
+          const toggle = page.getByRole("button", {
+            name: button,
+            exact: true,
+          });
+          // Reach the control before opening it, as a touch user would.
+          // Scrolling from a previously focused offscreen format field during
+          // the synthetic click can dismiss the newly opened combobox popup.
+          await toggle.scrollIntoViewIfNeeded();
+          await toggle.click();
           expect(await expectPopup(page, page.locator(`#${id}`), width)).toBe(
             backgrounds.get(theme),
           );
@@ -406,6 +414,8 @@ test("timezone search preserves freeform offsets and recovers from empty and inv
 
 test("hovering timezone suggestions preserves typed values while explicit selections still commit", async ({
   page,
+  browserName,
+  isMobile,
 }) => {
   await page.goto("/");
   await page.getByText("More options", { exact: true }).click();
@@ -422,6 +432,11 @@ test("hovering timezone suggestions preserves typed values while explicit select
     );
     const otherValue = await other.inputValue();
     await enterZone(page, "CST", label);
+    // Bring the field back into view after Tab focused the next control.
+    // fill() can otherwise focus an offscreen field and dismiss the newly
+    // opened suggestions when the browser performs its delayed focus scroll.
+    await input.scrollIntoViewIfNeeded();
+    await input.click();
     await input.fill("Asia/Tokyo");
     await expect(input).toHaveAttribute("aria-controls", /.+/);
     const suggestions = page.locator(
@@ -443,6 +458,8 @@ test("hovering timezone suggestions preserves typed values while explicit select
     await expect(page.locator(".result-date")).toContainText("10 Apr");
 
     // Navigation and selection are deliberate actions, unlike mere hover.
+    await input.scrollIntoViewIfNeeded();
+    await input.click();
     await input.fill("Asia/Toky");
     await input.press("ArrowDown");
     await input.press("End");
@@ -468,4 +485,29 @@ test("hovering timezone suggestions preserves typed values while explicit select
     await expect(input).toHaveValue("Asia/Tokyo");
     await expect(other).toHaveValue(otherValue);
   }
+  // Summary reflow must preserve suggestions, while deliberate page scrolling
+  // still dismisses them without committing a hovered or focused suggestion.
+  const source = page.getByLabel("Source timezone", { exact: true });
+  await source.scrollIntoViewIfNeeded();
+  await source.click();
+  await source.press("ArrowDown");
+  await source.press("End");
+  await expect(page.getByRole("listbox")).toBeVisible();
+  if (browserName === "webkit" && isMobile) {
+    // Mobile WebKit emulation has no mouse-wheel capability. Exercise the
+    // resulting document scroll and dismissal without claiming a touch swipe.
+    await page.evaluate(() => window.scrollBy(0, 160));
+  } else {
+    await page.mouse.wheel(0, 160);
+  }
+  await expect(page.getByRole("listbox")).toHaveCount(0);
+  await expect(source).toHaveValue("Asia/Tokyo");
+  await expect(page.getByLabel("Convert to", { exact: true })).toHaveValue(
+    "Asia/Tokyo",
+  );
+  await expect(page.getByLabel("Message with a date or time")).toHaveValue(
+    "April 9, 2026 3pm UTC",
+  );
+  await expect(page.locator(".hero-time")).toHaveText(/12:00 am/i);
+  await expect(page.locator(".result-date")).toContainText("10 Apr");
 });
