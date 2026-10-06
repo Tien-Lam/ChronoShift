@@ -343,7 +343,7 @@ test("timezone search preserves freeform offsets and recovers from empty and inv
   await page.goto("/");
   await page.getByText("More options", { exact: true }).click();
   const target = page.getByLabel("Convert to", { exact: true });
-  const source = page.getByLabel("Source timezone when none is given", {
+  const source = page.getByLabel("Source timezone", {
     exact: true,
   });
   await source.fill("UTC");
@@ -409,17 +409,15 @@ test("hovering timezone suggestions preserves typed values while explicit select
 }) => {
   await page.goto("/");
   await page.getByText("More options", { exact: true }).click();
-  await enterZone(page, "UTC", "Source timezone when none is given");
+  await enterZone(page, "UTC", "Source timezone");
   await enterZone(page, "UTC");
   await page
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3pm UTC");
-  for (const label of ["Convert to", "Source timezone when none is given"]) {
+  for (const label of ["Convert to", "Source timezone"]) {
     const input = page.getByLabel(label, { exact: true });
     const other = page.getByLabel(
-      label === "Convert to"
-        ? "Source timezone when none is given"
-        : "Convert to",
+      label === "Convert to" ? "Source timezone" : "Convert to",
       { exact: true },
     );
     const otherValue = await other.inputValue();

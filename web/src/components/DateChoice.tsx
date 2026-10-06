@@ -25,6 +25,7 @@ interface DateChoiceProps {
   id: string;
   label: string;
   value: string;
+  describedBy?: string;
   onChange: (value: string) => void;
   onValidityChange?: (valid: boolean) => void;
 }
@@ -61,6 +62,7 @@ export function DateChoice({
   id,
   label,
   value,
+  describedBy,
   onChange,
   onValidityChange,
 }: DateChoiceProps) {
@@ -79,6 +81,7 @@ export function DateChoice({
   return (
     <DatePicker
       className="date-choice"
+      aria-describedby={describedBy}
       value={date}
       onChange={(nextDate) => onChange(nextDate?.toString() ?? "")}
       granularity="day"

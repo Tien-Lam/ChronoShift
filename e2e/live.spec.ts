@@ -27,7 +27,7 @@ test("target and clock format edits reuse source instants across midnight, inclu
   await page.goto("/");
   await enterZone(page, "UTC");
   await page.getByText("More options", { exact: true }).click();
-  await enterZone(page, "UTC", "Source timezone when none is given");
+  await enterZone(page, "UTC", "Source timezone");
   const input = page.getByLabel("Message with a date or time");
   await input.fill("Tomorrow at 3pm UTC");
   await expect(page.locator(".hero-time")).toHaveText(/3:00 pm/i);
@@ -58,7 +58,7 @@ test("target and clock format edits reuse source instants across midnight, inclu
   await input.fill("Tomorrow at 4pm");
   await expect(page.locator(".hero-time")).toHaveText("21:45");
   await expect(page.locator(".result-date")).toContainText("7 Oct 2026");
-  await enterZone(page, "Asia/Tokyo", "Source timezone when none is given");
+  await enterZone(page, "Asia/Tokyo", "Source timezone");
   await expect(page.locator(".hero-time")).toHaveText("12:45");
   await expect(page.locator(".result-date")).toContainText("7 Oct 2026");
   await enterReferenceDate(page, "2026-04-09");
@@ -137,7 +137,7 @@ test("typing, pasted text and conversion settings update without submission", as
   await choose(page, "Time format", "24");
   await expect(page.locator(".hero-time")).toHaveText("09:20");
   await input.fill("April 9, 2026 3pm");
-  await enterZone(page, "Asia/Tokyo", "Source timezone when none is given");
+  await enterZone(page, "Asia/Tokyo", "Source timezone");
   await expect(page.locator(".hero-time")).toHaveText("07:00");
   await input.fill("");
   await expect(page.locator(".result")).toHaveCount(0);

@@ -582,6 +582,21 @@ input::placeholder {
   color: var(--muted);
   font-size: 12px;
 }
+.message-defaults {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.message-defaults .text-button {
+  min-height: 44px;
+  text-align: left;
+}
 .options summary,
 .examples summary {
   cursor: pointer;

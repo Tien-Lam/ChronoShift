@@ -74,6 +74,7 @@ export default function App() {
   const [installHelp, setInstallHelp] = useState(false);
   const input = useRef<HTMLTextAreaElement>(null),
     copyField = useRef<HTMLTextAreaElement>(null);
+  const optionsPanel = useRef<HTMLDetailsElement>(null);
   const worker = useRef<Worker | null>(null),
     request = useRef(0);
   const importRequest = useRef(0);
@@ -610,27 +611,53 @@ export default function App() {
               </span>
             </div>
 
-            <details className="options">
+            <div className="message-defaults">
+              <span>
+                Without a timezone: {sourceZone || "Choose a valid timezone"}
+                {!prefs.source.trim() && " (device)"}
+                <br />
+                Reference date:{" "}
+                {!referenceValid
+                  ? "Complete or clear the date"
+                  : referenceDate || "Today"}
+              </span>
+              <button
+                type="button"
+                className="text-button"
+                onClick={() => {
+                  if (optionsPanel.current) optionsPanel.current.open = true;
+                  document.getElementById("source-zone")?.focus();
+                }}
+              >
+                Change message defaults
+              </button>
+            </div>
+            <details className="options" ref={optionsPanel}>
               <summary>More options</summary>
               <div className="option-fields">
-                <label htmlFor="source-zone">
-                  Source timezone when none is given
-                </label>
+                <label htmlFor="source-zone">Source timezone</label>
                 <ZoneChoice
                   id="source-zone"
-                  label="Source timezone when none is given"
+                  label="Source timezone"
                   value={prefs.source}
                   onChange={(source) => {
                     setPrefs({ ...prefs, source });
                     invalidate();
                   }}
                   placeholder={`Device timezone · ${device}`}
+                  describedBy="source-zone-help"
+                  invalid={!sourceZone}
                   triggerLabel="Show source timezones"
                 />
+                <span className="field-note" id="source-zone-help">
+                  For “3pm” without a timezone. A timezone in the message takes
+                  priority. Leave blank to use your device: {device}.
+                </span>
                 <DateChoice
                   key={referenceReset}
                   id="reference-date"
-                  label="Reference date for this message"
+                  label="Reference date"
+                  describedBy="reference-date-help"
                   value={referenceDate}
                   onChange={(date) => {
                     setReferenceDate(date);
@@ -638,8 +665,11 @@ export default function App() {
                   }}
                   onValidityChange={referenceValidityChanged}
                 />
-                <span className="field-note">
-                  Leave empty to use today. Useful for an older message.
+                <span className="field-note" id="reference-date-help">
+                  For relative or incomplete dates. If an older message says
+                  “tomorrow”, choose its date here. Leave blank to use today.
+                  The date is anchored in the source timezone; use a full date
+                  in the message to avoid a day shift in a distant timezone.
                 </span>
                 <label htmlFor="date-order">Date format</label>
                 <ChoiceSelect

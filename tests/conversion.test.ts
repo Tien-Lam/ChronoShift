@@ -97,3 +97,15 @@ test("reference date override leaves source zone independent of target", () => {
   });
   expect(result.results[0].instant).toBe("2026-07-02T09:00:00Z");
 });
+test("reference assumptions describe incomplete dates without claiming fully specified dates used the reference", () => {
+  const fixed = { ...options, referenceDate: "2026-04-09" };
+  for (const text of ["July 15, 2026 at 3pm UTC", "July 15, 2026"])
+    expect(convert(text, fixed).results[0].assumptions).toEqual([]);
+  expect(convert("July 15 at 3pm UTC", fixed).results[0].assumptions).toEqual([
+    "Year assumed: 2026",
+    "Reference date used: 2026-04-09",
+  ]);
+  expect(
+    convert("April 9, 2026\nMeet at 3pm UTC", fixed).results[0].assumptions,
+  ).toEqual(["Date from message context: 2026-04-09"]);
+});
