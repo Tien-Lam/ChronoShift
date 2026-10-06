@@ -6,7 +6,7 @@ Test the published app at https://tien-lam.github.io/ChronoShift/. Record the re
 
 1. Paste/type a dated message, choose a target timezone and inspect the automatically converted result and the full date/offset. Copy and paste into a text editor.
 2. Try ambiguous CST and a DST gap/fold using the independently specified examples in the product contract. Alternatives must be labeled; nonexistent times need correction.
-3. Open More options, change source/reference date and numeric dates, then verify automatic conversion. Denied clipboard/storage permissions must leave a usable manual path.
+3. Open Adjust interpretation & format, change source/reference date and numeric dates, then verify automatic conversion. Denied clipboard/storage permissions must leave a usable manual path.
 4. Verify keyboard navigation, normal textarea Enter and automatic conversion after typing, 200% browser zoom, system theme, reduced motion and a real screen reader.
 5. Resize, rotate and fold/unfold with a draft and results present. Neither should disappear. Long zones and messages must not cause horizontal page scrolling.
 6. On phones and cover screens, open/close the virtual keyboard and reach timezone/Copy controls. On segmented displays, verify vertical-hinge separation and upper-screen tabletop scrolling.

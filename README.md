@@ -2,11 +2,11 @@
 
 [Open ChronoShift](https://tien-lam.github.io/ChronoShift/) — a private timezone converter that works offline after its first complete online load.
 
-Paste or type a message, choose your timezone, press **Convert**, then copy the result with its date and zone. ChronoShift handles natural-language dates/times, cities, explicit offsets and IANA zones, ranges, Unix seconds and labeled ambiguity. Corrections and display preferences are under **More options**.
+Paste or type a message and choose your destination timezone. Results convert automatically as you type; copy them with their date and zone. ChronoShift handles natural-language dates/times, cities, explicit offsets and IANA zones, ranges, Unix seconds and labeled ambiguity. Corrections and display preferences are under **Adjust interpretation & format**.
 
 The layout adapts to phones, tablets, desktop windows and foldable displays. Supported browsers place input and results clear of a hinge. Conversion runs entirely on your device with no account, conversion server or mandatory model download.
 
-Use **Appearance** in the header to choose **Dark**, **Light** or **System**. The single Glass Command layout uses local typography, clear controls and adaptive input/results. Theme changes keep your current message and results; preferences are saved locally. See [appearance behavior](docs/developer/appearance.md).
+Use **Appearance** in the header to choose **Dark**, **Light** or **System**. One adaptive workspace pairs a warm paper/clay Light palette with a forest/lime Dark palette and local typography. Dark is the default; System follows your device. Theme changes keep your current message and results, and preferences are saved locally. Motion respects your reduced-motion preference. See [appearance behavior](docs/developer/appearance.md).
 
 ## Use offline
 
