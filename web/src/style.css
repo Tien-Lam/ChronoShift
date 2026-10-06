@@ -83,7 +83,8 @@ summary,
   transition:
     background-color var(--motion-fast) ease,
     border-color var(--motion-fast) ease,
-    color var(--motion-fast) ease;
+    color var(--motion-fast) ease,
+    box-shadow var(--motion-fast) ease;
 }
 button:disabled {
   cursor: default;
@@ -1236,4 +1237,17 @@ footer p {
 .result-placeholder,
 .ambiguity {
   animation: surface-fade 180ms var(--motion-ease);
+}
+
+.copy-button:active {
+  box-shadow: inset 0 0 0 3px var(--primary-ink);
+}
+.text-button:active,
+.options-trigger:active,
+.appearance summary:active,
+.examples summary:active,
+.choice-trigger[data-pressed],
+.choice-toggle[data-pressed] {
+  background: var(--soft);
+  box-shadow: inset 0 0 0 1px var(--border);
 }
