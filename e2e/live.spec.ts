@@ -42,7 +42,7 @@ test("target and clock format edits reuse source instants across midnight, inclu
   // The source event remains October 6; target Tokyo reaches October 7.
   // Reparsing "tomorrow" after midnight would incorrectly show October 8.
   await expect(page.locator(".result-date")).toContainText("7 Oct 2026");
-  await choose(page, "Time display", "24");
+  await choose(page, "Time format", "24");
   await expect(page.locator(".hero-time")).toHaveText("00:00");
   await expect(page.locator(".result-date")).toContainText("7 Oct 2026");
   await enterZone(page, "CST");
@@ -106,7 +106,7 @@ test("display edits retain in-flight conversion and render its completion with t
   await enterZone(page, "CST");
   await expect(page.locator(".result")).toHaveCount(0);
   await enterZone(page, "Asia/Tokyo");
-  await choose(page, "Time display", "24");
+  await choose(page, "Time format", "24");
   expect(await page.evaluate(() => (window as any).conversionRequests)).toBe(1);
   await page.evaluate(() => (window as any).deliverConversion());
   await expect(page.locator(".hero-time")).toHaveText("00:00");
@@ -134,7 +134,7 @@ test("typing, pasted text and conversion settings update without submission", as
   await enterZone(page, "Europe/London");
   await expect(page.locator(".hero-time")).toHaveText(/9:20 am/i);
   await page.getByText("More options", { exact: true }).click();
-  await choose(page, "Time display", "24");
+  await choose(page, "Time format", "24");
   await expect(page.locator(".hero-time")).toHaveText("09:20");
   await input.fill("April 9, 2026 3pm");
   await enterZone(page, "Asia/Tokyo", "Source timezone when none is given");

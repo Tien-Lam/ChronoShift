@@ -87,11 +87,13 @@ export function ChoiceSelect({
   value,
   onChange,
   options,
-}: ChoiceProps & { options: Option[] }) {
+  describedBy,
+}: ChoiceProps & { options: Option[]; describedBy?: string }) {
   return (
     <Select
       className="choice-select"
       aria-label={label}
+      aria-describedby={describedBy}
       value={value}
       onChange={(key) => {
         if (key !== null) onChange(String(key));

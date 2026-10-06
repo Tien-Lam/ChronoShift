@@ -641,10 +641,11 @@ export default function App() {
                 <span className="field-note">
                   Leave empty to use today. Useful for an older message.
                 </span>
-                <label htmlFor="date-order">Numeric dates</label>
+                <label htmlFor="date-order">Date format</label>
                 <ChoiceSelect
                   id="date-order"
-                  label="Numeric dates"
+                  label="Date format"
+                  describedBy="date-order-help"
                   value={prefs.dateOrder}
                   onChange={(dateOrder) => {
                     setPrefs({
@@ -654,14 +655,18 @@ export default function App() {
                     invalidate();
                   }}
                   options={[
-                    { id: "mdy", label: "Month / day (04/09 = April 9)" },
-                    { id: "dmy", label: "Day / month (04/09 = 4 September)" },
+                    { id: "mdy", label: "Month/day (04/09 = April 9)" },
+                    { id: "dmy", label: "Day/month (04/09 = 4 September)" },
                   ]}
                 />
-                <label htmlFor="time-format">Time display</label>
+                <span className="field-note" id="date-order-help">
+                  How to read numeric dates in your message.
+                </span>
+                <label htmlFor="time-format">Time format</label>
                 <ChoiceSelect
                   id="time-format"
-                  label="Time display"
+                  label="Time format"
+                  describedBy="time-format-help"
                   value={prefs.hourCycle}
                   onChange={(hourCycle) => {
                     setPrefs({
@@ -671,11 +676,14 @@ export default function App() {
                     invalidateDisplay();
                   }}
                   options={[
-                    { id: "auto", label: "Use my device format" },
+                    { id: "auto", label: "Device format" },
                     { id: "12", label: "12-hour (3:00 PM)" },
                     { id: "24", label: "24-hour (15:00)" },
                   ]}
                 />
+                <span className="field-note" id="time-format-help">
+                  How to display and copy converted times.
+                </span>
                 <label className="diagnostic-toggle">
                   <input
                     type="checkbox"
