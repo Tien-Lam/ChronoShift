@@ -187,12 +187,25 @@
   {
     "name": "same date range",
     "text": "April 9, 2026 9am-11am UTC",
+    "endpoints": ["start", "end"],
     "instants": ["2026-04-09T09:00:00Z", "2026-04-09T11:00:00Z"]
   },
   {
     "name": "overnight range",
     "text": "April 9, 2026 11pm-1am UTC",
+    "endpoints": ["start", "end"],
     "instants": ["2026-04-09T23:00:00Z", "2026-04-10T01:00:00Z"]
+  },
+  {
+    "name": "ambiguous range separates endpoint alternatives",
+    "text": "April 9, 2026 9am-11am CST",
+    "endpoints": ["start", "start", "end", "end"],
+    "instants": [
+      "2026-04-09T15:00:00Z",
+      "2026-04-09T01:00:00Z",
+      "2026-04-09T17:00:00Z",
+      "2026-04-09T03:00:00Z"
+    ]
   },
   {
     "name": "Unix seconds",
@@ -368,6 +381,7 @@
   {
     "name": "distinct endpoint zone clocks",
     "text": "April 9, 2026 3pm UTC to 5pm JST",
+    "endpoints": ["start", "end"],
     "instants": ["2026-04-09T15:00:00Z", "2026-04-09T08:00:00Z"]
   },
   {

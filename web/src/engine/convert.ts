@@ -414,7 +414,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       sourceIndex: match.index!,
       instant: instant.toString(),
       sourceZone: "UTC",
-      sourceLabel: "Unix seconds · UTC",
+      sourceLabel: "UTC",
       assumptions: [],
       occurrences: 1,
     });

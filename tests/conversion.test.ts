@@ -27,6 +27,10 @@ describe("independently specified temporal fixtures", () => {
       expect(
         result.results.flatMap((r) => (r.dateOnly ? [r.dateOnly] : [])),
       ).toEqual(("dates" in f ? f.dates : []) || []);
+      if (f.endpoints)
+        expect(result.results.map((r) => String(r.endpoint))).toEqual(
+          f.endpoints,
+        );
       if ("warning" in f)
         expect(result.warnings.join("\n")).toContain(f.warning!);
       else expect(result.warnings).toEqual([]);

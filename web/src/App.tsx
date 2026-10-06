@@ -7,7 +7,7 @@ import {
 } from "react";
 import type { Conversion, ConversionOptions, TimeResult } from "./engine/types";
 import { MAX_INPUT } from "./engine/limits";
-import { copyText, formatResult } from "./engine/time";
+import { copyText, formatResult, rangeLabel } from "./engine/time";
 import { resolveCity, validZone, zoneName } from "./engine/zones";
 import {
   DEFAULTS,
@@ -796,7 +796,7 @@ export default function App() {
                 : composing
                   ? "Finish typing to convert"
                   : targetZone && conversion.results.length
-                    ? `${conversion.results.length} time interpretations found`
+                    ? `${conversion.results.length} converted results found`
                     : ""}
             </div>
             {visibleError && (
@@ -833,10 +833,12 @@ export default function App() {
                 <article className="result-group" key={group}>
                   {entries.map((result, index) => {
                     const d = formatResult(result, displayOptions);
+                    const range = rangeLabel(result);
                     return (
                       <div className="result" key={result.id}>
                         <div className="result-top">
                           <div className="result-output">
+                            {range && <p className="range-label">{range}</p>}
                             {d.time && (
                               <div className="hero-time">{d.time}</div>
                             )}
@@ -860,7 +862,7 @@ export default function App() {
                             type="button"
                             className="copy-button"
                             onClick={() => copy(result)}
-                            aria-label={`Copy ${result.interpretation || result.sourceLabel}${result.endpoint ? " " + result.endpoint : ""}`}
+                            aria-label={`Copy ${range ? range + ": " : ""}${d.time ? d.time + " · " : ""}${d.date} · ${d.zone} · ${result.interpretation || result.sourceLabel}`}
                           >
                             Copy
                           </button>
@@ -872,7 +874,6 @@ export default function App() {
                             </span>
                           )}
                           <p>
-                            {result.endpoint ? `${result.endpoint} · ` : ""}
                             Source:{" "}
                             <span className="source-label">
                               {result.interpretation || result.sourceLabel}

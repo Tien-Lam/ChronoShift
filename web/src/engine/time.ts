@@ -90,10 +90,18 @@ export function formatResult(
     dateShift: source.toPlainDate().until(target.toPlainDate()).days,
   };
 }
+export function rangeLabel(result: TimeResult): string {
+  return result.endpoint === "start"
+    ? "From"
+    : result.endpoint === "end"
+      ? "To"
+      : "";
+}
 export function copyText(
   result: TimeResult,
   options: ConversionOptions,
 ): string {
   const d = formatResult(result, options);
-  return `${d.time ? d.time + " · " : ""}${d.date} · ${d.zone}\n${result.original}${result.endpoint ? " (" + result.endpoint + ")" : ""} — ${result.sourceLabel}${result.interpretation ? " (" + result.interpretation + ")" : ""}${result.assumptions.length ? "\n" + result.assumptions.join("; ") : ""}`;
+  const range = rangeLabel(result);
+  return `${range ? range + ": " : ""}${d.time ? d.time + " · " : ""}${d.date} · ${d.zone}\n${result.original} — ${result.sourceLabel}${result.interpretation ? " (" + result.interpretation + ")" : ""}${result.assumptions.length ? "\n" + result.assumptions.join("; ") : ""}`;
 }

@@ -231,7 +231,7 @@ async function seed(page: Page) {
 }
 async function holdFallback(page: Page) {
   await page.evaluate(() => (window as any).__copyFocusProbe.arm());
-  await page.getByRole("button", { name: "Copy UTC", exact: true }).click();
+  await page.getByRole("button", { name: /^Copy .* · UTC$/ }).click();
   await expect(page.getByLabel("Text to copy")).toBeVisible();
   await expect
     .poll(() =>
@@ -287,7 +287,7 @@ test("a deferred manual-copy focus frame cannot steal a new target keyboard edit
   await expect(page.locator(".hero-time")).toContainText(/12:00 am/i);
   await expect(page.locator(".result-date")).toContainText(/10 Apr/);
   await expect(page.locator(".source-label")).toHaveText("UTC");
-  await page.getByRole("button", { name: "Copy UTC", exact: true }).click();
+  await page.getByRole("button", { name: /^Copy .* · UTC$/ }).click();
   await expect(page.getByLabel("Text to copy")).toHaveValue(
     /UTC\+09:00.*Tokyo/s,
   );

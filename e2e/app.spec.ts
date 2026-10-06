@@ -198,7 +198,9 @@ test("convert, inspect ambiguity, copy manually and protect privacy", async ({
   await ready(page);
   await convert(page, "July 15, 2026 3pm CST");
   await expect(page.getByText("2 possible interpretations")).toBeVisible();
-  await page.getByRole("button", { name: "Copy US Central Standard" }).click();
+  await page
+    .getByRole("button", { name: /^Copy .*US Central Standard$/ })
+    .click();
   await expect(page.getByLabel("Text to copy")).toHaveValue(
     /2026.*UTC\+10:00.*Sydney/s,
   );
