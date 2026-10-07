@@ -1,9 +1,9 @@
-import { useRef } from "react";
+import { ResizeSafePopover } from "./ResizeSafePopover";
+import { useRef, useState } from "react";
 import {
   Select,
   SelectValue,
   Button,
-  Popover,
   ListBox,
   ListBoxItem,
   Text,
@@ -89,9 +89,12 @@ export function ChoiceSelect({
   options,
   describedBy,
 }: ChoiceProps & { options: Option[]; describedBy?: string }) {
+  const [open, setOpen] = useState(false);
   return (
     <Select
       className="choice-select"
+      isOpen={open}
+      onOpenChange={setOpen}
       aria-label={label}
       aria-describedby={describedBy}
       value={value}
@@ -110,14 +113,16 @@ export function ChoiceSelect({
         </SelectValue>
         <Chevron />
       </Button>
-      <Popover
+      <ResizeSafePopover
         className="choice-popover"
+        inert={!open}
+        aria-hidden={!open}
         placement="bottom start"
         offset={8}
         containerPadding={12}
       >
         <ChoiceItems options={options} />
-      </Popover>
+      </ResizeSafePopover>
     </Select>
   );
 }
@@ -169,6 +174,7 @@ export function ZoneChoice({
   invalid?: boolean;
   triggerLabel: string;
 }) {
+  const [open, setOpen] = useState(false);
   const current = useRef(value);
   current.current = value;
   const commit = (next: string) => {
@@ -180,6 +186,7 @@ export function ZoneChoice({
   return (
     <ComboBox
       className="choice-combo"
+      onOpenChange={setOpen}
       aria-label={label}
       inputValue={value}
       onInputChange={commit}
@@ -220,15 +227,17 @@ export function ZoneChoice({
           <Chevron />
         </Button>
       </Group>
-      <Popover
+      <ResizeSafePopover
         className="choice-popover"
+        inert={!open}
+        aria-hidden={!open}
         placement="bottom start"
         offset={8}
         containerPadding={12}
         isNonModal
       >
         <ChoiceItems options={timezoneOptions} byValue />
-      </Popover>
+      </ResizeSafePopover>
     </ComboBox>
   );
 }

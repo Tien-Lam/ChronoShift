@@ -112,7 +112,7 @@ test("closed options expose saved defaults, partial dates remain invalid, reset 
   await expect(page.locator(".message-defaults")).toContainText(
     "Reference date: Complete or clear the date",
   );
-  await page.getByText("More options", { exact: true }).click();
+  await page.getByRole("button", { name: /More options/ }).click();
   await expect(page.locator(".message-defaults")).toContainText(
     "Reference date: Complete or clear the date",
   );
@@ -148,7 +148,7 @@ test("message defaults remain usable offline through resize without storing or r
   await page.getByLabel("Source timezone", { exact: true }).press("Escape");
   await enterZone(page, "UTC", "Source timezone");
   await enterReferenceDate(page, "2026-04-09");
-  await page.getByText("More options", { exact: true }).click();
+  await page.getByRole("button", { name: /More options/ }).click();
   await disconnect(context, origin);
   const input = page.getByLabel("Message with a date or time");
   await input.fill("Tomorrow at 3pm");
@@ -175,3 +175,136 @@ test("message defaults remain usable offline through resize without storing or r
   expect(requests.join("\n")).not.toContain("Tomorrow at 3pm");
   expect(requests.join("\n")).not.toContain("2026-04-09");
 });
+
+for (const holdMilliseconds of [180, 260]) {
+  test(`a ${holdMilliseconds}ms pointer press reopens message defaults across disclosure collapse`, async ({
+    page,
+  }, info) => {
+    await page.setViewportSize({ width: 900, height: 640 });
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    await page.addInitScript(() => {
+      localStorage.setItem(
+        "chronoshift.preferences.v1",
+        JSON.stringify({ source: "UTC", target: "UTC", hourCycle: "24" }),
+      );
+    });
+    await page.goto("/");
+    const change = page.getByRole("button", {
+      name: "Change message defaults",
+    });
+    const source = page.getByLabel("Source timezone", { exact: true });
+    const toggle = page.getByRole("button", { name: /More options/ });
+    const input = page.getByLabel("Message with a date or time");
+    await change.click();
+    await source.press("Escape");
+    await enterReferenceDate(page, "2026-04-09");
+    await input.fill("Tomorrow at 3pm");
+    await expect(page.locator(".result-date")).toContainText("10 Apr 2026");
+    await page.locator('#reference-date [data-type="day"]').click();
+    await page.locator('#reference-date [data-type="day"]').press("Backspace");
+    await expect(page.getByRole("alert")).toHaveText(
+      "Complete or clear the reference date to continue.",
+    );
+    await page.evaluate(() => {
+      const rows: unknown[] = [];
+      (window as any).collapsePointerRecords = rows;
+      const sample = (kind: string, event?: Event) => {
+        const button = document.querySelector(".message-defaults button")!;
+        const fields = document.querySelector(".option-fields") as HTMLElement;
+        const bounds = button.getBoundingClientRect();
+        const target = event?.target;
+        rows.push({
+          kind,
+          time: performance.now(),
+          scrollY,
+          expanded: document
+            .querySelector(".options-trigger")
+            ?.getAttribute("aria-expanded"),
+          hidden: fields.hidden,
+          inert: fields.inert,
+          button: {
+            x: bounds.x,
+            y: bounds.y,
+            width: bounds.width,
+            height: bounds.height,
+          },
+          target:
+            target === button
+              ? "change-defaults"
+              : target instanceof Element
+                ? target.tagName
+                : null,
+          point:
+            event instanceof MouseEvent
+              ? { x: event.clientX, y: event.clientY }
+              : null,
+        });
+      };
+      for (const type of ["pointerdown", "pointerup", "click", "scroll"])
+        document.addEventListener(type, (event) => sample(type, event), true);
+      let active = true;
+      (window as any).stopCollapsePointerRecords = () => {
+        active = false;
+      };
+      const frame = () => {
+        if (!active) return;
+        sample("rAF");
+        requestAnimationFrame(frame);
+      };
+      requestAnimationFrame(frame);
+    });
+    try {
+      await toggle.click();
+      await expect(page.locator(".message-defaults")).toContainText(
+        "Reference date: Complete or clear the date",
+      );
+      // This is a native held press, not a settling wait: layout must stay
+      // usable between pointer down and up on either side of the old 220ms exit.
+      await change.click({ delay: holdMilliseconds });
+      await source.press("Escape");
+      const press = await page.evaluate(() => {
+        const records = (window as any).collapsePointerRecords;
+        const down = records.find(
+          (record: any) =>
+            record.kind === "pointerdown" &&
+            record.target === "change-defaults",
+        );
+        const up = records.find(
+          (record: any) =>
+            record.kind === "pointerup" && record.time > down.time,
+        );
+        const click = records.find(
+          (record: any) => record.kind === "click" && record.time >= up.time,
+        );
+        return { down, up, click };
+      });
+      expect(press.up.target).toBe("change-defaults");
+      expect(press.click.target).toBe("change-defaults");
+      expect(press.up.time).toBeGreaterThan(press.down.time);
+      for (const coordinate of ["x", "y", "width", "height"])
+        expect(
+          Math.abs(press.up.button[coordinate] - press.down.button[coordinate]),
+        ).toBeLessThanOrEqual(1);
+      expect(
+        Math.abs(press.up.scrollY - press.down.scrollY),
+      ).toBeLessThanOrEqual(1);
+      await expect(toggle).toHaveAttribute("aria-expanded", "true");
+      await expect(source).toBeFocused();
+      await page.getByRole("button", { name: "Reset preferences" }).click();
+      await expect(input).toHaveValue("Tomorrow at 3pm");
+      await expect(page.locator(".result-date")).toContainText(
+        /2 Jul(?:y)? 2026/,
+      );
+      await expect(page.getByRole("alert")).toHaveCount(0);
+    } finally {
+      const records = await page.evaluate(() => {
+        (window as any).stopCollapsePointerRecords();
+        return (window as any).collapsePointerRecords;
+      });
+      await info.attach("disclosure-held-pointer", {
+        body: Buffer.from(JSON.stringify({ holdMilliseconds, records })),
+        contentType: "application/json",
+      });
+    }
+  });
+}

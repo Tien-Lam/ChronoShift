@@ -26,7 +26,7 @@ test("target and clock format edits reuse source instants across midnight, inclu
   });
   await page.goto("/");
   await enterZone(page, "UTC");
-  await page.getByText("More options", { exact: true }).click();
+  await page.getByRole("button", { name: /More options/ }).click();
   await enterZone(page, "UTC", "Source timezone");
   const input = page.getByLabel("Message with a date or time");
   await input.fill("Tomorrow at 3pm UTC");
@@ -96,7 +96,7 @@ test("display edits retain in-flight conversion and render its completion with t
   });
   await page.goto("/");
   await enterZone(page, "UTC");
-  await page.getByText("More options", { exact: true }).click();
+  await page.getByRole("button", { name: /More options/ }).click();
   await page
     .getByLabel("Message with a date or time")
     .fill("April 9, 2026 3pm UTC");
@@ -133,7 +133,7 @@ test("typing, pasted text and conversion settings update without submission", as
   await expect(page.locator(".hero-time")).toHaveText(/8:20 am/i);
   await enterZone(page, "Europe/London");
   await expect(page.locator(".hero-time")).toHaveText(/9:20 am/i);
-  await page.getByText("More options", { exact: true }).click();
+  await page.getByRole("button", { name: /More options/ }).click();
   await choose(page, "Time format", "24");
   await expect(page.locator(".hero-time")).toHaveText("09:20");
   await input.fill("April 9, 2026 3pm");

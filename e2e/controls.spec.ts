@@ -73,7 +73,7 @@ test("themed choices align and their opened menus fit every breakpoint without l
   await enterZone(page, "Pacific/Chatham");
   await expect(page.locator(".hero-time")).toBeVisible();
   const result = await page.locator(".hero-time").innerText();
-  await page.getByText("More options", { exact: true }).click();
+  await page.getByRole("button", { name: /More options/ }).click();
   await page.getByLabel("Appearance", { exact: true }).click();
   const backgrounds = new Map<string, string>();
   for (const theme of ["dark", "light"]) {
@@ -117,7 +117,11 @@ test("themed choices align and their opened menus fit every breakpoint without l
           expect(control.inset, control.id).toBe("12px");
           expect(control.font, control.id).toBe("16px");
           expect(control.lineHeight, control.id).toBe("24px");
-          expect(control.labelDelta, control.id).toBe(0);
+          // The approved target row places its label beside the field above
+          // 480px; settings and narrow target labels remain directly above.
+          expect(control.labelDelta, control.id).toBe(
+            control.id === "target-zone" && width > 480 ? 112 : 0,
+          );
         }
         const appearance = (await page
           .locator(".appearance summary")
@@ -254,7 +258,7 @@ test("choice menus support keyboard selection, nested Escape and pointer dismiss
   await expect(page.locator(".appearance")).not.toHaveAttribute("open", "");
   await expect(page.getByLabel("Appearance", { exact: true })).toBeFocused();
 
-  await page.getByText("More options", { exact: true }).click();
+  await page.getByRole("button", { name: /More options/ }).click();
   const time = choiceTrigger(page, "Time format");
   await time.focus();
   await time.press("ArrowDown");
@@ -349,7 +353,7 @@ test("timezone search preserves freeform offsets and recovers from empty and inv
   isMobile,
 }) => {
   await page.goto("/");
-  await page.getByText("More options", { exact: true }).click();
+  await page.getByRole("button", { name: /More options/ }).click();
   const target = page.getByLabel("Convert to", { exact: true });
   const source = page.getByLabel("Source timezone", {
     exact: true,
@@ -418,7 +422,7 @@ test("hovering timezone suggestions preserves typed values while explicit select
   isMobile,
 }) => {
   await page.goto("/");
-  await page.getByText("More options", { exact: true }).click();
+  await page.getByRole("button", { name: /More options/ }).click();
   await enterZone(page, "UTC", "Source timezone");
   await enterZone(page, "UTC");
   await page
@@ -493,13 +497,19 @@ test("hovering timezone suggestions preserves typed values while explicit select
   await source.press("ArrowDown");
   await source.press("End");
   await expect(page.getByRole("listbox")).toBeVisible();
+  const scrollBefore = await page.evaluate(() => scrollY);
+  const scrollDelta = scrollBefore > 0 ? -160 : 160;
+  // Wheel the document outside the popup, rather than the suggestion list or
+  // an already exhausted page edge. Verify an actual document scroll occurred.
+  await page.mouse.move(4, 4);
   if (browserName === "webkit" && isMobile) {
     // Mobile WebKit emulation has no mouse-wheel capability. Exercise the
     // resulting document scroll and dismissal without claiming a touch swipe.
-    await page.evaluate(() => window.scrollBy(0, 160));
+    await page.evaluate(() => window.scrollBy(0, scrollY > 0 ? -160 : 160));
   } else {
-    await page.mouse.wheel(0, 160);
+    await page.mouse.wheel(0, scrollDelta);
   }
+  await expect.poll(() => page.evaluate(() => scrollY)).not.toBe(scrollBefore);
   await expect(page.getByRole("listbox")).toHaveCount(0);
   await expect(source).toHaveValue("Asia/Tokyo");
   await expect(page.getByLabel("Convert to", { exact: true })).toHaveValue(
