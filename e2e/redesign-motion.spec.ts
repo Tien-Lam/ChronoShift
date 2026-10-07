@@ -81,19 +81,42 @@ for (const theme of ["dark", "light"] as const) {
     expect(entrance.length).toBe(2);
     const completed = record.events.filter(
       (event) =>
-        event.type === "animationend" &&
+        /^(?:animationend|animationcancel)$/.test(event.type) &&
         /input-panel|result-panel/.test(event.target),
     );
     expect(completed.length).toBe(2);
-    for (const event of completed)
+    for (const start of entrance)
+      expect(
+        completed.filter((event) => event.target === start.target),
+      ).toHaveLength(1);
+    for (const event of completed) {
       expect(
         event.time -
           entrance.find((start) => start.target === event.target)!.time,
       ).toBeLessThanOrEqual(400);
+      expect(event.time).toBeGreaterThanOrEqual(
+        entrance.find((start) => start.target === event.target)!.time,
+      );
+    }
     expect(
       Math.max(...completed.map((event) => event.time)) -
         Math.min(...entrance.map((event) => event.time)),
     ).toBeLessThanOrEqual(400);
+    const finalPanels = await page.evaluate(() =>
+      [...document.querySelectorAll(".input-panel,.result-panel")].map(
+        (element) => ({
+          opacity: Number(getComputedStyle(element).opacity),
+          running: element
+            .getAnimations()
+            .filter((animation) => animation.playState === "running").length,
+        }),
+      ),
+    );
+    expect(finalPanels).toHaveLength(2);
+    for (const panel of finalPanels) {
+      expect(panel.opacity).toBe(1);
+      expect(panel.running).toBe(0);
+    }
     // Resize/theme must not replay this once-per-load presentation.
     await beginMotionProbe(page, anchors);
     await page.setViewportSize({ width: 390, height: 844 });
@@ -350,6 +373,10 @@ test("explicit theme transitions preserve draft and results; live system resolut
   ]);
   await page.locator('[role="option"][data-value="light"]').click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  await expect(page.locator("html")).toHaveAttribute(
+    "data-theme-changing",
+    "true",
+  );
   await expect(theme).toBeFocused();
   await expect(input).toHaveValue("April 9, 2026 3pm UTC");
   await expect(page.locator(".hero-time")).toHaveText(/3:00 pm/i);
@@ -372,19 +399,13 @@ test("explicit theme transitions preserve draft and results; live system resolut
         /input-panel|result-panel/.test(event.target),
     ),
   ).toEqual([]);
-  await expect(page.locator("html")).not.toHaveAttribute(
-    "data-theme-changing",
-    "",
-  );
+  await expect(page.locator("html")).not.toHaveAttribute("data-theme-changing");
   await theme.click();
   await page.locator('[role="option"][data-value="system"]').click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   await page.emulateMedia({ colorScheme: "light" });
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
-  await expect(page.locator("html")).not.toHaveAttribute(
-    "data-theme-changing",
-    "",
-  );
+  await expect(page.locator("html")).not.toHaveAttribute("data-theme-changing");
   await expect(input).toHaveValue("April 9, 2026 3pm UTC");
   await expect(page.locator(".hero-time")).toHaveText(/3:00 pm/i);
 });
@@ -829,16 +850,54 @@ for (const mode of [
     );
     expect(resumedFrames.length).toBeGreaterThan(2);
     for (const element of resumedFrames
-      .flatMap((frame) => frame.elements)
+      .flatMap((frame) =>
+        frame.elements.map((element) => ({
+          ...element,
+          sampledAt: frame.time,
+        })),
+      )
       .filter((element) =>
         /input-panel|result-panel|result-group/.test(element.selector),
       )) {
       expect(element.opacity, `${mode} ${element.selector}`).toBe(1);
-      expect(
-        element.runningAnimations,
-        `${mode} ${element.selector} stale running animation`,
-      ).toEqual([]);
+      const deliveredPreference = record.preferences.some(
+        (preference) => preference.time <= element.sampledAt,
+      );
+      if (mode !== "normal startup rapid" || deliveredPreference) {
+        expect(
+          element.runningAnimations,
+          `${mode} ${element.selector} stale running animation`,
+        ).toEqual([]);
+      } else {
+        // Some browsers emit no event for coalesced emulation changes. The
+        // application cannot consume an undelivered preference. Only its
+        // original finite animation may continue; forbid fresh/restarted
+        // object identities, require full semantic opacity, and terminal
+        // lifetime below. Retain raw no-event evidence rather than calling
+        // unchanged normal playback a reduced-motion handling regression.
+        for (const animation of element.animations.filter(
+          (animation) => animation.state === "running",
+        )) {
+          const original = record.initialAnimations.find(
+            (candidate) => candidate.identity === animation.identity,
+          );
+          expect(original, `${mode} fresh animation identity`).toBeDefined();
+          if (original?.startTimeMilliseconds !== null)
+            expect(animation.startTimeMilliseconds).toBe(
+              original?.startTimeMilliseconds,
+            );
+          expect(animation.currentTimeMilliseconds).toBeLessThanOrEqual(
+            element.selector === ".result-group" ? 240 : 360,
+          );
+        }
+      }
     }
+    for (const element of record.frames
+      .at(-1)!
+      .elements.filter((element) =>
+        /input-panel|result-panel|result-group/.test(element.selector),
+      ))
+      expect(element.runningAnimations).toEqual([]);
     expectStationary(record, ["#message", ".result .copy-button"]);
   });
 

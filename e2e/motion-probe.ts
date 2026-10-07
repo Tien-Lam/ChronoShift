@@ -38,6 +38,7 @@ export type MotionEvidence = {
   started: number;
   ended: number;
   frames: MotionFrame[];
+  initialAnimations: MotionFrame["elements"][number]["animations"];
   clock?: {
     units: string;
     performanceNowZeroIntervals: number;
