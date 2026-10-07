@@ -29,8 +29,10 @@ const requiredSteps = [
   "Unit tests and production build",
   "Verify the standalone conversion corpus audit",
   "Run bun run test:browser",
+  "Preserve the verified root build",
   "Verify repository-subpath deployment",
-  "Upload the verified Pages build",
+  "Restore the verified root build",
+  "Upload the verified static build",
 ];
 
 export function trustedRun(
@@ -79,7 +81,7 @@ export function releaseMatches(
 ): boolean {
   return (
     /^[a-f0-9]{40}$/.test(release.sourceCommit || "") &&
-    release.base === "/ChronoShift/" &&
+    release.base === "/" &&
     /^[a-f0-9]{40}$/.test(expectedTree) &&
     sourceTree === expectedTree
   );
@@ -144,7 +146,7 @@ async function reuse(): Promise<boolean> {
     )
       continue;
     const artifact = artifacts.artifacts.find(
-      (a) => a.name === "github-pages" && !a.expired,
+      (a) => a.name === "verified-site" && !a.expired,
     );
     if (
       !artifact ||

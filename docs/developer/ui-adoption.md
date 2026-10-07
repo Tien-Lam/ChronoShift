@@ -87,7 +87,7 @@ remain distinct from regional DST, and date context stays bounded. Keep inputs
 and reference dates out of requests and permanent storage. Preserve precise
 range/copy semantics, clipboard/import/focus ownership, draft/results through
 resize, reset behavior and user-explicit update activation. Runtime assets/fonts,
-manifest and worker stay under `/ChronoShift/`; there is no conversion backend or
+manifest and worker stay under the production base `/` (with `/ChronoShift/` regression coverage); there is no conversion backend or
 runtime CDN.
 
 ## Paste report: demonstrated cause and required acceptance

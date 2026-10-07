@@ -24,15 +24,15 @@ Open http://127.0.0.1:4173. Offline setup runs in the background; the header has
 - `scripts/`: static build, preview, dependency notices, corpus audit and verification tools.
 - `tests/`: real-engine unit tests, exact temporal fixtures and a standalone resilience corpus.
 - `e2e/`: browser, offline, responsive, hinge and hosted checks.
-- `.github/workflows/`: web verification and GitHub Pages publishing.
+- `.github/workflows/`: web verification and Cloudflare static publishing.
 
-## Pages build
+## Subpath compatibility build
 
 ```bash
 BASE_PATH=/ChronoShift/ bun run build
 BASE_PATH=/ChronoShift/ bun run preview
 ```
 
-Use the same trailing-slash base path for building and serving. All assets, the manifest and service worker share it. GitHub Actions obtains the production base from Pages and deploys `dist/`; no Bun server runs on the host.
+Use the same trailing-slash base path for building and serving. All assets, the manifest and service worker share it. Production uses `/`; GitHub Actions publishes the verified root `dist/` with the pinned project-local Wrangler. The subpath build is a separate compatibility check. No Bun server runs on the host.
 
 See [web architecture and publishing](web.md), [testing](testing.md) and [device acceptance](device-smoke-test.md).

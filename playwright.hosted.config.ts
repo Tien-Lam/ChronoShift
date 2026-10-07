@@ -6,7 +6,7 @@ export default defineConfig({
   expect: { timeout: 20000 },
   workers: 2,
   use: {
-    baseURL: "https://tien-lam.github.io",
+    baseURL: process.env.HOSTED_URL || "https://timetolocal.com",
     locale: "en-AU",
     timezoneId: "Australia/Sydney",
     trace: "retain-on-failure",

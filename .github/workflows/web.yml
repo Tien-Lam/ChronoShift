@@ -2,8 +2,8 @@ name: Web
 on:
   workflow_call:
     inputs:
-      publish-pages:
-        description: Upload the verified repository-path build for deployment
+      publish-site:
+        description: Upload the verified root build for deployment
         type: boolean
         default: false
       ci-timing:
@@ -50,14 +50,14 @@ jobs:
       run:
         shell: bash
     env:
+      BASE_PATH: /
       PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
       PLAYWRIGHT_IMAGE_VERSION: "1.63.0"
       CHRONOSHIFT_CI_TIMING: ${{ (inputs.ci-timing || (github.event_name == 'pull_request' && github.event.action == 'labeled' && github.event.label.name == 'ci-timing')) && '1' || '0' }}
-      PUBLISH_PAGES: ${{ inputs.publish-pages || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) }}
+      PUBLISH_SITE: ${{ inputs.publish-site || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) }}
     timeout-minutes: 20
     permissions:
       contents: read
-      pages: read
     concurrency:
       group: web-verify-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
       cancel-in-progress: true
@@ -105,9 +105,9 @@ jobs:
           name: chronoshift-ci-timing-${{ github.run_id }}-${{ github.run_attempt }}
           path: test-results/ci-timing.json
           retention-days: 1
-      - id: pages
-        if: inputs.publish-pages
-        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+      - name: Preserve the verified root build
+        if: env.PUBLISH_SITE == 'true'
+        run: cp -rf dist "$RUNNER_TEMP/chronoshift-root"
       - name: Verify repository-subpath deployment
         run: |
           bun run build
@@ -116,12 +116,18 @@ jobs:
           bunx --bun playwright test --config=playwright.subpath.config.ts --output=test-results/subpath
         env:
           BASE_PATH: /ChronoShift/
-      - name: Upload the verified Pages build
-        if: env.PUBLISH_PAGES == 'true'
+      - name: Restore the verified root build
+        if: env.PUBLISH_SITE == 'true'
+        run: |
+          rm -rf dist
+          cp -rf "$RUNNER_TEMP/chronoshift-root" dist
+      - name: Upload the verified static build
+        if: env.PUBLISH_SITE == 'true'
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: dist
-          retention-days: ${{ inputs.publish-pages && 14 || 1 }}
+          name: verified-site
+          retention-days: ${{ inputs.publish-site && 14 || 1 }}
       - name: Publish failed-attempt diagnostics
         if: ${{ !cancelled() && (failure() || hashFiles('test-results/attempt-failures.json') != '') }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

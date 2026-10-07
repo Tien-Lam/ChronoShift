@@ -60,6 +60,17 @@ test("preview publication accepts identical trees and rejects merged content dif
       sourceCommit: source,
       base: "/ChronoShift/",
     });
+    const worker = await Bun.file(join(cwd, "dist/sw.js")).text();
+    // Cloudflare consumes these configuration files instead of serving them.
+    // Precaching them would make every fresh offline installation fail.
+    expect(worker).not.toContain("/ChronoShift/_headers");
+    expect(worker).not.toContain("/ChronoShift/_redirects");
+    expect(await Bun.file(join(cwd, "dist/_headers")).text()).toContain(
+      "frame-ancestors 'none'",
+    );
+    expect(await Bun.file(join(cwd, "dist/_headers")).text()).toContain(
+      "/ChronoShift/assets/*",
+    );
     await Bun.write(join(cwd, "app.txt"), "different merged content");
     git("add", "app.txt");
     git("commit", "--quiet", "-m", "main introduced another change");

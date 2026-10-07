@@ -1,6 +1,6 @@
 # ChronoShift
 
-[Open ChronoShift](https://tien-lam.github.io/ChronoShift/) — a private timezone converter that works offline after its first complete online load.
+[Open ChronoShift](https://timetolocal.com/) — a private timezone converter that works offline after its first complete online load.
 
 Paste or type a message and choose your destination timezone. Results convert automatically as you type; copy them with their date and zone. ChronoShift handles natural-language dates/times, cities, explicit offsets and IANA zones, ranges, Unix seconds and labeled ambiguity. Corrections and display preferences are under **Adjust interpretation & format**.
 
@@ -43,7 +43,7 @@ bun run corpus:audit
 bun run test:hosted
 ```
 
-GitHub Pages publishes verified builds at `/ChronoShift/`. The publishing workflow checks the web app before uploading and deploying static assets. No application server runs in production. The migration branch publishes the current preview; main is the continuing source after merge.
+Cloudflare Workers Static Assets publishes verified builds at `https://timetolocal.com/`. GitHub Actions runs the complete web gate and publishes only `main`; trusted PR artifacts are reused only after exact source-tree and digest verification. No conversion backend or application server runs in production.
 
 See [build setup](docs/developer/building.md), [tests](docs/developer/testing.md), [publishing and rollback](docs/developer/web.md), [browser acceptance](docs/developer/device-smoke-test.md) and [the conversion pipeline](docs/architecture/nlp-pipeline.md). Physical-device, accessibility and phone-performance acceptance is tracked in the [Linear initiative](https://linear.app/tienlam/initiative/chronoshift-simple-offline-web-app-d90101850ba1).
 

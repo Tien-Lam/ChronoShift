@@ -6,7 +6,7 @@ import { enterZone } from "../e2e/choices";
 const [commandPath, reportPath] = Bun.argv.slice(2);
 if (!commandPath || !reportPath)
   throw new Error("Provide command JSON and report JSON paths");
-const url = "https://tien-lam.github.io/ChronoShift/";
+const url = process.env.HOSTED_URL || "https://timetolocal.com/";
 const browser = await chromium.launch();
 const context = await browser.newContext({
   locale: "en-AU",
