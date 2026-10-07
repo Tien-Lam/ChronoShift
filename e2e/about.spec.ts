@@ -4,6 +4,38 @@ const sourceURL = "https://github.com/Tien-Lam/time-to-local";
 
 test.describe("About updates", () => {
   test.use({ isolatedOrigin: true });
+  test("an oversized draft shows recovery on About and clearing it permits an update", async ({
+    page,
+    context,
+  }) => {
+    await page.goto("/");
+    await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
+    const message = "x".repeat(10_001);
+    const input = page.getByLabel("Message with a date or time");
+    await input.fill(message);
+    await page.getByRole("link", { name: "About", exact: true }).click();
+    await publishRelease(context, page.url(), "second");
+    await page.evaluate(async () => {
+      await (await navigator.serviceWorker.getRegistration())!.update();
+    });
+    const update = page.getByRole("button", { name: "Update now" });
+    await expect(update).toBeVisible();
+    await update.click();
+    await expect(page.getByRole("status")).toContainText(
+      "Copy your message somewhere safe, then clear it before updating.",
+    );
+    await expect(input).toHaveValue(message);
+    await expect(page).toHaveTitle("About — Time to Local");
+    await page.getByRole("link", { name: "Back to converter" }).click();
+    await page.getByRole("button", { name: "Clear", exact: true }).click();
+    await page.getByRole("link", { name: "About", exact: true }).click();
+    await Promise.all([page.waitForEvent("domcontentloaded"), update.click()]);
+    await expect(page).toHaveTitle("About — Time to Local");
+    await page.getByRole("link", { name: "Back to converter" }).click();
+    await expect(input).toHaveValue("");
+    await input.fill("April 9, 2026 3pm UTC");
+    await expect(page.locator(".hero-time")).toBeVisible();
+  });
   test("a waiting update stays explicit on About and preserves the draft and page", async ({
     page,
     context,
