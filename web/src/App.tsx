@@ -33,6 +33,7 @@ import {
 import { ChoiceSelect, ZoneChoice } from "./components/Choices";
 import { DateChoice } from "./components/DateChoice";
 import { ActionButton } from "./components/ui/ActionButton";
+import { ControlIcon } from "./components/ui/ControlIcon";
 import { Disclosure } from "./components/Disclosure";
 import { useRetainedOpen } from "./components/useRetainedOpen";
 import { useTouchFeedback } from "./components/useTouchFeedback";
@@ -97,7 +98,6 @@ export default function App() {
   const committedGroups = useRef(new Set<string>());
   const [newGroups, setNewGroups] = useState(new Set<string>());
   const appearance = useRef<HTMLDetailsElement>(null);
-  const examplesMenu = useRef<HTMLDetailsElement>(null);
   const themeResolutionFrame = useRef<number>(undefined);
   const worker = useRef<Worker | null>(null),
     request = useRef(0);
@@ -243,12 +243,6 @@ export default function App() {
       const target = event.target;
       if (
         target instanceof Element &&
-        !examplesMenu.current?.contains(target) &&
-        examplesMenu.current
-      )
-        examplesMenu.current.open = false;
-      if (
-        target instanceof Element &&
         !appearance.current?.contains(target) &&
         !target.closest(".choice-popover")
       ) {
@@ -268,11 +262,6 @@ export default function App() {
         event.stopPropagation();
         setAppearanceOpen(false);
         appearance.current.querySelector("summary")?.focus();
-      } else if (examplesMenu.current?.open) {
-        event.preventDefault();
-        event.stopPropagation();
-        examplesMenu.current.open = false;
-        examplesMenu.current.querySelector("summary")?.focus();
       }
     };
     document.addEventListener("pointerdown", dismiss);
@@ -718,7 +707,7 @@ export default function App() {
                   resultHeading.current?.scrollIntoView({ block: "start" });
                 }}
               >
-                View result <span aria-hidden="true">↓</span>
+                View result <ControlIcon name="down" />
               </ActionButton>
             </div>
             <label className="sr-only" htmlFor="message">
@@ -744,26 +733,19 @@ export default function App() {
               aria-describedby="input-help"
             />
             <div className="input-tools">
-              <details className="examples" ref={examplesMenu}>
-                <summary>Try an example</summary>
-                <div className="example-list">
-                  {examples.map((example) => (
-                    <ActionButton
-                      type="button"
-                      key={example}
-                      onPress={() => {
-                        if (examplesMenu.current)
-                          examplesMenu.current.open = false;
-                        edit(example);
-                        input.current?.focus();
-                      }}
-                    >
-                      {example}
-                      <span aria-hidden="true">↗</span>
-                    </ActionButton>
-                  ))}
-                </div>
-              </details>
+              <ActionButton
+                type="button"
+                className="example-button"
+                onPress={() => {
+                  const choices = examples.filter(
+                    (example) => example !== draft.current,
+                  );
+                  edit(choices[Math.floor(Math.random() * choices.length)]);
+                  input.current?.focus();
+                }}
+              >
+                Random example
+              </ActionButton>
               <div>
                 <ActionButton
                   type="button"
@@ -1106,9 +1088,11 @@ export default function App() {
                             {copyState?.id === result.id &&
                             copyState.state === "success" ? (
                               <>
-                                <span className="copy-check" aria-hidden="true">
-                                  ✓
-                                </span>{" "}
+                                <ControlIcon
+                                  name="check"
+                                  className="copy-check"
+                                  size="1em"
+                                />{" "}
                                 Copied
                               </>
                             ) : copyState?.id === result.id &&
