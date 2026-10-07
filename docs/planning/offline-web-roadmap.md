@@ -2,7 +2,7 @@
 
 The user explicitly retired native Android support. Remove the active native source/tooling now; cancel TIE-322 and retain independent web fixtures plus historical provenance. Remaining web acceptance does not require native support.
 
-This is the current scope. Historical source references use the immutable original review commit; they do not require those files in the active tree. Actual Linear identifiers and states are recorded in offline-web-linear-map.json.
+This is the historical roadmap recorded in October 2026. Current scope, status and acceptance evidence live in [GitHub Issues](https://github.com/Tien-Lam/time-to-local/issues) and [Projects](https://github.com/users/Tien-Lam/projects/1). The [migration index](../linear-migration/README.md) maps every original Linear ID. offline-web-linear-map.json retains an earlier dated state snapshot and historical evidence; it is not the current status tracker. Historical source references use immutable original review commits.
 
 ## Objective
 Make ChronoShift a browser-based timezone converter that is easy to use on a phone or computer and works offline after its first successful online load. Paste or type text, convert it to your timezone, inspect ambiguous interpretations, and copy the result. No account or conversion server.
@@ -33,7 +33,7 @@ Android PROCESS_TEXT has no general web equivalent. Paste is universal; installe
 - HTTPS release, rollback, web-only documentation and browser acceptance are complete.
 
 No dates or assignees are committed until capacity is known. Work is ordered by dependencies, with AI discovery outside the critical path.
-Repository reviewed at b7ef48a: https://github.com/Tien-Lam/ChronoShift/tree/b7ef48a
+Repository reviewed at b7ef48a: https://github.com/Tien-Lam/time-to-local/tree/b7ef48a
 
 ## Scope update — 4 October 2026
 The user explicitly retired native Android support. Remove the active native source/tooling now; cancel TIE-322 and retain independent web fixtures plus historical provenance. Remaining web acceptance does not require native support.
@@ -82,7 +82,7 @@ Reproducible Bun/mise web CI, exact browser correctness and performance, local-o
 
 <a id="f1"></a>
 
-### F1 — [Define the web product contract and migration acceptance cases](https://linear.app/tienlam/issue/TIE-292/define-the-web-product-contract-and-migration-acceptance-cases)
+### F1 — [Define the web product contract and migration acceptance cases](https://github.com/Tien-Lam/time-to-local/issues/57)
 
 State: **Done**. Project: **ChronoShift — Web Conversion Foundations**.
 
@@ -107,15 +107,15 @@ The existing Android interaction and parser assumptions need an explicit web con
 - Dependencies: None
 
 ## Repository evidence
-- [README.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/README.md)
-- [docs/architecture/merge-philosophy.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/architecture/merge-philosophy.md)
-- [app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt)
-- [app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt)
-- [app/src/test/java/com/chronoshift/TimestampCorpusTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/TimestampCorpusTest.kt)
+- [README.md](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/README.md)
+- [docs/architecture/merge-philosophy.md](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/docs/architecture/merge-philosophy.md)
+- [app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt)
+- [app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt)
+- [app/src/test/java/com/chronoshift/TimestampCorpusTest.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/test/java/com/chronoshift/TimestampCorpusTest.kt)
 
 <a id="f2"></a>
 
-### F2 — [Create the TypeScript web scaffold with Bun and mise](https://linear.app/tienlam/issue/TIE-293/create-the-typescript-web-scaffold-with-bun-and-mise)
+### F2 — [Create the TypeScript web scaffold with Bun and mise](https://github.com/Tien-Lam/time-to-local/issues/58)
 
 State: **In Review**. Project: **ChronoShift — Web Conversion Foundations**.
 
@@ -138,13 +138,13 @@ The repository has no maintained web source, package lockfile or browser build.
 - Dependencies: F1
 
 ## Repository evidence
-- [app/build.gradle.kts](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/build.gradle.kts)
-- [settings.gradle.kts](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/settings.gradle.kts)
-- [docs/developer/building.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/developer/building.md)
+- [app/build.gradle.kts](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/build.gradle.kts)
+- [settings.gradle.kts](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/settings.gradle.kts)
+- [docs/developer/building.md](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/docs/developer/building.md)
 
 <a id="f3"></a>
 
-### F3 — [Maintain independent web fixtures and a standalone conversion corpus](https://linear.app/tienlam/issue/TIE-294/maintain-independent-web-fixtures-and-a-standalone-conversion-corpus)
+### F3 — [Maintain independent web fixtures and a standalone conversion corpus](https://github.com/Tien-Lam/time-to-local/issues/59)
 
 State: **In Review**. Project: **ChronoShift — Web Conversion Foundations**.
 
@@ -169,7 +169,7 @@ Web correctness needs independently specified exact expectations and a self-cont
 
 <a id="f4"></a>
 
-### F4 — [Implement a browser timezone adapter with explicit DST semantics](https://linear.app/tienlam/issue/TIE-295/implement-a-browser-timezone-adapter-with-explicit-dst-semantics)
+### F4 — [Implement a browser timezone adapter with explicit DST semantics](https://github.com/Tien-Lam/time-to-local/issues/60)
 
 State: **In Review**. Project: **ChronoShift — Web Conversion Foundations**.
 
@@ -194,13 +194,13 @@ Kotlinx/java.time conversion and Java zone discovery are unavailable in the brow
 - Dependencies: F2, F3
 
 ## Repository evidence
-- [app/src/main/java/com/chronoshift/conversion/ExtractedTime.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/ExtractedTime.kt)
-- [app/src/main/java/com/chronoshift/conversion/TimeConverter.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/TimeConverter.kt)
-- [app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt)
+- [app/src/main/java/com/chronoshift/conversion/ExtractedTime.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/ExtractedTime.kt)
+- [app/src/main/java/com/chronoshift/conversion/TimeConverter.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/TimeConverter.kt)
+- [app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt)
 
 <a id="f5"></a>
 
-### F5 — [Maintain the typed browser chrono-node adapter](https://linear.app/tienlam/issue/TIE-296/maintain-the-typed-browser-chrono-node-adapter)
+### F5 — [Maintain the typed browser chrono-node adapter](https://github.com/Tien-Lam/time-to-local/issues/61)
 
 State: **In Review**. Project: **ChronoShift — Web Conversion Foundations**.
 
@@ -223,7 +223,7 @@ Chrono is already JavaScript, but the committed minified Android bundle is unver
 
 <a id="f6"></a>
 
-### F6 — [Port contextual date propagation, range endpoints and source ordering](https://linear.app/tienlam/issue/TIE-297/port-contextual-date-propagation-range-endpoints-and-source-ordering)
+### F6 — [Port contextual date propagation, range endpoints and source ordering](https://github.com/Tien-Lam/time-to-local/issues/62)
 
 State: **In Review**. Project: **ChronoShift — Web Conversion Foundations**.
 
@@ -246,13 +246,13 @@ Chrono results need project-specific context handling to avoid wrong dates and r
 - Dependencies: F5
 
 ## Repository evidence
-- [app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt)
-- [app/src/test/java/com/chronoshift/nlp/ChronoResultParserMergeTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/ChronoResultParserMergeTest.kt)
-- [app/src/test/java/com/chronoshift/IntegrationTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/IntegrationTest.kt)
+- [app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt)
+- [app/src/test/java/com/chronoshift/nlp/ChronoResultParserMergeTest.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/ChronoResultParserMergeTest.kt)
+- [app/src/test/java/com/chronoshift/IntegrationTest.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/test/java/com/chronoshift/IntegrationTest.kt)
 
 <a id="f7"></a>
 
-### F7 — [Port abbreviation resolution and preserve ambiguous timezone interpretations](https://linear.app/tienlam/issue/TIE-298/port-abbreviation-resolution-and-preserve-ambiguous-timezone)
+### F7 — [Port abbreviation resolution and preserve ambiguous timezone interpretations](https://github.com/Tien-Lam/time-to-local/issues/63)
 
 State: **In Review**. Project: **ChronoShift — Web Conversion Foundations**.
 
@@ -275,13 +275,13 @@ Abbreviations like CST are ambiguous, while explicit standard/daylight offsets a
 - Dependencies: F5, F4
 
 ## Repository evidence
-- [app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt)
-- [app/src/test/java/com/chronoshift/AmbiguityExpansionTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/AmbiguityExpansionTest.kt)
-- [app/src/test/java/com/chronoshift/nlp/TimezoneAbbreviationsTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/TimezoneAbbreviationsTest.kt)
+- [app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/TimezoneAbbreviations.kt)
+- [app/src/test/java/com/chronoshift/AmbiguityExpansionTest.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/test/java/com/chronoshift/AmbiguityExpansionTest.kt)
+- [app/src/test/java/com/chronoshift/nlp/TimezoneAbbreviationsTest.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/TimezoneAbbreviationsTest.kt)
 
 <a id="f8"></a>
 
-### F8 — [Port Unix seconds and a deterministic offline city resolver](https://linear.app/tienlam/issue/TIE-299/port-unix-seconds-and-a-deterministic-offline-city-resolver)
+### F8 — [Port Unix seconds and a deterministic offline city resolver](https://github.com/Tien-Lam/time-to-local/issues/64)
 
 State: **In Review**. Project: **ChronoShift — Web Conversion Foundations**.
 
@@ -305,14 +305,14 @@ Unix/city extraction is Kotlin and the Android Geocoder fallback can use service
 - Dependencies: F2, F3, F4
 
 ## Repository evidence
-- [app/src/main/java/com/chronoshift/nlp/RegexExtractor.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/RegexExtractor.kt)
-- [app/src/main/java/com/chronoshift/nlp/CityResolver.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/CityResolver.kt)
-- [app/src/test/java/com/chronoshift/nlp/IanaCityLookupTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/IanaCityLookupTest.kt)
-- [app/src/test/java/com/chronoshift/nlp/RegexExtractorTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/RegexExtractorTest.kt)
+- [app/src/main/java/com/chronoshift/nlp/RegexExtractor.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/RegexExtractor.kt)
+- [app/src/main/java/com/chronoshift/nlp/CityResolver.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/CityResolver.kt)
+- [app/src/test/java/com/chronoshift/nlp/IanaCityLookupTest.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/IanaCityLookupTest.kt)
+- [app/src/test/java/com/chronoshift/nlp/RegexExtractorTest.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/RegexExtractorTest.kt)
 
 <a id="f9"></a>
 
-### F9 — [Port result merging without losing distinct source interpretations](https://linear.app/tienlam/issue/TIE-300/port-result-merging-without-losing-distinct-source-interpretations)
+### F9 — [Port result merging without losing distinct source interpretations](https://github.com/Tien-Lam/time-to-local/issues/65)
 
 State: **In Review**. Project: **ChronoShift — Web Conversion Foundations**.
 
@@ -335,14 +335,14 @@ Deduplication must reduce repeats without hiding timezone ambiguity or merging d
 - Dependencies: F6, F7, F8
 
 ## Repository evidence
-- [app/src/main/java/com/chronoshift/nlp/ResultMerger.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/ResultMerger.kt)
-- [app/src/main/java/com/chronoshift/conversion/TimeConverter.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/TimeConverter.kt)
-- [docs/architecture/merge-philosophy.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/architecture/merge-philosophy.md)
-- [app/src/test/java/com/chronoshift/nlp/ResultMergerTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/ResultMergerTest.kt)
+- [app/src/main/java/com/chronoshift/nlp/ResultMerger.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/ResultMerger.kt)
+- [app/src/main/java/com/chronoshift/conversion/TimeConverter.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/TimeConverter.kt)
+- [docs/architecture/merge-philosophy.md](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/docs/architecture/merge-philosophy.md)
+- [app/src/test/java/com/chronoshift/nlp/ResultMergerTest.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/ResultMergerTest.kt)
 
 <a id="f10"></a>
 
-### F10 — [Build a cancellable local conversion pipeline with input limits](https://linear.app/tienlam/issue/TIE-301/build-a-cancellable-local-conversion-pipeline-with-input-limits)
+### F10 — [Build a cancellable local conversion pipeline with input limits](https://github.com/Tien-Lam/time-to-local/issues/66)
 
 State: **In Review**. Project: **ChronoShift — Web Conversion Foundations**.
 
@@ -365,14 +365,14 @@ The Android streaming Flow and ViewModel cancellation need a browser equivalent 
 - Dependencies: F9
 
 ## Repository evidence
-- [app/src/main/java/com/chronoshift/nlp/TieredTimeExtractor.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/TieredTimeExtractor.kt)
-- [app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt)
-- [app/src/test/java/com/chronoshift/nlp/PipelineConcurrencyTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/PipelineConcurrencyTest.kt)
-- [app/src/test/java/com/chronoshift/AdversarialInputTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/AdversarialInputTest.kt)
+- [app/src/main/java/com/chronoshift/nlp/TieredTimeExtractor.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/TieredTimeExtractor.kt)
+- [app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt)
+- [app/src/test/java/com/chronoshift/nlp/PipelineConcurrencyTest.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/PipelineConcurrencyTest.kt)
+- [app/src/test/java/com/chronoshift/AdversarialInputTest.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/test/java/com/chronoshift/AdversarialInputTest.kt)
 
 <a id="f11"></a>
 
-### F11 — [Benchmark lightweight temporal span models against the Chrono baseline](https://linear.app/tienlam/issue/TIE-302/benchmark-lightweight-temporal-span-models-against-the-chrono-baseline)
+### F11 — [Benchmark lightweight temporal span models against the Chrono baseline](https://github.com/Tien-Lam/time-to-local/issues/67)
 
 State: **Backlog**. Project: **ChronoShift — Web Conversion Foundations**.
 
@@ -406,15 +406,15 @@ Recommendation: temporal span tagging + Chrono + deterministic timezone conversi
 - https://onnxruntime.ai/docs/tutorials/web/
 
 ## Repository evidence
-- [model-manifest.json](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/model-manifest.json)
-- [app/src/main/java/com/chronoshift/nlp/LiteRtExtractor.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/LiteRtExtractor.kt)
-- [app/src/main/java/com/chronoshift/nlp/LlmResultParser.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/LlmResultParser.kt)
-- [app/src/test/java/com/chronoshift/nlp/AiExtractionFixtures.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/AiExtractionFixtures.kt)
-- [docs/developer/on-device-llm.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/developer/on-device-llm.md)
+- [model-manifest.json](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/model-manifest.json)
+- [app/src/main/java/com/chronoshift/nlp/LiteRtExtractor.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/LiteRtExtractor.kt)
+- [app/src/main/java/com/chronoshift/nlp/LlmResultParser.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/LlmResultParser.kt)
+- [app/src/test/java/com/chronoshift/nlp/AiExtractionFixtures.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/test/java/com/chronoshift/nlp/AiExtractionFixtures.kt)
+- [docs/developer/on-device-llm.md](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/docs/developer/on-device-llm.md)
 
 <a id="u1"></a>
 
-### U1 — [Design the minimal paste → convert → copy interface](https://linear.app/tienlam/issue/TIE-303/design-the-minimal-paste-convert-copy-interface)
+### U1 — [Design the minimal paste → convert → copy interface](https://github.com/Tien-Lam/time-to-local/issues/68)
 
 State: **Done**. Project: **ChronoShift — Simple Web Experience**.
 
@@ -437,12 +437,12 @@ The Android two-layout/icon-heavy design needs a web interaction designed for di
 - Dependencies: None
 
 ## Repository evidence
-- [app/src/main/java/com/chronoshift/ui/main/MainScreen.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainScreen.kt)
-- [app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt)
+- [app/src/main/java/com/chronoshift/ui/main/MainScreen.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainScreen.kt)
+- [app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt)
 
 <a id="u2"></a>
 
-### U2 — [Build the adaptive conversion page for desktop, mobile and foldables](https://linear.app/tienlam/issue/TIE-304/build-the-adaptive-conversion-page-for-desktop-mobile-and-foldables)
+### U2 — [Build the adaptive conversion page for desktop, mobile and foldables](https://github.com/Tien-Lam/time-to-local/issues/69)
 
 State: **In Progress**. Project: **ChronoShift — Simple Web Experience**.
 
@@ -465,13 +465,13 @@ The web app needs a focused entry point wired to the tested engine.
 - Dependencies: F2, U1, F10
 
 ## Repository evidence
-- [app/src/main/java/com/chronoshift/ui/main/MainScreen.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainScreen.kt)
-- [app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt)
-- [app/src/main/java/com/chronoshift/ui/main/MainUiState.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainUiState.kt)
+- [app/src/main/java/com/chronoshift/ui/main/MainScreen.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainScreen.kt)
+- [app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt)
+- [app/src/main/java/com/chronoshift/ui/main/MainUiState.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainUiState.kt)
 
 <a id="u3"></a>
 
-### U3 — [Show clear conversion cards, assumptions, ranges and ambiguity choices](https://linear.app/tienlam/issue/TIE-305/show-clear-conversion-cards-assumptions-ranges-and-ambiguity-choices)
+### U3 — [Show clear conversion cards, assumptions, ranges and ambiguity choices](https://github.com/Tien-Lam/time-to-local/issues/70)
 
 State: **In Review**. Project: **ChronoShift — Simple Web Experience**.
 
@@ -494,13 +494,13 @@ Correct results still need to explain which source time/zone was interpreted and
 - Dependencies: U2
 
 ## Repository evidence
-- [app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt)
-- [app/src/main/java/com/chronoshift/conversion/ConvertedTime.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/ConvertedTime.kt)
-- [docs/architecture/merge-philosophy.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/architecture/merge-philosophy.md)
+- [app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt)
+- [app/src/main/java/com/chronoshift/conversion/ConvertedTime.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/ConvertedTime.kt)
+- [docs/architecture/merge-philosophy.md](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/docs/architecture/merge-philosophy.md)
 
 <a id="u4"></a>
 
-### U4 — [Add device timezone default and a searchable target timezone override](https://linear.app/tienlam/issue/TIE-306/add-device-timezone-default-and-a-searchable-target-timezone-override)
+### U4 — [Add device timezone default and a searchable target timezone override](https://github.com/Tien-Lam/time-to-local/issues/71)
 
 State: **In Review**. Project: **ChronoShift — Simple Web Experience**.
 
@@ -523,13 +523,13 @@ The Android app converts only to the device timezone; web users need an easy vis
 - Dependencies: U2, F4, F8
 
 ## Repository evidence
-- [app/src/main/java/com/chronoshift/conversion/TimeConverter.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/TimeConverter.kt)
-- [app/src/main/java/com/chronoshift/nlp/CityResolver.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/CityResolver.kt)
-- [app/src/main/java/com/chronoshift/ui/settings/SettingsScreen.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/settings/SettingsScreen.kt)
+- [app/src/main/java/com/chronoshift/conversion/TimeConverter.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/TimeConverter.kt)
+- [app/src/main/java/com/chronoshift/nlp/CityResolver.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/CityResolver.kt)
+- [app/src/main/java/com/chronoshift/ui/settings/SettingsScreen.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/settings/SettingsScreen.kt)
 
 <a id="u5"></a>
 
-### U5 — [Implement user-triggered paste and copy with permission fallbacks](https://linear.app/tienlam/issue/TIE-307/implement-user-triggered-paste-and-copy-with-permission-fallbacks)
+### U5 — [Implement user-triggered paste and copy with permission fallbacks](https://github.com/Tien-Lam/time-to-local/issues/72)
 
 State: **In Review**. Project: **ChronoShift — Simple Web Experience**.
 
@@ -552,12 +552,12 @@ Browser clipboard APIs can be unavailable or denied; ordinary keyboard/manual co
 - Dependencies: U3
 
 ## Repository evidence
-- [app/src/main/java/com/chronoshift/ui/main/MainScreen.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainScreen.kt)
-- [app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt)
+- [app/src/main/java/com/chronoshift/ui/main/MainScreen.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainScreen.kt)
+- [app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/components/TimeResultCard.kt)
 
 <a id="u6"></a>
 
-### U6 — [Add helpful no-result, correction and large-input recovery states](https://linear.app/tienlam/issue/TIE-308/add-helpful-no-result-correction-and-large-input-recovery-states)
+### U6 — [Add helpful no-result, correction and large-input recovery states](https://github.com/Tien-Lam/time-to-local/issues/73)
 
 State: **In Review**. Project: **ChronoShift — Simple Web Experience**.
 
@@ -580,13 +580,13 @@ The current UI mainly shows raw errors or no_timestamp; web users need a useful 
 - Dependencies: U3, U4
 
 ## Repository evidence
-- [app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt)
-- [app/src/test/java/com/chronoshift/AdversarialInputTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/AdversarialInputTest.kt)
-- [app/src/main/res/values/strings.xml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/res/values/strings.xml)
+- [app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainViewModel.kt)
+- [app/src/test/java/com/chronoshift/AdversarialInputTest.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/test/java/com/chronoshift/AdversarialInputTest.kt)
+- [app/src/main/res/values/strings.xml](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/res/values/strings.xml)
 
 <a id="u7"></a>
 
-### U7 — [Verify accessibility and first-time task completion](https://linear.app/tienlam/issue/TIE-309/verify-accessibility-and-first-time-task-completion)
+### U7 — [Verify accessibility and first-time task completion](https://github.com/Tien-Lam/time-to-local/issues/74)
 
 State: **In Progress**. Project: **ChronoShift — Simple Web Experience**.
 
@@ -609,12 +609,12 @@ Simple use needs observable keyboard, screen reader and mobile evidence.
 - Dependencies: U4, U5, U6
 
 ## Repository evidence
-- [app/src/main/java/com/chronoshift/ui/main/MainScreen.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainScreen.kt)
-- [app/src/main/java/com/chronoshift/ui/theme/Theme.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/theme/Theme.kt)
+- [app/src/main/java/com/chronoshift/ui/main/MainScreen.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainScreen.kt)
+- [app/src/main/java/com/chronoshift/ui/theme/Theme.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/theme/Theme.kt)
 
 <a id="p1"></a>
 
-### P1 — [Precache the complete app and verify offline readiness](https://linear.app/tienlam/issue/TIE-310/precache-the-complete-app-and-verify-offline-readiness)
+### P1 — [Precache the complete app and verify offline readiness](https://github.com/Tien-Lam/time-to-local/issues/75)
 
 State: **In Review**. Project: **ChronoShift — Offline PWA**.
 
@@ -637,12 +637,12 @@ A web shell that loads while online is insufficient: every conversion dependency
 - Dependencies: F2, F10
 
 ## Repository evidence
-- [README.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/README.md)
-- [docs/architecture/nlp-pipeline.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/architecture/nlp-pipeline.md)
+- [README.md](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/README.md)
+- [docs/architecture/nlp-pipeline.md](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/docs/architecture/nlp-pipeline.md)
 
 <a id="p2"></a>
 
-### P2 — [Add a PWA manifest and unobtrusive install guidance](https://linear.app/tienlam/issue/TIE-311/add-a-pwa-manifest-and-unobtrusive-install-guidance)
+### P2 — [Add a PWA manifest and unobtrusive install guidance](https://github.com/Tien-Lam/time-to-local/issues/76)
 
 State: **In Progress**. Project: **ChronoShift — Offline PWA**.
 
@@ -665,12 +665,12 @@ Users should be able to keep the converter on a home screen or desktop without m
 - Dependencies: P1, U2
 
 ## Repository evidence
-- [app/src/main/res/drawable/ic_launcher_foreground.xml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/res/drawable/ic_launcher_foreground.xml)
-- [app/src/main/AndroidManifest.xml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/AndroidManifest.xml)
+- [app/src/main/res/drawable/ic_launcher_foreground.xml](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/res/drawable/ic_launcher_foreground.xml)
+- [app/src/main/AndroidManifest.xml](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/AndroidManifest.xml)
 
 <a id="p3"></a>
 
-### P3 — [Persist minimal preferences and recover from unavailable browser storage](https://linear.app/tienlam/issue/TIE-312/persist-minimal-preferences-and-recover-from-unavailable-browser)
+### P3 — [Persist minimal preferences and recover from unavailable browser storage](https://github.com/Tien-Lam/time-to-local/issues/77)
 
 State: **In Progress**. Project: **ChronoShift — Offline PWA**.
 
@@ -693,12 +693,12 @@ Browser storage can be denied, full, cleared or evicted; conversion must still w
 - Dependencies: P1, U4
 
 ## Repository evidence
-- [app/src/main/java/com/chronoshift/ui/settings/SettingsScreen.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/settings/SettingsScreen.kt)
-- [app/src/main/java/com/chronoshift/ui/settings/SettingsViewModel.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/settings/SettingsViewModel.kt)
+- [app/src/main/java/com/chronoshift/ui/settings/SettingsScreen.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/settings/SettingsScreen.kt)
+- [app/src/main/java/com/chronoshift/ui/settings/SettingsViewModel.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/settings/SettingsViewModel.kt)
 
 <a id="p4"></a>
 
-### P4 — [Implement safe service-worker upgrades without losing active input](https://linear.app/tienlam/issue/TIE-313/implement-safe-service-worker-upgrades-without-losing-active-input)
+### P4 — [Implement safe service-worker upgrades without losing active input](https://github.com/Tien-Lam/time-to-local/issues/78)
 
 State: **In Progress**. Project: **ChronoShift — Offline PWA**.
 
@@ -722,12 +722,12 @@ Uncontrolled service-worker activation can mix assets or force reloads while the
 - Dependencies: P1, P3, U2
 
 ## Repository evidence
-- [.github/workflows/release.yml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/.github/workflows/release.yml)
-- [app/src/main/java/com/chronoshift/ui/main/MainUiState.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainUiState.kt)
+- [.github/workflows/release.yml](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/.github/workflows/release.yml)
+- [app/src/main/java/com/chronoshift/ui/main/MainUiState.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/ui/main/MainUiState.kt)
 
 <a id="p5"></a>
 
-### P5 — [Receive shared text in supported installed browsers with an offline fallback](https://linear.app/tienlam/issue/TIE-314/receive-shared-text-in-supported-installed-browsers-with-an-offline)
+### P5 — [Receive shared text in supported installed browsers with an offline fallback](https://github.com/Tien-Lam/time-to-local/issues/79)
 
 State: **In Progress**. Project: **ChronoShift — Offline PWA**.
 
@@ -751,12 +751,12 @@ Android PROCESS_TEXT cannot be recreated everywhere by a web page; supported ins
 - Dependencies: P2, P3, U2
 
 ## Repository evidence
-- [app/src/main/java/com/chronoshift/ProcessTextActivity.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/ProcessTextActivity.kt)
-- [app/src/main/AndroidManifest.xml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/AndroidManifest.xml)
+- [app/src/main/java/com/chronoshift/ProcessTextActivity.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/ProcessTextActivity.kt)
+- [app/src/main/AndroidManifest.xml](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/AndroidManifest.xml)
 
 <a id="p6"></a>
 
-### P6 — [Automate offline restart, update, storage and share regression checks](https://linear.app/tienlam/issue/TIE-315/automate-offline-restart-update-storage-and-share-regression-checks)
+### P6 — [Automate offline restart, update, storage and share regression checks](https://github.com/Tien-Lam/time-to-local/issues/80)
 
 State: **Done**. Project: **ChronoShift — Offline PWA**.
 
@@ -781,12 +781,12 @@ Accepted 4 October 2026 after the final automated gate and direct production bro
 - Dependencies: P3, P4, P5, U5
 
 ## Repository evidence
-- [docs/developer/device-smoke-test.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/developer/device-smoke-test.md)
-- [app/src/test/java/com/chronoshift/EndToEndTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/EndToEndTest.kt)
+- [docs/developer/device-smoke-test.md](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/docs/developer/device-smoke-test.md)
+- [app/src/test/java/com/chronoshift/EndToEndTest.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/test/java/com/chronoshift/EndToEndTest.kt)
 
 <a id="d1"></a>
 
-### D1 — [Add reproducible web CI and browser test gates](https://linear.app/tienlam/issue/TIE-316/add-reproducible-web-ci-and-browser-test-gates)
+### D1 — [Add reproducible web CI and browser test gates](https://github.com/Tien-Lam/time-to-local/issues/81)
 
 State: **In Review**. Project: **ChronoShift — Web Delivery**.
 
@@ -809,7 +809,7 @@ Current CI builds/lints/tests Android only.
 
 <a id="d2"></a>
 
-### D2 — [Verify exact conversion behavior across desktop and mobile browsers](https://linear.app/tienlam/issue/TIE-317/verify-exact-conversion-behavior-across-desktop-and-mobile-browsers)
+### D2 — [Verify exact conversion behavior across desktop and mobile browsers](https://github.com/Tien-Lam/time-to-local/issues/82)
 
 State: **In Progress**. Project: **ChronoShift — Web Delivery**.
 
@@ -832,14 +832,14 @@ JavaScript date/zone behavior and browser API capabilities vary; Android tests a
 - Dependencies: F10, U7, P6, D1
 
 ## Repository evidence
-- [app/src/test/java/com/chronoshift/IntegrationTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/IntegrationTest.kt)
-- [app/src/test/java/com/chronoshift/TimestampCorpusTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/TimestampCorpusTest.kt)
-- [app/src/test/java/com/chronoshift/conversion/TimeConverterTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/conversion/TimeConverterTest.kt)
-- [docs/developer/device-smoke-test.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/docs/developer/device-smoke-test.md)
+- [app/src/test/java/com/chronoshift/IntegrationTest.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/test/java/com/chronoshift/IntegrationTest.kt)
+- [app/src/test/java/com/chronoshift/TimestampCorpusTest.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/test/java/com/chronoshift/TimestampCorpusTest.kt)
+- [app/src/test/java/com/chronoshift/conversion/TimeConverterTest.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/test/java/com/chronoshift/conversion/TimeConverterTest.kt)
+- [docs/developer/device-smoke-test.md](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/docs/developer/device-smoke-test.md)
 
 <a id="d3"></a>
 
-### D3 — [Measure startup and conversion performance on a representative phone](https://linear.app/tienlam/issue/TIE-318/measure-startup-and-conversion-performance-on-a-representative-phone)
+### D3 — [Measure startup and conversion performance on a representative phone](https://github.com/Tien-Lam/time-to-local/issues/83)
 
 State: **In Progress**. Project: **ChronoShift — Web Delivery**.
 
@@ -862,12 +862,12 @@ Porting parser/data/UI can create a slow first launch or block typing on phones.
 - Dependencies: F10, U2, P1
 
 ## Repository evidence
-- [app/src/main/java/com/chronoshift/nlp/TieredTimeExtractor.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/TieredTimeExtractor.kt)
-- [app/src/test/java/com/chronoshift/AdversarialInputTest.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/test/java/com/chronoshift/AdversarialInputTest.kt)
+- [app/src/main/java/com/chronoshift/nlp/TieredTimeExtractor.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/TieredTimeExtractor.kt)
+- [app/src/test/java/com/chronoshift/AdversarialInputTest.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/test/java/com/chronoshift/AdversarialInputTest.kt)
 
 <a id="d4"></a>
 
-### D4 — [Audit local-only text handling and production web security](https://linear.app/tienlam/issue/TIE-319/audit-local-only-text-handling-and-production-web-security)
+### D4 — [Audit local-only text handling and production web security](https://github.com/Tien-Lam/time-to-local/issues/84)
 
 State: **In Progress**. Project: **ChronoShift — Web Delivery**.
 
@@ -892,13 +892,13 @@ A static app can still leak pasted text through logging, URLs, share handling, a
 - Dependencies: U6, P5, P4, D1
 
 ## Repository evidence
-- [app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt)
-- [app/src/main/java/com/chronoshift/conversion/TimeConverter.kt](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/TimeConverter.kt)
-- [app/src/main/res/xml/network_security_config.xml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/app/src/main/res/xml/network_security_config.xml)
+- [app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/nlp/ChronoResultParser.kt)
+- [app/src/main/java/com/chronoshift/conversion/TimeConverter.kt](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/java/com/chronoshift/conversion/TimeConverter.kt)
+- [app/src/main/res/xml/network_security_config.xml](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/app/src/main/res/xml/network_security_config.xml)
 
 <a id="d5"></a>
 
-### D5 — [Release the static web app over HTTPS with an exercised rollback](https://linear.app/tienlam/issue/TIE-320/release-the-static-web-app-over-https-with-an-exercised-rollback)
+### D5 — [Release the static web app over HTTPS with an exercised rollback](https://github.com/Tien-Lam/time-to-local/issues/85)
 
 State: **In Progress**. Project: **ChronoShift — Web Delivery**.
 
@@ -922,12 +922,12 @@ APK releases must be replaced with a stable HTTPS origin suitable for service wo
 - Dependencies: D2, D3, D4
 
 ## Repository evidence
-- [.github/workflows/release.yml](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/.github/workflows/release.yml)
-- [README.md](https://github.com/Tien-Lam/ChronoShift/blob/b7ef48a/README.md)
+- [.github/workflows/release.yml](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/.github/workflows/release.yml)
+- [README.md](https://github.com/Tien-Lam/time-to-local/blob/b7ef48a/README.md)
 
 <a id="d6"></a>
 
-### D6 — [Make the repository web-only and remove native app maintenance](https://linear.app/tienlam/issue/TIE-321/make-the-repository-web-only-and-remove-native-app-maintenance)
+### D6 — [Make the repository web-only and remove native app maintenance](https://github.com/Tien-Lam/time-to-local/issues/86)
 
 State: **In Review**. Project: **ChronoShift — Web Delivery**.
 
@@ -953,6 +953,6 @@ The user explicitly requests removal of native app support; all active source, t
 
 ## Publication and evidence
 
-[Linear initiative](https://linear.app/tienlam/initiative/chronoshift-simple-offline-web-app-d90101850ba1), [implementation and verification](web-execution-report.md), [product contract](web-product-contract.md).
+[Linear initiative](https://github.com/Tien-Lam/time-to-local/blob/main/docs/linear-migration/initiatives/I-4.md), [implementation and verification](web-execution-report.md), [product contract](web-product-contract.md).
 
 TIE-322 is canceled by the native-removal scope decision and no longer blocks delivery. Historical native maintenance is not an active workstream.
