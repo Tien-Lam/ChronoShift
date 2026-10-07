@@ -1,6 +1,52 @@
 import { test, expect } from "./fixtures";
 import { choose, enterZone } from "./choices";
 
+test("a phone exposes the result shortcut while optional defaults stay collapsed", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 320, height: 568 });
+  await page.addInitScript(() => {
+    localStorage.setItem(
+      "chronoshift.preferences.v1",
+      JSON.stringify({ target: "UTC" }),
+    );
+  });
+  await page.goto("/");
+  const input = page.getByLabel("Message with a date or time");
+  const shortcut = page.getByRole("button", { name: "View result" });
+  const options = page.getByRole("button", { name: /More options/ });
+  await expect(shortcut).toBeHidden();
+  await expect(options).toHaveAttribute("aria-expanded", "false");
+  await expect(page.locator(".message-defaults")).toHaveCount(0);
+  const message = "April 9, 2026 3:15:30pm in Tokyo";
+  await input.fill(message);
+  await expect(page.locator(".hero-time")).toHaveText(/6:15:30 am/i);
+  await expect(input).toBeFocused();
+  expect(await page.evaluate(() => scrollY)).toBe(0);
+  const bounds = await shortcut.boundingBox();
+  expect(bounds!.y).toBeGreaterThanOrEqual(0);
+  expect(bounds!.y + bounds!.height).toBeLessThanOrEqual(568);
+  expect(bounds!.height).toBeGreaterThanOrEqual(44);
+  await shortcut.click();
+  await expect(page.locator("#result-title")).toBeFocused();
+  await expect(page.locator(".hero-time")).toBeInViewport();
+  await expect(input).toHaveValue(message);
+  await expect(options).toHaveAttribute("aria-expanded", "false");
+  // A failed interpretation is still discoverable through the same shortcut.
+  await input.fill("no time in this message");
+  await expect(page.getByRole("alert")).toContainText("No timestamp found");
+  await shortcut.focus();
+  await shortcut.press("Enter");
+  await expect(page.locator("#result-title")).toBeFocused();
+  await expect(page.getByRole("alert")).toBeInViewport();
+  await input.fill("");
+  await expect(shortcut).toBeHidden();
+  await page.setViewportSize({ width: 1280, height: 720 });
+  await input.fill(message);
+  await expect(page.locator(".hero-time")).toHaveText(/6:15:30 am/i);
+  await expect(shortcut).toBeHidden();
+});
+
 test("reflows across cover screens, phones, tablets and desktops without losing work", async ({
   page,
 }) => {

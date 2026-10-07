@@ -246,6 +246,16 @@ main {
 .panel-heading {
   margin-bottom: 20px;
 }
+.action-button.result-shortcut {
+  display: none;
+}
+#result-title {
+  scroll-margin-top: 16px;
+}
+#result-title:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
 .result-heading {
   display: flex;
   align-items: center;
@@ -942,6 +952,20 @@ footer p {
   }
   .result-placeholder {
     min-height: 255px;
+  }
+}
+@media (max-width: 819px) {
+  .input-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 44px;
+  }
+  .action-button.result-shortcut {
+    display: inline-flex;
+    flex-shrink: 0;
+    color: var(--accent);
   }
 }
 @media (max-width: 760px) {

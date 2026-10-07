@@ -20,15 +20,17 @@ test("message defaults explain their purpose and preserve explicit zone and date
   page,
 }) => {
   await page.goto("/");
+  await expect(page.locator(".message-defaults")).toHaveCount(0);
+  const change = page.getByRole("button", { name: /More options/ });
+  await change.focus();
+  await change.press("Enter");
   await expect(page.locator(".message-defaults")).toContainText(
     "Without a timezone: Australia/Sydney (device)",
   );
   await expect(page.locator(".message-defaults")).toContainText(
     "Reference date: Today",
   );
-  const change = page.getByRole("button", { name: "Change message defaults" });
-  await change.focus();
-  await change.press("Enter");
+  await change.press("Tab");
   const source = page.getByRole("combobox", { name: "Source timezone" });
   await expect(source).toBeFocused();
   await expect(source).toHaveAttribute("aria-describedby", "source-zone-help");
@@ -144,7 +146,7 @@ test("message defaults remain usable offline through resize without storing or r
   await page.goto("/");
   await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
   await enterZone(page, "UTC");
-  await page.getByRole("button", { name: "Change message defaults" }).click();
+  await page.getByRole("button", { name: /More options/ }).click();
   await page.getByLabel("Source timezone", { exact: true }).press("Escape");
   await enterZone(page, "UTC", "Source timezone");
   await enterReferenceDate(page, "2026-04-09");

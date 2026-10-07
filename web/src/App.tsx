@@ -83,6 +83,7 @@ export default function App() {
   const [installHelp, setInstallHelp] = useState(false);
   const input = useRef<HTMLTextAreaElement>(null),
     copyField = useRef<HTMLTextAreaElement>(null);
+  const resultHeading = useRef<HTMLHeadingElement>(null);
   const [optionsOpen, setOptionsOpen] = useState(false);
   const correctionFocus = useRef(false);
   const [appearanceOpen, setAppearanceOpen] = useState(false);
@@ -705,8 +706,20 @@ export default function App() {
           data-entering={entering}
         >
           <section className="input-panel" aria-labelledby="input-title">
-            <div className="panel-heading">
+            <div className="panel-heading input-heading">
               <h2 id="input-title">Message</h2>
+              <ActionButton
+                type="button"
+                className="result-shortcut"
+                aria-controls="result-title"
+                style={{ visibility: text.trim() ? "visible" : "hidden" }}
+                onPress={() => {
+                  resultHeading.current?.focus({ preventScroll: true });
+                  resultHeading.current?.scrollIntoView({ block: "start" });
+                }}
+              >
+                View result <span aria-hidden="true">↓</span>
+              </ActionButton>
             </div>
             <label className="sr-only" htmlFor="message">
               Message with a date or time
@@ -811,31 +824,36 @@ export default function App() {
               </span>
             </div>
 
-            <div className="message-defaults">
-              <span>
-                Without a timezone: {sourceZone || "Choose a valid timezone"}
-                {!prefs.source.trim() && " (device)"}
-                <br />
-                Reference date:{" "}
-                {!referenceValid
-                  ? "Complete or clear the date"
-                  : referenceDate || "Today"}
-              </span>
-              <ActionButton
-                type="button"
-                className="text-button"
-                onPress={() => {
-                  if (optionsOpen)
-                    document.getElementById("source-zone")?.focus();
-                  else {
-                    correctionFocus.current = true;
-                    setOptionsOpen(true);
-                  }
-                }}
-              >
-                Change message defaults
-              </ActionButton>
-            </div>
+            {(optionsOpen ||
+              prefs.source.trim() ||
+              referenceDate ||
+              !referenceValid) && (
+              <div className="message-defaults">
+                <span>
+                  Without a timezone: {sourceZone || "Choose a valid timezone"}
+                  {!prefs.source.trim() && " (device)"}
+                  <br />
+                  Reference date:{" "}
+                  {!referenceValid
+                    ? "Complete or clear the date"
+                    : referenceDate || "Today"}
+                </span>
+                <ActionButton
+                  type="button"
+                  className="text-button"
+                  onPress={() => {
+                    if (optionsOpen)
+                      document.getElementById("source-zone")?.focus();
+                    else {
+                      correctionFocus.current = true;
+                      setOptionsOpen(true);
+                    }
+                  }}
+                >
+                  Change message defaults
+                </ActionButton>
+              </div>
+            )}
             <Disclosure open={optionsOpen} onOpenChange={setOptionsOpen}>
               <label htmlFor="source-zone">Source timezone</label>
               <ZoneChoice
@@ -959,6 +977,8 @@ export default function App() {
             <div className="panel-heading result-heading">
               <h2
                 id="result-title"
+                ref={resultHeading}
+                tabIndex={-1}
                 aria-label={
                   targetZone
                     ? `Converted time in ${zoneName(targetZone)}`

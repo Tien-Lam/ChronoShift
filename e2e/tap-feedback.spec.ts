@@ -183,6 +183,15 @@ test("touch feedback clears on release, cancellation, scroll and drag, including
   context,
 }, info) => {
   await page.goto("/");
+  // A scrolling gesture needs remaining content below the viewport. The compact
+  // empty phone layout can already be at its end after the earlier scroll.
+  await page.locator("#message").fill("2026-04-09 3pm UTC; 2026-04-09 4pm UTC");
+  await expect(page.locator(".result")).toHaveCount(2);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollHeight - innerHeight,
+    ),
+  ).toBeGreaterThan(280);
   const cdp = await context.newCDPSession(page);
   const appearance = page.locator(".appearance summary");
   for (let index = 0; index < 4; index++) {

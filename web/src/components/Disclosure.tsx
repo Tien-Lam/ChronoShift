@@ -40,7 +40,7 @@ export function Disclosure({
         <span className="disclosure-chevron" aria-hidden="true">
           ›
         </span>
-        Adjust interpretation &amp; format
+        More options
       </CollapsibleTrigger>
       <CollapsibleContent
         ref={content}
