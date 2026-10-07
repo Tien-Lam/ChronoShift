@@ -30,6 +30,10 @@ export type MotionFrame = {
       state: string;
       currentTimeMilliseconds: number | null;
       startTimeMilliseconds: number | null;
+      durationMilliseconds: number | string | null;
+      delayMilliseconds: number | null;
+      iterations: number | null;
+      endTimeMilliseconds: number | null;
     }[];
   }[];
 };
@@ -38,6 +42,10 @@ export type MotionEvidence = {
   started: number;
   ended: number;
   frames: MotionFrame[];
+  checkpoints: (Omit<MotionFrame, "frameTime"> & { label: string })[];
+  actionCompletedAt: number | null;
+  observationMilliseconds: number;
+  stopReason: "actions-observed" | "limit" | "superseded";
   initialAnimations: MotionFrame["elements"][number]["animations"];
   clock?: {
     units: string;
@@ -56,7 +64,8 @@ export type MotionEvidence = {
   preferences: { time: number; matches: boolean; currentMatches: boolean }[];
 };
 
-// Probe a bounded presentation window while the test performs real actions.
+// Retain the action lifecycle, then a bounded observation tail. A fixed window
+// beginning before a slow click/worker commit can miss the presentation entirely.
 // This waits only when collecting the completed record, after interaction.
 export async function installMotionProbe(
   page: Page,
@@ -80,6 +89,11 @@ export async function installMotionProbe(
         state: animation.playState,
         currentTimeMilliseconds: animation.currentTime,
         startTimeMilliseconds: animation.startTime,
+        durationMilliseconds: animation.effect?.getTiming().duration ?? null,
+        delayMilliseconds: animation.effect?.getTiming().delay ?? null,
+        iterations: animation.effect?.getTiming().iterations ?? null,
+        endTimeMilliseconds:
+          animation.effect?.getComputedTiming().endTime ?? null,
       };
     };
     let record: any;
@@ -90,6 +104,10 @@ export async function installMotionProbe(
         started: performance.now(),
         ended: 0,
         frames: [],
+        checkpoints: [],
+        actionCompletedAt: null,
+        observationMilliseconds: duration,
+        maximumLifecycleMilliseconds: 10000,
         events: [],
         preferences: [],
         initialAnimations: document.getAnimations().map(animationInfo),
@@ -97,79 +115,105 @@ export async function installMotionProbe(
           "CSS event elapsedTime seconds; Animation currentTime/startTime milliseconds in the document timeline. Raw values retained.",
       };
       const current = record;
+      const snapshot = () => ({
+        scrollX,
+        scrollY,
+        viewport: {
+          width: innerWidth,
+          height: innerHeight,
+          layoutWidth: document.documentElement.clientWidth,
+          visualScale: visualViewport?.scale ?? null,
+        },
+        elements: selectors.flatMap((selector) =>
+          [...document.querySelectorAll(selector)].map((element) => {
+            if (!identities.has(element))
+              identities.set(element, nextIdentity++);
+            const rect = element.getBoundingClientRect();
+            const transforms = [];
+            const backgrounds = [];
+            const layers = [];
+            for (
+              let node: Element | null = element;
+              node;
+              node = node.parentElement
+            ) {
+              const css = getComputedStyle(node);
+              backgrounds.push(css.backgroundColor);
+              layers.push({
+                background: css.backgroundColor,
+                opacity: Number(css.opacity),
+                image: css.backgroundImage,
+              });
+              if (css.transform !== "none") transforms.push(css.transform);
+              if (css.translate !== "none")
+                transforms.push(`translate:${css.translate}`);
+              if (css.scale !== "none") transforms.push(`scale:${css.scale}`);
+            }
+            return {
+              selector,
+              identity: identities.get(element),
+              x: rect.x + scrollX,
+              y: rect.y + scrollY,
+              width: rect.width,
+              height: rect.height,
+              opacity: Number(getComputedStyle(element).opacity),
+              foreground: getComputedStyle(element).color,
+              backgrounds,
+              layers,
+              transforms,
+              animations: element.getAnimations().map(animationInfo),
+              runningAnimations: element
+                .getAnimations()
+                .filter((animation) => animation.playState === "running")
+                .map(
+                  (animation) =>
+                    (animation as CSSAnimation).animationName || "transition",
+                ),
+            };
+          }),
+        ),
+      });
+      state.captureMotionCheckpoint = (label: string) => {
+        if (record !== current || current.ended) return;
+        current.checkpoints.push({
+          label,
+          time: performance.now(),
+          ...snapshot(),
+        });
+      };
       done = new Promise((resolve) => {
         const sample = (frameTime: number) => {
           const time = performance.now();
-          const elements = selectors.flatMap((selector) =>
-            [...document.querySelectorAll(selector)].map((element) => {
-              if (!identities.has(element))
-                identities.set(element, nextIdentity++);
-              const rect = element.getBoundingClientRect();
-              const transforms = [];
-              const backgrounds = [];
-              const layers = [];
-              for (
-                let node: Element | null = element;
-                node;
-                node = node.parentElement
-              ) {
-                const css = getComputedStyle(node);
-                backgrounds.push(css.backgroundColor);
-                layers.push({
-                  background: css.backgroundColor,
-                  opacity: Number(css.opacity),
-                  image: css.backgroundImage,
-                });
-                if (css.transform !== "none") transforms.push(css.transform);
-                if (css.translate !== "none")
-                  transforms.push(`translate:${css.translate}`);
-                if (css.scale !== "none") transforms.push(`scale:${css.scale}`);
-              }
-              return {
-                selector,
-                identity: identities.get(element),
-                x: rect.x + scrollX,
-                y: rect.y + scrollY,
-                width: rect.width,
-                height: rect.height,
-                opacity: Number(getComputedStyle(element).opacity),
-                foreground: getComputedStyle(element).color,
-                backgrounds,
-                layers,
-                transforms,
-                animations: element.getAnimations().map(animationInfo),
-                runningAnimations: element
-                  .getAnimations()
-                  .filter((animation) => animation.playState === "running")
-                  .map(
-                    (animation) =>
-                      (animation as CSSAnimation).animationName || "transition",
-                  ),
-              };
-            }),
-          );
+          if (record !== current) {
+            current.ended = time;
+            current.stopReason = "superseded";
+            resolve(current);
+            return;
+          }
           current.frames.push({
             time,
             frameTime,
-            scrollX,
-            scrollY,
-            viewport: {
-              width: innerWidth,
-              height: innerHeight,
-              layoutWidth: document.documentElement.clientWidth,
-              visualScale: visualViewport?.scale ?? null,
-            },
-            elements,
+            ...snapshot(),
           });
-          if (time - current.started >= duration) {
+          const observed =
+            current.actionCompletedAt !== null &&
+            time - current.actionCompletedAt >= duration;
+          if (observed || time - current.started >= 10000) {
             current.ended = time;
+            current.stopReason = observed ? "actions-observed" : "limit";
             resolve(current);
           } else requestAnimationFrame(sample);
         };
         requestAnimationFrame(sample);
       });
     };
-    state.finishMotionProbe = () => done;
+    state.finishMotionProbe = () => {
+      if (!record.ended && record.actionCompletedAt === null) {
+        record.actionCompletedAt = performance.now();
+        state.captureMotionCheckpoint("actions-complete");
+      }
+      return done;
+    };
     state.motionPreferences = () => record?.preferences ?? [];
     const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
     reducedMotion.addEventListener("change", (event) => {
@@ -235,6 +279,13 @@ export async function beginMotionProbe(
   );
 }
 
+export async function captureMotionCheckpoint(page: Page, label: string) {
+  await page.evaluate(
+    (label) => (window as any).captureMotionCheckpoint(label),
+    label,
+  );
+}
+
 export async function finishMotionProbe(
   page: Page,
   info: TestInfo,
@@ -259,6 +310,12 @@ export async function finishMotionProbe(
     contentType: "application/json",
   });
   expect(Number.isFinite(record.timeOrigin)).toBe(true);
+  expect(record.stopReason).toBe("actions-observed");
+  expect(Number.isFinite(record.actionCompletedAt)).toBe(true);
+  expect(record.actionCompletedAt!).toBeGreaterThanOrEqual(record.started);
+  expect(record.ended - record.actionCompletedAt!).toBeGreaterThanOrEqual(
+    record.observationMilliseconds,
+  );
   expect(record.ended).toBeGreaterThan(record.started);
   expect(record.frames.length).toBeGreaterThan(2);
   for (let i = 1; i < record.frames.length; i++) {
@@ -282,11 +339,20 @@ export async function finishMotionProbe(
     expect(preference.time).toBeGreaterThanOrEqual(record.started);
     expect(preference.time).toBeLessThanOrEqual(record.ended);
   }
+  for (const [index, checkpoint] of record.checkpoints.entries()) {
+    expect(Number.isFinite(checkpoint.time)).toBe(true);
+    expect(checkpoint.time).toBeGreaterThanOrEqual(record.started);
+    expect(checkpoint.time).toBeLessThanOrEqual(record.ended);
+    if (index > 0)
+      expect(
+        checkpoint.time - record.checkpoints[index - 1].time,
+      ).toBeGreaterThanOrEqual(0);
+  }
   for (const frame of record.frames) {
     expect(Number.isFinite(frame.time)).toBe(true);
     expect(Number.isFinite(frame.frameTime)).toBe(true);
   }
-  for (const frame of record.frames)
+  for (const frame of [...record.frames, ...record.checkpoints])
     for (const element of frame.elements)
       for (const value of [
         element.x,
@@ -301,8 +367,11 @@ export async function finishMotionProbe(
 
 export function expectStationary(record: MotionEvidence, selectors: string[]) {
   for (const selector of selectors) {
-    const elements = record.frames.flatMap((frame) =>
-      frame.elements.filter((element) => element.selector === selector),
+    // Checkpoints are actual synchronous style/geometry measurements, not
+    // synthetic rAF timestamps. They retain immediately interrupted owners.
+    const elements = [...record.frames, ...record.checkpoints].flatMap(
+      (frame) =>
+        frame.elements.filter((element) => element.selector === selector),
     );
     expect(elements.length, `${selector} was sampled`).toBeGreaterThan(2);
     for (const identity of new Set(

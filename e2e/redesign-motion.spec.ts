@@ -2,6 +2,7 @@ import { test, expect } from "./fixtures";
 import { choiceTrigger, enterZone } from "./choices";
 import {
   beginMotionProbe,
+  captureMotionCheckpoint,
   expectStationary,
   finishMotionProbe,
   installMotionProbe,
@@ -61,7 +62,11 @@ for (const theme of ["dark", "light"] as const) {
       );
     }, theme);
     const anchors = ["#message", "#target-zone", ".appearance summary"];
-    await installMotionProbe(page, anchors);
+    await installMotionProbe(page, [
+      ...anchors,
+      ".input-panel",
+      ".result-panel",
+    ]);
     await page.goto("/", { waitUntil: "domcontentloaded" });
     const input = page.getByLabel("Message with a date or time");
     // No settling wait: focus and typing happen during the finite entrance.
@@ -90,18 +95,24 @@ for (const theme of ["dark", "light"] as const) {
         completed.filter((event) => event.target === start.target),
       ).toHaveLength(1);
     for (const event of completed) {
-      expect(
-        event.time -
-          entrance.find((start) => start.target === event.target)!.time,
-      ).toBeLessThanOrEqual(400);
+      // The CSS elapsed clock measures effect lifetime; event callback time
+      // includes main-thread delivery delay. Preserve both raw clocks.
+      expect(event.elapsedTimeSeconds).toBeLessThanOrEqual(0.36);
       expect(event.time).toBeGreaterThanOrEqual(
         entrance.find((start) => start.target === event.target)!.time,
       );
     }
-    expect(
-      Math.max(...completed.map((event) => event.time)) -
-        Math.min(...entrance.map((event) => event.time)),
-    ).toBeLessThanOrEqual(400);
+    const panelAnimations = record.events
+      .filter((event) => /^(?:input-panel|result-panel)$/.test(event.target))
+      .flatMap((event) => event.animations) as typeof record.initialAnimations;
+    expect(panelAnimations.length).toBeGreaterThan(0);
+    for (const animation of panelAnimations) {
+      expect(animation.durationMilliseconds).toBe(320);
+      expect([0, 40]).toContain(animation.delayMilliseconds);
+      expect(animation.iterations).toBe(1);
+      expect(animation.endTimeMilliseconds).toBeLessThanOrEqual(360);
+      expect(animation.currentTimeMilliseconds).toBeLessThanOrEqual(360);
+    }
     const finalPanels = await page.evaluate(() =>
       [...document.querySelectorAll(".input-panel,.result-panel")].map(
         (element) => ({
@@ -224,11 +235,15 @@ test("normal motion keeps zone anchors and outer overlays stationary through imm
     `[id="${await target.getAttribute("aria-controls")}"]`,
   );
   await expect(ownedList).toBeVisible();
+  await captureMotionCheckpoint(page, "zone-open-before-immediate-Escape");
   await page.keyboard.press("Escape");
   await expect(target).toHaveAttribute("aria-expanded", "false");
+  await captureMotionCheckpoint(page, "zone-first-closed");
   await toggle.click();
   await expect(target).toHaveAttribute("aria-expanded", "true");
+  await captureMotionCheckpoint(page, "zone-reopened");
   await target.press("ArrowDown");
+  await captureMotionCheckpoint(page, "zone-keyboard-before-immediate-Escape");
   await target.press("Escape");
   await expect(target).toHaveValue("UTC");
   await expect(target).toHaveAttribute("aria-expanded", "false");
@@ -585,6 +600,7 @@ for (const reducedAtStart of [true, false]) {
     await input.fill("April 9, 2026 3pm UTC");
     await input.fill("April 9, 2026 4pm UTC");
     await expect(page.locator(".hero-time")).toHaveText(/4:00 pm/i);
+    await captureMotionCheckpoint(page, "reduced-final-result-committed");
     const record = await finishMotionProbe(page, info, "reduced-result-frames");
     expect(
       record.events.filter((event) => event.type === "animationstart"),
@@ -842,6 +858,7 @@ test("an entering zone menu follows an immediate viewport resize and still accep
       scrollY,
     };
   });
+  await captureMotionCheckpoint(page, "open-menu-before-resize");
   await page.setViewportSize({ width: 280, height: 844 });
   const popup = page.locator(".choice-popover:not([data-exiting])");
   await expect(target).toHaveAttribute("aria-expanded", "true");
@@ -862,6 +879,7 @@ test("an entering zone menu follows an immediate viewport resize and still accep
       scrollY,
     };
   });
+  await captureMotionCheckpoint(page, "open-menu-after-immediate-resize");
   await target.fill("Tokyo");
   const ownedList = page.locator(
     `[id="${await target.getAttribute("aria-controls")}"]`,
@@ -875,16 +893,16 @@ test("an entering zone menu follows an immediate viewport resize and still accep
   await expect(page.locator(".hero-time")).toHaveText(/12:00 am/i);
   await expect(input).toHaveValue("April 9, 2026 3pm UTC");
   const record = await finishMotionProbe(page, info, "open-menu-resize-frames");
+  await info.attach("immediate-resize-bounds", {
+    body: JSON.stringify({ bounds, beforeResize, afterResize }),
+    contentType: "application/json",
+  });
   expect(record.frames.some((frame) => frame.viewport.width === 1280)).toBe(
     true,
   );
   expect(record.frames.some((frame) => frame.viewport.width === 280)).toBe(
     true,
   );
-  await info.attach("immediate-resize-bounds", {
-    body: JSON.stringify({ bounds, beforeResize, afterResize }),
-    contentType: "application/json",
-  });
   expect(bounds.x).toBeGreaterThanOrEqual(0);
   expect(afterResize.layoutWidth).toBe(280);
   expect(bounds.x + bounds.width).toBeLessThanOrEqual(
