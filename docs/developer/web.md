@@ -33,13 +33,25 @@ The preview server sets a restrictive CSP and avoids request/body logging. Cloud
 
 ## Cloudflare publishing
 
-Time to Local retains the original `chronoshift` Cloudflare service ID, browser
-storage keys, cache prefix and internal test/build environment variables. These
+The Cloudflare Worker is named `time-to-local`, renamed in place from
+`chronoshift` through the Workers API using immutable Worker ID
+`ae31f2a91482499cbee3eceb72a4336f`. Its deployment history and custom-domain
+bindings remain attached to that service. Browser storage keys, cache prefix
+and internal test/build environment variables retain their existing values. These
 are compatibility identifiers: keeping them preserves installed-app identity,
 saved preferences, pending handoffs and opt-in updates from the former branding.
 The manifest ID, start URL and service-worker scope remain `/`. The
 `/ChronoShift/` regression path and historical evidence links remain unchanged.
 Current GitHub operations use `Tien-Lam/time-to-local`.
+
+Rename an existing Worker through
+[`PATCH /accounts/{account_id}/workers/workers/{worker_id}`](https://developers.cloudflare.com/api/resources/workers/subresources/workers/methods/edit/)
+with only its new `name`; changing Wrangler's name alone can create a second
+Worker. Verify the immutable ID, domain/certificate IDs and deployment history
+before publishing with the updated configuration. The zone redirect rule uses the Time to Local description. Cloudflare keeps
+the phase entry-point ruleset name and the existing rule reference immutable,
+so `ChronoShift canonical redirects` and `chronoshift_www_canonical` remain;
+the existing rule ID is retained.
 
 The site is https://timetolocal.com/, owned by the repository owner. Cloudflare publishes only main through `.github/workflows/publish.yml`. Ready same-repository PRs run the full production browser and repository-subpath gate and retain the tested root artifact for one day; PRs have no deployment job. Drafts defer automatic hosted verification; [explicit investigation requests and final-gate instructions](testing.md#ci-efficiency) retain full coverage. A deferred check is not a verified release. On main, scripts/reuse-site-artifact.ts accepts only a successful trusted Web PR run with every required check, identical head/tested-release/main trees, the GitHub artifact digest and safe archive paths. Main uploads those exact tested files as a fourteen-day rollback artifact. Missing, expired or unverifiable evidence runs the full reusable Web gate. Manual publication always runs the full gate. The complete publishing workflow is serialized, protecting active deployments from cancellation and preventing a slower older verification from overwriting a newer publication. Documentation/design/evidence-only pushes skip both workflows. Unexpected failed browser attempts retain diagnostics for three days even when a retry passes. The cloudflare-production environment permits only main. `CLOUDFLARE_API_TOKEN` is stored as a GitHub Actions secret, scoped to Workers deployment in the intended account and Workers Routes write for the domain zone. `wrangler.jsonc` declares the account, domains and static-only routing. Native maintenance is retired; physical web acceptance remains open.
 
@@ -54,11 +66,11 @@ Workers `_redirects` cannot match hostnames. This zone configuration is separate
 from routine Wrangler publication; the CI token does not need redirect-rule edit
 permissions. Both hostnames are declared as Worker Custom Domains for DNS/TLS.
 
-For rollback, select a successful main **Publish site** run at the desired source SHA, then `gh run rerun RUN_ID --repo Tien-Lam/time-to-local`. The workflow rebuilds the pinned source and replaces the site; the release file/cache version returns to that source. Re-running a deployment does not revert Git branches. Verify the live release file and hosted checks, then ask an existing client to check for an update and choose **Update now**. Users with old tabs continue on their cached release until opting in. A server rollback cannot forcibly revoke an installed offline version. To restore the latest release, re-run its successful publishing run. Superseded verification jobs on the same branch or PR are canceled. The complete workflow shares the `site-publication` concurrency group and is never canceled while active; GitHub keeps at most one pending deployment. Manual reruns remain available for rollback.
+For rollback, select a successful main **Publish site** run after the Worker rename at the desired source SHA, then `gh run rerun RUN_ID --repo Tien-Lam/time-to-local`. The workflow rebuilds the pinned source and replaces the site; the release file/cache version returns to that source. Do not rerun a pre-rename publication: its historical configuration targets `chronoshift`. For a pre-rename release, use the retained Cloudflare version on the existing `time-to-local` Worker, with `bunx wrangler rollback VERSION_ID --name time-to-local`; coordinate it with the serialized publication workflow so a pending deployment cannot overwrite the rollback. Re-running a deployment does not revert Git branches. Verify the live release file and hosted checks, then ask an existing client to check for an update and choose **Update now**. Users with old tabs continue on their cached release until opting in. A server rollback cannot forcibly revoke an installed offline version. To restore the latest release, re-run its successful post-rename publishing run. Superseded verification jobs on the same branch or PR are canceled. The complete workflow shares the `site-publication` concurrency group and is never canceled while active; GitHub keeps at most one pending deployment. Manual reruns remain available for rollback.
 
 Historical migration-branch publishing runs no longer have deployment permission after main-only cutover; restore historical source through a reviewed main change when needed.
 
-For a reproducible existing-client proof, run `bun scripts/verify-hosted-rollout.ts COMMAND_JSON REPORT_JSON` against the initial deployment. Keep it running while deploying the next version, re-running the old run for rollback, and restoring the new run. After each deployment, write `{ "stage": "update" | "rollback" | "restore", "sourceCommit": "FULL_SHA" }` to COMMAND_JSON. The probe requires a waiting update, checks that the old page stays active until opt-in, verifies draft preservation, and closes/reopens offline to convert a fresh message after every transition. It writes a report only after actual assertions pass.
+For a reproducible existing-client proof, run `bun scripts/verify-hosted-rollout.ts COMMAND_JSON REPORT_JSON` against the initial deployment. Keep it running while deploying the next version, rolling back using the applicable post-rename run or retained Cloudflare version above, and restoring the new run. After each deployment, write `{ "stage": "update" | "rollback" | "restore", "sourceCommit": "FULL_SHA" }` to COMMAND_JSON. The probe requires a waiting update, checks that the old page stays active until opt-in, verifies draft preservation, and closes/reopens offline to convert a fresh message after every transition. It writes a report only after actual assertions pass.
 
 ## Architecture
 
