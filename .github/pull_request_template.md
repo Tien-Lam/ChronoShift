@@ -1,7 +1,7 @@
 ## Problem and resulting behavior
 
 <!-- Include the original report/steps, elapsed timing and console errors for bugs.
-Separate observed facts from the proposed cause. Link the Linear ticket. -->
+Separate observed facts from the proposed cause. Link the GitHub issue. -->
 
 ## Review brief
 
