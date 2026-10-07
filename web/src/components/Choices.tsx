@@ -1,9 +1,9 @@
+import { ResizeSafePopover } from "./ResizeSafePopover";
 import { useRef, useState } from "react";
 import {
   Select,
   SelectValue,
   Button,
-  Popover,
   ListBox,
   ListBoxItem,
   Text,
@@ -113,7 +113,7 @@ export function ChoiceSelect({
         </SelectValue>
         <Chevron />
       </Button>
-      <Popover
+      <ResizeSafePopover
         className="choice-popover"
         inert={!open}
         aria-hidden={!open}
@@ -122,7 +122,7 @@ export function ChoiceSelect({
         containerPadding={12}
       >
         <ChoiceItems options={options} />
-      </Popover>
+      </ResizeSafePopover>
     </Select>
   );
 }
@@ -227,7 +227,7 @@ export function ZoneChoice({
           <Chevron />
         </Button>
       </Group>
-      <Popover
+      <ResizeSafePopover
         className="choice-popover"
         inert={!open}
         aria-hidden={!open}
@@ -237,7 +237,7 @@ export function ZoneChoice({
         isNonModal
       >
         <ChoiceItems options={timezoneOptions} byValue />
-      </Popover>
+      </ResizeSafePopover>
     </ComboBox>
   );
 }

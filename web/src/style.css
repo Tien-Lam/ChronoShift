@@ -81,9 +81,7 @@ select,
 summary,
 .choice-item {
   transition:
-    background-color var(--motion-fast) ease,
     border-color var(--motion-fast) ease,
-    color var(--motion-fast) ease,
     box-shadow var(--motion-fast) ease;
 }
 button:disabled {
@@ -231,17 +229,16 @@ main {
   padding: 24px;
   border-radius: 24px;
   overflow-wrap: anywhere;
-  animation: surface-fade 320ms var(--motion-ease) both;
 }
 .input-panel {
   background: var(--well);
   border: 1px solid var(--border);
 }
 .result-panel {
+  container-type: inline-size;
   background: var(--surface);
   padding: 30px 32px;
   box-shadow: inset 0 1px 0 #ffffff15;
-  animation-delay: 40ms;
 }
 .panel-heading {
   margin-bottom: 20px;
@@ -399,6 +396,7 @@ select {
   pointer-events: none;
 }
 .appearance[data-expanded="true"] .appearance-fields {
+  transition: none;
   animation: surface-fade 180ms var(--motion-ease);
 }
 .install-help,
@@ -619,6 +617,7 @@ input::placeholder {
   transition: opacity 220ms var(--motion-ease);
 }
 .options[data-expanded="true"] .option-fields {
+  transition: none;
   animation: surface-fade 220ms var(--motion-ease);
 }
 .options[data-expanded="false"] .option-fields {
@@ -1074,13 +1073,14 @@ footer p {
     overscroll-behavior-y: contain;
   }
 }
-/* Opacity is deliberate: ancestors and positioned overlays own live geometry. */
+/* Fade only a decorative outline: semantic text and palette surfaces stay opaque.
+   Outlines do not change the geometry owned by ancestors and positioned overlays. */
 @keyframes surface-fade {
   from {
-    opacity: 0.65;
+    outline: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
   }
   to {
-    opacity: 1;
+    outline: 1px solid transparent;
   }
 }
 @keyframes surface-exit {
@@ -1137,31 +1137,65 @@ footer p {
 :root[data-theme="dark"] .hero-time {
   color: var(--accent);
 }
-:root[data-theme-changing],
-:root[data-theme-changing] .topbar,
+/* Semantic palette pairs switch atomically; finite theme feedback stays decorative. */
+.workspace[data-entering="true"] .input-panel,
+.workspace[data-entering="true"] .result-panel {
+  animation: surface-fade 320ms var(--motion-ease) both;
+}
+.workspace[data-entering="true"] .result-panel {
+  animation-delay: 40ms;
+}
 :root[data-theme-changing] .input-panel,
-:root[data-theme-changing] .result-panel,
+:root[data-theme-changing] .appearance summary,
 :root[data-theme-changing] .appearance-fields,
 :root[data-theme-changing] .choice-popover,
-:root[data-theme-changing] h2,
-:root[data-theme-changing] p,
-:root[data-theme-changing] span,
-:root[data-theme-changing] label,
+:root[data-theme-changing] button,
+:root[data-theme-changing] input,
+:root[data-theme-changing] textarea,
+:root[data-theme-changing] .choice-trigger,
+:root[data-theme-changing] .date-choice-control,
 :root[data-theme-changing] footer {
   transition:
-    background-color 200ms ease,
-    color 200ms ease,
-    border-color 200ms ease;
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+:root[data-theme-changing] .brand-clock::after {
+  animation: clock-settle 200ms var(--motion-ease);
+}
+@keyframes clock-settle {
+  from {
+    transform: rotate(5deg);
+  }
+  to {
+    transform: rotate(25deg);
+  }
+}
+:root[data-theme-resolving],
+:root[data-theme-resolving] * {
+  transition: none !important;
 }
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation: none !important;
     transition: none !important;
     translate: none !important;
 
     scroll-behavior: auto !important;
+  }
+  *:not(.input-panel):not(.result-panel):not(.is-new-group),
+  *::before,
+  *::after {
+    animation: none !important;
+  }
+  /* Keep once-only animation identities until the preference listener consumes them.
+     Removing/recreating their CSS animations can replay after a coalesced reversal. */
+  .workspace[data-entering="true"] .input-panel,
+  .workspace[data-entering="true"] .result-panel,
+  .result-group.is-new-group {
+    animation-play-state: paused !important;
+    opacity: 1 !important;
+    outline-color: transparent !important;
   }
 }
 @media (forced-colors: active) {
@@ -1222,18 +1256,6 @@ footer p {
 .input-tools > div {
   display: flex;
 }
-:root[data-theme-changing] .hero-time,
-:root[data-theme-changing] button,
-:root[data-theme-changing] input,
-:root[data-theme-changing] textarea,
-:root[data-theme-changing] .choice-trigger,
-:root[data-theme-changing] .date-choice-control {
-  transition:
-    background-color 200ms ease,
-    color 200ms ease,
-    border-color 200ms ease;
-}
-
 .result-placeholder,
 .ambiguity {
   animation: surface-fade 180ms var(--motion-ease);
@@ -1254,4 +1276,13 @@ footer p {
 /* Preserve the formatter's space even when its suffix moves to a new line. */
 .clock-suffix {
   white-space: pre;
+}
+
+@container (max-width: 520px) {
+  .result-top[data-precision="true"] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .result-top[data-precision="true"] .copy-button {
+    justify-self: start;
+  }
 }

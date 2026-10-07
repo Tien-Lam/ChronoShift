@@ -5,6 +5,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { flushSync } from "react-dom";
 import type { Conversion, ConversionOptions, TimeResult } from "./engine/types";
 import { MAX_INPUT } from "./engine/limits";
 import { copyText, formatResult, rangeLabel } from "./engine/time";
@@ -48,6 +49,9 @@ function resolveZone(value: string, fallback: string): string | undefined {
 
 export default function App() {
   const [text, setText] = useState("");
+  const [entering, setEntering] = useState(
+    () => !matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
   const [prefs, setPrefs] = useState(loadPreferences);
   const [device, setDevice] = useState(deviceTimezone);
   const [referenceDate, setReferenceDate] = useState("");
@@ -89,6 +93,8 @@ export default function App() {
   const committedGroups = useRef(new Set<string>());
   const [newGroups, setNewGroups] = useState(new Set<string>());
   const appearance = useRef<HTMLDetailsElement>(null);
+  const examplesMenu = useRef<HTMLDetailsElement>(null);
+  const themeResolutionFrame = useRef<number>(undefined);
   const worker = useRef<Worker | null>(null),
     request = useRef(0);
   const importRequest = useRef(0);
@@ -199,11 +205,20 @@ export default function App() {
             ? "dark"
             : "light"
           : prefs.theme;
+      const immediate = !document.documentElement.dataset.themeChanging;
+      if (immediate) document.documentElement.dataset.themeResolving = "true";
       document.documentElement.dataset.theme = theme;
       document.documentElement.dataset.design = "command";
       document
         .querySelector('meta[name="theme-color"]')
         ?.setAttribute("content", theme === "dark" ? "#0c120f" : "#f7f4ed");
+      if (immediate) {
+        // Resolve all palette styles while control feedback is suppressed.
+        void document.documentElement.offsetHeight;
+        themeResolutionFrame.current = requestAnimationFrame(() => {
+          delete document.documentElement.dataset.themeResolving;
+        });
+      }
     };
     apply();
     const systemChanged = () => {
@@ -211,12 +226,23 @@ export default function App() {
       apply();
     };
     media.addEventListener("change", systemChanged);
-    return () => media.removeEventListener("change", systemChanged);
+    return () => {
+      media.removeEventListener("change", systemChanged);
+      if (themeResolutionFrame.current !== undefined)
+        cancelAnimationFrame(themeResolutionFrame.current);
+      delete document.documentElement.dataset.themeResolving;
+    };
   }, [prefs.theme]);
 
   useEffect(() => {
     const dismiss = (event: PointerEvent) => {
       const target = event.target;
+      if (
+        target instanceof Element &&
+        !examplesMenu.current?.contains(target) &&
+        examplesMenu.current
+      )
+        examplesMenu.current.open = false;
       if (
         target instanceof Element &&
         !appearance.current?.contains(target) &&
@@ -227,16 +253,22 @@ export default function App() {
     };
     const escape = (event: KeyboardEvent) => {
       if (
-        event.key === "Escape" &&
-        appearance.current?.dataset.expanded === "true" &&
-        !document.querySelector(
+        event.key !== "Escape" ||
+        document.querySelector(
           ".choice-popover:not([data-exiting]):not([inert])",
         )
-      ) {
+      )
+        return;
+      if (appearance.current?.dataset.expanded === "true") {
         event.preventDefault();
         event.stopPropagation();
         setAppearanceOpen(false);
         appearance.current.querySelector("summary")?.focus();
+      } else if (examplesMenu.current?.open) {
+        event.preventDefault();
+        event.stopPropagation();
+        examplesMenu.current.open = false;
+        examplesMenu.current.querySelector("summary")?.focus();
       }
     };
     document.addEventListener("pointerdown", dismiss);
@@ -249,6 +281,32 @@ export default function App() {
       delete document.documentElement.dataset.themeChanging;
     };
   }, []);
+
+  useEffect(() => {
+    const media = matchMedia("(prefers-reduced-motion: reduce)");
+    const finish = () => {
+      setEntering(false);
+      setNewGroups(new Set());
+    };
+    const changed = () => {
+      // Consume stale effects on either event, including coalesced rapid reversals.
+      clearTimeout(themeReset.current);
+      delete document.documentElement.dataset.themeChanging;
+      flushSync(finish);
+    };
+    if (media.matches) finish();
+    const timer = setTimeout(() => setEntering(false), 360);
+    media.addEventListener("change", changed);
+    return () => {
+      clearTimeout(timer);
+      media.removeEventListener("change", changed);
+    };
+  }, []);
+  useEffect(() => {
+    if (!newGroups.size) return;
+    const timer = setTimeout(() => setNewGroups(new Set()), 240);
+    return () => clearTimeout(timer);
+  }, [newGroups]);
 
   useLayoutEffect(() => {
     if (optionsOpen && correctionFocus.current) {
@@ -378,11 +436,13 @@ export default function App() {
               ),
             );
             setNewGroups(
-              new Set(
-                [...next].filter(
-                  (group) => !committedGroups.current.has(group),
-                ),
-              ),
+              matchMedia("(prefers-reduced-motion: reduce)").matches
+                ? new Set()
+                : new Set(
+                    [...next].filter(
+                      (group) => !committedGroups.current.has(group),
+                    ),
+                  ),
             );
             committedGroups.current = next;
             setConversion(event.data.conversion);
@@ -634,6 +694,7 @@ export default function App() {
         <h1 className="sr-only">Time zone converter</h1>
         <div
           className={`workspace ${conversion.results.length ? "has-results" : ""}`}
+          data-entering={entering}
         >
           <section className="input-panel" aria-labelledby="input-title">
             <div className="panel-heading">
@@ -662,7 +723,7 @@ export default function App() {
               aria-describedby="input-help"
             />
             <div className="input-tools">
-              <details className="examples">
+              <details className="examples" ref={examplesMenu}>
                 <summary>Try an example</summary>
                 <div className="example-list">
                   {examples.map((example) => (
@@ -670,6 +731,8 @@ export default function App() {
                       type="button"
                       key={example}
                       onClick={() => {
+                        if (examplesMenu.current)
+                          examplesMenu.current.open = false;
                         edit(example);
                         input.current?.focus();
                       }}
@@ -961,7 +1024,10 @@ export default function App() {
                     const range = rangeLabel(result);
                     return (
                       <div className="result" key={result.id}>
-                        <div className="result-top">
+                        <div
+                          className="result-top"
+                          data-precision={/\d:\d{2}:\d{2}/.test(d.time)}
+                        >
                           <div className="result-output">
                             {range && <p className="range-label">{range}</p>}
                             {d.time && (

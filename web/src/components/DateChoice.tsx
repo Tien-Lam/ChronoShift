@@ -1,3 +1,4 @@
+import { ResizeSafePopover } from "./ResizeSafePopover";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { parseDate, toCalendar } from "@internationalized/date";
 import {
@@ -13,7 +14,6 @@ import {
   DateSegment,
   Group,
   Label,
-  Popover,
   type DateSegmentProps,
 } from "react-aria-components/DatePicker";
 import { DateFieldStateContext } from "react-aria-components/DateField";
@@ -120,7 +120,7 @@ export function DateChoice({
           </svg>
         </Button>
       </Group>
-      <Popover
+      <ResizeSafePopover
         className="choice-popover calendar-popover"
         inert={!isOpen}
         aria-hidden={!isOpen}
@@ -176,7 +176,7 @@ export function DateChoice({
             Use today automatically
           </button>
         </Dialog>
-      </Popover>
+      </ResizeSafePopover>
     </DatePicker>
   );
 }

@@ -183,9 +183,8 @@
   cursor: pointer;
   outline: none;
   transition:
-    background-color var(--motion-fast) ease,
     border-color var(--motion-fast) ease,
-    color var(--motion-fast) ease;
+    box-shadow var(--motion-fast) ease;
 }
 .calendar-day[data-hovered],
 .calendar-day[data-pressed] {
