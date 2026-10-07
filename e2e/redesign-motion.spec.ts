@@ -352,6 +352,149 @@ test("new groups reveal once, numeric replacements are atomic and Copy reports o
   expectStationary(added, [".result .copy-button"]);
 });
 
+test("first System selection resolves the OS palette without explicit theme feedback", async ({
+  page,
+}, info) => {
+  await installMotionProbe(page);
+  await page.addInitScript(() => {
+    localStorage.setItem(
+      "chronoshift.preferences.v1",
+      JSON.stringify({ theme: "dark", target: "UTC", hourCycle: "12" }),
+    );
+  });
+  await page.emulateMedia({
+    colorScheme: "light",
+    reducedMotion: "no-preference",
+  });
+  await page.goto("/");
+  const input = page.getByLabel("Message with a date or time");
+  await input.fill("April 9, 2026 3pm UTC");
+  await expect(page.locator(".hero-time")).toHaveText(/3:00 pm/i);
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await page.getByLabel("Appearance", { exact: true }).click();
+  const theme = choiceTrigger(page, "Theme");
+  await theme.click();
+  await beginMotionProbe(page, [
+    "#message",
+    "#target-zone",
+    ".hero-time",
+    ".result .copy-button",
+    ".brand-clock",
+  ]);
+  await page.evaluate(() => {
+    const state = window as any;
+    state.firstSystemFeedback = [];
+    state.firstSystemSampling = true;
+    const sample = () => {
+      state.firstSystemFeedback.push({
+        time: performance.now(),
+        marker: document.documentElement.getAttribute("data-theme-changing"),
+        theme: document.documentElement.dataset.theme,
+        clock: getComputedStyle(
+          document.querySelector(".brand-clock")!,
+          "::after",
+        ).animationName,
+        effects: document.getAnimations().map((animation) => ({
+          name:
+            (animation as CSSAnimation).animationName ||
+            (animation as CSSTransition).transitionProperty,
+          state: animation.playState,
+          duration: animation.effect?.getTiming().duration,
+          currentTime: animation.currentTime,
+          stationaryPaletteOwner: (
+            animation.effect as KeyframeEffect
+          )?.target?.matches(
+            "#message,#target-zone,.input-panel,.result-panel,footer",
+          ),
+          target: (animation.effect as KeyframeEffect)?.target?.outerHTML.slice(
+            0,
+            220,
+          ),
+        })),
+      });
+      if (state.firstSystemSampling) requestAnimationFrame(sample);
+    };
+    // RAC may stop the option's click propagation. Observe the rendered
+    // lifecycle directly instead of depending on a document click listener.
+    requestAnimationFrame(sample);
+  });
+  await page.locator('[role="option"][data-value="system"]').click();
+  // Capture before any live OS change or settling assertion can conceal the
+  // first-selection marker and its finite 200ms decorative feedback.
+  const immediate = await page.evaluate(() => ({
+    time: performance.now(),
+    theme: document.documentElement.dataset.theme,
+    marker: document.documentElement.getAttribute("data-theme-changing"),
+    ink: getComputedStyle(document.documentElement).color,
+    page: getComputedStyle(document.documentElement).backgroundColor,
+  }));
+  await expect(theme).toBeFocused();
+  await expect(input).toHaveValue("April 9, 2026 3pm UTC");
+  await expect(page.locator(".hero-time")).toHaveText(/3:00 pm/i);
+  const record = await finishMotionProbe(page, info, "first-system-frames");
+  const feedback = await page.evaluate(() => {
+    const state = window as any;
+    state.firstSystemSampling = false;
+    return state.firstSystemFeedback as {
+      time: number;
+      marker: string | null;
+      theme: string;
+      clock: string;
+      effects: {
+        name: string;
+        duration: number;
+        state: string;
+        stationaryPaletteOwner: boolean;
+      }[];
+    }[];
+  });
+  await info.attach("first-system-feedback", {
+    body: JSON.stringify({ immediate, feedback }),
+    contentType: "application/json",
+  });
+  expect(immediate).toMatchObject({
+    theme: "light",
+    marker: null,
+    ink: "rgb(41, 37, 30)",
+    page: "rgb(247, 244, 237)",
+  });
+  expect(feedback.length).toBeGreaterThan(2);
+  for (const [index, sample] of feedback.entries()) {
+    expect(Number.isFinite(sample.time)).toBe(true);
+    if (index > 0)
+      expect(sample.time - feedback[index - 1].time).toBeGreaterThanOrEqual(0);
+    expect(sample.marker).toBeNull();
+    expect(sample.clock).not.toMatch(/clock-settle/);
+    // The native popover may still exit, and restored keyboard focus may
+    // produce 140ms control feedback. Neither is the explicit 200ms theme
+    // border/shadow or clock effect being excluded here. Unfocused stationary
+    // palette owners must also have no fallback-duration palette transitions.
+    expect(
+      sample.effects.filter(
+        (effect) =>
+          effect.name === "clock-settle" ||
+          (/^(?:border-.*color|box-shadow)$/.test(effect.name) &&
+            (effect.duration === 200 || effect.stationaryPaletteOwner)),
+      ),
+    ).toEqual([]);
+  }
+  expect(
+    record.events.filter((event) => event.name === "clock-settle"),
+  ).toEqual([]);
+  for (const element of record.frames
+    .filter((frame) => frame.time >= immediate.time)
+    .flatMap((frame) => frame.elements))
+    expect(
+      contrast(element.foreground, element.backgrounds, element.layers),
+    ).toBeGreaterThanOrEqual(element.selector === ".hero-time" ? 3 : 4.5);
+  await page.emulateMedia({ colorScheme: "dark" });
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await expect(page.locator("html")).not.toHaveAttribute("data-theme-changing");
+  await expect(theme).toBeFocused();
+  await expect(input).toHaveValue("April 9, 2026 3pm UTC");
+  await expect(page.locator(".hero-time")).toHaveText(/3:00 pm/i);
+});
+
 test("explicit theme transitions preserve draft and results; live system resolution is immediate", async ({
   page,
 }, info) => {
