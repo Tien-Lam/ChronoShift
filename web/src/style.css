@@ -511,22 +511,24 @@ input::placeholder {
   margin-top: 4px;
 }
 .text-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   border: 0;
   background: none;
   border-radius: 8px;
-  padding: 10px 12px;
+  padding-block: 10px;
+  padding-inline: 12px;
   font-size: 12px;
   font-weight: 500;
-  min-height: 44px;
+  min-block-size: 44px;
 }
 @media (hover: hover) {
   .text-button:hover {
     color: var(--ink);
     background: var(--soft);
   }
-}
-.input-tools .text-button {
-  padding: 8px 12px 8px 0;
 }
 .muted {
   color: var(--muted);
@@ -1277,6 +1279,7 @@ footer p {
 }
 .input-tools > div {
   display: flex;
+  gap: 4px;
 }
 .result-placeholder,
 .ambiguity {
