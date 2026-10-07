@@ -1,12 +1,12 @@
 # Agent Instructions
 
-ChronoShift is an offline, local-only TypeScript web app hosted on GitHub Pages. Source is in `web/`; native tooling has been removed.
+ChronoShift is an offline, local-only TypeScript web app hosted on Cloudflare Workers Static Assets. Source is in `web/`; native tooling has been removed.
 
 ## Development
 
 - Manage runtimes and CLI tools with `mise`; prefer Bun. Install dependencies with `bun install --frozen-lockfile`. Use `gh` for GitHub operations.
 - Build with `bun run build`; verify with `bun run check` and `bun run format:check`. Run appropriate Playwright checks for browser, offline or deployment changes. See [testing](docs/developer/testing.md) and [publishing](docs/developer/web.md).
-- Keep the manifest, service worker and runtime assets under the Pages base path `/ChronoShift/`. No runtime CDN or conversion backend.
+- Keep the manifest, service worker and runtime assets under the production base `/`; retain `/ChronoShift/` as a subpath regression check. No runtime CDN or conversion backend.
 - Show ambiguity rather than guessing. Keep source and target zones independent, date/range context bounded, and fixed offsets distinct from regional DST.
 - Keep input text out of network requests and permanent storage. Preserve input/results during resize; activate updates only on user action.
 - Maintain independent exact expectations in `tests/fixtures/temporal.json` and the standalone `tests/fixtures/resilience-corpus.json` directly.

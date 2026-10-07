@@ -1,6 +1,6 @@
 # Browser and device acceptance
 
-Test the published app at https://tien-lam.github.io/ChronoShift/. Record the release SHA from `/ChronoShift/release.json`, device, operating system, browser/version, screen size/posture and network conditions. This checklist concerns browser behavior; no native package or SDK is needed.
+Test the published app at https://timetolocal.com/. Record the release SHA from `/release.json`, device, operating system, browser/version, screen size/posture and network conditions. This checklist concerns browser behavior; no native package or SDK is needed.
 
 ## Main task
 

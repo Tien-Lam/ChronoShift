@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "chronoshift",
+  "account_id": "f72185d2a10d3f9faf2b8799ff614dd1",
+  "compatibility_date": "2026-10-07",
+  "send_metrics": false,
+  "workers_dev": false,
+  "preview_urls": false,
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none",
+  },
+  "routes": [
+    { "pattern": "timetolocal.com", "custom_domain": true },
+    { "pattern": "www.timetolocal.com", "custom_domain": true },
+  ],
+  "observability": { "enabled": false },
+}

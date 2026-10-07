@@ -31,4 +31,4 @@ labels: bug
 - Window size or folded/unfolded state:
 - Online/offline and whether offline reopening and fresh conversion worked:
 - Installed app or browser tab:
-- ChronoShift release (from /ChronoShift/release.json, if available):
+- ChronoShift release (from /release.json, if available):

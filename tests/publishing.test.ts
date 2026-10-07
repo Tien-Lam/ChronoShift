@@ -3,7 +3,7 @@ import {
   trustedRun,
   safeArchive,
   releaseMatches,
-} from "../scripts/reuse-pages-artifact";
+} from "../scripts/reuse-site-artifact";
 test("publication reuse requires a trusted complete PR verification and exact tree", () => {
   const run = {
     id: 1,
@@ -23,8 +23,10 @@ test("publication reuse requires a trusted complete PR verification and exact tr
       "Unit tests and production build",
       "Verify the standalone conversion corpus audit",
       "Run bun run test:browser",
+      "Preserve the verified root build",
       "Verify repository-subpath deployment",
-      "Upload the verified Pages build",
+      "Restore the verified root build",
+      "Upload the verified static build",
     ].map((name) => ({ name, conclusion: "success" })),
   };
   expect(trustedRun(run, 3, 2, [job])).toBe(true);
@@ -54,11 +56,15 @@ test("publication reuse requires a trusted complete PR verification and exact tr
       },
     ]),
   ).toBe(false);
-  const release = { sourceCommit: "a".repeat(40), base: "/ChronoShift/" };
+  const release = { sourceCommit: "a".repeat(40), base: "/" };
   expect(releaseMatches(release, "b".repeat(40), "b".repeat(40))).toBe(true);
   expect(releaseMatches(release, "c".repeat(40), "b".repeat(40))).toBe(false);
   expect(
-    releaseMatches({ ...release, base: "/" }, "b".repeat(40), "b".repeat(40)),
+    releaseMatches(
+      { ...release, base: "/ChronoShift/" },
+      "b".repeat(40),
+      "b".repeat(40),
+    ),
   ).toBe(false);
   expect(
     safeArchive(

@@ -1,6 +1,6 @@
 import { readdir } from "node:fs/promises";
 import { join } from "node:path";
-import { WEB_CSP } from "./csp";
+import { WEB_CSP, PREVIEW_CSP } from "./csp";
 const base = process.env.BASE_PATH || "/";
 const sourceCommit =
   process.env.CHRONOSHIFT_SOURCE_COMMIT || process.env.GITHUB_SHA || "local";
@@ -11,7 +11,7 @@ if (
   throw new Error("CHRONOSHIFT_SOURCE_COMMIT must be a full source SHA");
 if (!/^\/(?:[A-Za-z0-9_-]+\/)*$/.test(base))
   throw new Error("BASE_PATH must be / or a path such as /ChronoShift/");
-// Pages cannot set custom response headers. Enforce the static policy in HTML.
+// Retain the HTML policy for offline shells and hosts without custom headers.
 // Inject at build time so the development server can still use Vite's HMR.
 const html = await Bun.file("dist/index.html").text();
 const canonicalShell = html.replace(
@@ -19,6 +19,20 @@ const canonicalShell = html.replace(
   `<head>\n    <meta http-equiv="Content-Security-Policy" content="${WEB_CSP}">\n    <meta name="referrer" content="no-referrer">`,
 );
 await Bun.write("dist/index.html", canonicalShell);
+const headers = `/*
+  Content-Security-Policy: ${PREVIEW_CSP}
+  Referrer-Policy: no-referrer
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+
+${base}assets/*
+  Cache-Control: public, max-age=31536000, immutable
+`;
+await Bun.write("dist/_headers", headers);
+await Bun.write(
+  "dist/_redirects",
+  "https://www.timetolocal.com/* https://timetolocal.com/:splat 301\n",
+);
 async function files(dir: string): Promise<string[]> {
   const entries = await readdir(dir, { withFileTypes: true });
   const nested = await Promise.all(
@@ -35,7 +49,12 @@ await Bun.write(
   JSON.stringify({ sourceCommit, base }, null, 2),
 );
 const assets = (await files("dist"))
-  .filter((p) => !p.endsWith("/sw.js") && !p.endsWith("/sw-template.js"))
+  .filter(
+    (p) =>
+      !["sw.js", "sw-template.js", "_headers", "_redirects"].includes(
+        p.slice(p.lastIndexOf("/") + 1),
+      ),
+  )
   .sort();
 const manifest = {
   id: base,
@@ -75,6 +94,7 @@ for (const p of assets) {
   hash.update(await Bun.file(p).arrayBuffer());
 }
 hash.update(base);
+hash.update(headers);
 const template = await Bun.file("web/sw-template.js").text();
 hash.update(template);
 const version = hash.digest("hex").slice(0, 16);
