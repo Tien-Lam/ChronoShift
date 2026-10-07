@@ -1,8 +1,6 @@
-import { useEffect, useRef, type ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
 
-import { useRetainedOpen } from "./useRetainedOpen";
-
-/** Keep geometry intrinsic while fading. Closing content becomes inert at once. */
+/** Commit intrinsic close geometry before another control can be pressed. */
 export function Disclosure({
   open,
   onOpenChange,
@@ -12,13 +10,8 @@ export function Disclosure({
   onOpenChange: (open: boolean) => void;
   children: ReactNode;
 }) {
-  const retained = useRetainedOpen(open, 220);
   const content = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
-  useEffect(() => {
-    if (!open && content.current?.contains(document.activeElement))
-      trigger.current?.focus();
-  }, [open]);
   return (
     <div className="options" data-expanded={open}>
       <button
@@ -28,7 +21,11 @@ export function Disclosure({
         aria-label="Adjust interpretation & format (More options)"
         aria-expanded={open}
         aria-controls="interpretation-options"
-        onClick={() => onOpenChange(!open)}
+        onClick={() => {
+          if (open && content.current?.contains(document.activeElement))
+            trigger.current?.focus();
+          onOpenChange(!open);
+        }}
       >
         <span className="disclosure-chevron" aria-hidden="true">
           ›
@@ -39,7 +36,7 @@ export function Disclosure({
         ref={content}
         id="interpretation-options"
         className="option-fields"
-        hidden={!open && !retained}
+        hidden={!open}
         inert={!open}
         aria-hidden={!open}
       >
