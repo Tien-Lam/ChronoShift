@@ -1,6 +1,6 @@
+import { Popover } from "./ui/Popover";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import {
-  Popover,
   PopoverContext,
   type PopoverProps,
 } from "react-aria-components/Popover";

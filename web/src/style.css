@@ -627,7 +627,7 @@ input::placeholder {
   line-height: 1;
   transition: rotate 160ms var(--motion-ease);
 }
-.options[data-expanded="true"] .disclosure-chevron {
+.options[data-expanded] .disclosure-chevron {
   rotate: 90deg;
 }
 .option-fields {
@@ -635,11 +635,11 @@ input::placeholder {
   opacity: 1;
   transition: opacity 220ms var(--motion-ease);
 }
-.options[data-expanded="true"] .option-fields {
+.options[data-expanded] .option-fields {
   transition: none;
   animation: surface-fade 220ms var(--motion-ease);
 }
-.options[data-expanded="false"] .option-fields {
+.options:not([data-expanded]) .option-fields {
   opacity: 0;
   pointer-events: none;
 }
@@ -1343,5 +1343,52 @@ footer p {
   }
   .result-top[data-precision="true"] .copy-button {
     justify-self: start;
+  }
+}
+
+/* Owned variants adapted from the selected shadcn React Aria recipes. */
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-block-size: 44px;
+}
+.action-button svg {
+  flex-shrink: 0;
+  pointer-events: none;
+}
+.action-button[data-disabled] {
+  opacity: 0.5;
+  cursor: default;
+}
+.action-button[data-pending] {
+  cursor: progress;
+}
+.action-button[data-focus-visible] {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.action-outline {
+  padding: 10px 12px;
+  border: 1px solid var(--control-border);
+  border-radius: 8px;
+  background: var(--well);
+  color: var(--ink);
+  font-size: 12px;
+}
+.action-icon {
+  inline-size: 44px;
+  padding: 10px;
+}
+.ui-input {
+  min-inline-size: 0;
+}
+.ui-popover {
+  z-index: 10;
+}
+@media (hover: hover) {
+  .action-outline[data-hovered] {
+    background: var(--soft);
   }
 }

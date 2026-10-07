@@ -2,7 +2,8 @@ import { useEffect } from "react";
 
 const controls = "button, summary, a[href], .choice-item, .calendar-day";
 
-/** Immediate touch feedback without taking ownership of clicks or scrolling. */
+/** Retained native controls only: owned React Aria buttons use data-pressed.
+ * Immediate touch feedback without taking ownership of clicks or scrolling. */
 export function useTouchFeedback() {
   useEffect(() => {
     let press: {
@@ -25,6 +26,9 @@ export function useTouchFeedback() {
           : null;
       if (
         !element ||
+        element.matches(
+          "[data-slot=button], [data-slot=collapsible-trigger]",
+        ) ||
         element.matches(":disabled, [data-disabled], [aria-disabled='true']")
       )
         return;

@@ -6,7 +6,7 @@
   "packageManager": "bun@1.4.0",
   "scripts": {
     "dev": "bunx --bun vite --host 127.0.0.1",
-    "build": "bun run typecheck && bun scripts/third-party-notices.ts && bunx --bun vite build && bun scripts/build-offline.ts",
+    "build": "bun run typecheck && bun scripts/third-party-notices.ts && bunx --bun vite build && bun scripts/build-offline.ts && bun scripts/verify-ui-build.ts",
     "preview": "bun scripts/serve-web.ts",
     "typecheck": "bunx --bun tsc --noEmit",
     "test": "bun test tests",
@@ -15,12 +15,16 @@
     "check": "bun run typecheck && bun run test && bun run build",
     "corpus:audit": "bun scripts/audit-corpus.ts",
     "format:check": "bunx --bun prettier --check web scripts/*.ts tests e2e *.ts",
-    "format": "bunx --bun prettier --write web scripts/*.ts tests e2e *.ts"
+    "format": "bunx --bun prettier --write web scripts/*.ts tests e2e *.ts",
+    "dev:gallery": "bunx --bun vite --host 127.0.0.1 --port 44101 --strictPort",
+    "test:gallery": "bunx --bun playwright test --config=playwright.gallery.config.ts",
+    "gallery:candidates": "GALLERY_CAPTURE_CANDIDATES=1 bun run test:gallery visual.spec.ts"
   },
   "dependencies": {
     "@internationalized/date": "3.12.4",
     "@js-temporal/polyfill": "0.5.1",
     "chrono-node": "2.10.2",
+    "class-variance-authority": "0.7.1",
     "react": "19.3.0",
     "react-aria-components": "1.21.1",
     "react-dom": "19.3.0"

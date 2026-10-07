@@ -12,6 +12,7 @@ const desktopWindow = process.env.CI
 export default defineConfig({
   testDir: "./e2e",
   testIgnore: [
+    "**/gallery/**",
     "**/subpath.spec.ts",
     "**/foldable.spec.ts",
     "**/hosted.spec.ts",
