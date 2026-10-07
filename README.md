@@ -47,7 +47,7 @@ bun run test:hosted
 
 Cloudflare Workers Static Assets publishes verified builds at `https://timetolocal.com/`. GitHub Actions runs the complete web gate and publishes only `main`; trusted PR artifacts are reused only after exact source-tree and digest verification. No conversion backend or application server runs in production.
 
-See [build setup](docs/developer/building.md), [tests](docs/developer/testing.md), [publishing and rollback](docs/developer/web.md), [browser acceptance](docs/developer/device-smoke-test.md) and [the conversion pipeline](docs/architecture/nlp-pipeline.md). Physical-device, accessibility and phone-performance acceptance is tracked in the [Linear initiative](https://linear.app/tienlam/initiative/chronoshift-simple-offline-web-app-d90101850ba1).
+See [build setup](docs/developer/building.md), [tests](docs/developer/testing.md), [publishing and rollback](docs/developer/web.md), [browser acceptance](docs/developer/device-smoke-test.md) and [the conversion pipeline](docs/architecture/nlp-pipeline.md). Work and acceptance evidence are tracked in [GitHub Issues](https://github.com/Tien-Lam/time-to-local/issues) and the [project board](https://github.com/users/Tien-Lam/projects/1); see [the contribution workflow](docs/GITHUB_WORKFLOW.md).
 
 Time to Local is maintained as a web app. The native application and its maintenance tooling have been removed; previous versions remain in Git history.
 
