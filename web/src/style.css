@@ -128,6 +128,7 @@ a:focus-visible {
   letter-spacing: -0.5px;
   font-size: 18px;
   text-decoration: none;
+  border-radius: 8px;
 }
 .brand-clock,
 .large-clock {
@@ -189,8 +190,10 @@ a:focus-visible {
   border-radius: 999px;
   background: transparent;
 }
-.appearance summary:hover {
-  background: var(--soft);
+@media (hover: hover) {
+  .appearance summary:hover {
+    background: var(--soft);
+  }
 }
 .appearance summary::-webkit-details-marker {
   display: none;
@@ -349,8 +352,10 @@ select {
 .choice-toggle[aria-expanded="true"] svg {
   rotate: 180deg;
 }
-.choice-trigger:hover {
-  border-color: var(--muted);
+@media (hover: hover) {
+  .choice-trigger:hover {
+    border-color: var(--muted);
+  }
 }
 .choice-toggle {
   position: absolute;
@@ -365,9 +370,11 @@ select {
   display: grid;
   place-items: center;
 }
-.choice-toggle:hover {
-  color: var(--ink);
-  background: var(--soft);
+@media (hover: hover) {
+  .choice-toggle:hover {
+    color: var(--ink);
+    background: var(--soft);
+  }
 }
 .choice-popover {
   width: var(--trigger-width);
@@ -433,9 +440,13 @@ select {
   font-size: 12px;
   line-height: 16px;
 }
-.choice-item[data-focused],
-.choice-item[data-hovered] {
+.choice-item[data-focused] {
   background: var(--soft);
+}
+@media (hover: hover) {
+  .choice-item[data-hovered] {
+    background: var(--soft);
+  }
 }
 .choice-item[data-focus-visible] {
   outline: 2px solid var(--focus);
@@ -468,10 +479,12 @@ select {
     outline-offset: -1px;
   }
 }
-textarea:hover,
-input:hover,
-select:hover {
-  border-color: var(--muted);
+@media (hover: hover) {
+  textarea:hover,
+  input:hover,
+  select:hover {
+    border-color: var(--muted);
+  }
 }
 #message {
   display: block;
@@ -506,9 +519,11 @@ input::placeholder {
   font-weight: 500;
   min-height: 44px;
 }
-.text-button:hover {
-  color: var(--ink);
-  background: var(--soft);
+@media (hover: hover) {
+  .text-button:hover {
+    color: var(--ink);
+    background: var(--soft);
+  }
 }
 .input-tools .text-button {
   padding: 8px 12px 8px 0;
@@ -598,9 +613,11 @@ input::placeholder {
   width: 100%;
   font-size: 13px;
 }
-.options-trigger:hover,
-.examples summary:hover {
-  background: var(--soft);
+@media (hover: hover) {
+  .options-trigger:hover,
+  .examples summary:hover {
+    background: var(--soft);
+  }
 }
 .disclosure-chevron {
   display: inline-block;
@@ -668,9 +685,12 @@ input::placeholder {
   min-height: 44px;
   gap: 12px;
   line-height: 1.5;
+  border-radius: 8px;
 }
-.examples button:hover {
-  color: var(--accent);
+@media (hover: hover) {
+  .examples button:hover {
+    color: var(--accent);
+  }
 }
 .result-placeholder {
   min-height: 96px;
@@ -765,8 +785,10 @@ input::placeholder {
   min-height: 44px;
   white-space: nowrap;
 }
-.copy-button:hover {
-  box-shadow: inset 0 0 0 2px var(--primary-ink);
+@media (hover: hover) {
+  .copy-button:hover {
+    box-shadow: inset 0 0 0 2px var(--primary-ink);
+  }
 }
 .hero-time {
   font-size: clamp(36px, 5vw, 56px);
@@ -1261,17 +1283,51 @@ footer p {
   animation: surface-fade 180ms var(--motion-ease);
 }
 
-.copy-button:active {
-  box-shadow: inset 0 0 0 3px var(--primary-ink);
+/* Replace the browser's tap overlay only on task controls. Editable fields
+   retain native caret, selection and context-menu behavior. */
+:is(button, summary, a[href], .choice-item, .calendar-day) {
+  -webkit-tap-highlight-color: transparent;
 }
-.text-button:active,
-.options-trigger:active,
-.appearance summary:active,
-.examples summary:active,
-.choice-trigger[data-pressed],
-.choice-toggle[data-pressed] {
-  background: var(--soft);
-  box-shadow: inset 0 0 0 1px var(--border);
+:is(button, summary, a[href], .choice-item, .calendar-day):not(
+    :disabled,
+    [data-disabled]
+  ):is(:active, [data-pressed], [data-touch-pressed]) {
+  background: var(--pressed-background, var(--soft));
+  color: var(--pressed-ink, var(--ink));
+  box-shadow: inset 0 0 0 var(--pressed-width, 2px)
+    var(--pressed-ring, var(--accent));
+  /* Press feedback must be visible even during a short tap. */
+  transition: none;
+}
+.copy-button {
+  --pressed-background: var(--primary);
+  --pressed-ink: var(--primary-ink);
+  --pressed-ring: var(--primary-ink);
+  --pressed-width: 3px;
+}
+.calendar-day[data-selected] {
+  --pressed-background: var(--accent);
+  --pressed-ink: var(--surface);
+  --pressed-ring: var(--surface);
+}
+@media (forced-colors: active) {
+  :is(button, summary, a[href], .choice-item, .calendar-day):not(
+      :disabled,
+      [data-disabled]
+    ):is(:active, [data-pressed], [data-touch-pressed]) {
+    forced-color-adjust: none;
+    background: Highlight;
+    color: HighlightText;
+    box-shadow: none;
+  }
+  .choice-item:is(:active, [data-pressed], [data-touch-pressed])
+    [slot="description"] {
+    color: HighlightText;
+  }
+  :is(button, summary, a[href]):focus-visible,
+  :is(.choice-item, .calendar-day)[data-focus-visible] {
+    outline-color: Highlight;
+  }
 }
 /* Preserve the formatter's space even when its suffix moves to a new line. */
 .clock-suffix {
