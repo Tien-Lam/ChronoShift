@@ -4,6 +4,7 @@ import { join } from "node:path";
 const missingDistributionLicenses: Record<string, string> = {
   "client-only@0.0.1": "docs/licenses/client-only.LICENSE",
 };
+const ownedNotice = await Bun.file("docs/licenses/shadcn-ui.LICENSE").text();
 const app = await Bun.file("package.json").json();
 const queue = Object.keys(app.dependencies).sort(),
   seen = new Set<string>(),
@@ -42,6 +43,6 @@ while (queue.length) {
 }
 await Bun.write(
   "web/public/third-party-notices.txt",
-  `ChronoShift production dependencies\nGenerated from the frozen dependency graph; includes bundled runtime libraries.\n\n${sections.join("\n\n")}\n`,
+  `ChronoShift production dependencies\nGenerated from the frozen dependency graph; includes bundled runtime libraries.\n\nshadcn/ui owned React Aria recipes (MIT)\n${ownedNotice}\n\n${sections.join("\n\n")}\n`,
 );
 console.log(`Included notices for ${seen.size} production packages.`);

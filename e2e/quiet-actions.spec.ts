@@ -114,7 +114,7 @@ test.describe("quiet action native touch", () => {
             type: "touchStart",
             touchPoints: [{ x, y }],
           });
-          await expect(control).toHaveAttribute("data-touch-pressed", "");
+          await expect(control).toHaveAttribute("data-pressed", "true");
           const pressed = await geometry(control);
           expect(pressed.box).toEqual(before.box);
           expect(Math.abs(pressed.labelCentreError)).toBeLessThanOrEqual(1);
@@ -131,13 +131,13 @@ test.describe("quiet action native touch", () => {
               type: "touchMove",
               touchPoints: [{ x: x + 25, y }],
             });
-            await expect(control).not.toHaveAttribute("data-touch-pressed", "");
+            await expect(control).not.toHaveAttribute("data-pressed", "true");
           }
           await cdp.send("Input.dispatchTouchEvent", {
             type: "touchCancel",
             touchPoints: [],
           });
-          await expect(control).not.toHaveAttribute("data-touch-pressed", "");
+          await expect(control).not.toHaveAttribute("data-pressed", "true");
           await expect(input).toHaveValue("June 18, 2026 9am UTC");
         }
       }

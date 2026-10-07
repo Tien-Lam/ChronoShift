@@ -1,3 +1,8 @@
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from "./ui/Collapsible";
 import { useRef, type ReactNode } from "react";
 
 /** Commit intrinsic close geometry before another control can be pressed. */
@@ -13,26 +18,31 @@ export function Disclosure({
   const content = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
   return (
-    <div className="options" data-expanded={open}>
-      <button
+    <Collapsible
+      className="options"
+      isExpanded={open}
+      onExpandedChange={(next) => {
+        // Programmatic/virtual activation need not move focus before collapse.
+        // Preserve the previous native disclosure's focused-child correction.
+        if (!next && content.current?.contains(document.activeElement))
+          trigger.current?.focus();
+        onOpenChange(next);
+      }}
+    >
+      <CollapsibleTrigger
         ref={trigger}
         className="options-trigger"
         type="button"
         aria-label="Adjust interpretation & format (More options)"
         aria-expanded={open}
         aria-controls="interpretation-options"
-        onClick={() => {
-          if (open && content.current?.contains(document.activeElement))
-            trigger.current?.focus();
-          onOpenChange(!open);
-        }}
       >
         <span className="disclosure-chevron" aria-hidden="true">
           ›
         </span>
         Adjust interpretation &amp; format
-      </button>
-      <div
+      </CollapsibleTrigger>
+      <CollapsibleContent
         ref={content}
         id="interpretation-options"
         className="option-fields"
@@ -41,7 +51,7 @@ export function Disclosure({
         aria-hidden={!open}
       >
         {children}
-      </div>
-    </div>
+      </CollapsibleContent>
+    </Collapsible>
   );
 }

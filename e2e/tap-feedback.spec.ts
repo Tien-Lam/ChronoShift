@@ -51,6 +51,16 @@ async function styles(control: Locator) {
     };
   });
 }
+async function pressedAttribute(control: Locator) {
+  return (await control.evaluate((el) =>
+    el.matches("[data-slot=button], [data-slot=collapsible-trigger]"),
+  ))
+    ? "data-pressed"
+    : "data-touch-pressed";
+}
+async function pressedValue(control: Locator) {
+  return (await pressedAttribute(control)) === "data-pressed" ? "true" : "";
+}
 async function hold(page: Page, milliseconds: number) {
   // This is the gesture's hold interval, not a settling delay before acting.
   return page.evaluate(async (duration) => {
@@ -86,7 +96,10 @@ test("touch presses use rounded palette feedback immediately across task control
       expect(before.radius).toBeGreaterThan(0);
       await start(cdp, control);
       // Sample the very first delivered touch; :active alone is delayed on Chrome.
-      await expect(control).toHaveAttribute("data-touch-pressed", "");
+      await expect(control).toHaveAttribute(
+        await pressedAttribute(control),
+        await pressedValue(control),
+      );
       const pressed = await styles(control);
       expect(pressed.box).toEqual(before.box);
       expect(pressed.shadow).toContain("inset");
@@ -107,7 +120,10 @@ test("touch presses use rounded palette feedback immediately across task control
           path: info.outputPath(`${theme}-pressed-${index}.png`),
         });
       await stop(cdp);
-      await expect(control).not.toHaveAttribute("data-touch-pressed", "");
+      await expect(control).not.toHaveAttribute(
+        await pressedAttribute(control),
+        await pressedValue(control),
+      );
       await expect
         .poll(async () => (await styles(control)).background)
         .toBe(before.background);
@@ -248,7 +264,10 @@ test("touch feedback clears on release, cancellation, scroll and drag, including
   await expect
     .poll(() => page.evaluate(() => scrollY))
     .toBeGreaterThan(previousScroll);
-  await expect(disclosure).not.toHaveAttribute("data-touch-pressed", "");
+  await expect(disclosure).not.toHaveAttribute(
+    await pressedAttribute(disclosure),
+    await pressedValue(disclosure),
+  );
   await expect(disclosure).toHaveAttribute("aria-expanded", "false");
   await page.locator("#message").fill("Selection remains editable");
   const input = page.locator("#message");

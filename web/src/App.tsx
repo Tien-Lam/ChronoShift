@@ -32,6 +32,7 @@ import {
 } from "./platform/diagnostics";
 import { ChoiceSelect, ZoneChoice } from "./components/Choices";
 import { DateChoice } from "./components/DateChoice";
+import { ActionButton } from "./components/ui/ActionButton";
 import { Disclosure } from "./components/Disclosure";
 import { useRetainedOpen } from "./components/useRetainedOpen";
 import { useTouchFeedback } from "./components/useTouchFeedback";
@@ -734,10 +735,10 @@ export default function App() {
                 <summary>Try an example</summary>
                 <div className="example-list">
                   {examples.map((example) => (
-                    <button
+                    <ActionButton
                       type="button"
                       key={example}
-                      onClick={() => {
+                      onPress={() => {
                         if (examplesMenu.current)
                           examplesMenu.current.open = false;
                         edit(example);
@@ -746,25 +747,29 @@ export default function App() {
                     >
                       {example}
                       <span aria-hidden="true">↗</span>
-                    </button>
+                    </ActionButton>
                   ))}
                 </div>
               </details>
               <div>
-                <button type="button" className="text-button" onClick={paste}>
+                <ActionButton
+                  type="button"
+                  className="text-button"
+                  onPress={paste}
+                >
                   Paste
-                </button>
+                </ActionButton>
                 {text && (
-                  <button
+                  <ActionButton
                     type="button"
                     className="text-button muted"
-                    onClick={() => {
+                    onPress={() => {
                       edit("");
                       input.current?.focus();
                     }}
                   >
                     Clear
-                  </button>
+                  </ActionButton>
                 )}
               </div>
               <span
@@ -816,10 +821,10 @@ export default function App() {
                   ? "Complete or clear the date"
                   : referenceDate || "Today"}
               </span>
-              <button
+              <ActionButton
                 type="button"
                 className="text-button"
-                onClick={() => {
+                onPress={() => {
                   if (optionsOpen)
                     document.getElementById("source-zone")?.focus();
                   else {
@@ -829,7 +834,7 @@ export default function App() {
                 }}
               >
                 Change message defaults
-              </button>
+              </ActionButton>
             </div>
             <Disclosure open={optionsOpen} onOpenChange={setOptionsOpen}>
               <label htmlFor="source-zone">Source timezone</label>
@@ -926,10 +931,10 @@ export default function App() {
               <span className="field-note">
                 Console only. Message text excluded.
               </span>
-              <button
+              <ActionButton
                 type="button"
                 className="text-button"
-                onClick={() => {
+                onPress={() => {
                   setDetailedLogs(false);
                   setDetailedLogsChecked(false);
                   resetPreferences();
@@ -943,7 +948,7 @@ export default function App() {
                 }}
               >
                 Reset preferences
-              </button>
+              </ActionButton>
             </Disclosure>
           </section>
           <section
@@ -1072,15 +1077,15 @@ export default function App() {
                               )}
                             </p>
                           </div>
-                          <button
+                          <ActionButton
                             type="button"
-                            className="copy-button"
+                            variant="primary"
                             data-copy-state={
                               copyState?.id === result.id
                                 ? copyState.state
                                 : "idle"
                             }
-                            onClick={() => copy(result)}
+                            onPress={() => copy(result)}
                             aria-label={`Copy ${range ? range + ": " : ""}${d.time ? d.time + " · " : ""}${d.date} · ${d.zone} · ${result.interpretation || result.sourceLabel}`}
                           >
                             {copyState?.id === result.id &&
@@ -1097,7 +1102,7 @@ export default function App() {
                             ) : (
                               "Copy"
                             )}
-                          </button>
+                          </ActionButton>
                         </div>
                         <div className="result-context">
                           {index === 0 && entries.length > 1 && (
@@ -1148,10 +1153,10 @@ export default function App() {
               {pendingImport.source} text arrived. Replace the current message?
             </p>
             <div>
-              <button
+              <ActionButton
                 type="button"
                 className="text-button"
-                onClick={() => {
+                onPress={() => {
                   edit(pendingImport.text);
                   setPendingImport(undefined);
                   setNotice("Imported text received.");
@@ -1159,14 +1164,14 @@ export default function App() {
                 }}
               >
                 Replace with imported text
-              </button>
-              <button
+              </ActionButton>
+              <ActionButton
                 type="button"
                 className="text-button muted"
-                onClick={() => setPendingImport(undefined)}
+                onPress={() => setPendingImport(undefined)}
               >
                 Dismiss imported text
-              </button>
+              </ActionButton>
             </div>
           </div>
         )}
@@ -1193,17 +1198,17 @@ export default function App() {
             <p>
               A new version is ready. Your message will be kept when you update.
             </p>
-            <button className="copy-button" type="button" onClick={update}>
+            <ActionButton variant="primary" type="button" onPress={update}>
               Update now
-            </button>
+            </ActionButton>
           </div>
         )}
         <footer>
           <p>Your text stays on this device.</p>
-          <button
+          <ActionButton
             type="button"
             className="text-button"
-            onClick={async () => {
+            onPress={async () => {
               if (installPrompt) {
                 await installPrompt.prompt();
                 setInstallPrompt(undefined);
@@ -1211,7 +1216,7 @@ export default function App() {
             }}
           >
             Keep ChronoShift handy
-          </button>
+          </ActionButton>
         </footer>
         {installHelp && (
           <div className="install-help">
@@ -1231,13 +1236,13 @@ export default function App() {
                 Keep this page open online to finish saving it for offline use.
               </p>
             )}
-            <button
+            <ActionButton
               className="text-button"
               type="button"
-              onClick={() => setInstallHelp(false)}
+              onPress={() => setInstallHelp(false)}
             >
               Got it
-            </button>
+            </ActionButton>
           </div>
         )}
       </main>

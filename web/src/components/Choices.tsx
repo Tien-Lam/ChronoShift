@@ -8,7 +8,8 @@ import {
   ListBoxItem,
   Text,
 } from "react-aria-components/Select";
-import { ComboBox, Input } from "react-aria-components/ComboBox";
+import { Input } from "./ui/Input";
+import { ComboBox } from "react-aria-components/ComboBox";
 import { Group } from "react-aria-components/Group";
 import { cityAliases, resolveCity, zoneIds, zoneName } from "../engine/zones";
 import { diagnostic } from "../platform/diagnostics";
