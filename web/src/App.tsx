@@ -318,10 +318,15 @@ export default function App() {
   function changeTheme(theme: "dark" | "light" | "system") {
     if (theme === prefs.theme) return;
     clearTimeout(themeReset.current);
-    document.documentElement.dataset.themeChanging = "true";
-    themeReset.current = setTimeout(() => {
+    if (theme === "system") {
       delete document.documentElement.dataset.themeChanging;
-    }, 200);
+      themeReset.current = undefined;
+    } else {
+      document.documentElement.dataset.themeChanging = "true";
+      themeReset.current = setTimeout(() => {
+        delete document.documentElement.dataset.themeChanging;
+      }, 200);
+    }
     setPrefs({ ...prefs, theme });
   }
 
