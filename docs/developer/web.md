@@ -48,9 +48,10 @@ Rename an existing Worker through
 [`PATCH /accounts/{account_id}/workers/workers/{worker_id}`](https://developers.cloudflare.com/api/resources/workers/subresources/workers/methods/edit/)
 with only its new `name`; changing Wrangler's name alone can create a second
 Worker. Verify the immutable ID, domain/certificate IDs and deployment history
-before publishing with the updated configuration. The zone redirect rule uses the Time to Local description and reference.
-Cloudflare keeps the phase entry-point ruleset name immutable, so its original
-`ChronoShift canonical redirects` name remains; the existing rule ID is retained.
+before publishing with the updated configuration. The zone redirect rule uses the Time to Local description. Cloudflare keeps
+the phase entry-point ruleset name and the existing rule reference immutable,
+so `ChronoShift canonical redirects` and `chronoshift_www_canonical` remain;
+the existing rule ID is retained.
 
 The site is https://timetolocal.com/, owned by the repository owner. Cloudflare publishes only main through `.github/workflows/publish.yml`. Ready same-repository PRs run the full production browser and repository-subpath gate and retain the tested root artifact for one day; PRs have no deployment job. Drafts defer automatic hosted verification; [explicit investigation requests and final-gate instructions](testing.md#ci-efficiency) retain full coverage. A deferred check is not a verified release. On main, scripts/reuse-site-artifact.ts accepts only a successful trusted Web PR run with every required check, identical head/tested-release/main trees, the GitHub artifact digest and safe archive paths. Main uploads those exact tested files as a fourteen-day rollback artifact. Missing, expired or unverifiable evidence runs the full reusable Web gate. Manual publication always runs the full gate. The complete publishing workflow is serialized, protecting active deployments from cancellation and preventing a slower older verification from overwriting a newer publication. Documentation/design/evidence-only pushes skip both workflows. Unexpected failed browser attempts retain diagnostics for three days even when a retry passes. The cloudflare-production environment permits only main. `CLOUDFLARE_API_TOKEN` is stored as a GitHub Actions secret, scoped to Workers deployment in the intended account and Workers Routes write for the domain zone. `wrangler.jsonc` declares the account, domains and static-only routing. Native maintenance is retired; physical web acceptance remains open.
 
