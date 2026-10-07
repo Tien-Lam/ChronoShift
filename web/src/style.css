@@ -608,8 +608,7 @@ input::placeholder {
   min-height: 44px;
   text-align: left;
 }
-.options-trigger,
-.examples summary {
+.options-trigger {
   cursor: pointer;
   min-height: 44px;
   padding: 10px 12px;
@@ -627,19 +626,17 @@ input::placeholder {
   font-size: var(--text-small);
 }
 @media (hover: hover) {
-  .options-trigger:hover,
-  .examples summary:hover {
+  .options-trigger:hover {
     background: var(--soft);
   }
 }
 .disclosure-chevron {
-  display: inline-block;
-  font-size: 1.25rem;
-  line-height: 1;
-  transition: rotate 160ms var(--motion-ease);
+  flex-shrink: 0;
+  rotate: -90deg;
+  transition: rotate var(--motion-fast) var(--motion-ease);
 }
 .options[data-expanded] .disclosure-chevron {
-  rotate: 90deg;
+  rotate: 0deg;
 }
 .option-fields {
   padding: 0 0 12px;
@@ -670,40 +667,6 @@ input::placeholder {
   padding: 0;
   flex-shrink: 0;
   accent-color: var(--accent);
-}
-.examples {
-  position: relative;
-  font-size: var(--text-small);
-}
-
-.examples summary {
-  color: var(--muted);
-  font-size: var(--text-small);
-}
-.examples p {
-  font-size: var(--text-small);
-  color: var(--muted);
-  margin: 8px 0 4px;
-}
-.examples button {
-  width: 100%;
-  background: none;
-  border: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: left;
-  font-size: var(--text-small);
-  padding: 10px 12px;
-  min-height: 44px;
-  gap: 12px;
-  line-height: 1.5;
-  border-radius: 8px;
-}
-@media (hover: hover) {
-  .examples button:hover {
-    color: var(--accent);
-  }
 }
 .result-placeholder {
   min-height: 96px;
@@ -1252,35 +1215,18 @@ footer p {
   white-space: nowrap;
 }
 
-.examples summary {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.example-button {
   border: 1px solid var(--border);
   background: var(--surface);
   border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--muted);
+  font-size: var(--text-small);
 }
-.examples summary::-webkit-details-marker {
-  display: none;
-}
-.examples summary::after {
-  content: "⌄";
-}
-.example-list {
-  position: absolute;
-  inset-inline-start: 0;
-  top: calc(100% + 8px);
-  width: min(360px, calc(100vw - 48px));
-  padding: 6px;
-  border: 1px solid var(--control-border);
-  border-radius: 10px;
-  background: var(--well);
-  box-shadow: 0 8px 24px var(--shadow);
-  z-index: 3;
-}
-.examples[open] .example-list {
-  animation: surface-fade 180ms var(--motion-ease);
+@media (hover: hover) {
+  .example-button:hover {
+    background: var(--soft);
+  }
 }
 .input-tools {
   margin-top: 10px;

@@ -4,6 +4,7 @@ import {
   CollapsibleContent,
 } from "./ui/Collapsible";
 import { useRef, type ReactNode } from "react";
+import { ControlIcon } from "./ui/ControlIcon";
 
 /** Commit intrinsic close geometry before another control can be pressed. */
 export function Disclosure({
@@ -37,9 +38,7 @@ export function Disclosure({
         aria-expanded={open}
         aria-controls="interpretation-options"
       >
-        <span className="disclosure-chevron" aria-hidden="true">
-          ›
-        </span>
+        <ControlIcon name="chevron" className="disclosure-chevron" />
         More options
       </CollapsibleTrigger>
       <CollapsibleContent

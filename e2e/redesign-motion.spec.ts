@@ -1177,35 +1177,39 @@ test("explicit and live System themes preserve contrast in actual semantic text 
   }
 });
 
-test("example choices close after selection, outside pointer and keyboard Escape", async ({
+test("random example fills directly, varies on repeated pointer and keyboard activation and preserves editing", async ({
   page,
 }, info) => {
   await installMotionProbe(page);
+  await page.addInitScript(() => {
+    Math.random = () => 0;
+  });
   await page.goto("/");
-  const examples = page.locator(".examples summary");
-  await examples.click();
-  const choice = page.locator(".example-list").getByRole("button").first();
-  const expected = (await choice.textContent())!.replace("↗", "").trim();
-  await beginMotionProbe(page, [".examples summary", ".example-list"]);
-  await choice.click();
-  await expect(page.getByLabel("Message with a date or time")).toHaveValue(
-    expected,
-  );
-  await expect(page.getByLabel("Message with a date or time")).toBeFocused();
-  await expect(page.locator(".examples")).not.toHaveAttribute("open", "");
-  await expect(page.locator(".example-list button").first()).not.toBeVisible();
-  await examples.click();
-  await page.getByLabel("Message with a date or time").click();
-  await expect(page.locator(".examples")).not.toHaveAttribute("open", "");
-  await examples.click();
-  await page.locator(".example-list").getByRole("button").first().focus();
-  await page.keyboard.press("Escape");
-  await expect(page.locator(".examples")).not.toHaveAttribute("open", "");
-  await expect(examples).toBeFocused();
-  await finishMotionProbe(page, info, "example-dismissal-frames");
-  await expect(page.getByLabel("Message with a date or time")).toHaveValue(
-    expected,
-  );
+  const button = page.getByRole("button", {
+    name: "Random example",
+    exact: true,
+  });
+  const input = page.getByLabel("Message with a date or time");
+  await input.fill("User draft: April 9, 2026 3pm UTC");
+  await beginMotionProbe(page, [".example-button"]);
+  await button.click();
+  await expect(input).toHaveValue("April 9 at 9am PT / 12pm ET");
+  await expect(input).toBeFocused();
+  await expect(button).not.toHaveAttribute("aria-haspopup");
+  await expect(page.getByRole("menu")).toHaveCount(0);
+  await button.focus();
+  await page.keyboard.press("Enter");
+  await expect(input).toHaveValue("Tomorrow at 3pm in Tokyo");
+  await expect(input).toBeFocused();
+  await button.focus();
+  await page.keyboard.press("Space");
+  await expect(input).toHaveValue("April 9 at 9am PT / 12pm ET");
+  await expect(input).toBeFocused();
+  await input.fill("April 9, 2026 3pm UTC");
+  await enterZone(page, "UTC");
+  await expect(page.locator(".hero-time")).toHaveText("3:00 pm");
+  await finishMotionProbe(page, info, "random-example-frames");
+  await expect(input).toHaveValue("April 9, 2026 3pm UTC");
 });
 
 for (const theme of ["light", "dark"] as const)

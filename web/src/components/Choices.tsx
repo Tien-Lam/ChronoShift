@@ -9,6 +9,7 @@ import {
   Text,
 } from "react-aria-components/Select";
 import { Input } from "./ui/Input";
+import { ControlIcon } from "./ui/ControlIcon";
 import { ComboBox } from "react-aria-components/ComboBox";
 import { Group } from "react-aria-components/Group";
 import { cityAliases, resolveCity, zoneIds, zoneName } from "../engine/zones";
@@ -22,19 +23,7 @@ type ChoiceProps = {
   onChange: (value: string) => void;
 };
 export function Chevron() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      aria-hidden="true"
-    >
-      <path d="m6 9 6 6 6-6" />
-    </svg>
-  );
+  return <ControlIcon name="chevron" />;
 }
 function ChoiceItems({
   options,
@@ -65,18 +54,7 @@ function ChoiceItems({
               <Text slot="description">{item.description}</Text>
             )}
           </div>
-          <svg
-            className="choice-check"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            aria-hidden="true"
-          >
-            <path d="m5 12 4 4L19 6" />
-          </svg>
+          <ControlIcon name="check" className="choice-check" />
         </ListBoxItem>
       )}
     </ListBox>

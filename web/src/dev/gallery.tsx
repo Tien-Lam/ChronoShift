@@ -5,6 +5,7 @@ import { Label } from "react-aria-components/Label";
 import { Text } from "react-aria-components/Text";
 import App from "../App";
 import { ActionButton } from "../components/ui/ActionButton";
+import { ControlIcon } from "../components/ui/ControlIcon";
 import { Input } from "../components/ui/Input";
 import { ChoiceSelect, ZoneChoice } from "../components/Choices";
 import { DateChoice } from "../components/DateChoice";
@@ -89,7 +90,8 @@ function Gallery() {
         </div>
         <div className="gallery-row">
           <ActionButton variant="primary" data-copy-state="success">
-            ✓ Copied
+            <ControlIcon name="check" className="copy-check" size="1em" />{" "}
+            Copied
           </ActionButton>
           <ActionButton variant="primary" data-copy-state="failure">
             Retry

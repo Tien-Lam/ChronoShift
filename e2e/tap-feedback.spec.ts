@@ -130,7 +130,7 @@ test("touch presses use rounded palette feedback immediately across task control
     };
     for (const selector of [
       ".appearance summary",
-      ".examples summary",
+      ".example-button",
       ".text-button:has-text('Paste')",
       ".text-button:has-text('Clear')",
       ".options-trigger",
@@ -140,9 +140,6 @@ test("touch presses use rounded palette feedback immediately across task control
     ])
       await probe(page.locator(selector).first());
     await probe(page.locator(".result .copy-button"), true);
-    await page.locator(".examples summary").tap();
-    await probe(page.locator(".examples button").first());
-    await page.locator(".examples summary").tap();
     await page.locator(".appearance summary").tap();
     await probe(page.locator("#theme"));
     await page.locator("#theme").tap();
