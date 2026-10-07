@@ -1,10 +1,22 @@
 import { Popover } from "./ui/Popover";
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
+import { OverlayTriggerStateContext } from "react-aria-components/Dialog";
 import {
   PopoverContext,
   type PopoverProps,
 } from "react-aria-components/Popover";
 import { useSlottedContext } from "react-aria-components/slots";
+
+/** A hidden page keeps its form state, but must release its portal focus scopes. */
+export const PopoverVisibilityContext = createContext(true);
 
 /** Preserve an open menu's horizontal anchor across mobile layout resizing.
  * React Aria deliberately freezes positioning when visualViewport.scale changes.
@@ -18,6 +30,12 @@ export function ResizeSafePopover(props: PopoverProps) {
   const popover = useRef<HTMLElement>(null);
   const [horizontal, setHorizontal] = useState<CSSProperties>();
   const open = !props.inert;
+  const overlayState = useContext(OverlayTriggerStateContext);
+  const visible = useContext(PopoverVisibilityContext);
+
+  useLayoutEffect(() => {
+    if (!visible && overlayState?.isOpen) overlayState.close();
+  }, [visible, overlayState]);
 
   useEffect(() => {
     if (!open) {
@@ -63,6 +81,7 @@ export function ResizeSafePopover(props: PopoverProps) {
     };
   }, [open, triggerRef, props.containerPadding]);
 
+  if (!visible) return null;
   return (
     <Popover
       {...props}

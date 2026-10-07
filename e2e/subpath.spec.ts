@@ -20,7 +20,12 @@ test("subpath scope, manifest and worker survive offline restart", async ({
   await page.close();
   await context.setOffline(true);
   const reopened = await context.newPage();
-  await reopened.goto("/ChronoShift/");
+  await reopened.goto("/ChronoShift/#about");
+  await expect(reopened).toHaveTitle("About — Time to Local");
+  await expect(
+    reopened.getByRole("link", { name: "View on GitHub" }),
+  ).toHaveAttribute("href", "https://github.com/Tien-Lam/time-to-local");
+  await reopened.getByRole("link", { name: "Back to converter" }).click();
   await enterZone(reopened, "UTC");
   await reopened
     .getByLabel("Message with a date or time")
