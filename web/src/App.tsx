@@ -34,6 +34,7 @@ import { ChoiceSelect, ZoneChoice } from "./components/Choices";
 import { DateChoice } from "./components/DateChoice";
 import { Disclosure } from "./components/Disclosure";
 import { useRetainedOpen } from "./components/useRetainedOpen";
+import { useTouchFeedback } from "./components/useTouchFeedback";
 
 const examples = [
   "April 9 at 9am PT / 12pm ET",
@@ -48,6 +49,7 @@ function resolveZone(value: string, fallback: string): string | undefined {
 }
 
 export default function App() {
+  useTouchFeedback();
   const [text, setText] = useState("");
   const [entering, setEntering] = useState(
     () => !matchMedia("(prefers-reduced-motion: reduce)").matches,
