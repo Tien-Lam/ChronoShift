@@ -29,10 +29,6 @@ ${base}assets/*
   Cache-Control: public, max-age=31536000, immutable
 `;
 await Bun.write("dist/_headers", headers);
-await Bun.write(
-  "dist/_redirects",
-  "https://www.timetolocal.com/* https://timetolocal.com/:splat 301\n",
-);
 async function files(dir: string): Promise<string[]> {
   const entries = await readdir(dir, { withFileTypes: true });
   const nested = await Promise.all(

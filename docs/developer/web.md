@@ -37,6 +37,15 @@ The site is https://timetolocal.com/, owned by the repository owner. Cloudflare 
 
 `release.json` identifies the source commit and base path. It participates in the cache version, making releases reproducible and observable. After deployment, run `bun run test:hosted`; optionally set `HOSTED_EXPECTED_COMMIT` to the full deployed SHA. Checks cover HTTPS assets/MIME, effective meta CSP, manifest/scope, local-only requests and new conversion after an offline close/reopen.
 
+The `www` canonical redirect is a zone-level Single Redirect in the
+`http_request_dynamic_redirect` phase, using
+[`deployment/www-redirect.json`](../../deployment/www-redirect.json). Apply this
+rule through the Cloudflare API/MCP or dashboard, preserving other rules in that
+phase. It keeps the path and query string and returns 301 to the HTTPS apex.
+Workers `_redirects` cannot match hostnames. This zone configuration is separate
+from routine Wrangler publication; the CI token does not need redirect-rule edit
+permissions. Both hostnames are declared as Worker Custom Domains for DNS/TLS.
+
 For rollback, select a successful main **Publish site** run at the desired source SHA, then `gh run rerun RUN_ID --repo Tien-Lam/ChronoShift`. The workflow rebuilds the pinned source and replaces the site; the release file/cache version returns to that source. Re-running a deployment does not revert Git branches. Verify the live release file and hosted checks, then ask an existing client to check for an update and choose **Update now**. Users with old tabs continue on their cached release until opting in. A server rollback cannot forcibly revoke an installed offline version. To restore the latest release, re-run its successful publishing run. Superseded verification jobs on the same branch or PR are canceled. The complete workflow shares the `site-publication` concurrency group and is never canceled while active; GitHub keeps at most one pending deployment. Manual reruns remain available for rollback.
 
 Historical migration-branch publishing runs no longer have deployment permission after main-only cutover; restore historical source through a reviewed main change when needed.
