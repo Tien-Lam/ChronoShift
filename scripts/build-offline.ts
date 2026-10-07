@@ -54,8 +54,8 @@ const assets = (await files("dist"))
   .sort();
 const manifest = {
   id: base,
-  name: "ChronoShift",
-  short_name: "ChronoShift",
+  name: "Time to Local",
+  short_name: "Time to Local",
   description: "Convert times privately, even offline.",
   start_url: base,
   scope: base,

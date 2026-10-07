@@ -1,6 +1,6 @@
-# Building ChronoShift
+# Building Time to Local
 
-ChronoShift is a static TypeScript web app. The runtimes in `mise.toml` and dependencies in `bun.lock` are pinned; no native SDK is required.
+Time to Local is a static TypeScript web app. The runtimes in `mise.toml` and dependencies in `bun.lock` are pinned; no native SDK is required.
 
 ```bash
 mise install

@@ -121,5 +121,5 @@ export function diagnostic(event: string, fields: Fields = {}) {
     )
       (safe.repair as Record<string, unknown>).failure = repair.failure;
   }
-  console.info(`[ChronoShift] ${event}`, safe);
+  console.info(`[Time to Local] ${event}`, safe);
 }

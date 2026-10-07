@@ -179,5 +179,5 @@ change other repositories or global instructions.
    review/release gates and exception policy. Close reports only with matching
    evidence under that policy.
 
-ChronoShift's concrete application is recorded separately in
+Time to Local's concrete application is recorded separately in
 [ui-adoption.md](ui-adoption.md).

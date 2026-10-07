@@ -637,10 +637,10 @@ export default function App() {
         <a
           className="brand"
           href={import.meta.env.BASE_URL}
-          aria-label="ChronoShift home"
+          aria-label="Time to Local home"
         >
           <span className="brand-clock" aria-hidden="true" />
-          ChronoShift
+          Time to Local
         </a>
         <div className="header-tools">
           <details
@@ -1215,7 +1215,7 @@ export default function App() {
               } else setInstallHelp(!installHelp);
             }}
           >
-            Keep ChronoShift handy
+            Keep Time to Local handy
           </ActionButton>
         </footer>
         {installHelp && (

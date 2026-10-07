@@ -1,6 +1,6 @@
-# ChronoShift UI adoption and regression contract
+# Time to Local UI adoption and regression contract
 
-This is ChronoShift's project adoption record for the
+This is Time to Local's project adoption record for the
 [generic UI quality playbook](ui-quality.md). The approved
 [appearance](appearance.md) remains the visual/content source of truth; this
 record defines how shared components preserve it. The selected foundation is
@@ -197,7 +197,7 @@ report. Keep new in-scope gaps open and preserve completed historical reports.
 
 The 7 October 2026 source records are the
 [generic playbook](https://linear.app/tienlam/document/reusable-ui-quality-playbook-chronoshift-and-future-projects-d42e979ba982),
-[ChronoShift adoption plan](https://linear.app/tienlam/document/chronoshift-ui-adoption-and-regression-plan-48ffdaf688ce)
+[Time to Local adoption plan](https://linear.app/tienlam/document/chronoshift-ui-adoption-and-regression-plan-48ffdaf688ce)
 and linked TIE-388/389/390 requirements. They are planning inputs, not executed
 acceptance. Approved design details are maintained in [appearance.md](appearance.md).
 

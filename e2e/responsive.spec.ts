@@ -101,7 +101,7 @@ test("touch-sized controls and keyboard navigation remain usable in a short view
     expect(bounds!.x).toBeGreaterThanOrEqual(0);
     expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(321);
   }
-  await page.getByRole("button", { name: "Keep ChronoShift handy" }).click();
+  await page.getByRole("button", { name: "Keep Time to Local handy" }).click();
   await expect(
     page.getByRole("heading", { name: "Use it anytime" }),
   ).toBeVisible();

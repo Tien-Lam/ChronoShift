@@ -1,6 +1,6 @@
 # Appearance
 
-ChronoShift uses one workspace with two palettes. **Appearance → Theme** selects **Dark**, **Light** or **System**. Dark is the default and reset choice; System follows device colour-scheme changes live. There is no separate design selector. The compact clock/name header leads directly into **Message**, destination controls and results; a hidden page heading supplies the accessible page name. The footer contains the privacy note.
+Time to Local uses one workspace with two palettes. **Appearance → Theme** selects **Dark**, **Light** or **System**. Dark is the default and reset choice; System follows device colour-scheme changes live. There is no separate design selector. The compact clock/name header leads directly into **Message**, destination controls and results; a hidden page heading supplies the accessible page name. The footer contains the privacy note.
 
 ## Layout and visual system
 

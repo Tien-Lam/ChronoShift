@@ -43,6 +43,6 @@ while (queue.length) {
 }
 await Bun.write(
   "web/public/third-party-notices.txt",
-  `ChronoShift production dependencies\nGenerated from the frozen dependency graph; includes bundled runtime libraries.\n\nshadcn/ui owned React Aria recipes (MIT)\n${ownedNotice}\n\n${sections.join("\n\n")}\n`,
+  `Time to Local production dependencies\nGenerated from the frozen dependency graph; includes bundled runtime libraries.\n\nshadcn/ui owned React Aria recipes (MIT)\n${ownedNotice}\n\n${sections.join("\n\n")}\n`,
 );
 console.log(`Included notices for ${seen.size} production packages.`);

@@ -1,6 +1,6 @@
 # Web development
 
-ChronoShift is a TypeScript web app in `web/`. Native sources and tooling have been removed at the user's request; historical commits and standalone conversion fixtures remain. Use the tool versions in `mise.toml`; dependencies and CLI tools are project-local and locked by `bun.lock`.
+Time to Local is a TypeScript web app in `web/`. Native sources and tooling have been removed at the user's request; historical commits and standalone conversion fixtures remain. Use the tool versions in `mise.toml`; dependencies and CLI tools are project-local and locked by `bun.lock`.
 
 ```bash
 mise install
@@ -33,6 +33,14 @@ The preview server sets a restrictive CSP and avoids request/body logging. Cloud
 
 ## Cloudflare publishing
 
+Time to Local retains the original `chronoshift` Cloudflare service ID, browser
+storage keys, cache prefix and internal test/build environment variables. These
+are compatibility identifiers: keeping them preserves installed-app identity,
+saved preferences, pending handoffs and opt-in updates from the former branding.
+The manifest ID, start URL and service-worker scope remain `/`. The
+`/ChronoShift/` regression path and historical evidence links remain unchanged.
+Current GitHub operations use `Tien-Lam/time-to-local`.
+
 The site is https://timetolocal.com/, owned by the repository owner. Cloudflare publishes only main through `.github/workflows/publish.yml`. Ready same-repository PRs run the full production browser and repository-subpath gate and retain the tested root artifact for one day; PRs have no deployment job. Drafts defer automatic hosted verification; [explicit investigation requests and final-gate instructions](testing.md#ci-efficiency) retain full coverage. A deferred check is not a verified release. On main, scripts/reuse-site-artifact.ts accepts only a successful trusted Web PR run with every required check, identical head/tested-release/main trees, the GitHub artifact digest and safe archive paths. Main uploads those exact tested files as a fourteen-day rollback artifact. Missing, expired or unverifiable evidence runs the full reusable Web gate. Manual publication always runs the full gate. The complete publishing workflow is serialized, protecting active deployments from cancellation and preventing a slower older verification from overwriting a newer publication. Documentation/design/evidence-only pushes skip both workflows. Unexpected failed browser attempts retain diagnostics for three days even when a retry passes. The cloudflare-production environment permits only main. `CLOUDFLARE_API_TOKEN` is stored as a GitHub Actions secret, scoped to Workers deployment in the intended account and Workers Routes write for the domain zone. `wrangler.jsonc` declares the account, domains and static-only routing. Native maintenance is retired; physical web acceptance remains open.
 
 `release.json` identifies the source commit and base path. It participates in the cache version, making releases reproducible and observable. After deployment, run `bun run test:hosted`; optionally set `HOSTED_EXPECTED_COMMIT` to the full deployed SHA. Checks cover HTTPS assets/MIME, effective meta CSP, manifest/scope, local-only requests and new conversion after an offline close/reopen.
@@ -46,7 +54,7 @@ Workers `_redirects` cannot match hostnames. This zone configuration is separate
 from routine Wrangler publication; the CI token does not need redirect-rule edit
 permissions. Both hostnames are declared as Worker Custom Domains for DNS/TLS.
 
-For rollback, select a successful main **Publish site** run at the desired source SHA, then `gh run rerun RUN_ID --repo Tien-Lam/ChronoShift`. The workflow rebuilds the pinned source and replaces the site; the release file/cache version returns to that source. Re-running a deployment does not revert Git branches. Verify the live release file and hosted checks, then ask an existing client to check for an update and choose **Update now**. Users with old tabs continue on their cached release until opting in. A server rollback cannot forcibly revoke an installed offline version. To restore the latest release, re-run its successful publishing run. Superseded verification jobs on the same branch or PR are canceled. The complete workflow shares the `site-publication` concurrency group and is never canceled while active; GitHub keeps at most one pending deployment. Manual reruns remain available for rollback.
+For rollback, select a successful main **Publish site** run at the desired source SHA, then `gh run rerun RUN_ID --repo Tien-Lam/time-to-local`. The workflow rebuilds the pinned source and replaces the site; the release file/cache version returns to that source. Re-running a deployment does not revert Git branches. Verify the live release file and hosted checks, then ask an existing client to check for an update and choose **Update now**. Users with old tabs continue on their cached release until opting in. A server rollback cannot forcibly revoke an installed offline version. To restore the latest release, re-run its successful publishing run. Superseded verification jobs on the same branch or PR are canceled. The complete workflow shares the `site-publication` concurrency group and is never canceled while active; GitHub keeps at most one pending deployment. Manual reruns remain available for rollback.
 
 Historical migration-branch publishing runs no longer have deployment permission after main-only cutover; restore historical source through a reviewed main change when needed.
 
@@ -70,7 +78,7 @@ Old tabs may still need their own hashed worker. Cache cleanup retains older ver
 
 Open **Adjust interpretation & format → Enable detailed logs** before reproducing a problem. Logging is off by default; the explicit opt-in lasts for the current tab session, including reloads and accepted updates. It works in memory if session storage is denied. Uncheck it or reset preferences to stop future logs. Previously printed console entries remain until the browser clears them.
 
-`[ChronoShift]` console entries record timestamps, field focus/open events, conversion duration/counts, registration attempts, installation states, readiness probe reasons/durations, controller cache version and update availability. The current worker additionally reports missing/corrupt bundled asset paths and bounded repair counts/failure categories. Older installed workers can report only their existing protocol fields until an explicit update is accepted; absent repair details are unknown. Message text, parsed dates/locations, selected zones, clipboard/share content and URL queries are excluded. No diagnostic event history or telemetry is stored or sent; session storage contains only the opt-in flag. Browser-generated errors and the installation-banner notice are independent of this logger.
+`[Time to Local]` console entries record timestamps, field focus/open events, conversion duration/counts, registration attempts, installation states, readiness probe reasons/durations, controller cache version and update availability. The current worker additionally reports missing/corrupt bundled asset paths and bounded repair counts/failure categories. Older installed workers can report only their existing protocol fields until an explicit update is accepted; absent repair details are unknown. Message text, parsed dates/locations, selected zones, clipboard/share content and URL queries are excluded. No diagnostic event history or telemetry is stored or sent; session storage contains only the opt-in flag. Browser-generated errors and the installation-banner notice are independent of this logger.
 
 To investigate a warning, compare `ui.zone-focus`/`ui.zone-open` timestamps with `offline.probe-start`, `offline.probe-result` and `offline.state`. Record the cache version, probe reason/duration, unavailable asset paths, repair failure and whether an update is available. Distinguish a natural warning from a deliberately injected missing cache or network response. Healthy fresh sessions cannot reconstruct an affected older client's cache history.
 

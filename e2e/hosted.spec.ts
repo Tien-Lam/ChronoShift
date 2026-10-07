@@ -71,12 +71,19 @@ test("host serves scoped manifest, identifiable release and effective static CSP
   page,
 }) => {
   const response = await page.goto("/");
+  await expect(page).toHaveTitle("Time to Local — Time zone converter");
+  await expect(
+    page.getByRole("link", { name: "Time to Local home" }),
+  ).toHaveText("Time to Local");
   expect(response!.status()).toBe(200);
   expect(response!.headers()["content-type"]).toContain("text/html");
   const manifestResponse = await page.request.get("/manifest.webmanifest");
   expect(manifestResponse.ok()).toBe(true);
   expect(manifestResponse.headers()["content-type"]).toMatch(/json|manifest/);
   const manifest = await manifestResponse.json();
+  expect(manifest.name).toBe("Time to Local");
+  expect(manifest.short_name).toBe("Time to Local");
+  expect(manifest.id).toBe("/");
   expect(manifest.start_url).toBe("/");
   expect(manifest.scope).toBe("/");
   expect(manifest.share_target.method).toBe("POST");

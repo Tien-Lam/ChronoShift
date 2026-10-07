@@ -97,7 +97,7 @@ installTest(
       );
       return (await cache.match("/index.html"))!.text();
     });
-    expect(html).toContain("ChronoShift");
+    expect(html).toContain("Time to Local");
     expect(html).not.toContain("Stale release");
     await convert(page);
   },

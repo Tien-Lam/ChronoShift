@@ -130,9 +130,9 @@ async function handoff(request) {
   if (bytes.byteLength > 65536) return new Response('Share a shorter message.',{status:413});
   let form;
   try { form = await new Response(bytes,{headers:{'content-type':request.headers.get('content-type') || ''}}).formData(); }
-  catch { return new Response('Could not receive text. Open ChronoShift and paste it.',{status:400}); }
+  catch { return new Response('Could not receive text. Open Time to Local and paste it.',{status:400}); }
   const text = ['title','text','url'].map(k=>form.get(k)).filter(v=>typeof v==='string').join('\n');
-  if (!text.trim() || text.length>10000) return new Response('Open ChronoShift and paste a message under 10,000 characters.',{status:400});
+  if (!text.trim() || text.length>10000) return new Response('Open Time to Local and paste a message under 10,000 characters.',{status:400});
   try {
     const key = crypto.randomUUID();
     await new Promise((resolve,reject)=>{
@@ -162,7 +162,7 @@ async function handoff(request) {
       };
     });
     return Response.redirect(`${self.location.origin}${BASE}?share=${key}`,303);
-  } catch { return new Response('This browser cannot receive shared text. Open ChronoShift and paste it.',{status:503}); }
+  } catch { return new Response('This browser cannot receive shared text. Open Time to Local and paste it.',{status:503}); }
 }
 self.addEventListener('fetch',event=>{
   const url = new URL(event.request.url);

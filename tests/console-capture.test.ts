@@ -23,13 +23,13 @@ test("navigation-lost console payload retains a stable event and flush waits for
   const { records, emit } = fixture();
   let complete!: (value: unknown) => void;
   emit(
-    "[ChronoShift] conversion.complete",
+    "[Time to Local] conversion.complete",
     new Promise((resolve) => {
       complete = resolve;
     }),
   );
   emit(
-    "[ChronoShift] offline.register-attempt",
+    "[Time to Local] offline.register-attempt",
     Promise.reject(
       new Error(
         "jsonValue: Execution context was destroyed, most likely because of a navigation",
@@ -37,8 +37,8 @@ test("navigation-lost console payload retains a stable event and flush waits for
     ),
   );
   expect([...records]).toEqual([
-    "[ChronoShift] conversion.complete",
-    "[ChronoShift] offline.register-attempt",
+    "[Time to Local] conversion.complete",
+    "[Time to Local] offline.register-attempt",
   ]);
   let flushed = false;
   const flush = records.flush().then(() => {
@@ -51,14 +51,14 @@ test("navigation-lost console payload retains a stable event and flush waits for
   expect(records.length).toBe(2);
   expect(records[0]).toContain("privateSentinel");
   expect(records[1]).toBe(
-    "[ChronoShift] offline.register-attempt [payload unavailable: navigation]",
+    "[Time to Local] offline.register-attempt [payload unavailable: navigation]",
   );
 });
 
 test("unexpected capture failure is surfaced by flush instead of being swallowed", async () => {
   const { records, emit } = fixture();
   const error = new Error("Unexpected serialization failure");
-  emit("[ChronoShift] conversion.complete", Promise.reject(error));
+  emit("[Time to Local] conversion.complete", Promise.reject(error));
   try {
     await records.flush();
     throw new Error("Expected failure");

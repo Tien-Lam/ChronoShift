@@ -8,7 +8,7 @@ export function consoleDiagnostics(page: Pick<Page, "on">) {
   const failures: unknown[] = [];
   page.on("console", (message) => {
     const text = message.text();
-    if (!text.startsWith("[ChronoShift]")) return;
+    if (!text.startsWith("[Time to Local]")) return;
     const index = records.push(text) - 1;
     const capture = (async () => {
       try {

@@ -1,6 +1,6 @@
 # Owned UI recipes and local regression gallery
 
-ChronoShift adopts actual local shadcn/ui React Aria recipes, with the approved
+Time to Local adopts actual local shadcn/ui React Aria recipes, with the approved
 warm Light/forest Dark identity. The portable selection and review workflow is
 [ui-quality.md](ui-quality.md); project decisions and every earlier issue mapping
 are in [ui-adoption.md](ui-adoption.md). These owned recipes are production code,

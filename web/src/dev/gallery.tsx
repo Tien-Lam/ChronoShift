@@ -46,7 +46,7 @@ function Gallery() {
       data-gallery="local-development-only"
     >
       <header>
-        <h1>ChronoShift control gallery</h1>
+        <h1>Time to Local control gallery</h1>
         <p>Local deterministic fixtures · {theme}</p>
       </header>
       <section aria-label="Shared actions" className="gallery-card">

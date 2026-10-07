@@ -47,7 +47,7 @@ const server = Bun.serve({
       return new Response(null, { status: 204 });
     }
     if (!["GET", "HEAD"].includes(request.method))
-      return new Response("Paste shared text into ChronoShift.", {
+      return new Response("Paste shared text into Time to Local.", {
         status: 405,
       });
     if (!url.pathname.startsWith(base))
@@ -138,4 +138,4 @@ const server = Bun.serve({
     });
   },
 });
-console.log(`ChronoShift preview: ${server.url}${base.slice(1)}`);
+console.log(`Time to Local preview: ${server.url}${base.slice(1)}`);

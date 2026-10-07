@@ -1,8 +1,10 @@
-# ChronoShift
+# Time to Local
 
-[Open ChronoShift](https://timetolocal.com/) — a private timezone converter that works offline after its first complete online load.
+Formerly ChronoShift. The repository is [Tien-Lam/time-to-local](https://github.com/Tien-Lam/time-to-local).
 
-Paste or type a message and choose your destination timezone. Results convert automatically as you type; copy them with their date and zone. ChronoShift handles natural-language dates/times, cities, explicit offsets and IANA zones, ranges, Unix seconds and labeled ambiguity. Corrections and display preferences are under **Adjust interpretation & format**.
+[Open Time to Local](https://timetolocal.com/) — a private timezone converter that works offline after its first complete online load.
+
+Paste or type a message and choose your destination timezone. Results convert automatically as you type; copy them with their date and zone. Time to Local handles natural-language dates/times, cities, explicit offsets and IANA zones, ranges, Unix seconds and labeled ambiguity. Corrections and display preferences are under **Adjust interpretation & format**.
 
 The layout adapts to phones, tablets, desktop windows and foldable displays. Supported browsers place input and results clear of a hinge. Conversion runs entirely on your device with no account, conversion server or mandatory model download.
 
@@ -47,7 +49,7 @@ Cloudflare Workers Static Assets publishes verified builds at `https://timetoloc
 
 See [build setup](docs/developer/building.md), [tests](docs/developer/testing.md), [publishing and rollback](docs/developer/web.md), [browser acceptance](docs/developer/device-smoke-test.md) and [the conversion pipeline](docs/architecture/nlp-pipeline.md). Physical-device, accessibility and phone-performance acceptance is tracked in the [Linear initiative](https://linear.app/tienlam/initiative/chronoshift-simple-offline-web-app-d90101850ba1).
 
-ChronoShift is maintained as a web app. The native application and its maintenance tooling have been removed; previous versions remain in Git history.
+Time to Local is maintained as a web app. The native application and its maintenance tooling have been removed; previous versions remain in Git history.
 
 ## License
 
