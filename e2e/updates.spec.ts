@@ -53,6 +53,9 @@ test("an interrupted rollback preserves a retained cache and its old tab worker"
   await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
   const next = await context.newPage();
   await next.goto("/");
+  // This rollback scenario starts with two healthy tabs. Early registration
+  // overlapping an update is exercised independently below.
+  await expect(next.locator('main[data-offline-ready="true"]')).toBeVisible();
   await publish(context, next, "second");
   await activate(next);
   // Require staging on rollback, then fail a missing CSS download. All complete
@@ -88,6 +91,129 @@ test("an interrupted rollback preserves a retained cache and its old tab worker"
   await disconnect(context, origin);
   await convert(page, "first");
   await convert(next, "second");
+});
+
+test("an update installed during app registration becomes available without activating or losing the draft", async ({
+  page,
+  context,
+  baseURL,
+}, info) => {
+  await publishRelease(context, baseURL!, "first");
+  await page.goto("/");
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
+  const next = await context.newPage();
+  await next.addInitScript(() => {
+    const original = navigator.serviceWorker.register;
+    const native = original.bind(navigator.serviceWorker);
+    let release!: () => void;
+    const held = new Promise<void>((resolve) => (release = resolve));
+    const state = {
+      nativeReturned: false,
+      released: false,
+      delivered: false,
+      restored: false,
+      initialActive: null as ServiceWorker | null,
+      initialController: null as ServiceWorker | null,
+      events: [] as { type: string; time: number }[],
+      release() {
+        if (!state.released) {
+          state.released = true;
+          state.events.push({ type: "release", time: performance.now() });
+          release();
+        }
+      },
+      restore() {
+        state.release();
+        navigator.serviceWorker.register = original;
+        state.restored = true;
+        state.events.push({ type: "restore", time: performance.now() });
+      },
+    };
+    (window as any).registrationResultGate = state;
+    navigator.serviceWorker.register = async (...args) => {
+      const registration = await native(...args);
+      state.nativeReturned = true;
+      state.initialActive = registration.active;
+      state.initialController = navigator.serviceWorker.controller;
+      state.events.push({ type: "native-result", time: performance.now() });
+      // The real worker and update events proceed. Only App's await of the
+      // native registration result is held, preserving the early lifecycle.
+      await held;
+      state.delivered = true;
+      state.events.push({ type: "deliver", time: performance.now() });
+      return registration;
+    };
+  });
+  const samples: unknown[] = [];
+  try {
+    await next.goto("/");
+    await expect
+      .poll(() =>
+        next.evaluate(
+          () => (window as any).registrationResultGate.nativeReturned,
+        ),
+      )
+      .toBe(true);
+    const input = next.getByLabel("Message with a date or time");
+    await input.fill("April 9, 2026 3pm UTC");
+    await expect(next.locator(".hero-time")).toHaveText(/1:00 am/i);
+    await publishRelease(context, baseURL!, "second");
+    await next.evaluate(async () => {
+      await (await navigator.serviceWorker.getRegistration())!.update();
+    });
+    await expect
+      .poll(() =>
+        next.evaluate(
+          async () =>
+            (await navigator.serviceWorker.getRegistration())?.waiting?.state,
+        ),
+      )
+      .toBe("installed");
+    await expect(
+      page.getByRole("button", { name: "Update now" }),
+    ).toBeVisible();
+    await expect(next.locator("main")).toHaveAttribute(
+      "data-offline-ready",
+      "false",
+    );
+    await expect(next.getByRole("button", { name: "Update now" })).toHaveCount(
+      0,
+    );
+    samples.push({
+      phase: "installed-while-held",
+      ...(await registrationState(next)),
+    });
+    await next.evaluate(() => (window as any).registrationResultGate.release());
+    await expect(next.locator('main[data-offline-ready="true"]')).toBeVisible();
+    await expect(
+      next.getByRole("button", { name: "Update now" }),
+    ).toBeVisible();
+    await expect(input).toHaveValue("April 9, 2026 3pm UTC");
+    await expect(next.locator(".hero-time")).toHaveText(/1:00 am/i);
+    await expect(next.locator(".result-date")).toHaveText(/10 Apr 2026/);
+    expect(await revision(page)).toBe("test-first");
+    expect(await revision(next)).toBe("test-first");
+    const after = await registrationState(next);
+    expect(after.waiting).toBe("installed");
+    expect(after.gate).toMatchObject({
+      released: true,
+      delivered: true,
+      activeRetained: true,
+      controllerRetained: true,
+    });
+    samples.push({ phase: "available-after-release", ...after });
+  } finally {
+    if (!next.isClosed()) {
+      await next.evaluate(() =>
+        (window as any).registrationResultGate?.restore(),
+      );
+      samples.push({ phase: "cleanup", ...(await registrationState(next)) });
+    }
+    await info.attach("early-registration-update", {
+      body: Buffer.from(JSON.stringify(samples)),
+      contentType: "application/json",
+    });
+  }
 });
 
 test("oversized drafts block an update until they can be safely preserved", async ({
@@ -136,18 +262,41 @@ async function publish(context: BrowserContext, page: Page, version: string) {
   } catch (error) {
     console.log(
       "Update registration diagnostics",
-      await page.evaluate(async () => {
-        const registration = await navigator.serviceWorker.getRegistration();
-        return {
-          active: registration?.active?.state,
-          installing: registration?.installing?.state,
-          waiting: registration?.waiting?.state,
-          caches: await caches.keys(),
-        };
-      }),
+      await registrationState(page),
     );
     throw error;
   }
+}
+async function registrationState(page: Page) {
+  return page.evaluate(async () => {
+    const registration = await navigator.serviceWorker.getRegistration();
+    const gate = (window as any).registrationResultGate;
+    return {
+      timeOrigin: performance.timeOrigin,
+      time: performance.now(),
+      appReady: document
+        .querySelector("main")
+        ?.getAttribute("data-offline-ready"),
+      updateAvailable: !!document.querySelector(".update-banner button"),
+      controller: navigator.serviceWorker.controller?.state,
+      active: registration?.active?.state,
+      installing: registration?.installing?.state,
+      waiting: registration?.waiting?.state,
+      caches: await caches.keys(),
+      gate: gate
+        ? {
+            nativeReturned: gate.nativeReturned,
+            released: gate.released,
+            delivered: gate.delivered,
+            restored: gate.restored,
+            activeRetained: registration?.active === gate.initialActive,
+            controllerRetained:
+              navigator.serviceWorker.controller === gate.initialController,
+            events: [...gate.events],
+          }
+        : undefined,
+    };
+  });
 }
 async function activate(page: Page) {
   await Promise.all([
