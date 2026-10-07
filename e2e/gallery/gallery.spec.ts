@@ -173,7 +173,7 @@ for (const width of [280, 390, 960])
       await expect(
         page.getByRole("heading", { name: "Time zone converter", exact: true }),
       ).toHaveClass("sr-only");
-      await expect(page.locator("header .brand")).toHaveText("ChronoShift");
+      await expect(page.locator("header .brand")).toHaveText("Time to Local");
       await expect(page.locator("footer p")).toHaveText(
         "Your text stays on this device.",
       );

@@ -1,6 +1,6 @@
 # Merge rules
 
-ChronoShift keeps ambiguous interpretations visible so users can choose the correct one. It does not guess a source timezone from geography or hide DST alternatives.
+Time to Local keeps ambiguous interpretations visible so users can choose the correct one. It does not guess a source timezone from geography or hide DST alternatives.
 
 ## Stable identity
 

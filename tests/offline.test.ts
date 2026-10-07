@@ -109,7 +109,7 @@ for (const failure of [
     } else {
       expect(response.status).toBe(503);
       expect(await response.text()).toBe(
-        "This browser cannot receive shared text. Open ChronoShift and paste it.",
+        "This browser cannot receive shared text. Open Time to Local and paste it.",
       );
     }
     // A setup failure can later dispatch an abort event too. A stale callback

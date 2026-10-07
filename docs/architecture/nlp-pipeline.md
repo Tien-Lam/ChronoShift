@@ -1,6 +1,6 @@
 # Web conversion pipeline
 
-ChronoShift parses messages locally in a disposable browser worker. The launch path uses pinned Chrono and bundled Temporal, without a model download or conversion service.
+Time to Local parses messages locally in a disposable browser worker. The launch path uses pinned Chrono and bundled Temporal, without a model download or conversion service.
 
 ```mermaid
 flowchart LR

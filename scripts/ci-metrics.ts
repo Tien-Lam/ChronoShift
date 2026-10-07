@@ -59,7 +59,7 @@ function seconds(start: string, end: string): number {
   return value;
 }
 async function measure(runId: string) {
-  const path = `repos/Tien-Lam/ChronoShift/actions/runs/${runId}`;
+  const path = `repos/Tien-Lam/time-to-local/actions/runs/${runId}`;
   const [run, jobs, artifacts] = await Promise.all([
     gh<Run>(path),
     gh<{ total_count: number; jobs: Job[] }>(`${path}/jobs?per_page=100`),

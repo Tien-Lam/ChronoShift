@@ -1,6 +1,6 @@
 # Agent Instructions
 
-ChronoShift is an offline, local-only TypeScript web app hosted on Cloudflare Workers Static Assets. Source is in `web/`; native tooling has been removed.
+Time to Local is an offline, local-only TypeScript web app hosted on Cloudflare Workers Static Assets. Source is in `web/`; native tooling has been removed.
 
 ## Development
 

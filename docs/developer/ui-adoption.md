@@ -1,6 +1,6 @@
-# ChronoShift UI adoption and regression contract
+# Time to Local UI adoption and regression contract
 
-This is ChronoShift's project adoption record for the
+This is Time to Local's project adoption record for the
 [generic UI quality playbook](ui-quality.md). The approved
 [appearance](appearance.md) remains the visual/content source of truth; this
 record defines how shared components preserve it. The selected foundation is
