@@ -985,12 +985,7 @@ export default function App() {
                     : "Converted time"
                 }
               >
-                <span className="destination-light" aria-hidden="true">
-                  {targetZone ? `In ${zoneName(targetZone)}` : "Converted time"}
-                </span>
-                <span className="destination-dark" aria-hidden="true">
-                  {targetZone ? `In ${zoneName(targetZone)}` : "Converted time"}
-                </span>
+                {targetZone ? `In ${zoneName(targetZone)}` : "Converted time"}
               </h2>
               <span className="live-indicator" data-state={liveState}>
                 {liveState === "pending"
