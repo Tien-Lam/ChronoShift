@@ -197,7 +197,7 @@ report. Keep new in-scope gaps open and preserve completed historical reports.
 
 The 7 October 2026 source records are the
 [generic playbook](https://linear.app/tienlam/document/reusable-ui-quality-playbook-chronoshift-and-future-projects-d42e979ba982),
-[Time to Local adoption plan](https://linear.app/tienlam/document/chronoshift-ui-adoption-and-regression-plan-48ffdaf688ce)
+[ChronoShift adoption plan](https://linear.app/tienlam/document/chronoshift-ui-adoption-and-regression-plan-48ffdaf688ce)
 and linked TIE-388/389/390 requirements. They are planning inputs, not executed
 acceptance. Approved design details are maintained in [appearance.md](appearance.md).
 
