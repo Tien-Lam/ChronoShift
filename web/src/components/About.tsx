@@ -2,7 +2,13 @@ import type { ReactNode } from "react";
 
 export const GITHUB_URL = "https://github.com/Tien-Lam/time-to-local";
 
-export function About({ updateNotice }: { updateNotice: ReactNode }) {
+export function About({
+  updateNotice,
+  notice,
+}: {
+  updateNotice: ReactNode;
+  notice: string;
+}) {
   return (
     <main className="about-page" aria-labelledby="about-title">
       <h1 id="about-title" tabIndex={-1}>
@@ -31,6 +37,11 @@ export function About({ updateNotice }: { updateNotice: ReactNode }) {
         <a href="#converter">Back to converter</a>
       </footer>
       {updateNotice}
+      {notice && (
+        <div role="status" className="notice">
+          {notice}
+        </div>
+      )}
     </main>
   );
 }

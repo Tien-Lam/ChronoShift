@@ -23,6 +23,25 @@ test.describe("About updates", () => {
     await expect(page.getByLabel("Message with a date or time")).toHaveValue(
       message,
     );
+    await page.evaluate(() => {
+      const setItem = Storage.prototype.setItem;
+      Storage.prototype.setItem = function (key, value) {
+        if (key === "chronoshift.update-draft") {
+          Storage.prototype.setItem = setItem;
+          throw new DOMException("Storage unavailable", "QuotaExceededError");
+        }
+        return setItem.call(this, key, value);
+      };
+    });
+    await update.click();
+    await expect(page.getByRole("status")).toContainText(
+      "Copy your message somewhere safe, then clear it before updating.",
+    );
+    await expect(page).toHaveTitle("About — Time to Local");
+    await expect(update).toBeVisible();
+    await expect(page.getByLabel("Message with a date or time")).toHaveValue(
+      message,
+    );
     await Promise.all([page.waitForEvent("domcontentloaded"), update.click()]);
     await expect(page).toHaveTitle("About — Time to Local");
     expect(new URL(page.url()).hash).toBe("#about");

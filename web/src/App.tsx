@@ -723,7 +723,7 @@ export default function App() {
           </details>
         </div>
       </header>
-      {aboutOpen && <About updateNotice={updateNotice} />}
+      {aboutOpen && <About updateNotice={updateNotice} notice={notice} />}
       <PopoverVisibilityContext.Provider value={!aboutOpen}>
         <main data-offline-ready={offline.ready} hidden={aboutOpen}>
           <h1 className="sr-only">Time zone converter</h1>
