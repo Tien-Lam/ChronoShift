@@ -112,7 +112,7 @@ test("closed options expose saved defaults, partial dates remain invalid, reset 
   await expect(page.locator(".message-defaults")).toContainText(
     "Reference date: Complete or clear the date",
   );
-  await page.getByText("More options", { exact: true }).click();
+  await page.getByRole("button", { name: /More options/ }).click();
   await expect(page.locator(".message-defaults")).toContainText(
     "Reference date: Complete or clear the date",
   );
@@ -148,7 +148,7 @@ test("message defaults remain usable offline through resize without storing or r
   await page.getByLabel("Source timezone", { exact: true }).press("Escape");
   await enterZone(page, "UTC", "Source timezone");
   await enterReferenceDate(page, "2026-04-09");
-  await page.getByText("More options", { exact: true }).click();
+  await page.getByRole("button", { name: /More options/ }).click();
   await disconnect(context, origin);
   const input = page.getByLabel("Message with a date or time");
   await input.fill("Tomorrow at 3pm");

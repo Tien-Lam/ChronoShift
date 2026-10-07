@@ -10,7 +10,7 @@ test("reflows across cover screens, phones, tablets and desktops without losing 
   await page.getByLabel("Message with a date or time").fill(message);
   await expect(page.locator(".hero-time")).toBeVisible();
   const result = await page.locator(".hero-time").innerText();
-  await page.getByText("More options", { exact: true }).click();
+  await page.getByRole("button", { name: /More options/ }).click();
   for (const [width, height] of [
     [280, 653],
     [320, 568],
@@ -52,7 +52,7 @@ test("reflows across cover screens, phones, tablets and desktops without losing 
   }
   await enterZone(page, "UTC");
   await expect(page.locator(".hero-time")).toHaveText(/6:15:30 am/i);
-  await page.getByText("More options", { exact: true }).click();
+  await page.getByRole("button", { name: /More options/ }).click();
   await page.getByLabel("Appearance", { exact: true }).click();
   await choose(page, "Theme", "light");
   await page.getByLabel("Appearance", { exact: true }).click();

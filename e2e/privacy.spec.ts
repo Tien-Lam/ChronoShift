@@ -47,7 +47,7 @@ for (const legacyDesign of ["lens", "command"])
         dateOrder: "dmy",
         theme: "dark",
       });
-    await page.getByText("More options", { exact: true }).click();
+    await page.getByRole("button", { name: /More options/ }).click();
     await page.getByRole("button", { name: "Reset preferences" }).click();
     await expect(page.getByLabel("Convert to")).toHaveValue("");
     await expect
