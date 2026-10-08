@@ -57,6 +57,4 @@ MIT. Production dependency notices are bundled with every build.
 
 ## Documentation and workflow
 
-## Documentation and workflow
-
 Documentation stays in README.md and repository Markdown files, reviewed through GitHub Pull Requests. The [GitHub workflow](docs/GITHUB_WORKFLOW.md) names the products used for tracking, review, checks and releases; the existing [GitHub Wiki](https://github.com/Tien-Lam/time-to-local/wiki) links to canonical docs.
