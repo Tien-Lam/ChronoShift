@@ -1,8 +1,14 @@
 import { defineConfig } from "vite";
+import { searchMetadata } from "./scripts/search-metadata.ts";
 
 export default defineConfig({
   root: "web",
   plugins: [
+    {
+      name: "search-content",
+      apply: "serve",
+      transformIndexHtml: searchMetadata,
+    },
     {
       name: "local-development-gallery",
       apply: "serve",

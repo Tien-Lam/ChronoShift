@@ -1,6 +1,7 @@
 import { readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { WEB_CSP, PREVIEW_CSP } from "./csp";
+import { ROBOTS, searchMetadata, SITEMAP } from "./search-metadata";
 const base = process.env.BASE_PATH || "/";
 const sourceCommit =
   process.env.CHRONOSHIFT_SOURCE_COMMIT || process.env.GITHUB_SHA || "local";
@@ -14,11 +15,13 @@ if (!/^\/(?:[A-Za-z0-9_-]+\/)*$/.test(base))
 // Retain the HTML policy for offline shells and hosts without custom headers.
 // Inject at build time so the development server can still use Vite's HMR.
 const html = await Bun.file("dist/index.html").text();
-const canonicalShell = html.replace(
+const canonicalShell = searchMetadata(html).replace(
   "<head>",
   `<head>\n    <meta http-equiv="Content-Security-Policy" content="${WEB_CSP}">\n    <meta name="referrer" content="no-referrer">`,
 );
 await Bun.write("dist/index.html", canonicalShell);
+await Bun.write("dist/robots.txt", ROBOTS);
+await Bun.write("dist/sitemap.xml", SITEMAP);
 const headers = `/*
   Content-Security-Policy: ${PREVIEW_CSP}
   Referrer-Policy: no-referrer
@@ -47,9 +50,14 @@ await Bun.write(
 const assets = (await files("dist"))
   .filter(
     (p) =>
-      !["sw.js", "sw-template.js", "_headers", "_redirects"].includes(
-        p.slice(p.lastIndexOf("/") + 1),
-      ),
+      ![
+        "sw.js",
+        "sw-template.js",
+        "_headers",
+        "_redirects",
+        "robots.txt",
+        "sitemap.xml",
+      ].includes(p.slice(p.lastIndexOf("/") + 1)),
   )
   .sort();
 const manifest = {

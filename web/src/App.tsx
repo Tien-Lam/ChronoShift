@@ -36,6 +36,8 @@ import { ActionButton } from "./components/ui/ActionButton";
 import { ControlIcon } from "./components/ui/ControlIcon";
 import { Disclosure } from "./components/Disclosure";
 import { About, GITHUB_URL } from "./components/About";
+import { ConverterGuide, ConverterIntro } from "./components/ConverterGuide";
+import { SITE_TITLE } from "./site";
 import { PopoverVisibilityContext } from "./components/ResizeSafePopover";
 import { useRetainedOpen } from "./components/useRetainedOpen";
 import { useTouchFeedback } from "./components/useTouchFeedback";
@@ -138,9 +140,7 @@ export default function App() {
   }, []);
   // Focus after hidden-page portals release their focus scopes.
   useEffect(() => {
-    document.title = aboutOpen
-      ? "About — Time to Local"
-      : "Time to Local — Time zone converter";
+    document.title = aboutOpen ? "About — Time to Local" : SITE_TITLE;
     if (aboutOpen) {
       document.getElementById("about-title")?.focus({ preventScroll: true });
       window.scrollTo(0, 0);
@@ -727,6 +727,7 @@ export default function App() {
       <PopoverVisibilityContext.Provider value={!aboutOpen}>
         <main data-offline-ready={offline.ready} hidden={aboutOpen}>
           <h1 className="sr-only">Time zone converter</h1>
+          <ConverterIntro />
           <div
             className={`workspace ${conversion.results.length ? "has-results" : ""}`}
             data-entering={entering}
@@ -1254,6 +1255,7 @@ export default function App() {
               Keep Time to Local handy
             </ActionButton>
           </footer>
+          <ConverterGuide />
           {installHelp && (
             <div className="install-help">
               <h2>Use it anytime</h2>

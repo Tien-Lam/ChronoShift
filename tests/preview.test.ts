@@ -65,6 +65,11 @@ test("preview publication accepts identical trees and rejects merged content dif
     // Precaching them would make every fresh offline installation fail.
     expect(worker).not.toContain("/ChronoShift/_headers");
     expect(worker).not.toContain("/ChronoShift/_redirects");
+    expect(worker).not.toContain("/ChronoShift/robots.txt");
+    expect(worker).not.toContain("/ChronoShift/sitemap.xml");
+    expect(await Bun.file(join(cwd, "dist/robots.txt")).text()).toContain(
+      "Sitemap: https://timetolocal.com/sitemap.xml",
+    );
     expect(await Bun.file(join(cwd, "dist/_headers")).text()).toContain(
       "frame-ancestors 'none'",
     );

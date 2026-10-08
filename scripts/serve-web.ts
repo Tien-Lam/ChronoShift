@@ -15,6 +15,8 @@ const mime: Record<string, string> = {
   ".svg": "image/svg+xml",
   ".png": "image/png",
   ".webmanifest": "application/manifest+json",
+  ".txt": "text/plain; charset=utf-8",
+  ".xml": "application/xml; charset=utf-8",
 };
 const server = Bun.serve({
   hostname: "127.0.0.1",
