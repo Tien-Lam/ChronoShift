@@ -24,4 +24,8 @@ Time to Local is an offline, local-only TypeScript web app hosted on Cloudflare 
 
 ## Work tracking
 
-Use GitHub Issues and the linked GitHub Project as the work tracker. Follow [the GitHub workflow](docs/GITHUB_WORKFLOW.md); historical Linear IDs map through [the migration index](docs/linear-migration/README.md). Read the issue and comments, preserve native parent/dependency structure, and record scope, review and acceptance evidence there.
+Use GitHub Issues and GitHub Projects. Follow [the GitHub workflow](docs/GITHUB_WORKFLOW.md); historical Linear IDs map through [the migration index](docs/linear-migration/README.md). Read the issue and comments, preserve native parent/dependency structure, and record scope, review and acceptance evidence there.
+
+## GitHub products and documentation
+
+Use GitHub Issues for scope and acceptance, GitHub Projects for status and priority, GitHub Pull Requests for review, GitHub Actions for automated verification and authorized publishing, and GitHub Releases for versioned releases. Keep README.md, AGENTS.md and repository Markdown docs canonical; an existing GitHub Wiki is a navigation index. Follow [the product map and documentation policy](docs/GITHUB_WORKFLOW.md).
