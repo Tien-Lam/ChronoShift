@@ -44,7 +44,7 @@ export async function testReleases(root: string) {
       else if (path.startsWith("assets/worker-") && path.endsWith(".js"))
         content += `\nconst handler = self.onmessage; self.onmessage = event => { if (event.data.testProtocol !== '${version}') throw new Error('Mixed worker release'); handler(event); };`;
       else if (path.startsWith("assets/") && path.endsWith(".js"))
-        content = `globalThis.Worker = class extends Worker { postMessage(message, ...args) { super.postMessage({...message, testProtocol: '${version}'}, ...args); } };\n${content}`;
+        content = `if (typeof window !== 'undefined') { globalThis.Worker = class extends Worker { postMessage(message, ...args) { super.postMessage({...message, testProtocol: '${version}'}, ...args); } }; }\n${content}`;
       const target = path.startsWith("assets/")
         ? `assets/${names.get(path.slice(7))}`
         : path;
