@@ -44,7 +44,10 @@ test("preview publication accepts identical trees and rejects merged content dif
     expect(verify(source).exitCode).toBe(0);
     await mkdir(join(cwd, "dist"));
     await mkdir(join(cwd, "web"));
-    await Bun.write(join(cwd, "dist/index.html"), "<head></head>");
+    await Bun.write(
+      join(cwd, "dist/index.html"),
+      '<head></head><div id="root"><!-- converter-shell --></div>',
+    );
     await Bun.write(join(cwd, "web/sw-template.js"), template);
     const built = Bun.spawnSync([process.execPath, build], {
       cwd,

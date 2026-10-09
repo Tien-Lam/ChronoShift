@@ -1,6 +1,5 @@
 import { createElement, Fragment } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { ConverterFallback } from "../web/src/components/ConverterGuide.tsx";
 import {
   SITE_DESCRIPTION,
   SITE_STRUCTURED_DATA,
@@ -28,15 +27,11 @@ export function searchMetadata(html: string) {
       createElement("meta", { property: "og:url", content: SITE_URL }),
     ),
   );
-  return html
-    .replace(
-      "<!-- search-metadata -->",
-      () =>
-        `${metadata}<script type="application/ld+json">${SITE_STRUCTURED_DATA}</script>`,
-    )
-    .replace("<!-- converter-fallback -->", () =>
-      renderToStaticMarkup(createElement(ConverterFallback)),
-    );
+  return html.replace(
+    "<!-- search-metadata -->",
+    () =>
+      `${metadata}<script type="application/ld+json">${SITE_STRUCTURED_DATA}</script>`,
+  );
 }
 
 export const ROBOTS = `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}sitemap.xml\n`;
