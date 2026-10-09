@@ -31,6 +31,46 @@ BASE_PATH=/ChronoShift/ bun run preview
 
 The preview server sets a restrictive CSP and avoids request/body logging. Cloudflare Workers Static Assets serves the production bundle with generated `_headers`: response-level CSP including `frame-ancestors`, no-referrer, nosniff and frame denial. Hashed assets have immutable caching; HTML, manifests, release metadata and the service worker use Cloudflare's revalidation default. The HTML CSP meta tag remains for offline shells. `_headers` and `_redirects` are host configuration and are excluded from the worker precache. Missing assets return 404 rather than an HTML fallback. No runtime Worker script, request logging, analytics or conversion backend is configured. Verify headers on the live URL.
 
+The production build embeds the small initial stylesheet into HTML to avoid a
+render-blocking CSS request. Both response and offline-shell CSP permit its exact
+SHA-256 hash; the preview reads that generated response policy from `_headers`.
+The original hashed CSS remains in the integrity precache. Date controls load
+when More options first opens and stay mounted after closing so partial date
+edits and validation survive. Their styles are included initially, and a failed
+code request exposes a retry without replacing the converter or its draft.
+Loading, failure and retry reserve the date field's height so format controls
+and their open menus remain stationary when the code finishes loading.
+The lazy JavaScript is precached before offline readiness is confirmed.
+Measure the complete entry import graph when comparing startup payload; smaller
+initial downloads do not establish a particular Lighthouse score. Recheck both
+mobile and desktop with PageSpeed Insights after authorized publication.
+
+## Search discoverability
+
+The build renders the shared converter introduction and usage guide into the
+initial HTML's `noscript` fallback, so the page remains informative without
+JavaScript. JavaScript-enabled visits render the converter and the same visible
+guidance without briefly displaying a fallback layout. Conversion still
+requires JavaScript; no conversion server is added.
+
+`web/src/site.ts` owns the production URL, description and WebSite name data.
+`scripts/search-metadata.ts` writes a canonical link, matching Open Graph metadata,
+and JSON-LD; the CSP permits only that JSON-LD's exact hash. Both the production
+root and `/ChronoShift/` regression build identify `https://timetolocal.com/` as
+canonical. The sitemap lists only the public homepage: About uses a fragment,
+and conversion text never becomes a URL or search metadata.
+
+The build generates `robots.txt` and `sitemap.xml`. They are discovery files,
+excluded from the offline precache so crawler resources cannot block offline
+readiness. Preview serves them with text and XML MIME types. Check the published
+files after deployment. Use [PageSpeed Insights](https://pagespeed.web.dev/) for
+performance, [Rich Results Test](https://search.google.com/test/rich-results) for
+supported rich-result data, and [Search Console](https://search.google.com/search-console)
+for verified-property URL Inspection and sitemap submission. WebSite name data
+does not itself establish eligibility for a software-app rich result or confirm
+indexing. Google's [SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
+describes the underlying recommendations.
+
 ## Cloudflare publishing
 
 The Cloudflare Worker is named `time-to-local`, renamed in place from

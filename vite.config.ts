@@ -1,8 +1,16 @@
 import { defineConfig } from "vite";
+import { searchMetadata } from "./scripts/search-metadata.ts";
+import { dateControlChunk } from "./scripts/date-control-chunk.ts";
 
 export default defineConfig({
   root: "web",
   plugins: [
+    dateControlChunk(),
+    {
+      name: "search-content",
+      apply: "serve",
+      transformIndexHtml: searchMetadata,
+    },
     {
       name: "local-development-gallery",
       apply: "serve",

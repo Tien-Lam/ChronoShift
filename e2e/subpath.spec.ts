@@ -5,6 +5,10 @@ test("subpath scope, manifest and worker survive offline restart", async ({
   context,
 }) => {
   await page.goto("/ChronoShift/");
+  await expect(page.locator('head link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    "https://timetolocal.com/",
+  );
   await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
   const manifest = await (
     await page.request.get("/ChronoShift/manifest.webmanifest")

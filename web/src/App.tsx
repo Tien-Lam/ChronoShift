@@ -31,11 +31,13 @@ import {
   setDetailedLogs,
 } from "./platform/diagnostics";
 import { ChoiceSelect, ZoneChoice } from "./components/Choices";
-import { DateChoice } from "./components/DateChoice";
+import { DeferredDateChoice } from "./components/DeferredDateChoice";
 import { ActionButton } from "./components/ui/ActionButton";
 import { ControlIcon } from "./components/ui/ControlIcon";
 import { Disclosure } from "./components/Disclosure";
 import { About, GITHUB_URL } from "./components/About";
+import { ConverterGuide, ConverterIntro } from "./components/ConverterGuide";
+import { SITE_TITLE } from "./site";
 import { PopoverVisibilityContext } from "./components/ResizeSafePopover";
 import { useRetainedOpen } from "./components/useRetainedOpen";
 import { useTouchFeedback } from "./components/useTouchFeedback";
@@ -90,6 +92,11 @@ export default function App() {
     copyField = useRef<HTMLTextAreaElement>(null);
   const resultHeading = useRef<HTMLHeadingElement>(null);
   const [optionsOpen, setOptionsOpen] = useState(false);
+  const [dateControlsRequested, setDateControlsRequested] = useState(false);
+  // Retain editable date segments after the first open, including partial dates.
+  useEffect(() => {
+    if (optionsOpen) setDateControlsRequested(true);
+  }, [optionsOpen]);
   const correctionFocus = useRef(false);
   const [appearanceOpen, setAppearanceOpen] = useState(false);
   const appearanceRetained = useRetainedOpen(appearanceOpen, 120);
@@ -138,9 +145,7 @@ export default function App() {
   }, []);
   // Focus after hidden-page portals release their focus scopes.
   useEffect(() => {
-    document.title = aboutOpen
-      ? "About — Time to Local"
-      : "Time to Local — Time zone converter";
+    document.title = aboutOpen ? "About — Time to Local" : SITE_TITLE;
     if (aboutOpen) {
       document.getElementById("about-title")?.focus({ preventScroll: true });
       window.scrollTo(0, 0);
@@ -727,6 +732,7 @@ export default function App() {
       <PopoverVisibilityContext.Provider value={!aboutOpen}>
         <main data-offline-ready={offline.ready} hidden={aboutOpen}>
           <h1 className="sr-only">Time zone converter</h1>
+          <ConverterIntro />
           <div
             className={`workspace ${conversion.results.length ? "has-results" : ""}`}
             data-entering={entering}
@@ -893,18 +899,20 @@ export default function App() {
                   For “3pm” without a timezone. A timezone in the message takes
                   priority. Leave blank to use your device: {device}.
                 </span>
-                <DateChoice
-                  key={referenceReset}
-                  id="reference-date"
-                  label="Reference date"
-                  describedBy="reference-date-help"
-                  value={referenceDate}
-                  onChange={(date) => {
-                    setReferenceDate(date);
-                    invalidate();
-                  }}
-                  onValidityChange={referenceValidityChanged}
-                />
+                {(optionsOpen || dateControlsRequested) && (
+                  <DeferredDateChoice
+                    key={referenceReset}
+                    id="reference-date"
+                    label="Reference date"
+                    describedBy="reference-date-help"
+                    value={referenceDate}
+                    onChange={(date) => {
+                      setReferenceDate(date);
+                      invalidate();
+                    }}
+                    onValidityChange={referenceValidityChanged}
+                  />
+                )}
                 <span className="field-note" id="reference-date-help">
                   For relative or incomplete dates. If an older message says
                   “tomorrow”, choose its date here. Leave blank to use today.
@@ -1254,6 +1262,7 @@ export default function App() {
               Keep Time to Local handy
             </ActionButton>
           </footer>
+          <ConverterGuide />
           {installHelp && (
             <div className="install-help">
               <h2>Use it anytime</h2>
