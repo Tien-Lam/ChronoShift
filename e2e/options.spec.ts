@@ -20,8 +20,6 @@ test("message defaults explain their purpose and preserve explicit zone and date
   page,
 }) => {
   await page.goto("/");
-  // Keyboard focus requires the initially inert interface to be ready.
-  await expect(page.locator("main")).toHaveAttribute("data-app-ready", "true");
   await expect(page.locator(".message-defaults")).toHaveCount(0);
   const change = page.getByRole("button", { name: /More options/ });
   await change.focus();

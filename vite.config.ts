@@ -1,13 +1,11 @@
 import { defineConfig } from "vite";
 import { searchMetadata } from "./scripts/search-metadata.ts";
 import { dateControlChunk } from "./scripts/date-control-chunk.ts";
-import { mountChunk } from "./scripts/mount-chunk.ts";
 
 export default defineConfig({
   root: "web",
   plugins: [
     dateControlChunk(),
-    mountChunk(),
     {
       name: "search-content",
       apply: "serve",
@@ -40,17 +38,6 @@ export default defineConfig({
     emptyOutDir: true,
     target: "es2022",
     sourcemap: false,
-    rolldownOptions: {
-      output: {
-        // Shared framework chunks are distinct from the deferred date entry.
-        chunkFileNames: (chunk) =>
-          chunk.facadeModuleId?.endsWith("/DateChoice.tsx")
-            ? "assets/DateChoice-[hash].js"
-            : chunk.facadeModuleId?.endsWith("/mount.tsx")
-              ? "assets/Mount-[hash].js"
-              : "assets/shared-[hash].js",
-      },
-    },
   },
   worker: { format: "es" },
   preview: { port: 4173, strictPort: true },

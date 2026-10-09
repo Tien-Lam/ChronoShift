@@ -147,13 +147,11 @@ export function ZoneChoice({
   describedBy,
   invalid,
   triggerLabel,
-  readOnly,
 }: ChoiceProps & {
   placeholder: string;
   describedBy?: string;
   invalid?: boolean;
   triggerLabel: string;
-  readOnly?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   // React Aria builds ListBox collections even while their popovers are closed.
@@ -176,7 +174,6 @@ export function ZoneChoice({
   return (
     <ComboBox
       className="choice-combo"
-      isReadOnly={readOnly}
       onOpenChange={(next) => {
         if (next) setChoicesLoaded(true);
         setOpen(next);

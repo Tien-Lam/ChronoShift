@@ -798,7 +798,6 @@ export default function App({
                 Message with a date or time
               </label>
               <textarea
-                readOnly={initializing}
                 ref={input}
                 id="message"
                 value={text}
@@ -871,7 +870,6 @@ export default function App({
                 <label htmlFor="target-zone">Convert to</label>
                 <div className="conversion-controls">
                   <ZoneChoice
-                    readOnly={initializing}
                     id="target-zone"
                     label="Convert to"
                     value={prefs.target}
@@ -932,7 +930,6 @@ export default function App({
               <Disclosure open={optionsOpen} onOpenChange={setOptionsOpen}>
                 <label htmlFor="source-zone">Source timezone</label>
                 <ZoneChoice
-                  readOnly={initializing}
                   id="source-zone"
                   label="Source timezone"
                   value={prefs.source}

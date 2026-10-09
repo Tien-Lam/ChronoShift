@@ -46,9 +46,8 @@ and their open menus remain stationary when the code finishes loading.
 The lazy JavaScript is precached before offline readiness is confirmed.
 Timezone suggestion collections initially contain only the selected item, so the
 first arrow-key opening retains its focus. Each field's full collection is populated
-on first opening and retained thereafter, including while its popup exits. Saved and typed values
-remain controlled independently of the collection; opening, filtering, deliberate
-selection and dismissal retain the usual keyboard and pointer behaviour.
+on first opening and retained thereafter, including while its popup exits. Saved and
+typed values remain independently controlled.
 Measure the complete entry import graph when comparing startup payload; smaller
 initial downloads do not establish a particular Lighthouse score. Recheck both
 mobile and desktop with PageSpeed Insights after authorized publication.
@@ -60,14 +59,6 @@ into static HTML. React hydrates the existing elements instead of replacing them
 so the introduction can paint before the application JavaScript arrives. The
 workspace and appearance controls remain inert while loading; saved preferences,
 the device timezone and the About route are restored before editing is enabled.
-The small entry loader waits for the static content's first paint before
-importing the framework and hydrating. Engines without paint observations get
-an ordinary rendering opportunity through animation frames. Hidden documents start immediately, including
-when a visible document becomes hidden before its animation frames run. A failed
-or 12-second timed-out import leaves the interface inert and exposes an explicit
-Retry that reloads the document, clearing failed module dependencies. A late import
-after timeout cannot activate the interface. No editable draft exists at this stage;
-saved preferences, update handoff and URL route retain their normal restoration.
 The static shell labels its unknown timezone explicitly and contains no user
 input. Without JavaScript, the introduction and guide remain readable and a
 notice explains that conversion requires JavaScript. Rendering happens at build
