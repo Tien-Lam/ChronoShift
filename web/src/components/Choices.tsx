@@ -154,6 +154,7 @@ export function ZoneChoice({
   triggerLabel: string;
 }) {
   const [open, setOpen] = useState(false);
+  const [choicesLoaded, setChoicesLoaded] = useState(false);
   const current = useRef(value);
   current.current = value;
   const commit = (next: string) => {
@@ -165,7 +166,10 @@ export function ZoneChoice({
   return (
     <ComboBox
       className="choice-combo"
-      onOpenChange={setOpen}
+      onOpenChange={(next) => {
+        if (next) setChoicesLoaded(true);
+        setOpen(next);
+      }}
       aria-label={label}
       inputValue={value}
       onInputChange={commit}
@@ -173,7 +177,7 @@ export function ZoneChoice({
       onChange={(key) => {
         if (key !== null) commit(String(key));
       }}
-      defaultItems={timezoneOptions}
+      defaultItems={choicesLoaded ? timezoneOptions : []}
       defaultFilter={(text, query) =>
         (searchText.get(text) || normalize(text)).includes(normalize(query))
       }
