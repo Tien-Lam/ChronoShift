@@ -1,12 +1,32 @@
 import { expect, test } from "@playwright/test";
 
+function expectStartupErrors(
+  pageErrors: string[],
+  consoleErrors: string[],
+  browserName: string,
+) {
+  // Linux WebKit reports this existing, optional Chrome keyboard-resize hint
+  // as an error. Permit only that exact browser notice; retain and reject all
+  // CSP, hydration and application errors rather than filtering the records.
+  const viewportNotice =
+    'Viewport argument key "interactive-widget" not recognized and ignored.';
+  expect(pageErrors).toEqual([]);
+  expect(consoleErrors).toEqual(
+    browserName === "webkit" && consoleErrors.includes(viewportNotice)
+      ? [viewportNotice]
+      : [],
+  );
+}
+
 test("the first interface paints before JavaScript and survives hydration", async ({
   page,
+  browserName,
 }) => {
-  const errors: string[] = [];
-  page.on("pageerror", (error) => errors.push(error.message));
+  const pageErrors: string[] = [];
+  const consoleErrors: string[] = [];
+  page.on("pageerror", (error) => pageErrors.push(error.message));
   page.on("console", (message) => {
-    if (message.type() === "error") errors.push(message.text());
+    if (message.type() === "error") consoleErrors.push(message.text());
   });
   let release!: () => void;
   const held = new Promise<void>((resolve) => (release = resolve));
@@ -44,7 +64,7 @@ test("the first interface paints before JavaScript and survives hydration", asyn
     });
     release();
     await expect(main).toHaveAttribute("data-app-ready", "true");
-    expect(errors).toEqual([]);
+    expectStartupErrors(pageErrors, consoleErrors, browserName);
     expect(
       await intro!.evaluate(
         (node) => node === document.querySelector(".converter-intro"),
@@ -70,7 +90,7 @@ test("the first interface paints before JavaScript and survives hydration", asyn
     // Sydney is UTC+10 on this explicit date; Tokyo is UTC+9.
     await expect(page.locator(".hero-time")).toHaveText(/4:00 pm/i);
     await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
-    expect(errors).toEqual([]);
+    expectStartupErrors(pageErrors, consoleErrors, browserName);
   } finally {
     release();
   }
@@ -78,11 +98,13 @@ test("the first interface paints before JavaScript and survives hydration", asyn
 
 test("hydration restores preferences and an initial About route", async ({
   page,
+  browserName,
 }) => {
-  const errors: string[] = [];
-  page.on("pageerror", (error) => errors.push(error.message));
+  const pageErrors: string[] = [];
+  const consoleErrors: string[] = [];
+  page.on("pageerror", (error) => pageErrors.push(error.message));
   page.on("console", (message) => {
-    if (message.type() === "error") errors.push(message.text());
+    if (message.type() === "error") consoleErrors.push(message.text());
   });
   const preferences = {
     target: "UTC",
@@ -113,27 +135,60 @@ test("hydration restores preferences and an initial About route", async ({
       JSON.parse(localStorage.getItem("chronoshift.preferences.v1")!),
     ),
   ).toEqual(preferences);
-  expect(errors).toEqual([]);
+  expectStartupErrors(pageErrors, consoleErrors, browserName);
 });
 
 test("the static shell permits its fixed hidden styles and rejects other attributes", async ({
   page,
 }) => {
-  await page.goto("/");
-  await expect(page.locator("main")).toHaveAttribute("data-app-ready", "true");
-  const hidden = page
-    .locator('[data-testid="hidden-select-container"]')
-    .first();
-  expect(
+  let release!: () => void;
+  const held = new Promise<void>((resolve) => (release = resolve));
+  await page.route("**/assets/index-*.js", async (route) => {
+    await held;
+    await route.continue();
+  });
+  try {
+    await page.goto("/", { waitUntil: "commit" });
+    await expect(page.locator("main")).toHaveAttribute(
+      "data-app-ready",
+      "false",
+    );
+    // Expose the native Appearance details only for this parser/CSP check.
+    // Its editing remains inert; collapsed ancestors have no meaningful box.
+    const hidden = page
+      .locator('.appearance [data-testid="hidden-select-container"]')
+      .first();
     await hidden.evaluate((node) => {
-      const style = getComputedStyle(node);
-      return {
-        width: style.width,
-        height: style.height,
-        position: style.position,
-      };
-    }),
-  ).toEqual({ width: "1px", height: "1px", position: "fixed" });
+      node.closest("details")!.open = true;
+    });
+    await expect(hidden).toHaveCSS("width", "1px");
+    await expect(hidden).toHaveCSS("height", "1px");
+    await expect(hidden).toHaveCSS("position", "fixed");
+    expect(
+      await page
+        .locator('[data-testid="hidden-select-container"]')
+        .evaluateAll((nodes) =>
+          nodes.map((node) => node.getAttribute("style")),
+        ),
+    ).toEqual([
+      await hidden.getAttribute("style"),
+      await hidden.getAttribute("style"),
+      await hidden.getAttribute("style"),
+    ]);
+    await expect(page.locator(".result-shortcut")).toHaveCSS(
+      "visibility",
+      "hidden",
+    );
+  } finally {
+    // Restore the build-owned DOM before hydration, even if a style check fails.
+    await page
+      .locator(".appearance")
+      .evaluate((node) => {
+        (node as HTMLDetailsElement).open = false;
+      })
+      .finally(release);
+  }
+  await expect(page.locator("main")).toHaveAttribute("data-app-ready", "true");
   const rejected = await page.evaluate(
     () =>
       new Promise<{ directive: string; applied: boolean }>((resolve) => {
