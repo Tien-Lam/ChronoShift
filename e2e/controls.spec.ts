@@ -348,6 +348,62 @@ test("choice menus support keyboard selection, nested Escape and pointer dismiss
   await expect(page.getByRole("alert")).toHaveCount(0);
 });
 
+for (const label of ["Convert to", "Source timezone"]) {
+  for (const opening of ["keyboard", "pointer"]) {
+    test(`first ${opening} opening of ${label} preserves the saved value and permits selection`, async ({
+      page,
+    }) => {
+      await page.addInitScript(() => {
+        localStorage.setItem(
+          "chronoshift.preferences.v1",
+          JSON.stringify({ target: "UTC", source: "UTC" }),
+        );
+      });
+      await page.goto("/");
+      if (label === "Source timezone")
+        await page.getByRole("button", { name: /More options/ }).click();
+      const input = page.getByLabel(label, { exact: true });
+      await expect(input).toHaveValue("UTC");
+      await input.scrollIntoViewIfNeeded();
+      if (opening === "keyboard") {
+        await input.click();
+        await input.press("ArrowDown");
+        await expect(
+          page.locator('[role="option"][data-value="UTC"]'),
+        ).toHaveAttribute("data-focused", "true");
+        await input.press("Enter");
+      } else {
+        await page
+          .getByRole("button", {
+            name:
+              label === "Convert to"
+                ? "Show target timezones"
+                : "Show source timezones",
+            exact: true,
+          })
+          .click();
+        await expect(
+          page.locator('[role="option"][data-value="UTC"]'),
+        ).toHaveAttribute("aria-selected", "true");
+        await input.press("Escape");
+      }
+      await expect(input).toHaveValue("UTC");
+      await expect(page.getByRole("listbox")).toHaveCount(0);
+      await input.fill("Tokyo");
+      await page.getByRole("option", { name: "Tokyo", exact: true }).click();
+      await expect(input).toHaveValue("Asia/Tokyo");
+      if (label === "Convert to")
+        await page.getByRole("button", { name: /More options/ }).click();
+      await expect(
+        page.getByLabel(
+          label === "Convert to" ? "Source timezone" : "Convert to",
+          { exact: true },
+        ),
+      ).toHaveValue("UTC");
+    });
+  }
+}
+
 test("timezone search preserves freeform offsets and recovers from empty and invalid choices", async ({
   page,
   isMobile,

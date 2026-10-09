@@ -1,10 +1,23 @@
-import { convert } from "./convert";
 import type { ConversionOptions } from "./types";
 
-self.onmessage = (
+// Install the handler before any asynchronous module loads. Module workers can
+// receive their first request while the compatibility implementation is loading.
+let engine: Promise<typeof import("./convert")> | undefined;
+self.onmessage = async (
   event: MessageEvent<{ id: number; text: string; options: ConversionOptions }>,
 ) => {
   const { id, text, options } = event.data;
+  let convert: typeof import("./convert").convert;
+  try {
+    engine ??= import("./convert");
+    ({ convert } = await engine);
+  } catch {
+    self.postMessage({
+      id,
+      error: "Could not convert this message. Edit it to try again.",
+    });
+    return;
+  }
   try {
     self.postMessage({ id, conversion: convert(text, options) });
   } catch (error) {

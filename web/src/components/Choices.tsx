@@ -1,5 +1,5 @@
 import { ResizeSafePopover } from "./ResizeSafePopover";
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import {
   Select,
   SelectValue,
@@ -154,6 +154,15 @@ export function ZoneChoice({
   triggerLabel: string;
 }) {
   const [open, setOpen] = useState(false);
+  // React Aria builds ListBox collections even while their popovers are closed.
+  // Keep the selected item available for first keyboard focus. Populate the full
+  // collection on first opening and retain it through dismissal and exit.
+  const [choicesLoaded, setChoicesLoaded] = useState(false);
+  const selectedOptions = useMemo(
+    () => timezoneOptions.filter((option) => option.id === value),
+    [value],
+  );
+  const options = choicesLoaded ? timezoneOptions : selectedOptions;
   const current = useRef(value);
   current.current = value;
   const commit = (next: string) => {
@@ -165,7 +174,10 @@ export function ZoneChoice({
   return (
     <ComboBox
       className="choice-combo"
-      onOpenChange={setOpen}
+      onOpenChange={(next) => {
+        if (next) setChoicesLoaded(true);
+        setOpen(next);
+      }}
       aria-label={label}
       inputValue={value}
       onInputChange={commit}
@@ -173,7 +185,7 @@ export function ZoneChoice({
       onChange={(key) => {
         if (key !== null) commit(String(key));
       }}
-      defaultItems={timezoneOptions}
+      defaultItems={options}
       defaultFilter={(text, query) =>
         (searchText.get(text) || normalize(text)).includes(normalize(query))
       }
@@ -188,11 +200,11 @@ export function ZoneChoice({
           placeholder={placeholder}
           aria-describedby={describedBy}
           autoComplete="off"
-          onFocus={() =>
+          onFocus={() => {
             diagnostic("ui.zone-focus", {
               field: id === "target-zone" ? "target-zone" : "source-zone",
-            })
-          }
+            });
+          }}
         />
         <Button
           className="choice-toggle"
@@ -215,7 +227,7 @@ export function ZoneChoice({
         containerPadding={12}
         isNonModal
       >
-        <ChoiceItems options={timezoneOptions} byValue />
+        <ChoiceItems options={options} byValue />
       </ResizeSafePopover>
     </ComboBox>
   );

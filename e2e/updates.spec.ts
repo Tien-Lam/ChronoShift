@@ -3,6 +3,28 @@ import { choose } from "./choices";
 import type { BrowserContext, Page } from "@playwright/test";
 test.use({ isolatedOrigin: true });
 
+test.afterEach(async ({ context }, info) => {
+  if (info.status === info.expectedStatus) return;
+  // Preserve the original failed press rather than interpreting a retry trace.
+  // Record only event/geometry/lifecycle metadata, never input or preferences.
+  for (const [index, page] of context.pages().entries()) {
+    if (page.isClosed()) continue;
+    const press = await page
+      .evaluate(() => (window as any).__updateActivationTrace)
+      .catch(() => undefined);
+    if (!press) continue;
+    await info.attach(`update-activation-${index}`, {
+      body: Buffer.from(
+        JSON.stringify({
+          press,
+          registration: await registrationState(page).catch(() => undefined),
+        }),
+      ),
+      contentType: "application/json",
+    });
+  }
+});
+
 test("repair refuses another release and leaves the existing offline shell intact", async ({
   page,
   context,
@@ -299,6 +321,39 @@ async function registrationState(page: Page) {
   });
 }
 async function activate(page: Page) {
+  await page.evaluate(() => {
+    const events: object[] = [];
+    (window as any).__updateActivationTrace = events;
+    const record = (event: Event) => {
+      if (events.length >= 64) return;
+      const button = document.querySelector(".update-banner button");
+      const pointer = event instanceof PointerEvent ? event : undefined;
+      events.push({
+        kind: event.type,
+        at: Date.now(),
+        time: performance.now(),
+        timeOrigin: performance.timeOrigin,
+        scrollY,
+        button: button?.getBoundingClientRect().toJSON(),
+        target: event.target instanceof Element ? event.target.tagName : null,
+        updateTarget:
+          !!button &&
+          event.target instanceof Node &&
+          button.contains(event.target),
+        x: pointer?.clientX,
+        y: pointer?.clientY,
+      });
+    };
+    for (const kind of [
+      "pointerdown",
+      "pointerup",
+      "click",
+      "focusin",
+      "scroll",
+    ])
+      document.addEventListener(kind, record, true);
+    navigator.serviceWorker.addEventListener("controllerchange", record);
+  });
   await Promise.all([
     page.waitForEvent("domcontentloaded"),
     page.getByRole("button", { name: "Update now" }).click(),

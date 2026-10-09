@@ -1,9 +1,10 @@
-import { Temporal } from "@js-temporal/polyfill";
+import type { Temporal as TemporalTypes } from "@js-temporal/polyfill";
+import { temporal as Temporal } from "./temporal";
 import { zoneName } from "./zones";
 import type { ConversionOptions, DisplayTime, TimeResult } from "./types";
 
 export function civilInstants(
-  dateTime: Temporal.PlainDateTime,
+  dateTime: TemporalTypes.PlainDateTime,
   zone: string,
 ): { instants: string[]; nonexistent: boolean } {
   const fields = {

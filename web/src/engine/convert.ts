@@ -1,6 +1,7 @@
 import { dayFirst, monthFirst, usesReferenceDate } from "./parser";
 import type { ParsedComponents } from "chrono-node";
-import { Temporal } from "@js-temporal/polyfill";
+import type { Temporal as TemporalTypes } from "@js-temporal/polyfill";
+import { temporal as Temporal } from "./temporal";
 import {
   AMBIGUOUS,
   FIXED,
@@ -28,7 +29,7 @@ const timezoneHints = {
   ...Object.fromEntries(Object.keys(REGIONAL).map((k) => [k, 0])),
 };
 
-function componentDate(c: ParsedComponents): Temporal.PlainDate {
+function componentDate(c: ParsedComponents): TemporalTypes.PlainDate {
   return Temporal.PlainDate.from(
     { year: c.get("year")!, month: c.get("month")!, day: c.get("day")! },
     { overflow: "reject" },
@@ -187,7 +188,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     warnings.push(
       "EOD/COB does not specify a clock time. Replace it with the intended time.",
     );
-  let contextDate: Temporal.PlainDate | undefined,
+  let contextDate: TemporalTypes.PlainDate | undefined,
     contextText = "",
     contextParagraph = -1,
     previousEnd = 0;

@@ -37,6 +37,15 @@ The subpath scenario checks manifest/scope, fresh offline input and offline POST
 
 ## Standalone input corpus
 
+The production-worker fixture check exercises native Temporal on supported engines.
+A separate Chromium check disables Temporal engine-wide with its V8 feature flag,
+then runs the same independent fixtures online and after offline reopen using the
+pinned compatibility chunks. This checks both page and worker fallback without
+rewriting served assets or weakening integrity/CSP. Other profiles skip that
+Chromium-specific capability check. A preview-only conversion-module failure
+returns a readable error and verifies that a new edit retries with a fresh worker.
+Versioned update fixtures also reject mixed worker dependency releases.
+
 `tests/fixtures/resilience-corpus.json` contains 353 frozen conversion inputs and original metadata. Its provenance points to immutable Git history; tests and CI have no dependency on native sources. Maintain new cases directly in JSON. Corpus resilience/count comparisons are an inventory, not an exact accuracy oracle.
 
 ```bash

@@ -34,6 +34,10 @@ const server = Bun.serve({
       request.method === "POST"
     ) {
       const version = await request.text();
+      if (version === "current") {
+        publishedVersion = undefined;
+        return new Response(null, { status: 204 });
+      }
       if (
         !fixtures?.releases.has(version) &&
         version !== "broken" &&
@@ -45,6 +49,7 @@ const server = Bun.serve({
           "offline-interrupted",
           "offline-filtered",
           "first-no-claim",
+          "conversion-unavailable",
           "second-retired",
           "second-stalled",
         ].includes(version)
@@ -78,6 +83,13 @@ const server = Bun.serve({
       !relative.startsWith("assets/test-second-")
     )
       return new Response("Retired asset", { status: 404 });
+    if (
+      version === "conversion-unavailable" &&
+      /^assets\/convert-[^/]+\.js$/.test(relative)
+    )
+      return new Response("Simulated conversion loading failure", {
+        status: 503,
+      });
     const variant =
       fixtures?.immutable.get(relative) ??
       fixtures?.releases
