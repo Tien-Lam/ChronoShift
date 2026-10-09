@@ -10,7 +10,7 @@ test("initial HTML is readable without JavaScript", async ({
     const page = await context.newPage();
     await page.goto(baseURL!);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-      "Time to Local — Time zone converter",
+      "Time zone converter",
     );
     // Playwright's text selector skips noscript even with scripting disabled.
     await expect(page.locator(".javascript-notice")).toBeVisible();
@@ -60,7 +60,7 @@ test("discovery endpoints and rendered metadata retain the public canonical URL"
   );
   await expect(page.locator(".converter-intro")).toHaveCount(1);
   await expect(page.locator(".converter-guide")).toHaveCount(1);
-  await expect(page.locator(".javascript-notice")).toHaveCount(0);
+  await expect(page.locator(".javascript-notice")).not.toBeVisible();
   await enterZone(page, "UTC");
   await page
     .getByLabel("Message with a date or time")

@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { webCsp } from "./csp";
 import { inlineStyles } from "./inline-styles";
 import { ROBOTS, searchMetadata, SITEMAP } from "./search-metadata";
+import { initialShell } from "./initial-shell";
 const base = process.env.BASE_PATH || "/";
 const sourceCommit =
   process.env.CHRONOSHIFT_SOURCE_COMMIT || process.env.GITHUB_SHA || "local";
@@ -20,7 +21,14 @@ const { html, styles } = await inlineStyles(
   base,
 );
 const policy = webCsp(styles);
-const canonicalShell = searchMetadata(html).replace(
+const shell = await initialShell(base);
+const shellMarker = /<div id="root">\s*<!-- converter-shell -->\s*<\/div>/;
+if (!shellMarker.test(html)) throw new Error("Missing initial shell marker");
+const rendered = html.replace(
+  shellMarker,
+  () => `<div id="root" data-initial-shell="true">${shell}</div>`,
+);
+const canonicalShell = searchMetadata(rendered).replace(
   "<head>",
   `<head>\n    <meta http-equiv="Content-Security-Policy" content="${policy}">\n    <meta name="referrer" content="no-referrer">`,
 );

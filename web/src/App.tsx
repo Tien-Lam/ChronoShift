@@ -54,19 +54,38 @@ function resolveZone(value: string, fallback: string): string | undefined {
   return cities.length === 1 ? cities[0] : undefined;
 }
 
-export default function App() {
+export interface AppProps {
+  booting?: boolean;
+  base?: string;
+}
+
+export default function App({
+  booting = false,
+  base = import.meta.env.BASE_URL,
+}: AppProps) {
   useTouchFeedback();
+  const [initializing, setInitializing] = useState(booting);
   const [text, setText] = useState("");
-  const [aboutOpen, setAboutOpen] = useState(() => location.hash === "#about");
+  const [aboutOpen, setAboutOpen] = useState(
+    () => !booting && location.hash === "#about",
+  );
   const previousAbout = useRef(false);
   const [entering, setEntering] = useState(
-    () => !matchMedia("(prefers-reduced-motion: reduce)").matches,
+    // Static panels start their CSS-only entrance with the HTML. Hydration
+    // retains that presentation instead of hiding/restarting painted content.
+    () => booting || !matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
-  const [prefs, setPrefs] = useState(loadPreferences);
-  const [device, setDevice] = useState(deviceTimezone);
+  const [prefs, setPrefs] = useState(() =>
+    booting ? DEFAULTS : loadPreferences(),
+  );
+  const [device, setDevice] = useState(() =>
+    booting ? "UTC" : deviceTimezone(),
+  );
   const [referenceDate, setReferenceDate] = useState("");
   const [referenceReset, setReferenceReset] = useState(0);
-  const [detailedLogs, setDetailedLogsChecked] = useState(detailedLogsEnabled);
+  const [detailedLogs, setDetailedLogsChecked] = useState(
+    () => !booting && detailedLogsEnabled(),
+  );
   const [referenceValid, setReferenceValid] = useState(true);
   const referenceValidity = useRef(true);
   const [composing, setComposing] = useState(false);
@@ -93,6 +112,14 @@ export default function App() {
   const resultHeading = useRef<HTMLHeadingElement>(null);
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [dateControlsRequested, setDateControlsRequested] = useState(false);
+  useLayoutEffect(() => {
+    if (!booting) return;
+    setPrefs(loadPreferences());
+    setDevice(deviceTimezone());
+    setAboutOpen(location.hash === "#about");
+    setDetailedLogsChecked(detailedLogsEnabled());
+    setInitializing(false);
+  }, [booting]);
   // Retain editable date segments after the first open, including partial dates.
   useEffect(() => {
     if (optionsOpen) setDateControlsRequested(true);
@@ -132,7 +159,7 @@ export default function App() {
     hourCycle: prefs.hourCycle,
     dateOrder: prefs.dateOrder,
     referenceDate: referenceDate || undefined,
-    locale: navigator.language || "en-AU",
+    locale: initializing ? "en-AU" : navigator.language || "en-AU",
   };
 
   useEffect(() => {
@@ -230,9 +257,11 @@ export default function App() {
     }
   }, []);
   useEffect(() => {
-    if (targetZone && sourceZone) setPreferenceError(!savePreferences(prefs));
-  }, [prefs, targetZone, sourceZone]);
+    if (!initializing && targetZone && sourceZone)
+      setPreferenceError(!savePreferences(prefs));
+  }, [initializing, prefs, targetZone, sourceZone]);
   useLayoutEffect(() => {
+    if (initializing) return;
     const media = matchMedia("(prefers-color-scheme: dark)");
     const apply = () => {
       const theme =
@@ -268,7 +297,7 @@ export default function App() {
         cancelAnimationFrame(themeResolutionFrame.current);
       delete document.documentElement.dataset.themeResolving;
     };
-  }, [prefs.theme]);
+  }, [initializing, prefs.theme]);
 
   useEffect(() => {
     const dismiss = (event: PointerEvent) => {
@@ -666,7 +695,7 @@ export default function App() {
       <header className="topbar">
         <a
           className="brand"
-          href={aboutOpen ? "#converter" : import.meta.env.BASE_URL}
+          href={aboutOpen ? "#converter" : base}
           aria-label="Time to Local home"
         >
           <span className="brand-clock" aria-hidden="true" />
@@ -675,6 +704,7 @@ export default function App() {
         <div className="header-tools">
           <details
             className="appearance"
+            inert={initializing}
             ref={appearance}
             open={appearanceRetained}
             data-expanded={appearanceOpen}
@@ -730,12 +760,23 @@ export default function App() {
       </header>
       {aboutOpen && <About updateNotice={updateNotice} notice={notice} />}
       <PopoverVisibilityContext.Provider value={!aboutOpen}>
-        <main data-offline-ready={offline.ready} hidden={aboutOpen}>
+        <main
+          data-offline-ready={offline.ready}
+          data-app-ready={!initializing}
+          hidden={aboutOpen}
+        >
           <h1 className="sr-only">Time zone converter</h1>
           <ConverterIntro />
+          <noscript>
+            <p className="javascript-notice">
+              Enable JavaScript to use the converter.
+            </p>
+          </noscript>
           <div
             className={`workspace ${conversion.results.length ? "has-results" : ""}`}
             data-entering={entering}
+            inert={initializing}
+            aria-busy={initializing}
           >
             <section className="input-panel" aria-labelledby="input-title">
               <div className="panel-heading input-heading">
@@ -838,14 +879,20 @@ export default function App() {
                     }}
                     invalid={!targetZone}
                     describedBy="target-zone-help"
-                    placeholder={`Your timezone · ${zoneName(device)}`}
+                    placeholder={
+                      initializing
+                        ? "Your timezone"
+                        : `Your timezone · ${zoneName(device)}`
+                    }
                     triggerLabel="Show target timezones"
                   />
                 </div>
                 <span className="field-note" id="target-zone-help">
-                  {targetZone
-                    ? `${zoneName(targetZone)} · ${targetZone}`
-                    : "Choose a timezone or city from the list"}
+                  {initializing
+                    ? "Preparing your timezone…"
+                    : targetZone
+                      ? `${zoneName(targetZone)} · ${targetZone}`
+                      : "Choose a timezone or city from the list"}
                 </span>
               </div>
 
@@ -1008,23 +1055,27 @@ export default function App() {
                   ref={resultHeading}
                   tabIndex={-1}
                   aria-label={
-                    targetZone
+                    !initializing && targetZone
                       ? `Converted time in ${zoneName(targetZone)}`
                       : "Converted time"
                   }
                 >
-                  {targetZone ? `In ${zoneName(targetZone)}` : "Converted time"}
+                  {!initializing && targetZone
+                    ? `In ${zoneName(targetZone)}`
+                    : "Converted time"}
                 </h2>
                 <span className="live-indicator" data-state={liveState}>
-                  {liveState === "pending"
-                    ? "Updating"
-                    : liveState === "paused"
-                      ? "Paused"
-                      : liveState === "error"
-                        ? "Check input"
-                        : conversion.results.length
-                          ? `${conversion.results.length} time${conversion.results.length === 1 ? "" : "s"} converted`
-                          : "Ready"}
+                  {initializing
+                    ? "Preparing"
+                    : liveState === "pending"
+                      ? "Updating"
+                      : liveState === "paused"
+                        ? "Paused"
+                        : liveState === "error"
+                          ? "Check input"
+                          : conversion.results.length
+                            ? `${conversion.results.length} time${conversion.results.length === 1 ? "" : "s"} converted`
+                            : "Ready"}
                 </span>
               </div>
               <div role="status" className="sr-only">
@@ -1053,11 +1104,13 @@ export default function App() {
                   <div className="result-placeholder" key={liveState}>
                     <span className="large-clock" aria-hidden="true" />
                     <h3>
-                      {busy
-                        ? "Finding your time…"
-                        : composing
-                          ? "Finish typing to convert"
-                          : "Ready to convert"}
+                      {initializing
+                        ? "Preparing converter…"
+                        : busy
+                          ? "Finding your time…"
+                          : composing
+                            ? "Finish typing to convert"
+                            : "Ready to convert"}
                     </h3>
                     <p>Date, time and timezone appear here.</p>
                   </div>

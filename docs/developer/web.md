@@ -34,6 +34,9 @@ The preview server sets a restrictive CSP and avoids request/body logging. Cloud
 The production build embeds the small initial stylesheet into HTML to avoid a
 render-blocking CSS request. Both response and offline-shell CSP permit its exact
 SHA-256 hash; the preview reads that generated response policy from `_headers`.
+Static style attributes permit only the exact hashes of React Aria's hidden
+select geometry and the initially hidden result shortcut, scoped to
+`style-src-attr`. Arbitrary inline styles and scripts remain blocked.
 The original hashed CSS remains in the integrity precache. Date controls load
 when More options first opens and stay mounted after closing so partial date
 edits and validation survive. Their styles are included initially, and a failed
@@ -47,11 +50,15 @@ mobile and desktop with PageSpeed Insights after authorized publication.
 
 ## Search discoverability
 
-The build renders the shared converter introduction and usage guide into the
-initial HTML's `noscript` fallback, so the page remains informative without
-JavaScript. JavaScript-enabled visits render the converter and the same visible
-guidance without briefly displaying a fallback layout. Conversion still
-requires JavaScript; no conversion server is added.
+The build renders the initial converter interface, introduction and usage guide
+into static HTML. React hydrates the existing elements instead of replacing them,
+so the introduction can paint before the application JavaScript arrives. The
+workspace and appearance controls remain inert while loading; saved preferences,
+the device timezone and the About route are restored before editing is enabled.
+The static shell labels its unknown timezone explicitly and contains no user
+input. Without JavaScript, the introduction and guide remain readable and a
+notice explains that conversion requires JavaScript. Rendering happens at build
+time; no conversion server is added. Development uses the usual client render.
 
 `web/src/site.ts` owns the production URL, description and WebSite name data.
 `scripts/search-metadata.ts` writes a canonical link, matching Open Graph metadata,

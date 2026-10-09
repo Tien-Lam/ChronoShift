@@ -239,6 +239,9 @@ releaseTest(
     await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
     const draft = "PRIVATE-UPDATE-TEST April 9, 2026 3pm UTC";
     await page.getByLabel("Message with a date or time").fill(draft);
+    // This case exercises the storage guard on a completed conversion. Result
+    // completion can move the update button between pointer down and up.
+    await expect(page.locator(".hero-time")).toHaveText(/1:00 am/i);
     await publishRelease(context, page.url(), "second");
     await page.evaluate(async () => {
       await (await navigator.serviceWorker.getRegistration())!.update();
@@ -256,7 +259,6 @@ releaseTest(
     await expect(
       page.getByRole("button", { name: "Update now" }),
     ).toBeVisible();
-    await expect(page.locator(".hero-time")).toHaveText(/1:00 am/i);
     expect(
       await page.evaluate(() => JSON.stringify({ ...localStorage })),
     ).not.toContain(draft);

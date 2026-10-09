@@ -34,21 +34,3 @@ export function ConverterGuide() {
     </section>
   );
 }
-
-export function ConverterFallback() {
-  return (
-    <main>
-      <h1>Time to Local — Time zone converter</h1>
-      <ConverterIntro />
-      <p className="javascript-notice">
-        Enable JavaScript to use the converter.
-      </p>
-      <ConverterGuide />
-      <p>
-        <a href="https://github.com/Tien-Lam/time-to-local">
-          View Time to Local’s source code on GitHub
-        </a>
-      </p>
-    </main>
-  );
-}
