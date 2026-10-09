@@ -1,4 +1,4 @@
-import { Temporal } from "@js-temporal/polyfill";
+import { temporal as Temporal } from "./temporal";
 
 export const FIXED: Record<string, number> = {
   UTC: 0,

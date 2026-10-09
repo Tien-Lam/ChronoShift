@@ -2,7 +2,8 @@ import { en } from "chrono-node";
 import type { Chrono } from "chrono-node";
 import type { ParsingResult } from "chrono-node";
 import type { ParsedComponents } from "chrono-node";
-import { Temporal } from "@js-temporal/polyfill";
+import type { Temporal as TemporalTypes } from "@js-temporal/polyfill";
+import { temporal as Temporal } from "./temporal";
 import { AMBIGUOUS, FIXED, REGIONAL } from "./zones";
 const abbreviations = Object.keys({ ...FIXED, ...AMBIGUOUS, ...REGIONAL }).join(
   "|",
@@ -75,7 +76,10 @@ function extend(parser: Chrono): Chrono {
         month: c.get("month")!,
         day: c.get("day")!,
       });
-    const implyDate = (c: typeof result.start, date: Temporal.PlainDate) => {
+    const implyDate = (
+      c: typeof result.start,
+      date: TemporalTypes.PlainDate,
+    ) => {
       c.imply("year", date.year);
       c.imply("month", date.month);
       c.imply("day", date.day);

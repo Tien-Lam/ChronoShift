@@ -48,6 +48,11 @@ Timezone suggestion collections initially contain only the selected item, so the
 first arrow-key opening retains its focus. Each field's full collection is populated
 on first opening and retained thereafter, including while its popup exits. Saved and
 typed values remain independently controlled.
+Pages and conversion workers use the browser's complete native Temporal API when
+available, otherwise loading the pinned compatibility implementation. The fallback
+chunk remains in the integrity-verified offline cache. Conversion and formatting
+use the same implementation within each context, preserving the independent
+temporal expectations for both paths.
 Measure the complete entry import graph when comparing startup payload; smaller
 initial downloads do not establish a particular Lighthouse score. Recheck both
 mobile and desktop with PageSpeed Insights after authorized publication.
