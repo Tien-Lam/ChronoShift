@@ -1,11 +1,16 @@
 import { resolve, extname } from "node:path";
 import { testReleases } from "./test-releases";
-import { PREVIEW_CSP } from "./csp";
 // Same-origin static preview. Test versions exist only when explicitly enabled.
 const root = resolve("dist"),
   base = process.env.BASE_PATH || "/",
   testMode = process.env.CHRONOSHIFT_TEST_SERVER === "1";
 const fixtures = testMode ? await testReleases(root) : undefined;
+// Match the generated production policy, including the exact initial CSS hash.
+const policy = (await Bun.file(resolve(root, "_headers")).text()).match(
+  /^  Content-Security-Policy: (.+)$/m,
+)?.[1];
+if (!policy)
+  throw new Error("Build headers contain no content security policy");
 let publishedVersion: string | undefined;
 let interruptedRequests = 0;
 const mime: Record<string, string> = {
@@ -133,7 +138,7 @@ const server = Bun.serve({
         "Cache-Control": relative.startsWith("assets/")
           ? "public, max-age=31536000, immutable"
           : "no-cache",
-        "Content-Security-Policy": PREVIEW_CSP,
+        "Content-Security-Policy": policy,
         "X-Content-Type-Options": "nosniff",
         "Referrer-Policy": "no-referrer",
       },

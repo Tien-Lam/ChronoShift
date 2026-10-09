@@ -21,7 +21,7 @@ import { Dialog } from "react-aria-components/Dialog";
 import { Heading } from "react-aria-components/Heading";
 import "./DateChoice.css";
 
-interface DateChoiceProps {
+export interface DateChoiceProps {
   id: string;
   label: string;
   value: string;

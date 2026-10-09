@@ -1,6 +1,7 @@
 import { readdir } from "node:fs/promises";
 import { join } from "node:path";
-import { WEB_CSP, PREVIEW_CSP } from "./csp";
+import { webCsp } from "./csp";
+import { inlineStyles } from "./inline-styles";
 import { ROBOTS, searchMetadata, SITEMAP } from "./search-metadata";
 const base = process.env.BASE_PATH || "/";
 const sourceCommit =
@@ -14,16 +15,20 @@ if (!/^\/(?:[A-Za-z0-9_-]+\/)*$/.test(base))
   throw new Error("BASE_PATH must be / or a path such as /ChronoShift/");
 // Retain the HTML policy for offline shells and hosts without custom headers.
 // Inject at build time so the development server can still use Vite's HMR.
-const html = await Bun.file("dist/index.html").text();
+const { html, styles } = await inlineStyles(
+  await Bun.file("dist/index.html").text(),
+  base,
+);
+const policy = webCsp(styles);
 const canonicalShell = searchMetadata(html).replace(
   "<head>",
-  `<head>\n    <meta http-equiv="Content-Security-Policy" content="${WEB_CSP}">\n    <meta name="referrer" content="no-referrer">`,
+  `<head>\n    <meta http-equiv="Content-Security-Policy" content="${policy}">\n    <meta name="referrer" content="no-referrer">`,
 );
 await Bun.write("dist/index.html", canonicalShell);
 await Bun.write("dist/robots.txt", ROBOTS);
 await Bun.write("dist/sitemap.xml", SITEMAP);
 const headers = `/*
-  Content-Security-Policy: ${PREVIEW_CSP}
+  Content-Security-Policy: ${policy}; frame-ancestors 'none'
   Referrer-Policy: no-referrer
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY

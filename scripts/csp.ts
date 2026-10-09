@@ -19,5 +19,14 @@ const styleHashes = trustedInteractionStyles
 const structuredDataHash = createHash("sha256")
   .update(SITE_STRUCTURED_DATA)
   .digest("base64");
-export const WEB_CSP = `default-src 'self'; script-src 'self' 'sha256-${structuredDataHash}'; style-src 'self' ${styleHashes}; img-src 'self'; font-src 'self'; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'`;
+export function webCsp(styles: string[] = []) {
+  const appStyleHashes = styles
+    .map(
+      (style) =>
+        `'sha256-${createHash("sha256").update(style).digest("base64")}'`,
+    )
+    .join(" ");
+  return `default-src 'self'; script-src 'self' 'sha256-${structuredDataHash}'; style-src 'self' ${styleHashes}${appStyleHashes ? " " + appStyleHashes : ""}; img-src 'self'; font-src 'self'; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'`;
+}
+export const WEB_CSP = webCsp();
 export const PREVIEW_CSP = `${WEB_CSP}; frame-ancestors 'none'`;

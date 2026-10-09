@@ -31,6 +31,18 @@ BASE_PATH=/ChronoShift/ bun run preview
 
 The preview server sets a restrictive CSP and avoids request/body logging. Cloudflare Workers Static Assets serves the production bundle with generated `_headers`: response-level CSP including `frame-ancestors`, no-referrer, nosniff and frame denial. Hashed assets have immutable caching; HTML, manifests, release metadata and the service worker use Cloudflare's revalidation default. The HTML CSP meta tag remains for offline shells. `_headers` and `_redirects` are host configuration and are excluded from the worker precache. Missing assets return 404 rather than an HTML fallback. No runtime Worker script, request logging, analytics or conversion backend is configured. Verify headers on the live URL.
 
+The production build embeds the small initial stylesheet into HTML to avoid a
+render-blocking CSS request. Both response and offline-shell CSP permit its exact
+SHA-256 hash; the preview reads that generated response policy from `_headers`.
+The original hashed CSS remains in the integrity precache. Date controls load
+when More options first opens and stay mounted after closing so partial date
+edits and validation survive. Their styles are included initially, and a failed
+code request exposes a retry without replacing the converter or its draft.
+The lazy JavaScript is precached before offline readiness is confirmed.
+Measure the complete entry import graph when comparing startup payload; smaller
+initial downloads do not establish a particular Lighthouse score. Recheck both
+mobile and desktop with PageSpeed Insights after authorized publication.
+
 ## Search discoverability
 
 The build renders the shared converter introduction and usage guide into the

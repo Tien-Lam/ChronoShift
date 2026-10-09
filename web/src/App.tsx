@@ -31,7 +31,7 @@ import {
   setDetailedLogs,
 } from "./platform/diagnostics";
 import { ChoiceSelect, ZoneChoice } from "./components/Choices";
-import { DateChoice } from "./components/DateChoice";
+import { DeferredDateChoice } from "./components/DeferredDateChoice";
 import { ActionButton } from "./components/ui/ActionButton";
 import { ControlIcon } from "./components/ui/ControlIcon";
 import { Disclosure } from "./components/Disclosure";
@@ -92,6 +92,11 @@ export default function App() {
     copyField = useRef<HTMLTextAreaElement>(null);
   const resultHeading = useRef<HTMLHeadingElement>(null);
   const [optionsOpen, setOptionsOpen] = useState(false);
+  const [dateControlsRequested, setDateControlsRequested] = useState(false);
+  // Retain editable date segments after the first open, including partial dates.
+  useEffect(() => {
+    if (optionsOpen) setDateControlsRequested(true);
+  }, [optionsOpen]);
   const correctionFocus = useRef(false);
   const [appearanceOpen, setAppearanceOpen] = useState(false);
   const appearanceRetained = useRetainedOpen(appearanceOpen, 120);
@@ -894,18 +899,20 @@ export default function App() {
                   For “3pm” without a timezone. A timezone in the message takes
                   priority. Leave blank to use your device: {device}.
                 </span>
-                <DateChoice
-                  key={referenceReset}
-                  id="reference-date"
-                  label="Reference date"
-                  describedBy="reference-date-help"
-                  value={referenceDate}
-                  onChange={(date) => {
-                    setReferenceDate(date);
-                    invalidate();
-                  }}
-                  onValidityChange={referenceValidityChanged}
-                />
+                {(optionsOpen || dateControlsRequested) && (
+                  <DeferredDateChoice
+                    key={referenceReset}
+                    id="reference-date"
+                    label="Reference date"
+                    describedBy="reference-date-help"
+                    value={referenceDate}
+                    onChange={(date) => {
+                      setReferenceDate(date);
+                      invalidate();
+                    }}
+                    onValidityChange={referenceValidityChanged}
+                  />
+                )}
                 <span className="field-note" id="reference-date-help">
                   For relative or incomplete dates. If an older message says
                   “tomorrow”, choose its date here. Leave blank to use today.
