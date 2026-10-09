@@ -107,7 +107,7 @@ test("a timed-out startup cannot activate late and explicit retry restores the r
     );
     await expect(page.locator(".workspace")).toHaveAttribute("inert", "");
     await page.getByRole("button", { name: "Retry", exact: true }).click();
-    await expect(page.locator("main")).toHaveAttribute(
+    await expect(page.locator("main[data-app-ready]")).toHaveAttribute(
       "data-app-ready",
       "true",
     );

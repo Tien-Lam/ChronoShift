@@ -60,8 +60,9 @@ into static HTML. React hydrates the existing elements instead of replacing them
 so the introduction can paint before the application JavaScript arrives. The
 workspace and appearance controls remain inert while loading; saved preferences,
 the device timezone and the About route are restored before editing is enabled.
-The small entry loader gives the static interface a paint opportunity before
-importing the framework and hydrating. Hidden documents start immediately, including
+The small entry loader waits for the static content's first paint before
+importing the framework and hydrating. Engines without paint observations get
+an ordinary rendering opportunity through animation frames. Hidden documents start immediately, including
 when a visible document becomes hidden before its animation frames run. A failed
 or 12-second timed-out import leaves the interface inert and exposes an explicit
 Retry that reloads the document, clearing failed module dependencies. A late import

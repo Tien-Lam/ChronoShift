@@ -34,14 +34,16 @@ function start() {
   );
 }
 
-// Give the build-time interface one paint opportunity before framework startup.
+// Paint the build-time content before competing with framework download/startup.
 // Hidden documents must also start: their animation frames can be suspended.
 let started = false;
 let frame = 0;
+let paintObserver: PerformanceObserver | undefined;
 function begin() {
   if (started) return;
   started = true;
   cancelAnimationFrame(frame);
+  paintObserver?.disconnect();
   document.removeEventListener("visibilitychange", startIfHidden);
   start();
 }
@@ -50,5 +52,15 @@ function startIfHidden() {
 }
 document.addEventListener("visibilitychange", startIfHidden);
 if (document.visibilityState === "hidden") begin();
-else
+else if (PerformanceObserver.supportedEntryTypes.includes("paint")) {
+  paintObserver = new PerformanceObserver((list) => {
+    if (
+      list.getEntries().some((entry) => entry.name === "first-contentful-paint")
+    )
+      begin();
+  });
+  paintObserver.observe({ type: "paint", buffered: true });
+} else {
+  // Engines without paint entries still get an ordinary rendering opportunity.
   frame = requestAnimationFrame(() => (frame = requestAnimationFrame(begin)));
+}
