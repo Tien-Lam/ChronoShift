@@ -137,6 +137,7 @@ const searchText = new Map(
   ]),
 );
 const optionIds = new Set(timezoneOptions.map((option) => option.id));
+const emptyTimezoneOptions: Option[] = [];
 
 export function ZoneChoice({
   id,
@@ -155,6 +156,7 @@ export function ZoneChoice({
 }) {
   const [open, setOpen] = useState(false);
   const [choicesLoaded, setChoicesLoaded] = useState(false);
+  const options = choicesLoaded ? timezoneOptions : emptyTimezoneOptions;
   const current = useRef(value);
   current.current = value;
   const commit = (next: string) => {
@@ -177,7 +179,7 @@ export function ZoneChoice({
       onChange={(key) => {
         if (key !== null) commit(String(key));
       }}
-      defaultItems={choicesLoaded ? timezoneOptions : []}
+      defaultItems={options}
       defaultFilter={(text, query) =>
         (searchText.get(text) || normalize(text)).includes(normalize(query))
       }
@@ -219,7 +221,7 @@ export function ZoneChoice({
         containerPadding={12}
         isNonModal
       >
-        <ChoiceItems options={timezoneOptions} byValue />
+        <ChoiceItems options={options} byValue />
       </ResizeSafePopover>
     </ComboBox>
   );
