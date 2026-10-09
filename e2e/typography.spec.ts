@@ -19,6 +19,12 @@ for (const rootSize of [24, 32])
         );
       });
       await page.goto("/");
+      // Loading can finish before asynchronous module hydration. Exercise
+      // the interactive form; inert startup input does not accept filling.
+      await expect(page.locator("main")).toHaveAttribute(
+        "data-app-ready",
+        "true",
+      );
       // Browser default-font simulation, not physical-device or real page zoom.
       await page.evaluate((size) => {
         document.documentElement.style.fontSize = `${size}px`;
