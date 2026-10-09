@@ -38,6 +38,8 @@ The original hashed CSS remains in the integrity precache. Date controls load
 when More options first opens and stay mounted after closing so partial date
 edits and validation survive. Their styles are included initially, and a failed
 code request exposes a retry without replacing the converter or its draft.
+Loading, failure and retry reserve the date field's height so format controls
+and their open menus remain stationary when the code finishes loading.
 The lazy JavaScript is precached before offline readiness is confirmed.
 Measure the complete entry import graph when comparing startup payload; smaller
 initial downloads do not establish a particular Lighthouse score. Recheck both

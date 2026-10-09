@@ -100,7 +100,7 @@ test("failed date loading preserves the converter and retries without losing the
     const draft = "April 9, 2026 3pm UTC";
     await message.fill(draft);
     await page.getByRole("button", { name: /Adjust interpretation/ }).click();
-    await expect(page.getByText("Date controls could not load.")).toBeVisible();
+    await expect(page.getByText("Unable to load dates.")).toBeVisible();
     await expect(message).toHaveValue(draft);
     await expect(page.locator(".hero-time")).not.toHaveText("");
     await page.getByRole("button", { name: "Retry date controls" }).click();
@@ -164,7 +164,7 @@ test("a timed-out date request cannot replace edits made after a successful retr
     );
     await page.goto(baseURL!);
     await page.getByRole("button", { name: /More options/ }).click();
-    await expect(page.getByText("Date controls could not load.")).toBeVisible();
+    await expect(page.getByText("Unable to load dates.")).toBeVisible();
     await page.getByRole("button", { name: "Retry date controls" }).click();
     await expect(
       page.getByRole("button", { name: "Choose reference date" }),
@@ -189,3 +189,77 @@ test("a timed-out date request cannot replace edits made after a successful retr
     await context.close();
   }
 });
+
+for (const width of [320, 1280]) {
+  test(`date loading, failure and retry keep format controls stationary at ${width}px`, async ({
+    browser,
+    baseURL,
+  }) => {
+    const context = await browser.newContext({
+      serviceWorkers: "block",
+      viewport: { width, height: 1800 },
+    });
+    let settle!: (success: boolean) => void;
+    let pending = new Promise<boolean>((resolve) => {
+      settle = resolve;
+    });
+    try {
+      const page = await context.newPage();
+      const html = await (await page.request.get(baseURL!)).text();
+      const eager = [
+        ...html.matchAll(/<link\b[^>]*rel="modulepreload"[^>]*href="([^"]+)"/g),
+      ].map((match) => new URL(match[1], baseURL).href);
+      await page.route(
+        /\/assets\/DateChoice-[^/]+\.js(?:\?.*)?$/,
+        async (route) => {
+          if (eager.includes(route.request().url())) return route.continue();
+          const success = await pending;
+          if (success) await route.continue();
+          else await route.abort();
+        },
+      );
+      await page.goto(baseURL!);
+      await page.getByRole("button", { name: /More options/ }).click();
+      await expect(page.getByText("Loading date controls…")).toBeVisible();
+      const format = page.getByRole("button", { name: /Date format$/ });
+      const initial = (await format.boundingBox())!;
+      await page.mouse.move(
+        initial.x + initial.width / 2,
+        initial.y + initial.height / 2,
+      );
+      settle(false);
+      await expect(page.getByText("Unable to load dates.")).toBeVisible();
+      const failed = (await format.boundingBox())!;
+      expect(Math.abs(failed.y - initial.y)).toBeLessThan(1);
+      await page.mouse.click(
+        initial.x + initial.width / 2,
+        initial.y + initial.height / 2,
+      );
+      await expect(page.getByRole("listbox")).toBeVisible();
+      await page.keyboard.press("Escape");
+      pending = new Promise<boolean>((resolve) => {
+        settle = resolve;
+      });
+      await page.getByRole("button", { name: "Retry date controls" }).click();
+      await expect(page.getByText("Loading date controls…")).toBeVisible();
+      expect(
+        Math.abs((await format.boundingBox())!.y - initial.y),
+      ).toBeLessThan(1);
+      await format.click();
+      const popup = page.getByRole("listbox");
+      await expect(popup).toBeVisible();
+      const before = (await popup.boundingBox())!;
+      settle(true);
+      await expect(page.locator(".date-choice-calendar-button")).toBeVisible();
+      expect(
+        Math.abs((await format.boundingBox())!.y - initial.y),
+      ).toBeLessThan(1);
+      expect(Math.abs((await popup.boundingBox())!.y - before.y)).toBeLessThan(
+        1,
+      );
+    } finally {
+      settle(true);
+      await context.close();
+    }
+  });
+}

@@ -27,6 +27,40 @@
   outline: 2px solid var(--focus);
   outline-offset: 3px;
 }
+.date-choice-pending {
+  align-items: center;
+  gap: 8px;
+  padding-inline-start: var(--control-inset);
+}
+.date-choice-pending p {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-size: var(--text-small);
+  line-height: 1.2;
+  color: var(--muted);
+}
+.date-choice-pending .date-choice-retry {
+  flex-shrink: 0;
+  height: var(--control-height);
+  min-block-size: 0;
+  min-width: 44px;
+  padding: 0 var(--control-inset);
+  border: 0;
+  border-radius: calc(var(--control-radius) - 1px);
+  background: transparent;
+  color: var(--ink);
+  font-size: var(--text-small);
+  outline-offset: -3px;
+}
+.date-choice-retry[data-focus-visible] {
+  outline: 2px solid var(--focus);
+}
+@media (hover: hover) {
+  .date-choice-retry[data-hovered] {
+    background: var(--soft);
+  }
+}
 .date-choice-control .date-input {
   display: flex;
   align-items: center;

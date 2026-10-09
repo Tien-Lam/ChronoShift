@@ -49,18 +49,21 @@ export function DeferredDateChoice(props: DateChoiceProps) {
   return (
     <div className="date-choice">
       <span className="date-choice-label">{props.label}</span>
-      <p role="status">
-        {failed ? "Date controls could not load." : "Loading date controls…"}
-      </p>
-      {failed && (
-        <ActionButton
-          type="button"
-          className="text-button"
-          onPress={() => setAttempt((value) => value + 1)}
-        >
-          Retry date controls
-        </ActionButton>
-      )}
+      <div className="date-choice-control date-choice-pending">
+        <p role="status">
+          {failed ? "Unable to load dates." : "Loading date controls…"}
+        </p>
+        {failed && (
+          <ActionButton
+            type="button"
+            aria-label="Retry date controls"
+            className="date-choice-retry"
+            onPress={() => setAttempt((value) => value + 1)}
+          >
+            Retry
+          </ActionButton>
+        )}
+      </div>
     </div>
   );
 }
