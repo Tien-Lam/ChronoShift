@@ -46,7 +46,9 @@ export default defineConfig({
         chunkFileNames: (chunk) =>
           chunk.facadeModuleId?.endsWith("/DateChoice.tsx")
             ? "assets/DateChoice-[hash].js"
-            : "assets/shared-[hash].js",
+            : chunk.facadeModuleId?.endsWith("/mount.tsx")
+              ? "assets/Mount-[hash].js"
+              : "assets/shared-[hash].js",
       },
     },
   },
