@@ -53,6 +53,10 @@ available, otherwise loading the pinned compatibility implementation. The fallba
 chunk remains in the integrity-verified offline cache. Conversion and formatting
 use the same implementation within each context, preserving the independent
 temporal expectations for both paths.
+The conversion worker installs its message handler before loading the engine,
+so the first request is retained while the fallback loads. An import rejection
+returns a readable error; editing the retained message creates a fresh worker and
+retries. Canceling or superseding a conversion still terminates its worker.
 Measure the complete entry import graph when comparing startup payload; smaller
 initial downloads do not establish a particular Lighthouse score. Recheck both
 mobile and desktop with PageSpeed Insights after authorized publication.
