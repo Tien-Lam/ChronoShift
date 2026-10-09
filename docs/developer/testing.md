@@ -12,6 +12,8 @@ bun run check
 
 For independent review and bug closure, follow [review.md](review.md). A green suite verifies its exercised states; document relevant untested timing, cache history and browser capabilities separately. Parallel review tests need separate ports **and output directories** so one run cannot overwrite another's evidence.
 
+`e2e/paste-focus.spec.ts` checks that successful Paste preserves message focus during touch activation and does not refocus it after delayed clipboard permission completion. It also checks single keyboard activation. Denied clipboard access retains the manual-paste focus fallback in `quiet-actions.spec.ts`. These checks observe DOM focus in browser emulation; they do not measure a physical phone's keyboard or native permission prompt.
+
 ## Browser checks
 
 ```bash
