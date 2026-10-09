@@ -33,6 +33,15 @@ test("the first interface paints before JavaScript and survives hydration", asyn
     await page.mouse.click(bounds!.x + 20, bounds!.y + 20);
     await page.keyboard.type("April 9, 2026 3pm in Tokyo");
     await expect(textarea).toHaveValue("");
+    // Let the static CSS entrance finish while JavaScript is still held.
+    // Hydration must retain these painted panels without starting another fade.
+    await page.evaluate(async () => {
+      await Promise.all(
+        [...document.querySelectorAll(".input-panel,.result-panel")].flatMap(
+          (node) => node.getAnimations().map((animation) => animation.finished),
+        ),
+      );
+    });
     release();
     await expect(main).toHaveAttribute("data-app-ready", "true");
     expect(errors).toEqual([]);
@@ -41,6 +50,21 @@ test("the first interface paints before JavaScript and survives hydration", asyn
         (node) => node === document.querySelector(".converter-intro"),
       ),
     ).toBe(true);
+    expect(
+      await page.evaluate(() =>
+        [...document.querySelectorAll(".input-panel,.result-panel")].map(
+          (node) => ({
+            opacity: getComputedStyle(node).opacity,
+            running: node
+              .getAnimations()
+              .filter((animation) => animation.playState === "running").length,
+          }),
+        ),
+      ),
+    ).toEqual([
+      { opacity: "1", running: 0 },
+      { opacity: "1", running: 0 },
+    ]);
     await expect(page.locator(".workspace")).not.toHaveAttribute("inert");
     await textarea.fill("April 9, 2026 3pm in Tokyo");
     // Sydney is UTC+10 on this explicit date; Tokyo is UTC+9.

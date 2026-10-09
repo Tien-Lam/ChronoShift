@@ -71,7 +71,9 @@ export default function App({
   );
   const previousAbout = useRef(false);
   const [entering, setEntering] = useState(
-    () => !booting && !matchMedia("(prefers-reduced-motion: reduce)").matches,
+    // Static panels start their CSS-only entrance with the HTML. Hydration
+    // retains that presentation instead of hiding/restarting painted content.
+    () => booting || !matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
   const [prefs, setPrefs] = useState(() =>
     booting ? DEFAULTS : loadPreferences(),
