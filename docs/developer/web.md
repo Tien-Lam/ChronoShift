@@ -60,6 +60,13 @@ into static HTML. React hydrates the existing elements instead of replacing them
 so the introduction can paint before the application JavaScript arrives. The
 workspace and appearance controls remain inert while loading; saved preferences,
 the device timezone and the About route are restored before editing is enabled.
+The small entry loader gives the static interface a paint opportunity before
+importing the framework and hydrating. Hidden documents start immediately, including
+when a visible document becomes hidden before its animation frames run. A failed
+or 12-second timed-out import leaves the interface inert and exposes an explicit
+Retry that reloads the document, clearing failed module dependencies. A late import
+after timeout cannot activate the interface. No editable draft exists at this stage;
+saved preferences, update handoff and URL route retain their normal restoration.
 The static shell labels its unknown timezone explicitly and contains no user
 input. Without JavaScript, the introduction and guide remain readable and a
 notice explains that conversion requires JavaScript. Rendering happens at build

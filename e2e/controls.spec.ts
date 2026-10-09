@@ -366,6 +366,7 @@ for (const label of ["Convert to", "Source timezone"]) {
       await expect(input).toHaveValue("UTC");
       await input.scrollIntoViewIfNeeded();
       if (opening === "keyboard") {
+        await input.click();
         await input.press("ArrowDown");
         await expect(
           page.locator('[role="option"][data-value="UTC"]'),
