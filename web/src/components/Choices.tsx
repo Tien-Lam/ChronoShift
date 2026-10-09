@@ -155,6 +155,8 @@ export function ZoneChoice({
   triggerLabel: string;
 }) {
   const [open, setOpen] = useState(false);
+  // React Aria builds ListBox collections even while their popovers are closed.
+  // Populate on first focus/opening, then retain them through dismissal and exit.
   const [choicesLoaded, setChoicesLoaded] = useState(false);
   const options = choicesLoaded ? timezoneOptions : emptyTimezoneOptions;
   const current = useRef(value);
@@ -194,15 +196,17 @@ export function ZoneChoice({
           placeholder={placeholder}
           aria-describedby={describedBy}
           autoComplete="off"
-          onFocus={() =>
+          onFocus={() => {
+            setChoicesLoaded(true);
             diagnostic("ui.zone-focus", {
               field: id === "target-zone" ? "target-zone" : "source-zone",
-            })
-          }
+            });
+          }}
         />
         <Button
           className="choice-toggle"
           aria-label={triggerLabel}
+          onFocus={() => setChoicesLoaded(true)}
           onPress={() =>
             diagnostic("ui.zone-open", {
               field: id === "target-zone" ? "target-zone" : "source-zone",
