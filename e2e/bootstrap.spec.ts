@@ -68,6 +68,8 @@ test("a timed-out startup cannot activate late and explicit retry restores the r
   try {
     const page = await context.newPage();
     await page.addInitScript(() => {
+      const accelerate = !sessionStorage.getItem("test-startup-timeout");
+      sessionStorage.setItem("test-startup-timeout", "used");
       const original = window.setTimeout;
       window.setTimeout = ((
         handler: TimerHandler,
@@ -76,7 +78,7 @@ test("a timed-out startup cannot activate late and explicit retry restores the r
       ) =>
         original(
           handler,
-          delay === 12_000 ? 200 : delay,
+          accelerate && delay === 12_000 ? 200 : delay,
           ...args,
         )) as typeof original;
       localStorage.setItem(
@@ -92,7 +94,7 @@ test("a timed-out startup cannot activate late and explicit retry restores the r
       }
       await route.continue();
     });
-    await page.goto(new URL("#about", baseURL!).href);
+    await page.goto(new URL("#about", baseURL!).href, { waitUntil: "commit" });
     await expect(page.locator(".startup-notice")).toBeVisible();
     const loaded = page.waitForResponse(/\/assets\/Mount-[^/]+\.js$/);
     release();
