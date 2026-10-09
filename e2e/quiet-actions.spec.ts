@@ -25,6 +25,7 @@ async function geometry(control: Locator) {
       radius: css.borderRadius,
       hover: element.matches(":hover"),
       active: element.matches(":active"),
+      pressed: element.getAttribute("data-pressed") === "true",
       focusVisible: element.matches(":focus-visible"),
     };
   });
@@ -229,7 +230,11 @@ for (const theme of ["dark", "light"] as const) {
         for (const state of ["hover", "press", "focus"])
           expect(samples[`${name}-${state}`].box).toEqual(before.box);
         expect(samples[`${name}-hover`].hover).toBe(true);
-        expect(samples[`${name}-press`].active).toBe(true);
+        // Focus-preserving React Aria presses can suppress native :active.
+        // The effective pressed state must still drive the same feedback.
+        expect(
+          samples[`${name}-press`].active || samples[`${name}-press`].pressed,
+        ).toBe(true);
         expect(samples[`${name}-focus`].focusVisible).toBe(true);
         expect(samples[`${name}-focus`].outline).toBe("2px");
         const soft =

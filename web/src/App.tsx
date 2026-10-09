@@ -577,7 +577,8 @@ export default function App({
     }
     edit(value);
     if (source === "Shared") setNotice("Shared text received.");
-    else input.current?.focus();
+    // Clipboard success must not reopen a mobile keyboard after permission UI.
+    // Leave focus where the user (or browser) put it while the read was pending.
   }
   async function paste() {
     const importId = ++importRequest.current,
@@ -834,6 +835,7 @@ export default function App({
                   <ActionButton
                     type="button"
                     className="text-button"
+                    preventFocusOnPress
                     onPress={paste}
                   >
                     Paste
