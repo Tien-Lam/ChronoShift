@@ -44,8 +44,9 @@ code request exposes a retry without replacing the converter or its draft.
 Loading, failure and retry reserve the date field's height so format controls
 and their open menus remain stationary when the code finishes loading.
 The lazy JavaScript is precached before offline readiness is confirmed.
-Timezone suggestion collections are populated on each field's first focus/opening
-and retained thereafter, including while its popup exits. Saved and typed values
+Timezone suggestion collections initially contain only the selected item, so the
+first arrow-key opening retains its focus. Each field's full collection is populated
+on first opening and retained thereafter, including while its popup exits. Saved and typed values
 remain controlled independently of the collection; opening, filtering, deliberate
 selection and dismissal retain the usual keyboard and pointer behaviour.
 Measure the complete entry import graph when comparing startup payload; smaller

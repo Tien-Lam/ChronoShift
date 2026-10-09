@@ -1,5 +1,5 @@
 import { ResizeSafePopover } from "./ResizeSafePopover";
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import {
   Select,
   SelectValue,
@@ -137,7 +137,6 @@ const searchText = new Map(
   ]),
 );
 const optionIds = new Set(timezoneOptions.map((option) => option.id));
-const emptyTimezoneOptions: Option[] = [];
 
 export function ZoneChoice({
   id,
@@ -156,9 +155,14 @@ export function ZoneChoice({
 }) {
   const [open, setOpen] = useState(false);
   // React Aria builds ListBox collections even while their popovers are closed.
-  // Populate on first focus/opening, then retain them through dismissal and exit.
+  // Keep the selected item available for first keyboard focus. Populate the full
+  // collection on first opening and retain it through dismissal and exit.
   const [choicesLoaded, setChoicesLoaded] = useState(false);
-  const options = choicesLoaded ? timezoneOptions : emptyTimezoneOptions;
+  const selectedOptions = useMemo(
+    () => timezoneOptions.filter((option) => option.id === value),
+    [value],
+  );
+  const options = choicesLoaded ? timezoneOptions : selectedOptions;
   const current = useRef(value);
   current.current = value;
   const commit = (next: string) => {
@@ -197,7 +201,6 @@ export function ZoneChoice({
           aria-describedby={describedBy}
           autoComplete="off"
           onFocus={() => {
-            setChoicesLoaded(true);
             diagnostic("ui.zone-focus", {
               field: id === "target-zone" ? "target-zone" : "source-zone",
             });
@@ -206,7 +209,6 @@ export function ZoneChoice({
         <Button
           className="choice-toggle"
           aria-label={triggerLabel}
-          onFocus={() => setChoicesLoaded(true)}
           onPress={() =>
             diagnostic("ui.zone-open", {
               field: id === "target-zone" ? "target-zone" : "source-zone",
