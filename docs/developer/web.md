@@ -31,6 +31,14 @@ BASE_PATH=/ChronoShift/ bun run preview
 
 The preview server sets a restrictive CSP and avoids request/body logging. Cloudflare Workers Static Assets serves the production bundle with generated `_headers`: response-level CSP including `frame-ancestors`, no-referrer, nosniff and frame denial. Hashed assets have immutable caching; HTML, manifests, release metadata and the service worker use Cloudflare's revalidation default. The HTML CSP meta tag remains for offline shells. `_headers` and `_redirects` are host configuration and are excluded from the worker precache. Missing assets return 404 rather than an HTML fallback. No runtime Worker script, request logging, analytics or conversion backend is configured. Verify headers on the live URL.
 
+The converter's waiting-update prompt sits before the workspace so conversion
+results, warnings and clipboard feedback cannot move its button during a press.
+Draft-preservation failure appears immediately below the prompt, including on
+About. Update activation still requires a completed deliberate press; a failed
+preservation leaves the message and waiting update available for recovery.
+The first installation cannot offer itself as an update: an installed candidate
+must replace a different active or controlling worker before the prompt appears.
+
 The production build embeds the small initial stylesheet into HTML to avoid a
 render-blocking CSS request. Both response and offline-shell CSP permit its exact
 SHA-256 hash; the preview reads that generated response policy from `_headers`.

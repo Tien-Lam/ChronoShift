@@ -47,6 +47,8 @@ const examples = [
   "Tomorrow at 3pm in Tokyo",
   "July 15 at 3pm CST",
 ];
+const UPDATE_STORAGE_WARNING =
+  "Copy your message somewhere safe, then clear it before updating. This browser cannot preserve it during a reload.";
 function resolveZone(value: string, fallback: string): string | undefined {
   if (!value.trim()) return fallback;
   if (validZone(value.trim())) return value.trim();
@@ -653,9 +655,7 @@ export default function App({
       diagnostic("offline.update-blocked", {
         reason: "draft-preservation-failed",
       });
-      setNotice(
-        "Copy your message somewhere safe, then clear it before updating. This browser cannot preserve it during a reload.",
-      );
+      setNotice(UPDATE_STORAGE_WARNING);
       return;
     }
     diagnostic("offline.update-accepted");
@@ -683,12 +683,22 @@ export default function App({
         : conversion.results.length || conversion.warnings.length
           ? "ready"
           : "idle";
+  const updateWarning =
+    offline.update && notice === UPDATE_STORAGE_WARNING ? notice : "";
+  const generalNotice = updateWarning ? "" : notice;
   const updateNotice = offline.update && (
-    <div className="update-banner">
-      <p>A new version is ready. Your message will be kept when you update.</p>
-      <ActionButton variant="primary" type="button" onPress={update}>
-        Update now
-      </ActionButton>
+    <div className="update-notice">
+      <div className="update-banner">
+        <p>
+          A new version is ready. Your message will be kept when you update.
+        </p>
+        <ActionButton variant="primary" type="button" onPress={update}>
+          Update now
+        </ActionButton>
+      </div>
+      <div role="status" className="update-warning">
+        {updateWarning}
+      </div>
     </div>
   );
   return (
@@ -759,7 +769,9 @@ export default function App({
           </details>
         </div>
       </header>
-      {aboutOpen && <About updateNotice={updateNotice} notice={notice} />}
+      {aboutOpen && (
+        <About updateNotice={updateNotice} notice={generalNotice} />
+      )}
       <PopoverVisibilityContext.Provider value={!aboutOpen}>
         <main
           data-offline-ready={offline.ready}
@@ -773,6 +785,7 @@ export default function App({
               Enable JavaScript to use the converter.
             </p>
           </noscript>
+          {!aboutOpen && updateNotice}
           <div
             className={`workspace ${conversion.results.length ? "has-results" : ""}`}
             data-entering={entering}
@@ -1245,7 +1258,7 @@ export default function App({
             </section>
           </div>
           <div role="status" className="notice">
-            {notice}
+            {generalNotice}
           </div>
           {pendingImport && (
             <div className="import-choice">
@@ -1295,7 +1308,6 @@ export default function App({
             </div>
           )}
           {offline.error && <p className="message warning">{offline.error}</p>}
-          {!aboutOpen && updateNotice}
           <footer>
             <p>Your text stays on this device.</p>
             <nav className="footer-links" aria-label="About and source code">

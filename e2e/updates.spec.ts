@@ -410,6 +410,159 @@ async function convert(page: Page, release: string) {
   await expect(page.getByRole("alert")).toHaveCount(0);
 }
 
+test("a first installation never offers itself as a waiting update", async ({
+  page,
+  context,
+  baseURL,
+}, info) => {
+  await page.addInitScript(() => {
+    const flashes: number[] = [];
+    const observer = new MutationObserver(() => {
+      if (document.querySelector(".update-banner"))
+        flashes.push(performance.now());
+    });
+    observer.observe(document, { childList: true, subtree: true });
+    (window as any).__firstInstallPrompt = { flashes, observer };
+  });
+  await publishRelease(context, baseURL!, "first");
+  await page.goto("/");
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
+  const flashes = await page.evaluate(() => {
+    const { observer, flashes } = (window as any).__firstInstallPrompt;
+    observer.disconnect();
+    return flashes;
+  });
+  const registration = await registrationState(page);
+  await info.attach("first-install-prompt", {
+    body: Buffer.from(JSON.stringify({ flashes, registration })),
+    contentType: "application/json",
+  });
+  expect(flashes).toEqual([]);
+  expect(registration.controller).toBe("activated");
+  expect(registration.waiting).toBeUndefined();
+  await convert(page, "first");
+});
+
+test("conversion completion during an update press keeps the target stable and allows recovery", async ({
+  page,
+  context,
+  baseURL,
+  origin,
+}, info) => {
+  await page.setViewportSize({ width: 390, height: 664 });
+  await page.addInitScript(() => {
+    const state = {
+      held: true,
+      armed: false,
+      queue: [] as { worker: Worker; data: unknown }[],
+      events: [] as object[],
+    };
+    (window as any).__conversionPressGate = state;
+    (window as any).__updateActivationTrace = state.events;
+    // Make a completed press observable without reloading away its geometry.
+    Object.defineProperty(window, "sessionStorage", {
+      get() {
+        throw new Error("Storage denied by update regression fixture");
+      },
+    });
+    const NativeWorker = window.Worker;
+    window.Worker = class extends NativeWorker {
+      constructor(url: string | URL, options?: WorkerOptions) {
+        super(url, options);
+        this.addEventListener("message", (event) => {
+          if (!state.held) return;
+          event.stopImmediatePropagation();
+          state.queue.push({ worker: this, data: event.data });
+        });
+      }
+    };
+    for (const kind of ["pointerdown", "pointerup", "click"])
+      document.addEventListener(
+        kind,
+        (event) => {
+          const button = document.querySelector(".update-banner button");
+          const updateTarget =
+            !!button &&
+            event.target instanceof Node &&
+            button.contains(event.target);
+          if (!state.armed && !state.events.length) return;
+          state.events.push({
+            kind,
+            updateTarget,
+            trusted: event.isTrusted,
+            time: performance.now(),
+            button: button?.getBoundingClientRect().toJSON(),
+            results: document.querySelectorAll(".hero-time").length,
+          });
+          if (kind === "pointerdown" && state.armed && updateTarget) {
+            state.armed = false;
+            state.held = false;
+            for (const { worker, data } of state.queue.splice(0))
+              worker.dispatchEvent(new MessageEvent("message", { data }));
+          }
+        },
+        true,
+      );
+  });
+  await publishRelease(context, baseURL!, "first");
+  await page.goto("/");
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
+  await publish(context, page, "second");
+  const before = await registrationState(page);
+  expect(before.waiting).toBe("installed");
+  const input = page.getByLabel("Message with a date or time");
+  const draft = "PRIVATE-UPDATE-TEST April 9, 2026 3pm UTC";
+  await input.fill(draft);
+  await expect
+    .poll(() =>
+      page.evaluate(() => (window as any).__conversionPressGate.queue.length),
+    )
+    .toBeGreaterThan(0);
+  await expect(page.locator(".hero-time")).toHaveCount(0);
+  await page.evaluate(() => {
+    (window as any).__conversionPressGate.armed = true;
+  });
+  // Hold the ordinary native press long enough for the queued conversion to
+  // render between down and up. No forced click or direct activation callback.
+  await page.getByRole("button", { name: "Update now" }).click({ delay: 100 });
+  const events = await page.evaluate(
+    () => (window as any).__conversionPressGate.events,
+  );
+  await info.attach("conversion-during-press", {
+    body: Buffer.from(JSON.stringify({ before, events })),
+    contentType: "application/json",
+  });
+  const down = events.find((event: any) => event.kind === "pointerdown");
+  const up = events.find((event: any) => event.kind === "pointerup");
+  const click = events.find((event: any) => event.kind === "click");
+  expect(down).toMatchObject({ updateTarget: true, trusted: true, results: 0 });
+  expect(up).toMatchObject({ updateTarget: true, trusted: true, results: 1 });
+  expect(click).toMatchObject({ updateTarget: true, trusted: true });
+  expect(up.button.y).toBeCloseTo(down.button.y, 1);
+  expect(up.button.x).toBeCloseTo(down.button.x, 1);
+  await expect(page.locator(".hero-time")).toHaveText(/1:00 am/i);
+  await expect(
+    page.getByRole("status").filter({
+      hasText: "This browser cannot preserve it during a reload",
+    }),
+  ).toBeVisible();
+  await expect(input).toHaveValue(draft);
+  const blocked = await registrationState(page);
+  expect(blocked.timeOrigin).toBe(before.timeOrigin);
+  expect(blocked.waiting).toBe("installed");
+  await page.getByRole("button", { name: "Clear", exact: true }).click();
+  await expect(input).toHaveValue("");
+  await activate(page);
+  expect(await revision(page)).toBe("test-second");
+  // The init script also runs in the new document; recovery conversions are
+  // ordinary worker deliveries, with no further timing gate.
+  await page.evaluate(() => {
+    (window as any).__conversionPressGate.held = false;
+  });
+  await disconnect(context, origin);
+  await convert(page, "second");
+});
+
 test("old and new tabs retain their own workers across successive releases and offline restart", async ({
   page,
   context,

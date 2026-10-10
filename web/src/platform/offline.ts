@@ -146,13 +146,18 @@ export async function setupOffline(
         retries === 0 ? 1000 : 3000,
       );
     };
-    const pendingUpdate = () =>
-      registration.waiting ||
-      (installedUpdate?.state === "installed" &&
-      navigator.serviceWorker.controller &&
-      installedUpdate !== navigator.serviceWorker.controller
-        ? installedUpdate
-        : undefined);
+    const pendingUpdate = () => {
+      const candidate = registration.waiting || installedUpdate;
+      const incumbent =
+        registration.active || navigator.serviceWorker.controller;
+      // First installation can briefly expose waiting before activation. It
+      // becomes an update only when it replaces a different existing worker.
+      return candidate?.state === "installed" &&
+        incumbent &&
+        candidate !== incumbent
+        ? candidate
+        : undefined;
+    };
     const retryProbe = (controller: ServiceWorker) => {
       if (
         signal.aborted ||
