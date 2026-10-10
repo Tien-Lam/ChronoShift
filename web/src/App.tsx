@@ -820,7 +820,7 @@ export default function App({
               <div className="input-tools">
                 <ActionButton
                   type="button"
-                  className="example-button"
+                  className="muted"
                   onPress={() => {
                     const choices = examples.filter(
                       (example) => example !== draft.current,
@@ -834,7 +834,7 @@ export default function App({
                 <div>
                   <ActionButton
                     type="button"
-                    className="text-button"
+                    variant="outline"
                     preventFocusOnPress
                     onPress={paste}
                   >

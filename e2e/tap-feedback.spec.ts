@@ -130,8 +130,8 @@ test("touch presses use rounded palette feedback immediately across task control
     };
     for (const selector of [
       ".appearance summary",
-      ".example-button",
-      ".text-button:has-text('Paste')",
+      ".input-tools button:has-text('Random example')",
+      ".input-tools button:has-text('Paste')",
       ".text-button:has-text('Clear')",
       ".options-trigger",
       ".choice-toggle",
