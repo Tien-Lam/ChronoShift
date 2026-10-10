@@ -862,13 +862,15 @@ input::placeholder {
   background: #393323;
   color: #f0d7a0;
 }
-.notice {
+.notice,
+.update-warning {
   font-size: var(--text-small);
   color: var(--muted);
   line-height: 1.6;
   margin-top: 16px;
 }
-.notice:empty {
+.notice:empty,
+.update-warning:empty {
   display: none;
 }
 .import-choice {
@@ -889,6 +891,9 @@ input::placeholder {
 }
 .manual-copy textarea {
   min-height: 130px;
+}
+.update-notice {
+  margin-bottom: 24px;
 }
 .update-banner {
   display: flex;
