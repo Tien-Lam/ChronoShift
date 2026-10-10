@@ -36,6 +36,8 @@ results, warnings and clipboard feedback cannot move its button during a press.
 Draft-preservation failure appears immediately below the prompt, including on
 About. Update activation still requires a completed deliberate press; a failed
 preservation leaves the message and waiting update available for recovery.
+The first installation cannot offer itself as an update: an installed candidate
+must replace a different active or controlling worker before the prompt appears.
 
 The production build embeds the small initial stylesheet into HTML to avoid a
 render-blocking CSS request. Both response and offline-shell CSP permit its exact

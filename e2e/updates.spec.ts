@@ -410,6 +410,39 @@ async function convert(page: Page, release: string) {
   await expect(page.getByRole("alert")).toHaveCount(0);
 }
 
+test("a first installation never offers itself as a waiting update", async ({
+  page,
+  context,
+  baseURL,
+}, info) => {
+  await page.addInitScript(() => {
+    const flashes: number[] = [];
+    const observer = new MutationObserver(() => {
+      if (document.querySelector(".update-banner"))
+        flashes.push(performance.now());
+    });
+    observer.observe(document, { childList: true, subtree: true });
+    (window as any).__firstInstallPrompt = { flashes, observer };
+  });
+  await publishRelease(context, baseURL!, "first");
+  await page.goto("/");
+  await expect(page.locator('main[data-offline-ready="true"]')).toBeVisible();
+  const flashes = await page.evaluate(() => {
+    const { observer, flashes } = (window as any).__firstInstallPrompt;
+    observer.disconnect();
+    return flashes;
+  });
+  const registration = await registrationState(page);
+  await info.attach("first-install-prompt", {
+    body: Buffer.from(JSON.stringify({ flashes, registration })),
+    contentType: "application/json",
+  });
+  expect(flashes).toEqual([]);
+  expect(registration.controller).toBe("activated");
+  expect(registration.waiting).toBeUndefined();
+  await convert(page, "first");
+});
+
 test("conversion completion during an update press keeps the target stable and allows recovery", async ({
   page,
   context,
