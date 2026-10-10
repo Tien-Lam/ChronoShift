@@ -107,6 +107,7 @@ for (const width of [280, 390, 960])
         { theme },
       );
       await page.goto("/__gallery/?view=workspace");
+      await expect(page.locator('main[data-app-ready="true"]')).toBeVisible();
       await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
       await capture(page, `workspace-${width}-${theme}-empty`);
       await page

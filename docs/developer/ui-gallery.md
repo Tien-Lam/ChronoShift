@@ -47,6 +47,9 @@ Outline shares control borders; iconAction is a 44px square with a required
 accessible name from its caller. Variant CSS preserves immediate focus and finite
 approved motion. It does not decide domain wording, outcomes or clipboard state.
 
+In the message tools, Paste uses the outline variant to emphasize importing the
+user's message. Random example is a muted quiet action, and Clear remains quiet.
+
 React Aria owns gesture state (`data-pressed`) for migrated ActionButton and
 CollapsibleTrigger. The existing delegated early-touch hook explicitly excludes
 these slots; it still serves native summaries/links and specialized date/list
