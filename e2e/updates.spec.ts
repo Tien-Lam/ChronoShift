@@ -508,9 +508,11 @@ test("conversion completion during an update press keeps the target stable and a
   expect(up.button.y).toBeCloseTo(down.button.y, 1);
   expect(up.button.x).toBeCloseTo(down.button.x, 1);
   await expect(page.locator(".hero-time")).toHaveText(/1:00 am/i);
-  await expect(page.getByRole("status")).toContainText(
-    "This browser cannot preserve it during a reload",
-  );
+  await expect(
+    page.getByRole("status").filter({
+      hasText: "This browser cannot preserve it during a reload",
+    }),
+  ).toBeVisible();
   await expect(input).toHaveValue(draft);
   const blocked = await registrationState(page);
   expect(blocked.timeOrigin).toBe(before.timeOrigin);
